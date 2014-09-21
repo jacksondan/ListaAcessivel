@@ -33,13 +33,20 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 
 	@Override
 	public void adicionar(Produto entidade) throws SQLException {
-		String sql = "INSERT INTO produto(descricao_produto, "
+		String sql = "INSERT INTO produto (descricao_produto, "
 				+ "categoria_produto, peso_produto, "
 				+ "quantidade_produto, preco_produto, "
 				+ "validade_produto, codigo_barra, "
-				+ "marca_produto, status, disponibilidade"
+				+ "marca_produto, status, disponibilidade,"
 				+ "id_estabelecimento) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		
+		String disponibilidade;
+		if(entidade.getQuantidade_produto() >= 1){
+			disponibilidade = Disponibilidade.DISPONIVEL.toString();
+		}else{
+			disponibilidade = Disponibilidade.INDISPONIVEL.toString();
+		}
 			
 			stm = connection.prepareStatement(sql);
 	
@@ -52,13 +59,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 			stm.setString(7, entidade.getCodigo_de_barra());
 			stm.setString(8, entidade.getMarca_produto());
 			stm.setString(9,Status.ATIVO.toString());
-			
-			if(entidade.getQuantidade_produto() >= 1){
-				stm.setString(10, Disponibilidade.DISPONIVEL.toString());
-			}else{
-				stm.setString(10, Disponibilidade.INDISPONIVEL.toString());
-			}
-			
+			stm.setString(10, disponibilidade);
 			stm.setInt(11, entidade.getId_estabelecimento());
 			
 			stm.execute();

@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Produto;
 
 /**
@@ -43,31 +45,35 @@ public class CadastrarProduto extends HttpServlet {
 		
 
 		try {
-/*			HttpSession session = request.getSession(); 
-			Estabelecimento e = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de usuario
-*/			
+			HttpSession session = request.getSession(); 
+			Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
+			
+			System.out.println("@@@@@@  "+estabelecimento+"  @@@@@@");
+			System.out.println("####  "+estabelecimento.getId_estabelecimento()+"  ####");
+			
 			fachada = Fachada.getInstance();
 		
 			String descricao_produto = request.getParameter("descricao");
-			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 			float preco = Float.parseFloat(request.getParameter("preco"));
+			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 			String categoria = request.getParameter("estado");
+			int id_estabelecimento = estabelecimento.getId_estabelecimento();
 			
 			Produto p = new Produto();
 			p.setDescricao_produto(descricao_produto);
 			p.setCategoria(categoria);
 			p.setPreco_produto(preco);
-			p.setQuantidade_produto(0);
+			p.setQuantidade_produto(quantidade);
 			p.setPeso_produto("1 kg");
 			p.setValidade_produto("01/05/2014");
-			p.setMarca_produto("Lembrete");
-			p.setCodigo_de_barra("000000000");
-			p.setDisponibilidade("Disponivel");
+			p.setMarca_produto("000");
+			p.setCodigo_de_barra("0000000");
 			p.setId_estabelecimento(id_estabelecimento);
 			
 			fachada.adicionarProduto(p);
 			
 			response.sendRedirect("visaoEs.jsp");
+			
 		} catch (ClassNotFoundException | SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
