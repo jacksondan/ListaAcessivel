@@ -55,10 +55,10 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 			 	
 			 	
 		Estabelecimento estabelecimento = new Estabelecimento();
+		estabelecimento.setCNPJ(entidade.getCNPJ());
 		
-		estabelecimento = pesquisar(entidade);
-			 	
-			 
+		estabelecimento = pesquisar(estabelecimento);
+			 				 
 		//Inserindo os telefones na tabela telefone_estabelecimento
 		for(String tel : entidade.getTelefones()){	 	
 			 	smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
@@ -163,8 +163,13 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 
 	@Override
 	public Estabelecimento pesquisar(Estabelecimento entidade) throws SQLException {
-		sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and cnpj = '"+entidade.getCNPJ()+"'";
 		
+		if(entidade.getId_estabelecimento() > 0){
+			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and id_estabelecimento = "+entidade.getId_estabelecimento(); 
+		}else{
+			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and cnpj = '"+entidade.getCNPJ()+"'";
+		}
+	
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		Estabelecimento estabelecimento = new Estabelecimento();
@@ -201,12 +206,6 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 				smt.close();
 				
 		return estabelecimento;
-		
-		
-		
-		
-		
-		
 		
 		/*String sql = "select * from estabelecimento where status = 'ativo' and id_estabelecimento = "+entidade.getId_estabelecimento();
 		smt = this.connection.prepareStatement(sql);
