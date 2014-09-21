@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Produto"%>
 	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
+	<%@page import= "fafica.listaacessivel.negocios.IFachada"%>
+	<%@page import= "fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
 	<!DOCTYPE HTML>
 	<html>
 		<head>
@@ -10,7 +12,7 @@
 	</head>
 	<body>
 	<%
-		Fachada fachada = Fachada.getInstance(); 
+		IFachada fachada = Fachada.getInstance(); 
 	%>
 			<div id="container">
 					<div id="header-wrapper">
@@ -29,7 +31,8 @@
 					<fieldset >
 					<legend>Produtos</legend>
 					<%
-						for(Produto p : fachada.listarProduto()){
+						Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+						for(Produto p : fachada.listarProdutosDoEstabelecimento(estabelecimento)){
 					%>
 						<table class="default" >
 								<tr>
