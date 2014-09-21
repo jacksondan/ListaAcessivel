@@ -324,7 +324,7 @@ body,input,textarea,select
 	/* Button2 */
 		
 		input[type="button"],
-		input[type="submit"],
+		
 		input[type="reset"],
 		.button2
 		{
