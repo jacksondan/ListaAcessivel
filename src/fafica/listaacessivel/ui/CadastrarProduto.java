@@ -48,9 +48,6 @@ public class CadastrarProduto extends HttpServlet {
 			HttpSession session = request.getSession(); 
 			Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
 			
-			System.out.println("@@@@@@  "+estabelecimento+"  @@@@@@");
-			System.out.println("####  "+estabelecimento.getId_estabelecimento()+"  ####");
-			
 			fachada = Fachada.getInstance();
 		
 			String descricao_produto = request.getParameter("descricao");
