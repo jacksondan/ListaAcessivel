@@ -19,6 +19,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	private Connection connection;
 	private PreparedStatement stm;
 	private ResultSet result;
+	private String sql;
 
 	private RepositorioProduto() throws ClassNotFoundException, SQLException {
 		this.connection = ConnectionMysql.getConnectionMysql();
@@ -150,7 +151,37 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	@Override
 	public Produto pesquisar(Produto entidade) throws SQLException {
 		
-		List<Produto> lista_produto = new ArrayList<Produto>();
+			sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' and id_produto = "+entidade.getId_produto();
+		
+			stm = connection.prepareStatement(sql);
+			
+			result = stm.executeQuery();
+			
+			Produto produto = new Produto();
+			
+			while(result.next()){
+				produto.setId_produto(result.getInt("id_produto"));
+				produto.setDescricao_produto(result.getString("descricao_produto"));
+				produto.setCategoria(result.getString("descricao_produto"));
+				produto.setPeso_produto(result.getString("peso_produto"));
+				produto.setQuantidade_produto(result.getInt("quantidade_produto"));
+				produto.setPreco_produto(result.getFloat("preco_produto"));
+				produto.setValidade_produto(result.getString("validade_produto"));
+				produto.setMarca_produto(result.getString("marca_produto"));
+				produto.setCodigo_de_barra(result.getString("codigo_barra"));
+				produto.setDisponibilidade(result.getString("disponibilidade"));
+				produto.setId_estabelecimento(result.getInt("id_estabelecimento"));
+			}
+			stm.close();
+			result.close();
+		
+		return produto;
+		
+		
+		
+		
+		
+		/*List<Produto> lista_produto = new ArrayList<Produto>();
 		Produto produto_pesquisa = null;
 		
 		
@@ -162,7 +193,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 			}
 		}
 		
-		return produto_pesquisa;
+		return produto_pesquisa;*/
 	}
 
 }
