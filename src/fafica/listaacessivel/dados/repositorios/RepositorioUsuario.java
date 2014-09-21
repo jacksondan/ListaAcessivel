@@ -84,6 +84,12 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 		smt.execute();
 		smt.close();
 		
+		//Deletando os Telefones Anteriores
+				sql = "delete from telefone_usuario where id_usuario = "+entidade.getId_usuario();
+				smt = connection.prepareStatement(sql);
+				smt.execute();
+				smt.close();
+		
 		for(String tel : entidade.getTelefones()){	 	
 		 	smt = this.connection.prepareStatement("update telefone_usuario set"
 		 			+"telefone=? where id_usuario=?");
