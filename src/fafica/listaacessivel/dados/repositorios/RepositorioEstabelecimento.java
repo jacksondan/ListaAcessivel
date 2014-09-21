@@ -95,7 +95,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 		smt.close();
 		
 		//Deletando os Telefones Anteriores
-		sql = "delete from telefone_estabelecimento where = "+entidade.getId_estabelecimento();
+		sql = "delete from telefone_estabelecimento where id_estabelecimento = "+entidade.getId_estabelecimento();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
