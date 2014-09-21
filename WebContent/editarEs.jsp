@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		import="fafica.listaacessivel.negocios.entidades.Estabelecimento"
 		import="fafica.listaacessivel.negocios.Fachada"
+		import="java.util.ArrayList"
 		import="fafica.listaacessivel.negocios.IFachada"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
@@ -26,6 +27,10 @@
 				IFachada fachada = Fachada.getInstance();
 				Estabelecimento estabelciomentoDaSessao = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
 				Estabelecimento estabelecimento = fachada.pesquisarEstabelecimento(estabelciomentoDaSessao);
+				ArrayList <String> telefones = new ArrayList<String>();
+				telefones= estabelecimento.getTelefones();
+				
+				
 			%>
 			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarEstabelecimento">
 			<fieldset >
@@ -39,10 +44,11 @@
 			
 			<fieldset >
 			<legend>Dados do Estabelecimento</legend>
+				<input type="hidden"  name="id_estabelecimento" value="<%=estabelecimento.getId_estabelecimento()%>">
+				
 				<label for="nome_fantasia">Nome Fantasia:</label>
-				<input type="hidden"  name="id_estabelecimento" id="nome_fantasia" value="<%=estabelecimento.getId_estabelecimento()%>">
 				<input type="text"  name="nome_fantasia" id="nome_fantasia" value="<%=estabelecimento.getNome_fantasia()%>" size=60>
-				<input type="text"  name="nome_fantasia" id="nome_fantasia" value="<%=estabelecimento.getNome_fantasia()%>" size=60>
+
 				
 				<label for="nome_juridico">Nome Jurídico:</label>
 				<input type="text"  name="nome_juridico" id="nome_juridico"value="<%=estabelecimento.getNome_juridico()%>"  size=60>
@@ -52,6 +58,7 @@
 				
 				Categoria:<br>
 				<select name="categoria">
+				<option selected="<%=estabelecimento.getCategoria()%>" value="<%=estabelecimento.getCategoria()%>"><%=estabelecimento.getCategoria()%></option>
 				<option>Supermercado</option>
 				<option>Shopping</option>
 				<option>Frigorífico</option>
@@ -62,16 +69,16 @@
 				<fieldset>
 				<legend>Telefones para Contato</legend>
 					<label for="telefone1">Telefone 1:</label><br>
-					<input type="text" placeholder="Digite seu telefone" name="telefone1" id="telefone1" size=20><br>
+					<input type="text"  name="telefone1" id="telefone1" value="<%=telefones.get(0)%>" size=20><br>
 					<label for="telefone 2">Telefone 2:</label><br>
-					<input type="text" placeholder="Digite seu telefone" name="telefone2" id="telefone2" size=20><br>
+					<input type="text"  name="telefone2" id="telefone2" value="<%=telefones.get(1)%>" size=20><br>
 				</fieldset>
 				<fieldset >
 			<legend>Dados de Localização</legend>
 				<p>
 				<label for="lista de estados">Selecione o Estado:<br />
 				<select name="estado" id="listade estados">
-				<option selected="não selecionado" value="não selecionado">Escolha o Estado</option>
+				<option selected="<%=estabelecimento.getEstado()%>" value="<%=estabelecimento.getEstado()%>"><%=estabelecimento.getEstado()%></option>
 				<option value="AC">Acre</option>
 				<option value="AL">Alagoas</option>
 				<option value="AP">Amapá</option>
