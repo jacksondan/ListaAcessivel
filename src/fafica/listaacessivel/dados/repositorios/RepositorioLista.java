@@ -101,12 +101,15 @@ public class RepositorioLista implements IRepositorio<Lista>{
 		
 		Lista l = new Lista();
 		
-		l.setId_usuario(rs.getInt("id_usuario"));
-		l.setId_lista(rs.getInt("id_lista"));
-		l.setData_criacao_lista(rs.getString("data_criacao"));
-		l.setData_modificacao_lista(rs.getString("data_modificacao"));
-		l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
-		l.setValor_total_lista(rs.getFloat("valor_total"));
+		while(rs.next()){
+			l.setId_usuario(rs.getInt("id_usuario"));
+			l.setId_lista(rs.getInt("id_lista"));
+			l.setData_criacao_lista(rs.getString("data_criacao"));
+			l.setData_modificacao_lista(rs.getString("data_modificacao"));
+			l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
+			l.setValor_total_lista(rs.getFloat("valor_total"));
+		}
+	
 		return l;
 		
 //		List<Lista> lista_lista = new ArrayList<Lista>();
