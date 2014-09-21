@@ -110,6 +110,9 @@ public class RepositorioLista implements IRepositorio<Lista>{
 			l.setValor_total_lista(rs.getFloat("valor_total"));
 		}
 	
+		smt.close();
+		rs.close();
+		
 		return l;
 		
 //		List<Lista> lista_lista = new ArrayList<Lista>();
