@@ -1,0 +1,536 @@
+
+@charset 'UTF-8';
+
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,400italic,600");
+
+body
+	{
+		background: #f5f7fa;
+		margin: 0px 0px;
+		padding:1px 1px;
+		
+	}
+
+body,input,textarea,select 
+	{
+	
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 200;
+		line-height: 1.75em;
+		font-size: 12pt;
+	}
+	
+	
+	
+	h1,h2,h3,h4,h5,h6
+	{
+		font-weight: 300;
+		color: #598f9f;
+	}
+	
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+		{
+			color: inherit;
+			text-decoration: none;
+		}
+
+	h2
+	{
+		font-size: 2em;
+		line-height: 1.25em;
+	}
+
+	h3
+	{
+		font-size: 1.5em;
+		line-height: 1.5em;
+	}
+
+	a
+	{
+		color: inherit;
+		text-decoration: none;
+		border-bottom: dotted 1px #62676c;
+		-moz-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+		-webkit-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+		-o-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+		-ms-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+		transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+	}
+	
+		a:hover
+		{
+			color: #ffffff;
+			border-bottom-color: rgba(255,255,255,0);
+		}
+		
+			header
+		{
+			margin-bottom: 1.0em;
+		}
+		
+			header > p
+			{
+				display: block;
+				color: #0080c0;
+				padding: 0.75em 0 1em 0;
+				font-size: 1.5em;
+				line-height: 1.5em;
+			}
+			
+			header.major
+			{
+				text-align: center;
+			}
+		
+		
+		/* List */
+
+		ul
+		{
+		}
+
+			ul.default
+			{
+				list-style: none;
+				
+			}
+			
+				ul.default li
+				{
+					padding-left: 0.5em;
+				}
+			
+			ul.actions
+			{
+				padding-top: 1em;
+				text-align: center;
+				
+			}
+			
+				ul.actions.major
+				{
+					text-align: center;
+				}
+			
+				ul.actions li
+				{
+					display: inline-block;
+					margin-left: 1em;
+				}
+				
+					ul.actions li:first-child
+					{
+						margin-left: 0;
+					}
+
+			ul.divided
+			{
+			}
+
+				ul.divided li
+				{
+					list-style:none;
+					font-size:15pt;
+					border-top: solid 1px #d2d7dc;
+					padding-top: 1em;
+					margin-top: 1em;
+					
+				}
+				
+				ul.divided a:hover{
+				color:white;
+				background-color:blue;
+			
+		
+				}
+				
+				ul.divided li:first-child
+				{
+					padding-top: 0;
+					margin-top: 0;
+					border-top: 0;
+				}
+
+			ul.icons
+			{
+			list-style:none;
+			}
+			
+				ul.icons li:before
+				{
+					
+					list-style:none;
+					display: inline-block;
+					color: #fff;
+					background: #61666b;
+					width: 2em;
+					height: 2em;
+					border-radius: 0.35em;
+					text-align: center;
+					line-height: 2em;
+					margin-right: 0.75em;
+				}
+
+			ul.menu
+			{
+			
+			}
+			
+				ul.menu li
+				{
+				
+					
+					list-style:none;
+					
+					color: #000000;
+					margin-right: 1.75em;
+					text-align: center;
+					line-height: 2em;
+					
+				}
+				
+				ul.menu li:first-child
+				{
+					/* margin do menu direito*/
+					position:relative;
+					margin-bottom: 9em;	
+					
+				}
+
+		ol
+		{
+		}	
+
+			ol.default
+			{
+				list-style: decimal;
+				padding-left: 1.25em;
+			}
+
+				ol.default li
+				{
+					padding-left: 0.25em;
+				}
+		
+		
+		/* Form*/
+			#botform{
+			margin:auto;
+			}
+		/*FieldSet*/
+		
+		fieldset { 
+		
+  		width: 442px;
+  		margin:auto;
+		} 
+		
+		fieldset legend { 
+		font-family: 'Source Sans Pro', sans-serif;
+		padding: 6px; 
+		font-weight:bolder;
+		}
+		
+		/* Table */
+		
+		table
+		{
+			width: 50%;
+			align:center;
+			
+			
+		}
+		
+			table.default
+			{
+				width: 50%;
+				
+			}
+
+				table.default tbody tr
+				{
+					border-top: solid 1px #D2D7DC;
+					
+				}
+			
+				table.default tbody tr:nth-child(2n+1)
+				{
+					background: #f9fbfe;
+				}
+				
+				table.default td
+				{
+					padding: 0.5em 1em 0.5em 1em;
+					
+				}
+				
+				table.default th
+				{
+					font-color:white;
+					text-align: center;
+					font-weight: 300;
+					padding: 0.5em 1em 0.5em 1em;
+					background-color: #b1b6eb;
+					color:white;
+				}
+			
+				table.default thead
+				{
+				}
+				
+				table.default tfoot
+				{
+					border-top: solid 1px #D2D7DC;
+				}
+				
+				table.default tbody
+				{
+				}
+				
+				/* Button */
+		
+		input[type="button"],
+		input[type="submit"],
+		input[type="reset"],
+		.button
+		{
+			
+			display: inline-block;
+			color: inherit;
+			background: none;
+			text-decoration: none;
+			border: solid 1px #c2c7cc;
+			border-radius: 0.35em;
+			padding: 0.8em 2em 0.8em 2em;
+			cursor: pointer;
+			outline: 0;
+			-moz-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			-webkit-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			-o-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			-ms-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+		}
+
+			input[type="button"]:hover,
+			input[type="submit"]:hover,
+			input[type="reset"]:hover,
+			.button:hover
+			{
+				color: #0080c0;
+				border-color: rgba(0, 65, 11,0.5);
+			}
+
+	/* Button2 */
+		
+		input[type="button"],
+		input[type="submit"],
+		input[type="reset"],
+		.button2
+		{
+			
+			display: inline-block;
+			color: inherit;
+			background: none;
+			text-decoration: none;
+			border: solid 1px #c2c7cc;
+			border-radius: 0.35em;
+			padding: 0.4em 1em 0.4em 1em;
+			cursor: pointer;
+			outline: 0;
+			-moz-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			-webkit-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			-o-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			-ms-transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+			transition: color 0.25s ease-in-out, border-color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+		}
+
+			input[type="button"]:hover,
+			input[type="submit"]:hover,
+			input[type="reset"]:hover,
+			.button2:hover
+			{
+				color: #0080c0;
+				border-color: rgba(0, 65, 11,0.5);
+			}
+
+/*********************************************************************************/
+/* Wrappers                                                                      */
+/*********************************************************************************/
+
+.wrapper
+	{
+		position: relative;
+		background: #fff;
+		overflow-x: hidden;
+		padding: 6em 0 6em 0;
+	}
+	#header-wrapper
+	{
+		position: relative;
+		padding: 1.9em 0 2em 0;
+		
+		background-color:		#c0c0c0;
+		
+		background-size:		100% 620%;
+		
+		
+		background-image:		url('images/overlay.png'), linear-gradient( 75deg,#337DA1 15%,#04253F 75%);
+		background-size:		128px 128px,				100% 620%,					auto;
+		background-repeat:		repeat,						no-repeat,					no-repeat;
+	}
+	
+		.homepage #header-wrapper
+		{
+			padding: 10em 0 6em 0;
+			background-size:	128px 128px,				100% 100%,					auto;
+		}
+		
+		
+		#footer-wrapper
+	{
+		-webkit-transform: translate3d(0,0,0);
+		position: relative;
+		border-top: solid 1px #c2c7cc;
+		padding: 6em 0 6em 0;
+
+		background-image:		url('images/overlay.png'),	url('images/footer.svg');
+		background-size:		128px 128px,				100% 100%;
+	}
+		
+		
+		
+/*********************************************************************************/
+/* Header                                                                        */
+/*********************************************************************************/
+
+	#logo
+	{
+		position: absolute;
+		z-index: 1;
+		bottom: 88px;
+		left: 20%;
+		width: 10em;
+		margin-left: -7.5em;
+	}
+	
+		#logo a
+		{
+			display: block;
+			width: 100%;
+			height: 1em;
+			line-height: 8em;
+		}
+
+	
+	
+/*Sidebar*/
+#sidebar{
+	z-index=:1;
+	position:absolute;
+	top:3.9em;
+	background-color: #000040;
+	width:20%;
+	height:49.5em;
+	
+}
+
+
+
+			
+/*********************************************************************************/
+/* Nav                                                                           */
+/*********************************************************************************/
+
+	#nav
+	{
+	}
+
+		#nav > ul > li > ul
+		{
+			display: none;
+		}
+
+		#nav ul
+		{
+			margin: 0;
+		}
+
+		#nav li
+		{
+			border-top: solid 1px rgba(0,0,0,0.25);
+			box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,0.075);
+			padding: 0.5em 0 0.5em 0;
+		}
+		
+		#nav li:first-child
+		{
+			border: 0;
+			box-shadow: none;
+			padding-top: 0;
+		}
+
+		#nav li:last-child
+		{
+			padding-bottom: 0;
+		}
+
+		#nav li a
+		{
+			display: block;
+			padding: 0.4em 1em 0.4em 1em;
+			text-decoration: none;
+			border-radius: 0.4em;
+			outline: 0;
+			-moz-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+			-webkit-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+			-o-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+			-ms-transition: background-color .25s ease-in-out, color .25s ease-in-out;
+			transition: background-color .25s ease-in-out, color .25s ease-in-out;
+		}
+
+		#nav li.current a
+		{
+			background-color: #272E39 !important;
+			background-color: rgba(0,0,0,0.15) !important;
+			box-shadow: 0 0 0 1px rgba(255,255,255,0.05), inset 0 0 0.25em 0 rgba(0,0,0,0.25);
+			font-weight: 700;
+			color: #fff;
+		}
+
+		#nav li:hover a
+		{
+			background-color: #004080;
+			color: #fff;
+		}
+
+			
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+	#footer
+	{
+		position: relative;
+		z-index: 1;
+	}
+
+		#footer header.major
+		{
+			margin-bottom: 3em;
+		}
+
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+
+	#copyright
+	{
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		border-top: solid 1px #d2d7dc;
+		color: #a2a7ac;
+		padding-top: 2em;
+		margin-top: 4em;
+	}
