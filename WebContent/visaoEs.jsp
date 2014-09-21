@@ -27,7 +27,7 @@
 											<li><p><a href="excluirEs.jsp" class="button">Desativar Perfil</a></p></li>
 											<li><p><a href="cadastroProduto.jsp" class="button">Cadastrar Produto</a></p></li>
 											<li><p><a href="listarProdutos.jsp" class="button">Listar Produto</a></p></li>
-											<li><p><a href="listarListas.jsp" class="button">Sair</a></p></li>
+											<li><p><a href="logout.jsp" class="button">Sair</a></p></li>
 								
 											
 										</ul>

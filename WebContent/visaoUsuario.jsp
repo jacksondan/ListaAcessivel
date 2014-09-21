@@ -27,7 +27,7 @@
 											<li><p><a href="ExcluirUsuario.jsp" class="button">Desativar Perfil</a></p></li>
 											<li><p><a href="cadastrarLista.jsp" class="button">Cadastar Lista</a></p></li>
 											<li><p><a href="listarListas.jsp" class="button">Lista de Compras</a></p></li>
-											<li><p><a href= "logout?" class="button">Sair</a></p></li>
+											<li><p><a href= "logout.jsp" class="button">Sair</a></p></li>
 											
 											
 										</ul>

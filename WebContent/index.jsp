@@ -39,7 +39,7 @@
 			</fieldset>
 						<div class="12u">
 										<ul class="actions">
-											<li><input type="submit" value="Entrar" /></li>
+											<li><input type="submit" value="Entrar"/></li>
 											<li><a href="cadastros.jsp" class="button">Cadastrar</a></li>
 										</ul>
 						</div>
