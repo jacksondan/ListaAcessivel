@@ -23,11 +23,11 @@
 				
 							<div class="nav">
 										<ul class="icons">
-											<li><p><a href="cadastroLista.jsp" class="button">Editar Perfil</a></p></li>
-											<li><p><a href="cadastroLista.jsp" class="button">Desativar Perfil</a></p></li>
-											<li><p><a href="cadastroLista.jsp" class="button">Cadastar Lista</a></p></li>
+											<li><p><a href="editarUsuario.jsp" class="button">Editar Perfil</a></p></li>
+											<li><p><a href="ExcluirUsuario.jsp" class="button">Desativar Perfil</a></p></li>
+											<li><p><a href="cadastrarLista.jsp" class="button">Cadastar Lista</a></p></li>
 											<li><p><a href="listarListas.jsp" class="button">Lista de Compras</a></p></li>
-											<li><p><a href="listarListas.jsp" class="button">Sair</a></p></li>
+											<li><p><a href="logout.jsp" class="button">Sair</a></p></li>
 											
 											
 										</ul>

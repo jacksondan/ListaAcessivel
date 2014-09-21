@@ -49,8 +49,8 @@
 									<td><%= p.getId_estabelecimento()%></td>
 									<td><%= p.getPreco_produto()%></td>
 									<td><%= p.getCategoria()%></td>
-									<td><a href="EditarProduto?codigo=<%= p.getId_produto()%>" class="button2">Editar</a></td>
-									<td><a href="ExcluirProduto?codigo=<%= p.getId_produto()%>" class="button2">Excluir</a></td>
+									<td><a href="EditarProduto?id_produto=<%=p.getId_produto()%>" class="button2">Editar</a></td>
+									<td><a href="ExcluirProduto?id_produto=<%=p.getId_produto()%>" class="button2">Excluir</a></td>
 									
 									</tr>
 									</table>

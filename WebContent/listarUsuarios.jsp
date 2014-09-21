@@ -45,13 +45,7 @@
 									<th>Cep</th>
 									<th>Telefones</th>
 									</tr>
-									<%
-										for(String tel : u.getTelefones()){
-									%>
-											<%=tel+" "%>
-									<%
-										}
-									%>
+									
 									<tr>
 									<td><%= u.getId_usuario()%></td>
 									
@@ -65,17 +59,20 @@
 									<td><%= u.getNumero()%></td>
 									<td><%= u.getReferencia()%></td>
 									<td><%= u.getCep()%></td>
-									<td><%= u.getTelefones()%></td>
-									</tr>
-								
+									<td><%
+										for(String tel : u.getTelefones()){
+									%>
+											<%=tel+","%>
+									<%
+										}
+									%></td>
+									</tr>	
 						</table>
 					<% 
 						}
-					%>	
-						
+					%>		
 					</fieldset>
-							
-					
+	
 				</div>
 				</div>
 				<div id="right"></div>

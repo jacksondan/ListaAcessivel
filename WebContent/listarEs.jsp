@@ -22,71 +22,60 @@
 				<div id="left"></div>
 				<div id="content">
 					<header class="major">		
-						<h2>Cadastros</h2>
+						<h2>Lista de Estabelecimentos</h2>
 					</header>
 				<div>
 					
-					<fieldset >
+				<fieldset >
 					<%
 						for(Estabelecimento e : fachada.listarEstabelecimento()){
 					%>
-						<table class="default">
+						<table class="default" >
 								<tr>
-									<th>Id</th><td><%= e.getId_estabelecimento()%></td>
-								</tr>
-								<tr>
-									<th>Nome Fantasia</th><td><%= e.getNome_fantasia()%></td>
-								</tr>
-								<tr>
-									<th>Nome Jurídico</th><td><%= e.getNome_juridico()%></td>
-								</tr>
-								<tr>
-									<th>Categoria</th><td><%= e.getCategoria()%></td>
-								</tr>
-								<tr>	
-									<th>CNPJ</th><td><%= e.getCNPJ()%></td>
-								</tr>
-								<tr>	
-									<th>E-mail</th><td><%= e.getEmail()%></td>
-								</tr>
-								<tr>	
-									<th>Rua</th><td><%= e.getRua()%></td>
-								</tr>
-								<tr>	
-									<th>Número</th><td><%= e.getNumero()%></td>
-								</tr>
-								<tr>	
-									<th>Bairro</th><td><%= e.getBairro()%></td>
-								</tr>
-								<tr>	
-									<th>Cidade</th><td><%= e.getCidade()%></td>
-								</tr>
-								<tr>	
-									<th>Estado</th><td><%= e.getEstado()%></td>
-								</tr>
-								<tr>	
-									<th>CEP</th><td><%= e.getCep()%></td>
-								</tr>
-								<tr>	
-									<th>Referência</th><td><%= e.getReferencia()%></td>
-								</tr>
-								<tr>
-								<th>Telefones</th><td>
-									<%
+									<th>Id</th>
+									<th>Nome Fantasia</th>
+									<th>Nome Juridico</th>
+									<th>Categoria</th>
+									<th>CNPJ</th>
+									<th>E-mail</th>
+									<th>CEP</th>
+									<th>Estado</th>
+									<th>Cidade</th>
+									<th>Bairro</th>
+									<th>Rua</th>
+									<th>Número</th>
+									<th>Referência</th>
+									<th>Telefones</th>
+									
+									</tr>
+									
+									<tr>
+									<td><%= e.getId_estabelecimento()%></td>
+									<td><%= e.getNome_fantasia()%></td>
+									<td><%=  e.getNome_juridico()%></td>
+									<td><%=  e.getCategoria()%></td>
+									<td><%= e.getCNPJ()%></td>
+									<td><%= e.getEmail()%></td>
+									<td><%= e.getCep() %></td>
+									<td><%=  e.getEstado()%></td>
+									<td><%= e.getCidade()%></td>
+									<td><%= e.getBairro()%></td>
+									<td><%=  e.getRua()%></td>
+									<td><%=  e.getNumero()%></td>
+									<td><%=  e.getReferencia()%></td>
+									<td><%
 										for(String tel : e.getTelefones()){
 									%>
-											<%=tel+"   "%>
+											<%=tel+","%>
 									<%
 										}
-									%>
-									</td>
-								</tr>
-								</br> </br>
+									%></td>
+									
+									</tr>	
 						</table>
 					<% 
 						}
-					%>	
-						
+					%>		
 					</fieldset>
 							
 					
