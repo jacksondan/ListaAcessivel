@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 		import="fafica.listaacessivel.negocios.entidades.Estabelecimento"
 		import="fafica.listaacessivel.negocios.Fachada"
+		import="fafica.listaacessivel.negocios.IFachada"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -22,29 +23,32 @@
 					<h2>Editar Estabelecimento</h2>
 				</header>
 			<%
-					Estabelecimento e = (Estabelecimento) request.getAttribute("estabelecimento");
+				IFachada fachada = Fachada.getInstance();
+				Estabelecimento estabelciomentoDaSessao = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+				Estabelecimento estabelecimento = fachada.pesquisarEstabelecimento(estabelciomentoDaSessao);
 			%>
 			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarEstabelecimento">
-			<input type="hidden" name="id_estabelecimento" value="<%=e.getId_estabelecimento()%>">
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
-				<input type="email"  name="email" id="email" value="<%=e.getEmail()%>" size=60>
+				<input type="email"  name="email" id="email" value="<%=estabelecimento.getEmail()%>" size=60>
 				
 				<label for="senha">Senha:</label><br>
-				<input type="password"  name="senha" id="senha" value="<%=e.getSenha()%>"  size=15>
+				<input type="password"  name="senha" id="senha" value="<%=estabelecimento.getSenha()%>"  size=15>
 			</fieldset>
 			
 			<fieldset >
 			<legend>Dados do Estabelecimento</legend>
 				<label for="nome_fantasia">Nome Fantasia:</label>
-				<input type="text"  name="nome_fantasia" id="nome_fantasia" value="<%=e.getNome_fantasia()%>" size=60>
+				<input type="hidden"  name="id_estabelecimento" id="nome_fantasia" value="<%=estabelecimento.getId_estabelecimento()%>">
+				<input type="text"  name="nome_fantasia" id="nome_fantasia" value="<%=estabelecimento.getNome_fantasia()%>" size=60>
+				<input type="text"  name="nome_fantasia" id="nome_fantasia" value="<%=estabelecimento.getNome_fantasia()%>" size=60>
 				
 				<label for="nome_juridico">Nome Jurídico:</label>
-				<input type="text"  name="nome_juridico" id="nome_juridico"value="<%=e.getNome_juridico()%>"  size=60>
+				<input type="text"  name="nome_juridico" id="nome_juridico"value="<%=estabelecimento.getNome_juridico()%>"  size=60>
 				
 				<label for="cnpj">CPNPJ:</label><br>
-				<input type="text"  name="cnpj" id="cnpj" value="<%=e.getCNPJ()%>" size=12><br>
+				<input type="text"  name="cnpj" id="cnpj" value="<%=estabelecimento.getCNPJ()%>" size=12><br>
 				
 				Categoria:<br>
 				<select name="categoria">
@@ -100,22 +104,22 @@
 				</p>
 				
 				<label for="cep">CEP:</label><br>
-				<input type="text"  name="cep" id="cep"  value="<%=e.getCep() %>" size=20><br>
+				<input type="text"  name="cep" id="cep"  value="<%=estabelecimento.getCep() %>" size=20><br>
 				
 				<label for="cidade">Cidade:</label><br>
-				<input type="text" name="cidade" id="cidade"  value="<%=e.getCidade() %>"  size=30><br>
+				<input type="text" name="cidade" id="cidade"  value="<%=estabelecimento.getCidade() %>"  size=30><br>
 				
 				<label for="bairro">Bairro:</label><br>
-				<input type="text" name="bairro" id="bairro"  value="<%=e.getBairro() %>"  size=30><br>
+				<input type="text" name="bairro" id="bairro"  value="<%=estabelecimento.getBairro() %>"  size=30><br>
 				
 				<label for="rua">Rua:</label><br>
-				<input type="text" name="rua" id="rua"  value="<%=e.getRua() %>"  size=60><br>
+				<input type="text" name="rua" id="rua"  value="<%=estabelecimento.getRua() %>"  size=60><br>
 				
 				<label for="numero">Número:</label><br>
-				<input type="text"  name="numero" id="numero"  value="<%=e.getNumero() %>"  size=4><br>
+				<input type="text"  name="numero" id="numero"  value="<%=estabelecimento.getNumero() %>"  size=4><br>
 				
 				<label for="referencia">Referência:</label><br>
-				<input type="text"  name="referencia" id="referencia"  value="<%=e.getReferencia() %>" size=30><br>
+				<input type="text"  name="referencia" id="referencia"  value="<%=estabelecimento.getReferencia() %>" size=30><br>
 			
 			</fieldset>
 					

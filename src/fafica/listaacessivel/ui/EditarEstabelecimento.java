@@ -23,7 +23,6 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 @WebServlet("/EditarEstabelecimento")
 public class EditarEstabelecimento extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,11 +36,12 @@ public class EditarEstabelecimento extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		try {
-			fachada = Fachada.getInstance();
-					
+			IFachada fachada = Fachada.getInstance();
 			ArrayList<String> telefones = new ArrayList<String>();
 			
+			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 			String nome_fantasia = request.getParameter("nome_fantasia");
 			String nome_juridico = request.getParameter("nome_juridico");
 			String categoria = request.getParameter("categoria");
@@ -60,12 +60,12 @@ public class EditarEstabelecimento extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha);
 			
-			Estabelecimento entidade = new Estabelecimento(nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, bairro, cidade, estado, cep, referencia);
+			Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, bairro, cidade, estado, cep, referencia);
 			entidade.setTelefones(telefones);
 			
 			fachada.alterarEstabelecimento(entidade);
 			
-			response.sendRedirect("cadastros.jsp");
+			response.sendRedirect("visaoEs.jsp");
 					
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
