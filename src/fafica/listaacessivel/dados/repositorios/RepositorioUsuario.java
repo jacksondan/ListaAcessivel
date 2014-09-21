@@ -66,9 +66,9 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 
 	@Override
 	public void alterar(Usuario entidade) throws SQLException {
-		smt = this.connection.prepareStatement("update usuario set nome_usuario=?,cpf=?,"
-				+ "email=?,senha=?,rua=?,numero=?,bairro=?,"
-				+ "cidade=?,estado=?,cep=?,referencia=? where id_usuario=?");
+		smt = this.connection.prepareStatement("update usuario set nome_usuario = ?,cpf = ?,"
+				+ "email = ?,senha = ?,rua = ?,numero = ?,bairro = ?,"
+				+ "cidade = ?,estado = ?,cep = ?,referencia = ? where id_usuario = "+entidade.getId_usuario());
 		smt.setString(1,entidade.getNome());
 		smt.setString(2,entidade.getCpf());
 		smt.setString(3,entidade.getEmail());
@@ -80,7 +80,6 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 		smt.setString(9,entidade.getEstado());
 		smt.setString(10,entidade.getCep());
 		smt.setString(11,entidade.getReferencia());
-		smt.setInt(12,entidade.getId_usuario());
 		smt.execute();
 		smt.close();
 		
@@ -90,14 +89,15 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 				smt.execute();
 				smt.close();
 		
-		for(String tel : entidade.getTelefones()){	 	
-		 	smt = this.connection.prepareStatement("update telefone_usuario set"
-		 			+"telefone=? where id_usuario=?");
-		 			smt.setString(1,tel);
-		 			smt.setInt(2,entidade.getId_usuario());
-				 	smt.execute();
-				 	smt.close();
-		}
+			//Inserindo os novos telefones
+			for(String tel : entidade.getTelefones()){	 	
+			 	smt = this.connection.prepareStatement("insert into telefone_usuario"
+			 			+"(id_usuario,telefone) values (?,?)");
+			 			smt.setInt(1,entidade.getId_usuario());
+			 			smt.setString(2, tel);
+					 	smt.execute();
+					 	smt.close();
+			}
 		
 		System.out.println("ALTETANDO USUARIO OK"); //LINHA TEMPORARIA
 	}

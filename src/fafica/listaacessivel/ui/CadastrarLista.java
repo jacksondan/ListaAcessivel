@@ -46,7 +46,7 @@ public class CadastrarLista extends HttpServlet {
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			
+			System.out.println("@@@@@@ "+usuario.getId_usuario()+" @@@@@@");
 			
 			
 			

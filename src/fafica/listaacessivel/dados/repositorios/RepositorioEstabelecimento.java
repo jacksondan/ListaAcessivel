@@ -108,7 +108,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 		 			smt.setString(2, tel);
 				 	smt.execute();
 				 	smt.close();
-	}
+		}
 		System.out.println("ALTERAR ESTABELECIMENTO OK");
 		System.out.println(""); //LINHA TEMPORARIA
 		
