@@ -48,7 +48,7 @@ public class ExcluirEstabelecimento extends HttpServlet {
 			fachada.excluirEstabelecimento(estabelecimento);
 			
 			
-			//Falta chamar o servlet ou jsp de LOGOUT
+			response.sendRedirect("logout.jsp");
 			
 			
 		} catch (ClassNotFoundException | SQLException e) {

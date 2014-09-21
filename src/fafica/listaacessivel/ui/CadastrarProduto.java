@@ -53,7 +53,7 @@ public class CadastrarProduto extends HttpServlet {
 			String descricao_produto = request.getParameter("descricao");
 			float preco = Float.parseFloat(request.getParameter("preco"));
 			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-			String categoria = request.getParameter("estado");
+			String categoria = request.getParameter("categoria");
 			int id_estabelecimento = estabelecimento.getId_estabelecimento();
 			
 			Produto p = new Produto();

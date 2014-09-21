@@ -49,7 +49,7 @@ public class ExcluirUsuario extends HttpServlet {
 			fachada.excluirUsuario(usuario);
 			
 			
-			//Falta chamar o servlet ou jsp de LOGOUT
+			response.sendRedirect("logout.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
