@@ -95,31 +95,33 @@ public class RepositorioLista implements IRepositorio<Lista>{
 
 	@Override
 	public Lista pesquisar(Lista entidade) throws SQLException {
-//		sql = "SELECT * FROM lista WHERE status = '" + Status.ATIVO.toString() + "' AND id_lista = "+entidade.getId_lista();
-//		smt = this.connection.prepareStatement(sql);
-//		rs = smt.executeQuery();
+		sql = "SELECT * FROM lista WHERE status = '" + Status.ATIVO.toString() + "' AND id_lista = "+entidade.getId_lista();
+		smt = this.connection.prepareStatement(sql);
+		rs = smt.executeQuery();
+		
+		Lista l = new Lista();
+		
+		l.setId_usuario(rs.getInt("id_usuario"));
+		l.setId_lista(rs.getInt("id_lista"));
+		l.setData_criacao_lista(rs.getString("data_criacao"));
+		l.setData_modificacao_lista(rs.getString("data_modificacao"));
+		l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
+		l.setValor_total_lista(rs.getFloat("valor_total"));
+		return l;
+		
+//		List<Lista> lista_lista = new ArrayList<Lista>();
+//		Lista lista_pesquisa = null;
 //		
-//		Lista l = new Lista(rs.getInt("id_usuario"));
-//		l.setId_lista(rs.getInt("id_lista"));
-//		l.setData_criacao_lista(rs.getString("data_criacao"));
-//		l.setData_modificacao_lista(rs.getString("data_modificacao"));
-//		l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
-//		l.setValor_total_lista(rs.getFloat("valor_total"));
-//		return l;
-		
-		List<Lista> lista_lista = new ArrayList<Lista>();
-		Lista lista_pesquisa = null;
-		
-		
-		lista_lista = listar();
-		
-		for(Lista lista : lista_lista){
-			if(entidade.getId_lista() == lista.getId_lista()){
-				lista_pesquisa = lista;
-			}
-		}
-		
-		return lista_pesquisa;
+//		
+//		lista_lista = listar();
+//		
+//		for(Lista lista : lista_lista){
+//			if(entidade.getId_lista() == lista.getId_lista()){
+//				lista_pesquisa = lista;
+//			}
+//		}
+//		
+//		return lista_pesquisa;
 	}
 
 }
