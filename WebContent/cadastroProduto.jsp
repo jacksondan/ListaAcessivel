@@ -28,12 +28,12 @@
 				<fieldset >
 				<legend><strong>Dados do Produto</strong></legend>
 				<label for="descrição">Descrição:</label>
-				<input type="text"  name="descricao" id="descrição" size=60>
-				
-			
+				<input type="text"  name="descricao" id="descrição" size=60><br>
 				
 				<label for="preço">Preço:</label>
 				<input type="text"  name="preco" id="preço" size=10>
+				<label for="quantidade">Quantidade:</label>
+				<input type="text"  name="quantidade" id="quantidade" size=10>
 					<p>
 						<label for="categoria">Categoria:<br />
 						<select name="estado" id="categoria">

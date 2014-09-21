@@ -1,5 +1,5 @@
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Lista"%>
+	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Produto"%>
 	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
 	<!DOCTYPE HTML>
 	<html>
@@ -22,25 +22,37 @@
 				<div id="left"></div>
 				<div id="content">
 					<header class="major">		
-						<h2>Lista de Compras</h2>
+						<h2>Criar Lista</h2>
 					</header>
 				<div>
 					
 					<fieldset >
+					<legend>Produtos</legend>
 					<%
-						for(Lista l : fachada.listarLista()){
+						for(Produto p : fachada.listarProduto()){
 					%>
-						<table>
+						<table class="default" >
 								<tr>
-									
-									<th>Descrição</th><td></td>
-									
-									<th></th><td>
-									
+									<th>Id:</th>
+									<th>Descrição:</th>
+									<th>ID_Estabelecimento:</th>
+									<th>Preço:</th>
+									<th>Categoria:</th>
+									<th>Ação</th>
 								
-									</td>
-								</tr>
-						</table>
+									</tr>
+				
+									<tr>
+									<td><%= p.getId_produto()%></td>
+									<td><%= p.getDescricao_produto()%></td>
+									<td><%= p.getId_estabelecimento()%></td>
+									<td><%= p.getPreco_produto()%></td>
+									<td><%= p.getCategoria()%></td>
+									<td><a href="CadastrarLista?codigo=<%= p.getId_produto()%>" class="button2">Comprar</a></td>
+									
+									
+									</tr>
+									</table>
 					<% 
 						}
 					%>	
