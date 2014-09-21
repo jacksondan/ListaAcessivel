@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	import="fafica.listaacessivel.negocios.entidades.Usuario"
 	import="fafica.listaacessivel.negocios.Fachada"
+	import="fafica.listaacessivel.negocios.IFachada"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -26,28 +27,28 @@
 			<!-- Formulário aqui! -->
 			
 			<%
-			
-			Usuario u = (Usuario) request.getAttribute("usuario");
-			
-
+			IFachada fachada = Fachada.getInstance();
+			Usuario usuarioDaSessao = (Usuario) session.getAttribute("acessoUsuario");
+			Usuario usuario = fachada.pesquisarUsuario(usuarioDaSessao);
 			%>
+			
 			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarUsuario">
-			<input type="hidden" name="id_usuario" value="<%=u.getId_usuario()%>">
+			<input type="hidden" name="id_usuario" value="<%=usuario.getId_usuario()%>">
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
-				<input type="email"  name="email" id="email" value="<%=u.getEmail()%>"size=60>
+				<input type="email"  name="email" id="email" value="<%=usuario.getEmail()%>"size=60>
 				
 				<label for="senha">Senha:</label><br>
-				<input type="password"  name="senha" id="senha" value="<%=u.getSenha()%>" size=15>
+				<input type="password"  name="senha" id="senha" value="<%=usuario.getSenha()%>" size=15>
 			</fieldset>
 			<fieldset >
 			<legend>Dados Pessoais</legend>
 				<label for="nome">Nome Completo</label>
-				<input type="text"  name="nome" id="nome" value="<%=u.getNome()%>" size=60>
+				<input type="text"  name="nome" id="nome" value="<%=usuario.getNome()%>" size=60>
 				
 				<label for="cpf">CPF:</label><br>
-				<input type="text"  name="cpf" id="cpf" value="<%=u.getCpf()%>" size=12><br>
+				<input type="text"  name="cpf" id="cpf" value="<%=usuario.getCpf()%>" size=12><br>
 				</fieldset>
 				
 				<fieldset>
@@ -97,22 +98,22 @@
 				
 				
 				<label for="cep">CEP:</label><br>
-				<input type="text"  name="cep" id="cep"  value="<%=u.getCep()%>"size=20><br>
+				<input type="text"  name="cep" id="cep"  value="<%=usuario.getCep()%>"size=20><br>
 				
 				<label for="cidade">Cidade:</label><br>
-				<input type="text"  name="cidade" id="cidade"  value="<%=u.getCidade()%>"size=30><br>
+				<input type="text"  name="cidade" id="cidade"  value="<%=usuario.getCidade()%>"size=30><br>
 				
 				<label for="bairro">Bairro:</label><br>
-				<input type="text"  name="bairro" id="bairro" value="<%=u.getBairro()%>" size=30><br>
+				<input type="text"  name="bairro" id="bairro" value="<%=usuario.getBairro()%>" size=30><br>
 				
 				<label for="rua">Rua:</label><br>
-				<input type="text"  name="rua" id="rua" value="<%=u.getRua()%>" size=60><br>
+				<input type="text"  name="rua" id="rua" value="<%=usuario.getRua()%>" size=60><br>
 				
 				<label for="numero">Número:</label><br>
-				<input type="text"  name="numero" id="numero" value="<%=u.getNumero()%>" size=4><br>
+				<input type="text"  name="numero" id="numero" value="<%=usuario.getNumero()%>" size=4><br>
 				
 				<label for="referencia">Referência:</label><br>
-				<input type="text"  name="referencia" id="referencia" value="<%=u.getReferencia()%>"size=30><br>
+				<input type="text"  name="referencia" id="referencia" value="<%=usuario.getReferencia()%>"size=30><br>
 			
 				</fieldset>
 					

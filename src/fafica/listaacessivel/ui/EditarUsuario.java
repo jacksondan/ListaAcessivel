@@ -42,6 +42,7 @@ public class EditarUsuario extends HttpServlet {
 			
 			ArrayList <String> telefones = new ArrayList <String>();
 			
+			int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
 			String nome = request.getParameter("nome");
 			String cpf = request.getParameter("cpf");
 			String email = request.getParameter("email");
@@ -65,7 +66,7 @@ public class EditarUsuario extends HttpServlet {
 			
 			fachada.alterarUsuario(entidade);
 			
-			response.sendRedirect("cadastros.jsp");
+			response.sendRedirect("visaoUsuario.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
