@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	import="fafica.listaacessivel.negocios.entidades.Produto"
+	import="fafica.listaacessivel.negocios.Fachada"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -12,7 +14,7 @@
 				<div id="header-wrapper">
 				<div id="header" class="container">
 										<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
-				
+	
 						
 					</div>
 				</div>
@@ -23,18 +25,20 @@
 				</header>
 			<!-- Formulário aqui! -->
 			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarProduto">
-			
-				
+				<%
+					Produto p = (Produto) request.getAttribute("produto");
+				%>
+				<input type="hidden" name="id_produto" value="<%=p.getId_produto()%>">
 				<fieldset >
 				<legend><strong>Dados do Produto</strong></legend>
 				<label for="descrição">Descrição:</label>
-				<input type="text"  name="descricao" id="descrição" size=60>
+				<input type="text"  name="descricao" id="descrição" value="<%=p.getDescricao_produto()%>"size=60>
 				
 				<label for="preço">Preço:</label>
-				<input type="text"  name="preco" id="preço" size=10>
+				<input type="text"  name="preco" id="preço" value="<%=p.getPreco_produto()%>" size=10>
 					<p>
 						<label for="categoria">Categoria:<br />
-						<select name="estado" id="categoria">
+						<select name="categoria" id="categoria">
 						<option selected="não selecionado" value="não selecionado">Escolha a categoria</option>
 						<option value="frios">Frios</option>
 						<option value="limpeza">Limpeza</option>
@@ -46,7 +50,7 @@
 					
 						<div class="12u">
 							<ul class="actions">
-								<li><input type="submit" value="Confirmar Edição" /></li>
+								<li><input type="submit" value="Salvar" /></li>
 								<li><input type="reset" value="Limpar" /></li>
 							</ul>
 						</div>

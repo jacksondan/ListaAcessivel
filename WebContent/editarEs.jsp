@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		import="fafica.listaacessivel.negocios.entidades.Estabelecimento"
+		import="fafica.listaacessivel.negocios.Fachada"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -12,32 +14,46 @@
 				<div id="header-wrapper">
 				<div id="header" class="container">
 										<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
-				
-						
 					</div>
 				</div>
 			<div id="left"></div>
 			<div id="content">
 				<header class="major">		
-					<h2>Cadastre-se</h2>
+					<h2>Editar Estabelecimento</h2>
 				</header>
-			<!-- Formulário aqui! -->
-			<form method="post" action="http://localhost:8080/ListaAcessivel/CadastraUs">
+			<%
+					Estabelecimento e = (Estabelecimento) request.getAttribute("estabelecimento");
+			%>
+			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarEstabelecimento">
+			<input type="hidden" name="id_estabelecimento" value="<%=e.getId_estabelecimento()%>">
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
-				<input type="email" placeholder="Digite o E-mail" name="email" id="email" size=60>
+				<input type="email"  name="email" id="email" value="<%=e.getEmail()%>" size=60>
 				
 				<label for="senha">Senha:</label><br>
-				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=15>
+				<input type="password"  name="senha" id="senha" value="<%=e.getSenha()%>"  size=15>
 			</fieldset>
+			
 			<fieldset >
-			<legend>Dados Pessoais</legend>
-				<label for="nome">Nome Completo</label>
-				<input type="text" placeholder="Digite seu nome completo" name="nome" id="nome" size=60>
+			<legend>Dados do Estabelecimento</legend>
+				<label for="nome_fantasia">Nome Fantasia:</label>
+				<input type="text"  name="nome_fantasia" id="nome_fantasia" value="<%=e.getNome_fantasia()%>" size=60>
 				
-				<label for="cpf">CPF:</label><br>
-				<input type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=12><br>
+				<label for="nome_juridico">Nome Jurídico:</label>
+				<input type="text"  name="nome_juridico" id="nome_juridico"value="<%=e.getNome_juridico()%>"  size=60>
+				
+				<label for="cnpj">CPNPJ:</label><br>
+				<input type="text"  name="cnpj" id="cnpj" value="<%=e.getCNPJ()%>" size=12><br>
+				
+				Categoria:<br>
+				<select name="categoria">
+				<option>Supermercado</option>
+				<option>Shopping</option>
+				<option>Frigorífico</option>
+				<option>Fast-Food</option>
+				</select><br>
+				</fieldset>
 				
 				<fieldset>
 				<legend>Telefones para Contato</legend>
@@ -46,10 +62,8 @@
 					<label for="telefone 2">Telefone 2:</label><br>
 					<input type="text" placeholder="Digite seu telefone" name="telefone2" id="telefone2" size=20><br>
 				</fieldset>
-			
 				<fieldset >
 			<legend>Dados de Localização</legend>
-				
 				<p>
 				<label for="lista de estados">Selecione o Estado:<br />
 				<select name="estado" id="listade estados">
@@ -85,30 +99,29 @@
 				</label>
 				</p>
 				
-				
 				<label for="cep">CEP:</label><br>
-				<input type="text" placeholder="Digite o CEP" name="cep" id="cep" size=20><br>
+				<input type="text"  name="cep" id="cep"  value="<%=e.getCep() %>" size=20><br>
 				
 				<label for="cidade">Cidade:</label><br>
-				<input type="text" placeholder="Digite a Cidade" name="cidade" id="cidade" size=30><br>
+				<input type="text" name="cidade" id="cidade"  value="<%=e.getCidade() %>"  size=30><br>
 				
 				<label for="bairro">Bairro:</label><br>
-				<input type="text" placeholder="Digite o Bairro" name="bairro" id="bairro" size=30><br>
+				<input type="text" name="bairro" id="bairro"  value="<%=e.getBairro() %>"  size=30><br>
 				
 				<label for="rua">Rua:</label><br>
-				<input type="text" placeholder="Digite a Rua" name="rua" id="rua" size=60><br>
+				<input type="text" name="rua" id="rua"  value="<%=e.getRua() %>"  size=60><br>
 				
 				<label for="numero">Número:</label><br>
-				<input type="text" placeholder="Digite número" name="numero" id="numero" size=4><br>
+				<input type="text"  name="numero" id="numero"  value="<%=e.getNumero() %>"  size=4><br>
 				
 				<label for="referencia">Referência:</label><br>
-				<input type="text" placeholder="Digite Referência" name="referencia" id="referencia" size=30><br>
+				<input type="text"  name="referencia" id="referencia"  value="<%=e.getReferencia() %>" size=30><br>
 			
 			</fieldset>
 					
 									<div class="12u">
 										<ul class="actions">
-											<li><input type="submit" value="Confirmar Cadastrro" /></li>
+											<li><input type="submit" value="Salvar" /></li>
 											<li><input type="reset" value="Limpar" /></li>
 										</ul>
 									</div>

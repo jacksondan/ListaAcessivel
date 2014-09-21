@@ -36,11 +36,12 @@
 				<input type="text"  name="quantidade" id="quantidade" size=10>
 					<p>
 						<label for="categoria">Categoria:<br />
-						<select name="estado" id="categoria">
+						<select name="categoria" id="categoria">
 						<option selected="não selecionado" value="não selecionado">Escolha a categoria</option>
 						<option value="frios">Frios</option>
 						<option value="limpeza">Limpeza</option>
 						<option value="Bebidas">Bebidas</option>
+						<option value="Alimentos">Alimentos</option>
 						</select>
 						</label>
 						</p>

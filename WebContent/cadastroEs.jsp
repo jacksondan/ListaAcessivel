@@ -50,13 +50,15 @@
 				<option>Fast-Food</option>
 				</select><br>
 				
-				<p>Telefones para Contato:</p>
-				<label for="telefone1">Telefone 1:</label><br>
-				<input type="text" placeholder="Digite seu telefone" name="telefone1" id="telefone1" size=20><br>
-				<label for="telefone 2">Telefone 2:</label><br>
-				<input type="text" placeholder="Digite seu telefone" name="telefone2" id="telefone2" size=20><br>
-			</fieldset>
-				<fieldset >
+				<fieldset>
+				<legend>Telefones para Contato</legend>
+					<label for="telefone1">Telefone 1:</label><br>
+					<input type="text" placeholder="Digite seu telefone" name="telefone1" id="telefone1" size=20><br>
+					<label for="telefone 2">Telefone 2:</label><br>
+					<input type="text" placeholder="Digite seu telefone" name="telefone2" id="telefone2" size=20><br>
+				</fieldset>
+				
+				<fieldset>
 			<legend>Dados de Localização</legend>
 				<p>
 				<label for="lista de estados">Selecione o Estado:<br />
