@@ -48,7 +48,8 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 		smt.close();
 		
 		Usuario u = new Usuario();
-				u = pesquisar(entidade);
+		u.setCpf(entidade.getCpf());
+				u = pesquisar(u);
 		
 		for(String tel : entidade.getTelefones()){	 	
 		 	smt = this.connection.prepareStatement("insert into telefone_usuario"
@@ -146,7 +147,12 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 
 	@Override
 	public Usuario pesquisar(Usuario entidade) throws SQLException {
-		sql="select * from usuario where status = '" + Status.ATIVO.toString() + "' AND cpf = '"+entidade.getCpf()+"'";
+		if(entidade.getId_usuario() > 0){
+			sql="select * from usuario where status = '" + Status.ATIVO.toString() + "' AND id_usuario = "+entidade.getId_usuario();
+		}else{
+			sql="select * from usuario where status = '" + Status.ATIVO.toString() + "' AND cpf = '"+entidade.getCpf()+"'";
+		}
+		
 		
 		smt = connection.prepareStatement(sql);
 		result = smt.executeQuery();
