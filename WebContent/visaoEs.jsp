@@ -24,7 +24,7 @@
 							<div class="nav">
 										<ul class="icons">
 											<li><p><a href="editarEs.jsp" class="button">Editar Perfil</a></p></li>
-											<li><p><a href="excluirEs.jsp" class="button">Desativar Perfil</a></p></li>
+											<li><p><a href="ExcluirEstabelecimento?id=<%= "Passando para excluir"%>" class="button">Desativar Perfil</a></p></li>
 											<li><p><a href="cadastroProduto.jsp" class="button">Cadastrar Produto</a></p></li>
 											<li><p><a href="listarProdutos.jsp" class="button">Listar Produto</a></p></li>
 											<li><p><a href="logout.jsp" class="button">Sair</a></p></li>
