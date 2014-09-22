@@ -36,6 +36,7 @@
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
+				<input type="hidden"  name="id_estabelecimento" id="email" value="<%=estabelecimento.getId_estabelecimento()%>">
 				<input type="email"  name="email" id="email" value="<%=estabelecimento.getEmail()%>" size=60>
 				
 				<label for="senha">Senha:</label><br>
