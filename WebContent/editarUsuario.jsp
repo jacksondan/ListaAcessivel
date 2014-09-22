@@ -2,6 +2,7 @@
 	import="fafica.listaacessivel.negocios.entidades.Usuario"
 	import="fafica.listaacessivel.negocios.Fachada"
 	import="fafica.listaacessivel.negocios.IFachada"
+	import="java.util.ArrayList"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -15,7 +16,7 @@
 				<div id="header-wrapper">
 				<div id="header" class="container">
 				
-										<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
+					<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
 		
 					</div>
 				</div>
@@ -30,10 +31,11 @@
 			IFachada fachada = Fachada.getInstance();
 			Usuario usuarioDaSessao = (Usuario) session.getAttribute("acessoUsuario");
 			Usuario usuario = fachada.pesquisarUsuario(usuarioDaSessao);
+			ArrayList <String> telefones = new ArrayList<String>();
+			telefones= usuario.getTelefones();
 			%>
 			
 			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarUsuario">
-			<input type="hidden" name="id_usuario" value="<%=usuario.getId_usuario()%>">
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
@@ -54,9 +56,9 @@
 				<fieldset>
 					<legend>Telefones para Contato:</legend>
 					<label for="telefone1">Telefone 1:</label><br>
-					<input type="text" placeholder="Digite seu telefone" name="telefone1" id="telefone1" size=20><br>
+					<input type="text"  name="telefone1" id="telefone1" value="<%=telefones.get(0)%>" size=20><br>
 					<label for="telefone 2">Telefone 2:</label><br>
-					<input type="text" placeholder="Digite seu telefone" name="telefone2" id="telefone2" size=20><br>
+					<input type="text"  name="telefone2" id="telefone2" value="<%=telefones.get(1)%>" size=20><br>
 				</fieldset>
 				
 				<fieldset >
@@ -64,7 +66,7 @@
 				<p>
 				<label for="lista de estados">Selecione o Estado:<br />
 				<select name="estado" id="listade estados">
-				<option selected="não selecionado" value="não selecionado">Escolha o Estado</option>
+				<option selected="<%=usuario.getEstado()%>" value="<%=usuario.getEstado()%>"><%=usuario.getEstado()%></option>
 				<option value="AC">Acre</option>
 				<option value="AL">Alagoas</option>
 				<option value="AP">Amapá</option>

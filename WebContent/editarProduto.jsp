@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	import="fafica.listaacessivel.negocios.entidades.Produto"
 	import="fafica.listaacessivel.negocios.Fachada"
+	
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <html>
@@ -28,7 +29,6 @@
 				<%
 					Produto p = (Produto) request.getAttribute("produto");
 				%>
-				<input type="hidden" name="id_produto" value="<%=p.getId_produto()%>">
 				<fieldset >
 				<legend><strong>Dados do Produto</strong></legend>
 				<label for="descrição">Descrição:</label>
@@ -39,7 +39,7 @@
 					<p>
 						<label for="categoria">Categoria:<br />
 						<select name="categoria" id="categoria">
-						<option selected="não selecionado" value="não selecionado">Escolha a categoria</option>
+						<option selected="<%=p.getCategoria()%>" value="<%=p.getCategoria()%>"><%=p.getCategoria()%></option>
 						<option value="frios">Frios</option>
 						<option value="limpeza">Limpeza</option>
 						<option value="Bebidas">Bebidas</option>
