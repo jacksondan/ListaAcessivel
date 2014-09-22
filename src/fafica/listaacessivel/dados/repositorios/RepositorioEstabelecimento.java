@@ -117,7 +117,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	@Override
 	public void excluir(Estabelecimento entidade) throws SQLException {
 		//Setando Inativo ao status do estabelecimento
-		String sql = "updade estabelecimento set status = " + Status.INATIVO.toString() + " where id_estabelecimento = "+entidade.getId_estabelecimento();
+		String sql = "UPDATE estabelecimento SET status = '"+Status.INATIVO.toString()+"' where id_estabelecimento = "+entidade.getId_estabelecimento();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
