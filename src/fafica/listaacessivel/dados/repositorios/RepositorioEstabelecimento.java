@@ -74,7 +74,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 
 	@Override
 	public void alterar(Estabelecimento entidade) throws SQLException {
-		String sql = "update estabelecimento set"
+		sql = "update estabelecimento set"
 				+ " nome_fantasia = '"+entidade.getNome_fantasia()+"'"
 				+ ", nome_juridico = '"+entidade.getNome_juridico()+"'"
 				+ ", categoria = '"+entidade.getCategoria()+"'"

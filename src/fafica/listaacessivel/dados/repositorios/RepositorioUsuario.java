@@ -66,20 +66,21 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 
 	@Override
 	public void alterar(Usuario entidade) throws SQLException {
-		smt = this.connection.prepareStatement("update usuario set nome_usuario = ?,cpf = ?,"
-				+ "email = ?,senha = ?,rua = ?,numero = ?,bairro = ?,"
-				+ "cidade = ?,estado = ?,cep = ?,referencia = ? where id_usuario = "+entidade.getId_usuario());
-		smt.setString(1,entidade.getNome());
-		smt.setString(2,entidade.getCpf());
-		smt.setString(3,entidade.getEmail());
-		smt.setString(4,entidade.getSenha());
-		smt.setString(5,entidade.getRua());
-		smt.setString(6,entidade.getNumero());
-		smt.setString(7,entidade.getBairro());
-		smt.setString(8,entidade.getCidade());
-		smt.setString(9,entidade.getEstado());
-		smt.setString(10,entidade.getCep());
-		smt.setString(11,entidade.getReferencia());
+		sql = "UPDATE usuario SET "
+				+ "nome_usuario = '"+entidade.getNome()+"'"
+				+ ", cpf = '"+entidade.getCpf()+"'"
+				+ ", email = '"+entidade.getEmail()+"'"
+				+ ", senha = '"+entidade.getSenha()+"'"
+				+ ", rua = '"+entidade.getRua()+"'"
+				+ ", numero = '"+entidade.getNumero()+"'"
+				+ ", bairro = '"+entidade.getBairro()+"'"
+				+ ", cidade = '"+entidade.getCidade()+"'"
+				+ ", estado = '"+entidade.getEstado()+"'"
+				+ ", cep = '"+entidade.getCep()+"'"
+				+ ", referencia = '"+entidade.getReferencia()+"'"
+				+ "where id_usuario = "+entidade.getId_usuario();
+		
+		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
@@ -104,8 +105,9 @@ public class RepositorioUsuario implements IRepositorio<Usuario> {
 
 	@Override
 	public void excluir(Usuario entidade) throws SQLException {
-		smt = connection.prepareStatement("update usuario set status ='" + Status.INATIVO.toString() + "' where id_usuario=?");
-		smt.setInt(1, entidade.getId_usuario());
+		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = "+entidade.getId_usuario();
+		
+		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		

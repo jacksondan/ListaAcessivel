@@ -68,7 +68,7 @@ public class EditarUsuario extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha);
 	
-			Usuario entidade = new Usuario(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
+			Usuario entidade = new Usuario(id_usuario, nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
 			entidade.setTelefones(telefones);
 			
 			fachada.alterarUsuario(entidade);
