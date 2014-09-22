@@ -2,7 +2,10 @@ package fafica.listaacessivel.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +37,29 @@ public class EditarProduto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		try {
+			List<Produto> lista_produto = new ArrayList<Produto>();
+			
+			fachada = Fachada.getInstance();
+			
+			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
+			lista_produto = fachada.listarProduto();
+			
+			for(Produto p : lista_produto){
+				if(p.getId_produto() == id_produto){
+					Produto produto = fachada.pesquisarProduto(p);
+					request.setAttribute("produto", produto);
+
+				}
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RequestDispatcher requestDispatcher = request
+				.getRequestDispatcher("editarProduto.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
@@ -47,7 +73,8 @@ public class EditarProduto extends HttpServlet {
 			String descricao_produto = request.getParameter("descricao");
 			String categoria = request.getParameter("categoria");
 			String peso_produto = request.getParameter("peso");
-			int quantidade_produto = Integer.parseInt(request.getParameter("quantidade"));
+			//int quantidade_produto = Integer.parseInt(request.getParameter("quantidade"));
+			int quantidade_produto=787;
 			float preco_produto = Float.parseFloat(request.getParameter("preco"));
 			String validade_produto = request.getParameter("validade");
 			String marca_produto = request.getParameter("marca");
@@ -62,7 +89,9 @@ public class EditarProduto extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		RequestDispatcher requestDispatcher = request
+				.getRequestDispatcher("/listarProdutos.jsp");
+		requestDispatcher.forward(request, response);
 		
 	}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	import="fafica.listaacessivel.negocios.entidades.Produto"
+	import="fafica.listaacessivel.negocios.IFachada"
 	import="fafica.listaacessivel.negocios.Fachada"
 	
     pageEncoding="ISO-8859-1"%>
@@ -25,9 +26,10 @@
 					<h2>Editar  Produto</h2>
 				</header>
 			<!-- Formulário aqui! -->
-			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarProduto">
+			<form method="post" action="EditarProduto">
 				<%
 					Produto p = (Produto) request.getAttribute("produto");
+		
 				%>
 				<fieldset >
 				<legend><strong>Dados do Produto</strong></legend>
