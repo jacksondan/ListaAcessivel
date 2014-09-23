@@ -31,6 +31,10 @@
 					Produto p = (Produto) request.getAttribute("produto");
 		
 				%>
+				<!--Enviando os id necessarios pelo formulario para montar o objeto no servlet-->
+				<input type="hidden"  name="id_produto" value="<%=p.getId_produto()%>">
+				<input type="hidden"  name="id_estabelecimento" value="<%=p.getId_estabelecimento()%>">
+				
 				<fieldset >
 				<legend><strong>Dados do Produto</strong></legend>
 				<label for="descrição">Descrição:</label>
@@ -38,6 +42,8 @@
 				
 				<label for="preço">Preço:</label>
 				<input type="text"  name="preco" id="preço" value="<%=p.getPreco_produto()%>" size=10>
+				<label for="quantidade">Quantidade:</label>
+				<input type="text"  name="quantidade" id="quantidade" value="<%=p.getQuantidade_produto()%>" size=10>
 					<p>
 						<label for="categoria">Categoria:<br />
 						<select name="categoria" id="categoria">

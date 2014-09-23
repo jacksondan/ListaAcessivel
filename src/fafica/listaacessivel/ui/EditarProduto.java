@@ -70,18 +70,18 @@ public class EditarProduto extends HttpServlet {
 		try {
 			fachada = Fachada.getInstance();
 			
+			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
 			String descricao_produto = request.getParameter("descricao");
 			String categoria = request.getParameter("categoria");
-			String peso_produto = request.getParameter("peso");
-			//int quantidade_produto = Integer.parseInt(request.getParameter("quantidade"));
-			int quantidade_produto=787;
+			String peso_produto = "1 kg";
+			int quantidade_produto = Integer.parseInt(request.getParameter("quantidade"));
 			float preco_produto = Float.parseFloat(request.getParameter("preco"));
-			String validade_produto = request.getParameter("validade");
-			String marca_produto = request.getParameter("marca");
-			String codigo_de_barra = request.getParameter("codigo_barra");
-			int id_estabelecimento = 0;
+			String validade_produto = "01/05/2014";
+			String marca_produto = "Beta";
+			String codigo_de_barra = "0000";
+			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 			
-			Produto produto = new Produto(descricao_produto,categoria,peso_produto,quantidade_produto,preco_produto,validade_produto,marca_produto,codigo_de_barra,id_estabelecimento);
+			Produto produto = new Produto(id_produto, descricao_produto,categoria,peso_produto,quantidade_produto,preco_produto,validade_produto,marca_produto,codigo_de_barra, "", id_estabelecimento);
 			
 			fachada.alterarProduto(produto);
 			

@@ -72,15 +72,16 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 		//Produto produto = pesquisar(entidade);
 		String sql2;
 		
-		String sql = "UPDATE produto SET descricao_produto= " + entidade.getDescricao_produto() + 
-				", categoria_produto = '" + entidade.getCategoria() + 
-				"', peso_produto = " + entidade.getPeso_produto() + 
-				", quantidade_produto = " + entidade.getQuantidade_produto() + 
-				", preco_produto = " + entidade.getPreco_produto() + 
-				", validade_produto = '" + entidade.getValidade_produto() + 
-				"', codigo_barra = '" + entidade.getCodigo_de_barra() +
-				"', marca_produto ='" + entidade.getMarca_produto() + 
-				"' WHERE id_produto = " + entidade.getId_produto();
+		String sql = "UPDATE produto SET "+
+				"descricao_produto = '" + entidade.getDescricao_produto()+"'" 
+				+", categoria_produto = '" + entidade.getCategoria()+"'" 
+				+", peso_produto = '" + entidade.getPeso_produto()+"'"
+				+", quantidade_produto = " + entidade.getQuantidade_produto() 
+				+", preco_produto = " + entidade.getPreco_produto() 
+				+", validade_produto = '" + entidade.getValidade_produto()+"'" 
+				+", codigo_barra = '" + entidade.getCodigo_de_barra()+"'"
+				+", marca_produto ='" + entidade.getMarca_produto() +"'" 
+				+" WHERE id_produto = " + entidade.getId_produto();
 		
 		if(entidade.getQuantidade_produto() >= 1){
 			sql2 = "UPDATE produto SET disponibilidade = '" + Disponibilidade.DISPONIVEL.toString() + "'";
@@ -126,7 +127,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 				
 				int id_produto = result.getInt("id_produto");
 				String descricao_produto = result.getString("descricao_produto");
-				String categoria = result.getString("descricao_produto"); 
+				String categoria = result.getString("categoria_produto"); 
 				String peso_produto = result.getString("peso_produto");
 				int quantidade_produto = result.getInt("quantidade_produto");
 				float preco_produto = result.getFloat("preco_produto");
@@ -162,7 +163,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 			while(result.next()){
 				produto.setId_produto(result.getInt("id_produto"));
 				produto.setDescricao_produto(result.getString("descricao_produto"));
-				produto.setCategoria(result.getString("descricao_produto"));
+				produto.setCategoria(result.getString("categoria_produto"));
 				produto.setPeso_produto(result.getString("peso_produto"));
 				produto.setQuantidade_produto(result.getInt("quantidade_produto"));
 				produto.setPreco_produto(result.getFloat("preco_produto"));
