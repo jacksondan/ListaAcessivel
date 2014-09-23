@@ -54,8 +54,8 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	public void alterar(Lista entidade) throws SQLException {
 		sql= "UPDATE lista SET "
 				+ "data_modificacao Date = '"+entidade.getData_modificacao_lista()+"'"
-				+ "quantidade_total = '"+entidade.getQuantidade_total_lista()+"'"
-				+ "valor_total = '"+entidade.getValor_total_lista()+"'";
+				+ "quantidade_total = "+entidade.getQuantidade_total_lista()
+				+ "valor_total = "+entidade.getValor_total_lista();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
