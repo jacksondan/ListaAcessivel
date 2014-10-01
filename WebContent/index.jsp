@@ -24,7 +24,7 @@
 			<%
 				if(request.getAttribute("erroLogin") != null){
 			%>
-					<center><%=request.getAttribute("erroLogin") %></center><br>;
+				<p style="text-align:center;color:red;"><%=request.getAttribute("erroLogin")%></p>
 			<%
 				}
 			%>	
