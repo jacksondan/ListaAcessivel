@@ -14,7 +14,7 @@
 <body>	
 <%@include file="headerUs.html" %>
 
-<%@include file="sidebarUs.html" %>	
+
 		
 		
 				<div id="content">

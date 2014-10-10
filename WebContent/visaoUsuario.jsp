@@ -16,9 +16,9 @@
 		<div id="content">
 					
 					<header class="major">		
-						<h2>Inicio - Menu Usuario</h2>
+						<h2><strong>Início - Menu Usuário</strong></h2>
 					</header>
 
 		</div>
-</body>
-</html>
+		
+<%@include file="footer.html" %>

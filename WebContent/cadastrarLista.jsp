@@ -45,7 +45,7 @@
 									<td><%= p.getId_estabelecimento()%></td>
 									<td><%= p.getPreco_produto()%></td>
 									<td><%= p.getCategoria()%></td>
-									<td><a href="CadastrarLista?codigo=<%= p.getId_produto()%>" class="button2">Comprar</a></td>
+									<td><a href="CadastrarLista?codigo=<%= p.getId_produto()%>" class="button2">Incluir</a></td>
 
 									</tr>
 									</table>
