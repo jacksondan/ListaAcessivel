@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	import="fafica.listaacessivel.negocios.entidades.Usuario"
+	import="fafica.listaacessivel.negocios.entidades.Cliente"
 	import="fafica.listaacessivel.negocios.Fachada"
 	import="fafica.listaacessivel.negocios.IFachada"
 	import="java.util.ArrayList"
@@ -24,12 +24,12 @@
 			
 			
 			<%
-			IFachada fachada = Fachada.getInstance();
-			Usuario usuarioDaSessao = (Usuario) session.getAttribute("acessoUsuario");
-			Usuario usuario = fachada.pesquisarUsuario(usuarioDaSessao);
-			ArrayList <String> telefones = new ArrayList<String>();
-			telefones= usuario.getTelefones();
-			%>
+										IFachada fachada = Fachada.getInstance();
+										Cliente usuarioDaSessao = (Cliente) session.getAttribute("acessoUsuario");
+										Cliente usuario = fachada.pesquisarUsuario(usuarioDaSessao);
+										ArrayList <String> telefones = new ArrayList<String>();
+										telefones= usuario.getTelefones();
+									%>
 			<!-- Formulário aqui! -->
 			<form method="post" action="http://localhost:8080/ListaAcessivel/EditarUsuario">
 			<fieldset >

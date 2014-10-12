@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
  * Servlet implementation class EditarUsuario
@@ -68,7 +68,7 @@ public class EditarUsuario extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha);
 	
-			Usuario entidade = new Usuario(id_usuario, nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
+			Cliente entidade = new Cliente(id_usuario, nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
 			entidade.setTelefones(telefones);
 			
 			fachada.alterarUsuario(entidade);

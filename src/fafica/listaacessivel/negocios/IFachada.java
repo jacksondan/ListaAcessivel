@@ -7,7 +7,7 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
 import fafica.listaacessivel.negocios.entidades.ProdutosLista;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public interface IFachada {
 	public void adicionarEstabelecimento(Estabelecimento entidade) throws SQLException;
@@ -27,11 +27,11 @@ public interface IFachada {
 	public List<Lista> listarLista() throws SQLException;
 	public Lista pesquisarLista(Lista entidade) throws SQLException;
 	public List<Produto> getProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException;
-	public void adicionarUsuario(Usuario entidade) throws SQLException;
-	public void alterarUsuario(Usuario entidade) throws SQLException;
-	public void excluirUsuario(Usuario entidade) throws SQLException;
-	public List <Usuario> listarUsuario() throws SQLException;
-	public Usuario pesquisarUsuario(Usuario entidade) throws SQLException;
+	public void adicionarUsuario(Cliente entidade) throws SQLException;
+	public void alterarUsuario(Cliente entidade) throws SQLException;
+	public void excluirUsuario(Cliente entidade) throws SQLException;
+	public List <Cliente> listarUsuario() throws SQLException;
+	public Cliente pesquisarUsuario(Cliente entidade) throws SQLException;
 	public void adicionarProdutosLista(ProdutosLista entidade) throws SQLException;
 	public void alterarProdutosLista(ProdutosLista entidade) throws SQLException;
 	public void excluirProdutosLista(ProdutosLista entidade) throws SQLException;

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
  * Servlet implementation class ExcluirUsuario
@@ -34,7 +34,7 @@ public class ExcluirUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
-		Usuario usuario = (Usuario)session.getAttribute("acessoUsuario"); // Utilizar pra pegar codigo de Usuario
+		Cliente usuario = (Cliente)session.getAttribute("acessoUsuario"); // Utilizar pra pegar codigo de Usuario
 		
 		try {
 			IFachada fachada = Fachada.getInstance();

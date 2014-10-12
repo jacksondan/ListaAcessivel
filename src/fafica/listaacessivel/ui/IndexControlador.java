@@ -17,7 +17,7 @@ import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
  * Servlet implementation class Index
@@ -55,7 +55,7 @@ public class IndexControlador extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha); 
 			
-			for(Usuario us : fachada.listarUsuario()){
+			for(Cliente us : fachada.listarUsuario()){
 				if (us.getEmail().equals(email)&& us.getSenha().equals(senhaEncriptada)){
 					objeto = us;
 				}

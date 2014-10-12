@@ -1,5 +1,5 @@
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Usuario"%>
+	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Cliente"%>
 	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
 	<!DOCTYPE HTML>
 	<html>
@@ -10,7 +10,7 @@
 	</head>
 	<body>
 	<%
-		Fachada fachada = Fachada.getInstance(); 
+		Fachada fachada = Fachada.getInstance();
 	%>
 			<div id="container">
 					<div id="header-wrapper">
@@ -28,7 +28,7 @@
 					
 					<fieldset >
 					<%
-						for(Usuario u : fachada.listarUsuario()){
+						for(Cliente u : fachada.listarUsuario()){
 					%>
 						<table class="default" >
 								<tr>

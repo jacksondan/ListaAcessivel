@@ -57,7 +57,7 @@ public class CadastrarProduto extends HttpServlet {
 			String peso_produto = "1 kg";
 			String validade_produto = "01/05/2014";
 			String marca_produto = "Beta";
-			int id_estabelecimento = estabelecimento.getId_estabelecimento();
+			int id_estabelecimento = estabelecimento.getId_usuario();
 			String codigo_de_barra = "0000";
 			
 			

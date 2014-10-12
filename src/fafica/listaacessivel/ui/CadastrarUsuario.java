@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
  * Servlet implementation class CadastraUs
@@ -67,7 +67,7 @@ public class CadastrarUsuario extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha);
 	
-			Usuario entidade = new Usuario(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
+			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
 			entidade.setTelefones(telefones);
 			
 			fachada.adicionarUsuario(entidade);

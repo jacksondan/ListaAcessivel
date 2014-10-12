@@ -7,12 +7,12 @@ import fafica.listaacessivel.negocios.controladores.ControladorEstabelecimento;
 import fafica.listaacessivel.negocios.controladores.ControladorLista;
 import fafica.listaacessivel.negocios.controladores.ControladorProduto;
 import fafica.listaacessivel.negocios.controladores.ControladorProdutosLista;
-import fafica.listaacessivel.negocios.controladores.ControladorUsuario;
+import fafica.listaacessivel.negocios.controladores.ControladorCliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
 import fafica.listaacessivel.negocios.entidades.ProdutosLista;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class Fachada implements IFachada {
 
@@ -20,14 +20,14 @@ public class Fachada implements IFachada {
 	private ControladorEstabelecimento controlador_estabelecimento;
 	private ControladorProduto controlador_produto;
 	private ControladorLista controlador_lista;
-	private ControladorUsuario controlador_usuario;
+	private ControladorCliente controlador_usuario;
 	private ControladorProdutosLista controlador_produtos_lista;
 	
 	private Fachada() throws ClassNotFoundException, SQLException{
 		controlador_estabelecimento = new ControladorEstabelecimento();
 		controlador_produto = new ControladorProduto();
 		controlador_lista = new ControladorLista();
-		controlador_usuario = new ControladorUsuario();
+		controlador_usuario = new ControladorCliente();
 		controlador_produtos_lista = new ControladorProdutosLista();
 	}
 	
@@ -124,27 +124,27 @@ public class Fachada implements IFachada {
 	}
 	
 	@Override
-	public void adicionarUsuario(Usuario entidade) throws SQLException{
+	public void adicionarUsuario(Cliente entidade) throws SQLException{
 		this.controlador_usuario.adicionarUsuario(entidade);
 	}
 	
 	@Override
-	public void alterarUsuario(Usuario entidade) throws SQLException{
+	public void alterarUsuario(Cliente entidade) throws SQLException{
 		this.controlador_usuario.alterarUsuario(entidade);
 	}
 	
 	@Override
-	public void excluirUsuario(Usuario entidade) throws SQLException{
+	public void excluirUsuario(Cliente entidade) throws SQLException{
 		this.controlador_usuario.excluirUsuario(entidade);
 	}
 	
 	@Override
-	public List <Usuario> listarUsuario() throws SQLException{
+	public List <Cliente> listarUsuario() throws SQLException{
 		return this.controlador_usuario.listarUsuario();
 	}
 	
 	@Override
-	public Usuario pesquisarUsuario(Usuario entidade) throws SQLException{
+	public Cliente pesquisarUsuario(Cliente entidade) throws SQLException{
 		return this.controlador_usuario.pesquisarUsuario(entidade);
 	}
 	

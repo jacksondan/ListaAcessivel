@@ -5,40 +5,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fafica.listaacessivel.dados.IRepositorio;
-import fafica.listaacessivel.dados.repositorios.RepositorioUsuario;
+import fafica.listaacessivel.dados.repositorios.RepositorioCliente;
 import fafica.listaacessivel.negocios.entidades.Lista;
-import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
-public class ControladorUsuario {
-	private IRepositorio<Usuario> repositorioUsuario;
+public class ControladorCliente {
+	private IRepositorio<Cliente> repositorioUsuario;
 	
-	public ControladorUsuario() throws ClassNotFoundException, SQLException{
-		repositorioUsuario = RepositorioUsuario.getInstancia();
+	public ControladorCliente() throws ClassNotFoundException, SQLException{
+		repositorioUsuario = RepositorioCliente.getInstancia();
 	}
 	
-	public void adicionarUsuario(Usuario entidade) throws SQLException{
+	public void adicionarUsuario(Cliente entidade) throws SQLException{
 		repositorioUsuario.adicionar(entidade);
 	}
 	
-	public void alterarUsuario(Usuario entidade) throws SQLException{
+	public void alterarUsuario(Cliente entidade) throws SQLException{
 		repositorioUsuario.alterar(entidade);
 	}
 	
-	public void excluirUsuario(Usuario entidade) throws SQLException{
+	public void excluirUsuario(Cliente entidade) throws SQLException{
 		repositorioUsuario.excluir(entidade);
 	}
 	
-	public List <Usuario> listarUsuario() throws SQLException{
+	public List <Cliente> listarUsuario() throws SQLException{
 		
 		return repositorioUsuario.listar();
 	}
 	
-	public Usuario pesquisarUsuario(Usuario entidade) throws SQLException{
+	public Cliente pesquisarUsuario(Cliente entidade) throws SQLException{
 		return repositorioUsuario.pesquisar(entidade);
 		
 	}
 	
-	public List <Lista> getListasDoUsuario(Usuario usuario) throws ClassNotFoundException, SQLException{
+	public List <Lista> getListasDoUsuario(Cliente usuario) throws ClassNotFoundException, SQLException{
 		ControladorLista controladorLista = new ControladorLista();
 		ArrayList <Lista> listas = new ArrayList<Lista>();
 		

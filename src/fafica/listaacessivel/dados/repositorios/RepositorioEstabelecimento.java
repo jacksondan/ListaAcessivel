@@ -32,14 +32,16 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	
 	@Override
 	public void adicionar(Estabelecimento entidade) throws SQLException {
-		smt = this.connection.prepareStatement("insert into estabelecimento"
+		sql = "insert into estabelecimento"
 			 	+ "(nome_fantasia,nome_juridico,categoria,cnpj,email,senha,rua,"+
 				"numero,bairro,cidade,estado,cep,referencia,status)"
-				+"values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+				+"values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		smt = this.connection.prepareStatement(sql);
 			 	smt.setString(1,entidade.getNome_fantasia());
 			 	smt.setString(2,entidade.getNome_juridico());
 			 	smt.setString(3,entidade.getCategoria());
-			 	smt.setString(4,entidade.getCNPJ());
+			 	smt.setString(4,entidade.getCnpj());
 			 	smt.setString(5,entidade.getEmail());
 			 	smt.setString(6,entidade.getSenha());
 			 	smt.setString(7,entidade.getRua());
@@ -55,7 +57,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 			 	
 			 	
 		Estabelecimento estabelecimento = new Estabelecimento();
-		estabelecimento.setCNPJ(entidade.getCNPJ());
+		estabelecimento.setCnpj(entidade.getCnpj());
 		
 		estabelecimento = pesquisar(estabelecimento);
 			 				 
@@ -63,7 +65,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 		for(String tel : entidade.getTelefones()){	 	
 			 	smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
 			 			+"(id_estabelecimento,telefone) values (?,?)");
-			 			smt.setInt(1,estabelecimento.getId_estabelecimento());
+			 			smt.setInt(1,estabelecimento.getId_usuario());
 			 			smt.setString(2, tel);
 					 	smt.execute();
 					 	smt.close();
@@ -78,7 +80,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 				+ " nome_fantasia = '"+entidade.getNome_fantasia()+"'"
 				+ ", nome_juridico = '"+entidade.getNome_juridico()+"'"
 				+ ", categoria = '"+entidade.getCategoria()+"'"
-				+ ", cnpj = '"+entidade.getCNPJ()+"'"
+				+ ", cnpj = '"+entidade.getCnpj()+"'"
 				+ ", email = '"+entidade.getEmail()+"'"
 				+ ", senha = '"+entidade.getSenha()+"'"
 				+ ", rua = '"+entidade.getRua()+"'"
@@ -88,14 +90,14 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 				+ ", estado = '"+entidade.getEstado()+"'"
 				+ ", cep = '"+entidade.getCep()+"'"
 				+ ", referencia = '"+entidade.getReferencia()+"'"
-				+ " where id_estabelecimento = "+entidade.getId_estabelecimento();
+				+ " where id_estabelecimento = "+entidade.getId_usuario();
 		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
 		//Deletando os Telefones Anteriores
-		sql = "delete from telefone_estabelecimento where id_estabelecimento = "+entidade.getId_estabelecimento();
+		sql = "delete from telefone_estabelecimento where id_estabelecimento = "+entidade.getId_usuario();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
@@ -104,7 +106,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 		for(String tel : entidade.getTelefones()){	 	
 		 	smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
 		 			+"(id_estabelecimento,telefone) values (?,?)");
-		 			smt.setInt(1,entidade.getId_estabelecimento());
+		 			smt.setInt(1,entidade.getId_usuario());
 		 			smt.setString(2, tel);
 				 	smt.execute();
 				 	smt.close();
@@ -117,7 +119,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	@Override
 	public void excluir(Estabelecimento entidade) throws SQLException {
 		//Setando Inativo ao status do estabelecimento
-		String sql = "UPDATE estabelecimento SET status = '"+Status.INATIVO.toString()+"' where id_estabelecimento = "+entidade.getId_estabelecimento();
+		String sql = "UPDATE estabelecimento SET status = '"+Status.INATIVO.toString()+"' where id_estabelecimento = "+entidade.getId_usuario();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
@@ -138,7 +140,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 						rs.getString("senha"), rs.getString("rua"),rs.getString("numero"),
 						rs.getString("bairro"), rs.getString("cidade"), rs.getString("estado"),
 						rs.getString("cep"), rs.getString("referencia"));
-				estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
+				estabelecimento.setId_usuario(rs.getInt("id_estabelecimento"));
 							
 				lista.add(estabelecimento);
 			}
@@ -147,7 +149,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 			
 			//Parte onde � feito a busca pelos telefones que seram setados nos objetos
 			for (Estabelecimento e : lista){
-				smt = this.connection.prepareStatement("select * from telefone_estabelecimento where id_estabelecimento = " + e.getId_estabelecimento());
+				smt = this.connection.prepareStatement("select * from telefone_estabelecimento where id_estabelecimento = " + e.getId_usuario());
 				rs = smt.executeQuery();
 				ArrayList<String> tel = new ArrayList<String>();
 					while (rs.next()){
@@ -164,21 +166,21 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	@Override
 	public Estabelecimento pesquisar(Estabelecimento entidade) throws SQLException {
 		
-		if(entidade.getId_estabelecimento() > 0){
-			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and id_estabelecimento = "+entidade.getId_estabelecimento(); 
+		if(entidade.getId_usuario() > 0){
+			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and id_estabelecimento = "+entidade.getId_usuario(); 
 		}else{
-			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and cnpj = '"+entidade.getCNPJ()+"'";
+			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and cnpj = '"+entidade.getCnpj()+"'";
 		}
 	
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		Estabelecimento estabelecimento = new Estabelecimento();
 			while (rs.next()){
-				estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
+				estabelecimento.setId_usuario(rs.getInt("id_estabelecimento"));
 				estabelecimento.setNome_fantasia(rs.getString("nome_fantasia"));
 				estabelecimento.setNome_juridico(rs.getString("nome_juridico"));
 				estabelecimento.setCategoria(rs.getString("categoria"));
-				estabelecimento.setCNPJ(rs.getString("cnpj"));
+				estabelecimento.setCnpj(rs.getString("cnpj"));
 				estabelecimento.setEmail(rs.getString("email"));
 				estabelecimento.setSenha(rs.getString("senha"));
 				estabelecimento.setRua(rs.getString("rua"));
@@ -193,7 +195,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 			smt.close();
 			
 			//Parte onde � feito a busca pelos telefones que seram setados nos objetos
-				sql = "select * from telefone_estabelecimento where id_estabelecimento = '" + estabelecimento.getId_estabelecimento()+"'";
+				sql = "select * from telefone_estabelecimento where id_estabelecimento = '" + estabelecimento.getId_usuario()+"'";
 				
 				smt = this.connection.prepareStatement(sql);
 				rs = smt.executeQuery();
@@ -206,32 +208,6 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 				smt.close();
 				
 		return estabelecimento;
-		
-		/*String sql = "select * from estabelecimento where status = 'ativo' and id_estabelecimento = "+entidade.getId_estabelecimento();
-		smt = this.connection.prepareStatement(sql);
-		rs = smt.executeQuery();
-		Estabelecimento estabelecimento = new Estabelecimento(rs.getString("nome_fantasia"), rs.getString("nome_juridico"),
-						rs.getString("categoria"),rs.getString("cnpj"), rs.getString("email"),
-						rs.getString("senha"), rs.getString("rua"),rs.getString("numero"),
-						rs.getString("bairro"), rs.getString("cidade"), rs.getString("estado"),
-						rs.getString("cep"), rs.getString("referencia"));
-						estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
-		return estabelecimento;*/
-		
-		
-/*		List<Estabelecimento> lista_estabelecimento = new ArrayList<Estabelecimento>();
-		Estabelecimento estabelecimento_pesquisa = new Estabelecimento();
-		
-		
-		lista_estabelecimento = listar();
-		
-		for(Estabelecimento estabelecimento : lista_estabelecimento){
-			if(entidade.getCNPJ().equals(estabelecimento.getCNPJ())){
-				estabelecimento_pesquisa = estabelecimento;
-			}
-		}
-		
-		return estabelecimento_pesquisa;*/
 	}
 
 }

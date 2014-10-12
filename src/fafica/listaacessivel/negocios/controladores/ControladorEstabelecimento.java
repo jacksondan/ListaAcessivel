@@ -49,7 +49,7 @@ public class ControladorEstabelecimento {
 		lista_produtos = controladorProduto.listarProduto();
 		
 		for(Produto produto : lista_produtos){
-			if(produto.getId_estabelecimento() == estabelecimento.getId_estabelecimento()){
+			if(produto.getId_estabelecimento() == estabelecimento.getId_usuario()){
 				lista_produtos_estabelecimento.add(produto);
 			}
 		}
