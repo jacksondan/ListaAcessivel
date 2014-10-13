@@ -16,7 +16,7 @@
 
 					</div>
 				</div>
-			<div id="left"></div>
+
 			<div id="content">
 				<header class="major">		
 					<h2>Cadastro - Estabelecimento</h2>
@@ -39,7 +39,7 @@
 				<label for="nome_juridico">Nome Jurídico:</label>
 				<input type="text" placeholder="Digite o nome Jurídico" name="nome_juridico" id="nome_juridico" size=60>
 				
-				<label for="cnpj">CPNPJ:</label><br>
+				<label for="cnpj">CNPJ:</label><br>
 				<input type="text" placeholder="Digite o CNPJ" name="cnpj" id="cnpj" size=12><br>
 				
 				Categoria:<br>
@@ -48,8 +48,8 @@
 				<option>Shopping</option>
 				<option>Frigorífico</option>
 				<option>Fast-Food</option>
-				</select><br>
-				
+				</select>
+				</fieldset>
 				<fieldset>
 				<legend>Telefones para Contato</legend>
 					<label for="telefone1">Telefone 1:</label><br>

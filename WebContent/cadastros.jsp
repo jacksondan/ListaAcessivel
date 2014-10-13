@@ -11,22 +11,22 @@
 			<div id="container">
 					<div id="header-wrapper">
 					<div id="header" class="container">
-							<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
+							<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível."  style="width:6.5em ;heigth:8.5em;"></a></h1>
 	
 						</div>
 					</div>
-				<div id="left"></div>
+				
 				<div id="content">
 					<header class="major">		
-						<h2>Menu</h2>
+						<h2>Cadastrar</h2>
 					</header>
 				
-							<div class="nav">
-										<ul class="icons">
-											<li><a href="cadastroUs.jsp" class="button">Cadastrar Usuario</a></li>
-											<li><a href="cadastroEs.jsp" class="button">Cadastrar Estabalecimento</a></li>
-											<li><a href="listarUsuarios.jsp" class="button">Listar Usuarios</a></li>
-											<li><a href="listarEs.jsp" class="button">Listar Estabalecimentos</a></li>
+							<div id="sidebar2">
+							<ul class="actions">
+											
+											<li><p><a href="cadastrarUS.jsp" class="image"><img src="images/button4.png" alt=" Ícone Cadastrar Cliente"  style="width:12em ;heigth:12em;"></a></p></li>
+											<li><p><a href="cadastroEs.jsp" class="image"><img src="images/button5.png" alt="Ícone Cadastrar Estabelecimento Comércial"  style="width:12em ;heigth:12em;"></a></p></li>
+											
 										</ul>
 							</div>
 					

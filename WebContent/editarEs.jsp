@@ -32,7 +32,7 @@
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
-				<input type="hidden"  name="id_estabelecimento" id="email" value="<%=estabelecimento.getId_estabelecimento()%>">
+				<input type="hidden"  name="id_estabelecimento" id="email" value="<%=estabelecimento.getId_usuario()%>">
 				<input type="email"  name="email" id="email" value="<%=estabelecimento.getEmail()%>" size=60>
 				
 				<label for="senha">Senha:</label><br>
@@ -50,7 +50,7 @@
 				<input type="text"  name="nome_juridico" id="nome_juridico"value="<%=estabelecimento.getNome_juridico()%>"  size=60>
 				
 				<label for="cnpj">CPNPJ:</label><br>
-				<input type="text"  name="cnpj" id="cnpj" value="<%=estabelecimento.getCNPJ()%>" size=12><br>
+				<input type="text"  name="cnpj" id="cnpj" value="<%=estabelecimento.getCnpj()%>" size=12><br>
 				
 				Categoria:<br>
 				<select name="categoria">

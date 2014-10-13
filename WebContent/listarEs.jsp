@@ -50,11 +50,11 @@
 									</tr>
 									
 									<tr>
-									<td><%= e.getId_estabelecimento()%></td>
+									<td><%= e.getId_usuario()%></td>
 									<td><%= e.getNome_fantasia()%></td>
 									<td><%=  e.getNome_juridico()%></td>
 									<td><%=  e.getCategoria()%></td>
-									<td><%= e.getCNPJ()%></td>
+									<td><%= e.getCnpj()%></td>
 									<td><%= e.getEmail()%></td>
 									<td><%= e.getCep() %></td>
 									<td><%=  e.getEstado()%></td>
