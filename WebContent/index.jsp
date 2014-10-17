@@ -32,7 +32,7 @@
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<p><label for="email">E-mail</label>
-				<input type="email" placeholder="Digite o Email" name="email" id="email" size=60></p>
+				<input type="email" placeholder="Digite o Email" name="email" id="email" size=50></p>
 				
 				<p><label for="senha">Senha</label><br>
 				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=15></p>
@@ -46,8 +46,7 @@
 			</form>
 			</div>
 			</div>
-			<div id="right"></div>
-			<div id="footer">
+			<div id="footer2">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

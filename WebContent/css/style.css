@@ -16,16 +16,16 @@ body,input,textarea,select
 	{
 	
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 200;
+		font-weight: 400;
 		line-height: 1.75em;
-		font-size: 12pt;
+		font-size: 13pt;
 	}
 	
 	
 	
 	h1,h2,h3,h4,h5,h6
 	{
-		font-weight: 300;
+		font-weight: 450;
 		color: #598f9f;
 	}
 	
@@ -39,6 +39,7 @@ body,input,textarea,select
 	{
 		font-size: 3em;
 		line-height: 1.25em;
+		
 	}
 
 	h3
@@ -68,6 +69,7 @@ body,input,textarea,select
 			header
 		{
 			margin-bottom: 1.0em;
+			
 		}
 		
 			header > p
@@ -77,6 +79,7 @@ body,input,textarea,select
 				padding: 0.75em 0 1em 0;
 				font-size: 1.5em;
 				line-height: 1.5em;
+				
 			}
 			
 			header.major
@@ -442,7 +445,7 @@ body,input,textarea,select
 	{
 		position: absolute;
 		z-index: 1;
-		bottom: 88px;
+		bottom: 94px;
 		left: 20%;
 		width: 10em;
 		margin-left: -7.5em;
@@ -548,12 +551,11 @@ body,input,textarea,select
 	
 	z-index:1;
 	position:absolute;
-	top:12em;
-	background-color: #000040;
 	
-	width:100%;
+	background-color: #000040;
+	width:23%;
 	border-top: solid 1px #c2c7cc;
-	height:40%;
+	height:100%;
 	
 }
 
@@ -720,13 +722,29 @@ body,input,textarea,select
 	#footer
 	{
 		position: relative;
-		top:17em;
+		top:15em;
 		z-index: 1;
 	}
 
 		#footer header.major
 		{
 			margin-bottom: 3em;
+		}
+		
+/*********************************************************************************/
+/* Footer 2                                                                       */
+/*********************************************************************************/
+	
+		#footer2
+	{
+		position: relative;
+		bottom:1.5em;
+		z-index: 1;
+	}
+
+		#footer2 header.major
+		{
+			margin-bottom: 2.8em;
 		}
 
 /*********************************************************************************/

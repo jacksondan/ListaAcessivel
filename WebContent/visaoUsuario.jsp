@@ -16,7 +16,7 @@
 		<div id="content">
 					
 					<header class="major">		
-						<h2><strong>Início - Menu Usuário</strong></h2>
+						<h2>Início - Menu Usuário</h2>
 					</header>
 
 		</div>
