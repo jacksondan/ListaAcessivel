@@ -10,6 +10,7 @@ public abstract class Usuario {
 	private String cidade;
 	private String estado;
 	private String rua;
+	private String complemento;
 	private ArrayList<String> telefones;
 	private String bairro;
 	private String numero;
@@ -89,6 +90,12 @@ public abstract class Usuario {
 	}
 	public void setRua(String rua) {
 		this.rua = rua;
+	}
+	public String getComplemento() {
+		return complemento;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 	public ArrayList<String> getTelefones() {
 		return telefones;

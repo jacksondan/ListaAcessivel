@@ -135,15 +135,15 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	@Override
 	public List <Cliente> listar()throws SQLException  {
 		
-			sql = "select u.id_usuario, c.nome_cliente, c.cpf, u.email, u.senha, u.rua, u.numero, u.bairro, u.cidade, u.estado, u.cep, u.referencia"
-				+ " from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = c.id_cliente";
+			
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
 			List <Cliente> clientes = new ArrayList<Cliente>();
 			while(result.next()){
 				Cliente cliente= new Cliente();
-				cliente.setId_usuario(result.getInt("u.id_usuario"));
+				cliente.setId_usuario(result.getInt("c.id_cliente"));
 				cliente.setNome(result.getString("c.nome_cliente"));
 				cliente.setCpf(result.getString("c.cpf"));
 				cliente.setEmail(result.getString("u.email"));
@@ -178,14 +178,12 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	@Override
 	public Cliente pesquisar(Cliente entidade) throws SQLException {
 		if(entidade.getId_usuario() > 0){
-			sql = "select u.id_usuario, c.nome_cliente, c.cpf, u.email, u.senha, u.rua, u.numero, u.bairro, u.cidade, u.estado, u.cep, u.referencia"
-					+ " from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = "+entidade.getId_usuario()
 					+ " AND c.id_cliente = "+entidade.getId_usuario();
 		}else{
-			sql = "select u.id_usuario, c.nome_cliente, c.cpf, u.email, u.senha, u.rua, u.numero, u.bairro, u.cidade, u.estado, u.cep, u.referencia"
-					+ " from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
-					+ " AND u.cpf = '"+entidade.getCpf()+"'"
+			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
+					+ " AND u.id_usuario = '"+entidade.getCpf()+"'"
 					+ " AND c.cpf = '"+entidade.getCpf()+"'";
 		}
 		
@@ -195,7 +193,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 		
 			Cliente cliente = new Cliente();
 			while (result.next()){
-				cliente.setId_usuario(result.getInt("u.id_usuario"));
+				cliente.setId_usuario(result.getInt("c.id_cliente"));
 				cliente.setNome(result.getString("c.nome_cliente"));
 				cliente.setCpf(result.getString("c.cpf"));
 				cliente.setEmail(result.getString("u.email"));
@@ -225,6 +223,10 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 			
 			System.out.println("PESQUISAR USUARIO OK"); //LINHA TEMPORARIA
 		return cliente;
+	}
+	
+	private int getIdCliente(String cpd){
+		return 0;
 	}
 
 }
