@@ -31,20 +31,21 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	@Override
 	public void adicionar(Cliente entidade) throws SQLException {
 		
-		sql = "insert into usuario (email,senha,rua,numero,bairro,cidade,estado,cep,referencia,status) values"
-				+ "(?,?,?,?,?,?,?,?,?,?)";
+		sql = "insert into usuario (email,senha,rua,numero,complemento,bairro,cidade,estado,cep,referencia,status) values"
+				+ "(?,?,?,?,?,?,?,?,?,?,?)";
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.setString(1,entidade.getEmail());
 		smt.setString(2,entidade.getSenha());
 		smt.setString(3,entidade.getRua());
 		smt.setString(4,entidade.getNumero());
-		smt.setString(5,entidade.getBairro());
-		smt.setString(6,entidade.getCidade());
-		smt.setString(7,entidade.getEstado());
-		smt.setString(8,entidade.getCep());
-		smt.setString(9,entidade.getReferencia());
-		smt.setString(10,Status.ATIVO.toString());
+		smt.setString(5,entidade.getComplemento());
+		smt.setString(6,entidade.getBairro());
+		smt.setString(7,entidade.getCidade());
+		smt.setString(8,entidade.getEstado());
+		smt.setString(9,entidade.getCep());
+		smt.setString(10,entidade.getReferencia());
+		smt.setString(11,Status.ATIVO.toString());
 		smt.execute();
 		smt.close();
 		
@@ -78,25 +79,32 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 				 	smt.close();
 		}
 		
-		System.out.println("CADASTRA USUARIO OK");
-		System.out.println(""); //LINHA TEMPORARIA
+		System.out.println("CADASTRA CLIENTE OK");
 	}
 
 	@Override
 	public void alterar(Cliente entidade) throws SQLException {
-		sql = "UPDATE usuario SET "
-				+ "nome_usuario = '"+entidade.getNome()+"'"
-				+ ", cpf = '"+entidade.getCpf()+"'"
-				+ ", email = '"+entidade.getEmail()+"'"
+		sql = "UPDATE usuario SET"
+				+ " email = '"+entidade.getEmail()+"'"
 				+ ", senha = '"+entidade.getSenha()+"'"
 				+ ", rua = '"+entidade.getRua()+"'"
 				+ ", numero = '"+entidade.getNumero()+"'"
+				+ ", complemento = '"+entidade.getComplemento()+"'"
 				+ ", bairro = '"+entidade.getBairro()+"'"
 				+ ", cidade = '"+entidade.getCidade()+"'"
 				+ ", estado = '"+entidade.getEstado()+"'"
 				+ ", cep = '"+entidade.getCep()+"'"
 				+ ", referencia = '"+entidade.getReferencia()+"'"
-				+ "where id_usuario = "+entidade.getId_usuario();
+				+ " where id_usuario = "+entidade.getId_usuario();
+		
+		smt = this.connection.prepareStatement(sql);
+		smt.execute();
+		smt.close();
+		
+		sql = "UPDATE cliente SET"
+				+ " nome_cliente = '"+entidade.getNome()+"'"
+				+ ", cpf = '"+entidade.getCpf()+"'"
+				+ " where id_cliente = "+entidade.getId_usuario();
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
@@ -118,7 +126,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 					 	smt.close();
 			}
 		
-		System.out.println("ALTETANDO USUARIO OK"); //LINHA TEMPORARIA
+		System.out.println("ALTETANDO CLIENTE OK"); //LINHA TEMPORARIA
 	}
 
 	@Override
@@ -129,7 +137,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 		smt.execute();
 		smt.close();
 		
-		System.out.println("EXCLUINDO USUARIO (VIA STATUS) OK"); //LINHA TEMPORARIA
+		System.out.println("EXCLUINDO CLIENTE (VIA STATUS) OK"); //LINHA TEMPORARIA
 	}
 
 	@Override
@@ -150,6 +158,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 				cliente.setSenha(result.getString("u.senha"));
 				cliente.setRua(result.getString("u.rua"));
 				cliente.setNumero(result.getString("u.numero"));
+				cliente.setComplemento(result.getString("u.complemento"));
 				cliente.setBairro(result.getString("u.bairro"));
 				cliente.setCidade(result.getString("u.cidade"));
 				cliente.setEstado(result.getString("u.estado"));
@@ -171,7 +180,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 					smt.close();
 				u.setTelefones(tel);
 			}
-		System.out.println("LISTAR USUARIO OK"); //LINHA TEMPORARIA
+		System.out.println("LISTAR CLIENTE OK"); //LINHA TEMPORARIA
 		return clientes;
 	}
 
@@ -183,7 +192,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 					+ " AND c.id_cliente = "+entidade.getId_usuario();
 		}else{
 			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
-					+ " AND u.id_usuario = '"+entidade.getCpf()+"'"
+					+ " AND u.id_usuario = (select id_cliente from cliente where cpf = '"+entidade.getCpf()+"')"
 					+ " AND c.cpf = '"+entidade.getCpf()+"'";
 		}
 		
@@ -200,6 +209,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 				cliente.setSenha(result.getString("u.senha"));
 				cliente.setRua(result.getString("u.rua"));
 				cliente.setNumero(result.getString("u.numero"));
+				cliente.setComplemento(result.getString("u.complemento"));
 				cliente.setBairro(result.getString("u.bairro"));
 				cliente.setCidade(result.getString("u.cidade"));
 				cliente.setEstado(result.getString("u.estado"));
@@ -221,12 +231,8 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 				smt.close();
 			cliente.setTelefones(tel);
 			
-			System.out.println("PESQUISAR USUARIO OK"); //LINHA TEMPORARIA
+			System.out.println("PESQUISAR CLIENTE OK"); //LINHA TEMPORARIA
 		return cliente;
-	}
-	
-	private int getIdCliente(String cpd){
-		return 0;
 	}
 
 }
