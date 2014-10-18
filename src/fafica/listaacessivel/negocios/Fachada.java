@@ -16,7 +16,7 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class Fachada implements IFachada {
 
-	private static Fachada instance;
+	private volatile static Fachada instance;
 	private ControladorEstabelecimento controlador_estabelecimento;
 	private ControladorProduto controlador_produto;
 	private ControladorLista controlador_lista;
@@ -33,7 +33,11 @@ public class Fachada implements IFachada {
 	
 	public static Fachada getInstance() throws ClassNotFoundException, SQLException{
 		if(instance == null){
-			instance = new Fachada();
+			synchronized (Fachada.class) {
+				if(instance == null){
+					instance = new Fachada();
+				}
+			}
 		}
 		return instance;
 	}
