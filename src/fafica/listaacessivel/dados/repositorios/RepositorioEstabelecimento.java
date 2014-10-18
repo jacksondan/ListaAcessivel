@@ -32,64 +32,89 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	
 	@Override
 	public void adicionar(Estabelecimento entidade) throws SQLException {
-		sql = "insert into estabelecimento"
-			 	+ "(nome_fantasia,nome_juridico,categoria,cnpj,email,senha,rua,"+
-				"numero,bairro,cidade,estado,cep,referencia,status)"
-				+"values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		
+		sql = "insert into usuario (email,senha,rua,numero,complemento,bairro,cidade,estado,cep,referencia,status) values"
+				+ " (?,?,?,?,?,?,?,?,?,?,?)";
 		
 		smt = this.connection.prepareStatement(sql);
-			 	smt.setString(1,entidade.getNome_fantasia());
-			 	smt.setString(2,entidade.getNome_juridico());
-			 	smt.setString(3,entidade.getCategoria());
-			 	smt.setString(4,entidade.getCnpj());
-			 	smt.setString(5,entidade.getEmail());
-			 	smt.setString(6,entidade.getSenha());
-			 	smt.setString(7,entidade.getRua());
-			 	smt.setString(8,entidade.getNumero());
-			 	smt.setString(9,entidade.getBairro());
-			 	smt.setString(10,entidade.getCidade());
-			 	smt.setString(11,entidade.getEstado());
-			 	smt.setString(12,entidade.getCep());
-			 	smt.setString(13,entidade.getReferencia());
-			 	smt.setString(14,Status.ATIVO.toString());
+		smt.setString(1,entidade.getEmail());
+		smt.setString(2,entidade.getSenha());
+		smt.setString(3,entidade.getRua());
+		smt.setString(4,entidade.getNumero());
+		smt.setString(5,entidade.getComplemento());
+		smt.setString(6,entidade.getBairro());
+		smt.setString(7,entidade.getCidade());
+		smt.setString(8,entidade.getEstado());
+		smt.setString(9,entidade.getCep());
+		smt.setString(10,entidade.getReferencia());
+		smt.setString(11,Status.ATIVO.toString());
+		smt.execute();
+		smt.close();
+		
+		//Coladando o ID_USUARIO que é gerado pelo BD
+		Estabelecimento estabelecimento = new Estabelecimento();
+		sql = "select id_usuario from usuario where email = '"+entidade.getEmail()+"'";
+		smt = this.connection.prepareStatement(sql);
+		rs = smt.executeQuery();
+			while (rs.next()){
+				estabelecimento.setId_usuario(rs.getInt("id_usuario"));
+			}
+			rs.close();
+			smt.close();
+		
+		
+		//Inserindo os dados da tabela Estabelecimento, juntamente com o ID coletado
+		sql = "insert into estabelecimento (id_estabelecimento,nome_fantasia,nome_juridico,categoria,cnpj)"
+				+ " values (?,?,?,?,?)";
+		
+		smt = this.connection.prepareStatement(sql);
+				smt.setInt(1,estabelecimento.getId_usuario());
+			 	smt.setString(2,entidade.getNome_fantasia());
+			 	smt.setString(3,entidade.getNome_juridico());
+			 	smt.setString(4,entidade.getCategoria());
+			 	smt.setString(5,entidade.getCnpj());
 			 	smt.execute();
 			 	smt.close();
 			 	
-			 	
-		Estabelecimento estabelecimento = new Estabelecimento();
-		estabelecimento.setCnpj(entidade.getCnpj());
-		
-		estabelecimento = pesquisar(estabelecimento);
-			 				 
-		//Inserindo os telefones na tabela telefone_estabelecimento
-		for(String tel : entidade.getTelefones()){	 	
-			 	smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
-			 			+"(id_estabelecimento,telefone) values (?,?)");
-			 			smt.setInt(1,estabelecimento.getId_usuario());
-			 			smt.setString(2, tel);
-					 	smt.execute();
-					 	smt.close();
+		 //Inserindo os Telefones
+		 for(String tel : entidade.getTelefones()){	 	
+		 	smt = this.connection.prepareStatement("insert into telefone_usuario"
+		 			+"(id_usuario,telefone) values (?,?)");
+		 			smt.setInt(1,estabelecimento.getId_usuario());
+				 	smt.setString(2,tel);
+				 	smt.execute();
+				 	smt.close();
 		}
+
 		System.out.println("CADASTRA ESTABELECIMENTO OK");
 		System.out.println(""); //LINHA TEMPORARIA
 	}
 
 	@Override
 	public void alterar(Estabelecimento entidade) throws SQLException {
-		sql = "update estabelecimento set"
-				+ " nome_fantasia = '"+entidade.getNome_fantasia()+"'"
-				+ ", nome_juridico = '"+entidade.getNome_juridico()+"'"
-				+ ", categoria = '"+entidade.getCategoria()+"'"
-				+ ", cnpj = '"+entidade.getCnpj()+"'"
-				+ ", email = '"+entidade.getEmail()+"'"
+		
+		sql = "UPDATE usuario SET"
+				+ " email = '"+entidade.getEmail()+"'"
 				+ ", senha = '"+entidade.getSenha()+"'"
 				+ ", rua = '"+entidade.getRua()+"'"
 				+ ", numero = '"+entidade.getNumero()+"'"
+				+ ", complemento = '"+entidade.getComplemento()+"'"
 				+ ", bairro = '"+entidade.getBairro()+"'"
 				+ ", cidade = '"+entidade.getCidade()+"'"
 				+ ", estado = '"+entidade.getEstado()+"'"
 				+ ", cep = '"+entidade.getCep()+"'"
 				+ ", referencia = '"+entidade.getReferencia()+"'"
+				+ " where id_usuario = "+entidade.getId_usuario();
+		
+		smt = this.connection.prepareStatement(sql);
+		smt.execute();
+		smt.close();
+		
+		sql = "update estabelecimento set"
+				+ " nome_fantasia = '"+entidade.getNome_fantasia()+"'"
+				+ ", nome_juridico = '"+entidade.getNome_juridico()+"'"
+				+ ", categoria = '"+entidade.getCategoria()+"'"
+				+ ", cnpj = '"+entidade.getCnpj()+"'"
 				+ " where id_estabelecimento = "+entidade.getId_usuario();
 		
 		smt = connection.prepareStatement(sql);
@@ -97,51 +122,59 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 		smt.close();
 		
 		//Deletando os Telefones Anteriores
-		sql = "delete from telefone_estabelecimento where id_estabelecimento = "+entidade.getId_usuario();
+		sql = "delete from telefone_usuario where id_usuario = "+entidade.getId_usuario();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
-		
+
 		//Inserindo os novos telefones
 		for(String tel : entidade.getTelefones()){	 	
-		 	smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
-		 			+"(id_estabelecimento,telefone) values (?,?)");
-		 			smt.setInt(1,entidade.getId_usuario());
-		 			smt.setString(2, tel);
-				 	smt.execute();
-				 	smt.close();
+			smt = this.connection.prepareStatement("insert into telefone_usuario"
+				+"(id_usuario,telefone) values (?,?)");
+			smt.setInt(1,entidade.getId_usuario());
+	 		smt.setString(2, tel);
+			smt.execute();
+			smt.close();
 		}
 		System.out.println("ALTERAR ESTABELECIMENTO OK");
-		System.out.println(""); //LINHA TEMPORARIA
-		
 	}
 
 	@Override
 	public void excluir(Estabelecimento entidade) throws SQLException {
-		//Setando Inativo ao status do estabelecimento
-		String sql = "UPDATE estabelecimento SET status = '"+Status.INATIVO.toString()+"' where id_estabelecimento = "+entidade.getId_usuario();
+		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = "+entidade.getId_usuario();
+		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
 		System.out.println("EXCLUIR ESTABELECIMENTO OK");
-		System.out.println(""); //LINHA TEMPORARIA
-		
 	}
 
 	@Override
 	public List<Estabelecimento> listar() throws SQLException {
-		smt = this.connection.prepareStatement("select * from estabelecimento where status='" + Status.ATIVO.toString() + "'");
+		sql = "select u.*,e.* from usuario u, estabelecimento e where u.status = '" + Status.ATIVO.toString() + "'"
+				+ " AND u.id_usuario = e.id_estabelecimento";;
+		
+		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		List<Estabelecimento> lista = new ArrayList<Estabelecimento>();
 			while (rs.next()){
-				Estabelecimento estabelecimento = new Estabelecimento(rs.getString("nome_fantasia"), rs.getString("nome_juridico"),
-						rs.getString("categoria"),rs.getString("cnpj"), rs.getString("email"),
-						rs.getString("senha"), rs.getString("rua"),rs.getString("numero"),
-						rs.getString("bairro"), rs.getString("cidade"), rs.getString("estado"),
-						rs.getString("cep"), rs.getString("referencia"));
-				estabelecimento.setId_usuario(rs.getInt("id_estabelecimento"));
-							
+				Estabelecimento estabelecimento = new Estabelecimento();
+				estabelecimento.setId_usuario(rs.getInt("e.id_estabelecimento"));
+				estabelecimento.setNome_fantasia(rs.getString("e.nome_fantasia"));
+				estabelecimento.setNome_juridico(rs.getString("e.nome_juridico"));
+				estabelecimento.setCategoria(rs.getString("e.categoria"));
+				estabelecimento.setCnpj(rs.getString("e.cnpj"));
+				estabelecimento.setEmail(rs.getString("u.email"));
+				estabelecimento.setSenha(rs.getString("u.senha"));
+				estabelecimento.setRua(rs.getString("u.rua"));
+				estabelecimento.setNumero(rs.getString("u.numero"));
+				estabelecimento.setComplemento(rs.getString("u.complemento"));
+				estabelecimento.setBairro(rs.getString("u.bairro"));
+				estabelecimento.setCidade(rs.getString("u.cidade"));
+				estabelecimento.setEstado(rs.getString("u.estado"));
+				estabelecimento.setCep(rs.getString("u.cep"));
+				estabelecimento.setReferencia(rs.getString("u.referencia"));
 				lista.add(estabelecimento);
 			}
 			rs.close();
@@ -149,7 +182,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 			
 			//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
 			for (Estabelecimento e : lista){
-				smt = this.connection.prepareStatement("select * from telefone_estabelecimento where id_estabelecimento = " + e.getId_usuario());
+				smt = this.connection.prepareStatement("select * from telefone_usuario where id_usuario = " + e.getId_usuario());
 				rs = smt.executeQuery();
 				ArrayList<String> tel = new ArrayList<String>();
 					while (rs.next()){
@@ -167,45 +200,53 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	public Estabelecimento pesquisar(Estabelecimento entidade) throws SQLException {
 		
 		if(entidade.getId_usuario() > 0){
-			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and id_estabelecimento = "+entidade.getId_usuario(); 
+			sql = "select u.*,e.* from usuario u, estabelecimento e where u.status = '" + Status.ATIVO.toString() + "'"
+					+ " AND u.id_usuario = "+entidade.getId_usuario()
+					+ " AND e.id_estabelecimento = "+entidade.getId_usuario();
 		}else{
-			sql = "select * from estabelecimento where status='" + Status.ATIVO.toString() + "' and cnpj = '"+entidade.getCnpj()+"'";
+			sql = "select u.*,e.* from usuario u, estabelecimento e where u.status = '" + Status.ATIVO.toString() + "'"
+					+ " AND u.id_usuario = (select id_estabelecimento from estabelecimento where cnpj = '"+entidade.getCnpj()+"')"
+					+ " AND e.cnpj = '"+entidade.getCnpj()+"'";
 		}
 	
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		Estabelecimento estabelecimento = new Estabelecimento();
 			while (rs.next()){
-				estabelecimento.setId_usuario(rs.getInt("id_estabelecimento"));
-				estabelecimento.setNome_fantasia(rs.getString("nome_fantasia"));
-				estabelecimento.setNome_juridico(rs.getString("nome_juridico"));
-				estabelecimento.setCategoria(rs.getString("categoria"));
-				estabelecimento.setCnpj(rs.getString("cnpj"));
-				estabelecimento.setEmail(rs.getString("email"));
-				estabelecimento.setSenha(rs.getString("senha"));
-				estabelecimento.setRua(rs.getString("rua"));
-				estabelecimento.setNumero(rs.getString("numero"));
-				estabelecimento.setBairro(rs.getString("bairro"));
-				estabelecimento.setCidade(rs.getString("cidade"));
-				estabelecimento.setEstado(rs.getString("estado"));
-				estabelecimento.setCep(rs.getString("cep"));
-				estabelecimento.setReferencia(rs.getString("referencia"));
+				estabelecimento.setId_usuario(rs.getInt("e.id_estabelecimento"));
+				estabelecimento.setNome_fantasia(rs.getString("e.nome_fantasia"));
+				estabelecimento.setNome_juridico(rs.getString("e.nome_juridico"));
+				estabelecimento.setCategoria(rs.getString("e.categoria"));
+				estabelecimento.setCnpj(rs.getString("e.cnpj"));
+				estabelecimento.setEmail(rs.getString("u.email"));
+				estabelecimento.setSenha(rs.getString("u.senha"));
+				estabelecimento.setRua(rs.getString("u.rua"));
+				estabelecimento.setNumero(rs.getString("u.numero"));
+				estabelecimento.setComplemento(rs.getString("u.complemento"));
+				estabelecimento.setBairro(rs.getString("u.bairro"));
+				estabelecimento.setCidade(rs.getString("u.cidade"));
+				estabelecimento.setEstado(rs.getString("u.estado"));
+				estabelecimento.setCep(rs.getString("u.cep"));
+				estabelecimento.setReferencia(rs.getString("u.referencia"));
 			}
 			rs.close();
 			smt.close();
 			
 			//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
-				sql = "select * from telefone_estabelecimento where id_estabelecimento = '" + estabelecimento.getId_usuario()+"'";
-				
-				smt = this.connection.prepareStatement(sql);
-				rs = smt.executeQuery();
-				ArrayList<String> tel = new ArrayList<String>();
-					while (rs.next()){
-						tel.add(rs.getString("telefone"));
-					}
+			sql = "select * from telefone_usuario where id_usuario = " + estabelecimento.getId_usuario();
+			
+			smt = this.connection.prepareStatement(sql);
+			rs = smt.executeQuery();
+			ArrayList<String> tel = new ArrayList<String>();
+				while (rs.next()){
+					tel.add(rs.getString("telefone"));
+				}
 				estabelecimento.setTelefones(tel);
 				rs.close();
 				smt.close();
+
+			
+			System.out.println("PESQUISAR CLIENTE OK");
 				
 		return estabelecimento;
 	}

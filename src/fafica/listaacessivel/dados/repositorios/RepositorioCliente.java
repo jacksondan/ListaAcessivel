@@ -49,6 +49,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 		smt.execute();
 		smt.close();
 		
+		//Coladando o ID_USUARIO que é gerado pelo BD
 		Cliente cliente = new Cliente();
 		sql = "select id_usuario from usuario where email = '"+entidade.getEmail()+"'";
 		smt = this.connection.prepareStatement(sql);
@@ -60,6 +61,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 			smt.close();
 		
 		
+			//Inserindo os dados da tabela Cliente, juntamente com o ID coletado
 		sql = "insert into cliente (id_cliente, nome_cliente, cpf) values"
 				+ "(?,?,?)";
 		
@@ -70,6 +72,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 		smt.execute();
 		smt.close();
 		
+		//Inserindo os Telefones
 		for(String tel : entidade.getTelefones()){	 	
 		 	smt = this.connection.prepareStatement("insert into telefone_usuario"
 		 			+"(id_usuario,telefone) values (?,?)");
@@ -116,7 +119,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 				smt.execute();
 				smt.close();
 		
-			//Inserindo os novos telefones
+		//Inserindo os novos telefones
 			for(String tel : entidade.getTelefones()){	 	
 			 	smt = this.connection.prepareStatement("insert into telefone_usuario"
 			 			+"(id_usuario,telefone) values (?,?)");
@@ -227,9 +230,10 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 				while (result.next()){
 					tel.add(result.getString("telefone"));
 				}
+				cliente.setTelefones(tel);
 				result.close();
 				smt.close();
-			cliente.setTelefones(tel);
+
 			
 			System.out.println("PESQUISAR CLIENTE OK"); //LINHA TEMPORARIA
 		return cliente;
