@@ -39,7 +39,7 @@ public class ExcluirUsuario extends HttpServlet {
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			fachada.excluirUsuario(usuario);
+			fachada.excluirCliente(usuario);
 			
 			
 			response.sendRedirect("logout.jsp");

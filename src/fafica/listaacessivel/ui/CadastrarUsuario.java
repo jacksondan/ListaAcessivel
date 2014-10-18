@@ -70,7 +70,7 @@ public class CadastrarUsuario extends HttpServlet {
 			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
 			entidade.setTelefones(telefones);
 			
-			fachada.adicionarUsuario(entidade);
+			fachada.adicionarCliente(entidade);
 			
 			response.sendRedirect("cadastros.jsp");
 			

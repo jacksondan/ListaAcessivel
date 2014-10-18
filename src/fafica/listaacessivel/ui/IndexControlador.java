@@ -16,8 +16,9 @@ import javax.servlet.http.HttpSession;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Usuario;
 
 /**
  * Servlet implementation class Index
@@ -51,31 +52,31 @@ public class IndexControlador extends HttpServlet {
 			
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
-			Object objeto = null;
+			Usuario usuario = null;
 			
 			String senhaEncriptada = encriptar(senha); 
 			
-			for(Cliente us : fachada.listarUsuario()){
-				if (us.getEmail().equals(email)&& us.getSenha().equals(senhaEncriptada)){
-					objeto = us;
+			for(Cliente cliente : fachada.listarCliente()){
+				if (cliente.getEmail().equals(email)&& cliente.getSenha().equals(senhaEncriptada)){
+					usuario = cliente;
 				}
 			}	
-			for(Estabelecimento estabel : fachada.listarEstabelecimento()){
-				if (estabel.getEmail().equals(email)&& estabel.getSenha().equals(senhaEncriptada)){
-					objeto = estabel;
+			for(Estabelecimento estabelecimento : fachada.listarEstabelecimento()){
+				if (estabelecimento.getEmail().equals(email)&& estabelecimento.getSenha().equals(senhaEncriptada)){
+					usuario = estabelecimento;
 				}
 			}
 			
-			if(objeto != null){
-				String classe = objeto.getClass().toString();
+			if(usuario != null){
+				String classe = usuario.getClass().toString();
 				System.out.println("************ "+classe+" ***************");
-				if(classe.endsWith(".Usuario")){
+				if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoUsuario", objeto);
+					session.setAttribute("acessoUsuario", usuario);
 					response.sendRedirect("visaoUsuario.jsp");
 				}else{
 					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoEstabelecimento", objeto);
+					session.setAttribute("acessoEstabelecimento", usuario);
 					response.sendRedirect("visaoEs.jsp");
 				}
 			}else{

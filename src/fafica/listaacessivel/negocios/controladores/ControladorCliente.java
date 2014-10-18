@@ -16,24 +16,24 @@ public class ControladorCliente {
 		repositorioUsuario = RepositorioCliente.getInstancia();
 	}
 	
-	public void adicionarUsuario(Cliente entidade) throws SQLException{
+	public void adicionarCliente(Cliente entidade) throws SQLException{
 		repositorioUsuario.adicionar(entidade);
 	}
 	
-	public void alterarUsuario(Cliente entidade) throws SQLException{
+	public void alterarCliente(Cliente entidade) throws SQLException{
 		repositorioUsuario.alterar(entidade);
 	}
 	
-	public void excluirUsuario(Cliente entidade) throws SQLException{
+	public void excluirCliente(Cliente entidade) throws SQLException{
 		repositorioUsuario.excluir(entidade);
 	}
 	
-	public List <Cliente> listarUsuario() throws SQLException{
+	public List <Cliente> listarCliente() throws SQLException{
 		
 		return repositorioUsuario.listar();
 	}
 	
-	public Cliente pesquisarUsuario(Cliente entidade) throws SQLException{
+	public Cliente pesquisarCliente(Cliente entidade) throws SQLException{
 		return repositorioUsuario.pesquisar(entidade);
 		
 	}

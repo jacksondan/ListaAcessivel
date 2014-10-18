@@ -124,28 +124,28 @@ public class Fachada implements IFachada {
 	}
 	
 	@Override
-	public void adicionarUsuario(Cliente entidade) throws SQLException{
-		this.controlador_usuario.adicionarUsuario(entidade);
+	public void adicionarCliente(Cliente entidade) throws SQLException{
+		this.controlador_usuario.adicionarCliente(entidade);
 	}
 	
 	@Override
-	public void alterarUsuario(Cliente entidade) throws SQLException{
-		this.controlador_usuario.alterarUsuario(entidade);
+	public void alterarCliente(Cliente entidade) throws SQLException{
+		this.controlador_usuario.alterarCliente(entidade);
 	}
 	
 	@Override
-	public void excluirUsuario(Cliente entidade) throws SQLException{
-		this.controlador_usuario.excluirUsuario(entidade);
+	public void excluirCliente(Cliente entidade) throws SQLException{
+		this.controlador_usuario.excluirCliente(entidade);
 	}
 	
 	@Override
-	public List <Cliente> listarUsuario() throws SQLException{
-		return this.controlador_usuario.listarUsuario();
+	public List <Cliente> listarCliente() throws SQLException{
+		return this.controlador_usuario.listarCliente();
 	}
 	
 	@Override
-	public Cliente pesquisarUsuario(Cliente entidade) throws SQLException{
-		return this.controlador_usuario.pesquisarUsuario(entidade);
+	public Cliente pesquisarCliente(Cliente entidade) throws SQLException{
+		return this.controlador_usuario.pesquisarCliente(entidade);
 	}
 	
 	@Override

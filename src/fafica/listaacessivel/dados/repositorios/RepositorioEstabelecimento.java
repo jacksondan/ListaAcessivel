@@ -246,7 +246,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 				smt.close();
 
 			
-			System.out.println("PESQUISAR CLIENTE OK");
+			System.out.println("PESQUISAR ESTABELECIMENTO OK");
 				
 		return estabelecimento;
 	}

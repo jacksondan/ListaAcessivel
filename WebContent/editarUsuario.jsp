@@ -26,7 +26,7 @@
 			<%
 										IFachada fachada = Fachada.getInstance();
 										Cliente usuarioDaSessao = (Cliente) session.getAttribute("acessoUsuario");
-										Cliente usuario = fachada.pesquisarUsuario(usuarioDaSessao);
+										Cliente usuario = fachada.pesquisarCliente(usuarioDaSessao);
 										ArrayList <String> telefones = new ArrayList<String>();
 										telefones= usuario.getTelefones();
 									%>

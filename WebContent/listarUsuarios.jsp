@@ -28,7 +28,7 @@
 					
 					<fieldset >
 					<%
-						for(Cliente u : fachada.listarUsuario()){
+						for(Cliente u : fachada.listarCliente()){
 					%>
 						<table class="default" >
 								<tr>

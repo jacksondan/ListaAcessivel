@@ -27,11 +27,11 @@ public interface IFachada {
 	public List<Lista> listarLista() throws SQLException;
 	public Lista pesquisarLista(Lista entidade) throws SQLException;
 	public List<Produto> getProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException;
-	public void adicionarUsuario(Cliente entidade) throws SQLException;
-	public void alterarUsuario(Cliente entidade) throws SQLException;
-	public void excluirUsuario(Cliente entidade) throws SQLException;
-	public List <Cliente> listarUsuario() throws SQLException;
-	public Cliente pesquisarUsuario(Cliente entidade) throws SQLException;
+	public void adicionarCliente(Cliente entidade) throws SQLException;
+	public void alterarCliente(Cliente entidade) throws SQLException;
+	public void excluirCliente(Cliente entidade) throws SQLException;
+	public List <Cliente> listarCliente() throws SQLException;
+	public Cliente pesquisarCliente(Cliente entidade) throws SQLException;
 	public void adicionarProdutosLista(ProdutosLista entidade) throws SQLException;
 	public void alterarProdutosLista(ProdutosLista entidade) throws SQLException;
 	public void excluirProdutosLista(ProdutosLista entidade) throws SQLException;
