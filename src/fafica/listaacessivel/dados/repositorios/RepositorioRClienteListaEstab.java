@@ -10,7 +10,6 @@ import java.util.List;
 import fafica.listaacessivel.dados.IRepositorio;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
-import fafica.listaacessivel.negocios.entidades.ProdutosLista;
 import fafica.listaacessivel.negocios.entidades.RClienteListaEstab;
 
 public class RepositorioRClienteListaEstab implements IRepositorio<RClienteListaEstab>{
@@ -24,8 +23,10 @@ public class RepositorioRClienteListaEstab implements IRepositorio<RClienteLista
 		this.connection = ConnectionMysql.getConnectionMysql();
 	}
 	
-	public static RepositorioRClienteListaEstab getInstance()throws ClassNotFoundException, SQLException {
-		if(instancia == null) instancia = new RepositorioRClienteListaEstab();
+	public static RepositorioRClienteListaEstab getInstancia()throws ClassNotFoundException, SQLException {
+		if(instancia == null) {
+			instancia = new RepositorioRClienteListaEstab();
+		}
 		return instancia;
 	}
 	
@@ -97,8 +98,17 @@ public class RepositorioRClienteListaEstab implements IRepositorio<RClienteLista
 	@Override
 	public RClienteListaEstab pesquisar(RClienteListaEstab entidade)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		List<RClienteListaEstab> lista_lista_cliente_estabelecimento = new ArrayList<RClienteListaEstab>();
+		RClienteListaEstab lista_pesquisa = null;
+		
+		lista_lista_cliente_estabelecimento = listar();
+		
+		for(RClienteListaEstab pesquisa : lista_lista_cliente_estabelecimento){
+			if(entidade.getId_lista() == pesquisa.getId_lista() && entidade.getId_cliente() == pesquisa.getId_cliente() && entidade.getId_estabelecimento() == pesquisa.getId_estabelecimento()){
+				lista_pesquisa = pesquisa;
+			}
+		}
+		
+		return lista_pesquisa;
 	}
-	
 }
