@@ -47,7 +47,7 @@ public class EditarLista extends HttpServlet {
 			float valor_total_lista = Float.parseFloat(request.getParameter("valor_total"));
 			int id_usuario = 0;
 			
-			Lista lista = new Lista(quantidade_total_lista,valor_total_lista,id_usuario);
+			Lista lista = new Lista();
 			
 			fachada.alterarLista(lista);
 			
