@@ -2,68 +2,6 @@ package fafica.listaacessivel.negocios.entidades;
 
 
 public class Estabelecimento extends Usuario{
-/*	private int id_estabelecimento;
-	private String nome_fantasia;
-	private String nome_juridico; //Atriburo Unico no BD
-	private String categoria;
-	private String cnpj;
-	private String email;
-	private String senha;
-	private ArrayList<String> telefones;
-	private String rua;
-	private String numero;
-	private String bairro;
-	private String cidade;
-	private String estado;
-	private String cep;
-	private String referencia;
-	private String status;
-	
-	public Estabelecimento() {
-		
-	}
-
-	public Estabelecimento(String nome_fantasia, String nome_juridico,
-			String categoria, String cnpj, String email, String senha,
-			String rua, String numero, String bairro, String cidade,
-			String estado, String cep, String referencia) {
-		super();
-		this.nome_fantasia = nome_fantasia;
-		this.nome_juridico = nome_juridico;
-		this.categoria = categoria;
-		cnpj = cnpj;
-		this.email = email;
-		this.senha = senha;
-		this.rua = rua;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
-		this.referencia = referencia;
-	}
-	
-	public Estabelecimento(int id_estabelecimento, String nome_fantasia,
-			String nome_juridico, String categoria, String cnpj, String email,
-			String senha, String rua, String numero, String bairro,
-			String cidade, String estado, String cep, String referencia) {
-		super();
-		this.id_estabelecimento = id_estabelecimento;
-		this.nome_fantasia = nome_fantasia;
-		this.nome_juridico = nome_juridico;
-		this.categoria = categoria;
-		cnpj = cnpj;
-		this.email = email;
-		this.senha = senha;
-		this.rua = rua;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.cep = cep;
-		this.referencia = referencia;
-	}
-*/
 	private String nome_fantasia;
 	private String nome_juridico; //Atriburo Unico no BD
 	private String categoria;

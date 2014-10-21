@@ -37,17 +37,4 @@ public class ControladorCliente {
 		return repositorioUsuario.pesquisar(entidade);
 		
 	}
-	
-	public List <Lista> getListasDoUsuario(Cliente usuario) throws ClassNotFoundException, SQLException{
-		ControladorLista controladorLista = new ControladorLista();
-		ArrayList <Lista> listas = new ArrayList<Lista>();
-		
-		for(Lista l : controladorLista.listarLista()){
-			if(l.getId_usuario() == usuario.getId_usuario()){
-				listas.add(l);
-			}
-		}
-		
-		return listas;
-	}
 }

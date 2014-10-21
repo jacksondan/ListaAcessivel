@@ -31,19 +31,17 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	
 	@Override
 	public void adicionar(Lista entidade) throws SQLException {
-		sql = "INSERT INTO lista (data_criacao,"
-			+"data_modificacao,quantidade_total,"
-			+ "valor_total,status,id_usuario)"
-			+ "VALUE(?,?,?,?,?,?)";
+		sql = "insert into lista (data_criacao,"
+			+"quantidade_total,"
+			+ "valor_total,status)"
+			+ "VALUE(?,?,?,?)";
 		
 		smt = connection.prepareStatement(sql);
 		
 		smt.setString(1, entidade.getData_criacao_lista());
-		smt.setString(2, entidade.getData_modificacao_lista());
-		smt.setInt(3, entidade.getQuantidade_total_lista());
-		smt.setFloat(4, entidade.getValor_total_lista());
-		smt.setString(5,Status.ATIVO.toString());
-		smt.setInt(6,entidade.getId_usuario());
+		smt.setInt(2, entidade.getQuantidade_total_lista());
+		smt.setFloat(3, entidade.getValor_total_lista());
+		smt.setString(4,Status.ATIVO.toString());
 		
 		smt.execute();
 		smt.close();
@@ -53,7 +51,7 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	@Override
 	public void alterar(Lista entidade) throws SQLException {
 		sql= "UPDATE lista SET "
-				+ "data_modificacao Date = '"+entidade.getData_modificacao_lista()+"'"
+				+ "data_modificacao = '"+entidade.getData_modificacao_lista()+"'"
 				+ "quantidade_total = "+entidade.getQuantidade_total_lista()
 				+ "valor_total = "+entidade.getValor_total_lista();
 		smt = connection.prepareStatement(sql);
@@ -67,13 +65,12 @@ public class RepositorioLista implements IRepositorio<Lista>{
 		sql = "UPDATE lista SET status = '" + Status.INATIVO.toString() + "' WHERE id_lista = "+entidade.getId_lista();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
-		smt.close();
-		
+		smt.close();	
 	}
 
 	@Override
 	public List<Lista> listar() throws SQLException {
-		sql = "SELECT * FROM lista WHERE status = '" + Status.ATIVO.toString() + "'";
+		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
@@ -95,14 +92,13 @@ public class RepositorioLista implements IRepositorio<Lista>{
 
 	@Override
 	public Lista pesquisar(Lista entidade) throws SQLException {
-		sql = "SELECT * FROM lista WHERE status = '" + Status.ATIVO.toString() + "' AND id_lista = "+entidade.getId_lista();
+		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_lista = "+entidade.getId_lista();
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
 		Lista l = new Lista();
 		
 		while(rs.next()){
-			l.setId_usuario(rs.getInt("id_usuario"));
 			l.setId_lista(rs.getInt("id_lista"));
 			l.setData_criacao_lista(rs.getString("data_criacao"));
 			l.setData_modificacao_lista(rs.getString("data_modificacao"));
@@ -114,20 +110,6 @@ public class RepositorioLista implements IRepositorio<Lista>{
 		rs.close();
 		
 		return l;
-		
-//		List<Lista> lista_lista = new ArrayList<Lista>();
-//		Lista lista_pesquisa = null;
-//		
-//		
-//		lista_lista = listar();
-//		
-//		for(Lista lista : lista_lista){
-//			if(entidade.getId_lista() == lista.getId_lista()){
-//				lista_pesquisa = lista;
-//			}
-//		}
-//		
-//		return lista_pesquisa;
 	}
 
 }

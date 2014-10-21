@@ -1,60 +1,7 @@
 package fafica.listaacessivel.negocios.entidades;
 
 public class Cliente extends Usuario{
-	/*private int id_usuario;
-	private String nome;
-	private String cpf;
-	private String email;
-	private String senha;
-	private String cidade;
-	private String estado;
-	private String rua;
-	private ArrayList<String> telefones;
-	private String bairro;
-	private String numero;
-	private String referencia;
-	private String cep;
-	private String status; 
-	
-	public Cliente() {
-		
-	}
 
-	public Cliente(String nome, String cpf, String email, String senha,
-			String cidade, String estado, String rua, String bairro,
-			String numero, String referencia, String cep) {
-		super();
-		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
-		this.senha = senha;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.rua = rua;
-		this.bairro = bairro;
-		this.numero = numero;
-		this.referencia = referencia;
-		this.cep = cep;
-	}
-
-	public Cliente(int id_usuario, String nome, String cpf, String email,
-			String senha, String cidade, String estado, String rua,
-			String bairro, String numero, String referencia, String cep) {
-		super();
-		this.id_usuario = id_usuario;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.email = email;
-		this.senha = senha;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.rua = rua;
-		this.bairro = bairro;
-		this.numero = numero;
-		this.referencia = referencia;
-		this.cep = cep;
-	}
-*/
 	private String nome;
 	private String cpf;
 	
