@@ -4,7 +4,6 @@ public class ProdutosLista {
 	private int id_lista;
 	private int id_produto;
 	private int quantidade;
-	private String status;
 	
 	public ProdutosLista() {
 		
@@ -41,13 +40,5 @@ public class ProdutosLista {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 }
