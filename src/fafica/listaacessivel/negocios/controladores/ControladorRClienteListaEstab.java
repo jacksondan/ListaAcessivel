@@ -5,6 +5,9 @@ import java.util.List;
 
 import fafica.listaacessivel.dados.IRepositorio;
 import fafica.listaacessivel.dados.repositorios.RepositorioRClienteListaEstab;
+import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.RClienteListaEstab;
 
 public class ControladorRClienteListaEstab {
@@ -35,5 +38,20 @@ public class ControladorRClienteListaEstab {
 		return this.repositorioRClienteListaEstab.pesquisar(entidade);
 	}
 	
+	public List <Lista> getListasDoCliente(Cliente entidade){
+		return null;
+	}
+	
+	public List <Lista> getListasDoEstabelecimento(Estabelecimento entidade){
+		return null;
+	}
+	
+	public Cliente getClienteDaLista(Lista entidade){
+		return null;
+	}
+	
+	public Estabelecimento getEstabelecimentoDaLista(Lista entidade){
+		return null;
+	}
 	
 }

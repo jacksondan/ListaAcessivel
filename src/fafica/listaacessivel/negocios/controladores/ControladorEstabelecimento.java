@@ -41,7 +41,7 @@ public class ControladorEstabelecimento {
 		return repositorioEstabelecimento.pesquisar(entidade);
 	}
 	
-	public List<Produto> listarProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws SQLException, ClassNotFoundException{
+	public List<Produto> getProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws SQLException, ClassNotFoundException{
 		ControladorProduto controladorProduto = new ControladorProduto();
 		
 		List<Produto> lista_produtos = new ArrayList<Produto>();

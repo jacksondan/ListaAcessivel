@@ -15,7 +15,7 @@ public interface IFachada {
 	public void excluirEstabelecimento(Estabelecimento entidade) throws SQLException;
 	public List<Estabelecimento> listarEstabelecimento() throws SQLException;
 	public Estabelecimento pesquisarEstabelecimento(Estabelecimento entidade) throws SQLException;
-	public List<Produto> listarProdutosDoEstabelecimento(Estabelecimento estabelecimento) throws ClassNotFoundException, SQLException;
+	public List<Produto> getProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws ClassNotFoundException, SQLException;
 	public void adicionarProduto(Produto produto) throws SQLException;
 	public void alterarProduto(Produto produto) throws SQLException;
 	public void excluirProduto(Produto produto) throws SQLException;

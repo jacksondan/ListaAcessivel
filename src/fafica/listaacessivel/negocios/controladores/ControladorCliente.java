@@ -1,40 +1,38 @@
 package fafica.listaacessivel.negocios.controladores;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import fafica.listaacessivel.dados.IRepositorio;
 import fafica.listaacessivel.dados.repositorios.RepositorioCliente;
-import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class ControladorCliente {
-	private IRepositorio<Cliente> repositorioUsuario;
+	private IRepositorio<Cliente> repositorioCliente;
 	
 	public ControladorCliente() throws ClassNotFoundException, SQLException{
-		repositorioUsuario = RepositorioCliente.getInstancia();
+		repositorioCliente = RepositorioCliente.getInstancia();
 	}
 	
 	public void adicionarCliente(Cliente entidade) throws SQLException{
-		repositorioUsuario.adicionar(entidade);
+		repositorioCliente.adicionar(entidade);
 	}
 	
 	public void alterarCliente(Cliente entidade) throws SQLException{
-		repositorioUsuario.alterar(entidade);
+		repositorioCliente.alterar(entidade);
 	}
 	
 	public void excluirCliente(Cliente entidade) throws SQLException{
-		repositorioUsuario.excluir(entidade);
+		repositorioCliente.excluir(entidade);
 	}
 	
 	public List <Cliente> listarCliente() throws SQLException{
 		
-		return repositorioUsuario.listar();
+		return repositorioCliente.listar();
 	}
 	
 	public Cliente pesquisarCliente(Cliente entidade) throws SQLException{
-		return repositorioUsuario.pesquisar(entidade);
+		return repositorioCliente.pesquisar(entidade);
 		
 	}
 }
