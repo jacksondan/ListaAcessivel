@@ -124,7 +124,7 @@ public class Fachada implements IFachada {
 	
 	@Override
 	public List<Produto> getProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException{
-		return this.controlador_lista.getProdutosDaList(lista);
+		return this.controlador_produtos_lista.getProdutosDaList(lista);
 	}
 	
 	@Override
