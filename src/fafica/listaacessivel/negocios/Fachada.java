@@ -8,11 +8,13 @@ import fafica.listaacessivel.negocios.controladores.ControladorLista;
 import fafica.listaacessivel.negocios.controladores.ControladorProduto;
 import fafica.listaacessivel.negocios.controladores.ControladorProdutosLista;
 import fafica.listaacessivel.negocios.controladores.ControladorCliente;
+import fafica.listaacessivel.negocios.controladores.ControladorRClienteListaEstab;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
 import fafica.listaacessivel.negocios.entidades.ProdutosLista;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.RClienteListaEstab;
 
 public class Fachada implements IFachada {
 
@@ -22,6 +24,7 @@ public class Fachada implements IFachada {
 	private ControladorLista controlador_lista;
 	private ControladorCliente controlador_usuario;
 	private ControladorProdutosLista controlador_produtos_lista;
+	private ControladorRClienteListaEstab controladorRClienteListaEstab;
 	
 	private Fachada() throws ClassNotFoundException, SQLException{
 		controlador_estabelecimento = new ControladorEstabelecimento();
@@ -29,6 +32,7 @@ public class Fachada implements IFachada {
 		controlador_lista = new ControladorLista();
 		controlador_usuario = new ControladorCliente();
 		controlador_produtos_lista = new ControladorProdutosLista();
+		controladorRClienteListaEstab = new ControladorRClienteListaEstab();
 	}
 	
 	public static Fachada getInstance() throws ClassNotFoundException, SQLException{
@@ -122,10 +126,7 @@ public class Fachada implements IFachada {
 		return this.controlador_lista.pesquisarLista(entidade);
 	}
 	
-	@Override
-	public List<Produto> getProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException{
-		return this.controlador_produtos_lista.getProdutosDaList(lista);
-	}
+
 	
 	@Override
 	public void adicionarCliente(Cliente entidade) throws SQLException{
@@ -175,6 +176,68 @@ public class Fachada implements IFachada {
 	@Override
 	public ProdutosLista pesquisarProdutosLista(ProdutosLista entidade) throws SQLException {
 		return this.controlador_produtos_lista.pesquisarProdutosLista(entidade);
+	}
+	
+	@Override
+	public List<Produto> getProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException{
+		return this.controlador_produtos_lista.getProdutosDaList(lista);
+	}
+
+	@Override
+	public void adicionarListaClienteEstabelecimento(RClienteListaEstab entidade)
+			throws SQLException {
+		controladorRClienteListaEstab.adicionarListaClienteEstabelecimento(entidade);
+		
+	}
+
+	@Override
+	public void alterarListaClienteEstabelecimento(RClienteListaEstab entidade)
+			throws SQLException {
+		controladorRClienteListaEstab.alterarListaClienteEstabelecimento(entidade);
+		
+	}
+
+	@Override
+	public void excluirListaClienteEstabelecimento(RClienteListaEstab entidade)
+			throws SQLException {
+		controladorRClienteListaEstab.excluirListaClienteEstabelecimento(entidade);
+		
+	}
+
+	@Override
+	public List<RClienteListaEstab> listar_lista_cliente_estabelecimento()
+			throws SQLException {
+		return controladorRClienteListaEstab.listar_lista_cliente_estabelecimento();
+	}
+
+	@Override
+	public RClienteListaEstab pesquisarListaClienteEstabelecimento(
+			RClienteListaEstab entidade) throws SQLException {
+		return controladorRClienteListaEstab.pesquisarListaClienteEstabelecimento(entidade);
+	}
+
+	@Override
+	public List<Lista> getListasDoCliente(Cliente entidade)
+			throws ClassNotFoundException, SQLException {
+		return controladorRClienteListaEstab.getListasDoCliente(entidade);
+	}
+
+	@Override
+	public List<Lista> getListasDoEstabelecimento(Estabelecimento entidade)
+			throws ClassNotFoundException, SQLException {
+		return controladorRClienteListaEstab.getListasDoEstabelecimento(entidade);
+	}
+
+	@Override
+	public Cliente getClienteDaLista(Lista entidade)
+			throws ClassNotFoundException, SQLException {
+		return controladorRClienteListaEstab.getClienteDaLista(entidade);
+	}
+
+	@Override
+	public Estabelecimento getEstabelecimentoDaLista(Lista entidade)
+			throws ClassNotFoundException, SQLException {
+		return controladorRClienteListaEstab.getEstabelecimentoDaLista(entidade);
 	}
 
 }

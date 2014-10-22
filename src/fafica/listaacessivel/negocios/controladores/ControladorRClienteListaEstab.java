@@ -1,6 +1,7 @@
 package fafica.listaacessivel.negocios.controladores;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fafica.listaacessivel.dados.IRepositorio;
@@ -38,20 +39,89 @@ public class ControladorRClienteListaEstab {
 		return this.repositorioRClienteListaEstab.pesquisar(entidade);
 	}
 	
-	public List <Lista> getListasDoCliente(Cliente entidade){
-		return null;
+	public List <Lista> getListasDoCliente(Cliente entidade) throws ClassNotFoundException, SQLException {
+		ControladorLista controladorLista = new ControladorLista();
+		
+		List<RClienteListaEstab> relacoes = new ArrayList<>();
+		List<Lista> listas = new ArrayList<>();
+		
+		for(RClienteListaEstab r : this.listar_lista_cliente_estabelecimento()){
+			if(entidade.getId_usuario()==r.getId_cliente()){
+				relacoes.add(r);
+			}
+		}
+		
+		for(RClienteListaEstab r : relacoes){
+			for(Lista l : controladorLista.listarLista()){
+				if(l.getId_lista() == r.getId_lista()){
+					listas.add(l);
+				}
+			}
+		}
+		
+		return listas;
 	}
 	
-	public List <Lista> getListasDoEstabelecimento(Estabelecimento entidade){
-		return null;
+	public List <Lista> getListasDoEstabelecimento(Estabelecimento entidade) throws ClassNotFoundException, SQLException {
+		ControladorLista controladorLista = new ControladorLista();
+		
+		List<RClienteListaEstab> relacoes = new ArrayList<>();
+		List<Lista> listas = new ArrayList<>();
+		
+		for(RClienteListaEstab r : this.listar_lista_cliente_estabelecimento()){
+			if(entidade.getId_usuario()==r.getId_estabelecimento()){
+				relacoes.add(r);
+			}
+		}
+		
+		for(RClienteListaEstab r : relacoes){
+			for(Lista l : controladorLista.listarLista()){
+				if(l.getId_lista() == r.getId_lista()){
+					listas.add(l);
+				}
+			}
+		}
+		
+		return listas;
 	}
 	
-	public Cliente getClienteDaLista(Lista entidade){
-		return null;
+	public Cliente getClienteDaLista(Lista entidade) throws ClassNotFoundException, SQLException {
+		ControladorCliente controladorCliente = new ControladorCliente();
+		RClienteListaEstab relacao = null;
+		Cliente cliente = new Cliente();
+		
+		for(RClienteListaEstab r : this.listar_lista_cliente_estabelecimento()){
+			if(r.getId_lista() == entidade.getId_lista()){
+				relacao = r;
+				break;
+			}
+		}
+		if(relacao != null){
+			cliente.setId_usuario(relacao.getId_cliente());
+			cliente = controladorCliente.pesquisarCliente(cliente);
+		}
+		
+		return cliente;
 	}
 	
-	public Estabelecimento getEstabelecimentoDaLista(Lista entidade){
-		return null;
+	public Estabelecimento getEstabelecimentoDaLista(Lista entidade) throws ClassNotFoundException, SQLException {
+		ControladorEstabelecimento controladorEstabelecimento = new ControladorEstabelecimento();
+		RClienteListaEstab relacao = null;
+		Estabelecimento estabelecimento = new Estabelecimento();
+		
+		for(RClienteListaEstab r : this.listar_lista_cliente_estabelecimento()){
+			if(r.getId_lista() == entidade.getId_lista()){
+				relacao = r;
+				break;
+			}
+		}
+		if(relacao != null){
+			estabelecimento.setId_usuario(relacao.getId_estabelecimento());
+			estabelecimento = controladorEstabelecimento.pesquisarEstabelecimento(estabelecimento);
+		}
+		
+		
+		return estabelecimento;
 	}
 	
 }

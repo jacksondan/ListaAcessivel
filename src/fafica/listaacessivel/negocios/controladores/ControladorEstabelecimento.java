@@ -43,16 +43,14 @@ public class ControladorEstabelecimento {
 	
 	public List<Produto> getProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws SQLException, ClassNotFoundException{
 		ControladorProduto controladorProduto = new ControladorProduto();
-		
 		List<Produto> lista_produtos = new ArrayList<Produto>();
-		List<Produto> lista_produtos_estabelecimento = new ArrayList<Produto>();
-		lista_produtos = controladorProduto.listarProduto();
 		
-		for(Produto produto : lista_produtos){
-			if(produto.getId_estabelecimento() == estabelecimento.getId_usuario()){
-				lista_produtos_estabelecimento.add(produto);
+		for(Produto p : controladorProduto.listarProduto()){
+			if(p.getId_estabelecimento() == estabelecimento.getId_usuario()){
+				lista_produtos.add(p);
 			}
 		}
-		return lista_produtos_estabelecimento;
+		
+		return lista_produtos;
 	}
 }
