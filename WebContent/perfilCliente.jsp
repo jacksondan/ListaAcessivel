@@ -1,23 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" 	import="java.util.ArrayList"
+    import= "fafica.listaacessivel.negocios.Fachada"
+    import= "fafica.listaacessivel.negocios.IFachada"
+    import= "fafica.listaacessivel.negocios.entidades.Cliente"%>
+   
 <!DOCTYPE HTML>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/.../css/style.css"> 
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<div id="container">
-				<div id="header-wrapper">
-				<div id="header" class="container">
-										<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
-						
-					</div>
-				</div>
 
-			</div>
+			<%
+			IFachada fachada = Fachada.getInstance();
+			Cliente usuarioDaSessao = (Cliente) session.getAttribute("acessoUsuario");
+			Cliente usuario = fachada.pesquisarCliente(usuarioDaSessao);
+			ArrayList <String> telefones = new ArrayList<String>();
+			telefones= usuario.getTelefones();
+				%>
+				
+<%@include file="headerUs.html" %>
+
+			
+			
+			<div id="content">
 			<!-- titulo do conteudo-->
 			<header class="major">		
 					<h2>Perfil</h2>
@@ -25,20 +34,20 @@
 			<!-- Conteudo-->
 			<fieldset >
 			<legend>Dados de Login</legend>
-				E-mail:<br>
+				E-mail: <%=usuario.getEmail()%><br>
 				
-				Senha:<br>
+				Senha:<%=usuario.getSenha()%><br>
 			</fieldset>
 			
 			<fieldset >
 			<legend>Dados Pessoais</legend>
-				Nome Completo
+				Nome Completo: <%=usuario.getNome()%>
 				
-				CPF:<br>
+				CPF: <%=usuario.getCpf()%><br>
 				
 				Telefone para contato:<br>
 			</fieldset>
-			
+				
 				<fieldset >
 			<legend>Dados de Localização</legend>
 				Estado:<br>
@@ -62,17 +71,7 @@
 										</ul>
 							</div>
 			<!-- menu direito-->
-			<div id="sidebar">
-					<!-- menu direito-->
-						<div id="nav">
-										<ul class="menu">
-											<li></li>
-											<li><a href="perfil.jsp">Perfil</a></li>
-											<li><a href="buscarprodutos.jsp" >Buscar Produto</a></li>
-											<li><a href="listarUsuarios.jsp" >Minha Lista</a></li>
-											<li><a href="listarEs.jsp" >Sair</a></li>
-										</ul>
-							</div>
+			
 			</div>
 			
 			<div id="footer">
