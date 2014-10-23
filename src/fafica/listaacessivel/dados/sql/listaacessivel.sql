@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Out-2014 às 21:53
+-- Generation Time: 23-Out-2014 às 16:12
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `lista` (
 --
 
 CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
-  `id_lista` int(11) DEFAULT NULL,
-  `id_cliente` int(11) DEFAULT NULL,
-  `id_estabelecimento` int(11) DEFAULT NULL,
+  `id_lista` int(11) NOT NULL DEFAULT '0',
+  `id_cliente` int(11) NOT NULL DEFAULT '0',
+  `id_estabelecimento` int(11) NOT NULL DEFAULT '0',
   `situacao` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -81,10 +81,9 @@ CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
 --
 
 CREATE TABLE IF NOT EXISTS `lista_produto` (
-  `id_produto` int(11) DEFAULT NULL,
-  `id_lista` int(11) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL
+  `id_produto` int(11) NOT NULL DEFAULT '0',
+  `id_lista` int(11) NOT NULL DEFAULT '0',
+  `quantidade` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -166,13 +165,13 @@ ALTER TABLE `lista`
 -- Indexes for table `lista_cliente_estabelecimento`
 --
 ALTER TABLE `lista_cliente_estabelecimento`
- ADD KEY `id_lista` (`id_lista`), ADD KEY `id_cliente` (`id_cliente`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
+ ADD PRIMARY KEY (`id_lista`,`id_cliente`,`id_estabelecimento`), ADD UNIQUE KEY `id_lista` (`id_lista`), ADD KEY `id_cliente` (`id_cliente`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
 -- Indexes for table `lista_produto`
 --
 ALTER TABLE `lista_produto`
- ADD KEY `id_produto` (`id_produto`), ADD KEY `id_lista` (`id_lista`);
+ ADD PRIMARY KEY (`id_produto`,`id_lista`), ADD KEY `id_lista` (`id_lista`);
 
 --
 -- Indexes for table `produto`
@@ -184,7 +183,7 @@ ALTER TABLE `produto`
 -- Indexes for table `telefone_usuario`
 --
 ALTER TABLE `telefone_usuario`
- ADD KEY `id_usuario` (`id_usuario`);
+ ADD PRIMARY KEY (`id_usuario`,`telefone`);
 
 --
 -- Indexes for table `usuario`
