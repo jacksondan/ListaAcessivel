@@ -6,15 +6,15 @@ import java.util.List;
 import fafica.listaacessivel.negocios.controladores.ControladorEstabelecimento;
 import fafica.listaacessivel.negocios.controladores.ControladorLista;
 import fafica.listaacessivel.negocios.controladores.ControladorProduto;
-import fafica.listaacessivel.negocios.controladores.ControladorProdutosLista;
+import fafica.listaacessivel.negocios.controladores.ControladorRelacionamentoListaProduto;
 import fafica.listaacessivel.negocios.controladores.ControladorCliente;
-import fafica.listaacessivel.negocios.controladores.ControladorRClienteListaEstab;
+import fafica.listaacessivel.negocios.controladores.ControladorRelacionamentoClienteListaEstababelecimento;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.negocios.entidades.ProdutosLista;
+import fafica.listaacessivel.negocios.entidades.RelacionamentoListaProduto;
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.RClienteListaEstab;
+import fafica.listaacessivel.negocios.entidades.RelacionamentoClienteListaEstababelecimento;
 
 public class Fachada implements IFachada {
 
@@ -23,16 +23,16 @@ public class Fachada implements IFachada {
 	private ControladorProduto controlador_produto;
 	private ControladorLista controlador_lista;
 	private ControladorCliente controlador_usuario;
-	private ControladorProdutosLista controlador_produtos_lista;
-	private ControladorRClienteListaEstab controladorRClienteListaEstab;
+	private ControladorRelacionamentoListaProduto controlador_produtos_lista;
+	private ControladorRelacionamentoClienteListaEstababelecimento controladorRClienteListaEstab;
 	
 	private Fachada() throws ClassNotFoundException, SQLException{
 		controlador_estabelecimento = new ControladorEstabelecimento();
 		controlador_produto = new ControladorProduto();
 		controlador_lista = new ControladorLista();
 		controlador_usuario = new ControladorCliente();
-		controlador_produtos_lista = new ControladorProdutosLista();
-		controladorRClienteListaEstab = new ControladorRClienteListaEstab();
+		controlador_produtos_lista = new ControladorRelacionamentoListaProduto();
+		controladorRClienteListaEstab = new ControladorRelacionamentoClienteListaEstababelecimento();
 	}
 	
 	public static Fachada getInstance() throws ClassNotFoundException, SQLException{
@@ -72,8 +72,8 @@ public class Fachada implements IFachada {
 	}
 	
 	@Override
-	public List<Produto> getProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws ClassNotFoundException, SQLException{
-		return this.controlador_estabelecimento.getProdutosDoEstababelecimento(estabelecimento);
+	public List<Produto> listarProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws ClassNotFoundException, SQLException{
+		return this.controlador_estabelecimento.listarProdutosDoEstababelecimento(estabelecimento);
 	}
 	
 	@Override
@@ -154,90 +154,90 @@ public class Fachada implements IFachada {
 	}
 	
 	@Override
-	public void adicionarProdutosLista(ProdutosLista entidade) throws SQLException {
-		this.controlador_produtos_lista.adicionarProdutosLista(entidade);
+	public void adicionarRelacionamentoListaProduto(RelacionamentoListaProduto entidade) throws SQLException {
+		this.controlador_produtos_lista.adicionarRelacionamentoListaProduto(entidade);
 	}
 
 	@Override
-	public void alterarProdutosLista(ProdutosLista entidade) throws SQLException {
-		this.controlador_produtos_lista.alterarProdutosLista(entidade);
+	public void alterarRelacionamentoListaProduto(RelacionamentoListaProduto entidade) throws SQLException {
+		this.controlador_produtos_lista.alterarRelacionamentoListaProduto(entidade);
 	}
 
 	@Override
-	public void excluirProdutosLista(ProdutosLista entidade) throws SQLException {
-		this.controlador_produtos_lista.excluirProdutosLista(entidade);
+	public void excluirRelacionamentoListaProduto(RelacionamentoListaProduto entidade) throws SQLException {
+		this.controlador_produtos_lista.excluirRelacionamentoListaProduto(entidade);
 	}
 
 	@Override
-	public List<ProdutosLista> listarProdutosLista() throws SQLException {
-		return this.controlador_produtos_lista.listarProdutosLista();
+	public List<RelacionamentoListaProduto>  listarRelacionamentoListaProduto() throws SQLException {
+		return this.controlador_produtos_lista. listarRelacionamentoListaProduto();
 	}
 
 	@Override
-	public ProdutosLista pesquisarProdutosLista(ProdutosLista entidade) throws SQLException {
-		return this.controlador_produtos_lista.pesquisarProdutosLista(entidade);
+	public RelacionamentoListaProduto pesquisarRelacionamentoListaProduto(RelacionamentoListaProduto entidade) throws SQLException {
+		return this.controlador_produtos_lista.pesquisarRelacionamentoListaProduto(entidade);
 	}
 	
 	@Override
-	public List<Produto> getProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException{
-		return this.controlador_produtos_lista.getProdutosDaList(lista);
+	public List<Produto> listarProdutosDaLista(Lista lista) throws ClassNotFoundException, SQLException{
+		return this.controlador_produtos_lista.listarProdutosDaLista(lista);
 	}
 
 	@Override
-	public void adicionarListaClienteEstabelecimento(RClienteListaEstab entidade)
+	public void adicionarRelacionamentoClienteListaEstababelecimento(RelacionamentoClienteListaEstababelecimento entidade)
 			throws SQLException {
-		controladorRClienteListaEstab.adicionarListaClienteEstabelecimento(entidade);
+		controladorRClienteListaEstab.adicionarRelacionamentoClienteListaEstababelecimento(entidade);
 		
 	}
 
 	@Override
-	public void alterarListaClienteEstabelecimento(RClienteListaEstab entidade)
+	public void alterarRelacionamentoClienteListaEstababelecimento(RelacionamentoClienteListaEstababelecimento entidade)
 			throws SQLException {
-		controladorRClienteListaEstab.alterarListaClienteEstabelecimento(entidade);
+		controladorRClienteListaEstab.alterarRelacionamentoClienteListaEstababelecimento(entidade);
 		
 	}
 
 	@Override
-	public void excluirListaClienteEstabelecimento(RClienteListaEstab entidade)
+	public void excluirRelacionamentoClienteListaEstababelecimento(RelacionamentoClienteListaEstababelecimento entidade)
 			throws SQLException {
-		controladorRClienteListaEstab.excluirListaClienteEstabelecimento(entidade);
+		controladorRClienteListaEstab.excluirRelacionamentoClienteListaEstababelecimento(entidade);
 		
 	}
 
 	@Override
-	public List<RClienteListaEstab> listar_lista_cliente_estabelecimento()
+	public List<RelacionamentoClienteListaEstababelecimento> listarRelacionamentoClienteListaEstababelecimento()
 			throws SQLException {
-		return controladorRClienteListaEstab.listar_lista_cliente_estabelecimento();
+		return controladorRClienteListaEstab.listarRelacionamentoClienteListaEstababelecimento();
 	}
 
 	@Override
-	public RClienteListaEstab pesquisarListaClienteEstabelecimento(
-			RClienteListaEstab entidade) throws SQLException {
-		return controladorRClienteListaEstab.pesquisarListaClienteEstabelecimento(entidade);
+	public RelacionamentoClienteListaEstababelecimento pesquisarRelacionamentoClienteListaEstababelecimento(
+			RelacionamentoClienteListaEstababelecimento entidade) throws SQLException {
+		return controladorRClienteListaEstab.pesquisarRelacionamentoClienteListaEstababelecimento(entidade);
 	}
 
 	@Override
-	public List<Lista> getListasDoCliente(Cliente entidade)
+	public List<Lista> listarListasDoCliente(Cliente entidade)
 			throws ClassNotFoundException, SQLException {
-		return controladorRClienteListaEstab.getListasDoCliente(entidade);
+		return controladorRClienteListaEstab.listarListasDoCliente(entidade);
 	}
 
 	@Override
-	public List<Lista> getListasDoEstabelecimento(Estabelecimento entidade)
+	public List<Lista> listarListasDoEstabelecimento(Estabelecimento entidade)
 			throws ClassNotFoundException, SQLException {
-		return controladorRClienteListaEstab.getListasDoEstabelecimento(entidade);
+		return controladorRClienteListaEstab.listarListasDoEstabelecimento(entidade);
 	}
 
 	@Override
-	public Cliente getClienteDaLista(Lista entidade)
+	public Cliente listarClienteDaLista(Lista entidade)
 			throws ClassNotFoundException, SQLException {
-		return controladorRClienteListaEstab.getClienteDaLista(entidade);
+		return controladorRClienteListaEstab.listarClienteDaLista(entidade);
 	}
 
 	@Override
-	public Estabelecimento getEstabelecimentoDaLista(Lista entidade)
+	public Estabelecimento listarEstabelecimentoDaLista(Lista entidade)
 			throws ClassNotFoundException, SQLException {
-		return controladorRClienteListaEstab.getEstabelecimentoDaLista(entidade);
+		return controladorRClienteListaEstab.listarEstabelecimentoDaLista(entidade);
 	}
 
 }

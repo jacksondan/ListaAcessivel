@@ -1,17 +1,17 @@
 package fafica.listaacessivel.negocios.entidades;
 
-public class RClienteListaEstab {
+public class RelacionamentoClienteListaEstababelecimento {
 	
 	private String situacao;
 	private int id_lista;
 	private int id_cliente;
 	private int id_estabelecimento;
 	
-	public RClienteListaEstab(){
+	public RelacionamentoClienteListaEstababelecimento(){
 		
 	}
 	
-	public RClienteListaEstab(int id_lista, int id_cliente, int id_estabelecimento, String situacao){
+	public RelacionamentoClienteListaEstababelecimento(int id_lista, int id_cliente, int id_estabelecimento, String situacao){
 		this.id_cliente = id_cliente;
 		this.id_estabelecimento = id_estabelecimento;
 		this.id_lista = id_lista;

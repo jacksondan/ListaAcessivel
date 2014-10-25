@@ -10,28 +10,28 @@ import java.util.List;
 import fafica.listaacessivel.dados.IRepositorio;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
-import fafica.listaacessivel.negocios.entidades.RClienteListaEstab;
+import fafica.listaacessivel.negocios.entidades.RelacionamentoClienteListaEstababelecimento;
 
-public class RepositorioRClienteListaEstab implements IRepositorio<RClienteListaEstab>{
+public class RepositorioRelacionamentoClienteListaEstababelecimento implements IRepositorio<RelacionamentoClienteListaEstababelecimento>{
 	
-	private static RepositorioRClienteListaEstab instancia;
+	private static RepositorioRelacionamentoClienteListaEstababelecimento instancia;
 	private Connection connection;
 	private ResultSet result;
 	private PreparedStatement stm;
 	
-	private RepositorioRClienteListaEstab() throws ClassNotFoundException, SQLException {
+	private RepositorioRelacionamentoClienteListaEstababelecimento() throws ClassNotFoundException, SQLException {
 		this.connection = ConnectionMysql.getConnectionMysql();
 	}
 	
-	public static RepositorioRClienteListaEstab getInstancia()throws ClassNotFoundException, SQLException {
+	public static RepositorioRelacionamentoClienteListaEstababelecimento getInstancia()throws ClassNotFoundException, SQLException {
 		if(instancia == null) {
-			instancia = new RepositorioRClienteListaEstab();
+			instancia = new RepositorioRelacionamentoClienteListaEstababelecimento();
 		}
 		return instancia;
 	}
 	
 	@Override
-	public void adicionar(RClienteListaEstab entidade) throws SQLException {
+	public void adicionar(RelacionamentoClienteListaEstababelecimento entidade) throws SQLException {
 		String sql = "INSERT INTO lista_cliente_estabelecimento(id_lista, id_cliente, id_estabelecimento, situacao) VALUES (?,?,?,?)";
 		
 		stm = connection.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class RepositorioRClienteListaEstab implements IRepositorio<RClienteLista
 	}
 
 	@Override
-	public void alterar(RClienteListaEstab entidade) throws SQLException {
+	public void alterar(RelacionamentoClienteListaEstababelecimento entidade) throws SQLException {
 		String sql = "UPDATE lista_cliente_estabelecimento SET id_lista= " 
 				+ entidade.getId_lista() + ", id_cliente= " 
 				+ entidade.getId_cliente() + ", id_estabelecimento= " 
@@ -62,17 +62,17 @@ public class RepositorioRClienteListaEstab implements IRepositorio<RClienteLista
 	}
 
 	@Override
-	public void excluir(RClienteListaEstab entidade) throws SQLException {
+	public void excluir(RelacionamentoClienteListaEstababelecimento entidade) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public List<RClienteListaEstab> listar() throws SQLException {
+	public List<RelacionamentoClienteListaEstababelecimento> listar() throws SQLException {
 		
 		//Falta ajustar o sql
 		String sql = "select * from lista_cliente_estabelecimento where status = '" + Status.ATIVO.toString() + "'";
-		List<RClienteListaEstab> lista_lista_cliente_estabelecimento = new ArrayList<RClienteListaEstab>();
+		List<RelacionamentoClienteListaEstababelecimento> lista_lista_cliente_estabelecimento = new ArrayList<RelacionamentoClienteListaEstababelecimento>();
 		
 			stm = connection.prepareStatement(sql);
 			result = stm.executeQuery();
@@ -83,7 +83,7 @@ public class RepositorioRClienteListaEstab implements IRepositorio<RClienteLista
 				int id_estabelecimento = result.getInt("id_estabelecimento");
 				String situacao = result.getString("situacao");
 				
-				RClienteListaEstab lista_cliente_estabelecimento = new RClienteListaEstab(id_lista, id_cliente, id_estabelecimento, situacao);
+				RelacionamentoClienteListaEstababelecimento lista_cliente_estabelecimento = new RelacionamentoClienteListaEstababelecimento(id_lista, id_cliente, id_estabelecimento, situacao);
 				
 				lista_lista_cliente_estabelecimento.add(lista_cliente_estabelecimento);
 			}
@@ -96,14 +96,14 @@ public class RepositorioRClienteListaEstab implements IRepositorio<RClienteLista
 	}
 
 	@Override
-	public RClienteListaEstab pesquisar(RClienteListaEstab entidade)
+	public RelacionamentoClienteListaEstababelecimento pesquisar(RelacionamentoClienteListaEstababelecimento entidade)
 			throws SQLException {
-		List<RClienteListaEstab> lista_lista_cliente_estabelecimento = new ArrayList<RClienteListaEstab>();
-		RClienteListaEstab lista_pesquisa = null;
+		List<RelacionamentoClienteListaEstababelecimento> lista_lista_cliente_estabelecimento = new ArrayList<RelacionamentoClienteListaEstababelecimento>();
+		RelacionamentoClienteListaEstababelecimento lista_pesquisa = null;
 		
 		lista_lista_cliente_estabelecimento = listar();
 		
-		for(RClienteListaEstab pesquisa : lista_lista_cliente_estabelecimento){
+		for(RelacionamentoClienteListaEstababelecimento pesquisa : lista_lista_cliente_estabelecimento){
 			if(entidade.getId_lista() == pesquisa.getId_lista() && entidade.getId_cliente() == pesquisa.getId_cliente() && entidade.getId_estabelecimento() == pesquisa.getId_estabelecimento()){
 				lista_pesquisa = pesquisa;
 			}

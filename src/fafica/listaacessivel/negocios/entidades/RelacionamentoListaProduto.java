@@ -1,15 +1,15 @@
 package fafica.listaacessivel.negocios.entidades;
 
-public class ProdutosLista {
+public class RelacionamentoListaProduto {
 	private int id_lista;
 	private int id_produto;
 	private int quantidade;
 	
-	public ProdutosLista() {
+	public RelacionamentoListaProduto() {
 		
 	}
 
-	public ProdutosLista(int id_lista, int id_produto, int quantidade) {
+	public RelacionamentoListaProduto(int id_lista, int id_produto, int quantidade) {
 		super();
 		this.id_lista = id_lista;
 		this.id_produto = id_produto;

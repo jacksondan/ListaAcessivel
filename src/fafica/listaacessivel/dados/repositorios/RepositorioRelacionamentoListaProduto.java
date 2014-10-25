@@ -10,26 +10,26 @@ import java.util.List;
 import fafica.listaacessivel.dados.IRepositorio;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
-import fafica.listaacessivel.negocios.entidades.ProdutosLista;
+import fafica.listaacessivel.negocios.entidades.RelacionamentoListaProduto;
 
-public class RepositorioProdutosLista implements IRepositorio<ProdutosLista>{
+public class RepositorioRelacionamentoListaProduto implements IRepositorio<RelacionamentoListaProduto>{
 	
-	private static RepositorioProdutosLista instancia;
+	private static RepositorioRelacionamentoListaProduto instancia;
 	private Connection connection;
 	private ResultSet result;
 	private PreparedStatement stm;
 	
-	private RepositorioProdutosLista() throws ClassNotFoundException, SQLException {
+	private RepositorioRelacionamentoListaProduto() throws ClassNotFoundException, SQLException {
 		this.connection = ConnectionMysql.getConnectionMysql();
 	}
 	
-	public static RepositorioProdutosLista getInstancia() throws ClassNotFoundException, SQLException {
-		if(instancia == null) instancia = new RepositorioProdutosLista();
+	public static RepositorioRelacionamentoListaProduto getInstancia() throws ClassNotFoundException, SQLException {
+		if(instancia == null) instancia = new RepositorioRelacionamentoListaProduto();
 		return instancia;
 	}
 
 	@Override
-	public void adicionar(ProdutosLista entidade) throws SQLException {
+	public void adicionar(RelacionamentoListaProduto entidade) throws SQLException {
 		String sql = "INSERT INTO lista_produto(id_produto, id_lista, quantidade, status) VALUES (?,?,?,?)";
 		
 			stm = connection.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class RepositorioProdutosLista implements IRepositorio<ProdutosLista>{
 	}
 
 	@Override
-	public void alterar(ProdutosLista entidade) throws SQLException {
+	public void alterar(RelacionamentoListaProduto entidade) throws SQLException {
 		//ProdutosLista produto_lista = pesquisar(entidade);
 		
 		String sql = "UPDATE lista_produto SET id_produto= " 
@@ -60,7 +60,7 @@ public class RepositorioProdutosLista implements IRepositorio<ProdutosLista>{
 	}
 
 	@Override
-	public void excluir(ProdutosLista entidade) throws SQLException {
+	public void excluir(RelacionamentoListaProduto entidade) throws SQLException {
 		
 		//ProdutosLista produto_lista = pesquisar(entidade);
 		
@@ -78,9 +78,9 @@ public class RepositorioProdutosLista implements IRepositorio<ProdutosLista>{
 	}
 
 	@Override
-	public List<ProdutosLista> listar() throws SQLException {
+	public List<RelacionamentoListaProduto> listar() throws SQLException {
 		String sql = "select * from lista_produto where status = '" + Status.ATIVO.toString() + "'";
-		List<ProdutosLista> lista_produtos_lista = new ArrayList<ProdutosLista>();
+		List<RelacionamentoListaProduto> lista_produtos_lista = new ArrayList<RelacionamentoListaProduto>();
 		
 			stm = connection.prepareStatement(sql);
 			result = stm.executeQuery();
@@ -90,7 +90,7 @@ public class RepositorioProdutosLista implements IRepositorio<ProdutosLista>{
 				int id_produto = result.getInt("id_produto");
 				int quantidade = result.getInt("quantidade");
 				
-				ProdutosLista produtos_lista = new ProdutosLista(id_lista, id_produto, quantidade);
+				RelacionamentoListaProduto produtos_lista = new RelacionamentoListaProduto(id_lista, id_produto, quantidade);
 				
 				lista_produtos_lista.add(produtos_lista);
 			}
@@ -103,13 +103,13 @@ public class RepositorioProdutosLista implements IRepositorio<ProdutosLista>{
 	}
 
 	@Override
-	public ProdutosLista pesquisar(ProdutosLista entidade) throws SQLException {
-		List<ProdutosLista> lista_produtos_lista = new ArrayList<ProdutosLista>();
-		ProdutosLista produtos_lista_pesquisa = null;
+	public RelacionamentoListaProduto pesquisar(RelacionamentoListaProduto entidade) throws SQLException {
+		List<RelacionamentoListaProduto> lista_produtos_lista = new ArrayList<RelacionamentoListaProduto>();
+		RelacionamentoListaProduto produtos_lista_pesquisa = null;
 		
 		lista_produtos_lista = listar();
 		
-		for(ProdutosLista produtos_pesquisa : lista_produtos_lista){
+		for(RelacionamentoListaProduto produtos_pesquisa : lista_produtos_lista){
 			if(entidade.getId_lista() == produtos_pesquisa.getId_lista() && entidade.getId_produto() == produtos_pesquisa.getId_produto()){
 				produtos_lista_pesquisa = produtos_pesquisa;
 			}
