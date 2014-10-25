@@ -32,16 +32,13 @@
 					<h2>Perfil</h2>
 			</header>
 			<!-- Conteudo-->
-			<fieldset >
-			<legend>Dados de Login</legend>
-				E-mail: <%=usuario.getEmail()%><br>
-				
-				Senha:<%=usuario.getSenha()%><br>
-			</fieldset>
+			
 			
 			<fieldset >
 			<legend>Dados Pessoais</legend>
-				Nome Completo: <%=usuario.getNome()%>
+				E-mail: <%=usuario.getEmail()%><br>
+				
+				Nome Completo: <%=usuario.getNome()%><br>
 				
 				CPF: <%=usuario.getCpf()%><br>
 				

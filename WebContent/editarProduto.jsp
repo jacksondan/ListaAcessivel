@@ -16,7 +16,7 @@
 
 <%@include file="sidebarEs.html" %>
 			
-			<div id="content">
+			<div id="content2">
 				<header class="major">		
 					<h2>Editar  Produto</h2>
 				</header>

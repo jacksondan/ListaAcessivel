@@ -7,6 +7,19 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
+<script>
+//script da mascara
+jQuery(function($){
+	$("#cep").mask("99999-999");
+	$("#telefone1").mask("(99)9999-9999");
+	$("#telefone2").mask("(99)9999-9999");
+	$("#cnpj").mask("999.999.999-99");
+});
+
+</script>
+
 </head>
 <body>
 	<div id="container">
@@ -57,18 +70,21 @@
 					<legend>Telefones para Contato</legend>
 					<label for="telefone1">Telefone 1:</label><br> <input
 						type="text" placeholder="Digite seu telefone" name="telefone1"
-						id="telefone1" size=20><br> <label for="telefone 2">Telefone
-						2:</label><br> <input type="text" placeholder="Digite seu telefone"
-						name="telefone2" id="telefone2" size=20><br>
+						id="telefone1" size=20><br> 
+						<label for="telefone2">Telefone2:</label>
+						<br><input type="text" placeholder="Digite seu telefone"
+						name="telefone2" id="telefone2" size=20>
 				</fieldset>
 
 				<fieldset>
 					<legend>Dados de Localização</legend>
 
-					<label for="cep">CEP:</label><br> <input type="text"
-						placeholder="Digite o CEP" onblur="consultacep(this.value)"
-						name="cep" id="cep" size=20><br> <label for="cidade">Cidade:</label><br>
-					<input type="text" name="cidade" id="cidade" size=30><br>
+					<label for="cep">CEP:</label><br> 
+					<input type="text" placeholder="Digite o CEP" onblur="consultacep(this.value)"
+						name="cep" id="cep" size=20><br> 
+					
+					<label for="cidade">Cidade:</label><br>
+					<input type="text" name="cidade" id="cidade" size=60><br>
 
 					<label for="estado">Estado:</label><br> <input type="text"
 						name="estado" id="estado" size=2><br> <label
@@ -87,10 +103,10 @@
 
 				</fieldset>
 
-				<div class="12u">
+				<div class="14u">
 					<ul class="actions">
-						<li><input type="submit" value="Confirmar Cadastro" /></li>
-						<li><input type="reset" value="Limpar" /></li>
+						<li><input type="submit" class="button2" value="Confirmar Cadastro" /></li>
+						<li><input type="reset"  class="button2" value="Limpar Dados" /></li>
 					</ul>
 				</div>
 

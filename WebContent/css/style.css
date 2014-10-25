@@ -564,6 +564,15 @@ body,input,textarea,select
 #content{
 	z-index:1;
 	position:right;
+	
+	
+	background:none;
+	
+	
+}
+#content2{
+	z-index:1;
+	position:right;
 	margin-left:10em;
 	
 	background:none;

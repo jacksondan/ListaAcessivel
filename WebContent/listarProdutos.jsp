@@ -20,7 +20,7 @@
 	
 		
 			
-				<div id="content">
+				<div id="content2">
 					<header class="major">		
 						<h2>Lista de Produtos</h2>
 					</header>

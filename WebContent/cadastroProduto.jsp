@@ -13,7 +13,7 @@
 	<%@include file="sidebarEs.html"%>
 
 
-	<div id="content">
+	<div id="content2">
 		<header class="major">
 			<h2>Cadastro de Produtos</h2>
 		</header>
