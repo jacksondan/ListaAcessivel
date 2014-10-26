@@ -38,18 +38,23 @@
 			<legend>Dados Pessoais</legend>
 				E-mail: <%=usuario.getEmail()%><br>
 				
-				Nome Completo: <%=usuario.getNome()%><br>
+				Nome: <%=usuario.getNome()%><br>
 				
 				CPF: <%=usuario.getCpf()%><br>
 				
-				Telefone para contato:<br>
+			</fieldset>
+			
+			<fieldset>
+			<legend>Telefones Para Contato</legend>
+			Telefone 1: <%=telefones.get(0) %><br>
+			Telefone 2: <%=telefones.get(1) %>
 			</fieldset>
 				
 				<fieldset >
 			<legend>Dados de Localização</legend>
-				Estado:<br>
+				Estado: <%=usuario.getEstado() %><br>
 				
-				CEP:<br>
+				CEP: <%=usuario.getCep() %><br>
 				
 				Cidade:<br>
 				
@@ -64,7 +69,7 @@
 			</fieldset>
 							<div class="nav">
 										<ul class="menu">
-											<li><a href="cadastroUs.jsp" class="button">Editar</a></li>
+											<li><a href="editarUsuario.jsp" class="button">Editar</a></li>
 										</ul>
 							</div>
 			<!-- menu direito-->

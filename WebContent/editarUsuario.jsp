@@ -69,49 +69,15 @@ jQuery(function($){
 				<label for="telefone1">Telefone 1:</label><br> <input
 					type="text" name="telefone1" id="telefone1"
 					value="<%=telefones.get(0)%>" size=20><br> <label
-					for="telefone 2">Telefone 2:</label><br> <input type="text"
+					for="telefone2">Telefone 2:</label><br> <input type="text"
 					name="telefone2" id="telefone2" value="<%=telefones.get(1)%>"
 					size=20><br>
 			</fieldset>
 
 			<fieldset>
 				<legend>Dados de Localização</legend>
-				<p>
-					<label for="lista de estados">Selecione o Estado:<br /> <select
-						name="estado" id="listade estados">
-							<option selected="<%=usuario.getEstado()%>"
-								value="<%=usuario.getEstado()%>"><%=usuario.getEstado()%></option>
-							<option value="AC">Acre</option>
-							<option value="AL">Alagoas</option>
-							<option value="AP">Amapá</option>
-							<option value="AM">Amazonas</option>
-							<option value="BA">Bahia</option>
-							<option value="CE">Ceará</option>
-							<option value="DF">Distrito Federal</option>
-							<option value="ES">Espírito Santo</option>
-							<option value="GO">Goiás</option>
-							<option value="MA">Maranhão</option>
-							<option value="MT">Mato Grosso</option>
-							<option value="MS">Mato Grosso do Sul</option>
-							<option value="MG">Minas Gerais</option>
-							<option value="PA">Pará</option>
-							<option value="PB">Paraíba</option>
-							<option value="PR">Paraná</option>
-							<option value="PE">Pernambuco</option>
-							<option value="PI">Piauí</option>
-							<option value="RJ">Rio de Janeiro</option>
-							<option value="RN">Rio Grande do Norte</option>
-							<option value="RS">Rio Grande do Sul</option>
-							<option value="RO">Rondônia</option>
-							<option value="RR">Roraima</option>
-							<option value="SC">Santa Catarina</option>
-							<option value="SP">São Paulo</option>
-							<option value="SE">Sergipe</option>
-							<option value="TO">Tocantins</option>
-					</select>
-					</label>
-				</p>
-
+				
+					
 
 				<label for="cep">CEP:</label><br> <input type="text" name="cep"
 					id="cep" value="<%=usuario.getCep()%>" size=20><br> <label

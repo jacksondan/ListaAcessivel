@@ -30,7 +30,7 @@
 					<legend>Produtos</legend>
 					<%
 						Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-						for(Produto p : fachada.getProdutosDoEstababelecimento(estabelecimento)){
+						for(Produto p : fachada.listarProdutosDoEstababelecimento(estabelecimento)){
 					%>
 						<table class="default" >
 								<tr>
