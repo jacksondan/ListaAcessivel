@@ -72,7 +72,7 @@ public class CadastrarUsuario extends HttpServlet {
 			
 			fachada.adicionarCliente(entidade);
 			
-			response.sendRedirect("cadastros.jsp");
+			response.sendRedirect("index.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e1) {
 			// TODO Auto-generated catch block
