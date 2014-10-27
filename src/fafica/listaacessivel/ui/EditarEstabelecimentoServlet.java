@@ -15,20 +15,19 @@ import javax.servlet.http.HttpServletResponse;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
- * Servlet implementation class EditarUsuario
+ * Servlet implementation class EditarEstabelecimento
  */
-@WebServlet("/EditarUsuario")
-public class EditarUsuario extends HttpServlet {
+@WebServlet("/EditarEstabelecimento")
+public class EditarEstabelecimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarUsuario() {
+    public EditarEstabelecimentoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +36,7 @@ public class EditarUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 	}
 
 	/**
@@ -45,42 +44,42 @@ public class EditarUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			fachada = Fachada.getInstance();
+			IFachada fachada = Fachada.getInstance();
+			ArrayList<String> telefones = new ArrayList<String>();
 			
-			ArrayList <String> telefones = new ArrayList <String>();
-			
-			int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
-			String nome = request.getParameter("nome");
-			String cpf = request.getParameter("cpf");
+			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+			String nome_fantasia = request.getParameter("nome_fantasia");
+			String nome_juridico = request.getParameter("nome_juridico");
+			String categoria = request.getParameter("categoria");
+			String cnpj = request.getParameter("cnpj");
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
+			telefones.add(request.getParameter("telefone1"));
+			telefones.add(request.getParameter("telefone2"));
+			String rua = request.getParameter("rua");
+			String numero = request.getParameter("numero");
+			String bairro = request.getParameter("bairro");
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
-			String rua = request.getParameter("rua");
-			String bairro = request.getParameter("bairro");
-			String numero = request.getParameter("numero");
-			String referencia = request.getParameter("referencia");
 			String cep = request.getParameter("cep");
-			String telefone1 = request.getParameter("telefone1");
-			String telefone2 = request.getParameter("telefone2");
-			telefones.add(telefone1);
-			telefones.add(telefone2);
+			String referencia = request.getParameter("referencia");
 			
 			String senhaEncriptada = encriptar(senha);
-	
-			Cliente entidade = new Cliente(id_usuario, nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
+			
+			Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, bairro, cidade, estado, cep, referencia);
 			entidade.setTelefones(telefones);
 			
-			fachada.alterarCliente(entidade);
+			fachada.alterarEstabelecimento(entidade);
 			
-			response.sendRedirect("visaoUsuario.jsp");
-			
+			response.sendRedirect("visaoEs.jsp");
+					
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
-	
+
 	public static String encriptar(String senha) {     
         try {     
              MessageDigest digest = MessageDigest.getInstance("MD5");      
@@ -92,5 +91,4 @@ public class EditarUsuario extends HttpServlet {
              return senha;      
         }      
    }
-
 }

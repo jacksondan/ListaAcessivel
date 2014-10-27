@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
- * Servlet implementation class ExcluirEstabelecimento
+ * Servlet implementation class CadastrarLista
  */
-@WebServlet("/ExcluirEstabelecimento")
-public class ExcluirEstabelecimento extends HttpServlet {
+@WebServlet("/CadastrarLista")
+public class CadastrarListaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExcluirEstabelecimento() {
+    public CadastrarListaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,30 +33,31 @@ public class ExcluirEstabelecimento extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
-		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
-		try {
-			IFachada fachada = Fachada.getInstance();
-			
-			fachada.excluirEstabelecimento(estabelecimento);
-			
-			
-			response.sendRedirect("logout.jsp");
-			
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		// TODO Auto-generated method stub
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request.getParameter("id");
+		HttpSession session = request.getSession(); 
+		Cliente usuario = (Cliente)session.getAttribute("acessoUsuario"); // Utilizar pra pegar codigo de Usuario
 		
-		
+		try {
+			IFachada fachada = Fachada.getInstance();
+			
+			System.out.println("@@@@@@ "+usuario.getId_usuario()+" @@@@@@");
+			
+			
+			
+			
+			
+			response.sendRedirect("visaoUsuario.jsp");	
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

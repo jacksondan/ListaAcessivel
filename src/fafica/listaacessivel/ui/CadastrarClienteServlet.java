@@ -21,7 +21,7 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
  * Servlet implementation class CadastraUs
  */
 @WebServlet("/CadastraUs")
-public class CadastrarUsuario extends HttpServlet {
+public class CadastrarClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
        
@@ -30,7 +30,7 @@ public class CadastrarUsuario extends HttpServlet {
      * @throws ClassNotFoundException 
      * @see HttpServlet#HttpServlet()
      */
-    public CadastrarUsuario() {
+    public CadastrarClienteServlet() {
         super();
     }
 

@@ -15,16 +15,16 @@ import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
- * Servlet implementation class CadastrarLista
+ * Servlet implementation class ExcluirUsuario
  */
-@WebServlet("/CadastrarLista")
-public class CadastrarLista extends HttpServlet {
+@WebServlet("/ExcluirUsuario")
+public class ExcluirUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastrarLista() {
+    public ExcluirUsuarioServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,31 +33,27 @@ public class CadastrarLista extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
 		Cliente usuario = (Cliente)session.getAttribute("acessoUsuario"); // Utilizar pra pegar codigo de Usuario
 		
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			System.out.println("@@@@@@ "+usuario.getId_usuario()+" @@@@@@");
+			fachada.excluirCliente(usuario);
 			
 			
-			
-			
-			
-			response.sendRedirect("visaoUsuario.jsp");	
+			response.sendRedirect("logout.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	}
 

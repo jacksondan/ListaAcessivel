@@ -19,14 +19,14 @@ import fafica.listaacessivel.negocios.entidades.Produto;
  * Servlet implementation class CadastraPr
  */
 @WebServlet("/CadastraPr")
-public class CadastrarProduto extends HttpServlet {
+public class CadastrarProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastrarProduto() {
+    public CadastrarProdutoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

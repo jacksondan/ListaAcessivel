@@ -10,21 +10,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
- * Servlet implementation class ExcluirUsuario
+ * Servlet implementation class ExcluirEstabelecimento
  */
-@WebServlet("/ExcluirUsuario")
-public class ExcluirUsuario extends HttpServlet {
+@WebServlet("/ExcluirEstabelecimento")
+public class ExcluirEstabelecimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExcluirUsuario() {
+    public ExcluirEstabelecimentoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,15 +34,15 @@ public class ExcluirUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
-		Cliente usuario = (Cliente)session.getAttribute("acessoUsuario"); // Utilizar pra pegar codigo de Usuario
-		
+		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			fachada.excluirCliente(usuario);
+			fachada.excluirEstabelecimento(estabelecimento);
 			
 			
 			response.sendRedirect("logout.jsp");
+			
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,6 +54,9 @@ public class ExcluirUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//request.getParameter("id");
+		
+		
 		
 	}
 

@@ -20,14 +20,14 @@ import fafica.listaacessivel.negocios.entidades.Produto;
  * Servlet implementation class EditarProduto
  */
 @WebServlet("/EditarProduto")
-public class EditarProduto extends HttpServlet {
+public class EditarProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarProduto() {
+    public EditarProdutoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

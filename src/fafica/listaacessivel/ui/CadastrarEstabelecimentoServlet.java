@@ -21,14 +21,14 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
  * Servlet implementation class cadastroEs
  */
 @WebServlet("/cadastroEs")
-public class CadastrarEstabelecimento extends HttpServlet {
+public class CadastrarEstabelecimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IFachada fachada; 
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastrarEstabelecimento() {
+    public CadastrarEstabelecimentoServlet() {
         super();
         
     }
