@@ -42,8 +42,8 @@
 						</p></li>
 			<ul class="menu">
 			
-					<li><a href="listarUsuarios.jsp" class="button">Listar Usuarios</a></li>
-					<li><a href="listarEs.jsp" class="button">Listar Estabalecimentos</a></li>
+					<li><a href="ListarClienteServlet" class="button">Listar Usuarios</a></li>
+					<li><a href="ListarEstabelecimentoServlet" class="button">Listar Estabalecimentos</a></li>
 			</ul>
 				</ul>
 				

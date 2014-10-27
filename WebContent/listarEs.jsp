@@ -1,6 +1,6 @@
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
-	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!DOCTYPE HTML>
 	<html>
 		<head>
@@ -9,9 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-	<%
-		Fachada fachada = Fachada.getInstance(); 
-	%>
 			<div id="container">
 					<div id="header-wrapper">
 					<div id="header" class="container">
@@ -27,9 +24,7 @@
 				<div>
 					
 				<fieldset >
-					<%
-						for(Estabelecimento e : fachada.listarEstabelecimento()){
-					%>
+					<c:forEach items="${listaestabelecimento}" var="estabelecimento" varStatus="status">
 						<table class="default" >
 								<tr>
 									<th>Id</th>
@@ -46,35 +41,32 @@
 									<th>Número</th>
 									<th>Referência</th>
 									<th>Telefones</th>
-									
-									</tr>
-									
-									<tr>
-									<td><%= e.getId_usuario()%></td>
-									<td><%= e.getNome_fantasia()%></td>
-									<td><%=  e.getNome_juridico()%></td>
-									<td><%=  e.getCategoria()%></td>
-									<td><%= e.getCnpj()%></td>
-									<td><%= e.getEmail()%></td>
-									<td><%= e.getCep() %></td>
-									<td><%=  e.getEstado()%></td>
-									<td><%= e.getCidade()%></td>
-									<td><%= e.getBairro()%></td>
-									<td><%=  e.getRua()%></td>
-									<td><%=  e.getNumero()%></td>
-									<td><%=  e.getReferencia()%></td>
-									<td><%
-										for(String tel : e.getTelefones()){
-									%>
-											<%=tel+","%>
-									<%
-										}
-									%></td>
-									</tr>	
+								</tr>
+																	
+								<tr>
+									<td>${estabelecimento.id_usuario}</td>
+									<td>${estabelecimento.nome_fantasia}</td>
+									<td>${estabelecimento.nome_juridico}</td>
+									<td>${estabelecimento.categoria}</td>
+									<td>${estabelecimento.cnpj}</td>
+									<td>${estabelecimento.email}</td>
+									<td>${estabelecimento.cep}</td>
+									<td>${estabelecimento.estado}</td>
+									<td>${estabelecimento.cidade}</td>
+									<td>${estabelecimento.bairro}</td>
+									<td>${estabelecimento.rua}</td>
+									<td>${estabelecimento.numero}</td>
+									<td>${estabelecimento.referencia}</td>
+									<td>
+										<ul>
+										<c:forEach items="${estabelecimento.telefones}" var="telefone" varStatus="status">
+											<li>${telefone}</li>
+										</c:forEach>
+										</ul>
+									</td>
+								</tr>	
 						</table>
-					<% 
-						}
-					%>		
+					</c:forEach>	
 					</fieldset>
 				</div>
 				</div>

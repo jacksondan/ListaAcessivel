@@ -87,7 +87,6 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 		}
 
 		System.out.println("CADASTRA ESTABELECIMENTO OK");
-		System.out.println(""); //LINHA TEMPORARIA
 	}
 
 	@Override
@@ -192,7 +191,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 				smt.close();
 				e.setTelefones(tel);
 			}
-				
+			System.out.println("LISTA ESTABELECIMENTO OK");		
 		return lista;
 	}
 
