@@ -24,14 +24,14 @@ import fafica.listaacessivel.negocios.entidades.Usuario;
  * Servlet implementation class Index
  */
 @WebServlet("/Index")
-public class IndexControlador extends HttpServlet {
+public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IndexControlador() {
+    public IndexServlet() {
         super();
         
     }
