@@ -36,30 +36,24 @@ public class EditarProdutoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		int id_produto = Integer.parseInt(request.getParameter("id_produto"));
+		Produto produto = new Produto();
+		produto.setId_produto(id_produto);
 		try {
-			List<Produto> lista_produto = new ArrayList<Produto>();
+			IFachada fachada = Fachada.getInstance();
+			produto = fachada.pesquisarProduto(produto);
 			
-			fachada = Fachada.getInstance();
+			request.setAttribute("editarProduto", produto);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarProduto.jsp");
+			requestDispatcher.forward(request, response);
 			
-			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
-			lista_produto = fachada.listarProduto();
-			
-			for(Produto p : lista_produto){
-				if(p.getId_produto() == id_produto){
-					Produto produto = fachada.pesquisarProduto(p);
-					request.setAttribute("produto", produto);
-
-				}
-			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher requestDispatcher = request
-				.getRequestDispatcher("editarProduto.jsp");
-		requestDispatcher.forward(request, response);
 	}
 
 	/**
