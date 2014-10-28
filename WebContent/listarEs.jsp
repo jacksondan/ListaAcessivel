@@ -58,11 +58,11 @@
 									<td>${estabelecimento.numero}</td>
 									<td>${estabelecimento.referencia}</td>
 									<td>
-										<ul>
+										<ol>
 										<c:forEach items="${estabelecimento.telefones}" var="telefone" varStatus="status">
 											<li>${telefone}</li>
 										</c:forEach>
-										</ul>
+										</ol>
 									</td>
 								</tr>	
 						</table>

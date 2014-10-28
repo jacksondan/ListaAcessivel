@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Produto"%>
-	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
-	<%@page import= "fafica.listaacessivel.negocios.IFachada"%>
-	<%@page import= "fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
+	    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!DOCTYPE HTML>
 	<html>
 		<head>
@@ -11,14 +9,10 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-	<%
-		IFachada fachada = Fachada.getInstance(); 
-	%>
 <%@include file="headerEs.html" %>
 
 <%@include file="sidebarEs.html" %>
-	
-		
+
 			
 				<div id="content2">
 					<header class="major">		
@@ -28,10 +22,9 @@
 					
 					<fieldset >
 					<legend>Produtos</legend>
-					<%
-						Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-						for(Produto p : fachada.listarProdutosDoEstababelecimento(estabelecimento)){
-					%>
+					
+					<c:forEach items="${listaProdutos}" var="produto" varStatus="status">
+					
 						<table class="default" >
 								<tr>
 									<th>Id:</th>
@@ -39,25 +32,24 @@
 									<th>ID_Estabelecimento:</th>
 									<th>Preço:</th>
 									<th>Categoria:</th>
+									<th>Quantidade</th>
 									<th>Editar</th>
 									<th>Excluir</th>
 									</tr>
 								
-							
 									<tr>
-									<td><%= p.getId_produto()%></td>
-									<td><%= p.getDescricao_produto()%></td>
-									<td><%= p.getId_estabelecimento()%></td>
-									<td><%= p.getPreco_produto()%></td>
-									<td><%= p.getCategoria()%></td>
-									<td><a href="EditarProduto?id_produto=<%=p.getId_produto()%>" class="button2">Editar</a></td>
-									<td><a href="ExcluirProduto?id_produto=<%=p.getId_produto()%>" class="button2">Excluir</a></td>
+									<td>${produto.id_produto}</td>
+									<td>${produto.descricao_produto}</td>
+									<td>${produto.id_estabelecimento}</td>
+									<td>${produto.preco_produto}</td>
+									<td>${produto.categoria}</td>
+									<td>${produto.quantidade_produto}</td>
+									<td><a href="EditarProduto?id_produto=${produto.id_produto}" class="button2">Editar</a></td>
+									<td><a href="ExcluirProduto?id_produto=${produto.id_produto}" class="button2">Excluir</a></td>
 									
 									</tr>
 									</table>
-					<% 
-						}
-					%>	
+				</c:forEach>
 						
 					</fieldset>
 							

@@ -12,10 +12,7 @@
 	<%
 		Fachada fachada = Fachada.getInstance(); 
 	%>
-			
-<%@include file="headerUs.html" %>
-
-<%@include file="sidebarUs.html" %>		
+				
 	
 				<div id="content">
 					<header class="major">		

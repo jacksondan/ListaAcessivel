@@ -20,7 +20,7 @@
 			Cliente usuario = fachada.pesquisarCliente(usuarioDaSessao);
 			ArrayList <String> telefones = new ArrayList<String>();
 			telefones= usuario.getTelefones();
-				%>
+			%>
 				
 <%@include file="headerUs.html" %>
 
