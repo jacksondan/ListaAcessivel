@@ -4,6 +4,7 @@
     import= "fafica.listaacessivel.negocios.IFachada"
     import= "fafica.listaacessivel.negocios.entidades.Cliente"%>
  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+ <jsp:useBean id="cliente" class="fafica.listaacessivel.ui.PerfilClienteServlet" />
 <!DOCTYPE HTML>
 
 <html>
@@ -14,13 +15,13 @@
 </head>
 <body>
 
-			<%
+			<%-- <%
 			IFachada fachada = Fachada.getInstance();
 			Cliente usuarioDaSessao = (Cliente) session.getAttribute("acessoUsuario");
 			Cliente usuario = fachada.pesquisarCliente(usuarioDaSessao);
 			ArrayList <String> telefones = new ArrayList<String>();
 			telefones= usuario.getTelefones();
-			%>
+			%> --%>
 				
 <%@include file="headerUs.html" %>
 
@@ -36,11 +37,11 @@
 			
 			<fieldset >
 			<legend>Dados Pessoais</legend>
-				E-mail: ${cliente.email}<br>
+				E-mail: ${usuario.email}<br>
 				
-				Nome: ${cliente.nome}<br>
+				Nome: ${usuario.nome}<br>
 				
-				CPF: ${cliente.cpf}<br>
+				CPF: ${usuario.cpf}<br>
 				
 			</fieldset>
 			
@@ -48,8 +49,8 @@
 			<legend>Telefones Para Contato</legend>
 			
 			<c:forEach items="${listacliente}" var="cliente" varStatus="status">
-			Telefone 1: <%=telefones.get(0) %><br>
-			Telefone 2: <%=telefones.get(1) %>
+			Telefone 1: Teste<br>
+			Telefone 2: Teste
 			</fieldset>
 			</c:forEach>	
 			
