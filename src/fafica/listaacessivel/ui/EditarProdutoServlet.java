@@ -2,8 +2,6 @@ package fafica.listaacessivel.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -79,14 +77,12 @@ public class EditarProdutoServlet extends HttpServlet {
 			
 			fachada.alterarProduto(produto);
 			
+			response.sendRedirect("ListarProdutosServlet");
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher requestDispatcher = request
-				.getRequestDispatcher("/listarProdutos.jsp");
-		requestDispatcher.forward(request, response);
-		
 	}
 
 }
