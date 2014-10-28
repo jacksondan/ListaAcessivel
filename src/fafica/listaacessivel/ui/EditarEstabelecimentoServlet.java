@@ -39,7 +39,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Estabelecimento estabelecimento = (Estabelecimento) request.getAttribute("acessoEstabelecimento");
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
 		if(estabelecimento == null){
 			response.sendRedirect("index.jsp");
 		}else{
