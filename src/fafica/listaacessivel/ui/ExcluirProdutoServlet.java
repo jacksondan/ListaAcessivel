@@ -3,7 +3,6 @@ package fafica.listaacessivel.ui;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +16,7 @@ import fafica.listaacessivel.negocios.entidades.Produto;
 /**
  * Servlet implementation class ExcluirProduto
  */
-@WebServlet("/ExcluirProduto")
+@WebServlet("/ExcluirProdutoServlet")
 public class ExcluirProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,14 +39,13 @@ public class ExcluirProdutoServlet extends HttpServlet {
 			Produto produto = new Produto();
 			produto.setId_produto(id_produto);
 			fachada.excluirProduto(produto);
+			
+			response.sendRedirect("ListarProdutosServlet");
 						
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/listarProdutos.jsp");
-		requestDispatcher.forward(request, response);
 	}
 
 	/**

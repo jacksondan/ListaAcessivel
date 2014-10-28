@@ -17,7 +17,7 @@ import fafica.listaacessivel.negocios.entidades.Produto;
 /**
  * Servlet implementation class EditarProduto
  */
-@WebServlet("/EditarProduto")
+@WebServlet("/EditarProdutoServlet")
 public class EditarProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
@@ -34,24 +34,25 @@ public class EditarProdutoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id_produto = Integer.parseInt(request.getParameter("id_produto"));
-		Produto produto = new Produto();
-		produto.setId_produto(id_produto);
-		try {
-			IFachada fachada = Fachada.getInstance();
-			produto = fachada.pesquisarProduto(produto);
-			
-			request.setAttribute("editarProduto", produto);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarProduto.jsp");
-			requestDispatcher.forward(request, response);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
+			Produto produto = new Produto();
+			produto.setId_produto(id_produto);
+			try {
+				IFachada fachada = Fachada.getInstance();
+				produto = fachada.pesquisarProduto(produto);
+				
+				request.setAttribute("editarProduto", produto);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarProduto.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	/**

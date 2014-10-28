@@ -42,19 +42,23 @@ public class ListarProdutosServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-		try {
-			IFachada fachada =  Fachada.getInstance();
-			List <Produto> produtos = fachada.listarProdutosDoEstababelecimento(estabelecimento);
-			
-			request.setAttribute("listaProdutos", produtos);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarProdutos.jsp");
-			requestDispatcher.forward(request, response);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(estabelecimento == null){
+			response.sendRedirect("index.jsp");
+		}else{
+			try {
+				IFachada fachada =  Fachada.getInstance();
+				List <Produto> produtos = fachada.listarProdutosDoEstababelecimento(estabelecimento);
+				
+				request.setAttribute("listaProdutos", produtos);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarProdutos.jsp");
+				requestDispatcher.forward(request, response);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

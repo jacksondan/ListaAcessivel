@@ -75,7 +75,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
 					
 					String mensagem = "Produto Cadastrado Com Sucesso";
 					request.setAttribute("mensagem", mensagem);
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEs.jsp");
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("cadastroProduto.jsp");
 					requestDispatcher.forward(request, response);
 					
 				} catch (ClassNotFoundException e) {

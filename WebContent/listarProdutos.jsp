@@ -44,8 +44,8 @@
 									<td>${produto.preco_produto}</td>
 									<td>${produto.categoria}</td>
 									<td>${produto.quantidade_produto}</td>
-									<td><a href="EditarProduto?id_produto=${produto.id_produto}" class="button2">Editar</a></td>
-									<td><a href="ExcluirProduto?id_produto=${produto.id_produto}" class="button2">Excluir</a></td>
+									<td><a href="EditarProdutoServlet?id_produto=${produto.id_produto}" class="button2">Editar</a></td>
+									<td><a href="ExcluirProdutoServlet?id_produto=${produto.id_produto}" class="button2">Excluir</a></td>
 									
 									</tr>
 									</table>

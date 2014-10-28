@@ -20,7 +20,7 @@
 		</header>
 		<!-- Formulário aqui! -->
 		<form method="post"
-			action="http://localhost:8080/ListaAcessivel/CadastrarProdutoServle">
+			action="http://localhost:8080/ListaAcessivel/CadastrarProdutoServlet">
 
 			<fieldset>
 				<legend>
