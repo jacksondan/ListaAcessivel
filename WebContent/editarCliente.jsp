@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	import="fafica.listaacessivel.negocios.entidades.Cliente"
-	import="fafica.listaacessivel.negocios.Fachada"
-	import="fafica.listaacessivel.negocios.IFachada"
-	import="java.util.ArrayList" pageEncoding="ISO-8859-1"%>
+	 pageEncoding="ISO-8859-1"%>
+	 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -35,21 +34,12 @@ jQuery(function($){
 		</header>
 
 
-		<%
-			IFachada fachada = Fachada.getInstance();
-			Cliente usuarioDaSessao = (Cliente) session
-					.getAttribute("acessoUsuario");
-			Cliente usuario = fachada.pesquisarCliente(usuarioDaSessao);
-			ArrayList<String> telefones = new ArrayList<String>();
-			telefones = usuario.getTelefones();
-		%>
 		<!-- Formulário aqui! -->
 		<form method="post"
 			action="http://localhost:8080/ListaAcessivel/EditarUsuario">
 			<fieldset>
 				<legend>Dados de Login</legend>
-				<label for="email">E-mail:</label> <input type="hidden"
-					name="id_usuario" id="email" value="<%=usuario.getId_usuario()%>">
+				<label for="email">E-mail:</label>
 				<input type="email" name="email" id="email"
 					value="<%=usuario.getEmail()%>" size=60> <label for="senha">Senha:</label><br>
 				<input type="password" name="senha" id="senha"

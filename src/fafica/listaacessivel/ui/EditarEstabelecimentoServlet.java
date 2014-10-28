@@ -81,7 +81,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				String categoria = request.getParameter("categoria");
 				String cnpj = request.getParameter("cnpj");
 				String email = request.getParameter("email");
-				String senha = request.getParameter("senha");
+				String senha = estabelecimento.getSenha();
 				telefones.add(request.getParameter("telefone1"));
 				telefones.add(request.getParameter("telefone2"));
 				String rua = request.getParameter("rua");
@@ -92,9 +92,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String referencia = request.getParameter("referencia");
 				
-				String senhaEncriptada = encriptar(senha);
-				
-				Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, bairro, cidade, estado, cep, referencia);
+				Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senha, rua, numero, bairro, cidade, estado, cep, referencia);
 				entidade.setTelefones(telefones);
 				
 				fachada.alterarEstabelecimento(entidade);
@@ -108,16 +106,4 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 		}
 
 	}
-
-	public static String encriptar(String senha) {     
-        try {     
-             MessageDigest digest = MessageDigest.getInstance("MD5");      
-             digest.update(senha.getBytes());      
-             BASE64Encoder encoder = new BASE64Encoder ();      
-             return encoder.encode (digest.digest ());      
-        } catch (NoSuchAlgorithmException ns) {     
-             ns.printStackTrace ();      
-             return senha;      
-        }      
-   }
 }
