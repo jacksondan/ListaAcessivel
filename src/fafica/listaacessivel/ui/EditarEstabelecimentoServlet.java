@@ -6,11 +6,13 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
@@ -36,7 +38,27 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		Estabelecimento estabelecimento = (Estabelecimento) request.getAttribute("acessoEstabelecimento");
+		if(estabelecimento == null){
+			response.sendRedirect("index.jsp");
+		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
+				request.setAttribute("editarEstabeleciento", estabelecimento);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEs.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
