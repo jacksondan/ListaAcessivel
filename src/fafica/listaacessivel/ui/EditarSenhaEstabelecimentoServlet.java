@@ -44,7 +44,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
-				String senhaEncriptada = encriptar("");
+				String senhaEncriptada = encriptar("#");
 				  
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
