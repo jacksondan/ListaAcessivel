@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
+	pageEncoding="ISO-8859-1" %>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
@@ -43,16 +43,16 @@
 					Estado:        ${estabelecimento.estado}<br>
 					Cidade:        ${estabelecimento.cidade}<br>
 					Bairro:        ${estabelecimento.bairro}<br>
-					Rua:           ${editarEstabelecimento.rua}<br>
-					Número:		   ${editarEstabelecimento.numero}<br>
-					Referência:	   ${editarEstabelecimento.numero}<br>
+					Rua:           ${estabelecimento.rua}<br>
+					Número:		   ${estabelecimento.numero}<br>
+					Referência:	   ${estabelecimento.referencia}<br>
 
 					</fieldset>
 
 			<div class="nav">
 										<ul class="actions">
 											<li><a href="EditarEstabelecimentoServlet" class="button">Editar Perfil</a></li>
-											<li><a href="editarSenha.jsp" class="button">Editar Senha</a></li>
+											<li><a href="EditarSenhaEstabelecimentoServlet" class="button">Editar Senha</a></li>
 											
 										</ul>
 							</div>
