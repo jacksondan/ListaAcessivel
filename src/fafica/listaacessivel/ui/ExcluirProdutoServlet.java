@@ -2,8 +2,6 @@ package fafica.listaacessivel.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +20,6 @@ import fafica.listaacessivel.negocios.entidades.Produto;
 @WebServlet("/ExcluirProduto")
 public class ExcluirProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,19 +34,12 @@ public class ExcluirProdutoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		int id_produto = Integer.parseInt(request.getParameter("id_produto"));
 		try {
-			List<Produto> lista_produto = new ArrayList<Produto>();
-			fachada = Fachada.getInstance();
-			
-			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
-					
-			lista_produto = fachada.listarProduto();
-			
-			for(Produto produto : lista_produto){
-				if(produto.getId_produto() == id_produto){
-					fachada.excluirProduto(produto);
-				}
-			}
+			IFachada fachada = Fachada.getInstance();
+			Produto produto = new Produto();
+			produto.setId_produto(id_produto);
+			fachada.excluirProduto(produto);
 						
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
