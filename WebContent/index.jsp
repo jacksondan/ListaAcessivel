@@ -21,13 +21,10 @@
 					<h2>Login</h2>
 				</header>
 			<div>
-			<%
-				if(request.getAttribute("erroLogin") != null){
-			%>
-				<p style="text-align:center;color:red;"><%=request.getAttribute("erroLogin")%></p>
-			<%
-				}
-			%>	
+			<c:if test="${erroLogin != null} ">
+				<p style="text-align:center;color:red;">${erroLogin}</p>
+			</c:if>
+
 			<form method="post" action="http://localhost:8080/ListaAcessivel/Index">
 			<fieldset >
 			<legend>Dados de Login</legend>
