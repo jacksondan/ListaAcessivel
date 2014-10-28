@@ -36,31 +36,29 @@ jQuery(function($){
 
 		<!-- Formulário aqui! -->
 		<form method="post"
-			action="http://localhost:8080/ListaAcessivel/EditarUsuario">
+			action="http://localhost:8080/ListaAcessivel/EditarClienteServlet">
 			<fieldset>
 				<legend>Dados de Login</legend>
 				<label for="email">E-mail:</label>
 				<input type="email" name="email" id="email"
-					value="<%=usuario.getEmail()%>" size=60> <label for="senha">Senha:</label><br>
-				<input type="password" name="senha" id="senha"
-					value="<%=usuario.getSenha()%>" size=15>
+					value="${editarCliente.email}" size=60> 
 			</fieldset>
 			<fieldset>
 				<legend>Dados Pessoais</legend>
 				<label for="nome">Nome Completo</label> <input type="text"
-					name="nome" id="nome" value="<%=usuario.getNome()%>" size=60>
+					name="nome" id="nome" value="${editarCliente.nome}" size=60>
 
 				<label for="cpf">CPF:</label><br> <input type="text" name="cpf"
-					id="cpf" value="<%=usuario.getCpf()%>" size=12><br>
+					id="cpf" value="${editarCliente.cpf}" size=12><br>
 			</fieldset>
 
 			<fieldset>
 				<legend>Telefones para Contato:</legend>
 				<label for="telefone1">Telefone 1:</label><br> <input
 					type="text" name="telefone1" id="telefone1"
-					value="<%=telefones.get(0)%>" size=20><br> <label
+					value="${editarCliente.telefones[0]}" size=20><br> <label
 					for="telefone2">Telefone 2:</label><br> <input type="text"
-					name="telefone2" id="telefone2" value="<%=telefones.get(1)%>"
+					name="telefone2" id="telefone2" value="${editarCliente.telefones[1]}"
 					size=20><br>
 			</fieldset>
 
@@ -70,21 +68,21 @@ jQuery(function($){
 					
 
 				<label for="cep">CEP:</label><br> <input type="text" name="cep"
-					id="cep" value="<%=usuario.getCep()%>" size=20><br> <label
+					id="cep" value="${editarCliente.cep}" size=20><br> <label
 					for="cidade">Cidade:</label><br> <input type="text"
-					name="cidade" id="cidade" value="<%=usuario.getCidade()%>" size=30><br>
+					name="cidade" id="cidade" value="${editarCliente.cidade}" size=30><br>
 
 				<label for="bairro">Bairro:</label><br> <input type="text"
-					name="bairro" id="bairro" value="<%=usuario.getBairro()%>" size=30><br>
+					name="bairro" id="bairro" value="${editarCliente.bairro}" size=30><br>
 
 				<label for="rua">Rua:</label><br> <input type="text" name="rua"
-					id="rua" value="<%=usuario.getRua()%>" size=60><br> <label
+					id="rua" value="${editarCliente.rua}" size=60><br> <label
 					for="numero">Número:</label><br> <input type="text"
-					name="numero" id="numero" value="<%=usuario.getNumero()%>" size=4><br>
+					name="numero" id="numero" value="${editarCliente.numero}" size=4><br>
 
 				<label for="referencia">Referência:</label><br> <input
 					type="text" name="referencia" id="referencia"
-					value="<%=usuario.getReferencia()%>" size=30><br>
+					value="${editarCliente.referencia}" size=30><br>
 
 			</fieldset>
 

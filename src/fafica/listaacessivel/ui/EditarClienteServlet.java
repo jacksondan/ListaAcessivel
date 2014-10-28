@@ -1,8 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
@@ -22,7 +19,7 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 /**
  * Servlet implementation class EditarUsuario
  */
-@WebServlet("/EditarUsuario")
+@WebServlet("/EditarClienteServlet")
 public class EditarClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
