@@ -50,7 +50,7 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 				pesquisa = fachada.pesquisarEstabelecimento(estabelecimento);
 				List<Lista> listas = fachada.listarListasDoEstabelecimento(pesquisa);
 				
-				request.setAttribute("listasdoestabelecimento", listas);
+				request.setAttribute("listasDoEstabelecimento", listas);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEs.jsp");
 				requestDispatcher.forward(request, response);
 				
