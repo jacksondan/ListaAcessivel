@@ -3,7 +3,7 @@
     import= "fafica.listaacessivel.negocios.Fachada"
     import= "fafica.listaacessivel.negocios.IFachada"
     import= "fafica.listaacessivel.negocios.entidades.Cliente"%>
-   
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE HTML>
 
 <html>
@@ -36,36 +36,40 @@
 			
 			<fieldset >
 			<legend>Dados Pessoais</legend>
-				E-mail: <%=usuario.getEmail()%><br>
+				E-mail: ${cliente.email}<br>
 				
-				Nome: <%=usuario.getNome()%><br>
+				Nome: ${cliente.nome}<br>
 				
-				CPF: <%=usuario.getCpf()%><br>
+				CPF: ${cliente.cpf}<br>
 				
 			</fieldset>
 			
 			<fieldset>
 			<legend>Telefones Para Contato</legend>
+			
+			<c:forEach items="${listacliente}" var="cliente" varStatus="status">
 			Telefone 1: <%=telefones.get(0) %><br>
 			Telefone 2: <%=telefones.get(1) %>
 			</fieldset>
-				
+			</c:forEach>	
+			
 				<fieldset >
+			
 			<legend>Dados de Localização</legend>
-				Estado: <%=usuario.getEstado() %><br>
+				Estado: ${cliente.estado}<br>
 				
-				CEP: <%=usuario.getCep() %><br>
+				CEP: ${cliente.cep}<br>
 				
-				Cidade:<br>
+				Cidade: ${cliente.cidade}<br>
 				
-				Bairro:<br>
+				Bairro: ${cliente.bairro}<br>
 				
-				Rua:<br>
+				Rua: ${cliente.rua}<br>
 				
 				
-				Número:<br>
+				Número: ${cliente.numero}<br>
 				
-				Referência:<br>
+				Referência: ${cliente.referencia}<br>
 			</fieldset>
 							<div class="nav">
 										<ul class="menu">
