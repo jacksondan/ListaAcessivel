@@ -97,7 +97,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				
 				fachada.alterarEstabelecimento(entidade);
 				
-				response.sendRedirect("visaoEs.jsp");
+				response.sendRedirect("PerfilEstabelecimentoServlet");
 						
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block

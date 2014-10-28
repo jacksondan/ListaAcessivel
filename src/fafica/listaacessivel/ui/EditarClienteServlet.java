@@ -98,7 +98,7 @@ public class EditarClienteServlet extends HttpServlet {
 				
 				fachada.alterarCliente(entidade);
 				
-				response.sendRedirect("editarCliente.jsp");
+				response.sendRedirect("PerfilClienteServlet");
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
