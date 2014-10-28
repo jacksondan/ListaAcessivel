@@ -41,13 +41,13 @@ public class PerfilClienteServlet extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}else{
 				try {
-					IFachada fachada;fachada = Fachada.getInstance();
-						
+					IFachada fachada = Fachada.getInstance();
 					cliente = fachada.pesquisarCliente(cliente);
 					
 					request.setAttribute("cliente", cliente);
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilCliente.jsp");
 					requestDispatcher.forward(request, response);
+					
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
