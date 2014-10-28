@@ -35,18 +35,21 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
 		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
-		try {
-			IFachada fachada = Fachada.getInstance();
-			
-			fachada.excluirEstabelecimento(estabelecimento);
-			
-			
-			response.sendRedirect("logout.jsp");
-			
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		if(estabelecimento == null){
+			response.sendRedirect("index.jsp");
+		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				fachada.excluirEstabelecimento(estabelecimento);
+						
+				response.sendRedirect("logout.jsp");
+						
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -34,20 +34,24 @@ public class ExcluirUsuarioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
-		Cliente usuario = (Cliente)session.getAttribute("acessoUsuario"); // Utilizar pra pegar codigo de Usuario
+		Cliente cliente = (Cliente)session.getAttribute("acessoCliente"); // Utilizar pra pegar codigo de Usuario
 		
-		try {
-			IFachada fachada = Fachada.getInstance();
-			
-			fachada.excluirCliente(usuario);
-			
-			
-			response.sendRedirect("logout.jsp");
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		if(cliente == null){
+			response.sendRedirect("index.jsp");
+		}else{
+		
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				fachada.excluirCliente(cliente);
+							
+				response.sendRedirect("logout.jsp");
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}	
 	}
 
 	/**

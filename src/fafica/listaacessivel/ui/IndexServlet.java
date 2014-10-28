@@ -72,7 +72,7 @@ public class IndexServlet extends HttpServlet {
 				System.out.println("************ "+classe+" ***************");
 				if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoUsuario", usuario);
+					session.setAttribute("acessoCliente", usuario);
 					response.sendRedirect("visaoUsuario.jsp");
 				}else{
 					HttpSession session = request.getSession(); 

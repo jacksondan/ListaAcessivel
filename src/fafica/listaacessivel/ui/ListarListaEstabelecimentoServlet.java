@@ -36,14 +36,6 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		HttpSession session = request.getSession();
 		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento");
 		Estabelecimento pesquisa = new Estabelecimento();
@@ -58,7 +50,7 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 				pesquisa = fachada.pesquisarEstabelecimento(estabelecimento);
 				List<Lista> listas = fachada.listarListasDoEstabelecimento(pesquisa);
 				
-				request.setAttribute("listasdoestabelecimento", listas);
+				request.setAttribute("listasDoEstabelecimento", listas);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEs.jsp");
 				requestDispatcher.forward(request, response);
 				
@@ -72,9 +64,13 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 			}
 		
 		}
-		
-		
-		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
 	}
 
 }
