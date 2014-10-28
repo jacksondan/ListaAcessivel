@@ -44,7 +44,7 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 				
 				fachada.excluirEstabelecimento(estabelecimento);
 						
-				response.sendRedirect("logout.jsp");
+				response.sendRedirect("LogoutServlet");
 						
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
