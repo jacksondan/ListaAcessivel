@@ -22,7 +22,7 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 /**
  * Servlet implementation class EditarEstabelecimento
  */
-@WebServlet("/EditarEstabelecimento")
+@WebServlet("/EditarEstabelecimentoServlet")
 public class EditarEstabelecimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,7 +47,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				request.setAttribute("editarEstabeleciento", estabelecimento);
+				request.setAttribute("editarEstabelecimento", estabelecimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEs.jsp");
 				requestDispatcher.forward(request, response);
 				
