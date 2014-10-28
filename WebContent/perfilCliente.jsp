@@ -4,7 +4,7 @@
     import= "fafica.listaacessivel.negocios.IFachada"
     import= "fafica.listaacessivel.negocios.entidades.Cliente"%>
  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
- <jsp:useBean id="cliente" class="fafica.listaacessivel.ui.PerfilClienteServlet" />
+ 
 <!DOCTYPE HTML>
 
 <html>
@@ -37,23 +37,21 @@
 			
 			<fieldset >
 			<legend>Dados Pessoais</legend>
-				E-mail: ${usuario.email}<br>
+				E-mail: ${cliente.email}<br>
 				
-				Nome: ${usuario.nome}<br>
+				Nome: ${cliente.nome}<br>
 				
-				CPF: ${usuario.cpf}<br>
+				CPF: ${cliente.cpf}<br>
 				
 			</fieldset>
 			
 			<fieldset>
 			<legend>Telefones Para Contato</legend>
 			
-			<c:forEach items="${listacliente}" var="cliente" varStatus="status">
-			Telefone 1: Teste<br>
-			Telefone 2: Teste
+			Telefone 1: ${cliente.telefones[0]} <br>
+			Telefone 2: ${cliente.telefones[1]}
 			</fieldset>
-			</c:forEach>	
-			
+						
 				<fieldset >
 			
 			<legend>Dados de Localização</legend>
