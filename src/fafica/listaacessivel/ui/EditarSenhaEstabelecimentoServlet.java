@@ -1,6 +1,8 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
@@ -41,6 +44,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
+				String senhaEncriptada = encriptar("");
 				  
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -58,5 +62,16 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
-
+	
+	public static String encriptar(String senha) {     
+        try {     
+             MessageDigest digest = MessageDigest.getInstance("MD5");      
+             digest.update(senha.getBytes());      
+             BASE64Encoder encoder = new BASE64Encoder ();      
+             return encoder.encode (digest.digest ());      
+        } catch (NoSuchAlgorithmException ns) {     
+             ns.printStackTrace ();      
+             return senha;      
+        }      
+   }      
 }
