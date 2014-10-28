@@ -17,7 +17,7 @@ import fafica.listaacessivel.negocios.IFachada;
 /**
  * Servlet implementation class ExcluirEstabelecimento
  */
-@WebServlet("/ExcluirEstabelecimento")
+@WebServlet("/ExcluirEstabelecimentoServlet")
 public class ExcluirEstabelecimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

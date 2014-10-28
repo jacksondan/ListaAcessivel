@@ -16,6 +16,7 @@
 	<div id="content2">
 		<header class="major">
 			<h2>Cadastro de Produtos</h2>
+			<h4>${mensagem}</h4> 
 		</header>
 		<!-- Formulário aqui! -->
 		<form method="post"
