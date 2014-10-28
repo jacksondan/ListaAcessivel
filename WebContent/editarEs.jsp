@@ -35,7 +35,7 @@
 
 
 		<form method="post"
-			action="http://localhost:8080/ListaAcessivel/EditarEstabelecimento">
+			action="http://localhost:8080/ListaAcessivel/EditarEstabelecimentoServlet">
 			
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
