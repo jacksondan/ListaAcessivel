@@ -68,10 +68,14 @@ jQuery(function($){
 					
 
 				<label for="cep">CEP:</label><br> <input type="text" name="cep"
-					id="cep" value="${editarCliente.cep}" size=20><br> <label
+					id="cep" value="${editarCliente.cep}" size=20><br> 
+					<label for="estado">Estado:</label><br> <input type="text"
+						name="estado" id="estado" value="${editarCliente.estado}" size=2><br>
+					
+					<label
 					for="cidade">Cidade:</label><br> <input type="text"
 					name="cidade" id="cidade" value="${editarCliente.cidade}" size=30><br>
-
+			
 				<label for="bairro">Bairro:</label><br> <input type="text"
 					name="bairro" id="bairro" value="${editarCliente.bairro}" size=30><br>
 
