@@ -6,20 +6,20 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>NomeEstabelecimento - Inicio</title>
+<title>NomeCliente - Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<%@include file="headerEs.html"%>
+	<%@include file="headerUs.html"%>
 
-	<%@include file="sidebarEs.html"%>
+	
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Senha</h2>
 		</header>
 
 		<form method="post"
-			action="http://localhost:8080/ListaAcessivel/EditarSenhaEstabelecimentoServlet">
+			action="http://localhost:8080/ListaAcessivel/EditarSenhaClienteServlet">
 			<p style="text-align:center;color:green;">${mensagem}</p>
 			<fieldset>
 				<legend>Edição de Senha</legend>

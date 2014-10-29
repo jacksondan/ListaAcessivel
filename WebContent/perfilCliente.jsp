@@ -60,7 +60,7 @@
 							<div class="nav">
 										<ul class="actions">
 											<li><a href="EditarClienteServlet" class="button">Editar</a></li>
-											<li><a href="EditarSenhaClienteServlet" class="button">Editar Senha</a></li>
+											<li><a href="editarSenhaCliente.jsp" class="button">Editar Senha</a></li>
 											<li><a href="ExcluirClienteServlet" class="button">Excluir Perfil</a></li>
 										</ul>
 							</div>
