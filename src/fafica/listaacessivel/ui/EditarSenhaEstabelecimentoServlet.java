@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,23 +39,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-		if(estabelecimento==null){
-			response.sendRedirect("index.jsp");
-		}else{
-			try {
-				IFachada fachada = Fachada.getInstance();
-				String senhaEncriptada = encriptar("#");
-				  
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
 	}
 
 	/**
@@ -61,7 +47,48 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+		if(estabelecimento==null){
+			response.sendRedirect("index.jsp");
+		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				String mensagem="";
+				
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				String novaSenha = encriptar(request.getParameter("senhaNova"));
+				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
+				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
+				String senhaBanco = estabelecimento.getSenha();
+				
+				if(senhaAtual.equals(senhaBanco)){
+					
+					estabelecimento.setSenha(confirmarSenha);
+					fachada.alterarEstabelecimento(estabelecimento);
+					
+					
+					
+				}else{
+					
+					request.setAttribute("mensagem",mensagem);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaEstabelecimento.jsp");
+					dispatcher.forward(request, response);
+				}
+				
+						
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+				
+				  
+			
 	}
+	
 	
 	public static String encriptar(String senha) {     
         try {     

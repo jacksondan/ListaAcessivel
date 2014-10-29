@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"
 	import="fafica.listaacessivel.negocios.entidades.Cliente"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -18,10 +19,12 @@
 		</header>
 
 		<form method="post"
-			action="http://localhost:8080/ListaAcessivel/EditarSenhaEstabalecimentoServlet">
+			action="http://localhost:8080/ListaAcessivel/EditarSenhaEstabelecimentoServlet">
 			<fieldset>
 				<legend>Edição de Senha</legend>
-				
+				<c:if test="${mensagem != null} ">
+				<p style="text-align:center;color:green;">${mensagem}</p>
+			</c:if>
 				<p>
 					<label for="senhaAtual">Senha Atual</label><br><input type="password"
 						placeholder="Digite a Senha Atual" name="senhaAtual" id="senhaAtual" size=30>
@@ -39,7 +42,7 @@
 			</fieldset>
 			<div class="12u">
 				<ul class="actions">
-					<li><input type="submit" value="Salvar Nova Senha" /></li>
+					<li><input type="submit"  class="button3" value="Salvar Nova Senha" /></li>
 
 				</ul>
 			</div>

@@ -51,8 +51,8 @@
 
 			<div class="nav">
 										<ul class="actions">
-											<li><a href="EditarEstabelecimentoServlet" class="button">Editar Perfil</a></li>
-											<li><a href="EditarSenhaEstabelecimentoServlet" class="button">Editar Senha</a></li>
+											<li><a href="EditarEstabelecimentoServlet" class="button3">Editar Perfil</a></li>
+											<li><a href="editarSenhaEstabelecimento.jsp" class="button3">Editar Senha</a></li>
 											
 										</ul>
 							</div>
