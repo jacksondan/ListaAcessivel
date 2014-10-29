@@ -76,8 +76,8 @@ public class EditarClienteServlet extends HttpServlet {
 				int id_usuario = cliente.getId_usuario();
 				String nome = request.getParameter("nome");
 				String cpf = request.getParameter("cpf");
-				String email = cliente.getSenha();
-				String senha = request.getParameter("senha");
+				String email = request.getParameter("email");
+				String senha = cliente.getSenha();
 				String cidade = request.getParameter("cidade");
 				String estado = request.getParameter("estado");
 				String rua = request.getParameter("rua");
@@ -90,7 +90,7 @@ public class EditarClienteServlet extends HttpServlet {
 				telefones.add(telefone1);
 				telefones.add(telefone2);
 		
-				Cliente entidade = new Cliente(id_usuario, nome, cpf, email, senha, cidade, estado, rua, bairro, numero, referencia, cep);
+				Cliente entidade = new Cliente(id_usuario,nome,cpf,email,senha,cidade,estado,rua,bairro,numero,referencia,cep);
 				entidade.setTelefones(telefones);
 				
 				fachada.alterarCliente(entidade);
