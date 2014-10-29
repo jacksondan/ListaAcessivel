@@ -40,10 +40,11 @@
 								alt="Ícone Cadastrar Estabelecimento Comércial"
 								style="width: 12em; heigth: 12em;"></a>
 						</p></li>
-			<ul class="menu">
-			
-					<li><a href="ListarClienteServlet" class="button">Listar Usuarios</a></li>
-					<li><a href="ListarEstabelecimentoServlet" class="button">Listar Estabalecimentos</a></li>
+						
+			<ul class="actions">
+			<br>
+					<li><a href="ListarClienteServlet" class="button3">Listar Usuarios</a></li>
+					<li><a href="ListarEstabelecimentoServlet" class="button3">Listar Estabalecimentos</a></li>
 			</ul>
 				</ul>
 				
@@ -51,5 +52,5 @@
 
 		</div>
 	</div>
-	<div id="right"></div>
+	<div><br></div>
 	<%@include file="footer.html"%>

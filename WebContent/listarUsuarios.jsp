@@ -69,16 +69,14 @@
 					</fieldset>
 	
 				</div>
+				</div>			
 				</div>
-				<div id="right"></div>
-				<div id="footer">
+				<div id="footer2">
 				<div id="copyright" class="container">
 						<ul class="icons">
 							<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>
 						</ul>
 					</div>
-				</div>
-							
 				</div>
 		</body>
 	</html>

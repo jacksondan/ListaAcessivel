@@ -37,14 +37,12 @@ jQuery(function($){
 		<!-- Formulário aqui! -->
 		<form method="post"
 			action="http://localhost:8080/ListaAcessivel/EditarClienteServlet">
-			<fieldset>
-				<legend>Dados de Login</legend>
-				<label for="email">E-mail:</label>
-				<input type="email" name="email" id="email"
-					value="${editarCliente.email}" size=60> 
-			</fieldset>
+			
 			<fieldset>
 				<legend>Dados Pessoais</legend>
+				<label for="email">E-mail:</label>
+				<input type="email" name="email" id="email"
+					value="${editarCliente.email}" size=60><br>
 				<label for="nome">Nome Completo</label> <input type="text"
 					name="nome" id="nome" value="${editarCliente.nome}" size=60>
 

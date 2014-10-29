@@ -57,7 +57,7 @@
 				
 				Referência: ${cliente.referencia} <br/>
 			</fieldset>
-							<div class="nav">
+							<div class="menu">
 										<ul class="actions">
 											<li><a href="EditarClienteServlet" class="button">Editar</a></li>
 											<li><a href="editarSenhaCliente.jsp" class="button">Editar Senha</a></li>
@@ -67,7 +67,7 @@
 			
 			</div>
 			
-			<div id="footer">
+			<div id="footer2">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

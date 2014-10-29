@@ -323,8 +323,10 @@ body,input,textarea,select
 			input[type="reset"]:hover,
 			.button:hover
 			{
-				color: #0080c0;
-				border-color: rgba(0, 65, 11,0.5);
+					color: white;
+				border-color: #c2c7cc;
+				background-color:#0080c0;
+				font-weight:bolder;
 			}
 
 	/* Button2 */
@@ -356,8 +358,10 @@ body,input,textarea,select
 			input[type="reset"]:hover,
 			.button2:hover
 			{
-				color: #0080c0;
-				border-color: rgba(0, 65, 11,0.5);
+				color: white;
+				border-color: #c2c7cc;
+				background-color:#0080c0;
+				font-weight:bolder;
 			}
 			
 				/* Button3 */
@@ -368,7 +372,7 @@ body,input,textarea,select
 			font-size:18px;
 			display: inline-block;
 			color: inherit;
-			background-color:  #c2c7cc;
+			background-color:  white;
 			text-decoration: none;
 			border: solid 1px #c2c7cc;
 			border-radius: 0.35em;
@@ -387,8 +391,11 @@ body,input,textarea,select
 			input[type="reset"]:hover,
 			.button3:hover
 			{
-				color: #0080c0;
+				color: white;
 				border-color: #c2c7cc;
+				background-color:#0080c0;
+				font-weight:bolder;
+				
 				}
 
 /*********************************************************************************/
@@ -555,7 +562,7 @@ body,input,textarea,select
 	background-color: #000040;
 	width:23%;
 	border-top: solid 1px #c2c7cc;
-	height:200%;
+	height:250%;
 	
 }
 
@@ -573,7 +580,7 @@ body,input,textarea,select
 #content2{
 	z-index:1;
 	position:right;
-	margin-left:10em;
+	margin-left:15em;
 	
 	background:none;
 	
