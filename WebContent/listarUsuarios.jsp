@@ -1,6 +1,6 @@
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Cliente"%>
-	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
+	    pageEncoding="ISO-8859-1"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!DOCTYPE HTML>
 	<html>
 		<head>
@@ -9,9 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-	<%
-		Fachada fachada = Fachada.getInstance();
-	%>
+	
 			<div id="container">
 					<div id="header-wrapper">
 					<div id="header" class="container">
@@ -27,9 +25,7 @@
 				<div>
 					
 					<fieldset >
-					<%
-						for(Cliente u : fachada.listarCliente()){
-					%>
+					
 						<table class="default" >
 								<tr>
 									<th>Id</th>
@@ -47,30 +43,23 @@
 									</tr>
 									
 									<tr>
-									<td><%= u.getId_usuario()%></td>
+									<td>${cliente.id_usuario}</td>
 									
-									<td><%= u.getNome()%></td>
-									<td><%= u.getCpf()%></td>
-									<td><%= u.getEmail()%></td>
-									<td><%= u.getCidade()%></td>
-									<td><%= u.getEstado()%></td>
-									<td><%= u.getRua()%></td>
-									<td><%= u.getBairro()%></td>
-									<td><%= u.getNumero()%></td>
-									<td><%= u.getReferencia()%></td>
-									<td><%= u.getCep()%></td>
-									<td><%
-										for(String tel : u.getTelefones()){
-									%>
-											<%=tel+","%>
-									<%
-										}
-									%></td>
+									<td>${listacliente.nome}</td>
+									<td>${listacliente.cpf}</td>
+									<td>${listacliente.email}</td>
+									<td>${listacliente.cidade}</td>
+									<td>${listacliente.estado}</td>
+									<td>${listacliente.rua}</td>
+									<td>${listacliente.bairro}</td>
+									<td>${listacliente.numero}</td>
+									<td>${listacliente.referencia}</td>
+									<td>${listacliente.cep}</td>
+									<td>${listacliente.telefones[0]}</td>
+									<td>${listacliente.telefones[1]}</td>
 									</tr>	
 						</table>
-					<% 
-						}
-					%>		
+						
 					</fieldset>
 	
 				</div>
