@@ -17,14 +17,14 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 /**
  * Servlet implementation class ExcluirUsuario
  */
-@WebServlet("/ExcluirUsuario")
-public class ExcluirUsuarioServlet extends HttpServlet {
+@WebServlet("/ExcluirClienteServlet")
+public class ExcluirClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExcluirUsuarioServlet() {
+    public ExcluirClienteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,13 +39,11 @@ public class ExcluirUsuarioServlet extends HttpServlet {
 		if(cliente == null){
 			response.sendRedirect("index.jsp");
 		}else{
-		
 			try {
 				IFachada fachada = Fachada.getInstance();
-				
 				fachada.excluirCliente(cliente);
 							
-				response.sendRedirect("logout.jsp");
+				response.sendRedirect("LogoutServlet");
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
