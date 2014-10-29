@@ -25,7 +25,7 @@
 				<div>
 					
 					<fieldset >
-					
+					<c:forEach items="${listacliente}" var="listacliente" varStatus="status">
 						<table class="default" >
 								<tr>
 									<th>Id</th>
@@ -43,7 +43,7 @@
 									</tr>
 									
 									<tr>
-									<td>${cliente.id_usuario}</td>
+									<td>${listacliente.id_usuario}</td>
 									
 									<td>${listacliente.nome}</td>
 									<td>${listacliente.cpf}</td>
@@ -55,10 +55,16 @@
 									<td>${listacliente.numero}</td>
 									<td>${listacliente.referencia}</td>
 									<td>${listacliente.cep}</td>
-									<td>${listacliente.telefones[0]}</td>
-									<td>${listacliente.telefones[1]}</td>
-									</tr>	
+									<td>
+										<ol>
+										<c:forEach items="${listacliente.telefones}" var="telefone" varStatus="status">
+											<li>${telefone}</li>
+										</c:forEach>
+										</ol>
+									</td>
+								</tr>	
 						</table>
+					</c:forEach>	
 						
 					</fieldset>
 	
