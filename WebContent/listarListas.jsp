@@ -1,6 +1,6 @@
 	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Lista"%>
-	<%@page import= "fafica.listaacessivel.negocios.Fachada"%>
+	    pageEncoding="ISO-8859-1" %>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!DOCTYPE HTML>
 	<html>
 		<head>
@@ -9,9 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-	<%
-		Fachada fachada = Fachada.getInstance(); 
-	%>
 			<div id="container">
 					<div id="header-wrapper">
 					<div id="header" class="container">
@@ -27,9 +24,6 @@
 				<div>
 					
 					<fieldset >
-					<%
-						for(Lista l : fachada.listarLista()){
-					%>
 						<table>
 								<tr>
 									
@@ -41,10 +35,7 @@
 									</td>
 								</tr>
 						</table>
-					<% 
-						}
-					%>	
-						
+					
 					</fieldset>
 							
 					
