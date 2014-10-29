@@ -64,29 +64,23 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 				String senhaBanco = estabelecimento.getSenha();
 				
 				if(senhaAtual.equals(senhaBanco)){
-					
 					estabelecimento.setSenha(confirmarSenha);
 					fachada.alterarEstabelecimento(estabelecimento);
 					
-					
-					
+					mensagem = "Senha editada com sucesso!";
 				}else{
-					
-					request.setAttribute("mensagem",mensagem);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaEstabelecimento.jsp");
-					dispatcher.forward(request, response);
+					mensagem = "Ocorreu um erro e a senha não foi editada!";
 				}
-				
+				request.setAttribute("mensagem",mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaEstabelecimento.jsp");
+				dispatcher.forward(request, response);
 						
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
-				
-				  
-			
+	
 	}
 	
 	
