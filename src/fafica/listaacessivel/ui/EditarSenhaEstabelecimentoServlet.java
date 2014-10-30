@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,7 +37,13 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+		if(estabelecimento==null){
+			response.sendRedirect("index.jsp");
+		}else{
+			response.sendRedirect("editarSenhaEstabelecimento.jsp");
+		}
 		
 	}
 
@@ -58,7 +63,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 				String mensagem="";
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				String novaSenha = encriptar(request.getParameter("senhaNova"));
+				
 				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
 				String senhaBanco = estabelecimento.getSenha();

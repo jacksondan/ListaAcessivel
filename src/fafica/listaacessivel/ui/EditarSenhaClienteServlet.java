@@ -37,7 +37,13 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
+		if(cliente == null){
+			response.sendRedirect("index.jsp");
+		}else{
+			response.sendRedirect("editarSenhaCliente.jsp");
+		}
 	}
 
 	/**
@@ -55,6 +61,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 				String mensagem="";
 				
 				cliente = fachada.pesquisarCliente(cliente);
+				
 				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
 				String senhaBanco = cliente.getSenha();
