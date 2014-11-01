@@ -37,7 +37,7 @@
 				</p>
 				<p>
 					<label for="confirmarSenha">Confirmar Senha</label><br> <input type="password"
-						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha" onBlur="validarSenha()">
+						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha" onblur="validarSenha()">
 				</p>
 				
 
@@ -45,7 +45,7 @@
 			<div class="12u">
 				<ul class="actions">
 					<li><input type="submit" class="button3"
-						value="Salvar Nova Senha" onBlur="validarSenha()" /></li>
+						value="Salvar Nova Senha" onblur="validarSenha()"  onClick="validarSenha()"/></li>
 
 				</ul>
 			</div>

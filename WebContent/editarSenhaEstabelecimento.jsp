@@ -38,7 +38,7 @@
 				</p>
 				<p>
 					<label for="confirmarSenha">Confirmar Senha</label><br> <input type="password"
-						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha">
+						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha" onblur="validarSenha()">
 				</p>
 				
 			</fieldset>

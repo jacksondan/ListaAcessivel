@@ -64,15 +64,16 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 				
 				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
+				String senhaNova = encriptar(request.getParameter("senhaNova"));
 				String senhaBanco = cliente.getSenha();
 				
-				if(senhaAtual.equals(senhaBanco)){
+				if(senhaAtual.equals(senhaBanco) && senhaNova.equals(confirmarSenha)){
 					cliente.setSenha(confirmarSenha);
 					fachada.alterarCliente(cliente);
 					
 					mensagem = "Senha editada com sucesso!";
 				}else{
-					mensagem = "Ocorreu um erro e a senha n√£o foi editada!";
+					mensagem = "Ocorreu um erro e a senha n„o foi editada!";
 				}
 				request.setAttribute("mensagem",mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");

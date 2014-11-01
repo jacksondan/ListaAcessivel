@@ -63,12 +63,12 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 				String mensagem="";
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				
+				String senhaNova= encriptar(request.getParameter("senhaNova"));
 				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
 				String senhaBanco = estabelecimento.getSenha();
 				
-				if(senhaAtual.equals(senhaBanco)){
+				if(senhaAtual.equals(senhaBanco)&&senhaNova.equals(confirmarSenha)){
 					estabelecimento.setSenha(confirmarSenha);
 					fachada.alterarEstabelecimento(estabelecimento);
 					
