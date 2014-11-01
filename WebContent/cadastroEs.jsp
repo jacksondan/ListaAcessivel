@@ -44,22 +44,22 @@ jQuery(function($){
 				<fieldset>
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"
-						placeholder="Digite o E-mail" name="email" id="email" size=60>
+						placeholder="Digite o E-mail" name="email" id="email" size=60 required="email" >
 
 					<label for="senha">Senha:</label><br> <input type="password"
-						placeholder="Digite a Senha" name="senha" id="senha" size=15>
+						placeholder="Digite a Senha" name="senha" id="senha" size=15 required="senha" >
 				</fieldset>
 				<fieldset>
 					<legend>Dados do Estabelecimento</legend>
 					<label for="nome_fantasia">Nome Fantasia:</label> <input
 						type="text" placeholder="Digite o nome fantasia"
-						name="nome_fantasia" id="nome_fantasia" size=60> <label
+						name="nome_fantasia" id="nome_fantasia" size=60 required="nome_fantasia"> <label
 						for="nome_juridico">Nome Jurídico:</label> <input type="text"
 						placeholder="Digite o nome Jurídico" name="nome_juridico"
-						id="nome_juridico" size=60> <label for="cnpj">CNPJ:</label><br>
+						id="nome_juridico" size=60 required="nome_juridico"> <label for="cnpj">CNPJ:</label><br>
 					<input type="text" placeholder="Digite o CNPJ" name="cnpj"
-						id="cnpj" size=12><br> Categoria:<br> <select
-						name="categoria">
+						id="cnpj" size=12 required="cnpj"><br> Categoria:<br> <select
+						name="categoria" required="categoria">
 						<option>Supermercado</option>
 						<option>Shopping</option>
 						<option>Frigorífico</option>
@@ -70,9 +70,9 @@ jQuery(function($){
 					<legend>Telefones para Contato</legend>
 					<label for="telefone1">Telefone 1:</label><br> <input
 						type="text" placeholder="Digite seu telefone" name="telefone1"
-						id="telefone1" size=20><br> 
+						id="telefone1" size=20 required="telefone1"><br> 
 						<label for="telefone2">Telefone2:</label>
-						<br><input type="text" placeholder="Digite seu telefone"
+						<br><input type="text" placeholder="Digite o segundo telefone"
 						name="telefone2" id="telefone2" size=20>
 				</fieldset>
 
@@ -81,7 +81,7 @@ jQuery(function($){
 
 					<label for="cep">CEP:</label><br> 
 					<input type="text" placeholder="Digite o CEP" onblur="consultacep(this.value)"
-						name="cep" id="cep" size=20><br> 
+						name="cep" id="cep" size=20 required="cep"><br> 
 					
 					<label for="cidade">Cidade:</label><br>
 					<input type="text" name="cidade" id="cidade" size=60><br>
@@ -89,17 +89,23 @@ jQuery(function($){
 					<label for="estado">Estado:</label><br> <input type="text"
 						name="estado" id="estado" size=2><br> <label
 						for="bairro">Bairro:</label><br> <input type="text"
-						placeholder="Digite o Bairro" name="bairro" id="bairro" size=30><br>
+						placeholder="Digite o Bairro" name="bairro" id="bairro" size=30 required= "bairro"><br>
 
 					<label for="rua">Rua:</label><br> <input type="text"
-						placeholder="Digite a Rua" name="rua" id="rua" size=60><br>
+						placeholder="Digite a Rua" name="rua" id="rua" size=60 required="rua"><br>
 
 					<label for="numero">Número:</label><br> <input type="text"
-						placeholder="Digite número" name="numero" id="numero" size=4><br>
+						placeholder="Digite número" name="numero" id="numero" size=4 required="numero"><br>
+						
+					<label
+					for="complemento">Complemento:</label><br> 
+					<input type="text"
+					name="complemento" id="complemento"  size=60 required="complemento"><br>
+						
 
 					<label for="referencia">Referência:</label><br> <input
 						type="text" placeholder="Digite Referência" name="referencia"
-						id="referencia" size=30><br>
+						id="referencia" size=60 required="referencia"><br>
 
 				</fieldset>
 

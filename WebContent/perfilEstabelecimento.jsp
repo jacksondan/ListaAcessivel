@@ -21,17 +21,17 @@
 		</header>
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
-					E-mail: 	   ${estabelecimento.email}<br>
-					Nome Fantasia: ${estabelecimento.nome_fantasia}<br>
-					Nome Jurídico: ${estabelecimento.nome_juridico}<br>
-					CPNPJ:		   ${estabelecimento.cnpj}<br>
+					E-mail: 	   ${estabelecimento.email}<br/>
+					Nome Fantasia: ${estabelecimento.nome_fantasia}<br/>
+					Nome Jurídico: ${estabelecimento.nome_juridico}<br/>
+					CPNPJ:		   ${estabelecimento.cnpj}<br/>
 					Categoria: 	   ${estabelecimento.categoria}
 			</fieldset>
 
 			<fieldset>
 				<legend>Telefones para Contato</legend>
 				
-					Telefone 1:    ${estabelecimento.telefones[0]}<br>
+					Telefone 1:    ${estabelecimento.telefones[0]}<br/>
 					Telefone 2:    ${estabelecimento.telefones[1]}
 				
 			</fieldset>
@@ -39,13 +39,14 @@
 			<fieldset>
 				<legend>Dados de Localização</legend>
 				
-					CEP: 		   ${estabelecimento.cep }<br>
-					Estado:        ${estabelecimento.estado}<br>
-					Cidade:        ${estabelecimento.cidade}<br>
-					Bairro:        ${estabelecimento.bairro}<br>
-					Rua:           ${estabelecimento.rua}<br>
-					Número:		   ${estabelecimento.numero}<br>
-					Referência:	   ${estabelecimento.referencia}<br>
+					CEP: 		   ${estabelecimento.cep }<br/>
+					Estado:        ${estabelecimento.estado}<br/>
+					Cidade:        ${estabelecimento.cidade}<br/>
+					Bairro:        ${estabelecimento.bairro}<br/>
+					Rua:           ${estabelecimento.rua}<br/>
+					Número:		   ${estabelecimento.numero}<br/>
+					Complemento:   ${estabelecimento.complemento}<br/>
+					Referência:	   ${estabelecimento.referencia}<br/>
 
 					</fieldset>
 

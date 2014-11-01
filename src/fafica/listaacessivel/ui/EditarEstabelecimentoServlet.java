@@ -83,6 +83,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				telefones.add(request.getParameter("telefone2"));
 				String rua = request.getParameter("rua");
 				String numero = request.getParameter("numero");
+				String complemento = request.getParameter("complemento");
 				String bairro = request.getParameter("bairro");
 				String cidade = request.getParameter("cidade");
 				String estado = request.getParameter("estado");

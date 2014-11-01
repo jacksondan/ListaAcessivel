@@ -28,16 +28,16 @@
 			
 				<p>
 					<label for="senhaAtual">Senha Atual</label><br><input type="password"
-						placeholder="Digite a Senha Atual" name="senhaAtual" id="senhaAtual" size=30>
+						placeholder="Digite a Senha Atual" name="senhaAtual" id="senhaAtual" size=30 required="senhaAtual">
 				</p>
 
 				<p>
 					<label for="senhaNova">Nova Senha</label><br> <input type="password"
-						placeholder="Digite a Senha" name="senhaNova" id="senhaNova" size=30>
+						placeholder="Digite a Senha" name="senhaNova" id="senhaNova" size=30 required="senhaNova">
 				</p>
 				<p>
 					<label for="confirmarSenha">Confirmar Senha</label><br> <input type="password"
-						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30>
+						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha">
 				</p>
 				
 			</fieldset>

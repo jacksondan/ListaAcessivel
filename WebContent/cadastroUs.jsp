@@ -43,24 +43,24 @@ jQuery(function($){
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"
-						placeholder="Digite o E-mail" name="email" id="email" size=60>
+						placeholder="Digite o E-mail" name="email" id="email"  required="email" size=60>
 
 					<label for="senha">Senha:</label><br> <input type="password"
-						placeholder="Digite a Senha" name="senha" id="senha" size=15>
+						placeholder="Digite a Senha" name="senha" id="senha" size=15 required="senha">
 				</fieldset>
 				<fieldset>
 					<legend>Dados Pessoais</legend>
 					<label for="nome">Nome Completo</label> <input type="text"
 						placeholder="Digite seu nome completo" name="nome" id="nome"
-						size=60> <label for="cpf">CPF:</label><br> <input
-						type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=12><br>
+						size=60 require="nome"> <label for="cpf">CPF:</label><br> <input
+					type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=12 required= "cpf" ><br>
 				</fieldset>
 				<fieldset>
 					<legend>Telefones para Contato</legend>
 					<label for="telefone1">Telefone 1:</label><br> <input
 						type="text" placeholder="Digite seu telefone" name="telefone1"
-						id="telefone1" size=20><br> <label for="telefone 2">Telefone
-						2:</label><br> <input type="text" placeholder="Digite seu telefone"
+						id="telefone1" size=20 required="telefone1"><br> <label for="telefone 2">Telefone
+						2:</label><br> <input type="text" placeholder="Digite o segundo telefone"
 						name="telefone2" id="telefone2" size=20><br>
 				</fieldset>
 
@@ -68,27 +68,32 @@ jQuery(function($){
 					<legend>Dados de Localização</legend>
 
 					<label for="cep">CEP:</label><br> <input type="text"
-						placeholder="Digite o CEP" onblur="consultacep(this.value)" name="cep" id="cep" size=20><br>
+						placeholder="Digite o CEP" onblur="consultacep(this.value)" name="cep" id="cep" size=20 required="cep"><br>
 
 					<label for="cidade">Cidade:</label><br> <input type="text"
 					 name="cidade" id="cidade" size=60><br>
 						
 					<label for="estado">Estado:</label><br> <input type="text"
 					name="estado" id="estado" size=2><br>
-						
-
+					
 					<label for="bairro">Bairro:</label><br> <input type="text"
-						placeholder="Digite o Bairro" name="bairro" id="bairro" size=30><br>
+						placeholder="Digite o Bairro" name="bairro" id="bairro" size=30 require="bairro"><br>
 
 					<label for="rua">Rua:</label><br> <input type="text"
-						placeholder="Digite a Rua" name="rua" id="rua" size=60><br>
+						placeholder="Digite a Rua" name="rua" id="rua" size=60 required="rua"><br>
 
 					<label for="numero">Número:</label><br> <input type="text"
-						placeholder="Digite número" name="numero" id="numero" size=4><br>
+						placeholder="Digite número" name="numero" id="numero" size=4 required="numero"><br>
+						
+					<label
+					for="complemento">Complemento:</label><br> 
+					<input type="text"
+					name="complemento" id="complemento"  size=60 required="complemento"> <br>
+						
 
 					<label for="referencia">Referência:</label><br> <input
 						type="text" placeholder="Digite Referência" name="referencia"
-						id="referencia" size=30><br>
+						id="referencia" size=60 required="referencia"><br>
 
 				</fieldset>
 

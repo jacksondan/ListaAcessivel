@@ -40,15 +40,15 @@
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
 				<label for="email">E-mail:</label>  
-					<input type="email" name="email" id="email" value="${editarEstabelecimento.email}" size=60>
+					<input type="email" name="email" id="email" value="${editarEstabelecimento.email}" size=60 required="email">
 				<label for="nome_fantasia">Nome Fantasia:</label> <input type="text"
 					name="nome_fantasia" id="nome_fantasia"
-					value="${editarEstabelecimento.nome_fantasia}" size=60> <label
+					value="${editarEstabelecimento.nome_fantasia}" size=60 required="nome_fantasia"> <label
 					for="nome_juridico">Nome Jurídico:</label> <input type="text"
 					name="nome_juridico" id="nome_juridico"
-					value="${editarEstabelecimento.nome_juridico}" size=60> <label
+					value="${editarEstabelecimento.nome_juridico}" size=60 required="nome_juridico"> <label
 					for="cnpj">CPNPJ:</label><br> <input type="text" name="cnpj"
-					id="cnpj" value="${editarEstabelecimento.cnpj}" size=12><br>
+					id="cnpj" value="${editarEstabelecimento.cnpj}" size=12  required="cnpj"><br>
 
 				Categoria:<br> <select name="categoria">
 					<option selected="${editarEstabelecimento.categoria}"
@@ -57,6 +57,8 @@
 					<option>Shopping</option>
 					<option>Frigorífico</option>
 					<option>Fast-Food</option>
+					<option>Farmácia</option>
+					
 				</select><br>
 			</fieldset>
 
@@ -65,7 +67,7 @@
 				
 				<label for="telefone1">Telefone 1:</label><br> <input
 					type="text" name="telefone1" id="telefone1"
-					value="${editarEstabelecimento.telefones[0]}" size=20><br> <label
+					value="${editarEstabelecimento.telefones[0]}" size=20 required="telefone1"><br> <label
 					for="telefone 2">Telefone 2:</label><br> <input type="text"
 					name="telefone2" id="telefone2" value="${editarEstabelecimento.telefones[1]}"
 					size=20><br>
@@ -74,23 +76,30 @@
 				<legend>Dados de Localização</legend>
 				<p>
 					<label for="cep">CEP:</label><br> <input type="text"
-						name="cep" id="cep" value="${editarEstabelecimento.cep }"  onblur="consultacep(this.value)" size=20><br>
+						name="cep" id="cep" value="${editarEstabelecimento.cep }"  onblur="consultacep(this.value)" size=20 required="cep"><br>
 						<label for="estado">Estado:</label><br> <input type="text"
 						name="estado" id="estado" value="${editarEstabelecimento.estado}" size=2><br>
 					<label for="cidade">Cidade:</label><br> <input type="text"
 						name="cidade" id="cidade" value="${editarEstabelecimento.cidade}"
 						size=30><br> <br> <label for="bairro">Bairro:</label><br>
 					<input type="text" name="bairro" id="bairro"
-						value="${editarEstabelecimento.bairro}" size=30><br>
+						value="${editarEstabelecimento.bairro}" size=30 required="bairro"><br>
 
 					<label for="rua">Rua:</label><br> <input type="text"
-						name="rua" id="rua" value="${editarEstabelecimento.rua}" size=60><br>
+						name="rua" id="rua" value="${editarEstabelecimento.rua}" size=60 required="rua"><br>
 
 					<label for="numero">Número:</label><br> <input type="text"
 						name="numero" id="numero" value="${editarEstabelecimento.numero}"
-						size=4><br> <label for="referencia">Referência:</label><br>
+						size=4 required="numero"><br>
+						
+						<label
+					for="complemento">Complemento:</label><br> 
+					<input type="text"
+					name="complemento" id="complemento" value="${editarEstabelecimento.complemento}" size=60 required="complemento"><br>
+						
+						 <label for="referencia">Referência:</label><br>
 					<input type="text" name="referencia" id="referencia"
-						value="${editarEstabelecimento.referencia}" size=30><br>
+						value="${editarEstabelecimento.referencia}" size=60 required="referencia"><br>
 			</fieldset>
 
 			<div class="12u">

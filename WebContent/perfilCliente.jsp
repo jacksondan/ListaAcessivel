@@ -22,14 +22,15 @@
 			<!-- Conteudo-->
 			
 			
-			<fieldset >
+			<fieldset>
 			<legend>Dados Pessoais</legend>
+				<p>
 				E-mail: ${cliente.email} <br/>
 				
 				Nome: ${cliente.nome} <br/>
 				
 				CPF: ${cliente.cpf} <br/>
-				
+				</p>
 			</fieldset>
 			
 			<fieldset>
@@ -52,8 +53,9 @@
 				
 				Rua: ${cliente.rua} <br/>
 				
-				
 				Número: ${cliente.numero} <br/>
+				
+				Complemento: ${cliente.complemento}<br/>
 				
 				Referência: ${cliente.referencia} <br/>
 			</fieldset>
