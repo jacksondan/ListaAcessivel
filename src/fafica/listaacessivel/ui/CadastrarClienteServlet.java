@@ -58,6 +58,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 			String rua = request.getParameter("rua");
 			String bairro = request.getParameter("bairro");
 			String numero = request.getParameter("numero");
+			String complemento = request.getParameter("complemento");
 			String referencia = request.getParameter("referencia");
 			String cep = request.getParameter("cep");
 			String telefone1 = request.getParameter("telefone1");
@@ -67,7 +68,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha);
 	
-			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, referencia, cep);
+			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, complemento, referencia, cep);
 			entidade.setTelefones(telefones);
 			
 			fachada.adicionarCliente(entidade);

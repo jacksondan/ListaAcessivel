@@ -59,6 +59,7 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 			telefones.add(request.getParameter("telefone2"));
 			String rua = request.getParameter("rua");
 			String numero = request.getParameter("numero");
+			String complemento = request.getParameter("complemento");
 			String bairro = request.getParameter("bairro");
 			String cidade = request.getParameter("cidade");
 			String estado = request.getParameter("estado");
@@ -67,7 +68,7 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 			
 			String senhaEncriptada = encriptar(senha);
 			
-			Estabelecimento entidade = new Estabelecimento(nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, bairro, cidade, estado, cep, referencia);
+			Estabelecimento entidade = new Estabelecimento(nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, complemento, bairro, cidade, estado, cep, referencia);
 			entidade.setTelefones(telefones);
 			fachada.adicionarEstabelecimento(entidade);
 			
