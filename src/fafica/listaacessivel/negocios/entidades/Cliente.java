@@ -11,9 +11,9 @@ public class Cliente extends Usuario{
 	
 	public Cliente(String nome, String cpf, String email, String senha,
 			String cidade, String estado, String rua, String bairro,
-			String numero, String referencia, String cep) {
+			String numero, String complemento, String referencia, String cep) {
 		
-		super(email, senha, cidade, estado, rua, bairro, numero, referencia,
+		super(email, senha, cidade, estado, rua, bairro, numero, complemento, referencia,
 				cep);
 		this.nome = nome;
 		this.cpf = cpf;
@@ -21,9 +21,9 @@ public class Cliente extends Usuario{
 
 	public Cliente(int id_usuario, String nome, String cpf, String email,
 			String senha, String cidade, String estado, String rua,
-			String bairro, String numero, String referencia, String cep) {
+			String bairro, String numero, String complemento, String referencia, String cep) {
 		super(id_usuario, email, senha, cidade, estado, rua, bairro, numero,
-				referencia, cep);
+				complemento, referencia, cep);
 		this.nome = nome;
 		this.cpf = cpf;
 	}

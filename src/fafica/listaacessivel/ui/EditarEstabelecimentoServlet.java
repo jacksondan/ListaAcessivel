@@ -90,7 +90,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String referencia = request.getParameter("referencia");
 				
-				Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senha, rua, numero, bairro, cidade, estado, cep, referencia);
+				Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senha, rua, numero, complemento, bairro, cidade, estado, cep, referencia);
 				entidade.setTelefones(telefones);
 				
 				fachada.alterarEstabelecimento(entidade);

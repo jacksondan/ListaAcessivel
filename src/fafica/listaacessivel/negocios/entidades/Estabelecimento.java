@@ -13,9 +13,9 @@ public class Estabelecimento extends Usuario{
 	
 	public Estabelecimento(String nome_fantasia, String nome_juridico,
 			String categoria, String cnpj, String email, String senha,
-			String rua, String numero, String bairro, String cidade,
+			String rua, String numero, String complemento, String bairro, String cidade,
 			String estado, String cep, String referencia) {
-		super(email, senha, cidade, estado, rua, bairro, numero, referencia,
+		super(email, senha, cidade, estado, rua, bairro, numero, complemento, referencia,
 				cep);
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;
@@ -25,9 +25,9 @@ public class Estabelecimento extends Usuario{
 
 	public Estabelecimento(int id_usuario, String nome_fantasia,
 			String nome_juridico, String categoria, String cnpj, String email,
-			String senha, String rua, String numero, String bairro,
+			String senha, String rua, String numero, String complemento, String bairro,
 			String cidade, String estado, String cep, String referencia) {
-		super(id_usuario, email, senha, cidade, estado, rua, bairro, numero,
+		super(id_usuario, email, senha, cidade, estado, rua, bairro, numero, complemento,
 				referencia, cep);
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;

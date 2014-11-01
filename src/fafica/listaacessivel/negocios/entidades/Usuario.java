@@ -25,7 +25,7 @@ public abstract class Usuario {
 	
 	
 	public Usuario(String email, String senha, String cidade, String estado,
-			String rua, String bairro, String numero, String referencia,
+			String rua, String bairro, String numero, String complemento, String referencia,
 			String cep) {
 		super();
 		this.email = email;
@@ -34,13 +34,14 @@ public abstract class Usuario {
 		this.estado = estado;
 		this.rua = rua;
 		this.bairro = bairro;
+		this.complemento = complemento;
 		this.numero = numero;
 		this.referencia = referencia;
 		this.cep = cep;
 	}
 	
 	public Usuario(int id_usuario, String email, String senha, String cidade,
-			String estado, String rua, String bairro, String numero,
+			String estado, String rua, String bairro, String numero, String complemento,
 			String referencia, String cep) {
 		super();
 		this.id_usuario = id_usuario;
@@ -51,6 +52,7 @@ public abstract class Usuario {
 		this.rua = rua;
 		this.bairro = bairro;
 		this.numero = numero;
+		this.complemento = complemento;
 		this.referencia = referencia;
 		this.cep = cep;
 	}

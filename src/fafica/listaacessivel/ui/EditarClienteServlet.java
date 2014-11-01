@@ -83,6 +83,7 @@ public class EditarClienteServlet extends HttpServlet {
 				String rua = request.getParameter("rua");
 				String bairro = request.getParameter("bairro");
 				String numero = request.getParameter("numero");
+				String complemento = request.getParameter("complemento");
 				String referencia = request.getParameter("referencia");
 				String cep = request.getParameter("cep");
 				String telefone1 = request.getParameter("telefone1");
@@ -90,7 +91,7 @@ public class EditarClienteServlet extends HttpServlet {
 				telefones.add(telefone1);
 				telefones.add(telefone2);
 		
-				Cliente entidade = new Cliente(id_usuario,nome,cpf,email,senha,cidade,estado,rua,bairro,numero,referencia,cep);
+				Cliente entidade = new Cliente(id_usuario,nome,cpf,email,senha,cidade,estado,rua,bairro,numero,complemento,referencia,cep);
 				entidade.setTelefones(telefones);
 				
 				fachada.alterarCliente(entidade);
