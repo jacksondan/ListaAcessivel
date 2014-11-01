@@ -8,6 +8,8 @@
 <meta charset="ISO-8859-1">
 <title>NomeCliente - Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/script.js"></script>
+
 </head>
 <body>
 	<%@include file="headerUs.html"%>
@@ -18,7 +20,7 @@
 			<h2>Editar Senha</h2>
 		</header>
 
-		<form method="post"
+		<form method="post" name="f1"
 			action="http://localhost:8080/ListaAcessivel/EditarSenhaClienteServlet">
 			<p style="text-align: center; color: green;">${mensagem}</p>
 			<fieldset>
@@ -35,7 +37,7 @@
 				</p>
 				<p>
 					<label for="confirmarSenha">Confirmar Senha</label><br> <input type="password"
-						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha">
+						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha" onblur="validarSenha()">
 				</p>
 				
 
@@ -43,7 +45,7 @@
 			<div class="12u">
 				<ul class="actions">
 					<li><input type="submit" class="button3"
-						value="Salvar Nova Senha" /></li>
+						value="Salvar Nova Senha" onClick="validarSenha()" /></li>
 
 				</ul>
 			</div>

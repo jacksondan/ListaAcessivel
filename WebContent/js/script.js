@@ -22,3 +22,12 @@
  	   $("#cep").mask("99999-999");
 
  });
+    
+    function validarSenha(){
+    	senhaNova = document.f1.senhaNova.value
+    	confirmarSenha = document.f1.confirmarSenha.value
+    	
+    	if(senhaNova != confirmarSenha){
+    		alert("Senhas Incompatíveis!")
+    	}
+    }
