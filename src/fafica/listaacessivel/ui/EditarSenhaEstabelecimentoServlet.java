@@ -74,7 +74,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 					
 					mensagem = "Senha editada com sucesso!";
 				}else{
-					mensagem = "Ocorreu um erro e a senha n√£o foi editada!";
+					mensagem = "Sua Senha n„o foi alterada, porfavor tente novamente.";
 				}
 				request.setAttribute("mensagem",mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaEstabelecimento.jsp");

@@ -1,6 +1,7 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -73,7 +74,8 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 					
 					mensagem = "Senha editada com sucesso!";
 				}else{
-					mensagem = "Ocorreu um erro e a senha não foi editada!";
+					mensagem = "Sua Senha não foi alterada, porfavor tente novamente. ";
+				
 				}
 				request.setAttribute("mensagem",mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
