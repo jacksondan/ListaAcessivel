@@ -29,5 +29,6 @@
     	
     	if(senhaNova != confirmarSenha){
     		alert("Senhas Incompatíveis!")
+    		document.f1.confirmarSenha.focus()
     	}
     }
