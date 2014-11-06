@@ -57,7 +57,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt.close();
 		
 		//Coladando o ID_USUARIO que � gerado pelo BD
-		Cliente cliente = new Cliente(null,null,null,null,null,null,null);
+		Cliente cliente = new Cliente();
 		sql = "select id_usuario from usuario where email = '"+entidade.getEmail()+"'";
 		smt = this.connection.prepareStatement(sql);
 		result = smt.executeQuery();
