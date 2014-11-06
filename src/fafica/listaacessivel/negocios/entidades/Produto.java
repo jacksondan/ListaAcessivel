@@ -5,24 +5,23 @@ public class Produto {
 	private int id_produto;
 	private String descricao_produto;
 	private String categoria;
-	private String peso_produto;
+	private float peso_produto;
 	private int quantidade_produto;
 	private float preco_produto;
 	private String validade_produto;
 	private String marca_produto;
 	private String codigo_de_barra;
 	private String disponibilidade;
-	private int id_estabelecimento;
-	private String status;
-		
+	private Estabelecimento estabelecimento;
+			
 	public Produto() {
 		
 	}
 
 	public Produto(String descricao_produto, String categoria,
-			String peso_produto, int quantidade_produto, float preco_produto,
+			float peso_produto, int quantidade_produto, float preco_produto,
 			String validade_produto, String marca_produto,
-			String codigo_de_barra, int id_estabelecimento) {
+			String codigo_de_barra, Estabelecimento estabelecimento) {
 		super();
 		this.descricao_produto = descricao_produto;
 		this.categoria = categoria;
@@ -32,14 +31,14 @@ public class Produto {
 		this.validade_produto = validade_produto;
 		this.marca_produto = marca_produto;
 		this.codigo_de_barra = codigo_de_barra;
-		this.id_estabelecimento = id_estabelecimento;
+		this.estabelecimento = estabelecimento;
 	}
 
 	public Produto(int id_produto, String descricao_produto, String categoria,
-			String peso_produto, int quantidade_produto, float preco_produto,
+			float peso_produto, int quantidade_produto, float preco_produto,
 			String validade_produto, String marca_produto,
 			String codigo_de_barra, String disponibilidade,
-			int id_estabelecimento) {
+			Estabelecimento estabelecimento) {
 		super();
 		this.id_produto = id_produto;
 		this.descricao_produto = descricao_produto;
@@ -51,7 +50,7 @@ public class Produto {
 		this.marca_produto = marca_produto;
 		this.codigo_de_barra = codigo_de_barra;
 		this.disponibilidade = disponibilidade;
-		this.id_estabelecimento = id_estabelecimento;
+		this.estabelecimento = estabelecimento;
 	}
 
 	public int getId_produto() {
@@ -78,11 +77,11 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	public String getPeso_produto() {
+	public float getPeso_produto() {
 		return peso_produto;
 	}
 
-	public void setPeso_produto(String peso_produto) {
+	public void setPeso_produto(float peso_produto) {
 		this.peso_produto = peso_produto;
 	}
 
@@ -134,21 +133,11 @@ public class Produto {
 		this.disponibilidade = disponibilidade;
 	}
 
-	public int getId_estabelecimento() {
-		return id_estabelecimento;
+	public Estabelecimento getEstabelecimento() {
+		return estabelecimento;
 	}
 
-	public void setId_estabelecimento(int id_estabelecimento) {
-		this.id_estabelecimento = id_estabelecimento;
+	public void setEstabelecimento(Estabelecimento estabelecimento) {
+		this.estabelecimento = estabelecimento;
 	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Estabelecimento{
 	
+	private int id_estabelecimento;
 	private String nome_fantasia;
 	private String nome_juridico;
 	private String categoria;
@@ -22,7 +23,7 @@ public class Estabelecimento{
 		this.cnpj = cnpj;
 	}
 
-	public Estabelecimento(int id_usuario, String nome_fantasia,
+	public Estabelecimento(int id_estabelecimento, String nome_fantasia,
 			String nome_juridico, String categoria, String cnpj, String email,
 			String senha, Endereco endereco, List<String> telefones) {
 		this.endereco = endereco;
@@ -31,6 +32,12 @@ public class Estabelecimento{
 		this.nome_juridico = nome_juridico;
 		this.categoria = categoria;
 		this.cnpj = cnpj;
+	}
+	public int getId_estabelecimento() {
+		return id_estabelecimento;
+	}
+	public void setId_estabelecimento(int id_estabelecimento) {
+		this.id_estabelecimento = id_estabelecimento;
 	}
 	public String getNome_fantasia() {
 		return nome_fantasia;
