@@ -14,5 +14,5 @@ public interface IRepositorioProduto {
 	public List<Produto> listarProdutos() throws SQLException;
 	public Produto pesquisarProduto(Produto produto) throws SQLException;
 	public List<Produto> listarProdutosDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException;
-	public List<Produto> listarProdutos(Lista lista) throws SQLException;
+	public List<Produto> listarProdutosDaLista(Lista lista) throws SQLException;
 }

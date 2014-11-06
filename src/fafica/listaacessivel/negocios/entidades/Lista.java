@@ -19,6 +19,10 @@ public class Lista {
 		
 	private SimpleDateFormat dmy;
 	
+	public Lista(){
+		
+	}
+	
 	public Lista(String descricao, String situacao, String data_criacao_lista,
 			String data_alteracao_lista, int quantidade_total_lista,
 			float valor_total_lista, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
