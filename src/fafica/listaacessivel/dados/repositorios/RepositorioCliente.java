@@ -106,7 +106,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 				+ ", estado = '"+entidade.getEndereco().getEstado()+"'"
 				+ ", cep = '"+entidade.getEndereco().getCep()+"'"
 				+ ", referencia = '"+entidade.getEndereco().getReferencia()+"'"
-				+ " where id_usuario = "+entidade.getId_usuario();
+				+ " where id_usuario = "+entidade.getId_usuario() + " AND " + " status = " + Status.ATIVO.toString();
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();

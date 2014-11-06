@@ -5,6 +5,10 @@ public class Funcionario extends Usuario{
 	private String matricula;
 	private Estabelecimento estabelecimento;
 		
+	public Funcionario(){
+		
+	}
+	
 	public Funcionario(String nome, String email, String senha, String matricula, Estabelecimento estabelecimento) {
 		super(nome, email, senha);
 		this.matricula = matricula;
