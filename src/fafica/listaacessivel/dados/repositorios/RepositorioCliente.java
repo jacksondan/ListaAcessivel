@@ -13,7 +13,7 @@ import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class RepositorioCliente implements IRepositorioCliente {
-	private static RepositorioCliente instancia;
+	private static RepositorioCliente instancia ;
 	private PreparedStatement smt;
 	private Connection connection;
 	private ResultSet result;
@@ -24,7 +24,13 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 	
 	public static RepositorioCliente getInstancia() throws ClassNotFoundException, SQLException{
-		if(instancia==null)	instancia = new RepositorioCliente();
+		if(instancia==null){
+			synchronized (RepositorioCliente.class) {
+				if(instancia == null){
+					instancia = new RepositorioCliente();
+				}
+			}
+		}
 		
 		return instancia;
 	}

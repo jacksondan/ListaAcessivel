@@ -4,15 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import fafica.listaacessivel.dados.IRepositorio;
+import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
-import fafica.listaacessivel.negocios.entidades.Lista;
+import fafica.listaacessivel.dados.IRepositorioLista;
 
-public class RepositorioLista implements IRepositorio<Lista>{
+
+public class RepositorioLista implements IRepositorioLista {
 	
 	private static RepositorioLista instancia;
 	private Connection connection;
@@ -30,7 +32,7 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	}
 	
 	@Override
-	public void adicionar(Lista entidade) throws SQLException {
+	public void adicionarLista(Lista entidade) throws SQLException {
 		sql = "insert into lista (data_criacao,"
 			+"quantidade_total,"
 			+ "valor_total,status)"
@@ -49,7 +51,7 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	}
 
 	@Override
-	public void alterar(Lista entidade) throws SQLException {
+	public void alterarLista(Lista entidade) throws SQLException {
 		sql= "UPDATE lista SET "
 				+ "data_modificacao = '"+entidade.getData_modificacao_lista()+"'"
 				+ "quantidade_total = "+entidade.getQuantidade_total_lista()
@@ -61,7 +63,7 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	}
 
 	@Override
-	public void excluir(Lista entidade) throws SQLException {
+	public void excluirLista(Lista entidade) throws SQLException {
 		sql = "UPDATE lista SET status = '" + Status.INATIVO.toString() + "' WHERE id_lista = "+entidade.getId_lista();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
@@ -69,7 +71,7 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	}
 
 	@Override
-	public List<Lista> listar() throws SQLException {
+	public List<Lista> listarListas() throws SQLException {
 		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
@@ -91,7 +93,7 @@ public class RepositorioLista implements IRepositorio<Lista>{
 	}
 
 	@Override
-	public Lista pesquisar(Lista entidade) throws SQLException {
+	public Lista pesquisarLista(Lista entidade) throws SQLException {
 		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_lista = "+entidade.getId_lista();
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
@@ -111,5 +113,21 @@ public class RepositorioLista implements IRepositorio<Lista>{
 		
 		return l;
 	}
+
+	@Override
+	public List<Lista> listarListasDoCliente(Cliente cliente)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Lista> listarListasDoEstabelecimento(
+			Estabelecimento estabelecimento) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

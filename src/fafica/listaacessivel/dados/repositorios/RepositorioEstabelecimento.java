@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fafica.listaacessivel.dados.IRepositorio;
+import fafica.listaacessivel.dados.IRepositorioEstabelecimento;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
-public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>{
+public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 
 	private static RepositorioEstabelecimento instancia;
 	private Connection connection;
@@ -25,13 +25,19 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	}
 
 	public static RepositorioEstabelecimento getInstancia() throws ClassNotFoundException, SQLException {
-		if(instancia == null) instancia = new RepositorioEstabelecimento();
+		if(instancia==null){
+			synchronized (RepositorioEstabelecimento.class) {
+				if(instancia == null){
+					instancia = new RepositorioEstabelecimento();
+				}
+			}
+		}
 		return instancia;
 	}
 	
 	
 	@Override
-	public void adicionar(Estabelecimento entidade) throws SQLException {
+	public void adicionarEstabelecimento(Estabelecimento entidade) throws SQLException {
 		
 		sql = "insert into usuario (email,senha,rua,numero,complemento,bairro,cidade,estado,cep,referencia,status) values"
 				+ " (?,?,?,?,?,?,?,?,?,?,?)";
@@ -90,7 +96,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	}
 
 	@Override
-	public void alterar(Estabelecimento entidade) throws SQLException {
+	public void alterarEstabelecimento(Estabelecimento entidade) throws SQLException {
 		
 		sql = "UPDATE usuario SET"
 				+ " email = '"+entidade.getEmail()+"'"
@@ -139,7 +145,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	}
 
 	@Override
-	public void excluir(Estabelecimento entidade) throws SQLException {
+	public void excluirEstabelecimento(Estabelecimento entidade) throws SQLException {
 		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = "+entidade.getId_usuario();
 		
 		smt = connection.prepareStatement(sql);
@@ -150,7 +156,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	}
 
 	@Override
-	public List<Estabelecimento> listar() throws SQLException {
+	public List<Estabelecimento> listarEstabelecimentos() throws SQLException {
 		sql = "select u.*,e.* from usuario u, estabelecimento e where u.status = '" + Status.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = e.id_estabelecimento";;
 		
@@ -196,7 +202,7 @@ public class RepositorioEstabelecimento implements IRepositorio<Estabelecimento>
 	}
 
 	@Override
-	public Estabelecimento pesquisar(Estabelecimento entidade) throws SQLException {
+	public Estabelecimento pesquisarEstabelecimento(Estabelecimento entidade) throws SQLException {
 		
 		if(entidade.getId_usuario() > 0){
 			sql = "select u.*,e.* from usuario u, estabelecimento e where u.status = '" + Status.ATIVO.toString() + "'"
