@@ -9,6 +9,10 @@ public class Cliente extends Usuario{
 	private Endereco endereco;
 	private List<String> telefones;
 	
+	public Cliente(){
+		
+	}
+	
 	public Cliente(String nome, String cpf, String email, String senha,
 			String ano_nascimento, Endereco endereco, List<String> telefones) {
 		super(nome, email, senha);

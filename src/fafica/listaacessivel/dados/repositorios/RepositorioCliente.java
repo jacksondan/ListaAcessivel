@@ -57,7 +57,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt.close();
 		
 		//Coladando o ID_USUARIO que � gerado pelo BD
-		Cliente cliente = new Cliente();
+		Cliente cliente = new Cliente(null,null,null,null,null,null,null);
 		sql = "select id_usuario from usuario where email = '"+entidade.getEmail()+"'";
 		smt = this.connection.prepareStatement(sql);
 		result = smt.executeQuery();
@@ -162,22 +162,23 @@ public class RepositorioCliente implements IRepositorioCliente {
 			result= smt.executeQuery();
 			List <Cliente> clientes = new ArrayList<Cliente>();
 			while(result.next()){
-				Cliente cliente = new Cliente();
-				Endereco endereco;
-				cliente.setId_usuario(result.getInt("c.id_cliente"));
-				cliente.setNome(result.getString("c.nome_cliente"));
-				cliente.setCpf(result.getString("c.cpf"));
-				cliente.setAno_nascimento(result.getString("c.ano_nascimento"));
-				cliente.setEmail(result.getString("u.email"));
-				cliente.setSenha(result.getString("u.senha"));
-				endereco.setRua(result.getString("u.rua"));
-				endereco.setNumero(result.getString("u.numero"));
-				endereco.setComplemento(result.getString("u.complemento"));
-				endereco.setBairro(result.getString("u.bairro"));
-				endereco.setCidade(result.getString("u.cidade"));
-				endereco.setEstado(result.getString("u.estado"));
-				endereco.setCep(result.getString("u.cep"));
-				endereco.setReferencia(result.getString("u.referencia"));
+				int id_cliente = result.getInt("c.id_cliente");
+				String nome = result.getString("c.nome_cliente");
+				String cpf = result.getString("c.cpf");
+				String ano_nascimento = result.getString("c.ano_nascimento");
+				String email = result.getString("u.email");
+				String senha = result.getString("u.senha");
+				String rua = result.getString("u.rua");
+				String numero = result.getString("u.numero");
+				String complemento = result.getString("u.complemento");
+				String bairro = result.getString("u.bairro");
+				String cidade = result.getString("u.cidade");
+				String estado = result.getString("u.estado");
+				String cep = result.getString("u.cep");
+				String referencia = result.getString("u.referencia");
+				
+				Endereco endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
+				Cliente cliente = new Cliente(id_cliente,nome,cpf,email,senha,ano_nascimento,endereco,null);
 				clientes.add(cliente);
 			}
 			result.close();
@@ -209,29 +210,31 @@ public class RepositorioCliente implements IRepositorioCliente {
 					+ " AND u.id_usuario = (select id_cliente from cliente where cpf = '"+entidade.getCpf()+"')"
 					+ " AND c.cpf = '"+entidade.getCpf()+"'";
 		}
-		
-		
+			
 		smt = connection.prepareStatement(sql);
 		result = smt.executeQuery();
 		
 			Cliente cliente = new Cliente();
-			Endereco endereco;
+			
 			while (result.next()){
-				cliente.setId_usuario(result.getInt("c.id_cliente"));
-				cliente.setNome(result.getString("c.nome_cliente"));
-				cliente.setCpf(result.getString("c.cpf"));
-				cliente.setAno_nascimento(result.getString("c.ano_nascimento"));
-				cliente.setEmail(result.getString("u.email"));
-				cliente.setSenha(result.getString("u.senha"));
-				endereco.setRua(result.getString("u.rua"));
-				endereco.setNumero(result.getString("u.numero"));
-				endereco.setComplemento(result.getString("u.complemento"));
-				endereco.setBairro(result.getString("u.bairro"));
-				endereco.setCidade(result.getString("u.cidade"));
-				endereco.setEstado(result.getString("u.estado"));
-				endereco.setCep(result.getString("u.cep"));
-				endereco.setReferencia(result.getString("u.referencia"));
+				int id_cliente = result.getInt("c.id_cliente");
+				String nome = result.getString("c.nome_cliente");
+				String cpf = result.getString("c.cpf");
+				String ano_nascimento = result.getString("c.ano_nascimento");
+				String email = result.getString("u.email");
+				String senha = result.getString("u.senha");
+				String rua = result.getString("u.rua");
+				String numero = result.getString("u.numero");
+				String complemento = result.getString("u.complemento");
+				String bairro = result.getString("u.bairro");
+				String cidade = result.getString("u.cidade");
+				String estado = result.getString("u.estado");
+				String cep = result.getString("u.cep");
+				String referencia = result.getString("u.referencia");
+				Endereco endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
+				cliente = new Cliente(id_cliente,nome,cpf,email,senha,ano_nascimento,endereco,null);
 			}
+						
 			result.close();
 			smt.close();
 			
