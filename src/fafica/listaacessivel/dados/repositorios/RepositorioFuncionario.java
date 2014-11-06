@@ -135,7 +135,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 		result = smt.executeQuery();
 		
 			Estabelecimento estabelecimento = new Estabelecimento();
-			Funcionario funcionario2;
+			Funcionario funcionario2 = new Funcionario();
 			
 			while (result.next()){
 				int id_funcionario = result.getInt("f.id_funcionario");
@@ -164,16 +164,16 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
 			List <Funcionario> funcionarios = new ArrayList<Funcionario>();
-			Estabelecimento estabelecimento = new Estabelecimento();
+			Estabelecimento estabelecimento2 = new Estabelecimento();
 			while(result.next()){
 				int id_funcionario = result.getInt("f.id_funcionario");
 				String nome = result.getString("f.nome_funcionario");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
-				estabelecimento.setId_estabelecimento(result.getInt("f.id_estabelecimento"));
+				estabelecimento2.setId_estabelecimento(result.getInt("f.id_estabelecimento"));
 								
-				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
+				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento2);
 				funcionarios.add(funcionario2);
 			}
 			result.close();
