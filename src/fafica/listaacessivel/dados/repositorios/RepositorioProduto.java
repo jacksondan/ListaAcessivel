@@ -7,13 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fafica.listaacessivel.dados.IRepositorio;
-import fafica.listaacessivel.negocios.entidades.Produto;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Disponibilidade;
 import fafica.listaacessivel.dados.util.Status;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Lista;
+import fafica.listaacessivel.negocios.entidades.Produto;
+import fafica.listaacessivel.dados.IRepositorioProduto;
 
-public class RepositorioProduto implements IRepositorio<Produto> {
+public class RepositorioProduto implements IRepositorioProduto {
 
 	private static RepositorioProduto instancia;
 	private Connection connection;
@@ -33,7 +35,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	}
 
 	@Override
-	public void adicionar(Produto entidade) throws SQLException {
+	public void adicionarProduto(Produto entidade) throws SQLException {
 		String sql = "INSERT INTO produto (descricao_produto, "
 				+ "categoria_produto, peso_produto, "
 				+ "quantidade_produto, preco_produto, "
@@ -68,7 +70,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	}
 
 	@Override
-	public void alterar(Produto entidade) throws SQLException {
+	public void alterarProduto(Produto entidade) throws SQLException {
 		//Produto produto = pesquisar(entidade);
 		String sql2;
 		
@@ -101,7 +103,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	}
 
 	@Override
-	public void excluir(Produto entidade) throws SQLException {
+	public void excluirProduto(Produto entidade) throws SQLException {
 		
 		//Produto produto = pesquisar(entidade);
 
@@ -114,7 +116,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	}
 
 	@Override
-	public List<Produto> listar() throws SQLException {
+	public List<Produto> listarProdutos() throws SQLException {
 		
 		String sql = "select * from produto where status = '" + Status.ATIVO.toString() + "'";
 		List<Produto> lista_produto = new ArrayList<Produto>();
@@ -150,7 +152,7 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 	}
 
 	@Override
-	public Produto pesquisar(Produto entidade) throws SQLException {
+	public Produto pesquisarProduto(Produto entidade) throws SQLException {
 		
 			sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' and id_produto = "+entidade.getId_produto();
 		
@@ -177,24 +179,20 @@ public class RepositorioProduto implements IRepositorio<Produto> {
 			result.close();
 		
 		return produto;
-		
-		
-		
-		
-		
-		/*List<Produto> lista_produto = new ArrayList<Produto>();
-		Produto produto_pesquisa = null;
-		
-		
-		lista_produto = listar();
-		
-		for(Produto produto : lista_produto){
-			if(entidade.getId_produto() == produto.getId_produto()){
-				produto_pesquisa = produto;
-			}
-		}
-		
-		return produto_pesquisa;*/
 	}
 
+	@Override
+	public List<Produto> listarProdutosDoEstabelecimento(
+			Estabelecimento estabelecimento) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Produto> listarProdutos(Lista lista) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }
