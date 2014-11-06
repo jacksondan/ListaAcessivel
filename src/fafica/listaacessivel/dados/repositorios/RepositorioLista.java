@@ -27,7 +27,13 @@ public class RepositorioLista implements IRepositorioLista {
 	}
 	
 	public static RepositorioLista getInstancia() throws ClassNotFoundException, SQLException {
-		if(instancia == null) instancia = new RepositorioLista();
+		if(instancia==null){
+			synchronized (RepositorioLista.class) {
+				if(instancia == null){
+					instancia = new RepositorioLista();
+				}
+			}
+		}
 		return instancia;
 	}
 	

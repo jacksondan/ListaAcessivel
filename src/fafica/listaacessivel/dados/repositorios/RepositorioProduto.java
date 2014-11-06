@@ -28,9 +28,14 @@ public class RepositorioProduto implements IRepositorioProduto {
 	}
 
 	public static RepositorioProduto getInstancia() throws ClassNotFoundException, SQLException {
-		if (instancia == null) {
-			instancia = new RepositorioProduto();
+		if(instancia==null){
+			synchronized (RepositorioProduto.class) {
+				if(instancia == null){
+					instancia = new RepositorioProduto();
+				}
+			}
 		}
+		
 		return instancia;
 	}
 
