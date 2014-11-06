@@ -15,7 +15,7 @@ public class Estabelecimento{
 			String categoria, String cnpj, String email, String senha,
 			Endereco endereco, List<String> telefones) {
 		this.endereco = endereco;
-		this.setTelefones(telefones);
+		this.telefones = telefones;
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;
 		this.categoria = categoria;
@@ -26,7 +26,7 @@ public class Estabelecimento{
 			String nome_juridico, String categoria, String cnpj, String email,
 			String senha, Endereco endereco, List<String> telefones) {
 		this.endereco = endereco;
-		this.setTelefones(telefones);
+		this.telefones = telefones;
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;
 		this.categoria = categoria;
