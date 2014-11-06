@@ -3,36 +3,36 @@ package fafica.listaacessivel.negocios.controladores;
 import java.sql.SQLException;
 import java.util.List;
 
-import fafica.listaacessivel.dados.IRepositorio;
+import fafica.listaacessivel.dados.IRepositorioCliente;
 import fafica.listaacessivel.dados.repositorios.RepositorioCliente;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class ControladorCliente {
-	private IRepositorio<Cliente> repositorioCliente;
+	private IRepositorioCliente repositorioCliente;
 	
 	public ControladorCliente() throws ClassNotFoundException, SQLException{
 		repositorioCliente = RepositorioCliente.getInstancia();
 	}
 	
-	public void adicionarCliente(Cliente entidade) throws SQLException{
-		repositorioCliente.adicionar(entidade);
+	public void adicionarCliente(Cliente cliente) throws SQLException{
+		repositorioCliente.adicionarCliente(cliente);
 	}
 	
-	public void alterarCliente(Cliente entidade) throws SQLException{
-		repositorioCliente.alterar(entidade);
+	public void alterarCliente(Cliente cliente) throws SQLException{
+		repositorioCliente.alterarCliente(cliente);
 	}
 	
-	public void excluirCliente(Cliente entidade) throws SQLException{
-		repositorioCliente.excluir(entidade);
+	public void excluirCliente(Cliente cliente) throws SQLException{
+		repositorioCliente.excluirCliente(cliente);
 	}
 	
 	public List <Cliente> listarCliente() throws SQLException{
 		
-		return repositorioCliente.listar();
+		return repositorioCliente.listarClientes();
 	}
 	
-	public Cliente pesquisarCliente(Cliente entidade) throws SQLException{
-		return repositorioCliente.pesquisar(entidade);
+	public Cliente pesquisarCliente(Cliente cliente) throws SQLException{
+		return repositorioCliente.pesquisarCliente(cliente);
 		
 	}
 }

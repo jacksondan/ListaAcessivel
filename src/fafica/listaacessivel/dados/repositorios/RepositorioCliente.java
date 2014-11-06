@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fafica.listaacessivel.dados.IRepositorio;
+import fafica.listaacessivel.dados.IRepositorioCliente;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
-public class RepositorioCliente implements IRepositorio<Cliente> {
+public class RepositorioCliente implements IRepositorioCliente {
 	private static RepositorioCliente instancia;
 	private PreparedStatement smt;
 	private Connection connection;
@@ -29,7 +29,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 		return instancia;
 	}
 	@Override
-	public void adicionar(Cliente entidade) throws SQLException {
+	public void adicionarCliente(Cliente entidade) throws SQLException {
 		
 		sql = "insert into usuario (email,senha,rua,numero,complemento,bairro,cidade,estado,cep,referencia,status) values"
 				+ "(?,?,?,?,?,?,?,?,?,?,?)";
@@ -86,7 +86,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	}
 
 	@Override
-	public void alterar(Cliente entidade) throws SQLException {
+	public void alterarCliente(Cliente entidade) throws SQLException {
 		sql = "UPDATE usuario SET"
 				+ " email = '"+entidade.getEmail()+"'"
 				+ ", senha = '"+entidade.getSenha()+"'"
@@ -133,7 +133,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	}
 
 	@Override
-	public void excluir(Cliente entidade) throws SQLException {
+	public void excluirCliente(Cliente entidade) throws SQLException {
 		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = "+entidade.getId_usuario();
 		
 		smt = connection.prepareStatement(sql);
@@ -144,7 +144,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	}
 
 	@Override
-	public List <Cliente> listar()throws SQLException  {
+	public List<Cliente> listarClientes() throws SQLException  {
 		
 			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = c.id_cliente";
@@ -188,7 +188,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
 	}
 
 	@Override
-	public Cliente pesquisar(Cliente entidade) throws SQLException {
+	public Cliente pesquisarCliente(Cliente entidade) throws SQLException {
 		if(entidade.getId_usuario() > 0){
 			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = "+entidade.getId_usuario()
