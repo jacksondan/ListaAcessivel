@@ -11,9 +11,9 @@
 <script src="js/script.js"></script>
 </head>
 <body>
-	<%@include file="headerEs.html"%>
+	<%@include file="headerEstabelecimento.html"%>
 
-	<%@include file="sidebarEs.html"%>
+	<%@include file="sidebarEstabelecimento.html"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Senha</h2>

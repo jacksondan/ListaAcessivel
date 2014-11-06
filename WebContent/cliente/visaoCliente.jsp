@@ -5,13 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>NomedoUsuario - Inicio</title>
-<link rel="stylesheet" type="text/css" href="css/style.css"> 
+<link rel="stylesheet" type="text/css" href="../css/style.css"> 
 </head>
 <body>
    
-<%@include file="headerUs.html" %>
+<%@include file="headerCliente.html" %>
 
-<%@include file="sidebarUs.html" %>
+<%@include file="sidebarCliente.html" %>
 	
 		<div id="content">
 					
@@ -21,4 +21,4 @@
 
 		</div>
 		
-<%@include file="footer.html" %>
+<%@include file="../footer.html" %>

@@ -8,9 +8,9 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<%@include file="headerEs.html"%>
+	<%@include file="headerEstabelecimento.html"%>
 
-	<%@include file="sidebarEs.html"%>
+	<%@include file="sidebarEstabelecimento.html"%>
 
 
 	<div id="content2">

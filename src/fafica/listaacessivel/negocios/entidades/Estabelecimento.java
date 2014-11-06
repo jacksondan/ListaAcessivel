@@ -4,34 +4,56 @@ import java.util.List;
 
 public class Estabelecimento{
 	
+	
 	private int id_estabelecimento;
 	private String nome_fantasia;
 	private String nome_juridico;
+	private String email;
 	private String categoria;
 	private String cnpj;
 	private Endereco endereco;
-	private List<String> telefones;
+	private String senha;
+	private List <String> telefones;
+	
+	public Estabelecimento(){
 		
-	public Estabelecimento(String nome_fantasia, String nome_juridico,
-			String categoria, String cnpj, String email, String senha,
-			Endereco endereco, List<String> telefones) {
-		this.endereco = endereco;
-		this.telefones = telefones;
-		this.nome_fantasia = nome_fantasia;
-		this.nome_juridico = nome_juridico;
-		this.categoria = categoria;
-		this.cnpj = cnpj;
 	}
-
-	public Estabelecimento(int id_estabelecimento, String nome_fantasia,
-			String nome_juridico, String categoria, String cnpj, String email,
-			String senha, Endereco endereco, List<String> telefones) {
-		this.endereco = endereco;
-		this.telefones = telefones;
+	
+	
+	public Estabelecimento(String nome_fantasia, String nome_juridico,
+			String email, String categoria, String cnpj, Endereco endereco,
+			String senha, List<String> telefones) {
+		super();
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;
+		this.email = email;
 		this.categoria = categoria;
 		this.cnpj = cnpj;
+		this.endereco = endereco;
+		this.senha = senha;
+		this.telefones = telefones;
+	}
+	
+	
+	public Estabelecimento(int id_estabelecimento, String nome_fantasia,
+			String nome_juridico, String email, String categoria, String cnpj,
+			Endereco endereco, String senha, List<String> telefones) {
+		super();
+		this.id_estabelecimento = id_estabelecimento;
+		this.nome_fantasia = nome_fantasia;
+		this.nome_juridico = nome_juridico;
+		this.email = email;
+		this.categoria = categoria;
+		this.cnpj = cnpj;
+		this.endereco = endereco;
+		this.senha = senha;
+		this.telefones = telefones;
+	}
+	public List<String> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
 	}
 	public int getId_estabelecimento() {
 		return id_estabelecimento;
@@ -51,6 +73,12 @@ public class Estabelecimento{
 	public void setNome_juridico(String nome_juridico) {
 		this.nome_juridico = nome_juridico;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getCategoria() {
 		return categoria;
 	}
@@ -69,10 +97,12 @@ public class Estabelecimento{
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public List<String> getTelefones() {
-		return telefones;
+	public String getSenha() {
+		return senha;
 	}
-	public void setTelefones(List<String> telefones) {
-		this.telefones = telefones;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
+	
+	
 }

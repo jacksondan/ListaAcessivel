@@ -30,12 +30,12 @@
 				<ul class="actions">
 
 					<li><p>
-							<a href="cadastroUs.jsp" class="image"><img
+							<a href="cliente/cadastroCliente.jsp" class="image"><img
 								src="images/button4.png" alt=" Ícone Cadastrar Cliente"
 								style="width: 12em; heigth: 12em;"></a>
 						</p></li>
 					<li><p>
-							<a href="cadastroEs.jsp" class="image"><img
+							<a href="estabelecimento/cadastroEstabelecimento.jsp" class="image"><img
 								src="images/button5.png"
 								alt="Ícone Cadastrar Estabelecimento Comércial"
 								style="width: 12em; heigth: 12em;"></a>
@@ -53,4 +53,4 @@
 		</div>
 	</div>
 	<div><br></div>
-	<%@include file="footer.html"%>
+	<%@include file="../footer.html"%>

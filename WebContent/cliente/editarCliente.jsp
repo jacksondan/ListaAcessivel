@@ -7,10 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="js/script.js"></script>
- <script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="../js/script.js"></script>
+ <script src="../js/jquery.min.js" type="text/javascript"></script>
+<script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>
 //script da mascara
 jQuery(function($){
@@ -23,7 +23,7 @@ jQuery(function($){
 </script>
 </head>
 <body>
-	<%@include file="headerUs.html"%>
+	<%@include file="headerCliente.html"%>
 
 
 

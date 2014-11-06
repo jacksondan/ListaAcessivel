@@ -7,12 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>NomeCliente - Inicio</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="js/script.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="../js/script.js"></script>
 
 </head>
 <body>
-	<%@include file="headerUs.html"%>
+	<%@include file="headerCliente.html"%>
 
 
 	<div id="content">

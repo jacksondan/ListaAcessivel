@@ -8,9 +8,9 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<%@include file="headerEs.html" %>
+		<%@include file="headerFuncionario.html" %>
 
-		<%@include file="sidebarEs.html" %>
+		<%@include file="sidebarFuncionario.html" %>
 				<div id="content2">
 					<header class="major">		
 						<h2>Menu Estabelecimento</h2>
