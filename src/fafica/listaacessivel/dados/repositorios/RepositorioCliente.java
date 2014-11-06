@@ -11,6 +11,7 @@ import fafica.listaacessivel.dados.IRepositorioCliente;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Endereco;
 
 public class RepositorioCliente implements IRepositorioCliente {
 	private static RepositorioCliente instancia ;
@@ -43,19 +44,19 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt = this.connection.prepareStatement(sql);
 		smt.setString(1,entidade.getEmail());
 		smt.setString(2,entidade.getSenha());
-		smt.setString(3,entidade.getRua());
-		smt.setString(4,entidade.getNumero());
-		smt.setString(5,entidade.getComplemento());
-		smt.setString(6,entidade.getBairro());
-		smt.setString(7,entidade.getCidade());
-		smt.setString(8,entidade.getEstado());
-		smt.setString(9,entidade.getCep());
-		smt.setString(10,entidade.getReferencia());
+		smt.setString(3,entidade.getEndereco().getRua());
+		smt.setString(4,entidade.getEndereco().getNumero());
+		smt.setString(5,entidade.getEndereco().getComplemento());
+		smt.setString(6,entidade.getEndereco().getBairro());
+		smt.setString(7,entidade.getEndereco().getCidade());
+		smt.setString(8,entidade.getEndereco().getEstado());
+		smt.setString(9,entidade.getEndereco().getCep());
+		smt.setString(10,entidade.getEndereco().getReferencia());
 		smt.setString(11,Status.ATIVO.toString());
 		smt.execute();
 		smt.close();
 		
-		//Coladando o ID_USUARIO que é gerado pelo BD
+		//Coladando o ID_USUARIO que ï¿½ gerado pelo BD
 		Cliente cliente = new Cliente();
 		sql = "select id_usuario from usuario where email = '"+entidade.getEmail()+"'";
 		smt = this.connection.prepareStatement(sql);
@@ -68,13 +69,14 @@ public class RepositorioCliente implements IRepositorioCliente {
 		
 		
 			//Inserindo os dados da tabela Cliente, juntamente com o ID coletado
-		sql = "insert into cliente (id_cliente, nome_cliente, cpf) values"
-				+ "(?,?,?)";
+		sql = "insert into cliente (id_cliente, nome_cliente, cpf, ano_nascimento) values"
+				+ "(?,?,?,?)";
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.setInt(1,cliente.getId_usuario());
 		smt.setString(2,entidade.getNome());
 		smt.setString(3,entidade.getCpf());
+		smt.setString(4,entidade.getAno_nascimento());
 		smt.execute();
 		smt.close();
 		
@@ -96,14 +98,14 @@ public class RepositorioCliente implements IRepositorioCliente {
 		sql = "UPDATE usuario SET"
 				+ " email = '"+entidade.getEmail()+"'"
 				+ ", senha = '"+entidade.getSenha()+"'"
-				+ ", rua = '"+entidade.getRua()+"'"
-				+ ", numero = '"+entidade.getNumero()+"'"
-				+ ", complemento = '"+entidade.getComplemento()+"'"
-				+ ", bairro = '"+entidade.getBairro()+"'"
-				+ ", cidade = '"+entidade.getCidade()+"'"
-				+ ", estado = '"+entidade.getEstado()+"'"
-				+ ", cep = '"+entidade.getCep()+"'"
-				+ ", referencia = '"+entidade.getReferencia()+"'"
+				+ ", rua = '"+entidade.getEndereco().getRua()+"'"
+				+ ", numero = '"+entidade.getEndereco().getNumero()+"'"
+				+ ", complemento = '"+entidade.getEndereco().getComplemento()+"'"
+				+ ", bairro = '"+entidade.getEndereco().getBairro()+"'"
+				+ ", cidade = '"+entidade.getEndereco().getCidade()+"'"
+				+ ", estado = '"+entidade.getEndereco().getEstado()+"'"
+				+ ", cep = '"+entidade.getEndereco().getCep()+"'"
+				+ ", referencia = '"+entidade.getEndereco().getReferencia()+"'"
 				+ " where id_usuario = "+entidade.getId_usuario();
 		
 		smt = this.connection.prepareStatement(sql);
@@ -111,9 +113,10 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt.close();
 		
 		sql = "UPDATE cliente SET"
-				+ " nome_cliente = '"+entidade.getNome()+"'"
-				+ ", cpf = '"+entidade.getCpf()+"'"
-				+ " where id_cliente = "+entidade.getId_usuario();
+				+ " nome_cliente = '" + entidade.getNome() + "'"
+				+ ", cpf = '" + entidade.getCpf() + "'"
+				+ ", ano_nascimento = '" + entidade.getAno_nascimento()+ "'"
+				+ " where id_cliente = " + entidade.getId_usuario();
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
@@ -159,20 +162,22 @@ public class RepositorioCliente implements IRepositorioCliente {
 			result= smt.executeQuery();
 			List <Cliente> clientes = new ArrayList<Cliente>();
 			while(result.next()){
-				Cliente cliente= new Cliente();
+				Cliente cliente = new Cliente();
+				Endereco endereco;
 				cliente.setId_usuario(result.getInt("c.id_cliente"));
 				cliente.setNome(result.getString("c.nome_cliente"));
 				cliente.setCpf(result.getString("c.cpf"));
+				cliente.setAno_nascimento(result.getString("c.ano_nascimento"));
 				cliente.setEmail(result.getString("u.email"));
 				cliente.setSenha(result.getString("u.senha"));
-				cliente.setRua(result.getString("u.rua"));
-				cliente.setNumero(result.getString("u.numero"));
-				cliente.setComplemento(result.getString("u.complemento"));
-				cliente.setBairro(result.getString("u.bairro"));
-				cliente.setCidade(result.getString("u.cidade"));
-				cliente.setEstado(result.getString("u.estado"));
-				cliente.setCep(result.getString("u.cep"));
-				cliente.setReferencia(result.getString("u.referencia"));
+				endereco.setRua(result.getString("u.rua"));
+				endereco.setNumero(result.getString("u.numero"));
+				endereco.setComplemento(result.getString("u.complemento"));
+				endereco.setBairro(result.getString("u.bairro"));
+				endereco.setCidade(result.getString("u.cidade"));
+				endereco.setEstado(result.getString("u.estado"));
+				endereco.setCep(result.getString("u.cep"));
+				endereco.setReferencia(result.getString("u.referencia"));
 				clientes.add(cliente);
 			}
 			result.close();
@@ -210,20 +215,22 @@ public class RepositorioCliente implements IRepositorioCliente {
 		result = smt.executeQuery();
 		
 			Cliente cliente = new Cliente();
+			Endereco endereco;
 			while (result.next()){
 				cliente.setId_usuario(result.getInt("c.id_cliente"));
 				cliente.setNome(result.getString("c.nome_cliente"));
 				cliente.setCpf(result.getString("c.cpf"));
+				cliente.setAno_nascimento(result.getString("c.ano_nascimento"));
 				cliente.setEmail(result.getString("u.email"));
 				cliente.setSenha(result.getString("u.senha"));
-				cliente.setRua(result.getString("u.rua"));
-				cliente.setNumero(result.getString("u.numero"));
-				cliente.setComplemento(result.getString("u.complemento"));
-				cliente.setBairro(result.getString("u.bairro"));
-				cliente.setCidade(result.getString("u.cidade"));
-				cliente.setEstado(result.getString("u.estado"));
-				cliente.setCep(result.getString("u.cep"));
-				cliente.setReferencia(result.getString("u.referencia"));
+				endereco.setRua(result.getString("u.rua"));
+				endereco.setNumero(result.getString("u.numero"));
+				endereco.setComplemento(result.getString("u.complemento"));
+				endereco.setBairro(result.getString("u.bairro"));
+				endereco.setCidade(result.getString("u.cidade"));
+				endereco.setEstado(result.getString("u.estado"));
+				endereco.setCep(result.getString("u.cep"));
+				endereco.setReferencia(result.getString("u.referencia"));
 			}
 			result.close();
 			smt.close();
