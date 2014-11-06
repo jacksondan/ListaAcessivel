@@ -10,18 +10,18 @@ public class Cliente extends Usuario{
 	private List<String> telefones;
 	
 	public Cliente(String nome, String cpf, String email, String senha,
-			String ano_nascimento,String rua, String bairro, String numero, String complemento, String referencia, String cidade, String estado, String cep, List<String> telefones) {
+			String ano_nascimento, Endereco endereco, List<String> telefones) {
 		super(nome, email, senha);
-		this.setEndereco(new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep));
+		this.endereco = endereco;
 		this.telefones = telefones;
 		this.cpf = cpf;
 		this.ano_nascimento = ano_nascimento;
 	}
 
 	public Cliente(int id_usuario, String nome, String cpf, String email, String senha,
-			String ano_nascimento,String rua, String bairro, String numero, String complemento, String referencia, String cidade, String estado, String cep, List<String> telefones) {
+			String ano_nascimento, Endereco endereco, List<String> telefones) {
 		super(id_usuario, nome, email, senha);
-		this.setEndereco(new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep));
+		this.endereco = endereco;
 		this.telefones = telefones;
 		this.cpf = cpf;
 		this.ano_nascimento = ano_nascimento;

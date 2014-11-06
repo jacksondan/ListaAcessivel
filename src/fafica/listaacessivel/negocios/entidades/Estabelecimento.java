@@ -1,22 +1,21 @@
 package fafica.listaacessivel.negocios.entidades;
 
+import java.util.List;
 
-public class Estabelecimento extends Usuario{
+public class Estabelecimento{
+	
 	private String nome_fantasia;
-	private String nome_juridico; //Atriburo Unico no BD
+	private String nome_juridico;
 	private String categoria;
 	private String cnpj;
-	
-	public Estabelecimento() {
-		super();
-	}
-	
+	private Endereco endereco;
+	private List<String> telefones;
+		
 	public Estabelecimento(String nome_fantasia, String nome_juridico,
 			String categoria, String cnpj, String email, String senha,
-			String rua, String numero, String complemento, String bairro, String cidade,
-			String estado, String cep, String referencia) {
-		super(email, senha, cidade, estado, rua, bairro, numero, complemento, referencia,
-				cep);
+			Endereco endereco, List<String> telefones) {
+		this.endereco = endereco;
+		this.setTelefones(telefones);
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;
 		this.categoria = categoria;
@@ -25,16 +24,14 @@ public class Estabelecimento extends Usuario{
 
 	public Estabelecimento(int id_usuario, String nome_fantasia,
 			String nome_juridico, String categoria, String cnpj, String email,
-			String senha, String rua, String numero, String complemento, String bairro,
-			String cidade, String estado, String cep, String referencia) {
-		super(id_usuario, email, senha, cidade, estado, rua, bairro, numero, complemento,
-				referencia, cep);
+			String senha, Endereco endereco, List<String> telefones) {
+		this.endereco = endereco;
+		this.setTelefones(telefones);
 		this.nome_fantasia = nome_fantasia;
 		this.nome_juridico = nome_juridico;
 		this.categoria = categoria;
 		this.cnpj = cnpj;
 	}
-
 	public String getNome_fantasia() {
 		return nome_fantasia;
 	}
@@ -59,5 +56,16 @@ public class Estabelecimento extends Usuario{
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	public List<String> getTelefones() {
+		return telefones;
+	}
+	public void setTelefones(List<String> telefones) {
+		this.telefones = telefones;
+	}
 }
