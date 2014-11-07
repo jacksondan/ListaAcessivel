@@ -184,6 +184,8 @@ public class RepositorioLista implements IRepositorioLista {
 			cliente.setId_usuario(rs.getInt("id_cliente"));
 					
 			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
+			l.setData_criacao_lista(data_criacao_lista);
+			l.setData_alteracao_lista(data_alteracao_lista);
 			
 			lista.add(l);
 		}
@@ -221,8 +223,10 @@ public class RepositorioLista implements IRepositorioLista {
 			float valor_total_lista = rs.getFloat("valor_total");
 			estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
 			cliente.setId_usuario(rs.getInt("id_cliente"));
-					
+								
 			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
+			l.setData_criacao_lista(data_criacao_lista);
+			l.setData_alteracao_lista(data_alteracao_lista);
 			
 			lista.add(l);
 		}
