@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fafica.listaacessivel.negocios.entidades.Cliente;
@@ -39,17 +40,21 @@ public class RepositorioLista implements IRepositorioLista {
 	
 	@Override
 	public void adicionarLista(Lista entidade) throws SQLException {
-		sql = "insert into lista (data_criacao,"
+		sql = "insert into lista (descricao, data_criacao,situacao,"
 			+"quantidade_total,"
-			+ "valor_total,status)"
-			+ "VALUE(?,?,?,?)";
+			+ "valor_total,id_cliente,id_estabelecimento,status)"
+			+ "VALUE(?,?,?,?,?,?,?)";
 		
 		smt = connection.prepareStatement(sql);
 		
-		smt.setString(1, entidade.getData_criacao_lista());
-		smt.setInt(2, entidade.getQuantidade_total_lista());
-		smt.setFloat(3, entidade.getValor_total_lista());
-		smt.setString(4,Status.ATIVO.toString());
+		smt.setString(1, entidade.getDescricao());
+		smt.setString(2, entidade.getData_criacao_lista());
+		smt.setString(3, entidade.getSituacao());
+		smt.setInt(4, entidade.getQuantidade_total_lista());
+		smt.setFloat(5, entidade.getValor_total_lista());
+		smt.setInt(6, entidade.getCliente().getId_usuario());
+		smt.setInt(7, entidade.getEstabelecimento().getId_estabelecimento());
+		smt.setString(8,Status.ATIVO.toString());
 		
 		smt.execute();
 		smt.close();
@@ -59,7 +64,9 @@ public class RepositorioLista implements IRepositorioLista {
 	@Override
 	public void alterarLista(Lista entidade) throws SQLException {
 		sql= "UPDATE lista SET "
-				+ "data_modificacao = '"+entidade.getData_modificacao_lista()+"'"
+				+ "descricao = '" + entidade.getDescricao() + "'"
+				+ "situacao = '" + entidade.getSituacao() + "'"
+				+ "data_modificacao = '"+entidade.getData_alteracao_lista()+"'"
 				+ "quantidade_total = "+entidade.getQuantidade_total_lista()
 				+ "valor_total = "+entidade.getValor_total_lista();
 		smt = connection.prepareStatement(sql);
@@ -87,7 +94,7 @@ public class RepositorioLista implements IRepositorioLista {
 			Lista l = new Lista();
 			l.setId_lista(rs.getInt("id_lista"));
 			l.setData_criacao_lista(rs.getString("data_criacao"));
-			l.setData_modificacao_lista(rs.getString("data_modificacao"));
+			l.setData_alteracao_lista(rs.getString("data_modificacao"));
 			l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
 			l.setValor_total_lista(rs.getFloat("valor_total"));
 			
@@ -109,7 +116,7 @@ public class RepositorioLista implements IRepositorioLista {
 		while(rs.next()){
 			l.setId_lista(rs.getInt("id_lista"));
 			l.setData_criacao_lista(rs.getString("data_criacao"));
-			l.setData_modificacao_lista(rs.getString("data_modificacao"));
+			l.setData_alteracao_lista(rs.getString("data_modificacao"));
 			l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
 			l.setValor_total_lista(rs.getFloat("valor_total"));
 		}
