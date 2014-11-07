@@ -156,8 +156,40 @@ public class RepositorioLista implements IRepositorioLista {
 	@Override
 	public List<Lista> listarListasDoCliente(Cliente cliente)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_cliente = " + cliente.getId_usuario();
+		smt = this.connection.prepareStatement(sql);
+		rs = smt.executeQuery();
+		
+		Estabelecimento estabelecimento = new Estabelecimento();
+		
+		//Criando lista de produtos
+		List<Produto> produtos = new ArrayList<Produto>();
+		while(rs.next()){
+			Produto produto = new Produto();
+			produto.setId_produto(rs.getInt("id_produto"));
+			produtos.add(produto);
+		}
+				
+		List<Lista> lista = new ArrayList<Lista>();
+		while (rs.next()){
+		
+			int id_lista = rs.getInt("id_lista");
+			String data_criacao_lista = rs.getString("data_criacao");
+			String data_alteracao_lista = rs.getString("data_modificacao");
+			String descricao = rs.getString("descricao");
+			String situacao = rs.getString("situacao");
+			int quantidade_total_lista = rs.getInt("quantidade_total");
+			float valor_total_lista = rs.getFloat("valor_total");
+			estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
+			cliente.setId_usuario(rs.getInt("id_cliente"));
+					
+			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
+			
+			lista.add(l);
+		}
+		rs.close();
+		smt.close();
+		return lista;
 	}
 
 	@Override
