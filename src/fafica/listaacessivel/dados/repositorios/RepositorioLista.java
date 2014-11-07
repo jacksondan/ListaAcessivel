@@ -56,7 +56,6 @@ public class RepositorioLista implements IRepositorioLista {
 		smt.setInt(6, entidade.getCliente().getId_usuario());
 		smt.setInt(7, entidade.getEstabelecimento().getId_estabelecimento());
 		smt.setString(8,Status.ATIVO.toString());
-		
 		smt.execute();
 		smt.close();
 		
@@ -64,16 +63,13 @@ public class RepositorioLista implements IRepositorioLista {
 		sql = "select id_lista from lista where data_criacao = '" + entidade.getData_criacao_lista() + "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
-		
 		while(rs.next()){
 			lista.setId_lista(rs.getInt("id_lista"));
 		}
-		
 		rs.close();
 		smt.close();
 		
 		String sql2 = "insert into lista_produto (id_lista, id_produto) values (?,?)";
-		
 		for(Produto produto : entidade.getProdutos()){
 			smt = this.connection.prepareStatement(sql2);
 			smt.setInt(1, entidade.getId_lista());
@@ -82,7 +78,13 @@ public class RepositorioLista implements IRepositorioLista {
 			smt.close();
 		}
 		
-		
+		String sql3 = "insert into lista_cliente_estabelecimento (id_lista, id_cliente, id_estabelecmimento) values (?,?,?)";
+		smt = this.connection.prepareStatement(sql3);
+		smt.setInt(1, entidade.getId_lista());
+		smt.setInt(2, entidade.getCliente().getId_usuario());
+		smt.setInt(3, entidade.getEstabelecimento().getId_estabelecimento());
+		smt.execute();
+		smt.close();		
 	}
 
 	@Override
