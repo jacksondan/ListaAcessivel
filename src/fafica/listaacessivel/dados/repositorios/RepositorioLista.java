@@ -7,12 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fafica.listaacessivel.dados.IRepositorioLista;
+import fafica.listaacessivel.dados.util.ConnectionMysql;
+import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Status;
-import fafica.listaacessivel.dados.IRepositorioLista;
+import fafica.listaacessivel.negocios.entidades.Produto;
 
 
 public class RepositorioLista implements IRepositorioLista {
@@ -58,6 +59,29 @@ public class RepositorioLista implements IRepositorioLista {
 		
 		smt.execute();
 		smt.close();
+		
+		Lista lista = new Lista();
+		sql = "select id_lista from lista where data_criacao = '" + entidade.getData_criacao_lista() + "'";
+		smt = this.connection.prepareStatement(sql);
+		rs = smt.executeQuery();
+		
+		while(rs.next()){
+			lista.setId_lista(rs.getInt("id_lista"));
+		}
+		
+		rs.close();
+		smt.close();
+		
+		String sql2 = "insert into lista_produto (id_lista, id_produto) values (?,?)";
+		
+		for(Produto produto : entidade.getProdutos()){
+			smt = this.connection.prepareStatement(sql2);
+			smt.setInt(1, entidade.getId_lista());
+			smt.setInt(2, produto.getId_produto());
+			smt.execute();
+			smt.close();
+		}
+		
 		
 	}
 

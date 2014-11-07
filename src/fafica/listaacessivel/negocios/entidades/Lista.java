@@ -23,8 +23,7 @@ public class Lista {
 		
 	}
 	
-	public Lista(String descricao, String situacao, String data_criacao_lista,
-			String data_alteracao_lista, int quantidade_total_lista,
+	public Lista(String descricao, String situacao, int quantidade_total_lista,
 			float valor_total_lista, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.descricao = descricao;
 		this.situacao = situacao;
@@ -38,8 +37,7 @@ public class Lista {
 		this.data_alteracao_lista = dmy.format(new Date());		
 	}
 	
-	public Lista(int id_lista, String descricao, String situacao, String data_criacao_lista,
-			String data_alteracao_lista, int quantidade_total_lista,
+	public Lista(int id_lista, String descricao, String situacao, int quantidade_total_lista,
 			float valor_total_lista, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.id_lista = id_lista;
 		this.descricao = descricao;
