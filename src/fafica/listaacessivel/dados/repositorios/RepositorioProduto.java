@@ -41,11 +41,11 @@ public class RepositorioProduto implements IRepositorioProduto {
 
 	@Override
 	public void adicionarProduto(Produto entidade) throws SQLException {
-		String sql = "INSERT INTO produto (descricao_produto, "
-				+ "categoria_produto, peso_produto, "
-				+ "quantidade_produto, preco_produto, "
-				+ "validade_produto, codigo_barra, "
-				+ "marca_produto, status, disponibilidade,"
+		String sql = "INSERT INTO produto (descricao, "
+				+ "categoria, peso, "
+				+ "quantidade, preco, "
+				+ "validade, codigo_barra, "
+				+ "marca, status, disponibilidade,"
 				+ "id_estabelecimento) "
 				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		
@@ -81,14 +81,14 @@ public class RepositorioProduto implements IRepositorioProduto {
 		String sql2;
 		
 		String sql = "UPDATE produto SET "+
-				"descricao_produto = '" + entidade.getDescricao()+"'" 
-				+", categoria_produto = '" + entidade.getCategoria()+"'" 
-				+", peso_produto = '" + entidade.getPeso()+"'"
-				+", quantidade_produto = " + entidade.getQuantidade() 
-				+", preco_produto = " + entidade.getValor() 
-				+", validade_produto = '" + entidade.getValidade()+"'" 
+				"descricao = '" + entidade.getDescricao()+"'" 
+				+", categoria = '" + entidade.getCategoria()+"'" 
+				+", peso = '" + entidade.getPeso()+"'"
+				+", quantidade = " + entidade.getQuantidade() 
+				+", preco = " + entidade.getValor() 
+				+", validade = '" + entidade.getValidade()+"'" 
 				+", codigo_barra = '" + entidade.getCodigo_barra()+"'"
-				+", marca_produto ='" + entidade.getMarca() +"'" 
+				+", marca ='" + entidade.getMarca() +"'" 
 				+" WHERE id_produto = " + entidade.getId_produto();
 		
 		if(entidade.getQuantidade() >= 1){
@@ -125,7 +125,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 	public List<Produto> listarProdutos() throws SQLException {
 		
 		String sql = "select * from produto where status = '" + Status.ATIVO.toString() + "'";
-		List<Produto> lista_produto = new ArrayList<Produto>();
+		List<Produto> lista = new ArrayList<Produto>();
 		
 			stm = connection.prepareStatement(sql);
 			
@@ -134,28 +134,28 @@ public class RepositorioProduto implements IRepositorioProduto {
 			
 			while(result.next()){
 				
-				int id_produto = result.getInt("id_produto");
-				String descricao_produto = result.getString("descricao_produto");
-				String categoria = result.getString("categoria_produto"); 
-				Float peso_produto = result.getFloat("peso_produto");
-				int quantidade_produto = result.getInt("quantidade_produto");
-				float preco_produto = result.getFloat("preco_produto");
-				String validade_produto = result.getString("validade_produto");
-				String marca_produto = result.getString("marca_produto");
+				int id = result.getInt("id");
+				String descricao = result.getString("descricao");
+				String categoria = result.getString("categoria"); 
+				Float peso = result.getFloat("peso");
+				int quantidade = result.getInt("quantidade");
+				float preco = result.getFloat("preco");
+				String validade = result.getString("validade");
+				String marca = result.getString("marca");
 				String codigo_de_barra = result.getString("codigo_barra");
 				String disponibilidade = result.getString("disponibilidade");
 				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
 				
-				Produto produto = new Produto(id_produto, descricao_produto, categoria, peso_produto,
-						quantidade_produto, preco_produto, validade_produto, marca_produto, codigo_de_barra,
+				Produto produto = new Produto(id, descricao, categoria, peso,
+						quantidade, preco, validade, marca, codigo_de_barra,
 						disponibilidade, estabelecimento);
 				
-				lista_produto.add(produto);
+				lista.add(produto);
 			}
 			stm.close();
 			result.close();
 		
-		return lista_produto;
+		return lista;
 	}
 
 	@Override
@@ -171,20 +171,20 @@ public class RepositorioProduto implements IRepositorioProduto {
 			Estabelecimento estabelecimento = new Estabelecimento();
 			
 			while(result.next()){
-				int id_produto = result.getInt("id_produto");
-				String descricao_produto = result.getString("descricao_produto");
-				String categoria = result.getString("categoria_produto"); 
-				Float peso_produto = result.getFloat("peso_produto");
-				int quantidade_produto = result.getInt("quantidade_produto");
-				float preco_produto = result.getFloat("preco_produto");
-				String validade_produto = result.getString("validade_produto");
-				String marca_produto = result.getString("marca_produto");
+				int id = result.getInt("id");
+				String descricao = result.getString("descricao");
+				String categoria = result.getString("categoria"); 
+				Float peso = result.getFloat("peso");
+				int quantidade = result.getInt("quantidade");
+				float preco = result.getFloat("preco");
+				String validade = result.getString("validade");
+				String marca = result.getString("marca");
 				String codigo_de_barra = result.getString("codigo_barra");
 				String disponibilidade = result.getString("disponibilidade");
 				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
 				
-				produto = new Produto(id_produto, descricao_produto, categoria, peso_produto,
-						quantidade_produto, preco_produto, validade_produto, marca_produto, codigo_de_barra,
+				produto = new Produto(id, descricao, categoria, peso,
+						quantidade, preco, validade, marca, codigo_de_barra,
 						disponibilidade, estabelecimento);
 			}
 			stm.close();
@@ -197,7 +197,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 	public List<Produto> listarProdutosDoEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
 		String sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
-		List<Produto> lista_produto = new ArrayList<Produto>();
+		List<Produto> lista = new ArrayList<Produto>();
 		
 			stm = connection.prepareStatement(sql);
 			
@@ -205,28 +205,28 @@ public class RepositorioProduto implements IRepositorioProduto {
 			
 			while(result.next()){
 				
-				int id_produto = result.getInt("id_produto");
-				String descricao_produto = result.getString("descricao_produto");
-				String categoria = result.getString("categoria_produto"); 
-				Float peso_produto = result.getFloat("peso_produto");
-				int quantidade_produto = result.getInt("quantidade_produto");
-				float preco_produto = result.getFloat("preco_produto");
-				String validade_produto = result.getString("validade_produto");
-				String marca_produto = result.getString("marca_produto");
+				int id = result.getInt("id");
+				String descricao = result.getString("descricao");
+				String categoria = result.getString("categoria"); 
+				Float peso = result.getFloat("peso");
+				int quantidade = result.getInt("quantidade");
+				float preco = result.getFloat("preco");
+				String validade = result.getString("validade");
+				String marca = result.getString("marca");
 				String codigo_de_barra = result.getString("codigo_barra");
 				String disponibilidade = result.getString("disponibilidade");
 				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
 								
-				Produto produto = new Produto(id_produto, descricao_produto, categoria, peso_produto,
-						quantidade_produto, preco_produto, validade_produto, marca_produto, codigo_de_barra,
+				Produto produto = new Produto(id, descricao, categoria, peso,
+						quantidade, preco, validade, marca, codigo_de_barra,
 						disponibilidade, estabelecimento);
 				
-				lista_produto.add(produto);
+				lista.add(produto);
 			}
 			stm.close();
 			result.close();
 		
-		return lista_produto;
+		return lista;
 	}
 
 	@Override
@@ -242,19 +242,19 @@ public class RepositorioProduto implements IRepositorioProduto {
 			while(result.next()){
 				
 				int id_produto = result.getInt("id_produto");
-				String descricao_produto = result.getString("descricao_produto");
-				String categoria = result.getString("categoria_produto"); 
-				Float peso_produto = result.getFloat("peso_produto");
-				int quantidade_produto = result.getInt("quantidade_produto");
-				float preco_produto = result.getFloat("preco_produto");
-				String validade_produto = result.getString("validade_produto");
-				String marca_produto = result.getString("marca_produto");
+				String descricao = result.getString("descricao");
+				String categoria = result.getString("categoria"); 
+				Float peso = result.getFloat("peso");
+				int quantidade = result.getInt("quantidade");
+				float preco = result.getFloat("preco");
+				String validade = result.getString("validade");
+				String marca = result.getString("marca");
 				String codigo_de_barra = result.getString("codigo_barra");
 				String disponibilidade = result.getString("disponibilidade");
 				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
 				
-				Produto produto = new Produto(id_produto, descricao_produto, categoria, peso_produto,
-						quantidade_produto, preco_produto, validade_produto, marca_produto, codigo_de_barra,
+				Produto produto = new Produto(id_produto, descricao, categoria, peso,
+						quantidade, preco, validade, marca, codigo_de_barra,
 						disponibilidade, estabelecimento);
 				
 				lista_produto.add(produto);
