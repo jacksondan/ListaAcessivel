@@ -9,10 +9,10 @@ public class Lista {
 	private int id_lista;
 	private String descricao;
 	private String situacao;
-	private String data_criacao_lista;
-	private String data_alteracao_lista;
-	private int quantidade_total_lista;
-	private float valor_total_lista;
+	private String data_criacao;
+	private String data_alteracao;
+	private int quantidade_total;
+	private float valor_total;
 	private Cliente cliente;
 	private Estabelecimento estabelecimento;
 	private List<Produto> produtos;
@@ -23,33 +23,33 @@ public class Lista {
 		
 	}
 	
-	public Lista(String descricao, String situacao, int quantidade_total_lista,
-			float valor_total_lista, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
+	public Lista(String descricao, String situacao, int quantidade_total,
+			float valor_total, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.descricao = descricao;
 		this.situacao = situacao;
-		this.quantidade_total_lista = quantidade_total_lista;
-		this.valor_total_lista = valor_total_lista;
+		this.quantidade_total = quantidade_total;
+		this.valor_total = valor_total;
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
 		dmy = new SimpleDateFormat("hh:mm - dd/MM/yyyy");
-		this.data_criacao_lista = dmy.format(new Date());
-		this.data_alteracao_lista = dmy.format(new Date());		
+		this.data_criacao = dmy.format(new Date());
+		this.data_alteracao = dmy.format(new Date());		
 	}
 	
-	public Lista(int id_lista, String descricao, String situacao, int quantidade_total_lista,
-			float valor_total_lista, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
+	public Lista(int id_lista, String descricao, String situacao, int quantidade_total,
+			float valor_total, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.id_lista = id_lista;
 		this.descricao = descricao;
 		this.situacao = situacao;
-		this.quantidade_total_lista = quantidade_total_lista;
-		this.valor_total_lista = valor_total_lista;
+		this.quantidade_total = quantidade_total;
+		this.valor_total = valor_total;
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
 		dmy = new SimpleDateFormat("hh:mm - dd/MM/yyyy");
-		this.data_criacao_lista = dmy.format(new Date());
-		this.data_alteracao_lista = dmy.format(new Date());
+		this.data_criacao = dmy.format(new Date());
+		this.data_alteracao = dmy.format(new Date());
 	}
 
 	public int getId_lista() {
@@ -76,36 +76,36 @@ public class Lista {
 		this.situacao = situacao;
 	}
 
-	public String getData_criacao_lista() {
-		return data_criacao_lista;
+	public String getData_criacao() {
+		return data_criacao;
 	}
 
-	public void setData_criacao_lista(String data_criacao_lista) {
-		this.data_criacao_lista = data_criacao_lista;
+	public void setData_criacao(String data_criacao) {
+		this.data_criacao = data_criacao;
 	}
 
-	public String getData_alteracao_lista() {
-		return data_alteracao_lista;
+	public String getData_alteracao() {
+		return data_alteracao;
 	}
 
-	public void setData_alteracao_lista(String data_alteracao_lista) {
-		this.data_alteracao_lista = data_alteracao_lista;
+	public void setData_alteracao(String data_alteracao) {
+		this.data_alteracao = data_alteracao;
 	}
 
-	public int getQuantidade_total_lista() {
-		return quantidade_total_lista;
+	public int getQuantidade_total() {
+		return quantidade_total;
 	}
 
-	public void setQuantidade_total_lista(int quantidade_total_lista) {
-		this.quantidade_total_lista = quantidade_total_lista;
+	public void setQuantidade_total(int quantidade_total) {
+		this.quantidade_total = quantidade_total;
 	}
 
-	public float getValor_total_lista() {
-		return valor_total_lista;
+	public float getValor_total() {
+		return valor_total;
 	}
 
-	public void setValor_total_lista(float valor_total_lista) {
-		this.valor_total_lista = valor_total_lista;
+	public void setValor_total(float valor_total) {
+		this.valor_total = valor_total;
 	}
 
 	public Cliente getCliente() {
@@ -131,4 +131,14 @@ public class Lista {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
+
+	public SimpleDateFormat getDmy() {
+		return dmy;
+	}
+
+	public void setDmy(SimpleDateFormat dmy) {
+		this.dmy = dmy;
+	}
+
+
 }

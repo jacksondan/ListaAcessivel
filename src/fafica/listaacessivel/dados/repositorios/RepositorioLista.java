@@ -49,10 +49,10 @@ public class RepositorioLista implements IRepositorioLista {
 		smt = connection.prepareStatement(sql);
 		
 		smt.setString(1, entidade.getDescricao());
-		smt.setString(2, entidade.getData_criacao_lista());
+		smt.setString(2, entidade.getData_criacao());
 		smt.setString(3, entidade.getSituacao());
-		smt.setInt(4, entidade.getQuantidade_total_lista());
-		smt.setFloat(5, entidade.getValor_total_lista());
+		smt.setInt(4, entidade.getQuantidade_total());
+		smt.setFloat(5, entidade.getValor_total());
 		smt.setInt(6, entidade.getCliente().getId_usuario());
 		smt.setInt(7, entidade.getEstabelecimento().getId_estabelecimento());
 		smt.setString(8,Status.ATIVO.toString());
@@ -60,7 +60,7 @@ public class RepositorioLista implements IRepositorioLista {
 		smt.close();
 		
 		Lista lista = new Lista();
-		sql = "select id_lista from lista where data_criacao = '" + entidade.getData_criacao_lista() + "'";
+		sql = "select id_lista from lista where data_criacao = '" + entidade.getData_criacao() + "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		while(rs.next()){
@@ -92,9 +92,9 @@ public class RepositorioLista implements IRepositorioLista {
 		sql= "UPDATE lista SET "
 				+ "descricao = '" + entidade.getDescricao() + "'"
 				+ "situacao = '" + entidade.getSituacao() + "'"
-				+ "data_modificacao = '"+entidade.getData_alteracao_lista()+"'"
-				+ "quantidade_total = "+entidade.getQuantidade_total_lista()
-				+ "valor_total = "+entidade.getValor_total_lista();
+				+ "data_modificacao = '"+entidade.getData_alteracao()+"'"
+				+ "quantidade_total = "+entidade.getQuantidade_total()
+				+ "valor_total = "+entidade.getValor_total();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
@@ -119,10 +119,10 @@ public class RepositorioLista implements IRepositorioLista {
 		while (rs.next()){
 			Lista l = new Lista();
 			l.setId_lista(rs.getInt("id_lista"));
-			l.setData_criacao_lista(rs.getString("data_criacao"));
-			l.setData_alteracao_lista(rs.getString("data_modificacao"));
-			l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
-			l.setValor_total_lista(rs.getFloat("valor_total"));
+			l.setData_criacao(rs.getString("data_criacao"));
+			l.setData_alteracao(rs.getString("data_modificacao"));
+			l.setQuantidade_total(rs.getInt("quantidade_total"));
+			l.setValor_total(rs.getFloat("valor_total"));
 			
 			lista.add(l);
 		}
@@ -141,10 +141,10 @@ public class RepositorioLista implements IRepositorioLista {
 		
 		while(rs.next()){
 			l.setId_lista(rs.getInt("id_lista"));
-			l.setData_criacao_lista(rs.getString("data_criacao"));
-			l.setData_alteracao_lista(rs.getString("data_modificacao"));
-			l.setQuantidade_total_lista(rs.getInt("quantidade_total"));
-			l.setValor_total_lista(rs.getFloat("valor_total"));
+			l.setData_criacao(rs.getString("data_criacao"));
+			l.setData_alteracao(rs.getString("data_modificacao"));
+			l.setQuantidade_total(rs.getInt("quantidade_total"));
+			l.setValor_total(rs.getFloat("valor_total"));
 		}
 	
 		smt.close();
@@ -184,8 +184,8 @@ public class RepositorioLista implements IRepositorioLista {
 			cliente.setId_usuario(rs.getInt("id_cliente"));
 					
 			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
-			l.setData_criacao_lista(data_criacao_lista);
-			l.setData_alteracao_lista(data_alteracao_lista);
+			l.setData_criacao(data_criacao_lista);
+			l.setData_alteracao(data_alteracao_lista);
 			
 			lista.add(l);
 		}
@@ -225,8 +225,8 @@ public class RepositorioLista implements IRepositorioLista {
 			cliente.setId_usuario(rs.getInt("id_cliente"));
 								
 			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
-			l.setData_criacao_lista(data_criacao_lista);
-			l.setData_alteracao_lista(data_alteracao_lista);
+			l.setData_criacao(data_criacao_lista);
+			l.setData_alteracao(data_alteracao_lista);
 			
 			lista.add(l);
 		}

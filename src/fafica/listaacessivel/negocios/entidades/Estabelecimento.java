@@ -9,10 +9,10 @@ public class Estabelecimento{
 	private String nome_fantasia;
 	private String nome_juridico;
 	private String email;
+	private String senha;
 	private String categoria;
 	private String cnpj;
 	private Endereco endereco;
-	private String senha;
 	private List <String> telefones;
 	
 	public Estabelecimento(){
