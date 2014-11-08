@@ -4,16 +4,17 @@
 	<html>
 		<head>
 		<meta charset="ISO-8859-1">
-		<title>NomeFuncionario - Inicio </title>
+		<title>NomeEstabelecimento - Inicio </title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body>
-		<%@include file="headerFuncionario.html" %>
+		<%@include file="headerEstabelecimento.html" %>
 
-		<%@include file="sidebarFuncionario.html" %>
+		<%@include file="sidebarEstabelecimento.html" %>
+		
 				<div id="content2">
 					<header class="major">		
-						<h2>Menu Funcionário</h2>
+						<h2>Menu Estabelecimento</h2>
 					</header>
 					<div></div>
 				</div>

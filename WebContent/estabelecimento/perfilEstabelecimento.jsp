@@ -7,8 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<script src="js/script.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<script src="../js/script.js"></script>
 
 </head>
 <body>

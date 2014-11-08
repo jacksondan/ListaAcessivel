@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
- <script src="js/script.js"></script>
+ <script src="../js/script.js"></script>
  <script src="../js/jquery.min.js" type="text/javascript"></script>
 <script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>

@@ -7,14 +7,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 	<div id="container">
 		<div id="header-wrapper">
 			<div id="header" class="container">
 				<h1 id="logo">
-					<a href="index.jsp"><img src="images/g4314.png"
+					<a href="index.jsp"><img src="../images/g4314.png"
 						alt="Logo Lista acessível." style="width: 6.5em; heigth: 8.5em;"></a>
 				</h1>
 
@@ -31,12 +31,12 @@
 
 					<li><p>
 							<a href="cliente/cadastroCliente.jsp" class="image"><img
-								src="images/button4.png" alt=" Ícone Cadastrar Cliente"
+								src="../images/button4.png" alt=" Ícone Cadastrar Cliente"
 								style="width: 12em; heigth: 12em;"></a>
 						</p></li>
 					<li><p>
 							<a href="estabelecimento/cadastroEstabelecimento.jsp" class="image"><img
-								src="images/button5.png"
+								src="../images/button5.png"
 								alt="Ícone Cadastrar Estabelecimento Comércial"
 								style="width: 12em; heigth: 12em;"></a>
 						</p></li>

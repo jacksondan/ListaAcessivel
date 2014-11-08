@@ -9,10 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+<!-- 
 <%@include file="headerEstabelecimento.html" %>
 
 <%@include file="sidebarEstabelecimento.html" %>
-			
+ -->			
 			<div id="content2">
 				<header class="major">		
 					<h2>Editar  Produto</h2>
