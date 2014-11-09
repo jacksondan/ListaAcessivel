@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Nov-2014 às 20:55
+-- Generation Time: 09-Nov-2014 às 21:17
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 CREATE TABLE IF NOT EXISTS `estabelecimento` (
-  `id_estabelecimento` int(11) NOT NULL,
+`id_estabelecimento` int(11) NOT NULL,
   `nome_fantasia` varchar(200) NOT NULL,
   `nome_juridico` varchar(200) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
   `cep` varchar(10) NOT NULL,
   `referencia` varchar(70) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 
 CREATE TABLE IF NOT EXISTS `lista` (
 `id_lista` int(11) NOT NULL,
+  `descricao` varchar(50) NOT NULL,
   `data_criacao` varchar(20) NOT NULL,
   `data_alteracao` varchar(20) DEFAULT NULL,
   `quantidade_total` int(11) DEFAULT NULL,
@@ -241,6 +242,11 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `estabelecimento`
+--
+ALTER TABLE `estabelecimento`
+MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lista`
 --
