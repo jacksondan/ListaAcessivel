@@ -13,6 +13,6 @@ public interface IRepositorioLista {
 	public void excluirLista(Lista lista) throws SQLException;
 	public List<Lista> listarListas() throws SQLException;
 	public Lista pesquisarLista(Lista lista) throws SQLException;
-	public List<Lista> listarListasDoCliente(Cliente cliente) throws SQLException;
-	public List<Lista> listarListasDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException;
+	public List<Lista> listarListasPorCliente(Cliente cliente) throws SQLException;
+	public List<Lista> listarListasPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException;
 }

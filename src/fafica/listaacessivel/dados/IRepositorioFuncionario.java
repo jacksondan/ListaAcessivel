@@ -12,6 +12,6 @@ public interface IRepositorioFuncionario {
 	public void excluirFuncionario(Funcionario funcionario) throws SQLException;
 	public List<Funcionario> listarFuncionarios() throws SQLException;
 	public Funcionario pesquisarFuncionario(Funcionario funcionario) throws SQLException;
-	public List<Funcionario> listarFuncionariosDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException;
+	public List<Funcionario> listarFuncionariosPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException;
 
 }

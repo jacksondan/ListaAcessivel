@@ -154,7 +154,7 @@ public class RepositorioLista implements IRepositorioLista {
 	}
 
 	@Override
-	public List<Lista> listarListasDoCliente(Cliente cliente)
+	public List<Lista> listarListasPorCliente(Cliente cliente)
 			throws SQLException {
 		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_cliente = " + cliente.getId_usuario();
 		smt = this.connection.prepareStatement(sql);
@@ -193,7 +193,7 @@ public class RepositorioLista implements IRepositorioLista {
 	}
 
 	@Override
-	public List<Lista> listarListasDoEstabelecimento(
+	public List<Lista> listarListasPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
 		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
 		smt = this.connection.prepareStatement(sql);

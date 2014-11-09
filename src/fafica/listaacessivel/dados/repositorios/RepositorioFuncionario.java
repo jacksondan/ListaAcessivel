@@ -154,7 +154,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	}
 
 	@Override
-	public List<Funcionario> listarFuncionariosDoEstabelecimento(
+	public List<Funcionario> listarFuncionariosPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException{
 		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = f.id_funcionario AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
