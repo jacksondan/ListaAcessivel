@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
 
 /**
@@ -40,6 +41,8 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento");
 		Estabelecimento pesquisa = new Estabelecimento();
 		
+		Funcionario funcionario = (Funcionario)session.getAttribute("acessoFuncionario");
+		
 		IFachada fachada;
 		
 		if(estabelecimento == null){
@@ -47,7 +50,7 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 		}else{
 			try {
 				fachada = Fachada.getInstance();
-				pesquisa = fachada.pesquisarEstabelecimento(estabelecimento);
+				pesquisa = fachada.pesquisarFuncionario(entidade)
 				List<Lista> listas = fachada.listarListasPorEstabelecimento(pesquisa);
 				
 				request.setAttribute("listasDoEstabelecimento", listas);

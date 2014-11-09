@@ -16,6 +16,7 @@ import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Endereco;
 
 /**
  * Servlet implementation class CadastraUs
@@ -63,12 +64,14 @@ public class CadastrarClienteServlet extends HttpServlet {
 			String cep = request.getParameter("cep");
 			String telefone1 = request.getParameter("telefone1");
 			String telefone2 = request.getParameter("telefone2");
+			String ano_nascimento = request.getParameter("ano_nascimento");
 			telefones.add(telefone1);
 			telefones.add(telefone2);
 			
 			String senhaEncriptada = encriptar(senha);
 	
-			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, cidade, estado, rua, bairro, numero, complemento, referencia, cep);
+			Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
+			Cliente entidade = new Cliente(nome,cpf,email,senhaEncriptada,ano_nascimento,endereco,telefones);
 			entidade.setTelefones(telefones);
 			
 			fachada.adicionarCliente(entidade);

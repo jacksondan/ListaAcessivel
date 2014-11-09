@@ -5,6 +5,8 @@ import java.util.List;
 
 import fafica.listaacessivel.dados.IRepositorioLista;
 import fafica.listaacessivel.dados.repositorios.RepositorioLista;
+import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 
 
@@ -39,4 +41,11 @@ public class ControladorLista {
 		return this.repositorioLista.pesquisarLista(entidade);
 	}
 
+	public List<Lista> listarListaPorCLiente(Cliente cliente) throws SQLException{
+		return this.repositorioLista.listarListasDoCliente(cliente);
+	}
+	
+	public List<Lista> listarListaPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
+		return this.repositorioLista.listarListasDoEstabelecimento(estabelecimento);
+	}
 }

@@ -17,7 +17,7 @@ import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Usuario;
 
 /**
@@ -61,8 +61,8 @@ public class IndexServlet extends HttpServlet {
 					usuario = cliente;
 				}
 			}	
-			for(Funcionario funcionario : fachada.listarEstabelecimento()){
-				if (estabelecimento.getEmail().equals(email)&& funcionario.getSenha().equals(senhaEncriptada)){
+			for(Funcionario funcionario : fachada.listarFuncionario()){
+				if (funcionario.getEmail().equals(email)&& funcionario.getSenha().equals(senhaEncriptada)){
 					usuario = funcionario;
 				}
 			}
@@ -76,7 +76,7 @@ public class IndexServlet extends HttpServlet {
 					response.sendRedirect("visaoUsuario.jsp");
 				}else{
 					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoEstabelecimento", usuario);
+					session.setAttribute("acessoFuncionario", usuario);
 					response.sendRedirect("visaoEs.jsp");
 				}
 			}else{

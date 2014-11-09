@@ -3,16 +3,16 @@ package fafica.listaacessivel.negocios;
 import java.sql.SQLException;
 import java.util.List;
 
+import fafica.listaacessivel.negocios.controladores.ControladorCliente;
 import fafica.listaacessivel.negocios.controladores.ControladorEstabelecimento;
 import fafica.listaacessivel.negocios.controladores.ControladorFuncionario;
 import fafica.listaacessivel.negocios.controladores.ControladorLista;
 import fafica.listaacessivel.negocios.controladores.ControladorProduto;
-import fafica.listaacessivel.negocios.controladores.ControladorCliente;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class Fachada implements IFachada {
 
@@ -179,5 +179,16 @@ public class Fachada implements IFachada {
 	public List<Funcionario> listarFuncionarioPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
 		return this.controlador_funcionario.listarFuncionarioDoEstabelecimento(estabelecimento);
+	}
+
+	@Override
+	public List<Lista> listarListaPorCliente(Cliente cliente) throws SQLException {
+		return this.controlador_lista.listarListaPorCLiente(cliente);
+	}
+
+	@Override
+	public List<Lista> listarListaPorEstabelecimento(
+			Estabelecimento estabelecimento) throws SQLException {
+		return this.controlador_lista.listarListaPorEstabelecimento(estabelecimento);
 	}	
 }
