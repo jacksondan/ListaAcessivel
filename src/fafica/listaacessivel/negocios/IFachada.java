@@ -3,10 +3,11 @@ package fafica.listaacessivel.negocios;
 import java.sql.SQLException;
 import java.util.List;
 
+import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public interface IFachada {
 	public void adicionarEstabelecimento(Estabelecimento entidade) throws SQLException;
@@ -30,5 +31,10 @@ public interface IFachada {
 	public void excluirCliente(Cliente entidade) throws SQLException;
 	public List <Cliente> listarCliente() throws SQLException;
 	public Cliente pesquisarCliente(Cliente entidade) throws SQLException;
-	
+	public void adicionarFuncionario(Funcionario entidade) throws SQLException;
+	public void alterarFuncionario(Funcionario entidade) throws SQLException;
+	public void excluirFuncionario(Funcionario entidade) throws SQLException;
+	public List <Funcionario> listarFuncionario() throws SQLException;
+	public Funcionario pesquisarFuncionario(Funcionario entidade) throws SQLException;
+	public List<Funcionario> listarFuncionarioPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException;
 }

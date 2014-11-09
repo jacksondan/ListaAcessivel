@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Produto;
 
 /**
@@ -64,17 +65,20 @@ public class EditarProdutoServlet extends HttpServlet {
 			fachada = Fachada.getInstance();
 			
 			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
-			String descricao_produto = request.getParameter("descricao");
+			String descricao = request.getParameter("descricao");
 			String categoria = request.getParameter("categoria");
-			String peso_produto = "1 kg";
-			int quantidade_produto = Integer.parseInt(request.getParameter("quantidade"));
-			float preco_produto = Float.parseFloat(request.getParameter("preco"));
-			String validade_produto = "01/05/2014";
-			String marca_produto = "Beta";
-			String codigo_de_barra = "0000";
-			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+			float peso = Float.parseFloat(request.getParameter("peso"));
+			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+			float valor = Float.parseFloat(request.getParameter("preco"));
+			String validade = request.getParameter("validade");
+			String marca = request.getParameter("marca");
+			String codigo_de_barra = request.getParameter("codigo_de_barra");
+			String disponibilidade = request.getParameter("disponibilidade");
 			
-			Produto produto = new Produto(id_produto, descricao_produto,categoria,peso_produto,quantidade_produto,preco_produto,validade_produto,marca_produto,codigo_de_barra, "", id_estabelecimento);
+			Estabelecimento estabelecimento = new Estabelecimento();
+			estabelecimento.setId_estabelecimento(Integer.parseInt(request.getParameter("id_estabelecimento")));
+			
+			Produto produto = new Produto(id_produto,descricao,categoria,peso,quantidade,valor,validade,marca,codigo_de_barra,disponibilidade,estabelecimento);
 			
 			fachada.alterarProduto(produto);
 			

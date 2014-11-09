@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fafica.listaacessivel.negocios.controladores.ControladorEstabelecimento;
+import fafica.listaacessivel.negocios.controladores.ControladorFuncionario;
 import fafica.listaacessivel.negocios.controladores.ControladorLista;
 import fafica.listaacessivel.negocios.controladores.ControladorProduto;
 import fafica.listaacessivel.negocios.controladores.ControladorCliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
 import fafica.listaacessivel.negocios.entidades.Cliente;
@@ -19,12 +21,14 @@ public class Fachada implements IFachada {
 	private ControladorProduto controlador_produto;
 	private ControladorLista controlador_lista;
 	private ControladorCliente controlador_usuario;
+	private ControladorFuncionario controlador_funcionario;
 	
 	private Fachada() throws ClassNotFoundException, SQLException{
 		controlador_estabelecimento = new ControladorEstabelecimento();
 		controlador_produto = new ControladorProduto();
 		controlador_lista = new ControladorLista();
 		controlador_usuario = new ControladorCliente();
+		controlador_funcionario = new ControladorFuncionario();
 	}
 	
 	public static Fachada getInstance() throws ClassNotFoundException, SQLException{
@@ -144,4 +148,36 @@ public class Fachada implements IFachada {
 	public Cliente pesquisarCliente(Cliente entidade) throws SQLException{
 		return this.controlador_usuario.pesquisarCliente(entidade);
 	}
+
+	@Override
+	public void adicionarFuncionario(Funcionario entidade) throws SQLException {
+		this.controlador_funcionario.adicionarFuncionario(entidade);
+	}
+
+	@Override
+	public void alterarFuncionario(Funcionario entidade) throws SQLException {
+		this.controlador_funcionario.alterarFuncionario(entidade);		
+	}
+
+	@Override
+	public void excluirFuncionario(Funcionario entidade) throws SQLException {
+		this.controlador_funcionario.excluirFuncionario(entidade);
+	}
+
+	@Override
+	public List<Funcionario> listarFuncionario() throws SQLException {
+		return this.controlador_funcionario.listarFuncionario();
+	}
+
+	@Override
+	public Funcionario pesquisarFuncionario(Funcionario entidade)
+			throws SQLException {
+		return this.controlador_funcionario.pesquisarFuncionario(entidade);
+	}
+
+	@Override
+	public List<Funcionario> listarFuncionarioPorEstabelecimento(
+			Estabelecimento estabelecimento) throws SQLException {
+		return this.controlador_funcionario.listarFuncionarioDoEstabelecimento(estabelecimento);
+	}	
 }

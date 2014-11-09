@@ -61,9 +61,9 @@ public class IndexServlet extends HttpServlet {
 					usuario = cliente;
 				}
 			}	
-			for(Estabelecimento estabelecimento : fachada.listarEstabelecimento()){
-				if (estabelecimento.getEmail().equals(email)&& estabelecimento.getSenha().equals(senhaEncriptada)){
-					usuario = estabelecimento;
+			for(Funcionario funcionario : fachada.listarEstabelecimento()){
+				if (estabelecimento.getEmail().equals(email)&& funcionario.getSenha().equals(senhaEncriptada)){
+					usuario = funcionario;
 				}
 			}
 			

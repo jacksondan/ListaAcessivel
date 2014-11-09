@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import sun.security.krb5.internal.EncAPRepPart;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Endereco;
 
 /**
  * Servlet implementation class EditarUsuario
@@ -88,10 +90,13 @@ public class EditarClienteServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String telefone1 = request.getParameter("telefone1");
 				String telefone2 = request.getParameter("telefone2");
+				String ano_nascimento = request.getParameter("ano_nacimento");
 				telefones.add(telefone1);
 				telefones.add(telefone2);
+				
+				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 		
-				Cliente entidade = new Cliente(id_usuario,nome,cpf,email,senha,cidade,estado,rua,bairro,numero,complemento,referencia,cep);
+				Cliente entidade = new Cliente(nome,cpf,email,senha,ano_nascimento,endereco,telefones);
 				entidade.setTelefones(telefones);
 				
 				fachada.alterarCliente(entidade);

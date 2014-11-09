@@ -20,11 +20,11 @@ public class ControladorFuncionario {
 		repositorioFuncionario.adicionarFuncionario(funcionario);
 	}
 	
-	public void alterarCliente(Funcionario funcionario) throws SQLException{
+	public void alterarFuncionario(Funcionario funcionario) throws SQLException{
 		repositorioFuncionario.alterarFuncionario(funcionario);
 	}
 	
-	public void excluirCliente(Funcionario funcionario) throws SQLException{
+	public void excluirFuncionario(Funcionario funcionario) throws SQLException{
 		repositorioFuncionario.excluirFuncionario(funcionario);
 	}
 	
@@ -35,5 +35,9 @@ public class ControladorFuncionario {
 
 	public List <Funcionario> listarFuncionarioDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
 		return repositorioFuncionario.listarFuncionariosDoEstabelecimento(estabelecimento);
+	}
+	
+	public Funcionario pesquisarFuncionario(Funcionario funcionario) throws SQLException{
+		return repositorioFuncionario.pesquisarFuncionario(funcionario);
 	}
 }

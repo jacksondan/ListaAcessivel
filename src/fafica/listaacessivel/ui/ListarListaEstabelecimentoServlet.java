@@ -48,7 +48,7 @@ public class ListarListaEstabelecimentoServlet extends HttpServlet {
 			try {
 				fachada = Fachada.getInstance();
 				pesquisa = fachada.pesquisarEstabelecimento(estabelecimento);
-				List<Lista> listas = fachada.listarListasDoEstabelecimento(pesquisa);
+				List<Lista> listas = fachada.listarListasPorEstabelecimento(pesquisa);
 				
 				request.setAttribute("listasDoEstabelecimento", listas);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEs.jsp");

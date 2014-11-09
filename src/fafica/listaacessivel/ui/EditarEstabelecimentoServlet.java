@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
@@ -72,7 +73,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				ArrayList<String> telefones = new ArrayList<String>();
 				
-				int id_estabelecimento = estabelecimento.getId_usuario();
+				int id_estabelecimento = estabelecimento.getId_estabelecimento();
 				String nome_fantasia = request.getParameter("nome_fantasia");
 				String nome_juridico = request.getParameter("nome_juridico");
 				String categoria = request.getParameter("categoria");
@@ -90,8 +91,10 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String referencia = request.getParameter("referencia");
 				
-				Estabelecimento entidade = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, categoria, cnpj, email, senha, rua, numero, complemento, bairro, cidade, estado, cep, referencia);
-				entidade.setTelefones(telefones);
+				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
+				
+				Estabelecimento entidade = new Estabelecimento(id_estabelecimento,nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senha,telefones);
+				//entidade.setTelefones(telefones);
 				
 				fachada.alterarEstabelecimento(entidade);
 				

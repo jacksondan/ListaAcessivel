@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
@@ -67,9 +68,9 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 			String referencia = request.getParameter("referencia");
 			
 			String senhaEncriptada = encriptar(senha);
+			Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 			
-			Estabelecimento entidade = new Estabelecimento(nome_fantasia, nome_juridico, categoria, cnpj, email, senhaEncriptada, rua, numero, complemento, bairro, cidade, estado, cep, referencia);
-			entidade.setTelefones(telefones);
+			Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones);
 			fachada.adicionarEstabelecimento(entidade);
 			
 			response.sendRedirect("cadastros.jsp");
