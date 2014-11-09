@@ -21,7 +21,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 	private Connection connection;
 	private PreparedStatement stm;
 	private ResultSet result;
-	private String sql;
+	private String sql; // SQL PARA COMANDOS NO BD**************
 
 	private RepositorioProduto() throws ClassNotFoundException, SQLException {
 		this.connection = ConnectionMysql.getConnectionMysql();
@@ -41,9 +41,9 @@ public class RepositorioProduto implements IRepositorioProduto {
 
 	@Override
 	public void adicionarProduto(Produto entidade) throws SQLException {
-		String sql = "INSERT INTO produto (descricao, "
+		sql = "INSERT INTO produto (descricao, "
 				+ "categoria, peso, "
-				+ "quantidade, preco, "
+				+ "quantidade, valor, "
 				+ "validade, codigo_barra, "
 				+ "marca, status, disponibilidade,"
 				+ "id_estabelecimento) "
@@ -77,35 +77,29 @@ public class RepositorioProduto implements IRepositorioProduto {
 
 	@Override
 	public void alterarProduto(Produto entidade) throws SQLException {
-		//Produto produto = pesquisar(entidade);
-		String sql2;
 		
-		String sql = "UPDATE produto SET "+
+		String disponibilidade;
+		if(entidade.getQuantidade() >= 1){
+			disponibilidade = Disponibilidade.DISPONIVEL.toString();
+		}else{
+			disponibilidade = Disponibilidade.INDISPONIVEL.toString();
+		}
+		
+		sql = "UPDATE produto SET "+
 				"descricao = '" + entidade.getDescricao()+"'" 
 				+", categoria = '" + entidade.getCategoria()+"'" 
-				+", peso = '" + entidade.getPeso()+"'"
+				+", peso = " + entidade.getPeso()
 				+", quantidade = " + entidade.getQuantidade() 
-				+", preco = " + entidade.getValor() 
+				+", valor = " + entidade.getValor() 
 				+", validade = '" + entidade.getValidade()+"'" 
 				+", codigo_barra = '" + entidade.getCodigo_barra()+"'"
-				+", marca ='" + entidade.getMarca() +"'" 
+				+", marca = '" + entidade.getMarca() +"'"
+				+", disponibilidade = '" + disponibilidade +"'"
 				+" WHERE id_produto = " + entidade.getId_produto();
-		
-		if(entidade.getQuantidade() >= 1){
-			sql2 = "UPDATE produto SET disponibilidade = '" + Disponibilidade.DISPONIVEL.toString() + "'";
-		}else{
-			sql2 = "UPDATE produto SET disponibilidade = '" + Disponibilidade.INDISPONIVEL.toString() + "'";
-		}
 		
 			stm = connection.prepareStatement(sql);
 			stm.execute();
 			stm.close();
-		
-			
-			stm = connection.prepareStatement(sql2);
-			stm.execute();
-			stm.close();
-		
 	}
 
 	@Override
@@ -113,7 +107,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		
 		//Produto produto = pesquisar(entidade);
 
-		String sql = "update produto set status = '" + Status.INATIVO.toString() + "' where id_produto = " + entidade.getId_produto();
+		sql = "update produto set status = '" + Status.INATIVO.toString() + "' where id_produto = " + entidade.getId_produto();
 
 		stm = connection.prepareStatement(sql);
 		stm.execute();
@@ -124,67 +118,71 @@ public class RepositorioProduto implements IRepositorioProduto {
 	@Override
 	public List<Produto> listarProdutos() throws SQLException {
 		
-		String sql = "select * from produto where status = '" + Status.ATIVO.toString() + "'";
-		List<Produto> lista = new ArrayList<Produto>();
+		sql = "select * from produto where status = '" + Status.ATIVO.toString() + "'";
+		stm = connection.prepareStatement(sql);
+		result = stm.executeQuery();
 		
-			stm = connection.prepareStatement(sql);
-			
-			result = stm.executeQuery();
-			Estabelecimento estabelecimento = new Estabelecimento();
-			
-			while(result.next()){
-				
-				int id = result.getInt("id");
-				String descricao = result.getString("descricao");
-				String categoria = result.getString("categoria"); 
-				Float peso = result.getFloat("peso");
-				int quantidade = result.getInt("quantidade");
-				float preco = result.getFloat("preco");
-				String validade = result.getString("validade");
-				String marca = result.getString("marca");
-				String codigo_de_barra = result.getString("codigo_barra");
-				String disponibilidade = result.getString("disponibilidade");
-				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
-				
-				Produto produto = new Produto(id, descricao, categoria, peso,
-						quantidade, preco, validade, marca, codigo_de_barra,
-						disponibilidade, estabelecimento);
-				
-				lista.add(produto);
+		List<Produto> lista_produtos = null;
+		Estabelecimento estabelecimento;
+		Produto produto;
+		
+		while(result.next()){
+			if(lista_produtos == null) {
+				lista_produtos = new ArrayList<Produto>();
 			}
-			stm.close();
-			result.close();
+			estabelecimento = new Estabelecimento();
+			
+			int id = result.getInt("id");
+			String descricao = result.getString("descricao");
+			String categoria = result.getString("categoria"); 
+			Float peso = result.getFloat("peso");
+			int quantidade = result.getInt("quantidade");
+			float valor = result.getFloat("valor");
+			String validade = result.getString("validade");
+			String marca = result.getString("marca");
+			String codigo_barra = result.getString("codigo_barra");
+			String disponibilidade = result.getString("disponibilidade");
+			estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
+			
+			produto = new Produto(id, descricao, categoria, peso,
+					quantidade, valor, validade, marca, codigo_barra,
+					disponibilidade, estabelecimento);
+			
+			lista_produtos.add(produto);
+		}
+		stm.close();
+		result.close();
 		
-		return lista;
+		return lista_produtos;
 	}
 
 	@Override
 	public Produto pesquisarProduto(Produto entidade) throws SQLException {
 		
 			sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' and id_produto = "+ entidade.getId_produto();
-		
 			stm = connection.prepareStatement(sql);
-			
 			result = stm.executeQuery();
 			
-			Produto produto = new Produto();
-			Estabelecimento estabelecimento = new Estabelecimento();
+			Produto produto = null;
+			Estabelecimento estabelecimento = null;
 			
 			while(result.next()){
+				estabelecimento = new Estabelecimento();
+				
 				int id = result.getInt("id");
 				String descricao = result.getString("descricao");
 				String categoria = result.getString("categoria"); 
 				Float peso = result.getFloat("peso");
 				int quantidade = result.getInt("quantidade");
-				float preco = result.getFloat("preco");
+				float valor = result.getFloat("valor");
 				String validade = result.getString("validade");
 				String marca = result.getString("marca");
-				String codigo_de_barra = result.getString("codigo_barra");
+				String codigo_barra = result.getString("codigo_barra");
 				String disponibilidade = result.getString("disponibilidade");
 				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
 				
 				produto = new Produto(id, descricao, categoria, peso,
-						quantidade, preco, validade, marca, codigo_de_barra,
+						quantidade, valor, validade, marca, codigo_barra,
 						disponibilidade, estabelecimento);
 			}
 			stm.close();
@@ -194,76 +192,111 @@ public class RepositorioProduto implements IRepositorioProduto {
 	}
 
 	@Override
-	public List<Produto> listarProdutosDoEstabelecimento(
+	public List<Produto> listarProdutosPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
-		String sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
-		List<Produto> lista = new ArrayList<Produto>();
+		sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
+		stm = connection.prepareStatement(sql);
+		result = stm.executeQuery();
 		
-			stm = connection.prepareStatement(sql);
-			
-			result = stm.executeQuery();
-			
-			while(result.next()){
-				
-				int id = result.getInt("id");
-				String descricao = result.getString("descricao");
-				String categoria = result.getString("categoria"); 
-				Float peso = result.getFloat("peso");
-				int quantidade = result.getInt("quantidade");
-				float preco = result.getFloat("preco");
-				String validade = result.getString("validade");
-				String marca = result.getString("marca");
-				String codigo_de_barra = result.getString("codigo_barra");
-				String disponibilidade = result.getString("disponibilidade");
-				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
-								
-				Produto produto = new Produto(id, descricao, categoria, peso,
-						quantidade, preco, validade, marca, codigo_de_barra,
-						disponibilidade, estabelecimento);
-				
-				lista.add(produto);
+		List<Produto> lista_produtos = null;
+		Produto produto;
+		
+		while(result.next()){
+			if(lista_produtos == null) {
+				lista_produtos = new ArrayList<Produto>();
 			}
-			stm.close();
-			result.close();
+			
+			int id = result.getInt("id");
+			String descricao = result.getString("descricao");
+			String categoria = result.getString("categoria"); 
+			Float peso = result.getFloat("peso");
+			int quantidade = result.getInt("quantidade");
+			float valor = result.getFloat("valor");
+			String validade = result.getString("validade");
+			String marca = result.getString("marca");
+			String codigo_barra = result.getString("codigo_barra");
+			String disponibilidade = result.getString("disponibilidade");
+			/*Verificar a necessidade de criar varios objetos de estabelecimento. da maneira que esta, 
+			todos os produtos apontam para apenas um objeto do estabelecimento, mais
+			se alguem quizer alterar o ID desse unico objeto via linha de comando, todos os outros produtos
+			podem dar problema. isso é algo para ser debatido.
+			O metodos listaProdutos cria variso estabelecimentos, porque não sabe qual o ID que ira receber 
+			*/
+			
+			produto = new Produto(id, descricao, categoria, peso,
+					quantidade, valor, validade, marca, codigo_barra,
+					disponibilidade, estabelecimento);
+			
+			lista_produtos.add(produto);
+		}
+		stm.close();
+		result.close();
 		
-		return lista;
+		return lista_produtos;
 	}
 
 	@Override
-	public List<Produto> listarProdutosDaLista(Lista lista) throws SQLException {
-		String sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' AND id_lista = " + lista.getId_lista();
-		List<Produto> lista_produto = new ArrayList<Produto>();
+	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException {
 		
-			stm = connection.prepareStatement(sql);
-			
-			result = stm.executeQuery();
-			Estabelecimento estabelecimento = new Estabelecimento();
-			
-			while(result.next()){
-				
-				int id_produto = result.getInt("id_produto");
-				String descricao = result.getString("descricao");
-				String categoria = result.getString("categoria"); 
-				Float peso = result.getFloat("peso");
-				int quantidade = result.getInt("quantidade");
-				float preco = result.getFloat("preco");
-				String validade = result.getString("validade");
-				String marca = result.getString("marca");
-				String codigo_de_barra = result.getString("codigo_barra");
-				String disponibilidade = result.getString("disponibilidade");
-				estabelecimento.setId_estabelecimento(result.getInt("id_estabelecimento"));
-				
-				Produto produto = new Produto(id_produto, descricao, categoria, peso,
-						quantidade, preco, validade, marca, codigo_de_barra,
-						disponibilidade, estabelecimento);
-				
-				lista_produto.add(produto);
+		//Primeiro verificamos se a relação entre os produtos e a lista (Tabela lista_produto)
+		sql = "select * from lista_produto where status = '" + Status.ATIVO.toString() + "' AND id_lista = " + lista.getId_lista();
+		stm = connection.prepareStatement(sql);	
+		result = stm.executeQuery();
+		
+		List<Produto> listaProdutosUtil = null;
+		List<Produto> lista_produtos = null;
+		Produto produto;
+		Estabelecimento estabelecimento;
+		
+		while(result.next()){
+			if(listaProdutosUtil == null){
+				listaProdutosUtil = new ArrayList<Produto>();
 			}
-			stm.close();
-			result.close();
+			int id_produto = result.getInt("id_produto");
+			int quantidade = result.getInt("quantidade_produto"); // Atributo importante na relação
+			float valor = result.getFloat("valor_produto"); // Atributo importante na relação
+					
+			Produto produtoUtil = new Produto(id_produto, null, null, 0.0f, quantidade, valor, null, null, null, null, null);
+			
+			listaProdutosUtil.add(produtoUtil);
+		}
+		stm.close();
+		result.close();
 		
-		return lista_produto;
+		
+		if(listaProdutosUtil != null){ //Linha que verifica se a produtos na relação com lista
+			lista_produtos = new ArrayList<Produto>(); //Iniciando o lista que ira ser retornada
+			estabelecimento = lista.getEstabelecimento();
+			
+			for(Produto produtoUtil : listaProdutosUtil){
+				sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' and id_produto = "+ produtoUtil.getId_produto();
+				stm = connection.prepareStatement(sql);
+				result = stm.executeQuery(); 	
+				
+				while(result.next()){
+					int id = result.getInt("id");
+					String descricao = result.getString("descricao");
+					String categoria = result.getString("categoria"); 
+					Float peso = result.getFloat("peso");
+					int quantidade = produtoUtil.getQuantidade();
+					float valor = produtoUtil.getValor();
+					String validade = result.getString("validade");
+					String marca = result.getString("marca");
+					String codigo_barra = result.getString("codigo_barra");
+					String disponibilidade = result.getString("disponibilidade");
+					
+					produto = new Produto(id, descricao, categoria, peso,
+							quantidade, valor, validade, marca, codigo_barra,
+							disponibilidade, estabelecimento);
+					
+					lista_produtos.add(produto);
+				}
+				stm.close();
+				result.close();
+			}
+
+		}
+		
+		return lista_produtos;
 	}
-	
-	
 }
