@@ -38,10 +38,10 @@ public class ControladorProduto {
 	}
 	
 	public List<Produto> listarProdutosDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
-		return this.repositorio_produto.listarProdutosDoEstabelecimento(estabelecimento);
+		return this.repositorio_produto.listarProdutosPorEstabelecimento(estabelecimento);
 	}
 	public List<Produto> listarProdutosDaLista(Lista lista) throws SQLException{
-		return this.repositorio_produto.listarProdutosDaLista(lista);
+		return this.repositorio_produto.listarProdutosPorLista(lista);
 	}
 	
 }
