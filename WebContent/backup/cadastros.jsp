@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/style.css">a
 </head>
 <body>
 	<div id="container">
@@ -15,7 +15,7 @@
 			<div id="header" class="container">
 				<h1 id="logo">
 					<a href="index.jsp"><img src="../images/g4314.png"
-						alt="Logo Lista acessível." style="width: 6.5em; heigth: 8.5em;"></a>
+						alt="Logo Lista acessível, clicando aqui retornara para o menu inicial." style="width: 6.5em; heigth: 8.5em;"></a>
 				</h1>
 
 			</div>
