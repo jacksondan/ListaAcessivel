@@ -174,18 +174,16 @@ public class RepositorioLista implements IRepositorioLista {
 		while (rs.next()){
 		
 			int id_lista = rs.getInt("id_lista");
-			String data_criacao_lista = rs.getString("data_criacao");
-			String data_alteracao_lista = rs.getString("data_modificacao");
+			String data_criacao = rs.getString("data_criacao");
+			String data_alteracao = rs.getString("data_modificacao");
 			String descricao = rs.getString("descricao");
 			String situacao = rs.getString("situacao");
-			int quantidade_total_lista = rs.getInt("quantidade_total");
-			float valor_total_lista = rs.getFloat("valor_total");
+			int quantidade_total = rs.getInt("quantidade_total");
+			float valor_total = rs.getFloat("valor_total");
 			estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
 			cliente.setId_usuario(rs.getInt("id_cliente"));
 					
-			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
-			l.setData_criacao(data_criacao_lista);
-			l.setData_alteracao(data_alteracao_lista);
+			Lista l = new Lista(id_lista, descricao, situacao, data_criacao, data_alteracao, quantidade_total, valor_total, cliente, estabelecimento, produtos);
 			
 			lista.add(l);
 		}
@@ -215,18 +213,16 @@ public class RepositorioLista implements IRepositorioLista {
 		while (rs.next()){
 		
 			int id_lista = rs.getInt("id_lista");
-			String data_criacao_lista = rs.getString("data_criacao");
-			String data_alteracao_lista = rs.getString("data_modificacao");
+			String data_criacao = rs.getString("data_criacao");
+			String data_alteracao = rs.getString("data_modificacao");
 			String descricao = rs.getString("descricao");
 			String situacao = rs.getString("situacao");
-			int quantidade_total_lista = rs.getInt("quantidade_total");
-			float valor_total_lista = rs.getFloat("valor_total");
+			int quantidade_total = rs.getInt("quantidade_total");
+			float valor_total = rs.getFloat("valor_total");
 			estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
 			cliente.setId_usuario(rs.getInt("id_cliente"));
 								
-			Lista l = new Lista(id_lista,descricao,situacao,quantidade_total_lista,valor_total_lista,cliente,estabelecimento,produtos);
-			l.setData_criacao(data_criacao_lista);
-			l.setData_alteracao(data_alteracao_lista);
+			Lista l = new Lista(id_lista, descricao, situacao, data_criacao, data_alteracao, quantidade_total, valor_total, cliente, estabelecimento, produtos);
 			
 			lista.add(l);
 		}

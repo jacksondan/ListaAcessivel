@@ -23,12 +23,11 @@ public class Lista {
 		
 	}
 	
-	public Lista(String descricao, String situacao, int quantidade_total,
-			float valor_total, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
+	public Lista(String descricao, String situacao, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.descricao = descricao;
 		this.situacao = situacao;
-		this.quantidade_total = quantidade_total;
-		this.valor_total = valor_total;
+		this.quantidade_total = calcularQuantidadeTotal();
+		this.valor_total = calcularValorTotal();
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
@@ -37,19 +36,54 @@ public class Lista {
 		this.data_alteracao = dmy.format(new Date());		
 	}
 	
-	public Lista(int id_lista, String descricao, String situacao, int quantidade_total,
-			float valor_total, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
+	public Lista(int id_lista, String descricao, String situacao,
+			String data_criacao, Cliente cliente,
+			Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.id_lista = id_lista;
 		this.descricao = descricao;
 		this.situacao = situacao;
+		this.data_criacao = data_criacao;
+		this.quantidade_total = calcularQuantidadeTotal();
+		this.valor_total = calcularValorTotal();
+		this.cliente = cliente;
+		this.estabelecimento = estabelecimento;
+		this.produtos = produtos;
+		dmy = new SimpleDateFormat("hh:mm - dd/MM/yyyy");
+		this.data_alteracao = dmy.format(new Date());
+		
+	}
+
+	public Lista(int id_lista, String descricao, String situacao,
+			String data_criacao, String data_alteracao, int quantidade_total,
+			float valor_total, Cliente cliente,
+			Estabelecimento estabelecimento, List<Produto> produtos) {
+		super();
+		this.id_lista = id_lista;
+		this.descricao = descricao;
+		this.situacao = situacao;
+		this.data_criacao = data_criacao;
+		this.data_alteracao = data_alteracao;
 		this.quantidade_total = quantidade_total;
 		this.valor_total = valor_total;
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		dmy = new SimpleDateFormat("hh:mm - dd/MM/yyyy");
-		this.data_criacao = dmy.format(new Date());
-		this.data_alteracao = dmy.format(new Date());
+	}
+	
+	private int calcularQuantidadeTotal(){
+		int quantidade = 0;
+		for(Produto produto : produtos){
+			quantidade += produto.getQuantidade();
+		}
+		return quantidade;
+	}
+	
+	private float calcularValorTotal(){
+		float valor = 0.0f;
+		for(Produto produto : produtos){
+			valor += produto.getQuantidade() * produto.getValor();
+		}
+		return valor;
 	}
 
 	public int getId_lista() {
