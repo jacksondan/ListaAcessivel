@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fafica.listaacessivel.dados.IRepositorioLista;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
@@ -41,63 +43,101 @@ public class RepositorioLista implements IRepositorioLista {
 	
 	@Override
 	public void adicionarLista(Lista entidade) throws SQLException {
-		sql = "insert into lista (descricao, data_criacao,situacao,"
-			+"quantidade_total,"
-			+ "valor_total,id_cliente,id_estabelecimento,status)"
-			+ "VALUE(?,?,?,?,?,?,?)";
+		int id_auto_increment = 0;
+		//Inserindo na tabela Lisnta
+		sql = "insert into lista (descricao, data_criacao,quantidade_total,"
+			+"valor_total,status"
+			+ "VALUE(?,?,?,?,?)";
 		
-		smt = connection.prepareStatement(sql);
-		
+		//Esse Segundo parametro permite que o ID AUTO_INCREMENT seja coletado
+		smt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 		smt.setString(1, entidade.getDescricao());
 		smt.setString(2, entidade.getData_criacao());
-		smt.setString(3, entidade.getSituacao());
-		smt.setInt(4, entidade.getQuantidade_total());
-		smt.setFloat(5, entidade.getValor_total());
-		smt.setInt(6, entidade.getCliente().getId_usuario());
-		smt.setInt(7, entidade.getEstabelecimento().getId_estabelecimento());
-		smt.setString(8,Status.ATIVO.toString());
+		smt.setInt(3, entidade.getQuantidade_total());
+		smt.setFloat(4, entidade.getValor_total());
+		smt.setString(5,Status.ATIVO.toString());
 		smt.execute();
-		smt.close();
 		
-		Lista lista = new Lista();
-		sql = "select id_lista from lista where data_criacao = '" + entidade.getData_criacao() + "'";
-		smt = this.connection.prepareStatement(sql);
-		rs = smt.executeQuery();
-		while(rs.next()){
-			lista.setId_lista(rs.getInt("id_lista"));
+		//Coletando o ID AUTO INCREMENT
+		rs = smt.getGeneratedKeys();
+		if(rs.next()){
+			id_auto_increment = rs.getInt(1);
 		}
 		rs.close();
 		smt.close();
 		
-		String sql2 = "insert into lista_produto (id_lista, id_produto) values (?,?)";
+		//Inserindo na tabela lista_cliente_estabelecimento
+		sql = "insert into lista_cliente_estabelecimento (id_lista, id_cliente, "
+				+ "id_estabelecimento, situacao)"
+				+ "VALUE(?,?,?,?,)";
+		
+		smt = this.connection.prepareStatement(sql);
+		smt.setInt(1, id_auto_increment);
+		smt.setInt(2, entidade.getCliente().getId_usuario());
+		smt.setInt(3, entidade.getEstabelecimento().getId_estabelecimento());
+		smt.setString(4, entidade.getSituacao());
+		smt.execute();
+		smt.close();
+		
+		//Inserindo na tabela lista_produto
 		for(Produto produto : entidade.getProdutos()){
-			smt = this.connection.prepareStatement(sql2);
-			smt.setInt(1, entidade.getId_lista());
+			sql = "insert into lista_produto"
+					+ "(id_lista, id_produto, quantidade_produto, valor_produto)"
+					+ "VALUE(?,?,?,?,)";
+			
+			smt = this.connection.prepareStatement(sql);
+			smt.setInt(1, id_auto_increment);
 			smt.setInt(2, produto.getId_produto());
+			smt.setInt(3, produto.getQuantidade());
+			smt.setFloat(4, produto.getValor());
 			smt.execute();
 			smt.close();
 		}
 		
-		String sql3 = "insert into lista_cliente_estabelecimento (id_lista, id_cliente, id_estabelecmimento) values (?,?,?)";
-		smt = this.connection.prepareStatement(sql3);
-		smt.setInt(1, entidade.getId_lista());
-		smt.setInt(2, entidade.getCliente().getId_usuario());
-		smt.setInt(3, entidade.getEstabelecimento().getId_estabelecimento());
-		smt.execute();
-		smt.close();		
 	}
 
+	
 	@Override
 	public void alterarLista(Lista entidade) throws SQLException {
-		sql= "UPDATE lista SET "
-				+ "descricao = '" + entidade.getDescricao() + "'"
-				+ "situacao = '" + entidade.getSituacao() + "'"
-				+ "data_modificacao = '"+entidade.getData_alteracao()+"'"
-				+ "quantidade_total = "+entidade.getQuantidade_total()
-				+ "valor_total = "+entidade.getValor_total();
-		smt = connection.prepareStatement(sql);
+		
+		sql = "update lista set"
+				+ " descricao = '" +entidade.getDescricao()+ "'"
+				+ ", data_alteracao = '" +entidade.getData_alteracao()+ "'"
+				+ ", quantidade_total = " +entidade.getQuantidade_total()
+				+ ", valor_total = " +entidade.getValor_total()
+				+ " where id_lista = " +entidade.getId_lista();
+		
+		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
+		
+		
+		sql = "update lista_cliente_estabelecimento set"
+				+ " situacao = '" +entidade.getSituacao()+ "'"
+				+ " where id_lista = " +entidade.getId_lista();
+		
+		smt = this.connection.prepareStatement(sql);
+		smt.execute();
+		smt.close();
+		
+		sql = "delete from lista_produto where id_lista "+entidade.getId_lista();
+		smt = this.connection.prepareStatement(sql);
+		smt.execute();
+		smt.close();
+		
+		for(Produto produto : entidade.getProdutos()){
+			sql = "insert into lista_produto"
+					+ "(id_lista, id_produto, quantidade_produto, valor_produto)"
+					+ "VALUE(?,?,?,?,)";
+			
+			smt = this.connection.prepareStatement(sql);
+			smt.setInt(1, entidade.getId_lista());
+			smt.setInt(2, produto.getId_produto());
+			smt.setInt(3, produto.getQuantidade());
+			smt.setFloat(4, produto.getValor());
+			smt.execute();
+			smt.close();
+		}
 		
 	}
 

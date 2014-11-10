@@ -31,9 +31,8 @@ public class Lista {
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		dmy = new SimpleDateFormat("hh:mm - dd/MM/yyyy");
-		this.data_criacao = dmy.format(new Date());
-		this.data_alteracao = dmy.format(new Date());		
+		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
+		this.data_criacao = dmy.format(new Date());		
 	}
 	
 	public Lista(int id_lista, String descricao, String situacao,
@@ -48,7 +47,7 @@ public class Lista {
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		dmy = new SimpleDateFormat("hh:mm - dd/MM/yyyy");
+		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
 		this.data_alteracao = dmy.format(new Date());
 		
 	}
