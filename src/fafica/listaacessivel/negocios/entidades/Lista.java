@@ -26,13 +26,14 @@ public class Lista {
 	public Lista(String descricao, String situacao, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.descricao = descricao;
 		this.situacao = situacao;
-		this.quantidade_total = calcularQuantidadeTotal();
-		this.valor_total = calcularValorTotal();
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
 		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
-		this.data_criacao = dmy.format(new Date());		
+		this.data_criacao = dmy.format(new Date());
+		
+		this.quantidade_total = calcularQuantidadeTotal();
+		this.valor_total = calcularValorTotal();
 	}
 	
 	public Lista(int id_lista, String descricao, String situacao,
@@ -42,13 +43,14 @@ public class Lista {
 		this.descricao = descricao;
 		this.situacao = situacao;
 		this.data_criacao = data_criacao;
-		this.quantidade_total = calcularQuantidadeTotal();
-		this.valor_total = calcularValorTotal();
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
 		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
 		this.data_alteracao = dmy.format(new Date());
+		
+		this.quantidade_total = calcularQuantidadeTotal();
+		this.valor_total = calcularValorTotal();
 		
 	}
 
