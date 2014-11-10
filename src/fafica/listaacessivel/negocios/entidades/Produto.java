@@ -5,9 +5,9 @@ public class Produto {
 	private int id_produto;
 	private String descricao;
 	private String categoria;
-	private float peso;
-	private int quantidade;
-	private float valor;
+	private float peso = 0.0f;
+	private int quantidade = 0;
+	private float valor = 0.0f;
 	private String validade;
 	private String marca;
 	private String codigo_barra;

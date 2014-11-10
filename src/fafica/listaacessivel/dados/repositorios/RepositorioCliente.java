@@ -238,7 +238,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 			result.close();
 			smt.close();
 			
-			sql = "select * from telefone_usuario where id_usuario = " + cliente.getId_usuario();
+			sql = "select * from telefone_cliente where id_cliente = " + cliente.getId_usuario();
 			
 			smt = this.connection.prepareStatement(sql);
 			result = smt.executeQuery();

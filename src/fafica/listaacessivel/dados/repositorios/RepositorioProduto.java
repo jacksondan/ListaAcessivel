@@ -73,6 +73,8 @@ public class RepositorioProduto implements IRepositorioProduto {
 			
 			stm.execute();
 			stm.close();
+			
+			System.out.println("ADICIONAR PRODUTO OK");
 	}
 
 	@Override
@@ -100,6 +102,8 @@ public class RepositorioProduto implements IRepositorioProduto {
 			stm = connection.prepareStatement(sql);
 			stm.execute();
 			stm.close();
+			
+			System.out.println("ALTERAR PRODUTO OK");
 	}
 
 	@Override
@@ -112,7 +116,8 @@ public class RepositorioProduto implements IRepositorioProduto {
 		stm = connection.prepareStatement(sql);
 		stm.execute();
 		stm.close();
-			
+		
+		System.out.println("EXCLUIR PRODUTO OK");
 	}
 
 	@Override
@@ -153,6 +158,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		stm.close();
 		result.close();
 		
+		System.out.println("LISTAR PRODUTOS OK");
 		return lista_produtos;
 	}
 
@@ -188,6 +194,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			stm.close();
 			result.close();
 		
+		System.out.println("PESQUISAR PRODUTO OK");
 		return produto;
 	}
 
@@ -232,6 +239,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		stm.close();
 		result.close();
 		
+		System.out.println("LISTAR PRODUTOS POR ESTABELECIMENTO OK");
 		return lista_produtos;
 	}
 
@@ -297,6 +305,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 
 		}
 		
+		System.out.println("LISTAR PRODUTOS POR LISTA OK");
 		return lista_produtos;
 	}
 }

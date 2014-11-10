@@ -11,8 +11,8 @@ public class Lista {
 	private String situacao;
 	private String data_criacao;
 	private String data_alteracao;
-	private int quantidade_total;
-	private float valor_total;
+	private int quantidade_total = 0;
+	private float valor_total = 0.0f;
 	private Cliente cliente;
 	private Estabelecimento estabelecimento;
 	private List<Produto> produtos;
@@ -32,8 +32,10 @@ public class Lista {
 		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
 		this.data_criacao = dmy.format(new Date());
 		
-		this.quantidade_total = calcularQuantidadeTotal();
-		this.valor_total = calcularValorTotal();
+		if(produtos != null){
+			this.quantidade_total = calcularQuantidadeTotal();
+			this.valor_total = calcularValorTotal();
+		}
 	}
 	
 	public Lista(int id_lista, String descricao, String situacao,
@@ -49,8 +51,10 @@ public class Lista {
 		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
 		this.data_alteracao = dmy.format(new Date());
 		
-		this.quantidade_total = calcularQuantidadeTotal();
-		this.valor_total = calcularValorTotal();
+		if(produtos != null){
+			this.quantidade_total = calcularQuantidadeTotal();
+			this.valor_total = calcularValorTotal();
+		}
 		
 	}
 
@@ -73,7 +77,7 @@ public class Lista {
 	
 	private int calcularQuantidadeTotal(){
 		int quantidade = 0;
-		for(Produto produto : produtos){
+		for(Produto produto : this.produtos){
 			quantidade += produto.getQuantidade();
 		}
 		return quantidade;
@@ -81,7 +85,7 @@ public class Lista {
 	
 	private float calcularValorTotal(){
 		float valor = 0.0f;
-		for(Produto produto : produtos){
+		for(Produto produto : this.produtos){
 			valor += produto.getQuantidade() * produto.getValor();
 		}
 		return valor;
