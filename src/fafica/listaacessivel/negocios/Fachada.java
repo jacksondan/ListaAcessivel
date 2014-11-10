@@ -178,7 +178,7 @@ public class Fachada implements IFachada {
 	@Override
 	public List<Funcionario> listarFuncionarioPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
-		return this.controlador_funcionario.listarFuncionarioDoEstabelecimento(estabelecimento);
+		return this.controlador_funcionario.listarFuncionarioPorEstabelecimento(estabelecimento);
 	}
 
 	@Override

@@ -42,10 +42,10 @@ public class ControladorLista {
 	}
 
 	public List<Lista> listarListaPorCLiente(Cliente cliente) throws SQLException{
-		return this.repositorioLista.listarListasDoCliente(cliente);
+		return this.repositorioLista.listarListasPorCliente(cliente);
 	}
 	
 	public List<Lista> listarListaPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
-		return this.repositorioLista.listarListasDoEstabelecimento(estabelecimento);
+		return this.repositorioLista.listarListasPorEstabelecimento(estabelecimento);
 	}
 }

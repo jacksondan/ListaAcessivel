@@ -33,11 +33,12 @@ public class ControladorFuncionario {
 		return repositorioFuncionario.listarFuncionarios();
 	}
 
-	public List <Funcionario> listarFuncionarioDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
-		return repositorioFuncionario.listarFuncionariosDoEstabelecimento(estabelecimento);
-	}
-	
 	public Funcionario pesquisarFuncionario(Funcionario funcionario) throws SQLException{
 		return repositorioFuncionario.pesquisarFuncionario(funcionario);
 	}
+
+	public List <Funcionario> listarFuncionarioPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
+		return repositorioFuncionario.listarFuncionariosPorEstabelecimento(estabelecimento);
+	}
+
 }
