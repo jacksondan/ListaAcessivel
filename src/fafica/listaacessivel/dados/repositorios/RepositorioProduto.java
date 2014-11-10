@@ -132,7 +132,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			}
 			estabelecimento = new Estabelecimento();
 			
-			int id = result.getInt("id");
+			int id = result.getInt("id_produto");
 			String descricao = result.getString("descricao");
 			String categoria = result.getString("categoria"); 
 			Float peso = result.getFloat("peso");
@@ -169,7 +169,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			while(result.next()){
 				estabelecimento = new Estabelecimento();
 				
-				int id = result.getInt("id");
+				int id = result.getInt("id_produto");
 				String descricao = result.getString("descricao");
 				String categoria = result.getString("categoria"); 
 				Float peso = result.getFloat("peso");
@@ -206,7 +206,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 				lista_produtos = new ArrayList<Produto>();
 			}
 			
-			int id = result.getInt("id");
+			int id = result.getInt("id_produto");
 			String descricao = result.getString("descricao");
 			String categoria = result.getString("categoria"); 
 			Float peso = result.getFloat("peso");

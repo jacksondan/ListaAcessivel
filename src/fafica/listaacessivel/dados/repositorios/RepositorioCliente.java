@@ -163,19 +163,19 @@ public class RepositorioCliente implements IRepositorioCliente {
 			List <Cliente> clientes = new ArrayList<Cliente>();
 			while(result.next()){
 				int id_cliente = result.getInt("c.id_cliente");
-				String nome = result.getString("c.nome_cliente");
+				String nome = result.getString("u.nome");
 				String cpf = result.getString("c.cpf");
 				String ano_nascimento = result.getString("c.ano_nascimento");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
-				String rua = result.getString("u.rua");
-				String numero = result.getString("u.numero");
-				String complemento = result.getString("u.complemento");
-				String bairro = result.getString("u.bairro");
-				String cidade = result.getString("u.cidade");
-				String estado = result.getString("u.estado");
-				String cep = result.getString("u.cep");
-				String referencia = result.getString("u.referencia");
+				String rua = result.getString("c.rua");
+				String numero = result.getString("c.numero");
+				String complemento = result.getString("c.complemento");
+				String bairro = result.getString("c.bairro");
+				String cidade = result.getString("c.cidade");
+				String estado = result.getString("c.estado");
+				String cep = result.getString("c.cep");
+				String referencia = result.getString("c.referencia");
 				
 				Endereco endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
 				Cliente cliente = new Cliente(id_cliente,nome,cpf,email,senha,ano_nascimento,endereco,null);
@@ -218,19 +218,19 @@ public class RepositorioCliente implements IRepositorioCliente {
 			
 			while (result.next()){
 				int id_cliente = result.getInt("c.id_cliente");
-				String nome = result.getString("c.nome_cliente");
+				String nome = result.getString("u.nome");
 				String cpf = result.getString("c.cpf");
 				String ano_nascimento = result.getString("c.ano_nascimento");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
-				String rua = result.getString("u.rua");
-				String numero = result.getString("u.numero");
-				String complemento = result.getString("u.complemento");
-				String bairro = result.getString("u.bairro");
-				String cidade = result.getString("u.cidade");
-				String estado = result.getString("u.estado");
-				String cep = result.getString("u.cep");
-				String referencia = result.getString("u.referencia");
+				String rua = result.getString("c.rua");
+				String numero = result.getString("c.numero");
+				String complemento = result.getString("c.complemento");
+				String bairro = result.getString("c.bairro");
+				String cidade = result.getString("c.cidade");
+				String estado = result.getString("c.estado");
+				String cep = result.getString("c.cep");
+				String referencia = result.getString("c.referencia");
 				Endereco endereco = new Endereco(rua,bairro,numero,complemento,referencia,cidade,estado,cep);
 				cliente = new Cliente(id_cliente,nome,cpf,email,senha,ano_nascimento,endereco,null);
 			}
