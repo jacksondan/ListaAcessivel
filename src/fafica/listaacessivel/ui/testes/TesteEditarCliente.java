@@ -36,24 +36,24 @@ public class TesteEditarCliente extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id_usuario = 1;
-		String nome = "jackson";
-		String cpf = "87285525";
-		String email = "teste@teste";
+		String nome = "Joaquim";
+		String cpf = "1000000000";
+		String email = "rrr@rrr";
 		String senha = "123";
-		String ano_nascimento = "1895";
+		String ano_nascimento = "1877";
 		List <String> telefones = new ArrayList<>();
 		telefones.add("99668855");
 		telefones.add("88559966");
 		
 		
-		String rua = "manoeu";
-		String bairro = "tesss";
-		String numero = "98";
-		String complemento = "";
-		String referencia = "";
-		String cidade = "";
-		String estado = "";
-		String cep = "";
+		String rua = "manoeu fdfdfd";
+		String bairro = "tesss fdfdsfs";
+		String numero = "100";
+		String complemento = "casa";
+		String referencia = "perto do beco";
+		String cidade = "caruaru";
+		String estado = "PE";
+		String cep = "Teste";
 		
 		Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 		Cliente cliente = new Cliente(id_usuario, nome, cpf, email, senha, ano_nascimento, endereco, telefones);

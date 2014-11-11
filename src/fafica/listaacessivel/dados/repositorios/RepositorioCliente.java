@@ -225,7 +225,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		
 			Cliente cliente = null;
 			
-			while (result.next()){
+			if (result.next()){
 				int id_cliente = result.getInt("c.id_cliente");
 				String nome = result.getString("u.nome");
 				String cpf = result.getString("c.cpf");

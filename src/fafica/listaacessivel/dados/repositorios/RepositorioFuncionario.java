@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fafica.listaacessivel.dados.IRepositorioFuncionario;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
@@ -39,22 +41,30 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	
 	@Override
 	public void adicionarFuncionario(Funcionario funcionario) throws SQLException {
-		sql = "insert into usuario (nome,email,senha,status) values"
-				+ "(?,?,?,?)";
+		int id_auto_increment = 0; //Variavel para recuperar ID auto increment de Usuario
 		
-		smt = this.connection.prepareStatement(sql);
+		sql = "insert into usuario (nome,email,senha,status)"
+				+ " values (?,?,?,?)";
+		
+		smt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		smt.setString(1,funcionario.getNome());
 		smt.setString(2,funcionario.getEmail());
 		smt.setString(3,funcionario.getSenha());
 		smt.setString(4,Status.ATIVO.toString());
 		smt.execute();
+
+		result = smt.getGeneratedKeys();
+		if(result.next()){
+			id_auto_increment = result.getInt(1);
+		}
+		result.close();
 		smt.close();
 		
-		sql = "insert into funcionario (id_funcionario, matricula, id_estabelecimento) values"
-				+ "(?,?,?)";
+		sql = "insert into funcionario (id_funcionario, matricula, id_estabelecimento)"
+				+ " values (?,?,?)";
 		
 		smt = this.connection.prepareStatement(sql);
-		smt.setInt(1,funcionario.getId_usuario());
+		smt.setInt(1, id_auto_increment);
 		smt.setString(2,funcionario.getMatricula());
 		smt.setInt(3,funcionario.getEstabelecimento().getId_estabelecimento());
 		smt.execute();
@@ -64,20 +74,18 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	@Override
 	public void alterarFuncionario(Funcionario funcionario) throws SQLException {
 		sql = "UPDATE usuario SET"
-				+ "nome = '" + funcionario.getNome() + "'"
+				+ " nome = '" + funcionario.getNome() + "'"
 				+ ", email = '"+ funcionario.getEmail()+"'"
 				+ ", senha = '"+ funcionario.getSenha()+"'"
-				+ " where id_usuario = "+ funcionario.getId_usuario() + " AND " + " status = " + Status.ATIVO.toString();
+				+ " where id_usuario = "+ funcionario.getId_usuario() + " AND status = '" +Status.ATIVO.toString()+ "'";
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
 		sql = "UPDATE funcionario SET"
-				+ " nome_cliente = '" + funcionario.getNome() + "'"
-				+ ", matricula = '" + funcionario.getMatricula() + "'"
-				+ ", id_estabelecimento = '" + funcionario.getEstabelecimento().getId_estabelecimento() + "'"
-				+ " where id_cliente = " + funcionario.getId_usuario()  + " AND " + " status = " + Status.ATIVO.toString();
+				+ " matricula = '" + funcionario.getMatricula() + "'"
+				+ " where id_funcionario = " + funcionario.getId_usuario();
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
@@ -99,14 +107,18 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
-			List <Funcionario> funcionarios = new ArrayList<Funcionario>();
-			Estabelecimento estabelecimento = new Estabelecimento();
+			List <Funcionario> funcionarios = null;
+			Estabelecimento estabelecimento = null;
 			while(result.next()){
+				if(funcionarios == null){
+					funcionarios = new ArrayList<Funcionario>();
+				}
 				int id_funcionario = result.getInt("f.id_funcionario");
 				String nome = result.getString("f.nome_funcionario");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
+				estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(result.getInt("f.id_estabelecimento"));
 								
 				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
@@ -114,6 +126,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			}
 			result.close();
 			smt.close();
+			
 		return funcionarios;
 	}
 
@@ -132,17 +145,17 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 		smt = connection.prepareStatement(sql);
 		result = smt.executeQuery();
 		
-			Estabelecimento estabelecimento = new Estabelecimento();
-			Funcionario funcionario2 = new Funcionario();
+			Funcionario funcionarioRetorno = null;
 			
-			while (result.next()){
+			if (result.next()){
 				int id_funcionario = result.getInt("f.id_funcionario");
 				String nome = result.getString("f.nome_funcionario");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
+				Estabelecimento estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(result.getInt("f.id_estabelecimento"));
-				funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);				
+				funcionarioRetorno = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);				
 			}
 			
 						
@@ -150,28 +163,29 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			smt.close();
 			
 			System.out.println("PESQUISAR FUNCIONARIO OK"); //LINHA TEMPORARIA
-		return funcionario2;
+		return funcionarioRetorno;
 	}
 
 	@Override
 	public List<Funcionario> listarFuncionariosPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException{
 		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
-				+ " AND u.id_usuario = f.id_funcionario AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
-			
+				+ " AND u.id_usuario = f.id_funcionario AND f.id_estabelecimento = " + estabelecimento.getId_estabelecimento();
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
-			List <Funcionario> funcionarios = new ArrayList<Funcionario>();
-			Estabelecimento estabelecimento2 = new Estabelecimento();
+			
+			List <Funcionario> funcionarios = null;
 			while(result.next()){
+				if(funcionarios == null){
+					funcionarios = new ArrayList<Funcionario>();
+				}
 				int id_funcionario = result.getInt("f.id_funcionario");
 				String nome = result.getString("f.nome_funcionario");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
-				estabelecimento2.setId_estabelecimento(result.getInt("f.id_estabelecimento"));
 								
-				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento2);
+				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
 				funcionarios.add(funcionario2);
 			}
 			result.close();
