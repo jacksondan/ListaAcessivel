@@ -69,6 +69,8 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 		smt.setInt(3,funcionario.getEstabelecimento().getId_estabelecimento());
 		smt.execute();
 		smt.close();
+		
+		System.out.println("ADICIONAR FUNCIONARIO OK");
 	}
 
 	@Override
@@ -90,6 +92,8 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
+		
+		System.out.println("ALTERAR FUNCIONARIO OK");
 	}
 
 	@Override
@@ -114,7 +118,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 					funcionarios = new ArrayList<Funcionario>();
 				}
 				int id_funcionario = result.getInt("f.id_funcionario");
-				String nome = result.getString("f.nome_funcionario");
+				String nome = result.getString("u.nome");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
@@ -126,7 +130,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			}
 			result.close();
 			smt.close();
-			
+			System.out.println("LISTAR FUNCIONARIOS OK");
 		return funcionarios;
 	}
 
@@ -149,7 +153,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			
 			if (result.next()){
 				int id_funcionario = result.getInt("f.id_funcionario");
-				String nome = result.getString("f.nome_funcionario");
+				String nome = result.getString("u.nome");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
@@ -180,7 +184,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 					funcionarios = new ArrayList<Funcionario>();
 				}
 				int id_funcionario = result.getInt("f.id_funcionario");
-				String nome = result.getString("f.nome_funcionario");
+				String nome = result.getString("u.nome");
 				String email = result.getString("u.email");
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
@@ -190,6 +194,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 			}
 			result.close();
 			smt.close();
+			System.out.println("LISTAR FUNCIONARIO POR ESTABELECIMENTO OK");
 		return funcionarios;
 	}
 
