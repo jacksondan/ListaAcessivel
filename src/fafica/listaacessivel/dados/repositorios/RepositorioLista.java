@@ -62,14 +62,15 @@ public class RepositorioLista implements IRepositorioLista {
 		rs = smt.getGeneratedKeys();
 		if(rs.next()){
 			id_auto_increment = rs.getInt(1);
+			System.out.println("ID auto increment: "+id_auto_increment);
 		}
 		rs.close();
 		smt.close();
 		
 		//Inserindo na tabela lista_cliente_estabelecimento
-		sql = "insert into lista_cliente_estabelecimento (id_lista, id_cliente, "
-				+ "id_estabelecimento, situacao)"
-				+ "values(?,?,?,?,)";
+		sql = "insert into lista_cliente_estabelecimento (id_lista, id_cliente,"
+				+ " id_estabelecimento, situacao)"
+				+ " values(?,?,?,?)";
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.setInt(1, id_auto_increment);
@@ -82,8 +83,9 @@ public class RepositorioLista implements IRepositorioLista {
 		//Inserindo na tabela lista_produto
 		for(Produto produto : entidade.getProdutos()){
 			sql = "insert into lista_produto"
-					+ "(id_lista, id_produto, quantidade_produto, valor_produto)"
-					+ "values(?,?,?,?,)";
+					+ " (id_lista, id_produto,"
+					+ " quantidade_produto, valor_produto)"
+					+ " values(?,?,?,?)";
 			
 			smt = this.connection.prepareStatement(sql);
 			smt.setInt(1, id_auto_increment);
