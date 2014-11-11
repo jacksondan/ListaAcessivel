@@ -45,12 +45,12 @@ public class RepositorioLista implements IRepositorioLista {
 	public void adicionarLista(Lista entidade) throws SQLException {
 		int id_auto_increment = 0;
 		//Inserindo na tabela Lisnta
-		sql = "insert into lista (descricao, data_criacao,quantidade_total,"
-			+"valor_total,status"
-			+ "VALUE(?,?,?,?,?)";
+		sql = "insert into lista (descricao, data_criacao, quantidade_total,"
+			+"valor_total, status"
+			+ "values(?,?,?,?,?)";
 		
 		//Esse Segundo parametro permite que o ID AUTO_INCREMENT seja coletado
-		smt = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+		smt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		smt.setString(1, entidade.getDescricao());
 		smt.setString(2, entidade.getData_criacao());
 		smt.setInt(3, entidade.getQuantidade_total());
@@ -69,7 +69,7 @@ public class RepositorioLista implements IRepositorioLista {
 		//Inserindo na tabela lista_cliente_estabelecimento
 		sql = "insert into lista_cliente_estabelecimento (id_lista, id_cliente, "
 				+ "id_estabelecimento, situacao)"
-				+ "VALUE(?,?,?,?,)";
+				+ "values(?,?,?,?,)";
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.setInt(1, id_auto_increment);
@@ -83,7 +83,7 @@ public class RepositorioLista implements IRepositorioLista {
 		for(Produto produto : entidade.getProdutos()){
 			sql = "insert into lista_produto"
 					+ "(id_lista, id_produto, quantidade_produto, valor_produto)"
-					+ "VALUE(?,?,?,?,)";
+					+ "values(?,?,?,?,)";
 			
 			smt = this.connection.prepareStatement(sql);
 			smt.setInt(1, id_auto_increment);
@@ -94,6 +94,7 @@ public class RepositorioLista implements IRepositorioLista {
 			smt.close();
 		}
 		
+		System.out.println("ADICIONAR LISTA OK");
 	}
 
 	
@@ -128,7 +129,7 @@ public class RepositorioLista implements IRepositorioLista {
 		for(Produto produto : entidade.getProdutos()){
 			sql = "insert into lista_produto"
 					+ "(id_lista, id_produto, quantidade_produto, valor_produto)"
-					+ "VALUE(?,?,?,?,)";
+					+ "values(?,?,?,?,)";
 			
 			smt = this.connection.prepareStatement(sql);
 			smt.setInt(1, entidade.getId_lista());

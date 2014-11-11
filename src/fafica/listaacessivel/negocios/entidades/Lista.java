@@ -86,7 +86,7 @@ public class Lista {
 	private float calcularValorTotal(){
 		float valor = 0.0f;
 		for(Produto produto : this.produtos){
-			valor += produto.getQuantidade() * produto.getValor();
+			valor += (produto.getValor() * produto.getQuantidade());
 		}
 		return valor;
 	}

@@ -70,6 +70,8 @@ public class MainTesteServlet extends HttpServlet {
 			Lista lista = new Lista("Lista Teste", "iniciada", cliente, estabelecimento, produtos);
 		
 			fachada.adicionarLista(lista);
+			
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
