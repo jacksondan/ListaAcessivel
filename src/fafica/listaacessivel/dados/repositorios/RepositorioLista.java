@@ -46,8 +46,8 @@ public class RepositorioLista implements IRepositorioLista {
 		int id_auto_increment = 0;
 		//Inserindo na tabela Lisnta
 		sql = "insert into lista (descricao, data_criacao, quantidade_total,"
-			+"valor_total, status"
-			+ "values(?,?,?,?,?)";
+			+ " valor_total, status)"
+			+ " values(?,?,?,?,?)";
 		
 		//Esse Segundo parametro permite que o ID AUTO_INCREMENT seja coletado
 		smt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
