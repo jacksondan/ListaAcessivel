@@ -1,4 +1,4 @@
-package fafica.listaacessivel.ui;
+package fafica.listaacessivel.ui.servletsteste;
 
 import java.io.IOException;
 import java.sql.SQLException;
