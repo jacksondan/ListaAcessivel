@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 10-Nov-2014 às 21:50
+-- Generation Time: 11-Nov-2014 às 03:48
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -40,6 +40,14 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `referencia` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`) VALUES
+(1, '10021132242', '12/43/12', 'rua mane', '43', 'casa', 'centro', 'Caruaru', 'PE', '1233121', 'de frente ao bar'),
+(2, '10022135356', '12/03/04', 'rua cavaco', '53', 'casa', 'centro', 'Caruaru', 'PE', '1233121', 'de frente ao teste');
+
 -- --------------------------------------------------------
 
 --
@@ -63,7 +71,14 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
   `cep` varchar(10) NOT NULL,
   `referencia` varchar(70) DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `estabelecimento`
+--
+
+INSERT INTO `estabelecimento` (`id_estabelecimento`, `nome_fantasia`, `nome_juridico`, `email`, `senha`, `categoria`, `cnpj`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`, `status`) VALUES
+(1, 'Boticario', 'boto rosa.ltda', 'boticario@boticario', '123', 'butic', '1233321123', 'rua teste', '22', 'predio', 'centro', 'caruaru', 'PE', '13213', 'teste', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -85,12 +100,21 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 CREATE TABLE IF NOT EXISTS `lista` (
 `id_lista` int(11) NOT NULL,
   `descricao` varchar(50) NOT NULL,
-  `data_criacao` varchar(20) NOT NULL,
-  `data_alteracao` varchar(20) DEFAULT NULL,
+  `data_criacao` varchar(30) NOT NULL,
+  `data_alteracao` varchar(30) DEFAULT NULL,
   `quantidade_total` int(11) DEFAULT NULL,
   `valor_total` float DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `lista`
+--
+
+INSERT INTO `lista` (`id_lista`, `descricao`, `data_criacao`, `data_alteracao`, `quantidade_total`, `valor_total`, `status`) VALUES
+(2, 'Lista Teste', '10:59:5 - 10/11/2014', NULL, 30, 45, 'ativo'),
+(3, 'Lista Teste', '11:25:35 - 10/11/2014', NULL, 30, 45, 'ativo'),
+(4, 'Lista Teste', '11:29:30 - 10/11/2014', NULL, 30, 45, 'ativo');
 
 -- --------------------------------------------------------
 
@@ -105,6 +129,13 @@ CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
   `situacao` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `lista_cliente_estabelecimento`
+--
+
+INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estabelecimento`, `situacao`) VALUES
+(4, 1, 1, 'iniciada');
+
 -- --------------------------------------------------------
 
 --
@@ -117,6 +148,13 @@ CREATE TABLE IF NOT EXISTS `lista_produto` (
   `quantidade_produto` int(11) DEFAULT NULL,
   `valor_produto` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `lista_produto`
+--
+
+INSERT INTO `lista_produto` (`id_produto`, `id_lista`, `quantidade_produto`, `valor_produto`) VALUES
+(1, 4, 30, 1.50);
 
 -- --------------------------------------------------------
 
@@ -137,7 +175,14 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `marca` varchar(20) NOT NULL,
   `id_estabelecimento` int(11) DEFAULT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantidade`, `valor`, `validade`, `codigo_barra`, `disponibilidade`, `marca`, `id_estabelecimento`, `status`) VALUES
+(1, 'Fuba', 'Alimento', 4.250, 30, 1.50, '22/11/44', '0000000', 'DISPONIVEL', 'nutrivita', 1, 'ativo');
 
 -- --------------------------------------------------------
 
@@ -173,7 +218,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(50) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `nome`, `status`) VALUES
+(1, 'jackson@jackson', '123', 'jackson', 'ativo'),
+(2, 'jose@jose', '123', 'jose', 'ativo');
 
 --
 -- Indexes for dumped tables
@@ -247,22 +300,22 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
-MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `lista`
 --
 ALTER TABLE `lista`
-MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
