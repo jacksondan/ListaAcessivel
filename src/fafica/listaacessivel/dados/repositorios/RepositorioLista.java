@@ -62,7 +62,6 @@ public class RepositorioLista implements IRepositorioLista {
 		rs = smt.getGeneratedKeys();
 		if(rs.next()){
 			id_auto_increment = rs.getInt(1);
-			System.out.println("ID auto increment: "+id_auto_increment);
 		}
 		rs.close();
 		smt.close();
@@ -96,6 +95,7 @@ public class RepositorioLista implements IRepositorioLista {
 			smt.close();
 		}
 		
+		System.out.println("ID AUTO INCREMENT DE LISTA: "+id_auto_increment);
 		System.out.println("ADICIONAR LISTA OK");
 	}
 

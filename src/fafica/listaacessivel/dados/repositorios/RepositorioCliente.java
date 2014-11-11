@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fafica.listaacessivel.dados.IRepositorioCliente;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
@@ -36,56 +38,53 @@ public class RepositorioCliente implements IRepositorioCliente {
 		return instancia;
 	}
 	@Override
-	public void adicionarCliente(Cliente entidade) throws SQLException {
+	public void adicionarCliente(Cliente cliente) throws SQLException {
+		int id_auto_increment = 0; //Variavel para recuperar ID auto increment de Usuario
 		
-		sql = "insert into usuario (email,senha,rua,numero,complemento,bairro,cidade,estado,cep,referencia,status) values"
-				+ "(?,?,?,?,?,?,?,?,?,?,?)";
-		
-		smt = this.connection.prepareStatement(sql);
-		smt.setString(1,entidade.getEmail());
-		smt.setString(2,entidade.getSenha());
-		smt.setString(3,entidade.getEndereco().getRua());
-		smt.setString(4,entidade.getEndereco().getNumero());
-		smt.setString(5,entidade.getEndereco().getComplemento());
-		smt.setString(6,entidade.getEndereco().getBairro());
-		smt.setString(7,entidade.getEndereco().getCidade());
-		smt.setString(8,entidade.getEndereco().getEstado());
-		smt.setString(9,entidade.getEndereco().getCep());
-		smt.setString(10,entidade.getEndereco().getReferencia());
-		smt.setString(11,Status.ATIVO.toString());
-		smt.execute();
-		smt.close();
-		
-		//Coladando o ID_USUARIO que � gerado pelo BD
-		Cliente cliente = new Cliente();
-		sql = "select id_usuario from usuario where email = '"+entidade.getEmail()+"'";
-		smt = this.connection.prepareStatement(sql);
-		result = smt.executeQuery();
-			while (result.next()){
-				cliente.setId_usuario(result.getInt("id_usuario"));
-			}
-			result.close();
-			smt.close();
-		
-		
-			//Inserindo os dados da tabela Cliente, juntamente com o ID coletado
-		sql = "insert into cliente (id_cliente, nome_cliente, cpf, ano_nascimento) values"
+		//Inserindo na tabela de Usuario
+		sql = "insert into usuario (email, senha, nome, status) values"
 				+ "(?,?,?,?)";
 		
+		smt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		smt.setString(1, cliente.getEmail());
+		smt.setString(2, cliente.getSenha());
+		smt.setString(3, cliente.getNome());
+		smt.setString(4, Status.ATIVO.toString());
+		smt.execute();
+		
+		result = smt.getGeneratedKeys();
+		if(result.next()){
+			id_auto_increment = result.getInt(1);
+		}
+		result.close();
+		smt.close();
+		
+		//Inserindo na tabela de Cliente
+		sql = "insert into cliente (id_cliente, cpf, ano_nascimento, rua,"
+				+ " numero, complemento, bairro, cidade, estado, cep, referencia)"
+				+ " values (?,?,?,?,?,?,?,?,?,?,?)";
+		
 		smt = this.connection.prepareStatement(sql);
-		smt.setInt(1,cliente.getId_usuario());
-		smt.setString(2,entidade.getNome());
-		smt.setString(3,entidade.getCpf());
-		smt.setString(4,entidade.getAno_nascimento());
+		smt.setInt(1, id_auto_increment);
+		smt.setString(2, cliente.getCpf());
+		smt.setString(3, cliente.getAno_nascimento());
+		smt.setString(4, cliente.getEndereco().getRua());
+		smt.setString(5, cliente.getEndereco().getNumero());
+		smt.setString(6, cliente.getEndereco().getComplemento());
+		smt.setString(7, cliente.getEndereco().getBairro());
+		smt.setString(8, cliente.getEndereco().getCidade());
+		smt.setString(9, cliente.getEndereco().getEstado());
+		smt.setString(10, cliente.getEndereco().getCep());
+		smt.setString(11, cliente.getEndereco().getReferencia());
 		smt.execute();
 		smt.close();
 		
-		//Inserindo os Telefones
-		for(String tel : entidade.getTelefones()){	 	
-		 	smt = this.connection.prepareStatement("insert into telefone_usuario"
-		 			+"(id_usuario,telefone) values (?,?)");
-		 			smt.setInt(1,cliente.getId_usuario());
-				 	smt.setString(2,tel);
+		//Inserindo os Telefones do cliente
+		for(String telefone : cliente.getTelefones()){	 	
+		 	smt = this.connection.prepareStatement("insert into telefone_cliente"
+		 			+" (id_cliente, telefone) values (?,?)");
+		 			smt.setInt(1, id_auto_increment);
+				 	smt.setString(2, telefone);
 				 	smt.execute();
 				 	smt.close();
 		}
@@ -94,49 +93,50 @@ public class RepositorioCliente implements IRepositorioCliente {
 	}
 
 	@Override
-	public void alterarCliente(Cliente entidade) throws SQLException {
-		sql = "UPDATE usuario SET"
-				+ " email = '"+entidade.getEmail()+"'"
-				+ ", senha = '"+entidade.getSenha()+"'"
-				+ ", rua = '"+entidade.getEndereco().getRua()+"'"
-				+ ", numero = '"+entidade.getEndereco().getNumero()+"'"
-				+ ", complemento = '"+entidade.getEndereco().getComplemento()+"'"
-				+ ", bairro = '"+entidade.getEndereco().getBairro()+"'"
-				+ ", cidade = '"+entidade.getEndereco().getCidade()+"'"
-				+ ", estado = '"+entidade.getEndereco().getEstado()+"'"
-				+ ", cep = '"+entidade.getEndereco().getCep()+"'"
-				+ ", referencia = '"+entidade.getEndereco().getReferencia()+"'"
-				+ " where id_usuario = "+entidade.getId_usuario() + " AND status = " + Status.ATIVO.toString();
+	public void alterarCliente(Cliente cliente) throws SQLException {
 		
+		//ALTERANDO NA TABELA DE USUARIO 
+		sql = "update usuario set"
+				+ " email = '" +cliente.getEmail()+ "'"
+				+ ", senha = '" +cliente.getSenha()+ "'"
+				+ ", nome = '" +cliente.getNome()+ "'"
+				+ " where id_usuario = " +cliente.getId_usuario()+ " and status = '" +Status.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
-		sql = "UPDATE cliente SET"
-				+ " nome_cliente = '" + entidade.getNome() + "'"
-				+ ", cpf = '" + entidade.getCpf() + "'"
-				+ ", ano_nascimento = '" + entidade.getAno_nascimento()+ "'"
-				+ " where id_cliente = " + entidade.getId_usuario();
-		
+		//ALTERANDO NA TABELA DE CLINTE
+		sql = "update cliente set"
+				+ " cpf = '" +cliente.getCpf()+ "'"
+				+ ", ano_nascimento = '" +cliente.getAno_nascimento()+ "'"
+				+ ", rua = '" +cliente.getEndereco().getRua()+ "'"
+				+ ", numero = '" +cliente.getEndereco().getNumero()+ "'"
+				+ ", complemento = '" +cliente.getEndereco().getComplemento()+ "'"
+				+ ", bairro = '" +cliente.getEndereco().getBairro()+ "'"
+				+ ", cidade = '" +cliente.getEndereco().getCidade()+ "'"
+				+ ", estado = '" +cliente.getEndereco().getEstado()+ "'"
+				+ ", cep = '" +cliente.getEndereco().getCep()+ "'"
+				+ ", referencia = '" +cliente.getEndereco().getReferencia()+ "'"
+				+ " where id_cliente = " +cliente.getId_usuario();
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
-		//Deletando os Telefones Anteriores
-				sql = "delete from telefone_usuario where id_usuario = "+entidade.getId_usuario();
-				smt = connection.prepareStatement(sql);
+		//EXCLUINDO TELEFONES ANTERIORES
+		sql = "delete from telefone_cliente where id_cliente = "+cliente.getId_usuario();
+		smt = connection.prepareStatement(sql);
+		smt.execute();
+		smt.close();
+		
+		//INSERINDO NOVOS TELEFONES
+		for(String telefone : cliente.getTelefones()){
+		 	smt = this.connection.prepareStatement("insert into telefone_cliente"
+			 	+" (id_cliente, telefone) values (?,?)");
+			 	smt.setInt(1,cliente.getId_usuario());
+			 	smt.setString(2, telefone);
 				smt.execute();
 				smt.close();
-		
-		//Inserindo os novos telefones
-			for(String tel : entidade.getTelefones()){	 	
-			 	smt = this.connection.prepareStatement("insert into telefone_usuario"
-			 			+"(id_usuario,telefone) values (?,?)");
-			 			smt.setInt(1,entidade.getId_usuario());
-			 			smt.setString(2, tel);
-					 	smt.execute();
-					 	smt.close();
-			}
+		}
 		
 		System.out.println("ALTETANDO CLIENTE OK"); //LINHA TEMPORARIA
 	}
@@ -149,7 +149,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt.execute();
 		smt.close();
 		
-		System.out.println("EXCLUINDO CLIENTE (VIA STATUS) OK"); //LINHA TEMPORARIA
+		System.out.println("EXCLUINDO CLIENTE (VIA STATUS) OK");
 	}
 
 	@Override
