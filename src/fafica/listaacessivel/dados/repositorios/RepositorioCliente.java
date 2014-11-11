@@ -157,11 +157,15 @@ public class RepositorioCliente implements IRepositorioCliente {
 		
 			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = c.id_cliente";
-			
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
-			List <Cliente> clientes = new ArrayList<Cliente>();
+			
+			List <Cliente> clientes = null;
 			while(result.next()){
+				if(clientes == null){
+					clientes = new ArrayList<Cliente>();
+				}
+				
 				int id_cliente = result.getInt("c.id_cliente");
 				String nome = result.getString("u.nome");
 				String cpf = result.getString("c.cpf");
@@ -184,16 +188,21 @@ public class RepositorioCliente implements IRepositorioCliente {
 			result.close();
 			smt.close();
 			
-			for (Cliente u : clientes){
-				smt = this.connection.prepareStatement("select * from telefone_usuario where id_usuario = " + u.getId_usuario());
-				result = smt.executeQuery();
-				ArrayList<String> tel = new ArrayList<String>();
-					while (result.next()){
-						tel.add(result.getString("telefone"));
-					}
-					result.close();
-					smt.close();
-				u.setTelefones(tel);
+			if(clientes != null){
+				for (Cliente u : clientes){
+					smt = this.connection.prepareStatement("select * from telefone_cliente where id_cliente = " + u.getId_usuario());
+					result = smt.executeQuery();
+					ArrayList<String> telefones = null;
+						while (result.next()){
+							if(telefones == null){
+								telefones = new ArrayList<String>();
+							}
+							telefones.add(result.getString("telefone"));
+						}
+						result.close();
+						smt.close();
+					u.setTelefones(telefones);
+				}
 			}
 		System.out.println("LISTAR CLIENTE OK"); //LINHA TEMPORARIA
 		return clientes;
@@ -214,7 +223,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt = connection.prepareStatement(sql);
 		result = smt.executeQuery();
 		
-			Cliente cliente = new Cliente();
+			Cliente cliente = null;
 			
 			while (result.next()){
 				int id_cliente = result.getInt("c.id_cliente");
@@ -237,19 +246,23 @@ public class RepositorioCliente implements IRepositorioCliente {
 						
 			result.close();
 			smt.close();
-			
-			sql = "select * from telefone_cliente where id_cliente = " + cliente.getId_usuario();
-			
-			smt = this.connection.prepareStatement(sql);
-			result = smt.executeQuery();
-			ArrayList<String> tel = new ArrayList<String>();
-				while (result.next()){
-					tel.add(result.getString("telefone"));
-				}
-				cliente.setTelefones(tel);
-				result.close();
-				smt.close();
-
+				
+			if(cliente != null){
+				sql = "select * from telefone_cliente where id_cliente = " + cliente.getId_usuario();
+				smt = this.connection.prepareStatement(sql);
+				result = smt.executeQuery();
+				
+				ArrayList<String> telefones = null;
+					while (result.next()){
+						if(telefones == null){
+							telefones = new ArrayList<String>();
+						}
+						telefones.add(result.getString("telefone"));
+					}
+					cliente.setTelefones(telefones);
+					result.close();
+					smt.close();
+			}
 			
 			System.out.println("PESQUISAR CLIENTE OK"); //LINHA TEMPORARIA
 		return cliente;
