@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fafica.listaacessivel.dados.IRepositorioEstabelecimento;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
@@ -18,7 +20,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 	private static RepositorioEstabelecimento instancia;
 	private Connection connection;
 	private PreparedStatement smt;
-	private ResultSet rs;
+	private ResultSet result;
 	private String sql;
 	
 	private RepositorioEstabelecimento() throws ClassNotFoundException, SQLException {
@@ -39,49 +41,45 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 	
 	@Override
 	public void adicionarEstabelecimento(Estabelecimento entidade) throws SQLException {
+		int id_auto_increment = 0; //Variavel para recuperar ID auto increment de Estabelecimento
 		
-		sql = "insert into estabelecimento (id_estabelecimento, nome_fantasia, nome_juridico, email,"
-				+ " senha, categoria, cnpj, rua, numero, complemento, bairro, "
-				+ "cidade, estado, cep, referencia, status) values"
-				+ " ()";
+		sql = "insert into estabelecimento (nome_fantasia, nome_juridico, email"
+				+ ", senha, categoria, cnpj, rua, numero, complemento, bairro"
+				+ ", cidade, estado, cep, referencia, status)"
+				+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
-		smt = this.connection.prepareStatement(sql);
-		smt.setInt(1,entidade.getId_estabelecimento());
-		smt.setString(2,entidade.getNome_fantasia());
-		smt.setString(3,entidade.getNome_juridico());
-		smt.setString(4,entidade.getEmail());
-		smt.setString(5,entidade.getSenha());
-		smt.setString(6,entidade.getCategoria());
-		smt.setString(7,entidade.getCnpj());
-		smt.setString(8,entidade.getEndereco().getRua());
-		smt.setString(9,entidade.getEndereco().getNumero());
-		smt.setString(10,entidade.getEndereco().getComplemento());
-		smt.setString(11,entidade.getEndereco().getBairro());
-		smt.setString(12,entidade.getEndereco().getCidade());
-		smt.setString(13,entidade.getEndereco().getEstado());
-		smt.setString(14,entidade.getEndereco().getCep());
-		smt.setString(15,entidade.getEndereco().getReferencia());
-		smt.setString(16,Status.ATIVO.toString());
+		smt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		smt.setString(1,entidade.getNome_fantasia());
+		smt.setString(2,entidade.getNome_juridico());
+		smt.setString(3,entidade.getEmail());
+		smt.setString(4,entidade.getSenha());
+		smt.setString(5,entidade.getCategoria());
+		smt.setString(6,entidade.getCnpj());
+		smt.setString(7,entidade.getEndereco().getRua());
+		smt.setString(8,entidade.getEndereco().getNumero());
+		smt.setString(9,entidade.getEndereco().getComplemento());
+		smt.setString(10,entidade.getEndereco().getBairro());
+		smt.setString(11,entidade.getEndereco().getCidade());
+		smt.setString(12,entidade.getEndereco().getEstado());
+		smt.setString(13,entidade.getEndereco().getCep());
+		smt.setString(14,entidade.getEndereco().getReferencia());
+		smt.setString(15,Status.ATIVO.toString());
 		smt.execute();
+
+		result = smt.getGeneratedKeys();
+		if(result.next()){
+			id_auto_increment = result.getInt(1);
+		}
+		result.close();
 		smt.close();
 		
-		//Colocando o ID_USUARIO que é gerado pelo BD
-		Estabelecimento estabelecimento = new Estabelecimento();
-		sql = "select id_estabelecimento from estabelecimento where cnpj = '"+entidade.getCnpj()+"'";
-		smt = this.connection.prepareStatement(sql);
-		rs = smt.executeQuery();
-			while (rs.next()){
-				estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
-			}
-			rs.close();
-			smt.close();
 					 	
 		 //Inserindo os Telefones
-		 for(String tel : entidade.getTelefones()){	 	
+		 for(String telefone : entidade.getTelefones()){	 	
 		 	smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
-		 			+"(id_estabelecimento,telefone) values (?,?)");
-		 			smt.setInt(1,estabelecimento.getId_estabelecimento());
-				 	smt.setString(2,tel);
+		 			+" (id_estabelecimento, telefone) values (?,?)");
+		 			smt.setInt(1,id_auto_increment);
+				 	smt.setString(2,telefone);
 				 	smt.execute();
 				 	smt.close();
 		}
@@ -108,24 +106,25 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				+ ", estado = '"+entidade.getEndereco().getEstado()+"'"
 				+ ", cep = '"+entidade.getEndereco().getCep()+"'"
 				+ ", referencia = '"+entidade.getEndereco().getReferencia()+"'"
-				+ " where id_estabelecimento = "+entidade.getId_estabelecimento();
+				+ " where id_estabelecimento = " +entidade.getId_estabelecimento()
+				+ " and status = '" +Status.ATIVO.toString()+ "'";
 		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 		
 		//Deletando os Telefones Anteriores
-		sql = "delete from telefone_estebelecimento where id_estebelecimento = "+entidade.getId_estabelecimento();
+		sql = "delete from telefone_estabelecimento where id_estabelecimento = "+entidade.getId_estabelecimento();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
 
 		//Inserindo os novos telefones
-		for(String tel : entidade.getTelefones()){	 	
+		for(String telefone : entidade.getTelefones()){	 	
 			smt = this.connection.prepareStatement("insert into telefone_estabelecimento"
-				+"(id_estabelecimento, telefone) values (?,?)");
+				+" (id_estabelecimento, telefone) values (?,?)");
 			smt.setInt(1,entidade.getId_estabelecimento());
-	 		smt.setString(2, tel);
+	 		smt.setString(2, telefone);
 			smt.execute();
 			smt.close();
 		}
@@ -145,48 +144,59 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 
 	@Override
 	public List<Estabelecimento> listarEstabelecimentos() throws SQLException {
-		sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString();
+		sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'";
 		
 		smt = this.connection.prepareStatement(sql);
-		rs = smt.executeQuery();
-		List<Estabelecimento> lista = new ArrayList<Estabelecimento>();
-			while (rs.next()){
-				int id_estabelecimento = rs.getInt("id_estabelecimento");
-				String nome_fantasia = rs.getString("nome_fantasia");
-				String nome_juridico = rs.getString("nome_juridico");
-				String email  = rs.getString("email");
-				String senha = rs.getString("senha");
-				String categoria = rs.getString("categoria");
-				String cnpj = rs.getString("cnpj");
-				String rua = rs.getString("rua");
-				String numero = rs.getString("numero");
-				String complemento = rs.getString("complemento");
-				String bairro = rs.getString("bairro");
-				String cidade = rs.getString("cidade");
-				String estado = rs.getString("estado");
-				String cep = rs.getString("cep");
-				String referencia = rs.getString("referencia");
+		result = smt.executeQuery();
+		List<Estabelecimento> lista = null;
+		
+			while (result.next()){
+				if(lista == null){
+					lista = new ArrayList<Estabelecimento>();
+				}
+				int id_estabelecimento = result.getInt("id_estabelecimento");
+				String nome_fantasia = result.getString("nome_fantasia");
+				String nome_juridico = result.getString("nome_juridico");
+				String email  = result.getString("email");
+				String senha = result.getString("senha");
+				String categoria = result.getString("categoria");
+				String cnpj = result.getString("cnpj");
+				String rua = result.getString("rua");
+				String numero = result.getString("numero");
+				String complemento = result.getString("complemento");
+				String bairro = result.getString("bairro");
+				String cidade = result.getString("cidade");
+				String estado = result.getString("estado");
+				String cep = result.getString("cep");
+				String referencia = result.getString("referencia");
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, email, categoria, cnpj, endereco, senha, null);
+				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico,
+						email, categoria, cnpj, endereco, senha, null);
 				lista.add(estabelecimento);
 			}
-			rs.close();
+			result.close();
 			smt.close();
 			
-			//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
-			for (Estabelecimento e : lista){
-				smt = this.connection.prepareStatement("select * from telefone_estabelecimento where id_estabelecimento = " + e.getId_estabelecimento());
-				rs = smt.executeQuery();
-				ArrayList<String> tel = new ArrayList<String>();
-					while (rs.next()){
-						tel.add(rs.getString("telefone"));
-					}
-				rs.close();
-				smt.close();
-				e.setTelefones(tel);
+			if(lista != null){
+				//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
+				for (Estabelecimento estabelecimento : lista){
+					smt = this.connection.prepareStatement("select * from telefone_estabelecimento where id_estabelecimento = " + estabelecimento.getId_estabelecimento());
+					result = smt.executeQuery();
+					ArrayList<String> telelefones = null;
+						while (result.next()){
+							if(telelefones == null){
+								telelefones = new ArrayList<String>();
+							}
+							telelefones.add(result.getString("telefone"));
+						}
+					result.close();
+					smt.close();
+					estabelecimento.setTelefones(telelefones);
+				}
 			}
-			System.out.println("LISTA ESTABELECIMENTO OK");		
+			
+		System.out.println("LISTA ESTABELECIMENTO OK");		
 		return lista;
 	}
 
@@ -202,44 +212,48 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		}
 	
 		smt = this.connection.prepareStatement(sql);
-		rs = smt.executeQuery();
-			Estabelecimento estabelecimento = new Estabelecimento();
-			while (rs.next()){
-				int id_estabelecimento = rs.getInt("id_estabelecimento");
-				String nome_fantasia = rs.getString("nome_fantasia");
-				String nome_juridico = rs.getString("nome_juridico");
-				String email  = rs.getString("email");
-				String senha = rs.getString("senha");
-				String categoria = rs.getString("categoria");
-				String cnpj = rs.getString("cnpj");
-				String rua = rs.getString("rua");
-				String numero = rs.getString("numero");
-				String complemento = rs.getString("complemento");
-				String bairro = rs.getString("bairro");
-				String cidade = rs.getString("cidade");
-				String estado = rs.getString("estado");
-				String cep = rs.getString("cep");
-				String referencia = rs.getString("referencia");
+		result = smt.executeQuery();
+			Estabelecimento estabelecimento = null;
+			if (result.next()){
+				int id_estabelecimento = result.getInt("id_estabelecimento");
+				String nome_fantasia = result.getString("nome_fantasia");
+				String nome_juridico = result.getString("nome_juridico");
+				String email  = result.getString("email");
+				String senha = result.getString("senha");
+				String categoria = result.getString("categoria");
+				String cnpj = result.getString("cnpj");
+				String rua = result.getString("rua");
+				String numero = result.getString("numero");
+				String complemento = result.getString("complemento");
+				String bairro = result.getString("bairro");
+				String cidade = result.getString("cidade");
+				String estado = result.getString("estado");
+				String cep = result.getString("cep");
+				String referencia = result.getString("referencia");
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, email, categoria, cnpj, endereco, senha, null);
 				
 			}
-			rs.close();
+			result.close();
 			smt.close();
-			
-			//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
-			sql = "select * from telefone_estabelecimento where id_estabelecimento = " + estabelecimento.getId_estabelecimento();
-			
-			smt = this.connection.prepareStatement(sql);
-			rs = smt.executeQuery();
-			ArrayList<String> tel = new ArrayList<String>();
-				while (rs.next()){
-					tel.add(rs.getString("telefone"));
-				}
-				estabelecimento.setTelefones(tel);
-				rs.close();
-				smt.close();
+			if(estabelecimento != null){
+				//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
+				sql = "select * from telefone_estabelecimento where id_estabelecimento = " + estabelecimento.getId_estabelecimento();
+				
+				smt = this.connection.prepareStatement(sql);
+				result = smt.executeQuery();
+				ArrayList<String> telefones = null;
+					while (result.next()){
+						if(telefones == null){
+							telefones = new ArrayList<String>();
+						}
+						telefones.add(result.getString("telefone"));
+					}
+					estabelecimento.setTelefones(telefones);
+					result.close();
+					smt.close();	
+			}
 
 			
 			System.out.println("PESQUISAR ESTABELECIMENTO OK");
