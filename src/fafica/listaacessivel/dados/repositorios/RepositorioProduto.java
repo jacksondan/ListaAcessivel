@@ -172,7 +172,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			Produto produto = null;
 			Estabelecimento estabelecimento = null;
 			
-			while(result.next()){
+			if (result.next()){
 				estabelecimento = new Estabelecimento();
 				
 				int id = result.getInt("id_produto");

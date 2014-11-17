@@ -125,8 +125,8 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 				estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(result.getInt("f.id_estabelecimento"));
 								
-				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
-				funcionarios.add(funcionario2);
+				Funcionario funcionario = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
+				funcionarios.add(funcionario);
 			}
 			result.close();
 			smt.close();
@@ -189,8 +189,8 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 				String senha = result.getString("u.senha");
 				String matricula = result.getString("f.matricula");
 								
-				Funcionario funcionario2 = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
-				funcionarios.add(funcionario2);
+				Funcionario funcionario = new Funcionario(id_funcionario,nome,email,senha,matricula,estabelecimento);
+				funcionarios.add(funcionario);
 			}
 			result.close();
 			smt.close();
