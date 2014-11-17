@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Nov-2014 às 19:38
+-- Generation Time: 17-Nov-2014 às 23:04
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `bairro` varchar(50) NOT NULL,
   `cidade` varchar(50) NOT NULL,
   `estado` char(2) NOT NULL,
-  `cep` varchar(10) NOT NULL,
+  `cep` varchar(12) NOT NULL,
   `referencia` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -45,9 +45,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`) VALUES
-(1, '1000000000', '1877', 'manoeu fdfdfd', '100', 'casa', 'tesss fdfdsfs', 'caruaru', 'PE', 'Teste', 'perto do beco'),
-(2, '10022135356', '12/03/04', 'rua cavaco', '53', 'casa', 'centro', 'Caruaru', 'PE', '1233121', 'de frente ao teste'),
-(3, '87285525', '1895', 'manoeu', '98', 'casa', 'tesss', 'caruaru', 'PE', '85774', 'perto da budega');
+(1, '87285525', '1895', 'Rua Dos Ventos', '98', 'casa', 'centro', 'caruaru', 'PE', '85774', 'perto da budega');
 
 -- --------------------------------------------------------
 
@@ -79,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
 --
 
 INSERT INTO `estabelecimento` (`id_estabelecimento`, `nome_fantasia`, `nome_juridico`, `email`, `senha`, `categoria`, `cnpj`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`, `status`) VALUES
-(1, 'Boticario', 'boto rosa.ltda', 'boticario@boticario', '123', 'butic', '1233321123', 'rua teste', '22', 'predio', 'centro', 'caruaru', 'PE', '13213', 'teste', 'ativo');
+(1, 'Bonanza', 'bonaza1.ltda', 'admin@bonanza.com.br', '123', 'supermercado', '12233112', 'Rua do Cedro', '12', 'Estabelecimento', 'Divinopolis', 'Caruaru', 'PE', '112233', 'Perto da rua Bhaia', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -92,6 +90,13 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `matricula` varchar(20) NOT NULL,
   `id_estabelecimento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `funcionario`
+--
+
+INSERT INTO `funcionario` (`id_funcionario`, `matricula`, `id_estabelecimento`) VALUES
+(2, '2211221', 1);
 
 -- --------------------------------------------------------
 
@@ -107,16 +112,7 @@ CREATE TABLE IF NOT EXISTS `lista` (
   `quantidade_total` int(11) DEFAULT NULL,
   `valor_total` float DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Extraindo dados da tabela `lista`
---
-
-INSERT INTO `lista` (`id_lista`, `descricao`, `data_criacao`, `data_alteracao`, `quantidade_total`, `valor_total`, `status`) VALUES
-(2, 'Lista Teste', '10:59:5 - 10/11/2014', NULL, 30, 45, 'ativo'),
-(3, 'Lista Teste', '11:25:35 - 10/11/2014', NULL, 30, 45, 'ativo'),
-(4, 'Lista Teste', '11:29:30 - 10/11/2014', NULL, 30, 45, 'ativo');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -128,15 +124,8 @@ CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
   `id_lista` int(11) NOT NULL DEFAULT '0',
   `id_cliente` int(11) NOT NULL DEFAULT '0',
   `id_estabelecimento` int(11) NOT NULL DEFAULT '0',
-  `situacao` varchar(20) DEFAULT NULL
+  `situacao` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `lista_cliente_estabelecimento`
---
-
-INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estabelecimento`, `situacao`) VALUES
-(4, 1, 1, 'iniciada');
 
 -- --------------------------------------------------------
 
@@ -145,18 +134,11 @@ INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estab
 --
 
 CREATE TABLE IF NOT EXISTS `lista_produto` (
-  `id_produto` int(11) NOT NULL DEFAULT '0',
   `id_lista` int(11) NOT NULL DEFAULT '0',
+  `id_produto` int(11) NOT NULL DEFAULT '0',
   `quantidade_produto` int(11) DEFAULT NULL,
   `valor_produto` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `lista_produto`
---
-
-INSERT INTO `lista_produto` (`id_produto`, `id_lista`, `quantidade_produto`, `valor_produto`) VALUES
-(1, 4, 30, 1.50);
 
 -- --------------------------------------------------------
 
@@ -171,10 +153,10 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `peso` float(10,3) NOT NULL,
   `quantidade` int(20) NOT NULL,
   `valor` float(10,2) NOT NULL,
-  `validade` varchar(20) NOT NULL,
+  `validade` varchar(30) NOT NULL,
   `codigo_barra` varchar(50) NOT NULL,
-  `disponibilidade` varchar(20) NOT NULL,
-  `marca` varchar(20) NOT NULL,
+  `disponibilidade` varchar(30) NOT NULL,
+  `marca` varchar(30) NOT NULL,
   `id_estabelecimento` int(11) DEFAULT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -184,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantidade`, `valor`, `validade`, `codigo_barra`, `disponibilidade`, `marca`, `id_estabelecimento`, `status`) VALUES
-(1, 'Fuba', 'Alimento', 4.250, 30, 1.50, '22/11/44', '0000000', 'DISPONIVEL', 'nutrivita', 1, 'ativo');
+(1, 'Leite Itambe', 'Alimento', 1.000, 30, 5.00, '20/10/2024', '555555', 'disponÃ­vel', 'Itambe', 1, 'ativo');
 
 -- --------------------------------------------------------
 
@@ -194,7 +176,7 @@ INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantida
 
 CREATE TABLE IF NOT EXISTS `telefone_cliente` (
   `id_cliente` int(11) NOT NULL DEFAULT '0',
-  `telefone` varchar(15) NOT NULL DEFAULT ''
+  `telefone` varchar(30) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -203,9 +185,7 @@ CREATE TABLE IF NOT EXISTS `telefone_cliente` (
 
 INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
 (1, '88559966'),
-(1, '99668855'),
-(3, '88559966'),
-(3, '99668855');
+(1, '99668855');
 
 -- --------------------------------------------------------
 
@@ -215,8 +195,16 @@ INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
 
 CREATE TABLE IF NOT EXISTS `telefone_estabelecimento` (
   `id_estabelecimento` int(11) NOT NULL DEFAULT '0',
-  `telefone` varchar(15) NOT NULL DEFAULT ''
+  `telefone` varchar(30) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `telefone_estabelecimento`
+--
+
+INSERT INTO `telefone_estabelecimento` (`id_estabelecimento`, `telefone`) VALUES
+(1, '22113344'),
+(1, '33221144');
 
 -- --------------------------------------------------------
 
@@ -230,16 +218,15 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(50) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `nome`, `status`) VALUES
-(1, 'rrr@rrr', '123', 'Joaquim', 'ativo'),
-(2, 'jose@jose', '123', 'jose', 'ativo'),
-(3, 'teste@teste', '123', 'jackson', 'ativo');
+(1, 'jackson@techbin.com.br', '123', 'jackson', 'ativo'),
+(2, 'joão@bonanza.com.br', '123', 'JoãoZinho', 'ativo');
 
 --
 -- Indexes for dumped tables
@@ -318,7 +305,7 @@ MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `lista`
 --
 ALTER TABLE `lista`
-MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `produto`
 --
@@ -328,7 +315,7 @@ MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
