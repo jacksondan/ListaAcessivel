@@ -39,20 +39,20 @@ public class TesteAdicionarEstabelecimento extends HttpServlet {
 			IFachada fachada = Fachada.getInstance();
 			
 			String nome_fantasia = "Bonanza";
-			String nome_juridico = "boba.ltda";
-			String email = "eee@eee";
+			String nome_juridico = "bonaza1.ltda";
+			String email = "admin@bonanza.com.br";
 			String senha = "123";
 			String categoria = "supermercado";
 			String cnpj = "12233112";
 			
-			String rua = "rtretre";
-			String bairro = "cscdscds";
+			String rua = "Rua do Cedro";
+			String bairro = "Divinopolis";
 			String numero = "12";
-			String complemento = "hygbfg";
-			String referencia = "dede";
-			String cidade = "caruaru";
+			String complemento = "Estabelecimento";
+			String referencia = "Perto da rua Bhaia";
+			String cidade = "Caruaru";
 			String estado = "PE";
-			String cep = "11223311";
+			String cep = "112233";
 			
 			List <String> telefones = new ArrayList<String>();
 			telefones.add("22113344");

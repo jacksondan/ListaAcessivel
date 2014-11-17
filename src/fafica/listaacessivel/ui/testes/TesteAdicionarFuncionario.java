@@ -37,8 +37,8 @@ public class TesteAdicionarFuncionario extends HttpServlet {
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			String nome = "Funduculo";
-			String email = "qweqwe@qweqwe";
+			String nome = "JoãoZinho";
+			String email = "joão@bonanza.com.br";
 			String senha = "123";
 			String matricula = "2211221";
 			Estabelecimento estabelecimento = new Estabelecimento();

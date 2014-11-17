@@ -247,6 +247,40 @@ public class RepositorioProduto implements IRepositorioProduto {
 	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException {
 		
 		//Primeiro verificamos se a relação entre os produtos e a lista (Tabela lista_produto)
+
+		
+		
+		sql = "select l.*, p.* from lista_produto l, produto p where"
+				+ " l.id_lista = " +lista.getId_lista()+ " and l.id_produto = p.id_produto and p.status '" +Status.ATIVO.toString()+ "'";
+		stm = connection.prepareStatement(sql);	
+		result = stm.executeQuery();
+		
+		List<Produto> lista_produtos = null;
+		Estabelecimento estabelecimento = null;
+		
+		while(result.next()){
+			if(lista_produtos == null){
+				lista_produtos = new ArrayList<Produto>();
+				estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(result.getInt("p.id_estabelecimento"));
+			}
+			
+			int id_produto = result.getInt("p.id_produto");;
+			String descricao = result.getString("p.descricao");
+			String categoria = result.getString("p.categoria");
+			float peso = result.getFloat("p.peso");
+			int quantidade = result.getInt("l.quantidade_produto");
+			float valor = result.getFloat("l.valor_produto");;
+			String validade = result.getString("p.validade");
+			String marca = result.getString("p.marca");
+			String codigo_barra = ;
+			String disponibilidade = ;
+			
+			
+			Produto produto = new Produto (id_produto, descricao, categoria, peso, quantidade, valor, validade, marca, codigo_barra, disponibilidade, estabelecimento)
+		}
+		
+/*		
 		sql = "select * from lista_produto where status = '" + Status.ATIVO.toString() + "' AND id_lista = " + lista.getId_lista();
 		stm = connection.prepareStatement(sql);	
 		result = stm.executeQuery();
@@ -282,7 +316,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 				result = stm.executeQuery(); 	
 				
 				while(result.next()){
-					int id = result.getInt("id");
+					int id = result.getInt("id_produto");
 					String descricao = result.getString("descricao");
 					String categoria = result.getString("categoria"); 
 					Float peso = result.getFloat("peso");
@@ -303,7 +337,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 				result.close();
 			}
 
-		}
+		}*/
 		
 		System.out.println("LISTAR PRODUTOS POR LISTA OK");
 		return lista_produtos;

@@ -36,13 +36,13 @@ public class TesteAdicionarProduto extends HttpServlet {
 		
 		Estabelecimento estabelecimento = new Estabelecimento();
 		
-		String descricao = "Descrição do produto";
-		String categoria = "Limpeza";
+		String descricao = "Leite Itambe";
+		String categoria = "Alimento";
 		float peso = 1.0f;
-		int quantidade = 3;
+		int quantidade = 30;
 		float valor = 5.0f;
-		String validade = "20/10/2014";
-		String marca = "QUem sabe";
+		String validade = "20/10/2024";
+		String marca = "Itambe";
 		String codigo_barra = "555555";
 	//	String disponibilidade = "disponível";
 		estabelecimento.setId_estabelecimento(1);

@@ -38,7 +38,7 @@ public class TesteAdicionarCliente extends HttpServlet {
 		
 		String nome = "jackson";
 		String cpf = "87285525";
-		String email = "teste@teste";
+		String email = "jackson@techbin.com.br";
 		String senha = "123";
 		String ano_nascimento = "1895";
 		List <String> telefones = new ArrayList<>();
@@ -46,8 +46,8 @@ public class TesteAdicionarCliente extends HttpServlet {
 		telefones.add("88559966");
 		
 		
-		String rua = "manoeu";
-		String bairro = "tesss";
+		String rua = "Rua Dos Ventos";
+		String bairro = "centro";
 		String numero = "98";
 		String complemento = "casa";
 		String referencia = "perto da budega";
