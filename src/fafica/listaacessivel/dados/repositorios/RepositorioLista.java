@@ -154,46 +154,132 @@ public class RepositorioLista implements IRepositorioLista {
 
 	@Override
 	public List<Lista> listarListas() throws SQLException {
-		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "'";
+		
+		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
+				+ " where l.status = '" +Status.ATIVO.toString()+ "' and l.id_lista = lce.id_lista";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
-		List<Lista> lista = new ArrayList<Lista>();
+		List<Lista> listar_lista = null;
+		Cliente cliente = null;
+		Estabelecimento  estabelecimento = null;
+		
 		while (rs.next()){
-			Lista l = new Lista();
-			l.setId_lista(rs.getInt("id_lista"));
-			l.setData_criacao(rs.getString("data_criacao"));
-			l.setData_alteracao(rs.getString("data_modificacao"));
-			l.setQuantidade_total(rs.getInt("quantidade_total"));
-			l.setValor_total(rs.getFloat("valor_total"));
+			if(listar_lista == null){
+				listar_lista = new ArrayList<Lista>();
+			}
+			cliente = new Cliente();
+			estabelecimento = new Estabelecimento();
 			
-			lista.add(l);
+			int id_lista = rs.getInt("l.id_lista");
+			String descricao = rs.getString("l.descricao");
+			String situacao = rs.getString("lce.situacao");
+			String data_criacao = rs.getString("l.data_criacao");
+			String data_alteracao = rs.getString("l.data_alteracao");
+			int quantidade_total = rs.getInt("l.quantidade_total");
+			float valor_total = rs.getFloat("l.valor_total");
+			cliente.setId_usuario(rs.getInt("lce.id_cliente"));
+			estabelecimento.setId_estabelecimento(rs.getInt("lce.id_estabelecimento"));
+			
+			
+			Lista lista = new Lista(id_lista, descricao, situacao,
+					data_criacao, data_alteracao, quantidade_total, 
+					valor_total, cliente, estabelecimento, null);
+			
+			listar_lista.add(lista);
 		}
 		rs.close();
 		smt.close();
-		return lista;
+		
+		if(listar_lista != null){
+			for(Lista lista : listar_lista){
+				sql = "select * from lista_produto where id_lista = " +lista.getId_lista();
+				smt = this.connection.prepareStatement(sql);
+				rs = smt.executeQuery();
+				
+				List<Produto> produtos = null;
+				Produto produto = null;
+				
+				while(rs.next()){
+					if(produtos == null){
+						produtos = new ArrayList<Produto>();
+					}
+					produto = new Produto();
+					produto.setId_produto(rs.getInt("id_produto"));
+					
+					produtos.add(produto);
+				}
+				lista.setProdutos(produtos);
+				
+				rs.close();
+				smt.close();
+			}
+		}
+		
+		return listar_lista;
 	}
 
 	@Override
 	public Lista pesquisarLista(Lista entidade) throws SQLException {
-		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_lista = "+entidade.getId_lista();
+		
+		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
+				+ " where l.status = '" +Status.ATIVO.toString()+ "' and"
+				+ " l.id_lista = " +entidade.getId_lista()+ " and"
+				+ " lce.id_lista = " +entidade.getId_lista();
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
-		Lista l = new Lista();
+		Lista lista = null;
+		Cliente cliente = null;
+		Estabelecimento estabelecimento = null;
 		
-		while(rs.next()){
-			l.setId_lista(rs.getInt("id_lista"));
-			l.setData_criacao(rs.getString("data_criacao"));
-			l.setData_alteracao(rs.getString("data_modificacao"));
-			l.setQuantidade_total(rs.getInt("quantidade_total"));
-			l.setValor_total(rs.getFloat("valor_total"));
+		if(rs.next()){
+			cliente = new Cliente();
+			estabelecimento = new Estabelecimento();
+			
+			int id_lista = rs.getInt("l.id_lista");
+			String descricao = rs.getString("l.descricao");
+			String situacao = rs.getString("lce.situacao");
+			String data_criacao = rs.getString("l.data_criacao");
+			String data_alteracao = rs.getString("l.data_alteracao");
+			int quantidade_total = rs.getInt("l.quantidade_total");
+			float valor_total = rs.getFloat("l.valor_total");
+			cliente.setId_usuario(rs.getInt("lce.id_cliente"));
+			estabelecimento.setId_estabelecimento(rs.getInt("lce.id_estabelecimento"));
+			
+			
+			lista = new Lista(id_lista, descricao, situacao,
+					data_criacao, data_alteracao, quantidade_total, 
+					valor_total, cliente, estabelecimento, null);
 		}
 	
 		smt.close();
 		rs.close();
 		
-		return l;
+		if(lista != null){
+			sql = "select * from lista_produto where id_lista = " +lista.getId_lista();
+			smt = this.connection.prepareStatement(sql);
+			rs = smt.executeQuery();
+			
+			List<Produto> produtos = null;
+			Produto produto = null;
+			
+			while(rs.next()){
+				if(produtos == null){
+					produtos = new ArrayList<Produto>();
+				}
+				produto = new Produto();
+				produto.setId_produto(rs.getInt("id_produto"));
+				
+				produtos.add(produto);
+			}
+			lista.setProdutos(produtos);
+			
+			rs.close();
+			smt.close();
+		}
+		
+		return lista;
 	}
 
 	@Override

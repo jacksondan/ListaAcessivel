@@ -223,12 +223,6 @@ public class RepositorioProduto implements IRepositorioProduto {
 			String marca = result.getString("marca");
 			String codigo_barra = result.getString("codigo_barra");
 			String disponibilidade = result.getString("disponibilidade");
-			/*Verificar a necessidade de criar varios objetos de estabelecimento. da maneira que esta, 
-			todos os produtos apontam para apenas um objeto do estabelecimento, mais
-			se alguem quizer alterar o ID desse unico objeto via linha de comando, todos os outros produtos
-			podem dar problema. isso é algo para ser debatido.
-			O metodos listaProdutos cria variso estabelecimentos, porque não sabe qual o ID que ira receber 
-			*/
 			
 			produto = new Produto(id, descricao, categoria, peso,
 					quantidade, valor, validade, marca, codigo_barra,
@@ -246,12 +240,9 @@ public class RepositorioProduto implements IRepositorioProduto {
 	@Override
 	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException {
 		
-		//Primeiro verificamos se a relação entre os produtos e a lista (Tabela lista_produto)
-
-		
-		
-		sql = "select l.*, p.* from lista_produto l, produto p where"
-				+ " l.id_lista = " +lista.getId_lista()+ " and l.id_produto = p.id_produto and p.status '" +Status.ATIVO.toString()+ "'";
+		sql = "select lp.*, p.*, lce.* from lista_produto lp, lista_cliente_estabelecimento lce, produto p where"
+				+ " lp.id_lista = " +lista.getId_lista()+ " and lce.id_lista = " +lista.getId_lista()
+				+ " and lp.id_produto = p.id_produto and p.status '" +Status.ATIVO.toString()+ "'";
 		stm = connection.prepareStatement(sql);	
 		result = stm.executeQuery();
 		
@@ -262,23 +253,28 @@ public class RepositorioProduto implements IRepositorioProduto {
 			if(lista_produtos == null){
 				lista_produtos = new ArrayList<Produto>();
 				estabelecimento = new Estabelecimento();
-				estabelecimento.setId_estabelecimento(result.getInt("p.id_estabelecimento"));
+				estabelecimento.setId_estabelecimento(result.getInt("lce.id_estabelecimento"));
 			}
 			
 			int id_produto = result.getInt("p.id_produto");;
 			String descricao = result.getString("p.descricao");
 			String categoria = result.getString("p.categoria");
 			float peso = result.getFloat("p.peso");
-			int quantidade = result.getInt("l.quantidade_produto");
-			float valor = result.getFloat("l.valor_produto");;
+			int quantidade = result.getInt("lp.quantidade_produto");
+			float valor = result.getFloat("lp.valor_produto");;
 			String validade = result.getString("p.validade");
 			String marca = result.getString("p.marca");
-			String codigo_barra = ;
-			String disponibilidade = ;
+			String codigo_barra = result.getString("p.codigo_barra");
+			String disponibilidade = result.getString("p.disponibilidade");
 			
 			
-			Produto produto = new Produto (id_produto, descricao, categoria, peso, quantidade, valor, validade, marca, codigo_barra, disponibilidade, estabelecimento)
+			Produto produto = new Produto (id_produto, descricao, categoria, 
+					peso, quantidade, valor, validade, marca, 
+					codigo_barra, disponibilidade, estabelecimento);
+			lista_produtos.add(produto);
 		}
+		stm.close();
+		result.close();
 		
 /*		
 		sql = "select * from lista_produto where status = '" + Status.ATIVO.toString() + "' AND id_lista = " + lista.getId_lista();

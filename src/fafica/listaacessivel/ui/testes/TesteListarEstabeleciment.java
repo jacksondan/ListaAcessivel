@@ -17,13 +17,13 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
  * Servlet implementation class TesteListaEstabeleciment
  */
 @WebServlet("/TesteListaEstabeleciment")
-public class TesteListaEstabeleciment extends HttpServlet {
+public class TesteListarEstabeleciment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TesteListaEstabeleciment() {
+    public TesteListarEstabeleciment() {
         super();
         // TODO Auto-generated constructor stub
     }
