@@ -8,6 +8,7 @@ import fafica.listaacessivel.dados.repositorios.RepositorioCliente;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 public class ControladorCliente {
+	
 	private IRepositorioCliente repositorioCliente;
 	
 	public ControladorCliente() throws ClassNotFoundException, SQLException{

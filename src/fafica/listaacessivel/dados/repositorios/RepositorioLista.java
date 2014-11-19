@@ -285,79 +285,133 @@ public class RepositorioLista implements IRepositorioLista {
 	@Override
 	public List<Lista> listarListasPorCliente(Cliente cliente)
 			throws SQLException {
-		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_cliente = " + cliente.getId_usuario();
+		
+		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
+				+ " where lce.id_clinte = " +cliente.getId_usuario()
+				+ " and l.id_lista = lce.id_lista"
+				+ " and l.status = '" +Status.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
-		Estabelecimento estabelecimento = new Estabelecimento();
+		List<Lista> listar_lista = null;
+		Estabelecimento  estabelecimento = null;
 		
-		//Criando lista de produtos
-		List<Produto> produtos = new ArrayList<Produto>();
-		while(rs.next()){
-			Produto produto = new Produto();
-			produto.setId_produto(rs.getInt("id_produto"));
-			produtos.add(produto);
-		}
-				
-		List<Lista> lista = new ArrayList<Lista>();
 		while (rs.next()){
-		
-			int id_lista = rs.getInt("id_lista");
-			String data_criacao = rs.getString("data_criacao");
-			String data_alteracao = rs.getString("data_modificacao");
-			String descricao = rs.getString("descricao");
-			String situacao = rs.getString("situacao");
-			int quantidade_total = rs.getInt("quantidade_total");
-			float valor_total = rs.getFloat("valor_total");
-			estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
-			cliente.setId_usuario(rs.getInt("id_cliente"));
-					
-			Lista l = new Lista(id_lista, descricao, situacao, data_criacao, data_alteracao, quantidade_total, valor_total, cliente, estabelecimento, produtos);
+			if(listar_lista == null){
+				listar_lista = new ArrayList<Lista>();
+			}
+			estabelecimento = new Estabelecimento();
 			
-			lista.add(l);
+			int id_lista = rs.getInt("l.id_lista");
+			String descricao = rs.getString("l.descricao");
+			String situacao = rs.getString("lce.situacao");
+			String data_criacao = rs.getString("l.data_criacao");
+			String data_alteracao = rs.getString("l.data_alteracao");
+			int quantidade_total = rs.getInt("l.quantidade_total");
+			float valor_total = rs.getFloat("l.valor_total");
+			estabelecimento.setId_estabelecimento(rs.getInt("lce.id_estabelecimento"));
+			
+			
+			Lista lista = new Lista(id_lista, descricao, situacao,
+					data_criacao, data_alteracao, quantidade_total, 
+					valor_total, cliente, estabelecimento, null);
+			
+			listar_lista.add(lista);
 		}
 		rs.close();
 		smt.close();
-		return lista;
+		
+		if(listar_lista != null){
+			for(Lista lista : listar_lista){
+				sql = "select * from lista_produto where id_lista = " +lista.getId_lista();
+				smt = this.connection.prepareStatement(sql);
+				rs = smt.executeQuery();
+				
+				List<Produto> produtos = null;
+				Produto produto = null;
+				
+				while(rs.next()){
+					if(produtos == null){
+						produtos = new ArrayList<Produto>();
+					}
+					produto = new Produto();
+					produto.setId_produto(rs.getInt("id_produto"));
+					
+					produtos.add(produto);
+				}
+				lista.setProdutos(produtos);
+				
+				rs.close();
+				smt.close();
+			}
+		}
+		
+		return listar_lista;
 	}
 
 	@Override
 	public List<Lista> listarListasPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
-		sql = "select * from lista where status = '" + Status.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
+		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
+				+ " where lce.id_estabelecimento = " +estabelecimento.getId_estabelecimento()
+				+ " and l.id_lista = lce.id_lista"
+				+ " and l.status = '" +Status.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
-		Cliente cliente = new Cliente();
+		List<Lista> listar_lista = null;
+		Cliente cliente = null;
 		
-		//Criando lista de produtos
-		List<Produto> produtos = new ArrayList<Produto>();
-		while(rs.next()){
-			Produto produto = new Produto();
-			produto.setId_produto(rs.getInt("id_produto"));
-			produtos.add(produto);
-		}
-				
-		List<Lista> lista = new ArrayList<Lista>();
 		while (rs.next()){
-		
-			int id_lista = rs.getInt("id_lista");
-			String data_criacao = rs.getString("data_criacao");
-			String data_alteracao = rs.getString("data_modificacao");
-			String descricao = rs.getString("descricao");
-			String situacao = rs.getString("situacao");
-			int quantidade_total = rs.getInt("quantidade_total");
-			float valor_total = rs.getFloat("valor_total");
-			estabelecimento.setId_estabelecimento(rs.getInt("id_estabelecimento"));
-			cliente.setId_usuario(rs.getInt("id_cliente"));
-								
-			Lista l = new Lista(id_lista, descricao, situacao, data_criacao, data_alteracao, quantidade_total, valor_total, cliente, estabelecimento, produtos);
+			if(listar_lista == null){
+				listar_lista = new ArrayList<Lista>();
+			}
+			cliente = new Cliente();
 			
-			lista.add(l);
+			int id_lista = rs.getInt("l.id_lista");
+			String descricao = rs.getString("l.descricao");
+			String situacao = rs.getString("lce.situacao");
+			String data_criacao = rs.getString("l.data_criacao");
+			String data_alteracao = rs.getString("l.data_alteracao");
+			int quantidade_total = rs.getInt("l.quantidade_total");
+			float valor_total = rs.getFloat("l.valor_total");
+			cliente.setId_usuario(rs.getInt("lce.id_cliente"));
+			
+			Lista lista = new Lista(id_lista, descricao, situacao,
+					data_criacao, data_alteracao, quantidade_total, 
+					valor_total, cliente, estabelecimento, null);
+			
+			listar_lista.add(lista);
 		}
 		rs.close();
 		smt.close();
-		return lista;
+		
+		if(listar_lista != null){
+			for(Lista lista : listar_lista){
+				sql = "select * from lista_produto where id_lista = " +lista.getId_lista();
+				smt = this.connection.prepareStatement(sql);
+				rs = smt.executeQuery();
+				
+				List<Produto> produtos = null;
+				Produto produto = null;
+				
+				while(rs.next()){
+					if(produtos == null){
+						produtos = new ArrayList<Produto>();
+					}
+					produto = new Produto();
+					produto.setId_produto(rs.getInt("id_produto"));
+					
+					produtos.add(produto);
+				}
+				lista.setProdutos(produtos);
+				
+				rs.close();
+				smt.close();
+			}
+		}
+		
+		return listar_lista;
 	}
 	
 	

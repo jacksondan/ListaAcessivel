@@ -10,7 +10,7 @@ import fafica.listaacessivel.negocios.entidades.Funcionario;
 
 public class ControladorFuncionario {
 	
-	IRepositorioFuncionario repositorioFuncionario;
+	private IRepositorioFuncionario repositorioFuncionario;
 	
 	public ControladorFuncionario() throws ClassNotFoundException, SQLException {
 		this.repositorioFuncionario = RepositorioFuncionario.getInstancia();
