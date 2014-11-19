@@ -68,7 +68,14 @@ public class Fachada implements IFachada {
 	}
 	
 	@Override
-	public List<Produto> listarProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws ClassNotFoundException, SQLException{
+	public List<Estabelecimento> listarEstabelecimentoPorRegiao(
+			String categoria, Cliente cliente, boolean pesquisarPorBairro)
+			throws SQLException {
+		return this.controlador_estabelecimento.listarEstabelecimentoPorRegiao(categoria, cliente, pesquisarPorBairro);
+	}
+	
+	@Override
+	public List<Produto> listarProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws SQLException{
 		return this.controlador_produto.listarProdutosDoEstabelecimento(estabelecimento);
 	}
 	

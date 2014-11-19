@@ -12,6 +12,7 @@ import com.mysql.jdbc.Statement;
 import fafica.listaacessivel.dados.IRepositorioEstabelecimento;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
@@ -260,5 +261,15 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				
 		return estabelecimento;
 	}
+
+	@Override
+	public List<Estabelecimento> listarEstabelecimentoPorRegiao(
+			String categoria, Cliente cliente, boolean pesquisarPorBairro)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }
