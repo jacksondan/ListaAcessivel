@@ -122,6 +122,8 @@ body,input,textarea,select
 					display: inline-block;
 					margin-right: 2em;
 					margin-left: 2em;
+					font-size:19px;
+					color:#808080;
 				}
 				
 					ul.actions li:first-child
@@ -496,6 +498,7 @@ body,input,textarea,select
 			transition: opacity 0.25s ease-in-out;
 			outline: 0;
 			border: 0;
+			opacity: 0.65;
 		}
 		
 			.image img
@@ -537,7 +540,7 @@ body,input,textarea,select
 
 			a.image:hover
 			{
-				opacity: 0.78;
+				opacity: 0.88;
 				position:relative;
 				bottom:1.5em;
 				
@@ -547,10 +550,10 @@ body,input,textarea,select
 	
 	z-index:1;
 	position:absolute;
-	top:12em;
+	top:18em;
 	background-color: #000040;
 	width:100%;
-	height:40%;
+	height:50%;
 	
 }
 /*Sidebar2*/
@@ -739,7 +742,7 @@ body,input,textarea,select
 	#footer
 	{
 		position: relative;
-		top:15em;
+		top:20em;
 		z-index: 1;
 	}
 
