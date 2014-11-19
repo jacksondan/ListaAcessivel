@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,8 +18,7 @@ import javax.servlet.http.HttpSession;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Funcionario;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Usuario;
 
 /**
@@ -53,17 +54,24 @@ public class IndexServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
 			Usuario usuario = null;
+			List <Usuario> listaUsuarios = new ArrayList<Usuario>();
 			
-			String senhaEncriptada = encriptar(senha); 
+			listaUsuarios.addAll(fachada.listarCliente());
+			listaUsuarios.addAll(fachada.listarFuncionario());
 			
-			for(Cliente cliente : fachada.listarCliente()){
-				if (cliente.getEmail().equals(email)&& cliente.getSenha().equals(senhaEncriptada)){
-					usuario = cliente;
+			Estabelecimento estabelecimento = null;
+			
+			String senhaEncriptada = encriptar(senha);
+			
+			for(Usuario u : listaUsuarios){
+				if (u.getEmail().equals(email)&& u.getSenha().equals(senhaEncriptada)){
+					usuario = u;
 				}
-			}	
-			for(Funcionario funcionario : fachada.listarFuncionario()){
-				if (funcionario.getEmail().equals(email)&& funcionario.getSenha().equals(senhaEncriptada)){
-					usuario = funcionario;
+			}
+			
+			for(Estabelecimento e : fachada.listarEstabelecimento()){
+				if (e.getEmail().equals(email)&& e.getSenha().equals(senhaEncriptada)){
+					estabelecimento = e;
 				}
 			}
 			
@@ -79,6 +87,8 @@ public class IndexServlet extends HttpServlet {
 					session.setAttribute("acessoFuncionario", usuario);
 					response.sendRedirect("visaoEs.jsp");
 				}
+			}else if (estabelecimento != null){
+				
 			}else{
 				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
