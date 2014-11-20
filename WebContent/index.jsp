@@ -21,9 +21,8 @@
 					<h2>Login</h2>
 				</header>
 			<div>
-			<c:if test="${erroLogin != null} ">
 				<p style="text-align:center;color:red;">${erroLogin}</p>
-			</c:if>
+				<p style="text-align:center;color:green;">${mensagem}</p>
 
 			<form method="post" action="http://localhost:8080/ListaAcessivel/Index">
 			<fieldset >

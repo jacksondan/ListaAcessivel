@@ -54,24 +54,26 @@ public class IndexServlet extends HttpServlet {
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
 			Usuario usuario = null;
-			List <Usuario> listaUsuarios = new ArrayList<Usuario>();
+			Estabelecimento estabelecimento = null;
 			
+			List <Usuario> listaUsuarios = new ArrayList<Usuario>();
 			listaUsuarios.addAll(fachada.listarCliente());
 			listaUsuarios.addAll(fachada.listarFuncionario());
 			
-			Estabelecimento estabelecimento = null;
 			
 			String senhaEncriptada = encriptar(senha);
 			
 			for(Usuario u : listaUsuarios){
 				if (u.getEmail().equals(email)&& u.getSenha().equals(senhaEncriptada)){
 					usuario = u;
+					break;
 				}
 			}
 			
 			for(Estabelecimento e : fachada.listarEstabelecimento()){
-				if (e.getEmail().equals(email)&& e.getSenha().equals(senhaEncriptada)){
+				if (e.getCnpj().equals(email)&& e.getSenha().equals(senhaEncriptada)){
 					estabelecimento = e;
+					break;
 				}
 			}
 			
@@ -81,14 +83,18 @@ public class IndexServlet extends HttpServlet {
 				if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoCliente", usuario);
-					response.sendRedirect("visaoUsuario.jsp");
+					response.sendRedirect("visaoCliente.jsp");
 				}else{
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoFuncionario", usuario);
-					response.sendRedirect("visaoEs.jsp");
+					response.sendRedirect("visaoFuncionario.jsp");
 				}
 			}else if (estabelecimento != null){
-				
+				String classe = estabelecimento.getClass().toString();
+				System.out.println("************ "+classe+" ***************");
+				HttpSession session = request.getSession(); 
+				session.setAttribute("acessoEstabelecimento", estabelecimento);
+				response.sendRedirect("visaoEstabelecimento.jsp");
 			}else{
 				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
