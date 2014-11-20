@@ -2,6 +2,8 @@ package fafica.listaacessivel.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,11 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
  * Servlet implementation class CategoriaEstabelecimentoServlet
@@ -57,11 +59,22 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				String categoria = request.getParameter("categoria");
 				IFachada fachada = Fachada.getInstance();
 				
+				String bairro = request.getParameter("selecionarPorBairro");
+				boolean selecionarPorBairro = false;
+				
+				if(bairro != null){
+					selecionarPorBairro = true;
+				}
+							
+				List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
 				
 				cliente = fachada.pesquisarCliente(cliente);
+								
+				listaEstabelecimentos = fachada.listarEstabelecimentoPorRegiao(categoria, cliente, false);
 				
+				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
 				request.setAttribute("editarCliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso02.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
