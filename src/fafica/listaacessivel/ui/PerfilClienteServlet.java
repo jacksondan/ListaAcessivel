@@ -38,7 +38,11 @@ public class PerfilClienteServlet extends HttpServlet {
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
 		
 		if(cliente == null){
-			response.sendRedirect("index.jsp");
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
 		}else{
 				try {
 					IFachada fachada = Fachada.getInstance();

@@ -3,6 +3,7 @@ package fafica.listaacessivel.ui;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,11 @@ public class ExcluirClienteServlet extends HttpServlet {
 		Cliente cliente = (Cliente)session.getAttribute("acessoCliente"); // Utilizar pra pegar codigo de Usuario
 		
 		if(cliente == null){
-			response.sendRedirect("index.jsp");
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();

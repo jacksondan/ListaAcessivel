@@ -41,9 +41,17 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
 		if(cliente == null){
-			response.sendRedirect("index.jsp");
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
 		}else{
-			response.sendRedirect("editarSenhaCliente.jsp");
+			String mensagem = "Senha editada com sucesso!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("editarSenhaCliente.jsp");
 		}
 	}
 
@@ -54,7 +62,11 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
 		if(cliente == null){
-			response.sendRedirect("index.jsp");
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
@@ -74,7 +86,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 					
 					mensagem = "Senha editada com sucesso!";
 				}else{
-					mensagem = "Sua Senha n�o foi alterada, porfavor tente novamente. ";
+					mensagem = "Sua Senha n�o foi alterada, porfavor tente novamente. ";
 				
 				}
 				request.setAttribute("mensagem",mensagem);

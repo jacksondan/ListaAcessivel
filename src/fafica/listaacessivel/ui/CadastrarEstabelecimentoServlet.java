@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,7 +74,12 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 			Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones);
 			fachada.adicionarEstabelecimento(entidade);
 			
-			response.sendRedirect("cadastros.jsp");
+			String mensagem = "Estabelecimento cadastrado com sucesso!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastros.jsp");
+			dispatcher.forward(request, response);
+			
+			//response.sendRedirect("cadastros.jsp");
 			
 		} catch (ClassNotFoundException | SQLException e1) {
 			// TODO Auto-generated catch block
