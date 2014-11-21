@@ -50,7 +50,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				request.setAttribute("editarEstabelecimento", estabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEs.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("estabelecimento/editarEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

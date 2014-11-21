@@ -53,7 +53,7 @@ public class ListarListaClienteServlet extends HttpServlet {
 				List<Lista> listas = fachada.listarListaPorCliente(pesquisa);
 				
 				request.setAttribute("listasDoCliente", listas);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoUsusario.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("cliente/visaoCliente.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException | SQLException e) {

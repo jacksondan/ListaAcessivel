@@ -54,7 +54,7 @@ public class ListarProdutosServlet extends HttpServlet {
 				List <Produto> produtos = fachada.listarProdutosDoEstababelecimento(estabelecimento);
 				
 				request.setAttribute("listaProdutos", produtos);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarProdutos.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("estabelecimento/listarProdutos.jsp");
 				requestDispatcher.forward(request, response);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

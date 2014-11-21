@@ -74,7 +74,7 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				
 				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
 				request.setAttribute("editarCliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso02.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("cliente/criarListaPasso02.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

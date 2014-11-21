@@ -51,7 +51,7 @@ public class EditarClienteServlet extends HttpServlet {
 				cliente = fachada.pesquisarCliente(cliente);
 				
 				request.setAttribute("editarCliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("cliente/editarCliente.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

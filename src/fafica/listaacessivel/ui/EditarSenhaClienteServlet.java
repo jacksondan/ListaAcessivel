@@ -49,7 +49,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 		}else{
 			String mensagem = "Senha editada com sucesso!";
 			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/editarSenhaCliente.jsp");
 			dispatcher.forward(request, response);
 			//response.sendRedirect("editarSenhaCliente.jsp");
 		}
