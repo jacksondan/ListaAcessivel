@@ -62,7 +62,7 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				String bairro = request.getParameter("selecionarPorBairro");
 				boolean selecionarPorBairro = false;
 				
-				if(bairro != null){
+				if(!bairro.isEmpty()){
 					selecionarPorBairro = true;
 				}
 							
@@ -70,7 +70,7 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				
 				cliente = fachada.pesquisarCliente(cliente);
 								
-				listaEstabelecimentos = fachada.listarEstabelecimentoPorRegiao(categoria, cliente, false);
+				listaEstabelecimentos = fachada.listarEstabelecimentoPorRegiao(categoria, cliente, selecionarPorBairro);
 				
 				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
 				request.setAttribute("editarCliente", cliente);
