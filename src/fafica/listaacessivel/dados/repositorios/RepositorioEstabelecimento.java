@@ -266,8 +266,68 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 	public List<Estabelecimento> listarEstabelecimentoPorRegiao(
 			String categoria, Cliente cliente, boolean pesquisarPorBairro)
 			throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		if(pesquisarPorBairro == false){
+			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
+					+ " and categoria = '" +categoria+ "'"
+					+ " and estado = '" +cliente.getEndereco().getEstado()+ "'"
+					+ " and cidade = '" +cliente.getEndereco().getCidade()+ "'";
+		}else{
+			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
+					+ " and categoria = '" +categoria+ "'"
+					+ " and cep = '" +cliente.getEndereco().getCep()+ "'";
+		}
+		
+		smt = this.connection.prepareStatement(sql);
+		result = smt.executeQuery();
+		List<Estabelecimento> lista = null;
+		
+			while (result.next()){
+				if(lista == null){
+					lista = new ArrayList<Estabelecimento>();
+				}
+				int id_estabelecimento = result.getInt("id_estabelecimento");
+				String nome_fantasia = result.getString("nome_fantasia");
+				String nome_juridico = result.getString("nome_juridico");
+				String email  = result.getString("email");
+				String senha = result.getString("senha");
+				String cnpj = result.getString("cnpj");
+				String rua = result.getString("rua");
+				String numero = result.getString("numero");
+				String complemento = result.getString("complemento");
+				String bairro = result.getString("bairro");
+				String cidade = result.getString("cidade");
+				String estado = result.getString("estado");
+				String cep = result.getString("cep");
+				String referencia = result.getString("referencia");
+				
+				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
+				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico,
+						email, categoria, cnpj, endereco, senha, null);
+				lista.add(estabelecimento);
+			}
+			result.close();
+			smt.close();
+			
+			if(lista != null){
+				//Parte onde ï¿½ feito a busca pelos telefones que seram setados nos objetos
+				for (Estabelecimento estabelecimento : lista){
+					smt = this.connection.prepareStatement("select * from telefone_estabelecimento where id_estabelecimento = " + estabelecimento.getId_estabelecimento());
+					result = smt.executeQuery();
+					ArrayList<String> telelefones = null;
+						while (result.next()){
+							if(telelefones == null){
+								telelefones = new ArrayList<String>();
+							}
+							telelefones.add(result.getString("telefone"));
+						}
+					result.close();
+					smt.close();
+					estabelecimento.setTelefones(telelefones);
+				}
+			}
+			
+		System.out.println("LISTAR ESTABELECIMENTO POR REGIÃO OK");		
+		return lista;
 	}
 	
 	
