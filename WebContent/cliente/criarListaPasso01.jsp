@@ -14,13 +14,13 @@
 		<div id="content">
 					<header class="major">		
 						<h2>Criar Lista Passo - 01  </h2>
-						<h3>Selecione A Categoria Do Estabelecimento</h3>
+						<h3>Selecione a Categoria do Estabelecimento</h3>
 					</header>
 					
 <div id="sidebar">
 
 <ul class="actions">							
-	<li><p><a href="CategoriaEstabelecimentoServlet?categoria=superMercado" class="image"><img src="../images/catMercado.png" alt="Categoria Super Mercado, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">SuperMercado</a></p></li>
+	<li><p><a href="CategoriaEstabelecimentoServlet?categoria=supermercado" class="image"><img src="../images/catMercado.png" alt="Categoria Super Mercado, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Supermercado</a></p></li>
 	<li><p><a href="CategoriaEstabelecimentoServlet?categoria=padaria" class="image"><img src="../images/catPadaria.png" alt="Categoria Padaria, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Padaria</a></p></li>
 	<li><p><a href="CategoriaEstabelecimentoServlet?categoria=farmacia" class="image"><img src="../images/catFarmacia.png" alt="Categoria Farmácia, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Farmácia</a></p></li>
 		<li><p><a href="CategoriaEstabelecimentoServlet?categoria=livraria" class="image"><img src="../images/catLivraria.png" alt="Categoria Livraria, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Livraria</a></p></li>
