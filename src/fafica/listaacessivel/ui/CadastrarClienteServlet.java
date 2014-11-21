@@ -22,7 +22,7 @@ import fafica.listaacessivel.negocios.entidades.Endereco;
 /**
  * Servlet implementation class CadastraUs
  */
-@WebServlet("/CadastraUs")
+@WebServlet("/CadastraCliente")
 public class CadastrarClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
