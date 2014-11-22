@@ -83,18 +83,18 @@ public class IndexServlet extends HttpServlet {
 				if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoCliente", usuario);
-					response.sendRedirect("visaoCliente.jsp");
+					response.sendRedirect("cliente/visaoCliente.jsp");
 				}else{
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoFuncionario", usuario);
-					response.sendRedirect("visaoFuncionario.jsp");
+					response.sendRedirect("funcionario/visaoFuncionario.jsp");
 				}
 			}else if (estabelecimento != null){
 				String classe = estabelecimento.getClass().toString();
 				System.out.println("************ "+classe+" ***************");
 				HttpSession session = request.getSession(); 
 				session.setAttribute("acessoEstabelecimento", estabelecimento);
-				response.sendRedirect("visaoEstabelecimento.jsp");
+				response.sendRedirect("estabelecimento/visaoEstabelecimento.jsp");
 			}else{
 				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
