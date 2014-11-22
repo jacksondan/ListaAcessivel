@@ -18,6 +18,7 @@ jQuery(function($){
 	$("#telefone1").mask("(99)9999-9999");
 	$("#telefone2").mask("(99)9999-9999");
 	$("#cpf").mask("999.999.999-99");
+	$("#ano_nascimento").mask("9999");
 });
 
 </script>
