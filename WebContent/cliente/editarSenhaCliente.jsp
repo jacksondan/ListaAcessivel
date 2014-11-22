@@ -7,12 +7,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>NomeCliente - Inicio</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-<script src="../js/script.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/script.js"></script>
 
 </head>
 <body>
-	<%@include file="headerCliente.html"%>
+<div id="nav2">
+				<div id="header-wrapper">
+				
+					<div id="header" class="container">
+										<h1 id="logo"><a href="./cliente/visaoCliente.jsp"><img src="images/g4314.png" alt="Logo Lista acessível, clicando aqui voltará para o início."  style="width:6.5em ;heigth:8.5em;"></a></h1>
+											
+						<ul class="divided">
+						<li><a href="./LogoutServlet" class="button3"><strong>Sair</strong></a></li>
+						</ul>
+						</div>
+				</div>
+</div>
 
 
 	<div id="content">

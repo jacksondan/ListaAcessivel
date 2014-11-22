@@ -7,10 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-<script src="../js/script.js"></script>
- <script src="../js/jquery.min.js" type="text/javascript"></script>
-<script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/script.js"></script>
+ <script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>
 //script da mascara
 jQuery(function($){
@@ -23,10 +23,16 @@ jQuery(function($){
 </script>
 </head>
 <body>
-	<%@include file="headerCliente.html"%>
-
-
-
+<div id="nav2">
+				<div id="header-wrapper">
+					<div id="header" class="container">
+										<h1 id="logo"><a href="./cliente/visaoCliente.jsp"><img src="./images/g4314.png" alt="Logo Lista acessível, clicando aqui voltará para o início."style="width:6.5em ;heigth:8.5em;"></a></h1>		
+						<ul class="divided">
+						<li><a href="LogoutServlet" class="button3"><strong>Sair</strong></a></li>
+						</ul>
+						</div>
+				</div>
+			</div>
 
 	<div id="content">
 		<header class="major">
@@ -46,7 +52,11 @@ jQuery(function($){
 					value="${editarCliente.email}" size=60 required="email"><br>
 				<label for="nome">Nome Completo</label> <input type="text"
 					name="nome" id="nome" value="${editarCliente.nome}" size=60 required="nome">
-
+				
+				<p><label for="ano_nascimento">Ano de Nascimento</label><br> <input type="text"
+						 name="ano_nascimento" id="ano_nascimento"
+						require="ano_nascimento" value="${editarCliente.ano_nascimento}" size="4"></p>
+						
 				<label for="cpf">CPF:</label><br> <input type="text" name="cpf"
 					id="cpf" value="${editarCliente.cpf}" size=12 required="cpf"><br>
 			</fieldset>
@@ -67,29 +77,29 @@ jQuery(function($){
 					
 
 				<label for="cep">CEP:</label><br> <input type="text" name="cep"
-					id="cep" value="${editarCliente.cep}" size=20 required="cep"><br> 
+					id="cep" value="${editarCliente.endereco.cep}" size=20 required="cep"><br> 
 					<label for="estado">Estado:</label><br> <input type="text"
-						name="estado" id="estado" value="${editarCliente.estado}" size=2><br>
+						name="estado" id="estado" value="${editarCliente.endereco.estado}" size=2><br>
 					
 					<label
 					for="cidade">Cidade:</label><br> <input type="text"
-					name="cidade" id="cidade" value="${editarCliente.cidade}" size=30><br>
+					name="cidade" id="cidade" value="${editarCliente.endereco.cidade}" size=30><br>
 			
 				<label for="bairro">Bairro:</label><br> <input type="text"
-					name="bairro" id="bairro" value="${editarCliente.bairro}" size=30 required="bairro" ><br>
+					name="bairro" id="bairro" value="${editarCliente.endereco.bairro}" size=30 required="bairro" ><br>
 
 				<label for="rua">Rua:</label><br> <input type="text" name="rua"
-					id="rua" value="${editarCliente.rua}" size=60 required="rua"> <br> <label
+					id="rua" value="${editarCliente.endereco.rua}" size=60 required="rua"> <br> <label
 					for="numero">Número:</label><br> <input type="text"
-					name="numero" id="numero" value="${editarCliente.numero}" size=4 required="numero"><br>
+					name="numero" id="numero" value="${editarCliente.endereco.numero}" size=4 required="numero"><br>
 					
 					<label
 					for="complemento">Complemento:</label><br> <input type="text"
-					name="complemento" id="complemento" value="${editarCliente.complemento}" size=60 required="complemento"><br>
+					name="complemento" id="complemento" value="${editarCliente.endereco.complemento}" size=60 required="complemento"><br>
 
 				<label for="referencia">Referência:</label><br> <input
 					type="text" name="referencia" id="referencia"
-					value="${editarCliente.referencia}" size=60 required="referencia"><br>
+					value="${editarCliente.endereco.referencia}" size=60 required="referencia"><br>
 
 			</fieldset>
 

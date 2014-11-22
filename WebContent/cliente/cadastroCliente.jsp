@@ -16,6 +16,7 @@ jQuery(function($){
 	$("#telefone1").mask("(99)9999-9999");
 	$("#telefone2").mask("(99)9999-9999");
 	$("#cpf").mask("999.999.999-99");
+	$("#ano_nascimento").mask("9999");
 });
 
 </script>
@@ -26,7 +27,7 @@ jQuery(function($){
 		<div id="header-wrapper">
 			<div id="header" class="container">
 				<h1 id="logo">
-					<a href="index.jsp"><img src="images/g4314.png"
+					<a href="index.jsp"><img src="../images/g4314.png"
 						alt="Logo Lista acessível" style="width: 6.5em; heigth: 8.5em;"></a>
 				</h1>
 
@@ -39,7 +40,7 @@ jQuery(function($){
 			</header>
 			<!-- Formulário aqui! -->
 			<form method="post"
-				action="http://localhost:8080/ListaAcessivel/CadastraUs">
+				action="http://localhost:8080/ListaAcessivel/CadastraCliente">
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"
@@ -52,7 +53,12 @@ jQuery(function($){
 					<legend>Dados Pessoais</legend>
 					<label for="nome">Nome Completo</label> <input type="text"
 						placeholder="Digite seu nome completo" name="nome" id="nome"
-						size=60 require="nome"> <label for="cpf">CPF:</label><br> <input
+						size=60 require="nome">
+						<p><label for="ano_nascimento">Ano de Nascimento</label><br> <input type="text"
+						placeholder="Digite o ano de nascimento" name="ano_nascimento" id="ano_nascimento"
+						require="ano_nascimento" size="4"></p>
+						
+						 <label for="cpf">CPF:</label><br> <input
 					type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=12 required= "cpf" ><br>
 				</fieldset>
 				<fieldset>
@@ -93,7 +99,7 @@ jQuery(function($){
 
 					<label for="referencia">Referência:</label><br> <input
 						type="text" placeholder="Digite Referência" name="referencia"
-						id="referencia" size=60 required="referencia"><br>
+						id="referencia" size=60  placeholder="Digite uma referencia do local onde mora" required="referencia"><br>
 
 				</fieldset>
 

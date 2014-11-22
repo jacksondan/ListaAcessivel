@@ -8,11 +8,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 				
-<%@include file="headerCliente.html" %>	
+<div id="nav2">
+				<div id="header-wrapper">
+				
+					<div id="header" class="container">
+										<h1 id="logo"><a href="./cliente/visaoCliente.jsp"><img src="./images/g4314.png" alt="Logo Lista acessível, clicando aqui voltará para o início."  style="width:6.5em ;heigth:8.5em;"></a></h1>
+											
+						<ul class="divided">
+						<li><a href="./LogoutServlet" class="button3"><strong>Sair</strong></a></li>
+						</ul>
+						</div>
+				</div>
+</div>
 			
 			<div id="content">
 			<!-- titulo do conteudo-->
@@ -26,9 +37,8 @@
 			<legend>Dados Pessoais</legend>
 				<p>
 				E-mail: ${cliente.email} <br/>
-				
 				Nome: ${cliente.nome} <br/>
-				
+				Ano de Nascimento: ${cliente.ano_nascimento}<br/>
 				CPF: ${cliente.cpf} <br/>
 				</p>
 			</fieldset>
@@ -43,21 +53,21 @@
 				<fieldset >
 			
 			<legend>Dados de Localização</legend>
-				Estado: ${cliente.estado} <br/>
+				Estado: ${cliente.endereco.estado} <br/>
 				
-				CEP: ${cliente.cep} <br/>
+				CEP: ${cliente.endereco.cep} <br/>
 				
-				Cidade: ${cliente.cidade} <br/>
+				Cidade: ${cliente.endereco.cidade} <br/>
 				
-				Bairro: ${cliente.bairro} <br/>
+				Bairro: ${cliente.endereco.bairro} <br/>
 				
-				Rua: ${cliente.rua} <br/>
+				Rua: ${cliente.endereco.rua} <br/>
 				
-				Número: ${cliente.numero} <br/>
+				Número: ${cliente.endereco.numero} <br/>
 				
-				Complemento: ${cliente.complemento}<br/>
+				Complemento: ${cliente.endereco.complemento}<br/>
 				
-				Referência: ${cliente.referencia} <br/>
+				Referência: ${cliente.endereco.referencia} <br/>
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">
