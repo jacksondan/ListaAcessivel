@@ -57,7 +57,7 @@ public class IndexServlet extends HttpServlet {
 			Usuario usuario = null;
 			Estabelecimento estabelecimento = null;
 			
-			if(email.equals("admin@admin") && senha.equals("TechBinP@ssword")){
+			if(email.equals("admin@admin") && senha.equals("123")){
 				String nome = "TechBin Admin";
 				String matricula = "1000000";
 				Administrador administrador = new Administrador(nome, email, matricula, senha);
