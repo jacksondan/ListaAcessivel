@@ -94,13 +94,13 @@ public class EditarClienteServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String telefone1 = request.getParameter("telefone1");
 				String telefone2 = request.getParameter("telefone2");
-				String ano_nascimento = request.getParameter("ano_nacimento");
+				String ano_nascimento = request.getParameter("ano_nascimento");
 				telefones.add(telefone1);
 				telefones.add(telefone2);
 				
 				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 		
-				Cliente entidade = new Cliente(nome,cpf,email,senha,ano_nascimento,endereco,telefones);
+				Cliente entidade = new Cliente(id_usuario,nome,cpf,email,senha,ano_nascimento,endereco,telefones);
 				entidade.setTelefones(telefones);
 				
 				fachada.alterarCliente(entidade);
