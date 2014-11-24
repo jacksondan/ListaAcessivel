@@ -11,6 +11,7 @@
 <script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>
 //script da mascara
+
 jQuery(function($){
 	$("#cep").mask("99999-999");
 	$("#telefone1").mask("(99)9999-9999");
@@ -37,7 +38,7 @@ jQuery(function($){
 			<header class="major">
 				<h2>Cadastre-se</h2>
 			</header>
-			<!-- Formulário aqui! -->
+			<!-- Formulário jjj aqui! -->
 			<form method="post"
 				action="http://localhost:8080/ListaAcessivel/CadastraCliente">
 				<fieldset >

@@ -19,10 +19,12 @@ jQuery(function($){
 	$("#telefone2").mask("(99)9999-9999");
 	$("#cpf").mask("999.999.999-99");
 	$("#ano_nascimento").mask("9999");
+	$("#numero").mask("9999");
 });
 
 </script>
 </head>
+
 <body>
 <div id="nav2">
 				<div id="header-wrapper">
