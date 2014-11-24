@@ -15,6 +15,7 @@
 
 					</div>
 				</div>
+				
 			<div id="left"></div>
 			<div id="content">
 				<header class="major">		

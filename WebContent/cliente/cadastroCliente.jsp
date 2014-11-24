@@ -20,7 +20,6 @@ jQuery(function($){
 });
 
 </script>
-
 </head>
 <body>
 	<div id="container">
