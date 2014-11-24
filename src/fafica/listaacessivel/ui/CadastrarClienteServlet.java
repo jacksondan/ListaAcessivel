@@ -72,8 +72,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 			String senhaEncriptada = encriptar(senha);
 	
 			Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-			Cliente entidade = new Cliente(nome,cpf,email,senhaEncriptada,ano_nascimento,endereco,telefones);
-			entidade.setTelefones(telefones);
+			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, ano_nascimento, endereco, telefones);
 			
 			fachada.adicionarCliente(entidade);
 			
