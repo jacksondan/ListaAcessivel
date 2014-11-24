@@ -21,14 +21,14 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 /**
  * Servlet implementation class CategoriaEstabelecimentoServlet
  */
-@WebServlet("/CategoriaEstabelecimentoServlet")
-public class CategoriaEstabelecimentoServlet extends HttpServlet {
+@WebServlet("/CriarListaPasso1Servlet")
+public class CriarListaPasso1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CategoriaEstabelecimentoServlet() {
+    public CriarListaPasso1Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
