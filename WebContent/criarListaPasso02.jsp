@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>NomedoUsuario - Inicio</title>
+<title>${cliente.nome}- Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -40,4 +40,4 @@
 			</c:forEach>
 		</fieldset>
 	</div>
-	<%@include file="../footer.html"%>
+	<%@include file="footer.html"%>

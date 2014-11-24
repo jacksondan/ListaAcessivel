@@ -38,14 +38,6 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
 		if(cliente == null){
@@ -74,7 +66,7 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				
 				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
 				request.setAttribute("editarCliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("cliente/criarListaPasso02.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso02.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
@@ -85,6 +77,15 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		
 		
 		
