@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
- <script src="../js/script.js"></script>
- <script src="../js/jquery.min.js" type="text/javascript"></script>
-<script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href=css/style.css">
+ <script src="js/script.js"></script>
+ <script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>
 //script da mascara
 
@@ -27,7 +27,7 @@ jQuery(function($){
 		<div id="header-wrapper">
 			<div id="header" class="container">
 				<h1 id="logo">
-					<a href="../index.jsp"><img src="../images/g4314.png"
+					<a href="index.jsp"><img src="images/g4314.png"
 						alt="Logo Lista acessível" style="width: 6.5em; heigth: 8.5em;"></a>
 				</h1>
 

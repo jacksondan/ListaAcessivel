@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>${cliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -36,10 +36,10 @@
 			<fieldset>
 			<legend>Dados Pessoais</legend>
 				<p>
-				E-mail: ${cliente.email} <br/>
-				Nome: ${cliente.nome} <br/>
-				Ano de Nascimento: ${cliente.ano_nascimento}<br/>
-				CPF: ${cliente.cpf} <br/>
+				E-mail: ${cliente.email} .<br/>
+				Nome: ${cliente.nome} .<br/>
+				Ano de Nascimento: ${cliente.ano_nascimento}.<br/>
+				CPF: ${cliente.cpf} .<br/>
 				</p>
 			</fieldset>
 			
