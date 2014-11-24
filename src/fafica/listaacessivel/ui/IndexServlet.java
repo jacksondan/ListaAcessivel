@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Administador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Usuario;
 
@@ -56,53 +57,65 @@ public class IndexServlet extends HttpServlet {
 			Usuario usuario = null;
 			Estabelecimento estabelecimento = null;
 			
-			List <Usuario> listaUsuarios = new ArrayList<Usuario>();
-			listaUsuarios.addAll(fachada.listarCliente());
-			listaUsuarios.addAll(fachada.listarFuncionario());
-			
-			
-			String senhaEncriptada = encriptar(senha);
-			
-			for(Usuario u : listaUsuarios){
-				if (u.getEmail().equals(email)&& u.getSenha().equals(senhaEncriptada)){
-					usuario = u;
-					break;
-				}
-			}
-			
-			for(Estabelecimento e : fachada.listarEstabelecimento()){
-				if (e.getCnpj().equals(email)&& e.getSenha().equals(senhaEncriptada)){
-					estabelecimento = e;
-					break;
-				}
-			}
-			
-			if(usuario != null){
-				String classe = usuario.getClass().toString();
-				System.out.println("************ "+classe+" ***************");
-				if(classe.endsWith(".Cliente")){
-					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoCliente", usuario);
-					response.sendRedirect("visaoCliente.jsp");
-				}else{
-					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoFuncionario", usuario);
-					response.sendRedirect("visaoFuncionario.jsp");
-				}
-			}else if (estabelecimento != null){
-				String classe = estabelecimento.getClass().toString();
+			if(email.equals("admin") && senha.equals("TechBinP@ssword")){
+				String nome = "TechBin Admin";
+				String matricula = "1000000";
+				Administador admin = new Administador(nome, email, matricula, senha);
+				String classe = admin.getClass().toString();
 				System.out.println("************ "+classe+" ***************");
 				HttpSession session = request.getSession(); 
-				session.setAttribute("acessoEstabelecimento", estabelecimento);
-				response.sendRedirect("visaoEstabelecimento.jsp");
+				session.setAttribute("acessoAdministrador", admin);
+				response.sendRedirect("visaoAdministrador.jsp");
+				
+				
 			}else{
-				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-				dispatcher.forward(request, response);
+				List <Usuario> listaUsuarios = new ArrayList<Usuario>();
+				listaUsuarios.addAll(fachada.listarCliente());
+				listaUsuarios.addAll(fachada.listarFuncionario());
+				
+				
+				String senhaEncriptada = encriptar(senha);
+				
+				for(Usuario u : listaUsuarios){
+					if (u.getEmail().equals(email)&& u.getSenha().equals(senhaEncriptada)){
+						usuario = u;
+						break;
+					}
+				}
+				
+				if(usuario == null){
+					for(Estabelecimento e : fachada.listarEstabelecimento()){
+						if (e.getCnpj().equals(email)&& e.getSenha().equals(senhaEncriptada)){
+							estabelecimento = e;
+							break;
+						}
+					}
+				}
+				
+				if(usuario != null){
+					String classe = usuario.getClass().toString();
+					System.out.println("************ "+classe+" ***************");
+					if(classe.endsWith(".Cliente")){
+						HttpSession session = request.getSession(); 
+						session.setAttribute("acessoCliente", usuario);
+						response.sendRedirect("visaoCliente.jsp");
+					}else{
+						HttpSession session = request.getSession(); 
+						session.setAttribute("acessoFuncionario", usuario);
+						response.sendRedirect("visaoFuncionario.jsp");
+					}
+				}else if (estabelecimento != null){
+					String classe = estabelecimento.getClass().toString();
+					System.out.println("************ "+classe+" ***************");
+					HttpSession session = request.getSession(); 
+					session.setAttribute("acessoEstabelecimento", estabelecimento);
+					response.sendRedirect("visaoEstabelecimento.jsp");
+				}else{
+					request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+					dispatcher.forward(request, response);
+				}
 			}
-			
-			
-			
 			
 		} catch (ClassNotFoundException | SQLException e1) {
 			// TODO Auto-generated catch block
