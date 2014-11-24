@@ -12,12 +12,12 @@
 
 </head>
 <body>
-	<%@include file="headerEstabelecimento.html"%>
+	<%@include file="headerAdmin.html"%>
 
-	<%@include file="sidebarEstabelecimento.html"%>
+	<%@include file="sidebarAdmin.html"%>
 	<div id="content2">
 		<header class="major">
-			<h2>Perfil Estabelecimento</h2>
+			<h2>Detalhes do Estabelecimento</h2>
 		</header>
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
@@ -39,27 +39,16 @@
 			<fieldset>
 				<legend>Dados de Localização</legend>
 				
-					CEP: 		   ${estabelecimento.cep }<br/>
-					Estado:        ${estabelecimento.estado}<br/>
-					Cidade:        ${estabelecimento.cidade}<br/>
-					Bairro:        ${estabelecimento.bairro}<br/>
-					Rua:           ${estabelecimento.rua}<br/>
-					Número:		   ${estabelecimento.numero}<br/>
-					Complemento:   ${estabelecimento.complemento}<br/>
-					Referência:	   ${estabelecimento.referencia}<br/>
+					CEP: 		   ${estabelecimento.endereco.cep }<br/>
+					Estado:        ${estabelecimento.endereco.estado}<br/>
+					Cidade:        ${estabelecimento.endereco.cidade}<br/>
+					Bairro:        ${estabelecimento.endereco.bairro}<br/>
+					Rua:           ${estabelecimento.endereco.rua}<br/>
+					Número:		   ${estabelecimento.endereco.numero}<br/>
+					Complemento:   ${estabelecimento.endereco.complemento}<br/>
+					Referência:	   ${estabelecimento.endereco.referencia}<br/>
 
 					</fieldset>
-
-			<div class="nav">
-										<ul class="actions">
-											<li><a href="EditarEstabelecimentoServlet" class="button3">Detalhes</a></li>
-											<li><a href="EditarSenhaEstabelecimentoServlet" class="button3">Editar</a></li>
-											<li><a href="EditarSenhaEstabelecimentoServlet" class="button3">Desativar</a></li>
-										</ul>
-							</div>
-
-
-		
 	</div>
 
 </body>

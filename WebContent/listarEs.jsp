@@ -26,25 +26,21 @@
 									<th>Categoria</th>
 									<th>Cidade</th>
 									<th>Bairro</th>
-									<th>Telefones</th>
+									<th>Detalhes</th>
+									<th>Editar</th>
+									<th>Desativar</th>
 								</tr>
 																	
 								<tr>
 									
 									<td>${estabelecimento.nome_fantasia}</td>
-									<td>${estabelecimento.nome_juridico}</td>
 									<td>${estabelecimento.categoria}</td>
 									<td>${estabelecimento.endereco.cidade}</td>
 									<td>${estabelecimento.endereco.bairro}</td>
+									<td><a href="PerfilEstabelecimento?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Detalhes</a></td>
 									<td><a href="EditarEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Editar</a></td>
 									<td><a href="ExcluirEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Excluir</a></td>
-									<td>
-										<ol>
-										<c:forEach items="${estabelecimento.telefones}" var="telefone" varStatus="status">
-											<li>${telefone}</li>
-										</c:forEach>
-										</ol>
-									</td>
+									
 								</tr>	
 						</table>
 					</c:forEach>	
