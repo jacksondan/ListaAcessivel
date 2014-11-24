@@ -23,7 +23,7 @@
 
 		<fieldset>
 
-			<c:forEach items="${listaestabelecimento}" var="estabelecimento"
+			<c:forEach items="${listaEstabelecimento}" var="estabelecimento"
 				varStatus="status">
 				<table class="default">
 
