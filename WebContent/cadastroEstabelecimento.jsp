@@ -30,7 +30,7 @@ jQuery(function($){
 			</header>
 
 			<form method="post"
-				action="http://localhost:8080/ListaAcessivel/cadastroEs">
+				action="http://localhost:8080/ListaAcessivel/CadastrarEstabelecimentoServlet">
 				<fieldset>
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"
