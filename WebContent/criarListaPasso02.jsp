@@ -27,14 +27,14 @@
 				varStatus="status">
 				<table class="default">
 
-					<tr>
-
-					</tr>
+					<th>
+						Teste
+					</th>
 
 					<tr>
 						<td><a
-							href="EstabelecimentoSelecionadoServlet?id_estabelecimento=${estabelecimento.Id_estabelecimento}"
-							class="button3">${estabelecimento.getNome_fantasia}</a></td>
+							href="EstabelecimentoSelecionadoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}"
+							class="button3">${estabelecimento.nome_fantasia}</a></td>
 					</tr>
 				</table>
 			</c:forEach>
