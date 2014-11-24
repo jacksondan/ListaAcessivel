@@ -9,54 +9,34 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-			<div id="container">
-					<div id="header-wrapper">
-					<div id="header" class="container">
-							<h1 id="logo"><a href="index.jsp"><img src="images/g4314.png" alt="Logo Lista acessível"  style="width:6.5em ;heigth:8.5em;"></a></h1>
-	
-						</div>
-					</div>
-				<div id="left"></div>
+			<%@include  file="headerAdmin.html" %>
+			<%@include  file="sidebarAdmin.html" %>
+		
 				<div id="content">
 					<header class="major">		
 						<h2>Lista de Estabelecimentos</h2>
 					</header>
-				<div>
+			
 					
 				<fieldset >
 					<c:forEach items="${listaestabelecimento}" var="estabelecimento" varStatus="status">
 						<table class="default" >
 								<tr>
-									<th>Id</th>
 									<th>Nome Fantasia</th>
-									<th>Nome Juridico</th>
 									<th>Categoria</th>
-									<th>CNPJ</th>
-									<th>E-mail</th>
-									<th>CEP</th>
-									<th>Estado</th>
 									<th>Cidade</th>
 									<th>Bairro</th>
-									<th>Rua</th>
-									<th>Número</th>
-									<th>Referência</th>
 									<th>Telefones</th>
 								</tr>
 																	
 								<tr>
-									<td>${estabelecimento.id_usuario}</td>
+									
 									<td>${estabelecimento.nome_fantasia}</td>
 									<td>${estabelecimento.nome_juridico}</td>
 									<td>${estabelecimento.categoria}</td>
-									<td>${estabelecimento.cnpj}</td>
-									<td>${estabelecimento.email}</td>
-									<td>${estabelecimento.cep}</td>
-									<td>${estabelecimento.estado}</td>
-									<td>${estabelecimento.cidade}</td>
-									<td>${estabelecimento.bairro}</td>
-									<td>${estabelecimento.rua}</td>
-									<td>${estabelecimento.numero}</td>
-									<td>${estabelecimento.referencia}</td>
+									<td>${estabelecimento.endereco.cidade}</td>
+									<td>${estabelecimento.endereco.bairro}</td>
+									
 									<td>
 										<ol>
 										<c:forEach items="${estabelecimento.telefones}" var="telefone" varStatus="status">
@@ -69,8 +49,8 @@
 					</c:forEach>	
 					</fieldset>
 				</div>
-				</div>	
-				</div>
+			
+				
 					<div id="footer2">
 				<div id="copyright" class="container">
 						<ul class="icons">

@@ -5,10 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-<script src="../js/script.js"></script>
-<script src="../js/jquery.min.js" type="text/javascript"></script>
-<script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/script.js"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>
 //script da mascara
 jQuery(function($){
@@ -22,21 +22,11 @@ jQuery(function($){
 
 </head>
 <body>
-	<div id="container">
-		<div id="header-wrapper">
-			<div id="header" class="container">
-				<h1 id="logo">
-					<a href="index.jsp"><img src="images/g4314.png"
-						alt="Logo Lista acessível" style="width: 6.5em; heigth: 8.5em;"></a>
-				</h1>
-
-
-			</div>
-		</div>
+	<%@include file="visaoAdministrador.jsp" %>
 
 		<div id="content">
 			<header class="major">
-				<h2>Cadastro - Estabelecimento</h2>
+				<h3>Cadastro - Estabelecimento</h3>
 			</header>
 
 			<form method="post"
@@ -60,10 +50,10 @@ jQuery(function($){
 					<input type="text" placeholder="Digite o CNPJ" name="cnpj"
 						id="cnpj" size=12 required="cnpj"><br> Categoria:<br> <select
 						name="categoria" required="categoria">
-						<option>Supermercado</option>
-						<option>Shopping</option>
-						<option>Frigorífico</option>
-						<option>Fast-Food</option>
+						<option>supermercado</option>
+						<option>padaria</option>
+						<option>farmacia</option>
+						<option>livraria</option>
 					</select>
 				</fieldset>
 				<fieldset>
