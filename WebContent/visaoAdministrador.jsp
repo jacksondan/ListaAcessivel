@@ -16,7 +16,7 @@
 					<header class="major">		
 						<h2>Menu Administrador</h2>
 					</header>
-					<div></div>
+					<p style="text-align: center; color: green;">${mensagem}</p>
 				</div>
 	
 		</body>
