@@ -54,7 +54,7 @@ public class CategoriaEstabelecimentoServlet extends HttpServlet {
 				String bairro = request.getParameter("selecionarPorBairro");
 				boolean selecionarPorBairro = false;
 				
-				if(!bairro.isEmpty()){
+				if(bairro != null){
 					selecionarPorBairro = true;
 				}
 							
