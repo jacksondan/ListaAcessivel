@@ -7,6 +7,8 @@
 <title>Visão Administrador</title>
 </head>
 <body>
-	<a href=""
+	<h1 align="center">Visão Do Administrador</h1>
+	${mensagem}
+	<a href = "CadastrarEstabelecimentoServlet"><button>Cadastrar Estabelecimento</button></a>
 </body>
 </html>

@@ -1,17 +1,17 @@
 package fafica.listaacessivel.negocios.entidades;
 
-public class Administador {
+public class Administrador {
 	private int id_administrador;
 	private String nome;
 	private String email;
 	private String matricula;
 	private String senha;
 	
-	public Administador() {
+	public Administrador() {
 		
 	}
 
-	public Administador(String nome, String email, String matricula,
+	public Administrador(String nome, String email, String matricula,
 			String senha) {
 		super();
 		this.nome = nome;
@@ -20,7 +20,7 @@ public class Administador {
 		this.senha = senha;
 	}
 
-	public Administador(int id_administrador, String nome, String email,
+	public Administrador(int id_administrador, String nome, String email,
 			String matricula, String senha) {
 		super();
 		this.id_administrador = id_administrador;

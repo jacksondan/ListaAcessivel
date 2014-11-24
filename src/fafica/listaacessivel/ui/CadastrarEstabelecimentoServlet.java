@@ -12,17 +12,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Endereco;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
  * Servlet implementation class cadastroEs
  */
-@WebServlet("/cadastroEs")
+@WebServlet("/CadastrarEstabelecimentoServlet")
 public class CadastrarEstabelecimentoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private IFachada fachada; 
@@ -39,51 +41,71 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
+		if(administrador == null){
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
+		}else{
+			response.sendRedirect("cadastroEstabelecimento.jsp");
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			fachada = Fachada.getInstance();
-			
-			ArrayList<String> telefones = new ArrayList<String>();
-		
-			String nome_fantasia = request.getParameter("nome_fantasia");
-			String nome_juridico = request.getParameter("nome_juridico");
-			String categoria = request.getParameter("categoria");
-			String cnpj = request.getParameter("cnpj");
-			String email = request.getParameter("email");
-			String senha = request.getParameter("senha");
-			telefones.add(request.getParameter("telefone1"));
-			telefones.add(request.getParameter("telefone2"));
-			String rua = request.getParameter("rua");
-			String numero = request.getParameter("numero");
-			String complemento = request.getParameter("complemento");
-			String bairro = request.getParameter("bairro");
-			String cidade = request.getParameter("cidade");
-			String estado = request.getParameter("estado");
-			String cep = request.getParameter("cep");
-			String referencia = request.getParameter("referencia");
-			
-			String senhaEncriptada = encriptar(senha);
-			Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-			
-			Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones);
-			fachada.adicionarEstabelecimento(entidade);
-			
-			String mensagem = "Estabelecimento cadastrado com sucesso!";
+		HttpSession session = request.getSession();
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
+		if(administrador == null){
+			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastros.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
+		}else{
+			try {
+				fachada = Fachada.getInstance();
+				
+				ArrayList<String> telefones = new ArrayList<String>();
 			
-			//response.sendRedirect("cadastros.jsp");
-			
-		} catch (ClassNotFoundException | SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+				String nome_fantasia = request.getParameter("nome_fantasia");
+				String nome_juridico = request.getParameter("nome_juridico");
+				String categoria = request.getParameter("categoria");
+				String cnpj = request.getParameter("cnpj");
+				String email = request.getParameter("email");
+				String senha = request.getParameter("senha");
+				telefones.add(request.getParameter("telefone1"));
+				telefones.add(request.getParameter("telefone2"));
+				String rua = request.getParameter("rua");
+				String numero = request.getParameter("numero");
+				String complemento = request.getParameter("complemento");
+				String bairro = request.getParameter("bairro");
+				String cidade = request.getParameter("cidade");
+				String estado = request.getParameter("estado");
+				String cep = request.getParameter("cep");
+				String referencia = request.getParameter("referencia");
+				
+				String senhaEncriptada = encriptar(senha);
+				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
+				
+				Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones);
+				fachada.adicionarEstabelecimento(entidade);
+				
+				String mensagem = "Estabelecimento cadastrado com sucesso!";
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
+				dispatcher.forward(request, response);
+				
+				//response.sendRedirect("cadastros.jsp");
+				
+			} catch (ClassNotFoundException | SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	

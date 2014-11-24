@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Administador;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Usuario;
 
@@ -57,14 +57,14 @@ public class IndexServlet extends HttpServlet {
 			Usuario usuario = null;
 			Estabelecimento estabelecimento = null;
 			
-			if(email.equals("admin") && senha.equals("TechBinP@ssword")){
+			if(email.equals("admin@admin") && senha.equals("TechBinP@ssword")){
 				String nome = "TechBin Admin";
 				String matricula = "1000000";
-				Administador admin = new Administador(nome, email, matricula, senha);
-				String classe = admin.getClass().toString();
+				Administrador administrador = new Administrador(nome, email, matricula, senha);
+				String classe = administrador.getClass().toString();
 				System.out.println("************ "+classe+" ***************");
 				HttpSession session = request.getSession(); 
-				session.setAttribute("acessoAdministrador", admin);
+				session.setAttribute("acessoAdministrador", administrador);
 				response.sendRedirect("visaoAdministrador.jsp");
 				
 				
