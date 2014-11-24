@@ -47,7 +47,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
 		}else{
-			response.sendRedirect("cliente/editarSenhaCliente.jsp");
+			response.sendRedirect("editarSenhaCliente.jsp");
 		}
 	}
 
@@ -86,7 +86,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 				
 				}
 				request.setAttribute("mensagem",mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/editarSenhaCliente.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
 				dispatcher.forward(request, response);		
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

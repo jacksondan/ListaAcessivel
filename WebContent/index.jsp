@@ -37,7 +37,7 @@
 						<div class="12u">
 										<ul class="actions">
 											<li><input type="submit"  value="Entrar"/></li>
-											<li><a href="cliente/cadastroCliente.jsp" class="button3">Cadastrar</a></li>
+											<li><a href="cadastroCliente.jsp" class="button3">Cadastrar</a></li>
 										</ul>
 						</div>
 			</form>
