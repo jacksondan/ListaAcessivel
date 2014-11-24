@@ -12,9 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
@@ -36,20 +38,30 @@ public class ListarEstabelecimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			IFachada fachada = Fachada.getInstance();
-			List<Estabelecimento> listaEstabelecimento = fachada.listarEstabelecimento();
-			
-			request.setAttribute("listaestabelecimento", listaEstabelecimento);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarEs.jsp");
-			requestDispatcher.forward(request, response);
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
+		if(administrador == null){
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
+		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+				List<Estabelecimento> listaEstabelecimento = fachada.listarEstabelecimento();
+				
+				request.setAttribute("listaestabelecimento", listaEstabelecimento);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarEs.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
