@@ -22,19 +22,18 @@
 		</header>
 
 		<fieldset>
-
-			<c:forEach items="${listaEstabelecimento}" var="estabelecimento"
+			<legend>Selecione o estabelecimento</legend>
+			<c:forEach items="${listaEstabelecimentos}" var="estabelecimento"
 				varStatus="status">
-				<table class="default">
-
-					<th>
-						Teste
-					</th>
+				<table class="default" summary="estabelecimentos">
 
 					<tr>
-						<td><a
+						<td>
+							<a
 							href="EstabelecimentoSelecionadoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}"
-							class="button3">${estabelecimento.nome_fantasia}</a></td>
+							class="button3">${estabelecimento.nome_fantasia}
+							</a>
+						</td>
 					</tr>
 				</table>
 			</c:forEach>
