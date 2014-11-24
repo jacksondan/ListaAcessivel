@@ -28,8 +28,8 @@
 			<form method="post" action="http://localhost:8080/ListaAcessivel/Index">
 			<fieldset >
 			<legend>Dados de Login</legend>
-				<p><label for="email">E-mail</label>
-				<input type="email" placeholder="Digite o Email" name="email" id="email" size=50></p>
+				<p><label for="email">E-mail ou CNPJ</label>
+				<input type="email" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=50></p>
 				
 				<p><label for="senha">Senha</label><br>
 				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=15></p>
