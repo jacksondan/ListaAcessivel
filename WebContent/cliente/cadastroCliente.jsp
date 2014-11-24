@@ -38,7 +38,7 @@ jQuery(function($){
 			<header class="major">
 				<h2>Cadastre-se</h2>
 			</header>
-			<!-- Formulário jjj aqui! -->
+			<!-- Formulário  aqui! -->
 			<form method="post"
 				action="http://localhost:8080/ListaAcessivel/CadastraCliente">
 				<fieldset >
