@@ -47,11 +47,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
 		}else{
-			String mensagem = "Senha editada com sucesso!";
-			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/editarSenhaCliente.jsp");
-			dispatcher.forward(request, response);
-			//response.sendRedirect("editarSenhaCliente.jsp");
+			response.sendRedirect("cliente/editarSenhaCliente.jsp");
 		}
 	}
 
