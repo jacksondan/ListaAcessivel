@@ -258,18 +258,18 @@ body,input,textarea,select
 
 				table.default tbody tr
 				{
-					border-top: solid 1px #D2D7DC;
+					border-top: solid 2px #0000ff;
 					
 				}
 			
 				table.default tbody tr:nth-child(2n+1)
 				{
-					background: #f9fbfe;
+					background: #ebf2fc;
 				}
 				
 				table.default td
 				{
-					padding: 0.5em 1em 0.5em 1em;
+					padding: 0.5em 0.5em 0.5em 0.5em;
 					
 				}
 				
@@ -278,8 +278,8 @@ body,input,textarea,select
 					font-color:white;
 					text-align: center;
 					font-weight: 300;
-					padding: 0.5em 1em 0.5em 1em;
-					background-color: #b1b6eb;
+					padding: 0.8 0.5em 0.3 0.5em;
+					background-color: #408080;
 					color:white;
 				}
 			
@@ -583,7 +583,7 @@ body,input,textarea,select
 #content2{
 	z-index:1;
 	position:right;
-	margin-left:15em;
+	margin-left:20em;
 	
 	background:none;
 	
@@ -668,6 +668,16 @@ body,input,textarea,select
 			color: #fff;
 		}
 
+
+/*********************************************************************************/
+/* Paragrofo informativo <p>                                                                       */
+/*********************************************************************************/
+p.info
+			{
+				color:#f5f7fa;
+				
+			}
+
 /*********************************************************************************/
 /* Nav2                                                                           */
 /*********************************************************************************/
@@ -742,13 +752,14 @@ body,input,textarea,select
 	#footer
 	{
 		position: relative;
-		top:20em;
+		bottom:4em;
 		z-index: 1;
+		margin-left:-2em;
 	}
 
 		#footer header.major
 		{
-			margin-bottom: 3em;
+			margin-bottom: 0.5em;
 		}
 		
 /*********************************************************************************/
@@ -758,11 +769,29 @@ body,input,textarea,select
 		#footer2
 	{
 		position: relative;
-		bottom:1.5em;
+		margin-top: 6em;
 		z-index: 1;
+		margin-left:23%;
 	}
 
 		#footer2 header.major
+		{
+			margin-bottom: 2.8em;
+		}
+		
+/*********************************************************************************/
+/* Footer 3                                                                      */
+/*********************************************************************************/
+	
+		#footer3
+	{
+		position: relative;
+		top:23em;
+		z-index: 1;
+		margin-left:-2em;
+	}
+
+		#footer3 header.major
 		{
 			margin-bottom: 2.8em;
 		}

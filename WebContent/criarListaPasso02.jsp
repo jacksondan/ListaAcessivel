@@ -14,19 +14,17 @@
 
 
 
-	<div id="content">
+	<div id="content2">
 
 		<header class="major">
 			<h2>Criar Lista Passo - 02</h2>
-			<h3>Selecionar Estabelecimento</h3>
+			
 		</header>
 
-		<fieldset>
-			<legend>Selecione o estabelecimento</legend>
 			<c:forEach items="${listaEstabelecimentos}" var="estabelecimento"
 				varStatus="status">
 				<table class="default" summary="estabelecimentos">
-
+					<caption>Estabelecimentos</caption>
 					<tr>
 						<td>
 							<a
@@ -37,6 +35,16 @@
 					</tr>
 				</table>
 			</c:forEach>
-		</fieldset>
+		
 	</div>
-	<%@include file="footer.html"%>
+	<div id="footer">
+			<div id="copyright" class="container">
+					<ul class="icons">
+						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>
+					</ul>
+				</div>
+			</div>
+			</body>
+			</html>
+			
+		

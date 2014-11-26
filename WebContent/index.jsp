@@ -36,14 +36,14 @@
 			</fieldset>
 						<div class="12u">
 										<ul class="actions">
-											<li><input type="submit"  value="Entrar"/></li>
-											<li><a href="cadastroCliente.jsp" class="button3">Cadastrar</a></li>
+											<li><input type="submit"  value="Entrar" alt="Aperte Enter Para entrar"/></li>
+											<li><a href="cadastroCliente.jsp" class="button3" alt="Aperte Enter para um novo Cadastro">Cadastrar</a></li>
 										</ul>
 						</div>
 			</form>
 			</div>
 			</div>
-			<div id="footer2">
+			<div id="footer">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

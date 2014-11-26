@@ -22,11 +22,12 @@ jQuery(function($){
 
 </head>
 <body>
-	<%@include file="visaoAdministrador.jsp" %>
-
-		<div id="content">
+	<%@include file="headerAdmin.html" %>
+	<%@include file="sidebarAdmin.html" %>
+	
+		<div id="content2">
 			<header class="major">
-				<h3>Cadastro - Estabelecimento</h3>
+				<h2>Cadastro - Estabelecimento</h2>
 			</header>
 
 			<form method="post"
