@@ -48,24 +48,31 @@ public class CriarListaPasso1Servlet extends HttpServlet {
 			//response.sendRedirect("index.jsp");
 		}else{
 			try {
-				String categoria = request.getParameter("categoria");
+				String categoria=request.getParameter("categoria"); 
 				IFachada fachada = Fachada.getInstance();
-				
-				String bairro = request.getParameter("selecionarPorBairro");
+				String filtroContrario="Bairro";
+				String filtragem = request.getParameter("filtragem");
 				boolean selecionarPorBairro = false;
 				
-				if(bairro != null){
-					selecionarPorBairro = true;
-				}
-							
-				List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
 				
+				if(filtragem!=null){
+					filtragem = "Bairro";
+					filtroContrario="Cidade";
+					selecionarPorBairro = true;
+				}else{
+					filtragem = "Cidade";
+				}
+				List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
+			
 				cliente = fachada.pesquisarCliente(cliente);
 								
 				listaEstabelecimentos = fachada.listarEstabelecimentoPorRegiao(categoria, cliente, selecionarPorBairro);
 				
 				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
-				request.setAttribute("editarCliente", cliente);
+				
+				request.setAttribute("filtroContrario",filtroContrario);
+				request.setAttribute("categoria",categoria);
+				request.setAttribute("filtragem",filtragem);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso02.jsp");
 				requestDispatcher.forward(request, response);
 				
@@ -83,7 +90,6 @@ public class CriarListaPasso1Servlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 		
 		

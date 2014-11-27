@@ -11,31 +11,41 @@
 <body>
 
 	<%@include file="headerCliente.html"%>
+	<div id="content3">
 
-
-
-	<div id="content2">
-
-		<header class="major">
-			<h2>Criar Lista Passo - 02</h2>
-			
+		<header class="major2">
+			<h2>Criar Lista Passo - 02</h2>	
 		</header>
+		<div id="filtro">
+			<button   onclick="window.location.href='CriarListaPasso1Servlet?filtragem=${filtroContrario}&categoria=${categoria}'" class="button" >Filtrar por ${filtroContrario}</button>
 
-			<c:forEach items="${listaEstabelecimentos}" var="estabelecimento"
-				varStatus="status">
-				<table class="default" summary="estabelecimentos">
-					<caption>Estabelecimentos</caption>
+		</div>
+				<table class="default" summary="Tabela com estabelecimentos da categoria ${categoria} disponíveis de acordo com o filtro.">
+					<caption>Tabela de ${categoria}s filtrados por ${filtragem}</caption>
+					<thead>
 					<tr>
-						<td>
+						<th rowspan="1" id="nome">Nome do Estabelecimento</th>
+						<th rowspan="1"id="bairro">Bairro</th>
+						
+					</tr>
+					</thead>
+					<tbody>
+					<c:forEach items="${listaEstabelecimentos}" var="estabelecimento"
+				varStatus="status">
+					<tr>
+						
+						<td headers="nome">
 							<a
 							href="EstabelecimentoSelecionadoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}"
 							class="button3">${estabelecimento.nome_fantasia}
 							</a>
 						</td>
+						<td headers="bairro">${estabelecimento.endereco.bairro}</td>
 					</tr>
+					</c:forEach>
+					</tbody>
 				</table>
-			</c:forEach>
-		
+				
 	</div>
 	<div id="footer">
 			<div id="copyright" class="container">

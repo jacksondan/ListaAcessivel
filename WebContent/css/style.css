@@ -401,6 +401,16 @@ body,input,textarea,select
 				}
 
 /*********************************************************************************/
+/* botão de filtro                                                                    */
+/*********************************************************************************/
+		#filtro{
+		position:relative;
+		overflow-x: hidden;
+		margin-top:5%;
+		margin-left:40%;
+		padding: 0.1em 1px 0.1em 0.1em;
+		}
+/*********************************************************************************/
 /* Wrappers                                                                      */
 /*********************************************************************************/
 
@@ -584,6 +594,15 @@ body,input,textarea,select
 	z-index:1;
 	position:right;
 	margin-left:20em;
+	
+	background:none;
+	
+	
+}
+#content3{
+	z-index:1;
+	position:right;
+	margin-left:30em;
 	
 	background:none;
 	

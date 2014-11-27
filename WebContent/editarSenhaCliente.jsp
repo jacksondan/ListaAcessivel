@@ -52,7 +52,7 @@
 			</div>
 		</form>
 	</div>
-	<div id="footer2">
+	<div id="footer">
 		<div id="copyright" class="container">
 			<ul class="icons">
 				<li>&copy; TechBin. Todos os direitos reservados.</li>

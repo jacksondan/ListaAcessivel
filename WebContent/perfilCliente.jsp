@@ -68,7 +68,7 @@
 			
 			</div>
 			
-			<div id="footer2">
+			<div id="footer">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

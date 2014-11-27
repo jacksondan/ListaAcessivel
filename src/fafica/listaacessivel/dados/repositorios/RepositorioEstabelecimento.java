@@ -268,13 +268,15 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 			throws SQLException {
 		if(pesquisarPorBairro == false){
 			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
-					+ " and categoria = '" +categoria+ "'"
+					+ " and categoria = '"+categoria+"'"
 					+ " and estado = '" +cliente.getEndereco().getEstado()+ "'"
 					+ " and cidade = '" +cliente.getEndereco().getCidade()+ "'";
-		}else{
+					
+		}else {
 			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
-					+ " and categoria = '" +categoria+ "'"
-					+ " and cep = '" +cliente.getEndereco().getCep()+ "'";
+					+ " and categoria = '"+categoria+"'"
+					+ " and cep ='" +cliente.getEndereco().getCep()+ "'"
+					+ " and bairro ='" +cliente.getEndereco().getBairro()+"'";
 		}
 		
 		smt = this.connection.prepareStatement(sql);
