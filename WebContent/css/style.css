@@ -410,6 +410,16 @@ body,input,textarea,select
 		margin-left:40%;
 		padding: 0.1em 1px 0.1em 0.1em;
 		}
+		
+		#filtro2{
+		position:relative;
+		overflow-x: hidden;
+		margin-top:2%;
+		margin-left:-2em;
+		padding: 1.5em 0.5em 2em 0.1em;
+		}
+		
+		
 /*********************************************************************************/
 /* Wrappers                                                                      */
 /*********************************************************************************/

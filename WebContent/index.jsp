@@ -49,8 +49,8 @@
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>
 					</ul>
 				</div>
-			</div>
-						
+				
+			</div>	
 			</div>
 		
 </body>
