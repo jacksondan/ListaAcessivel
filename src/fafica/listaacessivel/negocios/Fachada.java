@@ -3,11 +3,13 @@ package fafica.listaacessivel.negocios;
 import java.sql.SQLException;
 import java.util.List;
 
+import fafica.listaacessivel.negocios.controladores.ControladorAdministrador;
 import fafica.listaacessivel.negocios.controladores.ControladorCliente;
 import fafica.listaacessivel.negocios.controladores.ControladorEstabelecimento;
 import fafica.listaacessivel.negocios.controladores.ControladorFuncionario;
 import fafica.listaacessivel.negocios.controladores.ControladorLista;
 import fafica.listaacessivel.negocios.controladores.ControladorProduto;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
@@ -22,6 +24,7 @@ public class Fachada implements IFachada {
 	private ControladorLista controlador_lista;
 	private ControladorCliente controlador_usuario;
 	private ControladorFuncionario controlador_funcionario;
+	private ControladorAdministrador controlador_administrador;
 	
 	private Fachada() throws ClassNotFoundException, SQLException{
 		controlador_estabelecimento = new ControladorEstabelecimento();
@@ -29,6 +32,7 @@ public class Fachada implements IFachada {
 		controlador_lista = new ControladorLista();
 		controlador_usuario = new ControladorCliente();
 		controlador_funcionario = new ControladorFuncionario();
+		controlador_administrador = new ControladorAdministrador();
 	}
 	
 	public static Fachada getInstance() throws ClassNotFoundException, SQLException{
@@ -197,5 +201,37 @@ public class Fachada implements IFachada {
 	public List<Lista> listarListaPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
 		return this.controlador_lista.listarListaPorEstabelecimento(estabelecimento);
+	}
+
+	@Override
+	public void adicionarAdministrador(Administrador administrador)
+			throws SQLException {
+		this.controlador_administrador.adicionarAdministrador(administrador);
+		
+	}
+
+	@Override
+	public void alterarAdministrador(Administrador administrador)
+			throws SQLException {
+		this.controlador_administrador.alterarAdministrador(administrador);
+		
+	}
+
+	@Override
+	public void excluirAdministrador(Administrador administrador)
+			throws SQLException {
+		this.controlador_administrador.excluirAdministrador(administrador);
+		
+	}
+
+	@Override
+	public List<Administrador> listarAdministrador() throws SQLException {
+		return this.controlador_administrador.listarAdministrador();
+	}
+
+	@Override
+	public Administrador pesquisarAdministrador(Administrador administrador)
+			throws SQLException {
+		return this.controlador_administrador.pesquisarAdministrador(administrador);
 	}	
 }
