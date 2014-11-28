@@ -37,34 +37,34 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 	@Override
 	public void adicionarAdministrador(Administrador administrador)
 			throws SQLException {
-		// TODO Auto-generated method stub
+	
 
 	}
 
 	@Override
 	public void alterarAdministrador(Administrador administrador)
 			throws SQLException {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void excluirAdministrador(Administrador administrador)
 			throws SQLException {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public List<Administrador> listarAdministradores() throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Administrador pesquisarAdministrador(Administrador administrador)
 			throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

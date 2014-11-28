@@ -1,38 +1,33 @@
 package fafica.listaacessivel.negocios.entidades;
 
-import java.util.List;
-
 public class Administrador extends Usuario{
 	private int id_administrador;
 	private String nome;
 	private String email;
 	private String cpf;
 	private String senha;
-	private List<String> telefones;
-	
+		
 	public Administrador() {
 		
 	}
 
 	public Administrador(String nome, String email, String cpf,
-			String senha, List<String> telefones) {
+			String senha) {
 		super();
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.telefones = telefones;
 	}
 
 	public Administrador(int id_administrador, String nome, String email,
-			String cpf, String senha, List<String> telefones) {
+			String cpf, String senha) {
 		super();
 		this.id_administrador = id_administrador;
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.telefones = telefones;
 	}
 
 	public int getId_administrador() {
@@ -74,13 +69,4 @@ public class Administrador extends Usuario{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-	public List<String> getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(List<String> telefones) {
-		this.telefones = telefones;
-	}
-		
 }
