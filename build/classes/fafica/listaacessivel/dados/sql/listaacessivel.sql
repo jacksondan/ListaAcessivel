@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Nov-2014 às 23:04
+-- Generation Time: 28-Nov-2014 às 17:46
 -- Versão do servidor: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -19,6 +19,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `listaacessivel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `administrador`
+--
+
+CREATE TABLE IF NOT EXISTS `administrador` (
+  `id_administrador` int(11) NOT NULL,
+  `cpf` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -39,13 +50,6 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `cep` varchar(12) NOT NULL,
   `referencia` varchar(70) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `cliente`
---
-
-INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`) VALUES
-(1, '87285525', '1895', 'Rua Dos Ventos', '98', 'casa', 'centro', 'caruaru', 'PE', '85774', 'perto da budega');
 
 -- --------------------------------------------------------
 
@@ -69,15 +73,9 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
   `estado` char(2) NOT NULL,
   `cep` varchar(10) NOT NULL,
   `referencia` varchar(70) DEFAULT NULL,
+  `id_administrador` int(11) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Extraindo dados da tabela `estabelecimento`
---
-
-INSERT INTO `estabelecimento` (`id_estabelecimento`, `nome_fantasia`, `nome_juridico`, `email`, `senha`, `categoria`, `cnpj`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`, `status`) VALUES
-(1, 'Bonanza', 'bonaza1.ltda', 'admin@bonanza.com.br', '123', 'supermercado', '12233112', 'Rua do Cedro', '12', 'Estabelecimento', 'Divinopolis', 'Caruaru', 'PE', '112233', 'Perto da rua Bhaia', 'ativo');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -90,13 +88,6 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `matricula` varchar(20) NOT NULL,
   `id_estabelecimento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `funcionario`
---
-
-INSERT INTO `funcionario` (`id_funcionario`, `matricula`, `id_estabelecimento`) VALUES
-(2, '2211221', 1);
 
 -- --------------------------------------------------------
 
@@ -159,14 +150,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `marca` varchar(30) NOT NULL,
   `id_estabelecimento` int(11) DEFAULT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Extraindo dados da tabela `produto`
---
-
-INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantidade`, `valor`, `validade`, `codigo_barra`, `disponibilidade`, `marca`, `id_estabelecimento`, `status`) VALUES
-(1, 'Leite Itambe', 'Alimento', 1.000, 30, 5.00, '20/10/2024', '555555', 'disponÃ­vel', 'Itambe', 1, 'ativo');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -179,14 +163,6 @@ CREATE TABLE IF NOT EXISTS `telefone_cliente` (
   `telefone` varchar(30) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `telefone_cliente`
---
-
-INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
-(1, '88559966'),
-(1, '99668855');
-
 -- --------------------------------------------------------
 
 --
@@ -197,14 +173,6 @@ CREATE TABLE IF NOT EXISTS `telefone_estabelecimento` (
   `id_estabelecimento` int(11) NOT NULL DEFAULT '0',
   `telefone` varchar(30) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `telefone_estabelecimento`
---
-
-INSERT INTO `telefone_estabelecimento` (`id_estabelecimento`, `telefone`) VALUES
-(1, '22113344'),
-(1, '33221144');
 
 -- --------------------------------------------------------
 
@@ -218,19 +186,17 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(50) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `nome`, `status`) VALUES
-(1, 'jackson@techbin.com.br', '123', 'jackson', 'ativo'),
-(2, 'joão@bonanza.com.br', '123', 'JoãoZinho', 'ativo');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `administrador`
+--
+ALTER TABLE `administrador`
+ ADD PRIMARY KEY (`id_administrador`), ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
 -- Indexes for table `cliente`
@@ -242,7 +208,7 @@ ALTER TABLE `cliente`
 -- Indexes for table `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
- ADD PRIMARY KEY (`id_estabelecimento`), ADD UNIQUE KEY `nome_juridico` (`nome_juridico`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `cnpj` (`cnpj`);
+ ADD PRIMARY KEY (`id_estabelecimento`), ADD UNIQUE KEY `nome_juridico` (`nome_juridico`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `cnpj` (`cnpj`), ADD KEY `id_administrador` (`id_administrador`);
 
 --
 -- Indexes for table `funcionario`
@@ -300,7 +266,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
-MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `lista`
 --
@@ -310,21 +276,33 @@ MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `administrador`
+--
+ALTER TABLE `administrador`
+ADD CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Limitadores para a tabela `cliente`
 --
 ALTER TABLE `cliente`
 ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
+
+--
+-- Limitadores para a tabela `estabelecimento`
+--
+ALTER TABLE `estabelecimento`
+ADD CONSTRAINT `estabelecimento_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`);
 
 --
 -- Limitadores para a tabela `funcionario`
