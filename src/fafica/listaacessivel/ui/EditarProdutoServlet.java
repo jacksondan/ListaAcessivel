@@ -44,7 +44,7 @@ public class EditarProdutoServlet extends HttpServlet {
 				produto = fachada.pesquisarProduto(produto);
 				
 				request.setAttribute("editarProduto", produto);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("backup/editarProduto.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarProduto.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

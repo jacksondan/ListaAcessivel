@@ -27,11 +27,11 @@ jQuery(function($){
 	
 		<div id="content2">
 			<header class="major">
-				<h2>Cadastrar Funcionário</h2>
+				<h2>Cadastrar Novo Administrador</h2>
 			</header>
 			<!-- Formulário  aqui! -->
 			<form method="post"
-				action="CadastraFuncionárioServlet">
+				action="CadastraAdministradorServlet">
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"

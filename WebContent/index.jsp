@@ -29,7 +29,7 @@
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<p><label for="email">E-mail ou CNPJ</label>
-				<input type="email" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=50></p>
+				<input type="text" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=50></p>
 				
 				<p><label for="senha">Senha</label><br>
 				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=15></p>
@@ -37,7 +37,7 @@
 						<div class="12u">
 										<ul class="actions">
 											<li><input type="submit"  value="Entrar" alt="Aperte Enter Para entrar"/></li>
-											<li><a href="cadastroCliente.jsp" class="button3" alt="Aperte Enter para um novo Cadastro">Cadastrar</a></li>
+											<li><a href="cadastroCliente.jsp" class="button3" alt="Aperte Enter para um novo Cadastro">Cadastrar-se</a></li>
 										</ul>
 						</div>
 			</form>

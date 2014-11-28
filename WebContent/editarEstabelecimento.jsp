@@ -76,30 +76,30 @@
 				<legend>Dados de Localização</legend>
 				<p>
 					<label for="cep">CEP:</label><br> <input type="text"
-						name="cep" id="cep" value="${editarEstabelecimento.cep }"  onblur="consultacep(this.value)" size=20 required="cep"><br>
+						name="cep" id="cep" value="${editarEstabelecimento.endereco.cep }"  onblur="consultacep(this.value)" size=20 required="cep"><br>
 						<label for="estado">Estado:</label><br> <input type="text"
-						name="estado" id="estado" value="${editarEstabelecimento.estado}" size=2><br>
+						name="estado" id="estado" value="${editarEstabelecimento.endereco.estado}" size=2><br>
 					<label for="cidade">Cidade:</label><br> <input type="text"
-						name="cidade" id="cidade" value="${editarEstabelecimento.cidade}"
+						name="cidade" id="cidade" value="${editarEstabelecimento.endereco.cidade}"
 						size=30><br> <br> <label for="bairro">Bairro:</label><br>
 					<input type="text" name="bairro" id="bairro"
-						value="${editarEstabelecimento.bairro}" size=30 required="bairro"><br>
+						value="${editarEstabelecimento.endereco.bairro}" size=30 required="bairro"><br>
 
 					<label for="rua">Rua:</label><br> <input type="text"
-						name="rua" id="rua" value="${editarEstabelecimento.rua}" size=60 required="rua"><br>
+						name="rua" id="rua" value="${editarEstabelecimento.endereco.rua}" size=60 required="rua"><br>
 
 					<label for="numero">Número:</label><br> <input type="text"
-						name="numero" id="numero" value="${editarEstabelecimento.numero}"
+						name="numero" id="numero" value="${editarEstabelecimento.endereco.numero}"
 						size=4 required="numero"><br>
 						
 						<label
 					for="complemento">Complemento:</label><br> 
 					<input type="text"
-					name="complemento" id="complemento" value="${editarEstabelecimento.complemento}" size=60 required="complemento"><br>
+					name="complemento" id="complemento" value="${editarEstabelecimento.endereco.complemento}" size=60 required="complemento"><br>
 						
 						 <label for="referencia">Referência:</label><br>
 					<input type="text" name="referencia" id="referencia"
-						value="${editarEstabelecimento.referencia}" size=60 required="referencia"><br>
+						value="${editarEstabelecimento.endereco.referencia}" size=60 required="referencia"><br>
 			</fieldset>
 
 			<div class="12u">

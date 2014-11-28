@@ -9,10 +9,10 @@
 </head>
 <body>
 
-	<!--  <%@include file="headerEstabelecimento.html"%>
+	  <%@include file="headerEstabelecimento.html"%>
 
 	<%@include file="sidebarEstabelecimento.html"%>
-	-->
+	
 
 	<div id="content2">
 		<header class="major">
@@ -27,11 +27,14 @@
 				<legend>
 					<strong>Dados do Produto</strong>
 				</legend>
+				<p>
 				<label for="descrição">Descrição:</label> <input type="text"
-					name="descricao" id="descrição" size=60><br> <label
-					for="preço">Preço:</label> <input type="text" name="preco"
-					id="preço" size=10> <label for="quantidade">Quantidade:</label>
+					name="descricao" id="descrição" size=60></p> <p><label
+					for="valor">Preço:</label> <input type="text" name="valor"
+					id="valor" size=10></p> <label for="quantidade">Quantidade:</label>
 				<input type="text" name="quantidade" id="quantidade" size=10>
+				<label for="quantidade">Peso:</label>
+				<input type="text" name="peso" id="peso" size=10>
 				<p>
 					<label for="categoria">Categoria:<br /> <select
 						name="categoria" id="categoria">

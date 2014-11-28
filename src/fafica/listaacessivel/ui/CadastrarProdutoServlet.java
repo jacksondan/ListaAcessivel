@@ -65,7 +65,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
 					IFachada fachada = Fachada.getInstance();
 					
 					String descricao = request.getParameter("descricao");
-					float valor = Float.parseFloat(request.getParameter("preco"));
+					float valor = Float.parseFloat(request.getParameter("valor"));
 					int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 					String categoria = request.getParameter("categoria");
 					float peso = Float.parseFloat(request.getParameter("peso"));
