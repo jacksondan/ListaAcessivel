@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
@@ -35,9 +36,10 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
+		Administrador administrador = (Administrador)session.getAttribute("acessoAdministrador");
 		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
 		
-		if(estabelecimento == null){
+		if(administrador == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
@@ -46,16 +48,14 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
-				
 				fachada.excluirEstabelecimento(estabelecimento);
 						
-				String mensagem = "Sessão finalizada!";
+				String mensagem = "Estabelecimento excluido!";
 				request.setAttribute("mensagem", mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("LogoutServlet");
-				dispatcher.forward(request, response);
 				
-				//response.sendRedirect("LogoutServlet");
-						
+				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
+				dispatcher.forward(request, response);
+										
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
