@@ -21,7 +21,7 @@
 			</header>
 			<!-- Formulário  aqui! -->
 			<form method="post"
-				action="CadastraFuncionárioServlet">
+				action="CadastrarFuncionarioServlet">
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"
