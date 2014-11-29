@@ -18,7 +18,7 @@ import fafica.listaacessivel.negocios.entidades.Administrador;
 /**
  * Servlet implementation class CadastrarAdministrador
  */
-@WebServlet("/CadastrarAdministrador")
+@WebServlet("/CadastrarAdministradorServlet")
 public class CadastrarAdministradorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

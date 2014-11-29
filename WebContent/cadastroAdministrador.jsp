@@ -32,7 +32,7 @@ jQuery(function($){
 			${mensagem}
 			<!-- Formulário  aqui! -->
 			<form method="post"
-				action="CadastraAdministradorServlet">
+				action="CadastrarAdministradorServlet">
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"
