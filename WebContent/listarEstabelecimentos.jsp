@@ -56,7 +56,7 @@
 									<td headers="categoria">${estabelecimento.categoria}</td>
 									<td headers="cidade">${estabelecimento.endereco.cidade}</td>
 									<td headers="bairro">${estabelecimento.endereco.bairro}</td>
-									<td headers="opção"><a href="PerfilEstabelecimento?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Detalhes</a></td>
+									<td headers="opção"><a href="PerfilEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Detalhes</a></td>
 									<td headers="opção"><a href="ExcluirEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Desativar</a></td>
 									
 								</tr>
