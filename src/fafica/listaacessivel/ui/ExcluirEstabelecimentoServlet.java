@@ -48,7 +48,9 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
-				fachada.excluirEstabelecimento(estabelecimento);
+				Estabelecimento pesquisaEstabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
+				fachada.excluirEstabelecimento(pesquisaEstabelecimento);
 						
 				String mensagem = "Estabelecimento excluido!";
 				request.setAttribute("mensagem", mensagem);
