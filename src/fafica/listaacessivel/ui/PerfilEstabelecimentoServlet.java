@@ -38,7 +38,7 @@ public class PerfilEstabelecimentoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Administrador administrador = (Administrador) session.getAttribute("acessoEstabelecimento");
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
 
 		if (administrador == null && estabelecimento == null) {
