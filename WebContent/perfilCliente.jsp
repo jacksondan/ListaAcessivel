@@ -25,10 +25,10 @@
 			<fieldset>
 			<legend>Dados Pessoais</legend>
 				<p>
-				E-mail: ${cliente.email} .<br/>
-				Nome: ${cliente.nome} .<br/>
-				Ano de Nascimento: ${cliente.ano_nascimento}.<br/>
-				CPF: ${cliente.cpf} .<br/>
+				E-mail: ${cliente.email} <br/>
+				Nome: ${cliente.nome} <br/>
+				Ano de Nascimento: ${cliente.ano_nascimento}<br/>
+				CPF: ${cliente.cpf} <br/>
 				</p>
 			</fieldset>
 			
