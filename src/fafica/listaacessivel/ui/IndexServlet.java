@@ -16,7 +16,9 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
+import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Usuario;
 import fafica.listaacessivel.ui.util.CriptografiaSenha;
 
@@ -64,14 +66,17 @@ public class IndexServlet extends HttpServlet {
 				fachada.adicionarAdministrador(administrador);
 			}
 			
+			List <Administrador> administradores = fachada.listarAdministrador();
+			List <Cliente> clientes = fachada.listarCliente();
+			List <Funcionario> funcionarios = fachada.listarFuncionario();
 			
 			List <Usuario> listaUsuarios = new ArrayList<Usuario>();
-			listaUsuarios.addAll(fachada.listarAdministrador());
-			listaUsuarios.addAll(fachada.listarCliente());
-			listaUsuarios.addAll(fachada.listarFuncionario());
 			
+			if(administradores != null) listaUsuarios.addAll(administradores);
+			if(clientes != null) listaUsuarios.addAll(clientes);
+			if(funcionarios != null) listaUsuarios.addAll(funcionarios);
 			
-				
+
 			for(Usuario u : listaUsuarios){
 				if (u.getEmail().equals(email)&& u.getSenha().equals(senha)){
 					usuario = u;
@@ -80,10 +85,13 @@ public class IndexServlet extends HttpServlet {
 			}
 				
 			if(usuario == null){
-				for(Estabelecimento e : fachada.listarEstabelecimento()){
-					if (e.getCnpj().equals(email)&& e.getSenha().equals(senha)){
-						estabelecimento = e;
-						break;
+				List <Estabelecimento> listaEstabelecimentos = fachada.listarEstabelecimento();
+				if(listaEstabelecimentos != null){
+					for(Estabelecimento e : listaEstabelecimentos){
+						if (e.getCnpj().equals(email)&& e.getSenha().equals(senha)){
+							estabelecimento = e;
+							break;
+						}
 					}
 				}
 			}
