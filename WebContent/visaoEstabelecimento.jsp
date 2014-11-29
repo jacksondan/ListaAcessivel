@@ -16,6 +16,7 @@
 					<header class="major">		
 						<h2>Menu - Estabelecimento</h2>
 					</header>
+					<p style="text-align: center; color: green;">${mensagem}</p>
 					<div></div>
 				</div>
 	
