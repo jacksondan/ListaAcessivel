@@ -17,6 +17,7 @@ import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.ui.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class EditarSenhaEstabelecimentoServlet
@@ -76,9 +77,9 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 				String mensagem="";
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				String senhaNova= encriptar(request.getParameter("senhaNova"));
-				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
-				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
+				String senhaNova= CriptografiaSenha.encriptar(request.getParameter("senhaNova"));
+				String confirmarSenha = CriptografiaSenha.encriptar(request.getParameter("confirmarSenha"));
+				String senhaAtual = CriptografiaSenha.encriptar(request.getParameter("senhaAtual"));
 				String senhaBanco = estabelecimento.getSenha();
 				
 				if(senhaAtual.equals(senhaBanco)&&senhaNova.equals(confirmarSenha)){
@@ -102,7 +103,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 	}
 	
 	
-	public static String encriptar(String senha) {     
+	/*public static String encriptar(String senha) {     
         try {     
              MessageDigest digest = MessageDigest.getInstance("MD5");      
              digest.update(senha.getBytes());      
@@ -112,5 +113,5 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
              ns.printStackTrace ();      
              return senha;      
         }      
-   }      
+   }      */
 }

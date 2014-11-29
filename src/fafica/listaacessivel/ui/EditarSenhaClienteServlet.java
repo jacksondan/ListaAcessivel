@@ -1,7 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -18,6 +17,7 @@ import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.ui.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class EditarSenhaClienteServlet
@@ -71,9 +71,9 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 				
 				cliente = fachada.pesquisarCliente(cliente);
 				
-				String confirmarSenha = encriptar(request.getParameter("confirmarSenha"));
-				String senhaAtual = encriptar(request.getParameter("senhaAtual"));
-				String senhaNova = encriptar(request.getParameter("senhaNova"));
+				String confirmarSenha = CriptografiaSenha.encriptar(request.getParameter("confirmarSenha"));
+				String senhaAtual = CriptografiaSenha.encriptar(request.getParameter("senhaAtual"));
+				String senhaNova = CriptografiaSenha.encriptar(request.getParameter("senhaNova"));
 				String senhaBanco = cliente.getSenha();
 				
 				if(senhaAtual.equals(senhaBanco) && senhaNova.equals(confirmarSenha)){
@@ -98,7 +98,7 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 		}
 	}
 	
-	public static String encriptar(String senha) {     
+	/*public static String encriptar(String senha) {     
         try {     
              MessageDigest digest = MessageDigest.getInstance("MD5");      
              digest.update(senha.getBytes());      
@@ -108,6 +108,6 @@ public class EditarSenhaClienteServlet extends HttpServlet {
              ns.printStackTrace ();      
              return senha;      
         }      
-   }      
+   }      */
 
 }
