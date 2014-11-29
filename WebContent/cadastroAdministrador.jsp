@@ -28,8 +28,8 @@ jQuery(function($){
 		<div id="content2">
 			<header class="major">
 				<h2>Cadastrar Novo Administrador</h2>
+				${mensagem}
 			</header>
-			${mensagem}
 			<!-- Formulário  aqui! -->
 			<form method="post"
 				action="CadastrarAdministradorServlet">
