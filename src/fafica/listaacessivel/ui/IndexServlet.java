@@ -1,8 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Usuario;
+import fafica.listaacessivel.ui.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class Index
@@ -54,71 +52,74 @@ public class IndexServlet extends HttpServlet {
 			
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
+			senha = CriptografiaSenha.encriptar(senha);
+			
 			Usuario usuario = null;
 			Estabelecimento estabelecimento = null;
 			
-			if(email.equals("admin@admin") && senha.equals("123")){
-				String nome = "TechBin Admin";
-				String matricula = "1000000";
-				Administrador administrador = new Administrador(nome, email, matricula, senha);
-				String classe = administrador.getClass().toString();
-				System.out.println("************ "+classe+" ***************");
-				HttpSession session = request.getSession(); 
-				session.setAttribute("acessoAdministrador", administrador);
-				response.sendRedirect("visaoAdministrador.jsp");
+			Administrador administrador
+				= new Administrador("TechBin Admin", "admin@admin", "000.000.000.00", "SIPaf5CWJ3iD11grPwtHrg==");
+			
+			if (fachada.pesquisarAdministrador(administrador) == null) {
+				fachada.adicionarAdministrador(administrador);
+			}
+			
+			
+			List <Usuario> listaUsuarios = new ArrayList<Usuario>();
+			listaUsuarios.addAll(fachada.listarAdministrador());
+			listaUsuarios.addAll(fachada.listarCliente());
+			listaUsuarios.addAll(fachada.listarFuncionario());
+			
+			
 				
+			for(Usuario u : listaUsuarios){
+				if (u.getEmail().equals(email)&& u.getSenha().equals(senha)){
+					usuario = u;
+					break;
+				}
+			}
 				
-			}else{
-				List <Usuario> listaUsuarios = new ArrayList<Usuario>();
-				listaUsuarios.addAll(fachada.listarCliente());
-				listaUsuarios.addAll(fachada.listarFuncionario());
-				
-				
-				String senhaEncriptada = encriptar(senha);
-				
-				for(Usuario u : listaUsuarios){
-					if (u.getEmail().equals(email)&& u.getSenha().equals(senhaEncriptada)){
-						usuario = u;
+			if(usuario == null){
+				for(Estabelecimento e : fachada.listarEstabelecimento()){
+					if (e.getCnpj().equals(email)&& e.getSenha().equals(senha)){
+						estabelecimento = e;
 						break;
 					}
 				}
+			}
 				
-				if(usuario == null){
-					for(Estabelecimento e : fachada.listarEstabelecimento()){
-						if (e.getCnpj().equals(email)&& e.getSenha().equals(senhaEncriptada)){
-							estabelecimento = e;
-							break;
-						}
-					}
-				}
-				
-				if(usuario != null){
-					String classe = usuario.getClass().toString();
-					System.out.println("************ "+classe+" ***************");
-					if(classe.endsWith(".Cliente")){
-						HttpSession session = request.getSession(); 
-						session.setAttribute("acessoCliente", usuario);
-						response.sendRedirect("visaoCliente.jsp");
-					}else{
-						HttpSession session = request.getSession(); 
-						session.setAttribute("acessoFuncionario", usuario);
-						response.sendRedirect("visaoFuncionario.jsp");
-					}
-				}else if (estabelecimento != null){
-					String classe = estabelecimento.getClass().toString();
-					System.out.println("************ "+classe+" ***************");
+			if(usuario != null){
+				String classe = usuario.getClass().toString();
+				System.out.println("************ "+classe+" ***************");
+				if(classe.endsWith(".Administrador")){
 					HttpSession session = request.getSession(); 
-					session.setAttribute("acessoEstabelecimento", estabelecimento);
-					response.sendRedirect("visaoEstabelecimento.jsp");
+					session.setAttribute("acessoAdministrador", usuario);
+					response.sendRedirect("visaoAdministrador.jsp");
+				}else if(classe.endsWith(".Cliente")){
+					HttpSession session = request.getSession(); 
+					session.setAttribute("acessoCliente", usuario);
+					response.sendRedirect("visaoCliente.jsp");
 				}else{
-					request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
-					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-					dispatcher.forward(request, response);
+					HttpSession session = request.getSession(); 
+					session.setAttribute("acessoFuncionario", usuario);
+					response.sendRedirect("visaoFuncionario.jsp");
 				}
+			}else if (estabelecimento != null){
+				String classe = estabelecimento.getClass().toString();
+				System.out.println("************ "+classe+" ***************");
+				HttpSession session = request.getSession(); 
+				session.setAttribute("acessoEstabelecimento", estabelecimento);
+				response.sendRedirect("visaoEstabelecimento.jsp");
+			}else{
+				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher.forward(request, response);
 			}
 			
-		} catch (ClassNotFoundException | SQLException e1) {
+		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		
@@ -126,7 +127,7 @@ public class IndexServlet extends HttpServlet {
 		
 	}
 	
-	public static String encriptar(String senha) {     
+/*	public static String encriptar(String senha) {     
         try {     
              MessageDigest digest = MessageDigest.getInstance("MD5");      
              digest.update(senha.getBytes());      
@@ -136,6 +137,6 @@ public class IndexServlet extends HttpServlet {
              ns.printStackTrace ();      
              return senha;      
         }      
-   }      
+   }*/      
 
 }

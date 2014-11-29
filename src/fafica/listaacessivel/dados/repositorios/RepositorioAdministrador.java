@@ -121,8 +121,8 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 				int id_administrador = result.getInt("a.id_administrador");
 				String nome = result.getString("u.nome");
 				String cpf = result.getString("a.cpf");
-				String email = result.getString("a.email");
-				String senha = result.getString("a.senha");
+				String email = result.getString("u.email");
+				String senha = result.getString("u.senha");
 				Administrador administrador = new Administrador(id_administrador, nome, email, cpf, senha);
 				administradores.add(administrador);
 			}
@@ -155,8 +155,8 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 				int id_administrador = result.getInt("a.id_administrador");
 				String nome = result.getString("u.nome");
 				String cpf = result.getString("a.cpf");
-				String email = result.getString("a.email");
-				String senha = result.getString("a.senha");
+				String email = result.getString("u.email");
+				String senha = result.getString("u.senha");
 				pesquisa = new Administrador(id_administrador, nome, email, cpf, senha);
 			}
 						
