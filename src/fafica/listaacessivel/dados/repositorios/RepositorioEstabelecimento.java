@@ -12,6 +12,7 @@ import com.mysql.jdbc.Statement;
 import fafica.listaacessivel.dados.IRepositorioEstabelecimento;
 import fafica.listaacessivel.dados.util.ConnectionMysql;
 import fafica.listaacessivel.dados.util.Status;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
@@ -46,8 +47,8 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		
 		sql = "insert into estabelecimento (nome_fantasia, nome_juridico, email"
 				+ ", senha, categoria, cnpj, rua, numero, complemento, bairro"
-				+ ", cidade, estado, cep, referencia, status)"
-				+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				+ ", cidade, estado, cep, referencia, id_administrador, status)"
+				+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		smt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		smt.setString(1,entidade.getNome_fantasia());
@@ -64,7 +65,8 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		smt.setString(12,entidade.getEndereco().getEstado());
 		smt.setString(13,entidade.getEndereco().getCep());
 		smt.setString(14,entidade.getEndereco().getReferencia());
-		smt.setString(15,Status.ATIVO.toString());
+		smt.setInt(15,entidade.getAdministrador().getId_administrador());
+		smt.setString(16,Status.ATIVO.toString());
 		smt.execute();
 
 		result = smt.getGeneratedKeys();
@@ -150,11 +152,14 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		smt = this.connection.prepareStatement(sql);
 		result = smt.executeQuery();
 		List<Estabelecimento> lista = null;
+		Administrador administrador = null;
 		
 			while (result.next()){
 				if(lista == null){
 					lista = new ArrayList<Estabelecimento>();
 				}
+				administrador = new Administrador();
+				
 				int id_estabelecimento = result.getInt("id_estabelecimento");
 				String nome_fantasia = result.getString("nome_fantasia");
 				String nome_juridico = result.getString("nome_juridico");
@@ -170,10 +175,11 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				String estado = result.getString("estado");
 				String cep = result.getString("cep");
 				String referencia = result.getString("referencia");
+				administrador.setId_administrador(result.getInt("id_administrador"));
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico,
-						email, categoria, cnpj, endereco, senha, null);
+						email, categoria, cnpj, endereco, senha, null,administrador);
 				lista.add(estabelecimento);
 			}
 			result.close();
@@ -214,8 +220,11 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 	
 		smt = this.connection.prepareStatement(sql);
 		result = smt.executeQuery();
-			Estabelecimento estabelecimento = null;
+		Estabelecimento estabelecimento = null;
+		Administrador administrador = null;
 			if (result.next()){
+				administrador = new Administrador();
+				
 				int id_estabelecimento = result.getInt("id_estabelecimento");
 				String nome_fantasia = result.getString("nome_fantasia");
 				String nome_juridico = result.getString("nome_juridico");
@@ -231,9 +240,10 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				String estado = result.getString("estado");
 				String cep = result.getString("cep");
 				String referencia = result.getString("referencia");
+				administrador.setId_administrador(result.getInt("id_administrador"));
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-				estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, email, categoria, cnpj, endereco, senha, null);
+				estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, email, categoria, cnpj, endereco, senha, null, administrador);
 				
 			}
 			result.close();
@@ -282,11 +292,13 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		smt = this.connection.prepareStatement(sql);
 		result = smt.executeQuery();
 		List<Estabelecimento> lista = null;
-		
+		Administrador administrador = null;
 			while (result.next()){
 				if(lista == null){
 					lista = new ArrayList<Estabelecimento>();
 				}
+				administrador = new Administrador();
+				
 				int id_estabelecimento = result.getInt("id_estabelecimento");
 				String nome_fantasia = result.getString("nome_fantasia");
 				String nome_juridico = result.getString("nome_juridico");
@@ -301,10 +313,11 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				String estado = result.getString("estado");
 				String cep = result.getString("cep");
 				String referencia = result.getString("referencia");
+				administrador.setId_administrador(result.getInt("id_administrador"));
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico,
-						email, categoria, cnpj, endereco, senha, null);
+						email, categoria, cnpj, endereco, senha, null, administrador);
 				lista.add(estabelecimento);
 			}
 			result.close();
