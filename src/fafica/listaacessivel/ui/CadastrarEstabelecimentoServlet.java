@@ -20,6 +20,7 @@ import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.ui.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class cadastroEs
@@ -89,7 +90,7 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String referencia = request.getParameter("referencia");
 				
-				String senhaEncriptada = encriptar(senha);
+				String senhaEncriptada = CriptografiaSenha.encriptar(senha);
 				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				
 				Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones);
@@ -109,7 +110,7 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 		}
 	}
 	
-	public static String encriptar(String senha) {     
+	/*public static String encriptar(String senha) {     
         try {     
              MessageDigest digest = MessageDigest.getInstance("MD5");      
              digest.update(senha.getBytes());      
@@ -119,6 +120,6 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
              ns.printStackTrace ();      
              return senha;      
         }      
-   }
+   }*/
 
 }
