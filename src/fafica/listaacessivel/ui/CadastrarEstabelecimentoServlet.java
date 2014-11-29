@@ -1,8 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Endereco;
@@ -101,7 +98,6 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
 				dispatcher.forward(request, response);
 				
-				//response.sendRedirect("cadastros.jsp");
 				
 			} catch (ClassNotFoundException | SQLException e1) {
 				// TODO Auto-generated catch block
@@ -109,17 +105,5 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 			}
 		}
 	}
-	
-	/*public static String encriptar(String senha) {     
-        try {     
-             MessageDigest digest = MessageDigest.getInstance("MD5");      
-             digest.update(senha.getBytes());      
-             BASE64Encoder encoder = new BASE64Encoder ();      
-             return encoder.encode (digest.digest ());      
-        } catch (NoSuchAlgorithmException ns) {     
-             ns.printStackTrace ();      
-             return senha;      
-        }      
-   }*/
 
 }

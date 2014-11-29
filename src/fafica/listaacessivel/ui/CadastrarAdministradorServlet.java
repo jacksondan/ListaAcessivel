@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
+import fafica.listaacessivel.ui.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class CadastrarAdministrador
@@ -51,28 +52,38 @@ public class CadastrarAdministradorServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			IFachada fachada = Fachada.getInstance();
-		
-			String nome = request.getParameter("nome");
-			String email = request.getParameter("email");
-			String cpf = request.getParameter("cpf");
-			String senha = request.getParameter("senha");
-			
-			Administrador administrador = new Administrador(nome, email, cpf, senha);
-			fachada.adicionarAdministrador(administrador);
-			
-			String mensagem = "Administrador cadastrado com sucesso!";
+		HttpSession session = request.getSession();
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
+		if(administrador == null){
+			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroAdministrador.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-		
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+			
+				String nome = request.getParameter("nome");
+				String email = request.getParameter("email");
+				String cpf = request.getParameter("cpf");
+				String senha = request.getParameter("senha");
+				senha = CriptografiaSenha.encriptar(senha);
+				
+				Administrador administradorCadastro = new Administrador(nome, email, cpf, senha);
+				fachada.adicionarAdministrador(administradorCadastro);
+				
+				String mensagem = "Administrador cadastrado com sucesso!";
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
+				dispatcher.forward(request, response);
+			
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
