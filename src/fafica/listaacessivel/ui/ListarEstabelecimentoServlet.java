@@ -52,7 +52,7 @@ public class ListarEstabelecimentoServlet extends HttpServlet {
 				List<Estabelecimento> listaEstabelecimento = fachada.listarEstabelecimento();
 				
 				request.setAttribute("listaestabelecimento", listaEstabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarEs.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarEstabelecimentos.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

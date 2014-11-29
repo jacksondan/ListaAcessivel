@@ -37,7 +37,7 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(); 
 		Administrador administrador = (Administrador)session.getAttribute("acessoAdministrador");
-		Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
+		Estabelecimento estabelecimento = null;
 		
 		if(administrador == null){
 			String mensagem = "Sessão expirada!";
@@ -48,9 +48,14 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
-				Estabelecimento pesquisaEstabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				fachada.excluirEstabelecimento(pesquisaEstabelecimento);
+				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				
+				estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
+				fachada.excluirEstabelecimento(estabelecimento);
 						
 				String mensagem = "Estabelecimento excluido!";
 				request.setAttribute("mensagem", mensagem);
