@@ -7,22 +7,34 @@
 		<meta charset="ISO-8859-1">
 		<title>Insert title here</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
 		<script src="js/script.js"></script>
- 		<script src="js/jquery.min.js" type="text/javascript"></script>
+ 		<script type="text/javascript"  src="js/jquery.js"></script>		
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#estabelecimentos').dataTable({
+        	"ordering": false,
+        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
+        	 "language": {
+              "sUrl" : "js/pt-br.txt"
+             }    
+        })});
+
+    </script>
 
 	</head>
 	<body>
 			<%@include  file="headerAdmin.html" %>
 			<%@include  file="sidebarAdmin.html" %>
 		
-				<div id="content2">
+				<div id="content3">
 					<header class="major">		
 						<h2>Lista de Estabelecimentos</h2>
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					estabelecimentos pressione a letra T para ir direto para  a tabela</p>
-
-						<table align="center" class="default" summary="Tabela com lista de estabelecimentos resumida, 
+						<table id="estabelecimentos" align="center" class="display" summary="Tabela com lista de estabelecimentos resumida, 
 						mostrando nome fantasia, categoria, cidade, bairro e opções do administrador, 
 						os dados dos estabelecimentos começão a ser exbidos na 3ª linha da tabela, 
 						começando pela coluna de Nome do estabelecimento">
@@ -31,10 +43,8 @@
     							<col />
     							<col />
    			 					<col span="2" /><!-- Agrupamento das colunas Português e Matemática à célula de cabeçalho Matérias -->
-  								</colgroup>
-								
+  								</colgroup>		
 								<thead>
-								
 								<tr>
 									<th rowspan="2" id="nome fantasia">Nome Fantasia</th>
 									<th rowspan="2" id="categoria">Categoria</th>

@@ -7,20 +7,34 @@
 		<meta charset="ISO-8859-1">
 		<title>Insert title here</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<script type="text/javascript"  src="js/jquery.js"></script>		
+		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function() {
+		        $('#clientes').dataTable({
+		        	"ordering": false,
+		        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
+		        	 "language": {
+		              "sUrl" : "js/pt-br.txt"
+		             }    
+		        })});
+		
+		    </script>
 	</head>
 	<body>
 		<%@include file="headerAdmin.html" %>
 		<%@include file="sidebarAdmin.html" %>
 			
 			
-			<div id="content2">
+			<div id="content3">
 					<header class="major">		
 						<h2>Lista de Clientes</h2>
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					Clientes pressione a letra T para ir direto para  a tabela</p>
 
-						<table align="center" class="default" summary="Tabela com lista de clientes resumida, 
+						<table  id="clientes" align="center" class="display" summary="Tabela com lista de clientes resumida, 
 						mostrando nome, cpf, cidade, bairro, telefones e opções do administrador, 
 						os dados dos estabelecimentos começão a ser exbidos na 3ª linha da tabela, 
 						começando pela coluna de Nome do cliente">
@@ -49,14 +63,10 @@
 									<th id="detalhes" axis="opção">Detalhes</th>
 									<th id="desativar" axis="opção">Desativar</th>
 									</tr>
-									<tr>
-									
-									</tr>
 									</thead>
 									<tbody>
 									<c:forEach items="${listacliente}" var="cliente" varStatus="status">								
 								<tr>
-
 									<td headers="nome">${cliente.nome}</td>
 									<td headers="cpf">${cliente.cpf}</td>
 									<td headers="email">${cliente.email}</td>

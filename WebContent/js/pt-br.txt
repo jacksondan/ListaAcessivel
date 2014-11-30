@@ -3,7 +3,7 @@
     "emptyTable":     "Nenhum registro retornado",
     "info":           "Mostrando de _START_ ate _END_ de _TOTAL_ Registros",
     "infoEmpty":      "Nada encontrado",
-    "infoFiltered":   "(filtered from _MAX_ total entries)",
+    "infoFiltered":   "(Filtrado de um total de _MAX_ registros)",
     "infoPostFix":    "",
     "thousands":      ",",
     "lengthMenu":     "Mostrando _MENU_ Resgistros",

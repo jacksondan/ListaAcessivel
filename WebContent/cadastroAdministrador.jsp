@@ -12,9 +12,6 @@
 <script>
 //script da mascara
 jQuery(function($){
-
-	$("#telefone1").mask("(99)9999-9999");
-	$("#telefone2").mask("(99)9999-9999");
 	$("#cpf").mask("999.999.999-99");
 });
 
@@ -50,15 +47,7 @@ jQuery(function($){
 						<input type="text" placeholder="Digite o Cpf" name="cpf"
 						id="cpf" size=12 required="cpf"></p> 
 				</fieldset>
-				<fieldset>
-					<legend>Telefones para Contato</legend>
-					<label for="telefone1">Telefone 1:</label><br> <input
-						type="text" placeholder="Digite seu telefone" name="telefone1"
-						id="telefone1" size=20 required="telefone1"><br> 
-						<label for="telefone2">Telefone2:</label>
-						<br><input type="text" placeholder="Digite o segundo telefone"
-						name="telefone2" id="telefone2" size=20>
-				</fieldset>
+				
 				<div class="12u">
 					<ul class="actions">
 						<li><input type="submit" value="Confirmar Cadastro" /></li>
