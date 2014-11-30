@@ -50,6 +50,7 @@ public class EditarClienteServlet extends HttpServlet {
 		}else if(administrador != null && cliente == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
+				
 				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
 				cliente = new Cliente();
 				cliente.setId_usuario(id_cliente);
@@ -69,9 +70,7 @@ public class EditarClienteServlet extends HttpServlet {
 		}else if(administrador == null && cliente != null){
 			try {
 				IFachada fachada = Fachada.getInstance();
-				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
-				cliente = new Cliente();
-				cliente.setId_usuario(id_cliente);
+				
 				cliente = fachada.pesquisarCliente(cliente);
 				
 				request.setAttribute("editarCliente", cliente);

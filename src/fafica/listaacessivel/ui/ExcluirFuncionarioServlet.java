@@ -36,40 +36,29 @@ public class ExcluirFuncionarioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Funcionario funcionario = (Funcionario) session.getAttribute("acessoFuncionario");
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
 
-		if (estabelecimento == null && funcionario == null) {
+		if (estabelecimento == null) {
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-		} else if(estabelecimento != null && funcionario == null){
+		}else {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_funcionario = Integer.parseInt(request.getParameter("id_funcionario"));
-				funcionario = new Funcionario();
+				Funcionario funcionario = new Funcionario();
 				funcionario.setId_usuario(id_funcionario);
-				funcionario = fachada.pesquisarFuncionario(funcionario);
+				
+				fachada.excluirFuncionario(funcionario);
 				
 				String mensagem = "Funcionario Excluido!";
 				request.setAttribute("mensagem", mensagem);
 				RequestDispatcher dispatcher = request
 						.getRequestDispatcher("ListarFuncionariosServlet");
 				dispatcher.forward(request, response);
-				
-			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else if(estabelecimento == null && funcionario != null){
-			try {
-				IFachada fachada = Fachada.getInstance();
-				fachada.excluirFuncionario(funcionario);
-							
-				response.sendRedirect("LogoutServlet");
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
