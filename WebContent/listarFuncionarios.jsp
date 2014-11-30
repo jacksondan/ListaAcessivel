@@ -60,9 +60,9 @@
 									<c:forEach items="${listafuncionarios}" var="funcionario" varStatus="status">								
 								<tr>
 
-									<td headers="matricula">${funcionario.nome_fantasia}</td>
-									<td headers="nome">${funcionario.categoria}</td>
-									<td headers="email">${funcionario.endereco.cidade}</td>
+									<td headers="matricula">${funcionario.matricula}</td>
+									<td headers="nome">${funcionario.nome}</td>
+									<td headers="email">${funcionario.email}</td>
 									
 									<td headers="opção"><a href="DetalhesFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Detalhes</a></td>
 									<td headers="opção"><a href="ExcluirFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Desativar</a></td>
