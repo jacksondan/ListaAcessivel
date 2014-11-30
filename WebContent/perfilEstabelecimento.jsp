@@ -11,8 +11,8 @@
 <script src="js/script.js"></script>
 </head>
 <body>
-	<%@include file="headerEstabelecimento.html"%>
-	<%@include file="sidebarEstabelecimento.html"%>
+		<%@include file="headerEstabelecimento.html"%>
+		<%@include file="sidebarEstabelecimento.html"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Perfil Estabelecimento</h2>
