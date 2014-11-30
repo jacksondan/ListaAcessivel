@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 
 /**
@@ -34,15 +35,36 @@ public class ExcluirFuncionarioServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
-		Funcionario funcionario = (Funcionario)session.getAttribute("acessoFuncionario");
-		
-		if(funcionario == null){
+		HttpSession session = request.getSession();
+		Funcionario funcionario = (Funcionario) session.getAttribute("acessoFuncionario");
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+
+		if (estabelecimento == null && funcionario == null) {
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-		}else{
+		} else if(estabelecimento != null && funcionario == null){
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				int id_funcionario = Integer.parseInt(request.getParameter("id_funcionario"));
+				funcionario = new Funcionario();
+				funcionario.setId_usuario(id_funcionario);
+				funcionario = fachada.pesquisarFuncionario(funcionario);
+				
+				String mensagem = "Funcionario Excluido!";
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("ListarFuncionariosServlet");
+				dispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if(estabelecimento == null && funcionario != null){
 			try {
 				IFachada fachada = Fachada.getInstance();
 				fachada.excluirFuncionario(funcionario);
@@ -53,7 +75,7 @@ public class ExcluirFuncionarioServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}	
+		}
 	}
 
 	/**
