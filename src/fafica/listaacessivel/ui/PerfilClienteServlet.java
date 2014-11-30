@@ -15,7 +15,6 @@ import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
  * Servlet implementation class PerfilClienteServlet
@@ -72,9 +71,6 @@ public class PerfilClienteServlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
-				cliente = new Cliente();
-				cliente.setId_usuario(id_cliente);
 				cliente = fachada.pesquisarCliente(cliente);
 				
 				request.setAttribute("cliente", cliente);
