@@ -39,15 +39,39 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-		if(estabelecimento == null){
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
+		
+		if(administrador == null && estabelecimento == null){
 			String mensagem = "Sessão expirada!!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
-		}else{
+		}else if(administrador != null && estabelecimento == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
+				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
+				request.setAttribute("editarEstabelecimento", estabelecimento);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEstabelecimento.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(administrador == null && estabelecimento != null){
+			try {
+				IFachada fachada = Fachada.getInstance();
+				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				request.setAttribute("editarEstabelecimento", estabelecimento);
