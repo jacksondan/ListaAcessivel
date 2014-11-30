@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Administrador;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 
 /**
@@ -37,23 +39,46 @@ public class PerfilFuncionarioServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Funcionario funcionario = (Funcionario) session
-				.getAttribute("acessoFuncionario");
+		Funcionario funcionario = (Funcionario) session.getAttribute("acessoFuncionario");
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
 
-		if (funcionario == null) {
+		if (estabelecimento == null && funcionario == null) {
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request
 					.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-		} else {
+		} else if(estabelecimento != null && funcionario == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
+				
+				int id_funcionario = Integer.parseInt(request.getParameter("id_funcionario"));
+				funcionario = new Funcionario();
+				funcionario.setId_usuario(id_funcionario);
 				funcionario = fachada.pesquisarFuncionario(funcionario);
 
 				request.setAttribute("funcionario", funcionario);
-				RequestDispatcher requestDispatcher = request
-						.getRequestDispatcher("perfilFuncionario.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilFuncionario.jsp");
+				requestDispatcher.forward(request, response);
+
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(estabelecimento == null && funcionario != null){
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				int id_funcionario = Integer.parseInt(request.getParameter("id_funcionario"));
+				funcionario = new Funcionario();
+				funcionario.setId_usuario(id_funcionario);
+				funcionario = fachada.pesquisarFuncionario(funcionario);
+
+				request.setAttribute("funcionario", funcionario);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilFuncionario.jsp");
 				requestDispatcher.forward(request, response);
 
 			} catch (ClassNotFoundException e) {
