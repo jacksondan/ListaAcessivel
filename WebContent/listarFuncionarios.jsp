@@ -25,12 +25,12 @@
 
 	</head>
 	<body>
-			<%@include  file="headerAdmin.html" %>
-			<%@include  file="sidebarAdmin.html" %>
+			<%@include  file="headerEstabelecimento.html" %>
+			<%@include  file="sidebarEstabelecimento.html" %>
 		
 				<div id="content3">
 					<header class="major">		
-						<h2>Lista de Estabelecimentos</h2>
+						<h2>Lista de Funcionarios</h2>
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					funcionarios pressione a letra T para ir direto para  a tabela</p>
