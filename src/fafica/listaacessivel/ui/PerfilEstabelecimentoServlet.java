@@ -57,7 +57,7 @@ public class PerfilEstabelecimentoServlet extends HttpServlet {
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 
 				request.setAttribute("estabelecimento", estabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilEstabelecimento.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
