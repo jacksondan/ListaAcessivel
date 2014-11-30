@@ -72,6 +72,9 @@ public class PerfilEstabelecimentoServlet extends HttpServlet {
 				IFachada fachada;
 				fachada = Fachada.getInstance();
 				
+				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 
 				request.setAttribute("estabelecimento", estabelecimento);

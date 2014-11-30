@@ -15,6 +15,7 @@ import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
  * Servlet implementation class PerfilClienteServlet
@@ -38,25 +39,26 @@ public class PerfilClienteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Administrador administrador = (Administrador) session
-				.getAttribute("acessoAdministrador");
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
 
 		if (administrador == null && cliente == null) {
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request
-					.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 			// response.sendRedirect("index.jsp");
 		} else if (administrador != null && cliente == null) {
 			try {
 				IFachada fachada = Fachada.getInstance();
+				
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				cliente = new Cliente();
+				cliente.setId_usuario(id_cliente);
 				cliente = fachada.pesquisarCliente(cliente);
 
 				request.setAttribute("cliente", cliente);
-				RequestDispatcher requestDispatcher = request
-						.getRequestDispatcher("perfilCliente.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilCliente.jsp");
 				requestDispatcher.forward(request, response);
 
 			} catch (ClassNotFoundException e) {
@@ -69,11 +71,14 @@ public class PerfilClienteServlet extends HttpServlet {
 		} else if (administrador == null && cliente != null) {
 			try {
 				IFachada fachada = Fachada.getInstance();
+				
+				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
+				cliente = new Cliente();
+				cliente.setId_usuario(id_cliente);
 				cliente = fachada.pesquisarCliente(cliente);
-
+				
 				request.setAttribute("cliente", cliente);
-				RequestDispatcher requestDispatcher = request
-						.getRequestDispatcher("perfilCliente.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilCliente.jsp");
 				requestDispatcher.forward(request, response);
 
 			} catch (ClassNotFoundException e) {
