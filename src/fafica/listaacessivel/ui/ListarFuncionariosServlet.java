@@ -50,9 +50,9 @@ public class ListarFuncionariosServlet extends HttpServlet {
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				List<Funcionario> listaFuncionario = fachada.listarFuncionarioPorEstabelecimento(estabelecimento);
+				List<Funcionario> listaFuncionarios = fachada.listarFuncionarioPorEstabelecimento(estabelecimento);
 				
-				request.setAttribute("listafuncionario", listaFuncionario);
+				request.setAttribute("listafuncionarios", listaFuncionarios);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarFuncionarios.jsp");
 				requestDispatcher.forward(request, response);
 			} catch (ClassNotFoundException e) {
