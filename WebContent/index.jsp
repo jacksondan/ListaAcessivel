@@ -25,7 +25,7 @@
 				<p style="text-align:center;color:red;">${erroLogin}</p>
 				<p style="text-align:center;color:green;">${mensagem}</p>
 
-			<form method="post" action="http://localhost:8080/ListaAcessivel/Index">
+			<form method="post" action="IndexServlet">
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<p><label for="email">E-mail ou CNPJ</label>

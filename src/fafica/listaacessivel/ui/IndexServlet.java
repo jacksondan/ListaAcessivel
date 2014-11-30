@@ -25,7 +25,7 @@ import fafica.listaacessivel.ui.util.CriptografiaSenha;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/Index")
+@WebServlet("/IndexServlet")
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IFachada fachada;
