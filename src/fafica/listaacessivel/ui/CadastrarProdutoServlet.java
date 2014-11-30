@@ -60,20 +60,22 @@ public class CadastrarProdutoServlet extends HttpServlet {
 					IFachada fachada = Fachada.getInstance();
 					
 					String descricao = request.getParameter("descricao");
-					float valor = Float.parseFloat(request.getParameter("valor"));
+					
+					String valorInicial = request.getParameter("valor");
+					valorInicial = valorInicial.replaceAll(",", ".");
+					float valor = Float.parseFloat(valorInicial);
+					
 					int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 					String categoria = request.getParameter("categoria");
 					float peso = Float.parseFloat(request.getParameter("peso"));
 					String validade = "01/05/2014";
 					String marca = "Beta";
-					//int id_estabelecimento = estabelecimento.getId_estabelecimento();
 					String codigo_de_barra = "0000";
 										
 					Produto p = new Produto(descricao,categoria,peso,quantidade,valor,validade,marca,codigo_de_barra,estabelecimento);
 					
 					fachada.adicionarProduto(p);
-					
-					
+										
 					String mensagem = "Produto Cadastrado Com Sucesso";
 					request.setAttribute("mensagem", mensagem);
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEstabelecimento.jsp");
@@ -87,9 +89,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			
-			}
-		
-		
+			}		
 	}
 
 }
