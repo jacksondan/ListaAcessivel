@@ -18,6 +18,7 @@
 			<!-- titulo do conteudo-->
 			<header class="major">		
 					<h2>Perfil</h2>
+					<p style="text-align: center; color: green;">${mensagem}</p>
 			</header>
 			<!-- Conteudo-->
 			
