@@ -69,7 +69,7 @@ public class EditarProdutoServlet extends HttpServlet {
 			String categoria = request.getParameter("categoria");
 			float peso = Float.parseFloat(request.getParameter("peso"));
 			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-			float valor = Float.parseFloat(request.getParameter("preco"));
+			float valor = Float.parseFloat(request.getParameter("valor"));
 			String validade = request.getParameter("validade");
 			String marca = request.getParameter("marca");
 			String codigo_de_barra = request.getParameter("codigo_de_barra");
