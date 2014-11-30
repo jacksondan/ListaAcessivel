@@ -1,8 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
@@ -40,21 +37,14 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-		if(estabelecimento==null){
+		if(estabelecimento == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
 		}else{
-			String mensagem = "Senha editada com sucesso!";
-			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaEstabelecimento.jsp");
-			dispatcher.forward(request, response);
-			
-			//response.sendRedirect("editarSenhaEstabelecimento.jsp");
+			response.sendRedirect("editarSenhaEstabelecimento.jsp");
 		}
-		
 	}
 
 	/**
@@ -64,12 +54,11 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-		if(estabelecimento==null){
+		if(estabelecimento == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
@@ -101,8 +90,7 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 		}
 	
 	}
-	
-	
+
 	/*public static String encriptar(String senha) {     
         try {     
              MessageDigest digest = MessageDigest.getInstance("MD5");      
