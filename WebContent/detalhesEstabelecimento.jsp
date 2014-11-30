@@ -49,7 +49,7 @@
 			<div class="nav">
 										<ul class="actions">
 											<li><a href="EditarEstabelecimentoServlet" class="button2">Editar Perfil</a></li>
-											<li><a href="EditarSenhaEstabelecimentoServlet" class="button2">Editar Senha</a></li>
+											<li><a href="#" class="button2">Zerar Senha</a></li>
 										</ul>
 							</div>
 

@@ -36,14 +36,14 @@
 
 						<table  id="clientes" align="center" class="display" summary="Tabela com lista de clientes resumida, 
 						mostrando nome, cpf, cidade, bairro, telefones e opções do administrador, 
-						os dados dos estabelecimentos começão a ser exbidos na 3ª linha da tabela, 
+						os dados dos clientes começão a ser exbidos na 3ª linha da tabela, 
 						começando pela coluna de Nome do cliente">
 						<caption>Tabela de Clientes</caption>
 
 								<colgroup>
     							<col />
     							<col />
-   			 					<col span="2" /><!-- Agrupamento das colunas Português e Matemática à célula de cabeçalho Matérias -->
+   			 					<col span="2" /><!--  -->
   								</colgroup>
 								<thead>
 								
