@@ -79,16 +79,15 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 					
 					mensagem = "Senha editada com sucesso!";
 					
-					request.setAttribute("mensagem",mensagem);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilClienteServlet");
-					dispatcher.forward(request, response);
 				}else{
-					mensagem = "Sua Senha nï¿½o foi alterada, porfavor tente novamente. ";
+					mensagem = "Sua Senha não foi alterada, porfavor tente novamente. ";
 					
-					request.setAttribute("mensagem",mensagem);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
-					dispatcher.forward(request, response);
-				}		
+				}
+				
+				request.setAttribute("mensagem",mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
+				dispatcher.forward(request, response);
+				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

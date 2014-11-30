@@ -47,6 +47,7 @@
 				<ul class="actions">
 					<li><input type="submit" class="button3"
 						value="Salvar Nova Senha" onblur="validarSenha()"  onClick="validarSenha()"/></li>
+					<li><input type="reset" class="button3" value="Limpar" ></li>
 
 				</ul>
 			</div>
