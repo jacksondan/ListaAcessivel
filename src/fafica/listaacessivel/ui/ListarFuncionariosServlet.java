@@ -48,6 +48,8 @@ public class ListarFuncionariosServlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
 				List<Funcionario> listaFuncionario = fachada.listarFuncionarioPorEstabelecimento(estabelecimento);
 				
 				request.setAttribute("listafuncionario", listaFuncionario);

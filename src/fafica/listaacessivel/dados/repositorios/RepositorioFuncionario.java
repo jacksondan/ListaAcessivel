@@ -174,7 +174,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	public List<Funcionario> listarFuncionariosPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException{
 		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
-				+ " AND u.id_usuario = f.id_funcionario AND f.id_estabelecimento = " + estabelecimento.getId_estabelecimento();
+				+ " AND f.id_estabelecimento = " + estabelecimento.getId_estabelecimento() + " AND u.id_usuario = f.id_funcionario";
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
 			
