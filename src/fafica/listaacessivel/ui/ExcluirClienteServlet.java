@@ -36,20 +36,21 @@ public class ExcluirClienteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
 		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		
-		if(administrador == null){
+		if(administrador == null && cliente == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			
-		}else {
+			//response.sendRedirect("index.jsp");
+		}else if(administrador != null && cliente == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
-				Cliente cliente = new Cliente();
+				cliente = new Cliente();
 				cliente.setId_usuario(id_cliente);
 				
 				fachada.excluirCliente(cliente);
@@ -59,6 +60,21 @@ public class ExcluirClienteServlet extends HttpServlet {
 				request.setAttribute("mensagem", mensagem);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("ListarClienteServlet");
 				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(administrador == null && cliente != null){
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				fachada.excluirCliente(cliente);
+				
+				response.sendRedirect("LogoutServlet");
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
