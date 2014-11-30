@@ -30,6 +30,7 @@
 			<div id="content3">
 					<header class="major">		
 						<h2>Lista de Clientes</h2>
+						${mensagem}
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					Clientes pressione a letra T para ir direto para  a tabela</p>
@@ -75,7 +76,7 @@
 									<td headers="telefone 1">${cliente.telefones[0]}</td>
 									<td headers="telefone 2">${cliente.telefones[1]}</td>
 									<td headers="opção"><a href="PerfilClienteServlet?id_cliente=${cliente.id_usuario}" class="button2">Detalhes</a></td>
-									<td headers="opção"><a href="ExcluirClienteServletServlet?id_cliente=${cliente.id_usuario}" class="button2">Desativar</a></td>
+									<td headers="opção"><a href="ExcluirClienteServlet?id_cliente=${cliente.id_usuario}" class="button2">Desativar</a></td>
 									
 								</tr>
 								</c:forEach>

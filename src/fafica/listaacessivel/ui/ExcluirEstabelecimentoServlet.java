@@ -35,32 +35,28 @@ public class ExcluirEstabelecimentoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(); 
-		Administrador administrador = (Administrador)session.getAttribute("acessoAdministrador");
-		Estabelecimento estabelecimento = null;
+		HttpSession session = request.getSession();
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		
 		if(administrador == null){
-			String mensagem = "Sessão expirada!";
+			String mensagem = "Sessão expirada!!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
+			
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
-				
-				estabelecimento = new Estabelecimento();
+				Estabelecimento estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				fachada.excluirEstabelecimento(estabelecimento);
 						
 				String mensagem = "Estabelecimento excluido!";
 				request.setAttribute("mensagem", mensagem);
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("ListarEstabelecimentoServlet");
 				dispatcher.forward(request, response);
 										
 			} catch (ClassNotFoundException | SQLException e) {

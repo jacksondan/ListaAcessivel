@@ -31,6 +31,7 @@
 				<div id="content3">
 					<header class="major">		
 						<h2>Lista de Estabelecimentos</h2>
+						${mensagem}
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					estabelecimentos pressione a letra T para ir direto para  a tabela</p>

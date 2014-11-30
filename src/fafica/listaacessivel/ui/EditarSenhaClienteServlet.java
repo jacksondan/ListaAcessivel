@@ -1,8 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import sun.misc.BASE64Encoder;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
@@ -81,13 +78,17 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 					fachada.alterarCliente(cliente);
 					
 					mensagem = "Senha editada com sucesso!";
+					
+					request.setAttribute("mensagem",mensagem);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilClienteServlet");
+					dispatcher.forward(request, response);
 				}else{
 					mensagem = "Sua Senha n�o foi alterada, porfavor tente novamente. ";
-				
-				}
-				request.setAttribute("mensagem",mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
-				dispatcher.forward(request, response);		
+					
+					request.setAttribute("mensagem",mensagem);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaCliente.jsp");
+					dispatcher.forward(request, response);
+				}		
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
