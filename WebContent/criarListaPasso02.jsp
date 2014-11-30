@@ -7,20 +7,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>${cliente.nome}- Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<script src="js/script.js"></script>
+ 		<script type="text/javascript"  src="js/jquery.js"></script>		
+		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+		<script type="text/javascript">
+    $(document).ready(function() {
+        $('#estabelecimentos').dataTable({
+        	"filter": false,
+        	"ordering": false,
+        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
+        	 "language": {
+              "sUrl" : "js/pt-br.txt"
+             }    
+        })});
+    </script>
 </head>
 <body>
 
 	<%@include file="headerCliente.html"%>
-	<div id="content3">
+	<div id="content2">
 
-		<header class="major2">
+		<header class="major">
 			<h2>Criar Lista Passo - 02</h2>	
 		</header>
 		<div id="filtro">
 			<button   onclick="window.location.href='CriarListaPasso1Servlet?filtragem=${filtroContrario}&categoria=${categoria}'" class="button" >Filtrar por ${filtroContrario}</button>
 
 		</div>
-				<table class="default" summary="Tabela com estabelecimentos da categoria ${categoria} disponíveis de acordo com o filtro.">
+				<table id="estabelecimentos"class="display" summary="Tabela com estabelecimentos da categoria ${categoria} disponíveis de acordo com o filtro.">
 					<caption>Tabela de ${categoria}s filtrados por ${filtragem}</caption>
 					<thead>
 					<tr>
@@ -45,7 +60,6 @@
 					</c:forEach>
 					</tbody>
 				</table>
-				
 	</div>
 	<div id="footer">
 			<div id="copyright" class="container">
