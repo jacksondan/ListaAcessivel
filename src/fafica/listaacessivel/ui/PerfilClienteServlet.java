@@ -57,7 +57,7 @@ public class PerfilClienteServlet extends HttpServlet {
 				cliente = fachada.pesquisarCliente(cliente);
 
 				request.setAttribute("cliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilCliente.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesCliente.jsp");
 				requestDispatcher.forward(request, response);
 
 			} catch (ClassNotFoundException e) {
