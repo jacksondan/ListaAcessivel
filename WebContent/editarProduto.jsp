@@ -35,6 +35,8 @@
 				<input type="text"  name="valor" id="valor" value="${editarProduto.valor}" size=10>
 				<label for="quantidade">Quantidade:</label>
 				<input type="text"  name="quantidade" id="quantidade" value="${editarProduto.quantidade}" size=10></p>
+				<label for="quantidade">Peso:</label>
+				<input type="text" name="peso" id="peso" value="${editarProduto.peso}" size=10>
 					<p>
 						<label for="categoria">Categoria:<br />
 						<select name="categoria" id="categoria">
