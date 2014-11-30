@@ -64,7 +64,7 @@
 									<td headers="nome">${funcionario.nome}</td>
 									<td headers="email">${funcionario.email}</td>
 									
-									<td headers="opção"><a href="DetalhesFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Detalhes</a></td>
+									<td headers="opção"><a href="PerfilFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Detalhes</a></td>
 									<td headers="opção"><a href="ExcluirFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Desativar</a></td>
 									
 								</tr>

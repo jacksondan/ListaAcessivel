@@ -58,7 +58,7 @@ public class PerfilFuncionarioServlet extends HttpServlet {
 				funcionario = fachada.pesquisarFuncionario(funcionario);
 
 				request.setAttribute("funcionario", funcionario);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilFuncionario.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesFuncionario.jsp");
 				requestDispatcher.forward(request, response);
 
 			} catch (ClassNotFoundException e) {
@@ -72,9 +72,6 @@ public class PerfilFuncionarioServlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				int id_funcionario = Integer.parseInt(request.getParameter("id_funcionario"));
-				funcionario = new Funcionario();
-				funcionario.setId_usuario(id_funcionario);
 				funcionario = fachada.pesquisarFuncionario(funcionario);
 
 				request.setAttribute("funcionario", funcionario);
