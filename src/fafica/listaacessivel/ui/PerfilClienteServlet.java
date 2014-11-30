@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
@@ -21,51 +22,76 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 @WebServlet("/PerfilClienteServlet")
 public class PerfilClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PerfilClienteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public PerfilClienteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		Administrador administrador = (Administrador) session
+				.getAttribute("acessoAdministrador");
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
-		
-		if(cliente == null){
+
+		if (administrador == null && cliente == null) {
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher dispatcher = request
+					.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
-		}else{
-				try {
-					IFachada fachada = Fachada.getInstance();
-					cliente = fachada.pesquisarCliente(cliente);
-					
-					request.setAttribute("cliente", cliente);
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilCliente.jsp");
-					requestDispatcher.forward(request, response);
-					
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}			
+			// response.sendRedirect("index.jsp");
+		} else if (administrador != null && cliente == null) {
+			try {
+				IFachada fachada = Fachada.getInstance();
+				cliente = fachada.pesquisarCliente(cliente);
+
+				request.setAttribute("cliente", cliente);
+				RequestDispatcher requestDispatcher = request
+						.getRequestDispatcher("perfilCliente.jsp");
+				requestDispatcher.forward(request, response);
+
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if (administrador == null && cliente != null) {
+			try {
+				IFachada fachada = Fachada.getInstance();
+				cliente = fachada.pesquisarCliente(cliente);
+
+				request.setAttribute("cliente", cliente);
+				RequestDispatcher requestDispatcher = request
+						.getRequestDispatcher("perfilCliente.jsp");
+				requestDispatcher.forward(request, response);
+
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

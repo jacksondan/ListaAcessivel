@@ -34,9 +34,9 @@ jQuery(function($){
 				action="http://localhost:8080/ListaAcessivel/CadastrarEstabelecimentoServlet">
 				<fieldset>
 					<legend>Dados de Login</legend>
-					<label for="email">E-mail:</label> <input type="email"
-						placeholder="Digite o E-mail" name="email" id="email" size=60 required="email" >
-
+					<label for="cnpj">CNPJ:</label><br>
+					<input type="text" placeholder="Digite o CNPJ" name="cnpj"
+						id="cnpj" size=12 required="cnpj"><br>
 					<label for="senha">Senha:</label><br> <input type="password"
 						placeholder="Digite a Senha" name="senha" id="senha" size=15 required="senha" >
 				</fieldset>
@@ -47,9 +47,11 @@ jQuery(function($){
 						name="nome_fantasia" id="nome_fantasia" size=60 required="nome_fantasia"> <label
 						for="nome_juridico">Nome Jurídico:</label> <input type="text"
 						placeholder="Digite o nome Jurídico" name="nome_juridico"
-						id="nome_juridico" size=60 required="nome_juridico"> <label for="cnpj">CNPJ:</label><br>
-					<input type="text" placeholder="Digite o CNPJ" name="cnpj"
-						id="cnpj" size=12 required="cnpj"><br> Categoria:<br> <select
+						id="nome_juridico" size=60 required="nome_juridico">
+					<label for="email">E-mail:</label> <input type="email"
+						placeholder="Digite o E-mail" name="email" id="email" size=60 required="email" >
+					
+					<br> Categoria:<br> <select
 						name="categoria" required="categoria">
 						<option>supermercado</option>
 						<option>padaria</option>
