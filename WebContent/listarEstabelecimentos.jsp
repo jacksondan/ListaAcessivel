@@ -7,7 +7,7 @@
 		<meta charset="ISO-8859-1">
 		<title>Insert title here</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="css/layoutabela/estabelecimentos.css">
 		<script src="js/script.js"></script>
  		<script type="text/javascript"  src="js/jquery.js"></script>		
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -30,7 +30,7 @@
 		
 				<div id="content3">
 					<header class="major">		
-						<h2>Lista de Estabelecimentos</h2>
+						<h2>Estabelecimentos</h2>
 						${mensagem}
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 

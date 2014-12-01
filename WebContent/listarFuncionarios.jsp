@@ -7,21 +7,21 @@
 		<meta charset="ISO-8859-1">
 		<title>Insert title here</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="css/layoutabela/funcionarios.css">
 		<script src="js/script.js"></script>
  		<script type="text/javascript"  src="js/jquery.js"></script>		
-<script type="text/javascript" src="js/jquery.dataTables.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#funcionarios').dataTable({
-        	"ordering": false,
-        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
-        	 "language": {
-              "sUrl" : "js/pt-br.txt"
-             }    
-        })});
-
-    </script>
+		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+		<script type="text/javascript">
+		    $(document).ready(function() {
+		        $('#funcionarios').dataTable({
+		        	"ordering": false,
+		        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
+		        	 "language": {
+		              "sUrl" : "js/pt-br.txt"
+		             }    
+		        })});
+		
+		    </script>
 
 	</head>
 	<body>
