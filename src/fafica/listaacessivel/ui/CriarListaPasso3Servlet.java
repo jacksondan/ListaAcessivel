@@ -52,10 +52,12 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 				Estabelecimento estabelecimento= new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				List<Produto> listaprodutos = fachada.listarProdutosDoEstababelecimento(estabelecimento);
 				
 				request.setAttribute("listaprodutos",listaprodutos);
+				request.setAttribute("estabelecimento", estabelecimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 				requestDispatcher.forward(request, response);
 				
