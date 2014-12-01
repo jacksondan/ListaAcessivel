@@ -39,7 +39,7 @@
 							<div class="menu">
 										<ul class="actions">
 											
-											<li><a href="EditarSenhaClienteServlet" class="button">Editar Senha</a></li>
+											<li><a href="EditarSenhaFuncionarioServlet" class="button">Editar Senha</a></li>
 											
 										</ul>
 							</div>
