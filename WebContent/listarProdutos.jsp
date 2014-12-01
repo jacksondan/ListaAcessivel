@@ -28,8 +28,8 @@
 
 <%@include file="sidebarEstabelecimento.html" %>
 
-				<div id="content3">
-					<header class="major2">		
+				<div id="content2">
+					<header class="major">		
 						<h2>Lista de Produtos</h2>
 					</header>
 

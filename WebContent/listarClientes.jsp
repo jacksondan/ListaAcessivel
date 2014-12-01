@@ -27,7 +27,7 @@
 		<%@include file="sidebarAdmin.html" %>
 			
 			
-			<div id="content3">
+			<div id="content2">
 					<header class="major">		
 						<h2>Lista de Clientes</h2>
 						${mensagem}
