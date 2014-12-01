@@ -47,7 +47,7 @@
 					</fieldset>
 			<div class="nav">
 										<ul class="actions">
-											<li><a href="EditarEstabelecimentoServlet" class="button2">Editar Perfil</a></li>
+											<li><a href="EditarEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Editar Perfil</a></li>
 											<li><a href="#" class="button2">Zerar Senha</a></li>
 										</ul>
 							</div>
