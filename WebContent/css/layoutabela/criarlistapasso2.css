@@ -269,7 +269,7 @@ table.dataTable td {
   .dataTables_wrapper .dataTables_paginate {
     float: right;
      position:absolute;
-    margin-left:41em; }
+    margin-left:55%; }
     .dataTables_wrapper .dataTables_paginate .paginate_button {
       box-sizing: border-box;
       display: inline-block;
