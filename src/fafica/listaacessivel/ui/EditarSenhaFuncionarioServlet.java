@@ -43,10 +43,7 @@ public class EditarSenhaFuncionarioServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}else{
-			String mensagem = "Senha editada com sucesso!";
-			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaFuncionario.jsp");
-			dispatcher.forward(request, response);
+			response.sendRedirect("editarSenhaFuncionario.jsp");
 		}
 	}
 
