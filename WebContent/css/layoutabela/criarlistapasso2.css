@@ -255,7 +255,8 @@ table.dataTable td {
   zoom: 1; }
   .dataTables_wrapper .dataTables_length {
    position:absolute;
-    margin-left:23em; }
+    margin-left:23em;
+    top:-1em; }
   .dataTables_wrapper .dataTables_filter {
     position:absolute;
     margin-left:40.5em; }
@@ -268,7 +269,7 @@ table.dataTable td {
   .dataTables_wrapper .dataTables_paginate {
     float: right;
      position:absolute;
-    margin-left:55em; }
+    margin-left:51em; }
     .dataTables_wrapper .dataTables_paginate .paginate_button {
       box-sizing: border-box;
       display: inline-block;
