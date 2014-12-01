@@ -46,7 +46,7 @@
 					</fieldset>
 			<div class="nav">
 										<ul class="actions">
-											<li><a href="EditarClienteServlet" class="button2">Editar Dados</a></li>
+											<!--  <li><a href="EditarClienteServlet" class="button2">Editar Dados</a></li> -->
 											<li><a href="#" class="button2">Zerar Senha</a></li>
 										</ul>
 							</div>

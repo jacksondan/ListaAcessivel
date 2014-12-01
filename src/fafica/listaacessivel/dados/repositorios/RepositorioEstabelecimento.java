@@ -286,7 +286,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
 					+ " and categoria = '"+categoria+"'"
 					+ " and cep ='" +cliente.getEndereco().getCep()+ "'"
-					+ " and bairro ='" +cliente.getEndereco().getBairro()+"'";
+					+ " or bairro ='" +cliente.getEndereco().getBairro()+"'";
 		}
 		
 		smt = this.connection.prepareStatement(sql);
