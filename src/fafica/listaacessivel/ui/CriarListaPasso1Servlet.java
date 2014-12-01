@@ -1,9 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fafica.listaacessivel.negocios.Fachada;
-import fafica.listaacessivel.negocios.IFachada;
+
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
  * Servlet implementation class CategoriaEstabelecimentoServlet
@@ -47,42 +42,7 @@ public class CriarListaPasso1Servlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
 		}else{
-			try {
-				String categoria=request.getParameter("categoria"); 
-				IFachada fachada = Fachada.getInstance();
-				String filtroContrario="Bairro";
-				String filtragem = request.getParameter("filtragem");
-				boolean selecionarPorBairro = false;
-				
-				
-				if(filtragem!=null){
-					filtragem = "Bairro";
-					filtroContrario="Cidade";
-					selecionarPorBairro = true;
-				}else{
-					filtragem = "Cidade";
-				}
-				List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
-			
-				cliente = fachada.pesquisarCliente(cliente);
-								
-				listaEstabelecimentos = fachada.listarEstabelecimentoPorRegiao(categoria, cliente, selecionarPorBairro);
-				
-				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
-				
-				request.setAttribute("filtroContrario",filtroContrario);
-				request.setAttribute("categoria",categoria);
-				request.setAttribute("filtragem",filtragem);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso02.jsp");
-				requestDispatcher.forward(request, response);
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			response.sendRedirect("criarListaPasso01.jsp");
 		}
 	}
 
