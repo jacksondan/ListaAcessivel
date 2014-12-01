@@ -287,8 +287,8 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 					+ " and categoria = '"+categoria+"'"
 					+ " and estado = '" +cliente.getEndereco().getEstado()+ "'"
 					+ " and cidade = '" +cliente.getEndereco().getCidade()+ "'"
-					+ " and cep ='" +cliente.getEndereco().getCep()+ "'"
-					+ " or bairro ='" +cliente.getEndereco().getBairro()+"'";
+					+ " and (cep = '" +cliente.getEndereco().getCep()+ "'"
+					+ " or bairro = '" +cliente.getEndereco().getBairro()+"')";
 		}
 		
 		smt = this.connection.prepareStatement(sql);

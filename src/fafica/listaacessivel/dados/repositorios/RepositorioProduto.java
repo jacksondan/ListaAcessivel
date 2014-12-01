@@ -276,65 +276,6 @@ public class RepositorioProduto implements IRepositorioProduto {
 		stm.close();
 		result.close();
 		
-/*		
-		sql = "select * from lista_produto where status = '" + Status.ATIVO.toString() + "' AND id_lista = " + lista.getId_lista();
-		stm = connection.prepareStatement(sql);	
-		result = stm.executeQuery();
-		
-		List<Produto> listaProdutosUtil = null;
-		List<Produto> lista_produtos = null;
-		Produto produto;
-		Estabelecimento estabelecimento;
-		
-		while(result.next()){
-			if(listaProdutosUtil == null){
-				listaProdutosUtil = new ArrayList<Produto>();
-			}
-			int id_produto = result.getInt("id_produto");
-			int quantidade = result.getInt("quantidade_produto"); // Atributo importante na relação
-			float valor = result.getFloat("valor_produto"); // Atributo importante na relação
-					
-			Produto produtoUtil = new Produto(id_produto, null, null, 0.0f, quantidade, valor, null, null, null, null, null);
-			
-			listaProdutosUtil.add(produtoUtil);
-		}
-		stm.close();
-		result.close();
-		
-		
-		if(listaProdutosUtil != null){ //Linha que verifica se a produtos na relação com lista
-			lista_produtos = new ArrayList<Produto>(); //Iniciando o lista que ira ser retornada
-			estabelecimento = lista.getEstabelecimento();
-			
-			for(Produto produtoUtil : listaProdutosUtil){
-				sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' and id_produto = "+ produtoUtil.getId_produto();
-				stm = connection.prepareStatement(sql);
-				result = stm.executeQuery(); 	
-				
-				while(result.next()){
-					int id = result.getInt("id_produto");
-					String descricao = result.getString("descricao");
-					String categoria = result.getString("categoria"); 
-					Float peso = result.getFloat("peso");
-					int quantidade = produtoUtil.getQuantidade();
-					float valor = produtoUtil.getValor();
-					String validade = result.getString("validade");
-					String marca = result.getString("marca");
-					String codigo_barra = result.getString("codigo_barra");
-					String disponibilidade = result.getString("disponibilidade");
-					
-					produto = new Produto(id, descricao, categoria, peso,
-							quantidade, valor, validade, marca, codigo_barra,
-							disponibilidade, estabelecimento);
-					
-					lista_produtos.add(produto);
-				}
-				stm.close();
-				result.close();
-			}
-
-		}*/
-		
 		System.out.println("LISTAR PRODUTOS POR LISTA OK");
 		return lista_produtos;
 	}
