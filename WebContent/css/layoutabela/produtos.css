@@ -254,10 +254,12 @@ table.dataTable td {
   zoom: 1; }
   .dataTables_wrapper .dataTables_length {
    position:absolute;
-    margin-left:1em; }
+    margin-left:1em;
+    margin-top:-1em; }
   .dataTables_wrapper .dataTables_filter {
     position:absolute;
-    margin-left:40em; }
+    margin-left:40em;
+    margin-top:-1em; }
     .dataTables_wrapper .dataTables_filter input {
       margin-left: 0.1em; }
   .dataTables_wrapper .dataTables_info {
