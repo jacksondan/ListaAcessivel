@@ -254,10 +254,12 @@ table.dataTable td {
   zoom: 1; }
   .dataTables_wrapper .dataTables_length {
    position:absolute;
-    margin-left:1em; }
+    margin-left:1em;
+    margin-top:-1em; }
   .dataTables_wrapper .dataTables_filter {
     position:absolute;
-    margin-left:42em; }
+    margin-left:40em;
+    margin-top:-1em; }
     .dataTables_wrapper .dataTables_filter input {
       margin-left: 0.1em; }
   .dataTables_wrapper .dataTables_info {
@@ -267,7 +269,7 @@ table.dataTable td {
   .dataTables_wrapper .dataTables_paginate {
     float: right;
      position:absolute;
-    margin-left:35em; }
+    margin-left:32em; }
     .dataTables_wrapper .dataTables_paginate .paginate_button {
       box-sizing: border-box;
       display: inline-block;
