@@ -2,7 +2,7 @@
  * Table styles
  */
 table.dataTable {
-width:50%;
+
   margin: 0 auto;
   clear: both;
   border-collapse: separate;
@@ -255,8 +255,8 @@ table.dataTable td {
   zoom: 1; }
   .dataTables_wrapper .dataTables_length {
    position:absolute;
-    margin-left:23em;
-    top:-1em; }
+    margin-left:16em;
+    margin-top:-1em; }
   .dataTables_wrapper .dataTables_filter {
     position:absolute;
     margin-left:40.5em; }
@@ -265,11 +265,11 @@ table.dataTable td {
   .dataTables_wrapper .dataTables_info {
     clear: both;
     position:absolute;
-    margin-left:23em; }
+    margin-left:20em; }
   .dataTables_wrapper .dataTables_paginate {
     float: right;
      position:absolute;
-    margin-left:51em; }
+    margin-left:41em; }
     .dataTables_wrapper .dataTables_paginate .paginate_button {
       box-sizing: border-box;
       display: inline-block;

@@ -61,6 +61,7 @@
 					</tbody>
 				</table>
 	</div>
+	
 	<div id="footer">
 			<div id="copyright" class="container">
 					<ul class="icons">
