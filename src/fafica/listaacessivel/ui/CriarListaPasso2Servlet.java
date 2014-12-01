@@ -47,19 +47,20 @@ public class CriarListaPasso2Servlet extends HttpServlet {
 			//response.sendRedirect("index.jsp");
 		}else{
 			try {
-				String categoria=request.getParameter("categoria"); 
 				IFachada fachada = Fachada.getInstance();
-				String filtroContrario="Bairro";
+				
+				String categoria=request.getParameter("categoria");
 				String filtragem = request.getParameter("filtragem");
+				String filtroContrario = null;
 				boolean selecionarPorBairro = false;
 				
-				
-				if(filtragem!=null){
-					filtragem = "Bairro";
+				if(filtragem == null){
+					filtroContrario="Bairro";
+				}else if(filtragem.equals("Bairro")){
 					filtroContrario="Cidade";
 					selecionarPorBairro = true;
 				}else{
-					filtragem = "Cidade";
+					filtroContrario = "Bairro";
 				}
 				List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
 			
