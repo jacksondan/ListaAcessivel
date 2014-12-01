@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
-<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="css/layoutabela/produtos.css">
 <script type="text/javascript"  src="js/jquery.js"></script>		
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
 <script type="text/javascript">

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>${cliente.nome}- Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso2.css">
 		<script src="js/script.js"></script>
  		<script type="text/javascript"  src="js/jquery.js"></script>		
 		<script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -35,8 +35,8 @@
 			<button   onclick="window.location.href='CriarListaPasso2Servlet?filtragem=${filtroContrario}&categoria=${categoria}'" class="button">Filtrar por ${filtroContrario}</button>
 
 		</div>
-				<table id="estabelecimentos" class="display" summary="Tabela com estabelecimentos da categoria ${categoria} disponíveis de acordo com o filtro.">
-					<caption>Tabela de ${categoria}s filtrados por ${filtragem}</caption>
+				<table id="estabelecimentos" class="display" summary="Esta tabela disponibiliza estabelecimentos da categoria ${categoria}, filtrados por ${filtragem}.">
+					<caption>${categoria}s filtrados por ${filtragem}</caption>
 					<thead>
 					<tr>
 						<th  id="nome">Nome do Estabelecimento</th>

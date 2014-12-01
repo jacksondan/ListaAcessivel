@@ -328,7 +328,7 @@ body,input,textarea,select
 					color: white;
 				border-color: #c2c7cc;
 				background-color:#0080c0;
-				font-weight:bolder;
+				
 			}
 
 	/* Button2 */
@@ -404,10 +404,10 @@ body,input,textarea,select
 /* botão de filtro                                                                    */
 /*********************************************************************************/
 		#filtro{
-		position:relative;
+		position:absolute;
 		overflow-x: hidden;
-		margin-top:5%;
-		margin-left:40%;
+		margin-top:-1.5em;
+		margin-left:60em;
 		padding: 0.1em 1px 0.1em 0.1em;
 		}
 		
