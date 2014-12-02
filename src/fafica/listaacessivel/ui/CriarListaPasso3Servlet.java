@@ -54,7 +54,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				List<Produto> listaprodutos = fachada.listarProdutosDoEstababelecimento(estabelecimento);
+				List<Produto> listaprodutos = fachada.listarProdutosPorEstababelecimento(estabelecimento);
 				
 				request.setAttribute("listaprodutos",listaprodutos);
 				request.setAttribute("estabelecimento", estabelecimento);
