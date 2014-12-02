@@ -437,7 +437,7 @@ input[type="checkbox"]:checked + label span {
 		position:relative;
 		overflow-x: hidden;
 		margin-top:2%;
-		margin-left:-2em;
+		margin-left:2em;
 		padding: 1.5em 0.5em 2em 0.1em;
 		}
 		

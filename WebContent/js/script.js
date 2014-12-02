@@ -16,7 +16,7 @@
       document.getElementById('cidade').value=valor.localidade
       document.getElementById('estado').value=valor.uf
       document.getElementById('bairro').value=valor.bairro
-      document.getElementById('logradouro').value=valor.rua
+      document.getElementById('rua').value=valor.logradouro
     }
     
    
