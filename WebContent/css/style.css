@@ -300,7 +300,8 @@ body,input,textarea,select
 		
 		input[type="button"],
 		input[type="submit"],
-		input[type="reset"],
+		input[type="reset"]
+		,
 		.button
 		{
 			
@@ -399,6 +400,27 @@ body,input,textarea,select
 				font-weight:bolder;
 				
 				}
+
+
+
+/*********************************************************************************/
+/* CHECKBOX                                                                 */
+/*********************************************************************************/
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(check_radio_sheet.png) left top no-repeat;
+    cursor:pointer;
+}
+input[type="checkbox"]:checked + label span {
+    background:url(check_radio_sheet.png) -19px top no-repeat;
+}
 
 /*********************************************************************************/
 /* botão de filtro                                                                    */
