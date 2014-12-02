@@ -43,7 +43,7 @@
 								<colgroup>
     							<col />
     							<col />
-   			 					<col span="2" /><!-- Agrupamento das colunas Português e Matemática à célula de cabeçalho Matérias -->
+   			 					<col span="2" /><!-- -->
   								</colgroup>		
 								<thead>
 								<tr>
