@@ -102,8 +102,8 @@
 						<td headers="valor">R$ ${produto.valor}</td>
 						<td headers="validade">${produto.validade}</td>
 						<td headers="peso">${produto.peso}</td>
-						<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}"/></td>
-					<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade"   value="0" min="1" alt="Digite a Quantidade Desejada"/></div></td>
+						<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+					<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade"   value="0" min="1" alt="Digite a Quantidade Desejada" /></div></td>
 					</tr>					
 					</c:forEach>
 					</tbody>
@@ -113,12 +113,14 @@
 				</table>
 				<div id="finalizar">
 				
+				<input type="hidden" name="id_estabelecimento" value="${estabelecimento.id_estabelecimento}" />
+				
 				<button type="submit" class="button3" >Finalizar Lista</button>
 				</div>
 				</form>
 				<div id="finalizar">
 				
-				<button type="submit" onclick="window.location.href='CriarListaPasso3Servlet?selecionado=${selecionado}&quantidade=${quantidade}&id_estabelecimento=${estabelecimento.id_estabelecimento}'"class="button3" >Finalizar Lista</button>
+				<button type="submit" onclick="window.location.href='CriarListaPasso3Servlet?selecionado=selecionado&quantidade=quantidade&id_estabelecimento=${estabelecimento.id_estabelecimento}'"class="button3" >Finalizar Lista</button>
 				</div>
 				
 	</div>
