@@ -6,18 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>${cliente.nome}- Inicio</title>
+<style>
+/* ESCONDE TODAS AS DIVS */
+.divs{display:none;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
-		<script src="js/script.js"></script>
- 		<script type="text/javascript"  src="js/jquery.js"></script>
- 		
+<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
+<script src="js/script.js"></script>
+<script type="text/javascript"  src="js/jquery.js"></script>	
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
 <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
-<script>
-//script da mascara
 
-
-</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#produtos').dataTable({
@@ -28,10 +28,16 @@
               "sUrl" : "js/pt-br.txt"
              }    
         })});
-   
-   
+    //lógica  dos checkbox
+    $(document).ready(function() {
+    $('.checkbox').click(function() {
+    $('.divs').hide();
+    $('.checkbox:checked').each(function() { 
+    $('#d'+$(this).val()).show(); 
+    });
+    });
+    });
     </script>
-    
 </head>
 <body>
 
@@ -44,7 +50,7 @@
 		<div id="filtro2">
 		<form action="CriarPasso3Servlet" method="GET">
 		
-		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30">
+		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
 				<select name="categoria" >
 					 
 					  <option value="alimentos">Alimentos</option>
@@ -52,7 +58,7 @@
 					  <option value="frios">Frios</option>
 					  <option value="limpeza">Produtos de Limpeza</option>
 				</select>
-				<button type="submit" value="pesquisar" class="button">Pesquisar</button>
+				<input type="submit" value="pesquisar" class="button" value="">
 				</form>
 		</div>
 				<form action="CriarListaPasso3Servlet" method="post">
@@ -73,12 +79,12 @@
 						<th rowspan="2"id="valor">Valor</th>
 						<th rowspan="2"id="validade">Validade</th>
 						<th rowspan="2"id="peso">Peso</th>
-						<th colspan="2"id="funcoes">Função</th>
+						<th colspan="2"id="funcao">Função</th>
 						
 					</tr>
 					<tr>
-						<th id="selecionar" axis="funcoes">Selecionar</th>
-						<th id="quantidade" axis="funcoes">Quantidade</th>	
+						<th id="selecionar" axis="funcao">Selecionar</th>
+						<th id="quantidade" axis="funcao">Quantidade</th>	
 					</tr>
 					</thead>
 					
@@ -93,8 +99,8 @@
 						<td headers="valor">R$ ${produto.valor}</td>
 						<td headers="validade">${produto.validade}</td>
 						<td headers="peso">${produto.peso}</td>
-						<td headers="selecionar"><input type="checkbox"  name="selecionado" id="selecionado" value="${produto.id_produto}"></td>
-						<td headers="quantidade"><input type="number"  name="quantidade" id="quantidade" min="1" alt="Digite a Quantidade Desejada"></td>
+						<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}"/></td>
+					<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade"   value="0" min="1" alt="Digite a Quantidade Desejada"/></div></td>
 					</tr>					
 					</c:forEach>
 					</tbody>
@@ -103,9 +109,12 @@
 					</tfoot>
 				</table>
 				<div id="finalizar">
-				<button type="submit" class="button3">Finalizar Lista</button>
+				<input type = "hidden" name="estabelecimento" id="email" value="${estabelecimento.id_estabelecimento}" />
 				
-						</div>
+				<button type="submit" class="button3" >Finalizar Lista</button>
+				
+				</div>
+				
 				</form>
 	</div>
 	<div id="footer">
