@@ -18,7 +18,7 @@
 			<div id="content">
 			<!-- titulo do conteudo-->
 			<header class="major">		
-					<h2>Perfil</h2>
+					<h2>Detalhes Funcionario</h2>
 			</header>
 			<!-- Conteudo-->
 

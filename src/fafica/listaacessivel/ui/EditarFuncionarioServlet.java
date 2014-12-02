@@ -53,7 +53,7 @@ public class EditarFuncionarioServlet extends HttpServlet {
 				funcionario = fachada.pesquisarFuncionario(funcionario);
 				
 				request.setAttribute("funcionario", funcionario);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarFuncionario.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

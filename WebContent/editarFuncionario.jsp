@@ -24,11 +24,10 @@
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> 
-						<input type = "hidden " name="id_funcionario" id="email" value="${funcionario.id_usuario}"/>
-						<input type = "hidden " name="senha" id="email" value="${funcionario.senha}"/>
+						<input type = "hidden" name="id_funcionario" id="email" value="${funcionario.id_usuario}" />
+						<input type = "hidden" name="senha" id="email" value="${funcionario.senha}" />
 						
-						<input type="email"
-						placeholder="Digite o E-mail" name="email" id="email" value="${funcionario.email}" required="email" size=60>
+						<input type="email" placeholder="Digite o E-mail" name="email" id="email" value="${funcionario.email}" required="email" size=60 />
 				</fieldset>
 				<fieldset>
 					<legend>Dados Pessoais</legend>
