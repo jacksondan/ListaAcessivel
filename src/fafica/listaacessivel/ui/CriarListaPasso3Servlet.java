@@ -121,10 +121,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					
 					response.sendRedirect("visaoCliente.jsp"); // Teste
 				}else{
-					String mensagem = "Nenhum Produto Selecionado";
-					request.setAttribute("mensagem",mensagem);
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso02.jsp");
-					requestDispatcher.forward(request, response);
+					response.sendRedirect("LogoutServlet"); // Teste
 				}
 				
 			} catch (ClassNotFoundException e) {
