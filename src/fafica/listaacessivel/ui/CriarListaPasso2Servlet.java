@@ -56,6 +56,7 @@ public class CriarListaPasso2Servlet extends HttpServlet {
 				
 				if(filtragem == null){
 					filtroContrario="Bairro";
+					filtragem="Cidade"; 
 				}else if(filtragem.equals("Bairro")){
 					filtroContrario="Cidade";
 					selecionarPorBairro = true;
