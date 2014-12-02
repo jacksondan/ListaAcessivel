@@ -48,7 +48,7 @@
 			<h2>Criar Lista Passo - 03</h2>	
 		</header>
 		<div id="filtro2">
-		<form action="CriarPasso3Servlet" method="GET">
+		<form action="CriarListaPasso3Servlet" method="GET">
 		
 		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
 				<select name="categoria" >
@@ -58,10 +58,11 @@
 					  <option value="frios">Frios</option>
 					  <option value="limpeza">Produtos de Limpeza</option>
 				</select>
+				<input type="hidden" name="id_estabelecimento"  value="${estabelecimento.id_estabelecimento}"/>
 				<input type="submit" value="pesquisar" class="button" value="">
 				</form>
 		</div>
-				<form action="CriarListaPasso3Servlet" method="post">
+				<form action="CriarListaPasso3Servlet" method="POST">
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
 				Com as seguintes colunas,Descrição,Marca,Valor,Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
 					<caption>Produtos disponíveis da categoria ${categoria}s filtrados por ${filtragem}</caption>
@@ -99,7 +100,7 @@
 						<td headers="valor">R$ ${produto.valor}</td>
 						<td headers="validade">${produto.validade}</td>
 						<td headers="peso">${produto.peso}</td>
-						<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}"/></td>
+						<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionados" id="selecionados" value="${produto.id_produto}"/></td>
 					<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade"   value="0" min="1" alt="Digite a Quantidade Desejada"/></div></td>
 					</tr>					
 					</c:forEach>
@@ -109,13 +110,11 @@
 					</tfoot>
 				</table>
 				<div id="finalizar">
-				<input type = "hidden" name="estabelecimento" id="email" value="${estabelecimento.id_estabelecimento}" />
-				
+				<input type = "hidden" name="id_estabelecimento"  value="${estabelecimento.id_estabelecimento}"/>
 				<button type="submit" class="button3" >Finalizar Lista</button>
-				
 				</div>
 				
-				</form>
+			</form>
 	</div>
 	<div id="footer">
 			<div id="copyright" class="container">
