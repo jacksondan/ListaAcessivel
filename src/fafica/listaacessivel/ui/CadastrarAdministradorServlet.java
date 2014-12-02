@@ -44,7 +44,7 @@ public class CadastrarAdministradorServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
 		}else{
-			response.sendRedirect("cadastroEstabelecimento.jsp");
+			response.sendRedirect("cadastroAdministrador.jsp");
 		}
 	}
 

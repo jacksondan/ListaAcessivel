@@ -12,8 +12,8 @@
 </head>
 <body>
 				
-<%@include file="headerFuncionario.html" %>
-<%@include file="sidebarFuncionario.html" %>		
+<%@include file="headerAdmin.html" %>
+<%@include file="sidebarAdmin.html" %>		
 			<div id="content">
 			<!-- titulo do conteudo-->
 			<header class="major">		
