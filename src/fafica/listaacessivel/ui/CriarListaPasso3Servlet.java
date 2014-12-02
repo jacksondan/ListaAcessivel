@@ -91,7 +91,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
-				String [] selecaoProdutos = request.getParameterValues("selecionados");
+				String [] selecaoProdutos = request.getParameterValues("selecionado");
 				String [] selecaoQuantidade = request.getParameterValues("quantidade");
 				
 				Estabelecimento estabelecimento = new Estabelecimento();
