@@ -9,7 +9,8 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
 		<script src="js/script.js"></script>
- 		<script type="text/javascript"  src="js/jquery.js"></script>		
+ 		<script type="text/javascript"  src="js/jquery.js"></script>
+ 		
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
 <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
 <script>
@@ -28,11 +29,9 @@
              }    
         })});
    
-    jQuery(function($){
-    	$("#quantidade").mask("99999");
-    });
-
+   
     </script>
+    
 </head>
 <body>
 
@@ -43,7 +42,7 @@
 			<h2>Criar Lista Passo - 03</h2>	
 		</header>
 		<div id="filtro2">
-		<form action="Servlet" method="GET">
+		<form action="CriarPasso3Servlet" method="GET">
 		
 		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30">
 				<select name="categoria" >
@@ -53,10 +52,10 @@
 					  <option value="frios">Frios</option>
 					  <option value="limpeza">Produtos de Limpeza</option>
 				</select>
-				<button type="submit" value="pesquisar" class="button2">Pesquisar</button>
+				<button type="submit" value="pesquisar" class="button">Pesquisar</button>
 				</form>
 		</div>
-				<form>
+				<form action="CriarListaPasso3Servlet" method="post">
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro.">
 					<caption>Produtos disponíveis da categoria ${categoria}s filtrados por ${filtragem}</caption>
 					<colgroup>
@@ -93,14 +92,16 @@
 						<td headers="valor">R$ ${produto.valor}</td>
 						<td headers="validade">${produto.validade}</td>
 						<td headers="peso">${produto.peso}</td>
-						<td headers="selecionar"><input type="checkbox"  name="selecionado" id="${produto.id_produto}"></td>
-						<td headers="selecionar"><input type="number" name="quantidade" id="quantidade"  alt="Digite a Quantidade Desejada"></td>
-					</tr>
-					
+						<td headers="selecionar"><input type="checkbox"  name="selecionado" id="selecionado" alt="tecle Spaco para selecionar o produto" value="${produto.id_produto}"></td>
+						<td headers="quantidade"><input type="number" name="quantidade" id="quantidade"  alt="Digite a Quantidade Desejada"></td>
+					</tr>					
 					</c:forEach>
-				
 					</tbody>
+					<tfoot>
+					<tr><td><button type="submit" value="pesquisar" class="button">Finalizar Lista</button></td></tr>
+					</tfoot>
 				</table>
+				
 				</form>
 	</div>
 	<div id="footer">
