@@ -38,7 +38,7 @@
 							<div class="menu">
 										<ul class="actions">
 											
-											<li><a href="EditarFuncionarioServlet" class="button">Editar Perfil</a></li>
+											<li><a href="EditarFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button">Editar Perfil</a></li>
 											<li><a href="#" class="button">Zerar Senha</a></li>
 											
 										</ul>
