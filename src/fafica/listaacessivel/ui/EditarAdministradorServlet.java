@@ -2,7 +2,6 @@ package fafica.listaacessivel.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,13 +14,11 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
-import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Endereco;
 
 /**
  * Servlet implementation class EditarAdministrador
  */
-@WebServlet("/EditarAdministrador")
+@WebServlet("/EditarAdministradorServlet")
 public class EditarAdministradorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -31,15 +31,16 @@
 			
 			<fieldset>		
 			<legend>Dados de Pessoais</legend>
-				Nome: ${funcionario.nome} <br/>
+				Nome: ${administrador.nome} <br/>
 				
-				Matrícula: ${funcionario.matricula} <br/>
+				CPF: ${administrador.cpf} <br/>
 
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">
 											
-											<li><a href="EditarSenhaFuncionarioServlet" class="button">Editar Senha</a></li>
+											<li><a href="EditarAdministradorServlet" class="button">Editar Dados</a></li>
+											<li><a href="EditarSenhaAdministradorServlet" class="button">Editar Senha</a></li>
 											
 										</ul>
 							</div>

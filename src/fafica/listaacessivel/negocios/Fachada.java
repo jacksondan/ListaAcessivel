@@ -66,11 +66,12 @@ public class Fachada implements IFachada {
 	public List<Estabelecimento> listarEstabelecimento() throws SQLException {
 		
 		List <Estabelecimento> listaEstabelecimentos = this.controlador_estabelecimento.listarEstabelecimento();
-		
-		for(Estabelecimento estabelecimento : listaEstabelecimentos){
-			Administrador administrador = 
-					this.pesquisarAdministrador(estabelecimento.getAdministrador());
-			estabelecimento.setAdministrador(administrador);
+		if(listaEstabelecimentos != null){	
+			for(Estabelecimento estabelecimento : listaEstabelecimentos){
+				Administrador administrador = 
+						this.pesquisarAdministrador(estabelecimento.getAdministrador());
+				estabelecimento.setAdministrador(administrador);
+			}
 		}
 		
 		return listaEstabelecimentos;
@@ -80,8 +81,10 @@ public class Fachada implements IFachada {
 	public Estabelecimento pesquisarEstabelecimento(Estabelecimento entidade) throws SQLException {
 		
 		Estabelecimento estabelecimento = this.controlador_estabelecimento.pesquisarEstabelecimento(entidade);
-		Administrador administrador = this.pesquisarAdministrador(estabelecimento.getAdministrador());
-		estabelecimento.setAdministrador(administrador);
+		if(estabelecimento != null){
+			Administrador administrador = this.pesquisarAdministrador(estabelecimento.getAdministrador());
+			estabelecimento.setAdministrador(administrador);
+		}
 		
 		return estabelecimento;
 	}
@@ -90,14 +93,14 @@ public class Fachada implements IFachada {
 	public List<Estabelecimento> listarEstabelecimentoPorRegiao(
 			String categoria, Cliente cliente, boolean pesquisarPorBairro)
 			throws SQLException {
-		
 		List <Estabelecimento> listaEstabelecimentos = 
 				this.controlador_estabelecimento.listarEstabelecimentoPorRegiao(categoria, cliente, pesquisarPorBairro);
-		
-		for(Estabelecimento estabelecimento : listaEstabelecimentos){
-			Administrador administrador = 
-					this.pesquisarAdministrador(estabelecimento.getAdministrador());
-			estabelecimento.setAdministrador(administrador);
+		if(listaEstabelecimentos != null){
+			for(Estabelecimento estabelecimento : listaEstabelecimentos){
+				Administrador administrador = 
+						this.pesquisarAdministrador(estabelecimento.getAdministrador());
+				estabelecimento.setAdministrador(administrador);
+			}
 		}
 		
 		return listaEstabelecimentos;
@@ -124,12 +127,13 @@ public class Fachada implements IFachada {
 	@Override
 	public List<Produto> listarProduto() throws SQLException{
 		List <Produto> listaProdutos = this.controlador_produto.listarProduto();
-		
-		for(Produto produto : listaProdutos){
-			Estabelecimento estabelecimento = 
-					this.pesquisarEstabelecimento(produto.getEstabelecimento());
-			
-			produto.setEstabelecimento(estabelecimento);
+		if(listaProdutos != null){
+			for(Produto produto : listaProdutos){
+				Estabelecimento estabelecimento = 
+						this.pesquisarEstabelecimento(produto.getEstabelecimento());
+				
+				produto.setEstabelecimento(estabelecimento);
+			}
 		}
 		
 		return listaProdutos;
@@ -137,11 +141,12 @@ public class Fachada implements IFachada {
 	
 	@Override
 	public Produto pesquisarProduto(Produto produto) throws SQLException{
-		
 		produto = this.controlador_produto.pesquisarProduto(produto);
-		Estabelecimento estabelecimento = 
-				this.pesquisarEstabelecimento(produto.getEstabelecimento());
-		produto.setEstabelecimento(estabelecimento);
+		if(produto != null){
+			Estabelecimento estabelecimento = 
+					this.pesquisarEstabelecimento(produto.getEstabelecimento());
+			produto.setEstabelecimento(estabelecimento);
+		}
 		
 		return produto;
 	}
@@ -149,12 +154,13 @@ public class Fachada implements IFachada {
 	@Override
 	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento) throws SQLException{
 		List <Produto> listaProdutos = this.controlador_produto.listarProdutosPorEstabelecimento(estabelecimento);
-		
-		for(Produto produto : listaProdutos){
-			estabelecimento = 
-					this.pesquisarEstabelecimento(produto.getEstabelecimento());
-			
-			produto.setEstabelecimento(estabelecimento);
+		if(listaProdutos != null){
+			for(Produto produto : listaProdutos){
+				estabelecimento = 
+						this.pesquisarEstabelecimento(produto.getEstabelecimento());
+				
+				produto.setEstabelecimento(estabelecimento);
+			}
 		}
 		
 		return listaProdutos;
@@ -164,12 +170,13 @@ public class Fachada implements IFachada {
 	public List<Produto> listarProdutosPorLista(Lista lista)
 			throws SQLException {
 		List <Produto> listaProdutos = this.controlador_produto.listarProdutosPorLista(lista);
-		
-		for(Produto produto : listaProdutos){
-			Estabelecimento estabelecimento = 
-					this.pesquisarEstabelecimento(produto.getEstabelecimento());
-			
-			produto.setEstabelecimento(estabelecimento);
+		if(listaProdutos != null){
+			for(Produto produto : listaProdutos){
+				Estabelecimento estabelecimento = 
+						this.pesquisarEstabelecimento(produto.getEstabelecimento());
+				
+				produto.setEstabelecimento(estabelecimento);
+			}
 		}
 		
 		return listaProdutos;
@@ -195,8 +202,28 @@ public class Fachada implements IFachada {
 	@Override
 	public List<Lista> listarLista() throws SQLException {
 		List<Lista> listaListas = this.controlador_lista.listarLista();
+		if(listaListas != null){
+			for(Lista lista : listaListas) {
+				Cliente cliente = 
+						this.pesquisarCliente(lista.getCliente());
+				Estabelecimento estabelecimento =
+						this.pesquisarEstabelecimento(lista.getEstabelecimento());
+				List <Produto> produtos = 
+						this.listarProdutosPorLista(lista);
+				
+				lista.setCliente(cliente);
+				lista.setEstabelecimento(estabelecimento);
+				lista.setProdutos(produtos);
+			}
+		}
 		
-		for(Lista lista : listaListas) {
+		return listaListas;
+	}
+
+	@Override
+	public Lista pesquisarLista(Lista entidade) throws SQLException {
+		Lista lista = this.controlador_lista.pesquisarLista(entidade);
+		if(lista != null){
 			Cliente cliente = 
 					this.pesquisarCliente(lista.getCliente());
 			Estabelecimento estabelecimento =
@@ -209,43 +236,25 @@ public class Fachada implements IFachada {
 			lista.setProdutos(produtos);
 		}
 		
-		return listaListas;
-	}
-
-	@Override
-	public Lista pesquisarLista(Lista entidade) throws SQLException {
-		
-		Lista lista = this.controlador_lista.pesquisarLista(entidade);
-		Cliente cliente = 
-				this.pesquisarCliente(lista.getCliente());
-		Estabelecimento estabelecimento =
-				this.pesquisarEstabelecimento(lista.getEstabelecimento());
-		List <Produto> produtos = 
-				this.listarProdutosPorLista(lista);
-		
-		lista.setCliente(cliente);
-		lista.setEstabelecimento(estabelecimento);
-		lista.setProdutos(produtos);
-		
 		return lista;
 	}
 	
 	@Override
 	public List<Lista> listarListaPorCliente(Cliente cliente) throws SQLException {
-		
 	List<Lista> listaListas = this.controlador_lista.listarListaPorCLiente(cliente);
-		
-		for(Lista lista : listaListas) {
-			cliente = 
-					this.pesquisarCliente(lista.getCliente());
-			Estabelecimento estabelecimento =
-					this.pesquisarEstabelecimento(lista.getEstabelecimento());
-			List <Produto> produtos = 
-					this.listarProdutosPorLista(lista);
-			
-			lista.setCliente(cliente);
-			lista.setEstabelecimento(estabelecimento);
-			lista.setProdutos(produtos);
+		if(listaListas != null){
+			for(Lista lista : listaListas) {
+				cliente = 
+						this.pesquisarCliente(lista.getCliente());
+				Estabelecimento estabelecimento =
+						this.pesquisarEstabelecimento(lista.getEstabelecimento());
+				List <Produto> produtos = 
+						this.listarProdutosPorLista(lista);
+				
+				lista.setCliente(cliente);
+				lista.setEstabelecimento(estabelecimento);
+				lista.setProdutos(produtos);
+			}
 		}
 		
 		return listaListas;
@@ -255,18 +264,19 @@ public class Fachada implements IFachada {
 	public List<Lista> listarListaPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
 		List<Lista> listaListas = this.controlador_lista.listarListaPorEstabelecimento(estabelecimento);
-		
-		for(Lista lista : listaListas) {
-			Cliente cliente = 
-					this.pesquisarCliente(lista.getCliente());
-			estabelecimento =
-					this.pesquisarEstabelecimento(lista.getEstabelecimento());
-			List <Produto> produtos = 
-					this.listarProdutosPorLista(lista);
-			
-			lista.setCliente(cliente);
-			lista.setEstabelecimento(estabelecimento);
-			lista.setProdutos(produtos);
+		if(listaListas != null){
+			for(Lista lista : listaListas) {
+				Cliente cliente = 
+						this.pesquisarCliente(lista.getCliente());
+				estabelecimento =
+						this.pesquisarEstabelecimento(lista.getEstabelecimento());
+				List <Produto> produtos = 
+						this.listarProdutosPorLista(lista);
+				
+				lista.setCliente(cliente);
+				lista.setEstabelecimento(estabelecimento);
+				lista.setProdutos(produtos);
+			}
 		}
 		
 		return listaListas;
@@ -319,12 +329,13 @@ public class Fachada implements IFachada {
 	@Override
 	public List<Funcionario> listarFuncionario() throws SQLException {
 		List<Funcionario> listaFuncionario = this.controlador_funcionario.listarFuncionario();
-		
-		for(Funcionario funcionario : listaFuncionario){
-			Estabelecimento estabelecimento =
-					this.pesquisarEstabelecimento(funcionario.getEstabelecimento());
-			
-			funcionario.setEstabelecimento(estabelecimento);
+		if(listaFuncionario != null){
+			for(Funcionario funcionario : listaFuncionario){
+				Estabelecimento estabelecimento =
+						this.pesquisarEstabelecimento(funcionario.getEstabelecimento());
+				
+				funcionario.setEstabelecimento(estabelecimento);
+			}
 		}
 		
 		return listaFuncionario;
@@ -334,12 +345,13 @@ public class Fachada implements IFachada {
 	public Funcionario pesquisarFuncionario(Funcionario entidade)
 			throws SQLException {
 		Funcionario funcionario = this.controlador_funcionario.pesquisarFuncionario(entidade);
+		if(funcionario != null){
+			Estabelecimento estabelecimento =
+					this.pesquisarEstabelecimento(funcionario.getEstabelecimento());
+			
+			funcionario.setEstabelecimento(estabelecimento);
+		}
 		
-		Estabelecimento estabelecimento =
-				this.pesquisarEstabelecimento(funcionario.getEstabelecimento());
-		
-		funcionario.setEstabelecimento(estabelecimento);
-
 		return funcionario;
 	}
 
@@ -348,12 +360,13 @@ public class Fachada implements IFachada {
 			Estabelecimento estabelecimento) throws SQLException {
 		
 		List<Funcionario> listaFuncionario = this.controlador_funcionario.listarFuncionarioPorEstabelecimento(estabelecimento);
-		
-		for(Funcionario funcionario : listaFuncionario){
-			estabelecimento =
-					this.pesquisarEstabelecimento(funcionario.getEstabelecimento());
-			
-			funcionario.setEstabelecimento(estabelecimento);
+		if(listaFuncionario != null){
+			for(Funcionario funcionario : listaFuncionario){
+				estabelecimento =
+						this.pesquisarEstabelecimento(funcionario.getEstabelecimento());
+				
+				funcionario.setEstabelecimento(estabelecimento);
+			}
 		}
 		
 		return listaFuncionario;
