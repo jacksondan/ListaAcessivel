@@ -6,7 +6,7 @@
     "infoFiltered":   "(Filtrado de um total de _MAX_ registros)",
     "infoPostFix":    "",
     "thousands":      ",",
-    "lengthMenu":     "Mostrando _MENU_ Resgistros",
+    "lengthMenu":     "Mostrando _MENU_ Registros",
     "loadingRecords": "Carregando...",
     "processing":     "Processando...",
     "search":         "Buscar:",

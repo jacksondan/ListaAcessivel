@@ -35,7 +35,6 @@
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					funcionarios pressione a letra T para ir direto para  a tabela</p>
-					
 						<table id="funcionarios" align="center" class="display" summary="Tabela com lista de funcionarios, 
 						mostrando nome fantasia">
 						<caption>Lista de Funcionários</caption>
@@ -75,7 +74,6 @@
 						</table>
 
 				</div>
-
 					<div id="footer2">
 				<div id="copyright" class="container">
 						<ul class="icons">

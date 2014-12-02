@@ -16,7 +16,7 @@
         $('#estabelecimentos').dataTable({
         	"filter": false,
         	"ordering": false,
-        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
+        	"lengthMenu": [[-1,10 , 5], ["Todos", 10, 5]],
         	 "language": {
               "sUrl" : "js/pt-br.txt"
              }    

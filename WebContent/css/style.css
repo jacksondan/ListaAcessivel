@@ -372,6 +372,7 @@ body,input,textarea,select
 		
 		.button3
 		{
+			font-weight:bolder;
 			font-size:18px;
 			display: inline-block;
 			color: inherit;
@@ -398,7 +399,6 @@ body,input,textarea,select
 				border-color: #c2c7cc;
 				background-color:#0080c0;
 				font-weight:bolder;
-				
 				}
 
 
@@ -442,8 +442,8 @@ input[type="number"] {
 		#finalizar{
 		position:relative;
 		overflow-x: hidden;
-		margin-top:2%;
-		margin-left:60%;
+		margin-top:5%;
+		margin-left:43%;
 		
 		}
 		

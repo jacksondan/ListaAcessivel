@@ -23,7 +23,7 @@
         $('#produtos').dataTable({
         	"filter":false,
         	"ordering": false,
-        	"lengthMenu": [[5, 10, 30, -1], [5, 10, 30, "Todos"]],
+        	"lengthMenu": [[-1,10 , 5], ["Todos", 10, 5]],
         	 "language": {
               "sUrl" : "js/pt-br.txt"
              }    
@@ -56,7 +56,8 @@
 				</form>
 		</div>
 				<form action="CriarListaPasso3Servlet" method="post">
-				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro.">
+				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
+				Com as seguintes colunas,Descrição,Marca,Valor,Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
 					<caption>Produtos disponíveis da categoria ${categoria}s filtrados por ${filtragem}</caption>
 					<colgroup>
     							<col />
@@ -72,7 +73,7 @@
 						<th rowspan="2"id="valor">Valor</th>
 						<th rowspan="2"id="validade">Validade</th>
 						<th rowspan="2"id="peso">Peso</th>
-						<th colspan="2"id="funcoes">Funcões</th>
+						<th colspan="2"id="funcoes">Função</th>
 						
 					</tr>
 					<tr>
@@ -92,16 +93,19 @@
 						<td headers="valor">R$ ${produto.valor}</td>
 						<td headers="validade">${produto.validade}</td>
 						<td headers="peso">${produto.peso}</td>
-						<td headers="selecionar"><input type="checkbox"  name="selecionado" id="selecionado" alt="tecle Spaco para selecionar o produto" value="${produto.id_produto}"></td>
-						<td headers="quantidade"><input type="number" name="quantidade" id="quantidade"  alt="Digite a Quantidade Desejada"></td>
+						<td headers="selecionar"><input type="checkbox"  name="selecionado" id="selecionado" value="${produto.id_produto}"></td>
+						<td headers="quantidade"><input type="number"  name="quantidade" id="quantidade" min="1" alt="Digite a Quantidade Desejada"></td>
 					</tr>					
 					</c:forEach>
 					</tbody>
 					<tfoot>
-					<tr><td><button type="submit" value="pesquisar" class="button">Finalizar Lista</button></td></tr>
+					
 					</tfoot>
 				</table>
+				<div id="finalizar">
+				<button type="submit" class="button3">Finalizar Lista</button>
 				
+						</div>
 				</form>
 	</div>
 	<div id="footer">
