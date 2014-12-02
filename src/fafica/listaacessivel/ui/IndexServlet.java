@@ -102,14 +102,17 @@ public class IndexServlet extends HttpServlet {
 				if(classe.endsWith(".Administrador")){
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoAdministrador", usuario);
+					session.setMaxInactiveInterval(600);
 					response.sendRedirect("visaoAdministrador.jsp");
 				}else if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoCliente", usuario);
+					session.setMaxInactiveInterval(1200);
 					response.sendRedirect("visaoCliente.jsp");
 				}else{
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoFuncionario", usuario);
+					session.setMaxInactiveInterval(600);
 					response.sendRedirect("visaoFuncionario.jsp");
 				}
 			}else if (estabelecimento != null){
@@ -117,6 +120,7 @@ public class IndexServlet extends HttpServlet {
 				System.out.println("************ "+classe+" ***************");
 				HttpSession session = request.getSession(); 
 				session.setAttribute("acessoEstabelecimento", estabelecimento);
+				session.setMaxInactiveInterval(600);
 				response.sendRedirect("visaoEstabelecimento.jsp");
 			}else{
 				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
