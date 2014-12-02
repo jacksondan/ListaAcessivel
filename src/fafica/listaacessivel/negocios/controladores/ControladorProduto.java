@@ -37,10 +37,10 @@ public class ControladorProduto {
 		return this.repositorio_produto.pesquisarProduto(produto);
 	}
 	
-	public List<Produto> listarProdutosDoEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
+	public List<Produto> listarProdutosPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
 		return this.repositorio_produto.listarProdutosPorEstabelecimento(estabelecimento);
 	}
-	public List<Produto> listarProdutosDaLista(Lista lista) throws SQLException{
+	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException{
 		return this.repositorio_produto.listarProdutosPorLista(lista);
 	}
 	

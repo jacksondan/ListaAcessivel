@@ -16,7 +16,6 @@ public interface IFachada {
 	public void excluirEstabelecimento(Estabelecimento entidade) throws SQLException;
 	public List<Estabelecimento> listarEstabelecimento() throws SQLException;
 	public Estabelecimento pesquisarEstabelecimento(Estabelecimento entidade) throws SQLException;
-	public List<Produto> listarProdutosDoEstababelecimento(Estabelecimento estabelecimento) throws SQLException;
 	public List<Estabelecimento> listarEstabelecimentoPorRegiao(String categoria, Cliente cliente, boolean pesquisarPorBairro) throws SQLException;
 	
 	public void adicionarProduto(Produto produto) throws SQLException;
@@ -24,6 +23,8 @@ public interface IFachada {
 	public void excluirProduto(Produto produto) throws SQLException;
 	public List<Produto> listarProduto() throws SQLException;
 	public Produto pesquisarProduto(Produto produto) throws SQLException;
+	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento) throws SQLException;
+	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException;
 	
 	public void adicionarLista(Lista entidade) throws SQLException;
 	public void alterarLista(Lista entidade) throws SQLException;
