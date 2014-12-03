@@ -57,33 +57,11 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				int id_estabelecimentoTeste = Integer.parseInt(request.getParameter("id_estabelecimento"));
-				String [] selecaoProdutosTeste = request.getParameterValues("selecionado");
-				String [] selecaoQuantidadeTeste = request.getParameterValues("quantidade");
-				String produto = request.getParameter("selecionado");
-				String quantidade = request.getParameter("quantidade");
-				
-				System.out.println("Id do Estabelecimento: " +id_estabelecimentoTeste );
-				System.out.println("Id do Produto simples: " +produto);
-				System.out.println("Quantidade simples: " +quantidade);
-				
-				if(selecaoProdutosTeste != null){
-					for(int i = 0; i < selecaoProdutosTeste.length; i++){
-						System.out.println("Id do Produto FOR: " +selecaoProdutosTeste[i]);
-					}
-				}
-				
-				if(selecaoQuantidadeTeste != null){
-					for(int i = 0; i < selecaoQuantidadeTeste.length; i++){
-						System.out.println("Quantidade FOR: " +selecaoQuantidadeTeste[i]);
-					}
-				}
-				
 				List<Produto> listaprodutos = fachada.listarProdutosPorEstababelecimento(estabelecimento);
 				
 				request.setAttribute("listaprodutos",listaprodutos);
 				request.setAttribute("estabelecimento", estabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03Teste.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
@@ -121,20 +99,22 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				List <Produto> listaProdutos = null;
-				for(int i = 0; i < selecaoProdutos.length; i++){
-					if(listaProdutos == null){
-						listaProdutos = new ArrayList<Produto>();
+				if(selecaoProdutos != null){
+					for(int i = 0; i < selecaoProdutos.length; i++){
+						if(listaProdutos == null){
+							listaProdutos = new ArrayList<Produto>();
+						}
+						int id_produto = Integer.parseInt(selecaoProdutos[i]);
+						int quantidade = Integer.parseInt(selecaoQuantidade[i]);
+						
+						Produto produto = new Produto();
+						produto.setId_produto(id_produto);
+						produto = fachada.pesquisarProduto(produto);
+						
+						produto.setQuantidade(quantidade);
+						
+						listaProdutos.add(produto);
 					}
-					int id_produto = Integer.parseInt(selecaoProdutos[i]);
-					int quantidade = Integer.parseInt(selecaoQuantidade[i]);
-					
-					Produto produto = new Produto();
-					produto.setId_produto(id_produto);
-					produto = fachada.pesquisarProduto(produto);
-					
-					produto.setQuantidade(quantidade);
-					
-					listaProdutos.add(produto);
 				}
 				
 				if(listaProdutos != null){
