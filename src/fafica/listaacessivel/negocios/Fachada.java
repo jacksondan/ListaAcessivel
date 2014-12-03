@@ -185,8 +185,8 @@ public class Fachada implements IFachada {
 	
 	//Lista***************************************************
 	@Override
-	public void adicionarLista(Lista entidade) throws SQLException {
-		this.controlador_lista.adicionarLista(entidade);
+	public int adicionarLista(Lista entidade) throws SQLException {
+		return this.controlador_lista.adicionarLista(entidade);
 	}
 
 	@Override

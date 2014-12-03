@@ -26,7 +26,7 @@ public interface IFachada {
 	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento) throws SQLException;
 	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException;
 	
-	public void adicionarLista(Lista entidade) throws SQLException;
+	public int adicionarLista(Lista entidade) throws SQLException;
 	public void alterarLista(Lista entidade) throws SQLException;
 	public void excluirLista(Lista entidade) throws SQLException;
 	public List<Lista> listarLista() throws SQLException;

@@ -18,8 +18,8 @@ public class ControladorLista {
 		this.repositorioLista = RepositorioLista.getInstancia();
 	}
 
-	public void adicionarLista(Lista entidade) throws SQLException {
-		this.repositorioLista.adicionarLista(entidade);
+	public int adicionarLista(Lista entidade) throws SQLException {
+		return this.repositorioLista.adicionarLista(entidade);
 		
 	}
 
