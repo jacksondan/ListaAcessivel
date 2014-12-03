@@ -25,6 +25,7 @@ public class RepositorioLista implements IRepositorioLista {
 	private PreparedStatement smt;
 	private ResultSet rs;
 	private String sql;
+	private int id_auto_increment = 0;
 	
 	private RepositorioLista() throws ClassNotFoundException, SQLException {
 		connection = ConnectionMysql.getConnectionMysql();
@@ -42,8 +43,8 @@ public class RepositorioLista implements IRepositorioLista {
 	}
 	
 	@Override
-	public void adicionarLista(Lista entidade) throws SQLException {
-		int id_auto_increment = 0;
+	public int adicionarLista(Lista entidade) throws SQLException {
+		
 		//Inserindo na tabela Lisnta
 		sql = "insert into lista (descricao, data_criacao, quantidade_total,"
 			+ " valor_total, status)"
@@ -94,9 +95,11 @@ public class RepositorioLista implements IRepositorioLista {
 			smt.execute();
 			smt.close();
 		}
-		
 		System.out.println("ID AUTO INCREMENT DE LISTA: "+id_auto_increment);
 		System.out.println("ADICIONAR LISTA OK");
+		
+		return id_auto_increment;
+		
 	}
 
 	

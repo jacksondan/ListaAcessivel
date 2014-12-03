@@ -8,7 +8,7 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 
 public interface IRepositorioLista {
-	public void adicionarLista(Lista lista) throws SQLException;
+	public int adicionarLista(Lista lista) throws SQLException;
 	public void alterarLista(Lista lista) throws SQLException;
 	public void excluirLista(Lista lista) throws SQLException;
 	public List<Lista> listarListas() throws SQLException;
