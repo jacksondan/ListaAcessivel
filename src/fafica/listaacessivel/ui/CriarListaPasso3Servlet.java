@@ -91,21 +91,40 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
+				String [] selecaoIdProduto = request.getParameterValues("id_produto");
 				String [] selecaoQuantidade = request.getParameterValues("quantidade");
+				String [] quantidadesListadas = null;
 				
 				Estabelecimento estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				List <Produto> listaProdutos = null;
+				
+				
+				
 				if(selecaoProdutos != null){
+					
+					quantidadesListadas = new String[selecaoProdutos.length];
+					
+					for(int i=0; i < selecaoProdutos.length; i++){
+						for(int e=0; e < selecaoIdProduto.length; e++){
+							if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
+								quantidadesListadas[i] = selecaoQuantidade[e];
+								break;
+							}
+						}
+					}
+				
+				
+					List <Produto> listaProdutos = null;
 					for(int i = 0; i < selecaoProdutos.length; i++){
 						if(listaProdutos == null){
 							listaProdutos = new ArrayList<Produto>();
 						}
 						int id_produto = Integer.parseInt(selecaoProdutos[i]);
-						int quantidade = Integer.parseInt(selecaoQuantidade[i]);
+						int quantidade = Integer.parseInt(quantidadesListadas[i]);
 						
 						Produto produto = new Produto();
 						produto.setId_produto(id_produto);
@@ -115,15 +134,20 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						listaProdutos.add(produto);
 					}
-				}
-				
-				if(listaProdutos != null){
-					Lista lista = new Lista("", Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
-					fachada.adicionarLista(lista);
 					
-					response.sendRedirect("visaoCliente.jsp"); // Teste
-				}else{
-					response.sendRedirect("LogoutServlet"); // Teste
+					if(listaProdutos != null){
+						Lista lista = new Lista("", Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
+						//int id_lista = fachada.adicionarLista(lista);
+						
+						
+						request.setAttribute("lista",lista);
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
+						requestDispatcher.forward(request, response);
+						
+						//response.sendRedirect("visaoCliente.jsp"); // Teste
+					}else{
+						response.sendRedirect("LogoutServlet"); // Teste
+					}
 				}
 				
 			} catch (ClassNotFoundException e) {

@@ -98,17 +98,16 @@
 					<tbody>
 				
 					<c:forEach items="${listaprodutos}" var="produto" varStatus="status">
-					
-					<tr>
-						<td headers="descricao">${produto.descricao}</td>
-						<td headers="marca">${produto.marca}</td>
-						<td headers="valor">R$ ${produto.valor}</td>
-						<td headers="validade">${produto.validade}</td>
-						<td headers="peso">${produto.peso}</td>
-						<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-						
-						<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade"   value="0" min="0" alt="Digite a Quantidade Desejada" /></div></td>
-					</tr>					
+						<tr>
+							<td headers="descricao">${produto.descricao}</td>
+							<td headers="marca">${produto.marca}</td>
+							<td headers="valor">R$ ${produto.valor}</td>
+							<td headers="validade">${produto.validade}</td>
+							<td headers="peso">${produto.peso}</td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<input type="hidden" name="id_produto" value="${produto.id_produto}"/>
+							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="1" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+						</tr>
 					</c:forEach>
 					</tbody>
 					<tfoot>
