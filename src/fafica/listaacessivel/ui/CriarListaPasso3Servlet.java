@@ -83,7 +83,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				
 				request.setAttribute("listaprodutos",listaprodutos);
 				request.setAttribute("estabelecimento", estabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03Teste.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
