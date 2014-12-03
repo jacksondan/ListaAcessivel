@@ -242,7 +242,8 @@ public class RepositorioProduto implements IRepositorioProduto {
 		
 		sql = "select lp.*, p.*, lce.* from lista_produto lp, lista_cliente_estabelecimento lce, produto p where"
 				+ " lp.id_lista = " +lista.getId_lista()+ " and lce.id_lista = " +lista.getId_lista()
-				+ " and lp.id_produto = p.id_produto and p.status '" +Status.ATIVO.toString()+ "'";
+				+ " and lp.id_produto = p.id_produto and p.status = '" +Status.ATIVO.toString()+ "'";
+		
 		stm = connection.prepareStatement(sql);	
 		result = stm.executeQuery();
 		

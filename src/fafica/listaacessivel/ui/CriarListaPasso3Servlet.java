@@ -113,7 +113,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						for(int e=0; e < selecaoIdProduto.length; e++){
 							if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
 								quantidadesListadas[i] = selecaoQuantidade[e];
-								System.out.println(quantidadesListadas[i]);
+								System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
+								break;
 							}
 						}
 					}
@@ -138,8 +139,10 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					
 					if(listaProdutos != null){
 						Lista lista = new Lista("", Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
-						fachada.adicionarLista(lista);
+						int id_lista = fachada.adicionarLista(lista);
+						lista.setId_lista(id_lista);
 						
+						lista = fachada.pesquisarLista(lista);
 						
 						request.setAttribute("lista",lista);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
