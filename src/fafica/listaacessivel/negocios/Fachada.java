@@ -152,8 +152,8 @@ public class Fachada implements IFachada {
 	}
 	
 	@Override
-	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento) throws SQLException{
-		List <Produto> listaProdutos = this.controlador_produto.listarProdutosPorEstabelecimento(estabelecimento);
+	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento, String categoria_produto, String descricao_produto) throws SQLException{
+		List <Produto> listaProdutos = this.controlador_produto.listarProdutosPorEstabelecimento(estabelecimento, categoria_produto, descricao_produto);
 		if(listaProdutos != null){
 			for(Produto produto : listaProdutos){
 				estabelecimento = 
