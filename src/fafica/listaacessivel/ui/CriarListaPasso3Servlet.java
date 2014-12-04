@@ -115,8 +115,11 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
+				String descricao = request.getParameter("descricaolista");
 				
-				
+				if(descricao == null){
+					descricao = "";
+				}
 				
 				if(selecaoProdutos != null){
 					
@@ -152,7 +155,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					}
 					
 					if(listaProdutos != null){
-						Lista lista = new Lista("", Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
+						Lista lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
 						int id_lista = fachada.adicionarLista(lista);
 						lista.setId_lista(id_lista);
 						
