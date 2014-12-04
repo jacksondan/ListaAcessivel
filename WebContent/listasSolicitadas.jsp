@@ -28,7 +28,8 @@
 </head>
 <body>
 
-	<%@include file="headerFuncionario.html"%>
+<%@include file="headerFuncionario.html" %>
+<%@include file="sidebarFuncionario.html" %>
 	<div id="content">
 
 		<header class="major">
