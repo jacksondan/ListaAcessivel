@@ -61,18 +61,22 @@ public class CadastrarProdutoServlet extends HttpServlet {
 					
 					String descricao = request.getParameter("descricao");
 					
-					String valorInicial = request.getParameter("valor");
-					valorInicial = valorInicial.replaceAll(",", ".");
-					float valor = Float.parseFloat(valorInicial);
+					String valorString = request.getParameter("valor");
+					valorString = valorString.replaceAll(",", ".");
+					float valor = Float.parseFloat(valorString);
 					
 					int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 					String categoria = request.getParameter("categoria");
-					float peso = Float.parseFloat(request.getParameter("peso"));
-					String validade = "01/05/2014";
-					String marca = "Beta";
-					String codigo_de_barra = "0000";
+					
+					String pesoString = request.getParameter("peso");
+					pesoString = pesoString.replaceAll(",", ".");
+					float peso = Float.parseFloat(pesoString);
+					
+					String validade = request.getParameter("validade");
+					String marca = request.getParameter("marca");
+					String codigo_barra = request.getParameter("codigo_barra");
 										
-					Produto p = new Produto(descricao,categoria,peso,quantidade,valor,validade,marca,codigo_de_barra,estabelecimento);
+					Produto p = new Produto(descricao,categoria,peso,quantidade,valor,validade,marca,codigo_barra,estabelecimento);
 					
 					fachada.adicionarProduto(p);
 										

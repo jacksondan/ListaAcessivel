@@ -39,7 +39,7 @@
 				<p>
 					<label for="valor">Preço:</label> <input type="text" name="valor"
 						id="valor" size=10> <label for="quantidade">Código
-						de Barra:</label> <input type="text" name="codigo_de_barra"
+						de Barra:</label> <input type="text" name="codigo_barra"
 						id="codigo_de_barra" size=20>
 				</p>
 				<label for="quantidade">Quantidade:</label> <input type="text"
