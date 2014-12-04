@@ -69,7 +69,7 @@
 				<input type="hidden" name="id_estabelecimento" value="${estabelecimento.id_estabelecimento}" />
 					
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
-				Com as seguintes colunas,Descrição,Marca,Valor,Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
+				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
 					<caption>Produtos disponíveis da categoria ${categoria}s filtrados por ${filtragem}</caption>
 					<colgroup>
     							<col />
@@ -105,17 +105,17 @@
 							<td headers="validade">${produto.validade}</td>
 							<td headers="peso">${produto.peso}</td>
 							<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							<input type="hidden" name="id_produto" value="${produto.id_produto}"/>
+							
 							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="1" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 						</tr>
 					</c:forEach>
 					</tbody>
-					<tfoot>
-					
+					<tfoot>	
 					</tfoot>
 				</table>
 				<div id="finalizar">
-				
+					
+					<input type="hidden" name="id_produto" value="${produto.id_produto}"/>
 					<button type="submit" class="button3" >Finalizar Lista</button>
 				</div>
 				</form>
