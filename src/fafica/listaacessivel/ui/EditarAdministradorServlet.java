@@ -76,15 +76,17 @@ public class EditarAdministradorServlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
+				administrador = fachada.pesquisarAdministrador(administrador);
+				
 				int id_administrador = administrador.getId_usuario();
 				String nome = request.getParameter("nome");
 				String cpf = request.getParameter("cpf");
 				String email = request.getParameter("email");
 				String senha = administrador.getSenha();
 				
-				Administrador administrador2 = new Administrador(id_administrador, nome, email, cpf, senha);
+				Administrador entidade = new Administrador(id_administrador, nome, email, cpf, senha);
 								
-				fachada.alterarAdministrador(administrador2);
+				fachada.alterarAdministrador(entidade);
 				
 				response.sendRedirect("PerfilAdministradorServlet");
 				

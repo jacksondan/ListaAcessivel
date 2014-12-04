@@ -24,9 +24,7 @@
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> 
-						<input type = "hidden" name="id_administrador" id="email" value="${editarAdministrador.id_usuario}" />
-						<input type = "hidden" name="senha" id="email" value="${editarAdministrador.senha}" />
-						
+											
 						<input type="email" placeholder="Digite o E-mail" name="email" id="email" value="${editarAdministrador.email}" required="email" size=60 />
 				</fieldset>
 				<fieldset>
