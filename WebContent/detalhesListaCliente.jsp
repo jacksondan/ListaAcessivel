@@ -75,7 +75,7 @@
 					<tfoot>	
 					<tr>
 					<th colspan="4">Quantidade total de produtos: ${lista.quantidade_total}</th>
-					<th colspan="2"id="quantidadeProdutos">Valor total da lista: R$${lista.valor_total}</th>
+					<th colspan="2"id="quantidadeProdutos">Valor total da lista: R$ ${lista.valor_total}</th>
 					</tr>
 					</tfoot>
 				</table>

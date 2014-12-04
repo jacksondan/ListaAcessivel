@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
 
 /**
@@ -37,13 +38,14 @@ public class DetalhesListaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
-		if(cliente == null){
+		Funcionario funcionario = (Funcionario) session.getAttribute("acessoFuncionario");
+		if(funcionario == null && cliente == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
-		}else{
+		}else if(funcionario == null && cliente != null){
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
@@ -55,6 +57,27 @@ public class DetalhesListaServlet extends HttpServlet {
 				
 				request.setAttribute("lista",lista);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else if(funcionario != null && cliente == null){
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
+				Lista lista = new Lista();
+				lista.setId_lista(id_lista);
+				
+				lista = fachada.pesquisarLista(lista);
+				
+				request.setAttribute("lista",lista);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaFuncionario.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
