@@ -25,8 +25,8 @@
 				<p>Descrição: ${lista.descricao}</p>
 				<p>Data de Criação:  ${lista.data_criacao}</p>					
 				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
-				<p>Bairro do Estabelecimento: ${$lista.estabelecimento.endereco.bairro }</p>
-				<p>Rua  do Estabelecimento: ${$lsita.estabelecimento.endereco.rua }</p>
+				<p>Bairro do Estabelecimento: ${$lista.estabelecimento.endereco.bairro}</p>
+				<p>Rua  do Estabelecimento: ${$lista.estabelecimento.endereco.rua}</p>
 				<p>Telefone 1:${lista.estabelecimento.telefones[0]}</p>
 				<p>Telefone 2:${lista.estabelecimento.telefones[1]}</p>
 				</fieldset>
