@@ -9,15 +9,15 @@
 </head>
 <body>
 
-	  <%@include file="headerEstabelecimento.html"%>
+	<%@include file="headerEstabelecimento.html"%>
 
 	<%@include file="sidebarEstabelecimento.html"%>
-	
+
 
 	<div id="content2">
 		<header class="major">
 			<h2>Cadastro de Produtos</h2>
-			<h4>${mensagem}</h4> 
+			<h4>${mensagem}</h4>
 		</header>
 		<!-- Formulário aqui! -->
 		<form method="post"
@@ -28,15 +28,26 @@
 					<strong>Dados do Produto</strong>
 				</legend>
 				<p>
-				<label for="descrição">Descrição:</label> <input type="text"
-					name="descricao" id="descrição" size=60></p> <p><label
-					for="valor">Preço:</label> <input type="text" name="valor"
-					id="valor" size=10></p> <label for="quantidade">Quantidade:</label>
-				<input type="text" name="quantidade" id="quantidade" size=10>
-				<label for="quantidade">Peso:</label>
-				<input type="text" name="peso" id="peso" size=10>
+					<label for="descrição">Descrição:</label> <input type="text"
+						name="descricao" id="descrição" size=60>
+				</p>
 				<p>
-					<label for="categoria">Categoria:<br /> <select
+					<label for="marca">Marca:</label> <input type="text"
+					name="marca" id="marca" size=55>
+				</p>
+				
+				<p>
+					<label for="valor">Preço:</label> <input type="text" name="valor"
+						id="valor" size=10> <label
+					for="quantidade">Código de Barra:</label> <input type="text" name="codigo_de_barra"
+					id="codigo_de_barra" size=20>					
+				</p>
+				<label for="quantidade">Quantidade:</label> <input type="text"
+					name="quantidade" id="quantidade" size=10> <label
+					for="quantidade">Peso:</label> <input type="text" name="peso"
+					id="peso" size=10>
+				<p>
+					<label for="categoria">Categoria:<select
 						name="categoria" id="categoria">
 							<option selected="não selecionado" value="não selecionado">Escolha
 								a categoria</option>
@@ -46,6 +57,10 @@
 							<option value="Alimentos">Alimentos</option>
 					</select>
 					</label>
+					
+					<label
+					for="quantidade">Validade:</label> <input type="date" name="data_de_validade"
+					id="data_de_validade" size=10>
 				</p>
 			</fieldset>
 
