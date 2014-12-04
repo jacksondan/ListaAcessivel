@@ -160,11 +160,26 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 							RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
 							requestDispatcher.forward(request, response);
 						}else{
+							fachada.alterarLista(lista);
+							
 							lista = fachada.pesquisarLista(lista);
 							
-							request.setAttribute("lista",lista);
-							RequestDispatcher requestDispatcher = request.getRequestDispatcher("EditarListaPasso2Servlet");
-							requestDispatcher.forward(request, response);
+							List<Produto> produtosNaoPossui = fachada.listarProdutosPorEstababelecimento(lista.getEstabelecimento(), null, null);
+							List<Produto> teste = new ArrayList<Produto>();
+							teste.addAll(produtosNaoPossui);
+							
+							for(Produto p1 : lista.getProdutos()){
+								for(Produto p2 : teste){
+									if(p1.getId_produto() == p2.getId_produto()){
+										produtosNaoPossui.remove(p2);
+									}
+								}
+							}
+							
+							request.setAttribute("lista", lista);
+							request.setAttribute("produtosnaopossui", produtosNaoPossui);
+							RequestDispatcher dispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
+							dispatcher.forward(request, response);
 						}
 						
 						//response.sendRedirect("visaoCliente.jsp"); // Teste

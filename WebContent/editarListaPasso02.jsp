@@ -49,7 +49,6 @@
 		</header>
 		<div id="filtro2">
 		<form action="EditarListaPasso2Servlet" method="GET">
-		
 		<input type="hidden" name="id_estabelecimento"  value="${lista.estabelecimento.id_estabelecimento}" />
 		
 		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
@@ -66,6 +65,7 @@
 		</div>
 				<form action="EditarListaPasso2Servlet" id="formlista"method="POST">
 				
+				<input type="hidden" name="id_lista"  value="${lista.id_lista}" />
 				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
 					
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
@@ -95,7 +95,7 @@
 					
 					<tbody>
 				
-					<c:forEach items="${lista.produtos}" var="produto" varStatus="status">
+					<c:forEach items="${produtosnaopossui}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}</td>
 							<td headers="marca">${produto.marca}</td>
