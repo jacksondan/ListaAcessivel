@@ -17,7 +17,7 @@ public class Lista {
 	private Estabelecimento estabelecimento;
 	private List<Produto> produtos;
 		
-	private SimpleDateFormat dmy;
+	private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");;
 	
 	public Lista(){
 		
@@ -29,7 +29,6 @@ public class Lista {
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
 		this.data_criacao = dmy.format(new Date());
 		
 		if(produtos != null){
@@ -48,7 +47,6 @@ public class Lista {
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		dmy = new SimpleDateFormat("h:m:s - d/M/y");;
 		this.data_alteracao = dmy.format(new Date());
 		
 		if(produtos != null){
