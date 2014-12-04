@@ -51,7 +51,7 @@
 		
 				<form action="EditarListaPasso01Servlet"  method="POST">
 				
-				<input type="hidden" name="id_estabelecimento" value="${lista.estabeleciento.id_estabelecimento}" />
+				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
 					
 				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia}, da lista ${lista.descricao}
 				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade, nesta tela.">
@@ -82,16 +82,16 @@
 					
 					<tbody>
 				
-					<c:forEach items="${lista}" var="lista" varStatus="status">
+					<c:forEach items="${lista.produtos}" var="produto" varStatus="status">
 						<tr>
-							<td headers="descricao">${lista.produto.descricao}</td>
-							<td headers="marca">${lista.produto.marca}</td>
-							<td headers="valor">R$ ${lista.produto.valor}</td>
-							<td headers="validade">${lista.produto.validade}</td>
-							<td headers="peso">${lista.produto.peso}</td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox" value="checked"name="selecionado" id="selecionados" value="${lista.produto.id_produto}" /></td>
-							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="${lista.produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
-							<input type="hidden" name="id_produto" value="${lista.produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
+							<td headers="descricao">${produto.descricao}</td>
+							<td headers="marca">${produto.marca}</td>
+							<td headers="valor">R$ ${produto.valor}</td>
+							<td headers="validade">${produto.validade}</td>
+							<td headers="peso">${produto.peso}</td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox" value="checked"name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>
 					</tbody>
