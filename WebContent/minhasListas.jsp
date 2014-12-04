@@ -74,7 +74,7 @@
 							<td headers="total">R$ ${listas.valor_total}</td>
 							<td headers="detalhes"><a href="DetalhesListaServlet?id_lista=${listas.id_lista}" class="button2">Detalhes</a></td>
 							<td headers="editar"><a href="EditarListaPasso1Servlet?id_lista=${listas.id_lista}" class="button2">Editar</a></td>
-							<td headers="excluir"><a href="ExluirListaServlet?id_lista=${listas.id_lista}" class="button2">Excluir</a></td>
+							<td headers="excluir"><a href="ExcluirListaServlet?id_lista=${listas.id_lista}" class="button2">Excluir</a></td>
 							
 						</tr>
 					</c:forEach>
