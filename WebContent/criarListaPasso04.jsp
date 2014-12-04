@@ -23,6 +23,7 @@
 				<div id="infolista">
 				<fieldset><legend>Informações da Lista</legend>	
 				<p>Descrição: ${lista.descricao}</p>
+				<p>Situação da Lista: ${lista.situacao}</p>
 				<p>Data de Criação:  ${lista.data_criacao}</p>					
 				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
 				<p>Bairro do Estabelecimento: ${lista.estabelecimento.endereco.bairro}</p>
@@ -74,7 +75,9 @@
 				<div id="filtro2">
 					<button class="button3" onclick="window.location.href='CriarListaPassoServlet?id_lista=${lista.id_lista}'" >Editar Produtos</button>
 					<button class="button3" >Imprimir</button>
-					<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
+					<c:if test="${lista.situacao == 'criada'}">
+						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
+					</c:if>
 				</div>
 				
 	</div>

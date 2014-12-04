@@ -126,7 +126,7 @@ public class RepositorioLista implements IRepositorioLista {
 		smt.execute();
 		smt.close();
 		
-		sql = "delete from lista_produto where id_lista "+entidade.getId_lista();
+		sql = "delete from lista_produto where id_lista = " +entidade.getId_lista();
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
