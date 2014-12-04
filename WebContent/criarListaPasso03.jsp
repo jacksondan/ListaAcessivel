@@ -64,7 +64,7 @@
 				<input type="submit" value="pesquisar" class="button">
 				</form>
 		</div>
-				<form action="CriarListaPasso3Servlet" method="POST">
+				<form action="CriarListaPasso3Servlet" id="formlista"method="POST">
 				
 				<input type="hidden" name="id_estabelecimento" value="${estabelecimento.id_estabelecimento}" />
 					
@@ -113,7 +113,14 @@
 					<tfoot>	
 					</tfoot>
 				</table>
+				
+				<div id="descri">
+				<label for="desc">Descrição da Lista</label><br>
+				<textarea name="descricaolista" id="desc" wrap="soft" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40"></textarea>
+				</div>
+				
 					<div id="finalizar">
+					
 						<button type="submit" class="button3" >Finalizar Lista</button>
 					</div>
 				</form>

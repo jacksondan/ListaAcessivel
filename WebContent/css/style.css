@@ -453,6 +453,12 @@ input[type="number"] {
 		margin-right:30%;
 		margin-bottom:2em;
 		}
+		#descri{
+		position:relative;
+		margin-top:5em;
+		margin-left:38%;
+		margin-bottom:2em;
+		}
 /*********************************************************************************/
 /* Wrappers                                                                      */
 /*********************************************************************************/

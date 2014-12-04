@@ -23,7 +23,7 @@
 				<div id="infolista">
 				<fieldset><legend>Informações da Lista</legend>	
 				<p>Descrição: ${lista.descricao}</p>
-				<p>Data de Criação: ${lista.data_criacao}</p>					
+				<p>Data de Criação:  ${lista.data_criacao}</p>					
 				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
 				<p>Bairro do Estabelecimento: ${$lista.estabelecimento.endereco.bairro }</p>
 				<p>Rua  do Estabelecimento: ${$lsita.estabelecimento.endereco.rua }</p>
