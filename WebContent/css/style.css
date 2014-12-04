@@ -449,10 +449,9 @@ input[type="number"] {
 		
 		#infolista{
 		position:relative;
-		
-		margin-top:5%;
-		margin-left:10%;
-		
+		margin-top:2em;
+		margin-right:30%;
+		margin-bottom:2em;
 		}
 /*********************************************************************************/
 /* Wrappers                                                                      */
