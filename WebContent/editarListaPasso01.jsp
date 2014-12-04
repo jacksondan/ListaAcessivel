@@ -31,7 +31,7 @@
     //lógica  dos checkbox
     $(document).ready(function() {
     $('.checkbox').click(function() {
-    $('.divs').toggle();
+    $('.divs').hide();
     $('.checkbox:checked').each(function() { 
     $('#d'+$(this).val()).show(); 
     });
