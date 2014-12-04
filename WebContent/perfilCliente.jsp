@@ -59,7 +59,7 @@
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">
-											<li><a href="EditarClienteServlet" class="button">Editar Perfilk</a></li>
+											<li><a href="EditarClienteServlet" class="button">Editar Perfil</a></li>
 											<li><a href="EditarSenhaClienteServlet" class="button">Editar Senha</a></li>
 											<li><a href="ExcluirClienteServlet" class="button">Excluir Perfil</a></li>
 											

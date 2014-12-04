@@ -52,12 +52,9 @@
 						<th rowspan="2"id="data">Data de Criação</th>
 						<th rowspan="2"id="descrição">Total de Produtos da Lista</th>
 						<th rowspan="2"id="total">Valor Total da Lista</th>					
-						<th colspan="3"id="função">Funções</th>
+						<th rowspan="2"id="detalhes">Detalhes</th>
 					</tr>
-					<tr>
-						<th id="detalhes" axis="função">Detalhes</th>
-						<th id="confirmar" axis="função">Confirmar Atendimento</th>							
-					</tr>
+					
 					</thead>
 					
 					<tbody>
@@ -70,7 +67,6 @@
 							<td headers="data">${listas.quantidade_total}</td>
 							<td headers="total">R$ ${listas.valor_total}</td>
 							<td headers="detalhes"><a href="DetalhesListaServlet?id_lista=${listas.id_lista}" class="button2">Detalhes</a></td>
-							<td headers="detalhes"><a href="ConfirmarEntregaListaServlet?id_lista=${listas.id_lista}" class="button2">Confirmar</a></td>			
 						</tr>
 					</c:forEach>
 					</tbody>

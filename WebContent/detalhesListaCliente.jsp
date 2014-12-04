@@ -28,15 +28,17 @@
 		</header>
 				
 				<div id="infolista">
-				<fieldset><legend>Informações da Lista</legend>	
+				<fieldset><legend>Informações da Lista</legend>
+				
 				<p class="p">Descrição: ${lista.descricao}</p>
 				<p class="p">Situação da Lista: ${lista.situacao}</p>
 				<p class="p">Data de Criação:  ${lista.data_criacao}</p>					
-				<p class="p">Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
-				<p class="p">Bairro do Estabelecimento: ${lista.estabelecimento.endereco.bairro}</p>
+				<p class="p">Estabelecimento:  ${lista.estabelecimento.nome_fantasia}</p>
+				<p class="p">Bairro do Estabelecimento:${lista.estabelecimento.endereco.bairro}</p>
 				<p class="p">Rua  do Estabelecimento: ${lista.estabelecimento.endereco.rua}</p>
 				<p class="p">Telefone 1: ${lista.estabelecimento.telefones[0]}</p>
 				<p class="p">Telefone 2: ${lista.estabelecimento.telefones[1]}</p>
+				
 				</fieldset>
 				</div>
 		
