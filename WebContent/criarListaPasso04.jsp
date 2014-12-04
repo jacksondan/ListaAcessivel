@@ -25,10 +25,10 @@
 				<p>Descrição: ${lista.descricao}</p>
 				<p>Data de Criação:  ${lista.data_criacao}</p>					
 				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
-				<p>Bairro do Estabelecimento: ${$lista.estabelecimento.endereco.bairro}</p>
-				<p>Rua  do Estabelecimento: ${$lista.estabelecimento.endereco.rua}</p>
-				<p>Telefone 1:${lista.estabelecimento.telefones[0]}</p>
-				<p>Telefone 2:${lista.estabelecimento.telefones[1]}</p>
+				<p>Bairro do Estabelecimento: ${lista.estabelecimento.endereco.bairro}</p>
+				<p>Rua  do Estabelecimento: ${lista.estabelecimento.endereco.rua}</p>
+				<p>Telefone 1: ${lista.estabelecimento.telefones[0]}</p>
+				<p>Telefone 2: ${lista.estabelecimento.telefones[1]}</p>
 				</fieldset>
 				</div>
 		
@@ -72,9 +72,9 @@
 					</tfoot>
 				</table>
 				<div id="filtro2">
-					<button class="button3" onclick="window.location.href='CriarListaPassoServlet?id+lista=${lista.id_lista}'" >Editar Produtos</button>
+					<button class="button3" onclick="window.location.href='CriarListaPassoServlet?id_lista=${lista.id_lista}'" >Editar Produtos</button>
 					<button class="button3" >Imprimir</button>
-					<button class="button3" >Solicitar Compra</button>
+					<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
 				</div>
 				
 	</div>
