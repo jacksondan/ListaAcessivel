@@ -37,7 +37,7 @@ jQuery(function($){
 
 		<!-- Formulário aqui! -->
 		<form method="post"
-			action="http://localhost:8080/ListaAcessivel/EditarClienteServlet">
+			action="EditarClienteServlet">
 			
 			<fieldset>
 				<legend>Dados Pessoais</legend>

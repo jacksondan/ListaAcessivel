@@ -101,6 +101,8 @@ public class EditarClienteServlet extends HttpServlet {
 				
 				ArrayList <String> telefones = new ArrayList <String>();
 				
+				cliente = fachada.pesquisarCliente(cliente);
+				
 				int id_usuario = cliente.getId_usuario();
 				String nome = request.getParameter("nome");
 				String cpf = request.getParameter("cpf");
