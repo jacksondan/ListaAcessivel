@@ -17,11 +17,13 @@
 	<div id="content">
 
 		<header class="major">
-			<h2>Criar Lista Passo 04</h2>	
+			<h2>Detalhes da Lista</h2>	
 		</header>
 				
 				<div id="infolista">
-				<fieldset><legend>Informações da Lista</legend>						
+				<fieldset><legend>Informações da Lista</legend>	
+				<p>Descrição: ${lista.descricao}</p>
+				<p>Data de Criação: ${lista.data_criacao}</p>					
 				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
 				<p>Bairro do Estabelecimento: ${$lista.estabelecimento.endereco.bairro }</p>
 				<p>Rua  do Estabelecimento: ${$lsita.estabelecimento.endereco.rua }</p>
@@ -41,6 +43,7 @@
 							<th rowspan="2"id="marca">Marca</th>
 							<th rowspan="2"id="validade">Validade</th>
 							<th rowspan="2"id="peso">Peso</th>
+							<th rowspan="2"id="quantidade">Quantidade Solicitada</th>
 							<th rowspan="2"id="valor">Preço Unitário</th>
 						</tr>
 					
@@ -49,38 +52,29 @@
 					
 					<tbody>
 				
-					<c:forEach items="${lista}" var="lista" varStatus="status">
+					<c:forEach items="${lista.produtos}" var="produto" varStatus="status">
 						<tr>
-							<td headers="descricao">${lista.produto.descricao}</td>
-							<td headers="marca">${lista.produto.marca}</td>							
-							<td headers="validade">${lista.produto.validade}</td>
-							<td headers="peso">${lista.produto.peso}</td>
-							<td headers="valor">R$${lista.produto.valor}</td>
+							<td headers="descricao">${produto.descricao}</td>
+							<td headers="marca">${produto.marca}</td>							
+							<td headers="validade">${produto.validade}</td>
+							<td headers="peso">${produto.peso}</td>
+							<td headers="quantidade">${produto.quantidade}</td>
+							<td headers="valor">R$${produto.valor}</td>
 							
 						</tr>
 					</c:forEach>
 					</tbody>
 					<tfoot>	
 					<tr>
-					<th colspan="3">Quantidade total de produtos:${lista.quantidade_total}</th>
-					<th colspan="2"id="quantidadeProdutos">Valor total da lista:${lista.valor_total}</th>
+					<th colspan="4">Quantidade total de produtos: ${lista.quantidade_total}</th>
+					<th colspan="2"id="quantidadeProdutos">Valor total da lista: R$${lista.valor_total}</th>
 					</tr>
 					</tfoot>
 				</table>
 				<div id="filtro2">
-					
-					
-					<button class="button3" onclick="window.location.href='CriarListaPasso2Servlet?id+lista=${lista.id_lista}&'" >Adicionar Produtos</button>
+					<button class="button3" onclick="window.location.href='CriarListaPassoServlet?id+lista=${lista.id_lista}'" >Editar Produtos</button>
 					<button class="button3" >Imprimir</button>
 					<button class="button3" >Solicitar Compra</button>
-				</div>
-				
-				<div id="finalizar">
-				
-				<!--
-					<button type="submit" onclick="window.location.href='CriarListaPasso3Servlet?selecionado=selecionado&quantidade=quantidade&id_estabelecimento=${estabelecimento.id_estabelecimento}'"class="button3" >Finalizar Lista</button>
-				-->
-				
 				</div>
 				
 	</div>
