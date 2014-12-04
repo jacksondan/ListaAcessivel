@@ -1,26 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"
-	import="fafica.listaacessivel.negocios.entidades.Cliente"%>
+	import="fafica.listaacessivel.negocios.entidades.Administrador"%>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>NomeEstabelecimento - Inicio</title>
+<title>Nome Administrador - Início</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 </head>
 <body>
-	<%@include file="headerFuncionario.html"%>
+	<%@include file="headerAdmin.html"%>
 
-	<%@include file="sidebarFuncionario.html"%>
+	<%@include file="sidebarAdmin.html"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Senha</h2>
 		</header>
 
 		<form method="post" name="f1"
-			action="http://localhost:8080/ListaAcessivel/EditarSenhaFuncionarioServlet">
+			action="http://localhost:8080/ListaAcessivel/EditarSenhaAdministradorServlet">
 			<p style="text-align:center;color:green;">${mensagem}</p>
 			<fieldset>
 				<legend>Edição de Senha</legend>

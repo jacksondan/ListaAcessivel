@@ -4,15 +4,15 @@
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Editar Administrador - Início</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
 
 </head>
 <body>
-	<%@include file="headerEstabelecimento.html"%>
-	<%@include file="sidebarEstabelecimento.html"%>
+	<%@include file="headerAdmin.html"%>
+	<%@include file="sidebarAdmin.html"%>
 	
 		<div id="content2">
 			<header class="major">

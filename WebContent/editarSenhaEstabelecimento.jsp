@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>NomeEstabelecimento - Inicio</title>
+<title>Editar Senha Estabelecimento - Início</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 </head>
