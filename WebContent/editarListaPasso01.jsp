@@ -105,7 +105,7 @@
 				</div>
 				
 					<div id="finalizar">
-						<button type="submit"class="button3" onclick="window.location.href='EditarPasso02Servlet?id_lista=${lista.id_lista}'" >Adicionar Produtos</button>
+						<button type="submit"class="button3" name="adicionarProduto" value="true">Adicionar Produtos </button>
 						<button type="submit" class="button3" >Finalizar Edição</button>
 					</div>
 				</form>
