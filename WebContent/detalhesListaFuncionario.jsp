@@ -19,9 +19,7 @@
 </head>
 <body>
 
-<%@include file="headerFuncionario.html" %>
-<%@include file="sidebarFuncionario.html" %>
-	
+	<%@include file="headerFuncionario.html" %>
 	
 	<div id="content">
 
