@@ -44,7 +44,7 @@
 				</p>
 				<label for="quantidade">Quantidade:</label> <input type="text"
 					name="quantidade" id="quantidade" size=10> <label
-					for="quantidade">Peso:</label> <input type="text" name="peso"
+					for="peso">Peso:</label> <input type="text" name="peso"
 					id="peso" size=10>
 				<p>
 					<label for="categoria">Categoria:<select
@@ -59,8 +59,8 @@
 					</label>
 					
 					<label
-					for="quantidade">Validade:</label> <input type="date" name="data_de_validade"
-					id="data_de_validade" size=10>
+					for="validade">Validade:</label> <input type="date" name="validade"
+					id="validade" size=10>
 				</p>
 			</fieldset>
 
