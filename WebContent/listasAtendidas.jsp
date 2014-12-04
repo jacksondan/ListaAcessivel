@@ -31,7 +31,7 @@
 	<%@include file="headerFuncionario.html" %>
 	<%@include file="sidebarFuncionario.html" %>
 	
-	<div id="content">
+	<div id="content2">
 
 		<header class="major">
 			<h2>Listas Atendidas</h2>	
