@@ -54,7 +54,7 @@
 		
 		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
 				<select name="categoria" >
-					 
+					 <option value="não selecionada"></option>
 					  <option value="alimentos">Alimentos</option>
 					  <option value="bebidas">Bebidas</option>
 					  <option value="frios">Frios</option>

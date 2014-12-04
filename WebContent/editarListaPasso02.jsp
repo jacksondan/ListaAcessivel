@@ -8,7 +8,7 @@
 <title>${cliente.nome}- Inicio</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
-.divs{display:block;
+.divs{display:none;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -45,18 +45,32 @@
 	<div id="content">
 
 		<header class="major">
-			<h2>Edição da Lista</h2>	
+			<h2>Adicionar novos produtos</h2>	
 		</header>
-	
+		<div id="filtro2">
+		<form action="EditarListaPasso2Servlet" method="GET">
 		
-				<form action="EditarListaPasso1Servlet" id="formlista" method="POST">
+		<input type="hidden" name="id_estabelecimento"  value="${lista.estabelecimento.id_estabelecimento}" />
+		
+		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
+				<select name="categoria" >
+					 <option value="não selecionada"></option>
+					  <option value="alimentos">Alimentos</option>
+					  <option value="bebidas">Bebidas</option>
+					  <option value="frios">Frios</option>
+					  <option value="limpeza">Produtos de Limpeza</option>
+				</select>
+				
+				<input type="submit" value="pesquisar" class="button">
+				</form>
+		</div>
+				<form action="EditarListaPasso2Servlet" id="formlista"method="POST">
 				
 				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
-				<input type="hidden" name="id_lista" value="${lista.id_lista}" />
 					
-				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia}, da lista ${lista.descricao}
-				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade, nesta tela.">
-					<caption>Produtos da Lista ${lista.descricao} </caption>
+				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
+				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
+					<caption>Produtos disponíveis da categoria ${categoria}s filtrados por ${filtragem}</caption>
 					<colgroup>
     							<col />
     							<col />
@@ -65,14 +79,12 @@
 					<thead>
 					
 					<tr>
-					
 						<th rowspan="2"id="descricao">Descrição</th>
 						<th rowspan="2"id="marca">Marca</th>
 						<th rowspan="2"id="valor">Valor</th>
 						<th rowspan="2"id="validade">Validade</th>
 						<th rowspan="2"id="peso">Peso</th>
-						<th colspan="2"id="funcao">Função</th>
-						
+						<th colspan="2"id="funcao">Função</th>						
 					</tr>
 					<tr>
 						<th id="selecionar" axis="funcao">Selecionar</th>
@@ -90,8 +102,8 @@
 							<td headers="valor">R$ ${produto.valor}</td>
 							<td headers="validade">${produto.validade}</td>
 							<td headers="peso">${produto.peso}</td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox"  CHECKED name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}"/></td>
+							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}"><input type="number"  name="quantidade" value="1" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>
@@ -102,12 +114,12 @@
 				
 				<div id="descri">
 				<label for="desc">Descrição da Lista</label><br>
-				<textarea name="descricaolista" id="desc" wrap="hard" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${lista.descricao}</textarea>
+				<textarea name="descricaolista" id="desc" wrap="soft" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${lista.descricao}</textarea>
 				</div>
 				
 					<div id="finalizar">
-						<button type="submit"class="button3" name="adicionarProduto" value="true">Adicionar Produtos </button>
-						<button type="submit" class="button3" >Finalizar Edição</button>
+					
+						<button type="submit" class="button3" >Finalizar Lista</button>
 					</div>
 				</form>
 				
