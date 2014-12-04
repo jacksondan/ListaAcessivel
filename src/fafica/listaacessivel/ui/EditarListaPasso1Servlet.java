@@ -19,7 +19,6 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.ui.util.Situacao;
 
 /**
  * Servlet implementation class EditarListaPasso1Servlet
@@ -87,7 +86,16 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
+				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				String adicionarProduto = request.getParameter("adicionarProduto");
+				
+				Lista pesquisaLista = new Lista();
+				pesquisaLista.setId_lista(id_lista);
+				
+				pesquisaLista = fachada.pesquisarLista(pesquisaLista);
+				
+				
 				
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
 				String [] selecaoIdProduto = request.getParameterValues("id_produto");
@@ -99,6 +107,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				System.out.println("Id Produto: "+id_estabelecimento);
+				System.out.println("adicionar Produto é: " +adicionarProduto);
 				
 				String descricao = request.getParameter("descricaolista");
 				
@@ -140,15 +149,23 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 					}
 					
 					if(listaProdutos != null){
-						Lista lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
-						/*int id_lista = fachada.adicionarLista(lista);
-						lista.setId_lista(id_lista);
-						
-						lista = fachada.pesquisarLista(lista);
-						
-						request.setAttribute("lista",lista);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
-						requestDispatcher.forward(request, response);*/
+						Lista lista = 
+								new Lista(pesquisaLista.getId_lista(), descricao, pesquisaLista.getSituacao(), pesquisaLista.getData_criacao(), cliente, estabelecimento, listaProdutos);
+						if(adicionarProduto == null){
+							fachada.alterarLista(lista);
+							
+							lista = fachada.pesquisarLista(lista);
+							
+							request.setAttribute("lista",lista);
+							RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+							requestDispatcher.forward(request, response);
+						}else{
+							lista = fachada.pesquisarLista(lista);
+							
+							request.setAttribute("lista",lista);
+							RequestDispatcher requestDispatcher = request.getRequestDispatcher("EditarListaPasso2Servlet");
+							requestDispatcher.forward(request, response);
+						}
 						
 						//response.sendRedirect("visaoCliente.jsp"); // Teste
 					}else{

@@ -52,6 +52,7 @@
 				<form action="EditarListaPasso1Servlet"  method="POST">
 				
 				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
+				<input type="hidden" name="id_lista" value="${lista.id_lista}" />
 					
 				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia}, da lista ${lista.descricao}
 				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade, nesta tela.">
