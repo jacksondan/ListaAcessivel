@@ -21,17 +21,15 @@
 		</header>
 				
 				<div id="infolista">
-				<fieldset><legend>Informações da Lista</legend>				
-				<p>Cliente: ${lista.cliente.nome}</p>			
-				<p>Estabelecimento: ${estabelecimento.nome_fantasia}</p>	
-				<p>Bairro do Estabelecimento: ${$estabelecimento.endereco.bairro }</p>
-				<p>Rua  do Estabelecimento: ${$estabelecimento.endereco.rua }</p>
+				<fieldset><legend>Informações da Lista</legend>						
+				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
+				<p>Bairro do Estabelecimento: ${$lista.estabelecimento.endereco.bairro }</p>
+				<p>Rua  do Estabelecimento: ${$lsita.estabelecimento.endereco.rua }</p>
+				<p>Telefone 1:${lista.estabelecimento.telefones[0]}</p>
+				<p>Telefone 2:${lista.estabelecimento.telefones[1]}</p>
 				</fieldset>
-			
 				</div>
-				
-				
-					
+		
 				<table align="center"class="default" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
 				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
 					<caption>Produtos da Lista</caption>
@@ -64,15 +62,15 @@
 					</tbody>
 					<tfoot>	
 					<tr>
-					<th>Quantidade total de produtos:${lista.quantidade_total}</th>
-					<th id="quantidadeProdutos">Valor total da lista:${lista.valor_total}</th>
+					<th colspan="3">Quantidade total de produtos:${lista.quantidade_total}</th>
+					<th colspan="2"id="quantidadeProdutos">Valor total da lista:${lista.valor_total}</th>
 					</tr>
 					</tfoot>
 				</table>
 				<div id="filtro2">
 					
 					
-					<button class="button3" >Adicionar Produtos</button>
+					<button class="button3" onclick="window.location.href='CriarListaPasso2Servlet?id+lista=${lista.id_lista}&'" >Adicionar Produtos</button>
 					<button class="button3" >Imprimir</button>
 					<button class="button3" >Solicitar Compra</button>
 				</div>
