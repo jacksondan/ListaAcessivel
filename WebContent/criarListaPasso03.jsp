@@ -113,17 +113,10 @@
 					<tfoot>	
 					</tfoot>
 				</table>
-				<div id="finalizar">
-					<button type="submit" class="button3" >Finalizar Lista</button>
-				</div>
+					<div id="finalizar">
+						<button type="submit" class="button3" >Finalizar Lista</button>
+					</div>
 				</form>
-				<div id="finalizar">
-				
-				<!--
-					<button type="submit" onclick="window.location.href='CriarListaPasso3Servlet?selecionado=selecionado&quantidade=quantidade&id_estabelecimento=${estabelecimento.id_estabelecimento}'"class="button3" >Finalizar Lista</button>
-				-->
-				
-				</div>
 				
 	</div>
 	<div id="footer">
