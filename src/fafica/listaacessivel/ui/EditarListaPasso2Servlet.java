@@ -129,6 +129,7 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 						Lista lista = 
 								new Lista(pesquisaLista.getId_lista(), descricao, pesquisaLista.getSituacao(), pesquisaLista.getData_criacao(), cliente, estabelecimento, listaProdutos);
 						
+						fachada.alterarLista(lista);
 						
 						lista = fachada.pesquisarLista(lista);
 						
