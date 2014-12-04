@@ -31,9 +31,13 @@
 				<fieldset><legend>Informações da Lista</legend>	
 				<p class="p">Nome do Cliente: ${lista.cliente.nome}</p>
 				<p class="p">Situação da Lista: ${lista.situacao}</p>
-				<p class="p">Data de Criação:  ${lista.data_criacao}</p>					
-				<p class="p">Bairro do Cliente: ${lista.cliente.endereco.bairro}</p>
-				<p class="p">Rua  do Cliente: ${lista.cliente.endereco.rua}</p>
+				<p class="p">Data de Criação:  ${lista.data_criacao}</p>	
+				<p class="p">Endereço do Cliente:</p>
+				<p class="p">Rua: ${lista.cliente.endereco.rua}</p>				
+				<p class="p">Bairro: ${lista.cliente.endereco.bairro}</p>
+				<p class="p">Número: ${lista.cliente.endereco.numero}</p>
+				<p class="p">Complemento: ${lista.cliente.endereco.complemento}</p>
+				<p class="p">Referência: ${lista.cliente.endereco.referencia}</p>				
 				<p class="p">Telefone 1: ${lista.cliente.telefones[0]}</p>
 				<p class="p">Telefone 2: ${lista.cliente.telefones[1]}</p>
 				</fieldset>
@@ -45,7 +49,8 @@
 			
 					<thead>
 
-						<tr>				
+						<tr>
+							<th rowspan="2"id="codigo_barra">Código de Barra</th>				
 							<th rowspan="2"id="marca">Marca</th>
 							<th rowspan="2"id="validade">Validade</th>
 							<th rowspan="2"id="peso">Peso</th>
@@ -54,12 +59,12 @@
 						</tr>
 					
 					</thead>
-					
-					
+										
 					<tbody>
 				
 					<c:forEach items="${lista.produtos}" var="produto" varStatus="status">
 						<tr>
+							<td headers="codigo_barra">${produto.codigo_barra}</td>
 							<td headers="marca">${produto.marca}</td>							
 							<td headers="validade">${produto.validade}</td>
 							<td headers="peso">${produto.peso}</td>
@@ -72,7 +77,7 @@
 					<tfoot>	
 					<tr>
 					<th colspan="4">Quantidade total de produtos: ${lista.quantidade_total}</th>
-					<th colspan="2"id="quantidadeProdutos">Valor total da lista: R$${lista.valor_total}</th>
+					<th colspan="2"id="quantidadeProdutos">Valor total da lista: R$ ${lista.valor_total}</th>
 					</tr>
 					</tfoot>
 				</table>
@@ -92,6 +97,5 @@
 				</div>
 			</div>
 			</body>
-			</html>
-			
+			</html>		
 		
