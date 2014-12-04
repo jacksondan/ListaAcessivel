@@ -23,7 +23,7 @@ public interface IFachada {
 	public void excluirProduto(Produto produto) throws SQLException;
 	public List<Produto> listarProduto() throws SQLException;
 	public Produto pesquisarProduto(Produto produto) throws SQLException;
-	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento) throws SQLException;
+	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento, String categoria_produto, String descricao_produto) throws SQLException;
 	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException;
 	
 	public int adicionarLista(Lista entidade) throws SQLException;

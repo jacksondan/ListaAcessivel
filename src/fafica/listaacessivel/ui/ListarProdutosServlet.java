@@ -51,7 +51,7 @@ public class ListarProdutosServlet extends HttpServlet {
 		}else{
 			try {
 				IFachada fachada =  Fachada.getInstance();
-				List <Produto> produtos = fachada.listarProdutosPorEstababelecimento(estabelecimento);
+				List <Produto> produtos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
 				
 				request.setAttribute("listaProdutos", produtos);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listarProdutos.jsp");

@@ -68,7 +68,10 @@ public class EditarAdministradorServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		if(administrador == null){
-			response.sendRedirect("index.jsp");
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
