@@ -29,37 +29,37 @@
 			</header>
 			<fieldset>
 			<legend>Dados Pessoais</legend>
-				<p>
-				E-mail: 			${cliente.email} <br/>
-				Nome: 				${cliente.nome} <br/>
-				Ano de Nascimento:  ${cliente.ano_nascimento}<br/>
-				CPF: 				${cliente.cpf} <br/>
-				</p>
+				
+				<p class="p">E-mail: 		${cliente.email} </p>
+				<p class="p">Nome: 				${cliente.nome} 
+				<p class="p">Ano de Nascimento:  ${cliente.ano_nascimento}<p>
+				<p class="p">CPF: 				${cliente.cpf}</p>
+				
 			</fieldset>
 			
 			<fieldset>
 			<legend>Telefones Para Contato</legend>
 			
-			Telefone 1: ${cliente.telefones[0]} <br/>
-			Telefone 2: ${cliente.telefones[1]}
+			<p class="p">Telefone 1: ${cliente.telefones[0]}<p>
+			<p class="p">Telefone 2: ${cliente.telefones[1]}<p>
 			</fieldset>
 						
 			<fieldset >
 			
 				<legend>Dados de Localização</legend>
 			
-				Estado: 		${cliente.endereco.estado} <br/>
-				CEP: 			${cliente.endereco.cep} <br/>
-				Cidade: 		${cliente.endereco.cidade} <br/>
-				Bairro: 		${cliente.endereco.bairro} <br/>
-				Rua: 			${cliente.endereco.rua} <br/>
-				Número: 		${cliente.endereco.numero} <br/>
-				Complemento: 	${cliente.endereco.complemento}<br/>
-				Referência: 	${cliente.endereco.referencia} <br/>
+				<p class="p">Estado: 		${cliente.endereco.estado}</p>
+				<p class="p">CEP: 			${cliente.endereco.cep}</p>
+				<p class="p">Cidade: 		${cliente.endereco.cidade}</p>
+				<p class="p">Bairro: 		${cliente.endereco.bairro}</p>
+				<p class="p">Rua: 			${cliente.endereco.rua}</p>
+				<p class="p">Número: 		${cliente.endereco.numero}</p>
+				<p class="p">Complemento: 	${cliente.endereco.complemento}</p>
+				<p class="p">Referência: 	${cliente.endereco.referencia}</p>
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">
-											<li><a href="EditarClienteServlet" class="button">Editar</a></li>
+											<li><a href="EditarClienteServlet" class="button">Editar Perfilk</a></li>
 											<li><a href="EditarSenhaClienteServlet" class="button">Editar Senha</a></li>
 											<li><a href="ExcluirClienteServlet" class="button">Excluir Perfil</a></li>
 											
