@@ -169,7 +169,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						request.setAttribute("mensagem",mensagem);
 						request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("CriarListaPasso3Servlet");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
 						requestDispatcher.forward(request, response);
 					}
 				}else{

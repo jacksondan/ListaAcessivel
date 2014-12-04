@@ -105,8 +105,8 @@
 							<td headers="validade">${produto.validade}</td>
 							<td headers="peso">${produto.peso}</td>
 							<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							
 							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="1" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -114,8 +114,6 @@
 					</tfoot>
 				</table>
 				<div id="finalizar">
-					
-					<input type="hidden" name="id_produto" value="${produto.id_produto}"/>
 					<button type="submit" class="button3" >Finalizar Lista</button>
 				</div>
 				</form>
