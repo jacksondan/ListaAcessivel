@@ -80,7 +80,7 @@
 					</tfoot>
 				</table>
 				<div id="filtro2">
-					<button class="button3" onclick="window.location.href='CriarListaPassoServlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
+					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
 					<button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
 					<c:if test="${lista.situacao == 'criada'}">
 						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
