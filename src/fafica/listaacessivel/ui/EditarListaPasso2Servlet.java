@@ -69,6 +69,7 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
+				String descricao = request.getParameter("descricao");
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 				
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
@@ -83,8 +84,6 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 				Lista pesquisaLista = new Lista();
 				pesquisaLista.setId_lista(id_lista);
 				pesquisaLista = fachada.pesquisarLista(pesquisaLista);
-				
-				String descricao = request.getParameter("descricaolista");
 				
 				if(descricao == null){
 					descricao = "";

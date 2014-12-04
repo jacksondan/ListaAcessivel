@@ -66,6 +66,7 @@
 				<form action="EditarListaPasso2Servlet" id="formlista"method="POST">
 				
 				<input type="hidden" name="id_lista"  value="${lista.id_lista}" />
+				<input type="hidden" name="descricao"  value="${lista.descricao}" />
 				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
 					
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
@@ -111,11 +112,6 @@
 					<tfoot>	
 					</tfoot>
 				</table>
-				
-				<div id="descri">
-				<label for="desc">Descrição da Lista</label><br>
-				<textarea name="descricaolista" id="desc" wrap="soft" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${lista.descricao}</textarea>
-				</div>
 				
 					<div id="finalizar">
 					
