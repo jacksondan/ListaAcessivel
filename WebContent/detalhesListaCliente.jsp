@@ -8,7 +8,14 @@
 <title>${cliente.nome}- Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
-<script type="text/javascript"  src="js/jquery.js"></script>	
+<script type="text/javascript"  src="js/jquery.js"></script>
+<style rel="stylesheet" type="text/css" media="print">
+   .actions{display:none}
+   #nav2{display:none}
+   #content{}
+   #footer{display:none}
+   #filtro2{display:none}	
+</style>	
 </head>
 <body>
 
@@ -17,19 +24,19 @@
 	<div id="content">
 
 		<header class="major">
-			<h2>Detalhes da Lista</h2>	
+			<h3>Detalhes da Lista</h3>	
 		</header>
 				
 				<div id="infolista">
 				<fieldset><legend>Informações da Lista</legend>	
-				<p>Descrição: ${lista.descricao}</p>
-				<p>Situação da Lista: ${lista.situacao}</p>
-				<p>Data de Criação:  ${lista.data_criacao}</p>					
-				<p>Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
-				<p>Bairro do Estabelecimento: ${lista.estabelecimento.endereco.bairro}</p>
-				<p>Rua  do Estabelecimento: ${lista.estabelecimento.endereco.rua}</p>
-				<p>Telefone 1: ${lista.estabelecimento.telefones[0]}</p>
-				<p>Telefone 2: ${lista.estabelecimento.telefones[1]}</p>
+				<p class="p">Descrição: ${lista.descricao}</p>
+				<p class="p">Situação da Lista: ${lista.situacao}</p>
+				<p class="p">Data de Criação:  ${lista.data_criacao}</p>					
+				<p class="p">Nome Estabelecimento: ${lista.estabelecimento.nome_fantasia}</p>
+				<p class="p">Bairro do Estabelecimento: ${lista.estabelecimento.endereco.bairro}</p>
+				<p class="p">Rua  do Estabelecimento: ${lista.estabelecimento.endereco.rua}</p>
+				<p class="p">Telefone 1: ${lista.estabelecimento.telefones[0]}</p>
+				<p class="p">Telefone 2: ${lista.estabelecimento.telefones[1]}</p>
 				</fieldset>
 				</div>
 		
@@ -74,7 +81,7 @@
 				</table>
 				<div id="filtro2">
 					<button class="button3" onclick="window.location.href='CriarListaPassoServlet?id_lista=${lista.id_lista}'" >Editar Produtos</button>
-					<button class="button3" >Imprimir</button>
+					<button class="button3" onclick="DoPrinting()" >Imprimir</button>
 					<c:if test="${lista.situacao == 'criada'}">
 						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
 					</c:if>

@@ -9,6 +9,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>${cliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/script.js"></script>
+<style rel="stylesheet" type="text/css" media="print">
+   .actions{display:none}
+   #nav2{display:none}
+   #footer{display:none}	
+</style>
+
 </head>
 <body>
 				
@@ -20,9 +27,6 @@
 					<h2>Perfil</h2>
 					<p style="text-align: center; color: green;">${mensagem}</p>
 			</header>
-			<!-- Conteudo-->
-			
-			
 			<fieldset>
 			<legend>Dados Pessoais</legend>
 				<p>
@@ -58,7 +62,7 @@
 											<li><a href="EditarClienteServlet" class="button">Editar</a></li>
 											<li><a href="EditarSenhaClienteServlet" class="button">Editar Senha</a></li>
 											<li><a href="ExcluirClienteServlet" class="button">Excluir Perfil</a></li>
-											<li><a href="#" onclick="window.print()" class="button">Imprimir</a></li>
+											
 										</ul>
 							</div>
 			
