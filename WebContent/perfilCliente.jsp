@@ -58,6 +58,7 @@
 											<li><a href="EditarClienteServlet" class="button">Editar</a></li>
 											<li><a href="EditarSenhaClienteServlet" class="button">Editar Senha</a></li>
 											<li><a href="ExcluirClienteServlet" class="button">Excluir Perfil</a></li>
+											<li><a href="#" onclick="window.print()" class="button">Imprimir</a></li>
 										</ul>
 							</div>
 			
