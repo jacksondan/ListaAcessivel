@@ -290,7 +290,7 @@ public class RepositorioLista implements IRepositorioLista {
 			throws SQLException {
 		
 		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
-				+ " where lce.id_clinte = " +cliente.getId_usuario()
+				+ " where lce.id_cliente = " +cliente.getId_usuario()
 				+ " and l.id_lista = lce.id_lista"
 				+ " and l.status = '" +Status.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
