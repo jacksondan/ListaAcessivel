@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.ui.util.Situacao;
@@ -55,8 +54,10 @@ public class ConfirmarEntregaListaServlet extends HttpServlet {
 				fachada.alterarLista(lista);
 				
 				String mensagem = "Lista Atendida com sucesso!";
+				
 				request.setAttribute("mensagem",mensagem);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("listasSolicitadas.jsp");
+				request.setAttribute("lista", lista);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaFuncionario.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

@@ -78,6 +78,9 @@
 				</table>
 				<div id="filtro2" >
 					<button align="center" class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
+					<c:if test="${lista.situacao == 'solicitada'}">
+						<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
+					</c:if>
 				</div>
 				
 	</div>
