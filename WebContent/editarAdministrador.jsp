@@ -20,24 +20,24 @@
 			</header>
 			<!-- Formulário  aqui! -->
 			<form method="post"
-				action="EditarFuncionarioServlet">
+				action="EditarAdministradorServlet">
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> 
-						<input type = "hidden" name="id_funcionario" id="email" value="${funcionario.id_usuario}" />
-						<input type = "hidden" name="senha" id="email" value="${funcionario.senha}" />
+						<input type = "hidden" name="id_administrador" id="email" value="${administrador.id_usuario}" />
+						<input type = "hidden" name="senha" id="email" value="${administrador.senha}" />
 						
-						<input type="email" placeholder="Digite o E-mail" name="email" id="email" value="${funcionario.email}" required="email" size=60 />
+						<input type="email" placeholder="Digite o E-mail" name="email" id="email" value="${administrador.email}" required="email" size=60 />
 				</fieldset>
 				<fieldset>
 					<legend>Dados Pessoais</legend>
 					<label for="nome">Nome Completo</label> <input type="text"
 						placeholder="Digite seu nome completo" name="nome" id="nome"
-						size=60 value="${funcionario.nome}"require="nome">
+						size=60 value="${administrador.nome}"require="nome">
 						
-						<p><label for="matricula">Matricula</label><br> <input type="text"
-						placeholder="Digite a matricula do funcionario" name="matricula" id="matricula"
-						require="matricula" value="${funcionario.matricula}"size="20">
+						<p><label for="cpf">CPF</label><br> <input type="text"
+						placeholder="Digite o CPF do administrador" name="cpf" id="cpf"
+						require="cpf" value="${administrador.cpf}"size="20">
 						</p>
 
 				</fieldset>
