@@ -57,7 +57,21 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				List<Produto> listaprodutos = fachada.listarProdutosPorEstababelecimento(estabelecimento);
+				String categoria_produto = request.getParameter("categoria");
+				String descricao_produto = request.getParameter("buscanome");
+				
+				if(categoria_produto != null){
+					if(categoria_produto.equals("")){
+						categoria_produto = null;
+					}
+				}
+				
+				if(descricao_produto != null)
+					if(descricao_produto.equals("")){
+						descricao_produto = null;
+					}
+				
+				List<Produto> listaprodutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
 				
 				request.setAttribute("listaprodutos",listaprodutos);
 				request.setAttribute("estabelecimento", estabelecimento);
@@ -145,13 +159,26 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						lista = fachada.pesquisarLista(lista);
 						
 						request.setAttribute("lista",lista);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso04.jsp");
 						requestDispatcher.forward(request, response);
 						
 						//response.sendRedirect("visaoCliente.jsp"); // Teste
 					}else{
-						response.sendRedirect("LogoutServlet"); // Teste
+						
+						String mensagem = "Lista não pode ser criada sem itens";
+						
+						request.setAttribute("mensagem",mensagem);
+						request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("CriarListaPasso3Servlet");
+						requestDispatcher.forward(request, response);
 					}
+				}else{
+					String mensagem = "Lista não pode ser criada sem itens";
+					
+					request.setAttribute("mensagem",mensagem);
+					request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp"); //CriarListaPasso3Servlet
+					requestDispatcher.forward(request, response);
 				}
 				
 			} catch (ClassNotFoundException e) {
