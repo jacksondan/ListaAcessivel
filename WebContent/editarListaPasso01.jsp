@@ -8,7 +8,7 @@
 <title>${cliente.nome}- Inicio</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
-.divs{display:none;
+.divs{display:block;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -31,7 +31,7 @@
     //lógica  dos checkbox
     $(document).ready(function() {
     $('.checkbox').click(function() {
-    $('.divs').hide();
+    $('.divs').toggle();
     $('.checkbox:checked').each(function() { 
     $('#d'+$(this).val()).show(); 
     });
@@ -49,7 +49,7 @@
 		</header>
 	
 		
-				<form action="EditarListaPasso01Servlet"  method="POST">
+				<form action="EditarListaPasso1Servlet"  method="POST">
 				
 				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
 					
@@ -89,7 +89,7 @@
 							<td headers="valor">R$ ${produto.valor}</td>
 							<td headers="validade">${produto.validade}</td>
 							<td headers="peso">${produto.peso}</td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox" value="checked"name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox"  CHECKED name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
 							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number"  name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
