@@ -32,23 +32,23 @@
 						name="descricao" id="descrição" size=60>
 				</p>
 				<p>
-					<label for="marca">Marca:</label> <input type="text"
-					name="marca" id="marca" size=55>
+					<label for="marca">Marca:</label> <input type="text" name="marca"
+						id="marca" size=55>
 				</p>
-				
+
 				<p>
 					<label for="valor">Preço:</label> <input type="text" name="valor"
-						id="valor" size=10> <label
-					for="quantidade">Código de Barra:</label> <input type="text" name="codigo_de_barra"
-					id="codigo_de_barra" size=20>					
+						id="valor" size=10> <label for="quantidade">Código
+						de Barra:</label> <input type="text" name="codigo_de_barra"
+						id="codigo_de_barra" size=20>
 				</p>
 				<label for="quantidade">Quantidade:</label> <input type="text"
 					name="quantidade" id="quantidade" size=10> <label
-					for="peso">Peso:</label> <input type="text" name="peso"
-					id="peso" size=10>
+					for="peso">Peso:</label> <input type="text" name="peso" id="peso"
+					size=10>
 				<p>
-					<label for="categoria">Categoria:<select
-						name="categoria" id="categoria">
+					<label for="categoria">Categoria:<select name="categoria"
+						id="categoria">
 							<option selected="não selecionado" value="não selecionado">Escolha
 								a categoria</option>
 							<option value="frios">Frios</option>
@@ -56,11 +56,8 @@
 							<option value="Bebidas">Bebidas</option>
 							<option value="Alimentos">Alimentos</option>
 					</select>
-					</label>
-					
-					<label
-					for="validade">Validade:</label> <input type="date" name="validade"
-					id="validade" size=10>
+					</label> <label for="validade">Validade:</label> <input type="date"
+						name="validade" id="validade" size=10>
 				</p>
 			</fieldset>
 

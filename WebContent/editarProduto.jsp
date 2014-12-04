@@ -54,11 +54,11 @@
 						name="quantidade" id="quantidade"
 						value="${editarProduto.quantidade}" size=10> <label
 						for="quantidade">Peso:</label> <input type="text" name="peso"
-						id="peso" value="${editarProduto.peso}" size=10> 
-						</p>
-						<p>
-						<label for="categoria">Categoria:
-						<select name="categoria" id="categoria">
+						id="peso" value="${editarProduto.peso}" size=10>
+				</p>
+				<p>
+					<label for="categoria">Categoria: <select name="categoria"
+						id="categoria">
 							<option selected="${editarProduto.categoria}"
 								value="${editarProduto.categoria}">${editarProduto.categoria}</option>
 							<option value="frios">Frios</option>
@@ -66,7 +66,7 @@
 							<option value="Bebidas">Bebidas</option>
 					</select>
 					</label> <label for="validade">Validade:</label> <input type="date"
-						name="validade" id="validade" value="${editarProduto.validade} }"
+						name="validade" id="validade" value="${editarProduto.validade}"
 						size=10>
 				</p>
 			</fieldset>
