@@ -59,7 +59,7 @@ public class SolicitarEntregaServlet extends HttpServlet {
 				fachada.alterarLista(lista);
 				
 				request.setAttribute("lista", lista);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("criarListaPasso04.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
 				dispatcher.forward(request, response);
 				
 				

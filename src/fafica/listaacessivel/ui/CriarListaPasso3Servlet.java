@@ -162,7 +162,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						lista = fachada.pesquisarLista(lista);
 						
 						request.setAttribute("lista",lista);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso04.jsp");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
 						requestDispatcher.forward(request, response);
 						
 						//response.sendRedirect("visaoCliente.jsp"); // Teste
