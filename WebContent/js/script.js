@@ -34,3 +34,12 @@
     		document.f1.confirmarSenha.focus()
     	}
     }
+    
+    function DoPrinting(){
+        if (!window.print){
+           alert("Use o Netscape  ou Internet Explorer \n nas versões 4.0 ou superior!")
+           return
+        }
+        window.print()
+     }
+   
