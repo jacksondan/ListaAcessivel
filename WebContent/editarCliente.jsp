@@ -72,7 +72,7 @@ jQuery(function($){
 					
 
 				<label for="cep">CEP:</label><br> <input type="text" name="cep"
-					id="cep" value="${editarCliente.endereco.cep}" size=20 required="cep"><br> 
+					id="cep" value="${editarCliente.endereco.cep}" onblur="consultacep(this.value)" size=20 required="cep"><br> 
 					<label for="estado">Estado:</label><br> <input type="text"
 						name="estado" id="estado" value="${editarCliente.endereco.estado}" size=2><br>
 					
