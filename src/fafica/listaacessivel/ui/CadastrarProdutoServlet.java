@@ -51,11 +51,14 @@ public class CadastrarProdutoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			HttpSession session = request.getSession(); 
-			Estabelecimento estabelecimento = (Estabelecimento)session.getAttribute("acessoEstabelecimento"); // Utilizar pra pegar codigo de Estabelecimento
-			if(estabelecimento == null){
-				response.sendRedirect("index.jsp");
-			}else{
+		HttpSession session = request.getSession();
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+		if(estabelecimento == null){
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}else{
 				try {
 					IFachada fachada = Fachada.getInstance();
 					

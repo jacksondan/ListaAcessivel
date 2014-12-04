@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
@@ -35,7 +36,14 @@ public class EditarProdutoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		HttpSession session = request.getSession();
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+		if(estabelecimento == null){
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}else{
 			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
 			Produto produto = new Produto();
 			produto.setId_produto(id_produto);
@@ -54,43 +62,52 @@ public class EditarProdutoServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try {
-			fachada = Fachada.getInstance();
-			
-			int id_produto = Integer.parseInt(request.getParameter("id_produto"));
-			String descricao = request.getParameter("descricao");
-			String categoria = request.getParameter("categoria");
-			float peso = Float.parseFloat(request.getParameter("peso"));
-			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
-			
-			String valorInicial = request.getParameter("valor");
-			valorInicial = valorInicial.replaceAll(",", ".");
-			float valor = Float.parseFloat(valorInicial);
-			
-			String validade = request.getParameter("validade");
-			String marca = request.getParameter("marca");
-			String codigo_de_barra = request.getParameter("codigo_de_barra");
-			String disponibilidade = request.getParameter("disponibilidade");
-			
-			Estabelecimento estabelecimento = new Estabelecimento();
-			estabelecimento.setId_estabelecimento(Integer.parseInt(request.getParameter("id_estabelecimento")));
-			
-			Produto produto = new Produto(id_produto,descricao,categoria,peso,quantidade,valor,validade,marca,codigo_de_barra,disponibilidade,estabelecimento);
-			
-			fachada.alterarProduto(produto);
-			
-			response.sendRedirect("ListarProdutosServlet");
-			
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		HttpSession session = request.getSession();
+		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
+		if(estabelecimento == null){
+			String mensagem = "Sessão expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}else{
+			try {
+				fachada = Fachada.getInstance();
+				
+				int id_produto = Integer.parseInt(request.getParameter("id_produto"));
+				String descricao = request.getParameter("descricao");
+				String categoria = request.getParameter("categoria");
+				
+				String pesoString = request.getParameter("peso");
+				pesoString = pesoString.replaceAll(",", ".");
+				float peso = Float.parseFloat(pesoString);
+				
+				int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+				
+				String valorString = request.getParameter("valor");
+				valorString = valorString.replaceAll(",", ".");
+				float valor = Float.parseFloat(valorString);
+				
+				String validade = request.getParameter("validade");
+				String marca = request.getParameter("marca");
+				String codigo_de_barra = request.getParameter("codigo_barra");
+				
+				Produto produto = new Produto(id_produto,descricao,categoria,peso,quantidade,valor,validade,marca,codigo_de_barra,"",estabelecimento);
+				
+				fachada.alterarProduto(produto);
+				
+				response.sendRedirect("ListarProdutosServlet");
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 

@@ -46,7 +46,7 @@
 					<label for="valor">Preço:</label> <input type="text" name="valor"
 						id="valor" value="${editarProduto.valor}" size=10> <label
 						for="quantidade">Código de Barra:</label> <input type="text"
-						name="codigo_de_barra" id="codigo_de_barra"
+						name="codigo_de_barra" id="codigo_barra"
 						value="${editarProduto.codigo_barra}" size=20>
 				</p>
 				<p>
