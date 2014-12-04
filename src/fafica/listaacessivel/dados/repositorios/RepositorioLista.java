@@ -134,7 +134,7 @@ public class RepositorioLista implements IRepositorioLista {
 		for(Produto produto : entidade.getProdutos()){
 			sql = "insert into lista_produto"
 					+ "(id_lista, id_produto, quantidade_produto, valor_produto)"
-					+ "values(?,?,?,?,)";
+					+ "values(?,?,?,?)";
 			
 			smt = this.connection.prepareStatement(sql);
 			smt.setInt(1, entidade.getId_lista());
