@@ -66,18 +66,16 @@
 					
 					<tr>
 					
-						<th rowspan="2"id="descricao">Descrição</th>
-						<th rowspan="2"id="marca">Marca</th>
-						<th rowspan="2"id="valor">Valor</th>
-						<th rowspan="2"id="validade">Validade</th>
-						<th rowspan="2"id="peso">Peso</th>
-						<th colspan="2"id="funcao">Função</th>
+						<th rowspan="1"id="descricao">Descrição</th>
+						<th rowspan="1"id="marca">Marca</th>
+						<th rowspan="1"id="valor">Valor</th>
+						<th rowspan="1"id="validade">Validade</th>
+						<th rowspan="1"id="peso">Peso</th>
+						<th id="selecionar" rowspan="1">Selecionar</th>
+						<th id="quantidade" rowspan="1">Quantidade</th>	
 						
 					</tr>
-					<tr>
-						<th id="selecionar" axis="funcao">Selecionar</th>
-						<th id="quantidade" axis="funcao">Quantidade</th>	
-					</tr>
+					
 					</thead>
 					
 					
