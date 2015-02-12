@@ -28,7 +28,7 @@
 			<%@include  file="headerAdmin.html" %>
 			<%@include  file="sidebarAdmin.html" %>
 		
-				<div id="content2">
+				<div id="content3">
 					<header class="major">		
 						<h2>Estabelecimentos</h2>
 						${mensagem}

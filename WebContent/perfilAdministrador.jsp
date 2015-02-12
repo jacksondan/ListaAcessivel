@@ -14,7 +14,7 @@
 				
 <%@include file="headerAdmin.html" %>
 <%@include file="sidebarAdmin.html" %>		
-			<div id="content">
+			<div id="content2">
 			<!-- titulo do conteudo-->
 			<header class="major">		
 					<h2>Perfil Adminsitrador</h2>
@@ -47,7 +47,7 @@
 			
 			</div>
 			
-			<div id="footer">
+			<div id="footer2">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

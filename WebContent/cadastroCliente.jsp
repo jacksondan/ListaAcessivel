@@ -9,14 +9,14 @@
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
 <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
+
 <script>
 //script da mascara
 
 jQuery(function($){
 	$("#cep").mask("99999-999");
 	$("#telefone1").mask("(99)9999-9999");
-	$("#telefone2").mask("(99)9999-9999");
-	$("#cpf").mask("999.999.999-99");
+	$("#telefone2").mask("(99)9999-9999");	
 	$("#ano_nascimento").mask("9999");
 });
 
@@ -59,7 +59,8 @@ jQuery(function($){
 						require="ano_nascimento" size="4"></p>
 						
 						 <label for="cpf">CPF:</label><br> <input
-					type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=12 required= "cpf" ><br>
+					type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=11 required= "cpf"
+					onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"><br>
 				</fieldset>
 				<fieldset>
 					<legend>Telefones para Contato</legend>
