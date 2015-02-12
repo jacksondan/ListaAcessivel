@@ -60,7 +60,7 @@ public class IndexServlet extends HttpServlet {
 			Estabelecimento estabelecimento = null;
 			
 			Administrador administrador
-				= new Administrador("TechBin Admin", "admin@admin", "000.000.000.00", "SIPaf5CWJ3iD11grPwtHrg==");
+				= new Administrador("TechBin Admin", "admin@admin", "000.000.000.00", "ICy5YqxZB1uWSwcVLSNLcA==");
 			
 			if (fachada.pesquisarAdministrador(administrador) == null) {
 				fachada.adicionarAdministrador(administrador);
