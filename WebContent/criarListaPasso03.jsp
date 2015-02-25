@@ -69,7 +69,8 @@
 				<input type="hidden" name="id_estabelecimento" value="${estabelecimento.id_estabelecimento}" />
 					
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
-				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
+				Com as seguintes colunas; Descrição do Produto composta por informações como, nome do produto, marca do produto e valor do produto, as outras colunas são funções como selecionar produto
+				 e outra para informar quantidade desejada. Dica, quando estiver na coluna  selecionar marque a caixa de seleção usando a tecla espaço.">
 					<caption>Produtos disponíveis da categoria ${categoria}s filtrados por ${filtragem}</caption>
 					<colgroup>
     							<col />
@@ -81,27 +82,18 @@
 					<tr>
 					
 						<th rowspan="1"id="descricao">Descrição</th>
-						<th rowspan="1"id="marca">Marca</th>
-						<th rowspan="1"id="valor">Valor</th>
-						<th rowspan="1"id="validade">Validade</th>
-						<th rowspan="1"id="peso">Peso</th>
 						<th id="selecionar" rowspan="1">Selecionar</th>
 						<th id="quantidade" rowspan="1">Quantidade</th>	
 						
 					</tr>
 					
 					</thead>
-					
-					
+
 					<tbody>
 				
 					<c:forEach items="${listaprodutos}" var="produto" varStatus="status">
 						<tr>
-							<td headers="descricao">${produto.descricao}</td>
-							<td headers="marca">${produto.marca}</td>
-							<td headers="valor">R$ ${produto.valor}</td>
-							<td headers="validade">${produto.validade}</td>
-							<td headers="peso">${produto.peso}</td>
+							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
 							<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
 							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number" accesskey="w"  name="quantidade" value="1" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
@@ -113,7 +105,7 @@
 				</table>
 				
 				<div id="descri">
-				<label for="desc">Descrição da Lista</label><br>
+				<label for="desc"><left>Descrição da Lista</left></label><br>
 				<input type="text"name="descricaolista" id="desc"  placeholder="Digite a Descrição da Lista..." accesskey="s" size="40">
 				</div>
 				

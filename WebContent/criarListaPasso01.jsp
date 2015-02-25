@@ -20,10 +20,10 @@
 <div id="sidebar">
 
 <ul class="actions">							
-	<li><p><a href="CriarListaPasso2Servlet?categoria=supermercado" class="image"><img src="images/catMercado.png" alt="Categoria Super Mercado, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Supermercado</a></p></li>
-	<li><p><a href="CriarListaPasso2Servlet?categoria=padaria" class="image"><img src="images/catPadaria.png" alt="Categoria Padaria, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Padaria</a></p></li>
-	<li><p><a href="CriarListaPasso2Servlet?categoria=farmacia" class="image"><img src="images/catFarmacia.png" alt="Categoria Farmácia, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Farmácia</a></p></li>
-		<li><p><a href="CriarListaPasso2Servlet?categoria=livraria" class="image"><img src="images/catLivraria.png" alt="Categoria Livraria, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Livraria</a></p></li>
+	<li><p><a href="CriarListaPasso2Servlet?categoria=supermercado" class="image"><img src="images/ic_mercado.png" alt="Categoria Super Mercado, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Supermercado</a></p></li>
+	<li><p><a href="CriarListaPasso2Servlet?categoria=padaria" class="image"><img src="images/ic_padaria.png" alt="Categoria Padaria, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Padaria</a></p></li>
+	<li><p><a href="CriarListaPasso2Servlet?categoria=farmacia" class="image"><img src="images/ic_farmacia.png" alt="Categoria Farmácia, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Farmácia</a></p></li>
+		<li><p><a href="CriarListaPasso2Servlet?categoria=livraria" class="image"><img src="images/ic_livraria.png" alt="Categoria Livraria, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Livraria</a></p></li>
 </ul>
 		</div>			
 </div>
