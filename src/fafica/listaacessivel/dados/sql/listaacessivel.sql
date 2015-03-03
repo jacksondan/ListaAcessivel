@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Tempo de geração: 04/12/2014 às 08:24
--- Versão do servidor: 10.0.15-MariaDB-log
--- Versão do PHP: 5.6.3
+-- Host: 127.0.0.1
+-- Generation Time: 03-Mar-2015 às 19:12
+-- Versão do servidor: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `listaacessivel`
+-- Database: `listaacessivel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `administrador`
+-- Estrutura da tabela `administrador`
 --
 
 CREATE TABLE IF NOT EXISTS `administrador` (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `administrador`
+-- Extraindo dados da tabela `administrador`
 --
 
 INSERT INTO `administrador` (`id_administrador`, `cpf`) VALUES
@@ -41,7 +41,7 @@ INSERT INTO `administrador` (`id_administrador`, `cpf`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `cliente`
+-- Estrutura da tabela `cliente`
 --
 
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `cliente`
+-- Extraindo dados da tabela `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `estabelecimento`
+-- Estrutura da tabela `estabelecimento`
 --
 
 CREATE TABLE IF NOT EXISTS `estabelecimento` (
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `estabelecimento`
+-- Extraindo dados da tabela `estabelecimento`
 --
 
 INSERT INTO `estabelecimento` (`id_estabelecimento`, `nome_fantasia`, `nome_juridico`, `email`, `senha`, `categoria`, `cnpj`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`, `id_administrador`, `status`) VALUES
@@ -106,7 +106,7 @@ INSERT INTO `estabelecimento` (`id_estabelecimento`, `nome_fantasia`, `nome_juri
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `funcionario`
+-- Estrutura da tabela `funcionario`
 --
 
 CREATE TABLE IF NOT EXISTS `funcionario` (
@@ -118,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `lista`
+-- Estrutura da tabela `lista`
 --
 
 CREATE TABLE IF NOT EXISTS `lista` (
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `lista` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `lista`
+-- Extraindo dados da tabela `lista`
 --
 
 INSERT INTO `lista` (`id_lista`, `descricao`, `data_criacao`, `data_alteracao`, `quantidade_total`, `valor_total`, `status`) VALUES
@@ -141,7 +141,7 @@ INSERT INTO `lista` (`id_lista`, `descricao`, `data_criacao`, `data_alteracao`, 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `lista_cliente_estabelecimento`
+-- Estrutura da tabela `lista_cliente_estabelecimento`
 --
 
 CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `lista_cliente_estabelecimento`
+-- Extraindo dados da tabela `lista_cliente_estabelecimento`
 --
 
 INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estabelecimento`, `situacao`) VALUES
@@ -161,7 +161,7 @@ INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estab
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `lista_produto`
+-- Estrutura da tabela `lista_produto`
 --
 
 CREATE TABLE IF NOT EXISTS `lista_produto` (
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `lista_produto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `lista_produto`
+-- Extraindo dados da tabela `lista_produto`
 --
 
 INSERT INTO `lista_produto` (`id_lista`, `id_produto`, `quantidade_produto`, `valor_produto`) VALUES
@@ -184,7 +184,7 @@ INSERT INTO `lista_produto` (`id_lista`, `id_produto`, `quantidade_produto`, `va
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `produto`
+-- Estrutura da tabela `produto`
 --
 
 CREATE TABLE IF NOT EXISTS `produto` (
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `produto`
+-- Extraindo dados da tabela `produto`
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantidade`, `valor`, `validade`, `codigo_barra`, `disponibilidade`, `marca`, `id_estabelecimento`, `status`) VALUES
@@ -232,7 +232,7 @@ INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantida
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `telefone_cliente`
+-- Estrutura da tabela `telefone_cliente`
 --
 
 CREATE TABLE IF NOT EXISTS `telefone_cliente` (
@@ -241,7 +241,7 @@ CREATE TABLE IF NOT EXISTS `telefone_cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `telefone_cliente`
+-- Extraindo dados da tabela `telefone_cliente`
 --
 
 INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
@@ -251,7 +251,7 @@ INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `telefone_estabelecimento`
+-- Estrutura da tabela `telefone_estabelecimento`
 --
 
 CREATE TABLE IF NOT EXISTS `telefone_estabelecimento` (
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `telefone_estabelecimento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `telefone_estabelecimento`
+-- Extraindo dados da tabela `telefone_estabelecimento`
 --
 
 INSERT INTO `telefone_estabelecimento` (`id_estabelecimento`, `telefone`) VALUES
@@ -280,7 +280,7 @@ INSERT INTO `telefone_estabelecimento` (`id_estabelecimento`, `telefone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -292,138 +292,138 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Fazendo dump de dados para tabela `usuario`
+-- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `nome`, `status`) VALUES
-(1, 'admin@admin', 'SIPaf5CWJ3iD11grPwtHrg==', 'TechBin Admin', 'ativo'),
+(1, 'admin@admin', 'ICy5YqxZB1uWSwcVLSNLcA==', 'TechBin Admin', 'ativo'),
 (6, 'ivanvalentimsantos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Ivan Valentim Santos', 'ativo');
 
 --
--- Índices de tabelas apagadas
+-- Indexes for dumped tables
 --
 
 --
--- Índices de tabela `administrador`
+-- Indexes for table `administrador`
 --
 ALTER TABLE `administrador`
  ADD PRIMARY KEY (`id_administrador`), ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices de tabela `cliente`
+-- Indexes for table `cliente`
 --
 ALTER TABLE `cliente`
  ADD PRIMARY KEY (`id_cliente`), ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Índices de tabela `estabelecimento`
+-- Indexes for table `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
  ADD PRIMARY KEY (`id_estabelecimento`), ADD UNIQUE KEY `nome_juridico` (`nome_juridico`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `cnpj` (`cnpj`), ADD KEY `id_administrador` (`id_administrador`);
 
 --
--- Índices de tabela `funcionario`
+-- Indexes for table `funcionario`
 --
 ALTER TABLE `funcionario`
  ADD PRIMARY KEY (`id_funcionario`), ADD UNIQUE KEY `matricula` (`matricula`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
--- Índices de tabela `lista`
+-- Indexes for table `lista`
 --
 ALTER TABLE `lista`
  ADD PRIMARY KEY (`id_lista`);
 
 --
--- Índices de tabela `lista_cliente_estabelecimento`
+-- Indexes for table `lista_cliente_estabelecimento`
 --
 ALTER TABLE `lista_cliente_estabelecimento`
  ADD PRIMARY KEY (`id_lista`,`id_cliente`,`id_estabelecimento`), ADD UNIQUE KEY `id_lista` (`id_lista`), ADD KEY `id_cliente` (`id_cliente`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
--- Índices de tabela `lista_produto`
+-- Indexes for table `lista_produto`
 --
 ALTER TABLE `lista_produto`
  ADD PRIMARY KEY (`id_produto`,`id_lista`), ADD KEY `id_lista` (`id_lista`);
 
 --
--- Índices de tabela `produto`
+-- Indexes for table `produto`
 --
 ALTER TABLE `produto`
  ADD PRIMARY KEY (`id_produto`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
--- Índices de tabela `telefone_cliente`
+-- Indexes for table `telefone_cliente`
 --
 ALTER TABLE `telefone_cliente`
  ADD PRIMARY KEY (`id_cliente`,`telefone`);
 
 --
--- Índices de tabela `telefone_estabelecimento`
+-- Indexes for table `telefone_estabelecimento`
 --
 ALTER TABLE `telefone_estabelecimento`
  ADD PRIMARY KEY (`id_estabelecimento`,`telefone`);
 
 --
--- Índices de tabela `usuario`
+-- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
  ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `estabelecimento`
+-- AUTO_INCREMENT for table `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
 MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
--- AUTO_INCREMENT de tabela `lista`
+-- AUTO_INCREMENT for table `lista`
 --
 ALTER TABLE `lista`
 MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de tabela `produto`
+-- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
 MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT de tabela `usuario`
+-- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
 MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `administrador`
+-- Limitadores para a tabela `administrador`
 --
 ALTER TABLE `administrador`
 ADD CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `cliente`
+-- Limitadores para a tabela `cliente`
 --
 ALTER TABLE `cliente`
 ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `estabelecimento`
+-- Limitadores para a tabela `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
 ADD CONSTRAINT `estabelecimento_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`);
 
 --
--- Restrições para tabelas `funcionario`
+-- Limitadores para a tabela `funcionario`
 --
 ALTER TABLE `funcionario`
 ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
 ADD CONSTRAINT `funcionario_ibfk_2` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `lista_cliente_estabelecimento`
+-- Limitadores para a tabela `lista_cliente_estabelecimento`
 --
 ALTER TABLE `lista_cliente_estabelecimento`
 ADD CONSTRAINT `lista_cliente_estabelecimento_ibfk_1` FOREIGN KEY (`id_lista`) REFERENCES `lista` (`id_lista`) ON DELETE CASCADE,
@@ -431,26 +431,26 @@ ADD CONSTRAINT `lista_cliente_estabelecimento_ibfk_2` FOREIGN KEY (`id_cliente`)
 ADD CONSTRAINT `lista_cliente_estabelecimento_ibfk_3` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `lista_produto`
+-- Limitadores para a tabela `lista_produto`
 --
 ALTER TABLE `lista_produto`
 ADD CONSTRAINT `lista_produto_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE CASCADE,
 ADD CONSTRAINT `lista_produto_ibfk_2` FOREIGN KEY (`id_lista`) REFERENCES `lista` (`id_lista`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `produto`
+-- Limitadores para a tabela `produto`
 --
 ALTER TABLE `produto`
 ADD CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `telefone_cliente`
+-- Limitadores para a tabela `telefone_cliente`
 --
 ALTER TABLE `telefone_cliente`
 ADD CONSTRAINT `telefone_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE;
 
 --
--- Restrições para tabelas `telefone_estabelecimento`
+-- Limitadores para a tabela `telefone_estabelecimento`
 --
 ALTER TABLE `telefone_estabelecimento`
 ADD CONSTRAINT `telefone_estabelecimento_ibfk_1` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
