@@ -28,7 +28,7 @@ body,input,textarea,select
 	h1,h2,h3,h4,h5,h6
 	{
 		font-weight: bold;
-		color: #04b338;
+		color: #008040;
 	}
 	
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
@@ -614,13 +614,13 @@ input[type="number"] {
 	
 	z-index:1;
 	position:absolute;
-	top:18em;
-	background: -moz-radial-gradient(center, ellipse cover, #008000 0%, #1C1C1C 100%); /* ff3.6+ */
+	top:15em;
+	background: -moz-radial-gradient(center, ellipse cover, #0Cfff0 0%, #1C1C1C 100%); /* ff3.6+ */
 background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #008000), color-stop(100%, #1C1C1C)); /* safari4+,chrome */
-background: -webkit-radial-gradient(center, ellipse cover, #008000 0%, #1C1C1C 100%); /* safari5.1+,chrome10+ */
+background: -webkit-radial-gradient(center, ellipse cover, #0C8000 0%, #1C1C1C 100%); /* safari5.1+,chrome10+ */
 background: -o-radial-gradient(center, ellipse cover, #008000 0%, #1C1C1C 100%); /* opera 11.10+ */
-background: -ms-radial-gradient(center, ellipse cover, #008000 0%, #1C1C1C 100%); /* ie10+ */
-background: radial-gradient(ellipse at center, #008000 0%, #1C1C1C 100%); /* w3c */
+background: -ms-radial-gradient(center, ellipse cover, #008FF0 0%, #1C1C1C 100%); /* ie10+ */
+background: radial-gradient(ellipse at center, #008FF0 0%, #1C1C1C 100%); /* w3c */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008000', endColorstr='#1C1C1C',GradientType=1 ); /* ie6-9 */
 	width:100%;
 	height:50%;
