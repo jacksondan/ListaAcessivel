@@ -27,8 +27,8 @@ jQuery(function($){
 		<div id="header-wrapper">
 			<div id="header" class="container">
 				<h1 id="logo">
-					<a href="index.jsp"><img src="images/g4314.png"
-						alt="Logo Lista acessível" style="width: 6.5em; heigth: 8.5em;"></a>
+				<h1 id="logo"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessível"  style="width:6.6em;heigth:16em;;"></a></h1>
+
 				</h1>
 
 			</div>
@@ -113,7 +113,7 @@ jQuery(function($){
 
 			</form>
 		</div>
-		<div id="footer2">
+		<div id="footer">
 			<div id="copyright" class="container">
 				<ul class="icons">
 					<li>&copy; TechBin. Todos os direitos reservados.</li>

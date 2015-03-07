@@ -65,7 +65,7 @@ body,input,textarea,select
 	
 		a:hover
 		{
-			color: #ffffff;
+			color: #00ff00;
 			border-bottom-color: rgba(255,255,255,0);
 		}
 		
@@ -130,6 +130,34 @@ body,input,textarea,select
 				}
 				
 					ul.actions li:first-child
+					{
+						margin-left: 0;
+					}
+					
+					
+					
+					ul.actions2
+			{
+				padding-top: 0.5em;
+				text-align: center;
+				
+			}
+			
+				ul.actions2.major
+				{
+					text-align: center;
+				}
+			
+				ul.actions2 li
+				{
+					display: inline-block;
+					margin-right: 2em;
+					margin-left: 2em;
+					font-size:19px;
+					color:#ffffff;
+				}
+				
+					ul.actions2 li:first-child
 					{
 						margin-left: 0;
 					}

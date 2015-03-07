@@ -81,7 +81,7 @@
 					</tr>
 					</tfoot>
 				</table>
-				<div id="filtro2">
+				<div id="finalizar">
 					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
 					<button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
 					<c:if test="${lista.situacao == 'criada'}">
