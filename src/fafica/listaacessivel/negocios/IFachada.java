@@ -25,6 +25,7 @@ public interface IFachada {
 	public Produto pesquisarProduto(Produto produto) throws SQLException;
 	public List<Produto> listarProdutosPorEstababelecimento(Estabelecimento estabelecimento, String categoria_produto, String descricao_produto) throws SQLException;
 	public List<Produto> listarProdutosPorLista(Lista lista) throws SQLException;
+	public List<Produto> listarProdutosNaoSelecionado(Lista lista, String categoria_produto, String descricao_produto) throws SQLException;
 	
 	public int adicionarLista(Lista entidade) throws SQLException;
 	public void alterarLista(Lista entidade) throws SQLException;

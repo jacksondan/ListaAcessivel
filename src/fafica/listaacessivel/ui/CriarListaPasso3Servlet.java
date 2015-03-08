@@ -75,7 +75,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				
 				List<Produto> listaprodutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
 				
-				request.setAttribute("listaprodutos",listaprodutos);
+				request.setAttribute("listaprodutos", listaprodutos);
 				request.setAttribute("estabelecimento", estabelecimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 				requestDispatcher.forward(request, response);

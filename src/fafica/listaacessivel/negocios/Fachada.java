@@ -181,9 +181,24 @@ public class Fachada implements IFachada {
 		
 		return listaProdutos;
 	}
+	
+	public List<Produto> listarProdutosNaoSelecionado(Lista lista, String categoria_produto, String descricao_produto) throws SQLException{
+		List <Produto> listaProdutos = this.controlador_produto.listarProdutosNaoSelecionado(lista, categoria_produto, descricao_produto);
+		if(listaProdutos != null){
+			for(Produto produto : listaProdutos){
+				Estabelecimento estabelecimento = 
+						this.pesquisarEstabelecimento(produto.getEstabelecimento());
+				
+				produto.setEstabelecimento(estabelecimento);
+			}
+		}
+		
+		return listaProdutos;
+	}
 	//*********************************************************
 	
 	//Lista***************************************************
+	
 	@Override
 	public int adicionarLista(Lista entidade) throws SQLException {
 		return this.controlador_lista.adicionarLista(entidade);
