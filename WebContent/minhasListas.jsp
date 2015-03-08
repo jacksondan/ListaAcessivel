@@ -8,7 +8,7 @@
 <title>${cliente.nome}- Inicio</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
+<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso2.css">
 <script src="js/script.js"></script>
 <script type="text/javascript"  src="js/jquery.js"></script>	
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -35,7 +35,7 @@
 			<h2>Minhas Lista</h2>	
 		</header>
 		
-				
+				<br/>
 				<table  id="listas" class="display" summary="Esta contém todas as suas Listas criadas,
 				Com as seguintes colunas, Descrição, Data de Criação, Valor total, Funções   em forma de links que são, Detalhes da lista, Editar  e Excluir.">
 					<caption>Minhas Listas</caption>

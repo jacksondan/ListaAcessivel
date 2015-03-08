@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome} - Inicio</title>
+<title>${acessoCliente.nome} - Menu Inicial</title>
 <link rel="stylesheet" type="text/css" href="css/style.css"> 
 </head>
 <body>

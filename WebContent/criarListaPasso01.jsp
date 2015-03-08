@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome} - Criar Lista</title>
+<title>ListaAcessível - Criar Lista Passo 01</title>
 <link rel="stylesheet" type="text/css" href="css/style.css"> 
 </head>
 <body>

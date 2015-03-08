@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Inicio</title>
+<title>${acessoCliente.nome} - Detalhes da lista</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <script type="text/javascript"  src="js/jquery.js"></script>
@@ -83,7 +83,7 @@
 				</table>
 				<div id="finalizar">
 					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
-					<button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
+					<button class="button3" onclick="javascript:doPrinting()" >Imprimir</button>
 					<c:if test="${lista.situacao == 'criada'}">
 						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
 					</c:if>

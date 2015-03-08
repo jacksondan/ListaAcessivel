@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ListaAcessivel - Página deLogin</title>
+<title>ListaAcessivel - Home</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 		<div id="container">
 				<div id="header-wrapper">
 				<div id="header" class="container">
-						<h1 id="logo"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessível"  style="width:6.6em ;heigth:16em;"></a></h1>
+						<h1 id="logo2"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessível"  style="width:6.6em ;heigth:16em;"></a></h1>
 
 					</div>
 				</div>
@@ -19,9 +19,12 @@
 			<div id="left"></div>
 			<div id="content">
 				<header class="major">		
-					<h2>Login</h2>
+					
 				</header>
-			<div>
+			<div id="homeDireita">
+				<header class="major">		
+					<h3>Login</h3>
+				</header>
 				<p style="text-align:center;color:red;">${erroLogin}</p>
 				<p style="text-align:center;color:green;">${mensagem}</p>
 
@@ -29,10 +32,10 @@
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<p><label for="email">E-mail ou CNPJ</label>
-				<input type="text" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=50></p>
+				<input type="text" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=40></p>
 				
 				<p><label for="senha">Senha</label><br>
-				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=15></p>
+				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=18></p>
 			</fieldset>
 						<div class="12u">
 										<ul class="actions">
@@ -41,6 +44,24 @@
 										</ul>
 						</div>
 			</form>
+			</div>
+			
+			<div id="homeEsquerda">
+				<header class="major">		
+					
+				</header>
+			
+				<div id=body>			
+				<p><big>A</big><img src="images/ic_logo_web.png" alt="Lista acessível"  style="width:9.6em ;heigth:16em;"> tem como objetivo contribuir para que pessoas com 
+				deficiência visual possam realizar compras através da criação de listas 
+				de produtos de estabelecimentos comerciais por um serviço online.</p> 
+				<p>O usuário terá acesso a um acervo de produtos disponibilizados pelos 
+				próprios estabelecimentos, esses estabelecimentos serão selecionados de 
+				acordo com a localização do usuário para melhor comodidade e disponibilidade 
+				de entregas em domicílio.</p>
+				</div>
+	
+			
 			</div>
 			</div>
 			<div id="footer">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Inicio</title>
+<title>ListaAcessível - Criar Lista Passo 03</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
 .divs{display:none;
@@ -46,8 +46,9 @@
 
 		<header class="major">
 			<h2>Criar Lista Passo - 03</h2>	
+			<h3>Selecione os Produtos </h3>
 		</header>
-		<div id="filtro2">
+		<div id="pesquisar">
 		<form action="CriarListaPasso3Servlet" method="GET">
 		
 		<input type="hidden" name="id_estabelecimento"  value="${estabelecimento.id_estabelecimento}" />
@@ -105,8 +106,8 @@
 				</table>
 				
 				<div id="descri">
-				<label for="desc"><left>Descrição da Lista</left></label><br>
-				<input type="text"name="descricaolista" id="desc"  placeholder="Digite a Descrição da Lista..." accesskey="s" size="40">
+				<label for="desc">Descrição da Lista</label><br>
+				<input type="text"name="descricaolista" id="desc"  placeholder="Digite a Descrição da Lista..." accesskey="s" size="30">
 				</div>
 				
 					<div id="finalizar">

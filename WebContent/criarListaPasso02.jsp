@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Inicio</title>
+<title>ListaAcessível - Criar Lista Passo 02</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso2.css">
 		<script src="js/script.js"></script>
@@ -30,7 +30,9 @@
 
 		<header class="major">
 			<h2>Criar Lista Passo - 02</h2>	
+			<h3>Selecione o Estabelecimento</h3>
 		</header>
+		<div></div>
 		<div id="filtro">
 			<button   onclick="window.location.href='CriarListaPasso2Servlet?filtragem=${filtroContrario}&categoria=${categoria}'" class="button">Filtrar por ${filtroContrario}</button>
 

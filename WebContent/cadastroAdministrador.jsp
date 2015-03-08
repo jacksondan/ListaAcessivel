@@ -4,7 +4,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>ListaAcessível - Cadastro Administrador</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
