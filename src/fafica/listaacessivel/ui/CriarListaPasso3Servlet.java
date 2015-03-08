@@ -57,11 +57,13 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
+				
 				String categoria_produto = request.getParameter("categoria");
 				String descricao_produto = request.getParameter("buscanome");
 				
+				
 				if(categoria_produto != null){
-					if(categoria_produto.equals("")){
+					if(categoria_produto.equals("não selecionada")){
 						categoria_produto = null;
 					}
 				}

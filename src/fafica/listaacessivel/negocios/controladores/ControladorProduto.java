@@ -76,6 +76,8 @@ public class ControladorProduto {
 					}
 				}
 				lista_produtos = pesquisa;
+			}else if (categoria_produto == null && descricao_produto == null){
+				return lista_produtos;
 			}
 		}
 		return lista_produtos;
