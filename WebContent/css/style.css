@@ -592,7 +592,7 @@ background:linear-gradient(180deg, rgb(38, 182, 80) 0%, rgb(47, 198, 92) 26%, rg
 		position: absolute;
 		z-index: 1;
 		bottom: 95px;
-		left: 104%;
+		left: 102%;
 		width: 10em;
 		margin-left: -7.5em;
 	}
