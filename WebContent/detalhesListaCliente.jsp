@@ -85,7 +85,7 @@
 					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
 					<button class="button3" onclick="javascript:doPrinting()" >Imprimir</button>
 					<c:if test="${lista.situacao == 'criada'}">
-						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Enterga</button>
+						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Entrega</button>
 					</c:if>
 				</div>
 				

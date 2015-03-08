@@ -38,7 +38,7 @@
 			</fieldset>
 			
 			<fieldset>
-			<legend>Telefones Para Contato</legend>
+			<legend>Telefones para Contato</legend>
 			
 			<p class="p">Telefone 1: ${cliente.telefones[0]}<p>
 			<p class="p">Telefone 2: ${cliente.telefones[1]}<p>

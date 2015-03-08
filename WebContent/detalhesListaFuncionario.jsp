@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ListaAcessível - Detalhes da Lista</title>
+<title>Lista Acessível - Detalhes da Lista</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <script type="text/javascript"  src="js/jquery.js"></script>

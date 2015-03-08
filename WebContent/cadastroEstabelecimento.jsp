@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ListaAcessível - Cadastro Estabelecimento</title>
+<title>Lista Acessível - Cadastro Estabelecimento</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -54,10 +54,10 @@
 					placeholder="Digite o E-mail" name="email" id="email" size=60
 					required="email"> <br> Categoria:<br> <select
 					name="categoria" required="categoria">
-					<option>supermercado</option>
-					<option>padaria</option>
-					<option>farmacia</option>
-					<option>livraria</option>
+					<option>Supermercado</option>
+					<option>Padaria</option>
+					<option>Farmácia</option>
+					<option>Livraria</option>
 				</select>
 			</fieldset>
 			<fieldset>

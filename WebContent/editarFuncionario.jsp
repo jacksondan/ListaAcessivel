@@ -4,7 +4,7 @@
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>Editar Funcionário</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -35,7 +35,7 @@
 						placeholder="Digite seu nome completo" name="nome" id="nome"
 						size=60 value="${funcionario.nome}"require="nome">
 						
-						<p><label for="matricula">Matricula</label><br> <input type="text"
+						<p><label for="matricula">Matrícula</label><br> <input type="text"
 						placeholder="Digite a matricula do funcionario" name="matricula" id="matricula"
 						require="matricula" value="${funcionario.matricula}"size="20">
 						</p>

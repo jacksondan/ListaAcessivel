@@ -5,7 +5,7 @@
 	<html>
 		<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Lista de Clientes</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/clientes.css">
 		<script type="text/javascript"  src="js/jquery.js"></script>		

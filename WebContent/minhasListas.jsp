@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Inicio</title>
+<title>${cliente.nome}- Início</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso2.css">
@@ -50,7 +50,7 @@
 					<tr>
 
 						<th rowspan="2"id="descrição">Descrição</th>
-						<th rowspan="2"id="situção">Descrição</th>
+						<th rowspan="2"id="situção">Situação</th>
 						<th rowspan="2"id="data">Data de Criação</th>
 						<th rowspan="2"id="total">Valor Total</th>					
 						<th colspan="3"id="função">Funções</th>

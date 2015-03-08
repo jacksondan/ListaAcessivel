@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Inicio</title>
+<title>${cliente.nome}- Início</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
 .divs{display:block;

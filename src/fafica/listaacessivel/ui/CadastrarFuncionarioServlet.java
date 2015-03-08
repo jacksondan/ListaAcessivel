@@ -75,7 +75,7 @@ public class CadastrarFuncionarioServlet extends HttpServlet {
 				
 				fachada.adicionarFuncionario(funcionario);
 				
-				String mensagem = "Funcionario Cadastrado Com Sucesso";
+				String mensagem = "Funcionário cadastrado com sucesso!";
 				request.setAttribute("mensagem", mensagem);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);								

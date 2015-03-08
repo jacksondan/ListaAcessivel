@@ -17,20 +17,20 @@
 			<div id="content2">
 			<!-- titulo do conteudo-->
 			<header class="major">		
-					<h2>Perfil Adminsitrador</h2>
+					<h2>Perfil Administrador</h2>
 			</header>
 			<!-- Conteudo-->
 			
 			
 			<fieldset>
-			<legend>Dado de Login</legend>
+			<legend>Dados de Login</legend>
 				<p>
 					E-mail: ${administrador.email} <br/>
 				</p>
 			</fieldset>
 			
 			<fieldset>		
-			<legend>Dados de Pessoais</legend>
+			<legend>Dados Pessoais</legend>
 				Nome: ${administrador.nome} <br/>
 				
 				CPF: ${administrador.cpf} <br/>

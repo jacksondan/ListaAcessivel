@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Inicio</title>
+<title>${cliente.nome}- Início</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">

@@ -15,7 +15,7 @@
 		<%@include file="sidebarAdmin.html"%>
 	<div id="content2">
 		<header class="major">
-			<h2>Detalhes Estabelecimento</h2>
+			<h2>Detalhes do Estabelecimento</h2>
 		</header>
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>

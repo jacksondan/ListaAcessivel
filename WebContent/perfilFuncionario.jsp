@@ -23,14 +23,14 @@
 			
 			
 			<fieldset>
-			<legend>Dado de Login</legend>
+			<legend>Dados de Login</legend>
 				<p>
 					E-mail: ${funcionario.email} <br/>
 				</p>
 			</fieldset>
 			
 			<fieldset>		
-			<legend>Dados de Pessoais</legend>
+			<legend>Dados Pessoais</legend>
 				Nome: ${funcionario.nome} <br/>
 				
 				Matrícula: ${funcionario.matricula} <br/>

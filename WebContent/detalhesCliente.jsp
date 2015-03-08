@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ListaAcessível - Detalhes Cliente</title>
+<title>Lista Acessível - Detalhes do Cliente</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 </head>
@@ -15,7 +15,7 @@
 		<%@include file="sidebarAdmin.html"%>
 	<div id="content2">
 		<header class="major">
-			<h2>Detalhes Cliente</h2>
+			<h2>Detalhes do Cliente</h2>
 		</header>
 			<fieldset>
 				<legend>Dados do Cliente</legend>

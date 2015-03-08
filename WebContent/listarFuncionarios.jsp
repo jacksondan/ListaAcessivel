@@ -5,7 +5,7 @@
 	<html>
 		<head>
 		<meta charset="ISO-8859-1">
-		<title>Insert title here</title>
+		<title>Lista de Funcionários</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/funcionarios.css">
 		<script src="js/script.js"></script>
@@ -30,7 +30,7 @@
 		
 				<div id="content2">
 					<header class="major">		
-						<h2>Lista de Funcionarios</h2>
+						<h2>Lista de Funcionários</h2>
 						${mensagem}
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
@@ -45,9 +45,9 @@
   								</colgroup>		
 								<thead>
 								<tr>
-									<th rowspan="2" id="matricula">Matricula</th>
+									<th rowspan="2" id="matricula">Matrícula</th>
 									<th rowspan="2" id="nome">Nome</th>
-									<th rowspan="2" id="email">Email</th>				
+									<th rowspan="2" id="email">E-mail</th>				
 									<th colspan="2" id="opção">Opções</th>
 									
 								</tr>

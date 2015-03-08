@@ -9,7 +9,7 @@
 
     function correiocontrolcep(valor){
       if (valor.erro) {
-        alert('CEP Inválido');        
+        alert('CEP Inválido, Tente novamente.');        
         return;
       };
 

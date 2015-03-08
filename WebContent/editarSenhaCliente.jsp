@@ -34,11 +34,11 @@
 
 				<p>
 					<label for="senhaNova">Nova Senha</label><br> <input type="password"
-						placeholder="Digite a Senha" name="senhaNova" id="senhaNova" size=30 required="senhaNova">
+						placeholder="Digite a nova Senha" name="senhaNova" id="senhaNova" size=30 required="senhaNova">
 				</p>
 				<p>
 					<label for="confirmarSenha">Confirmar Senha</label><br> <input type="password"
-						placeholder="Digite a Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha" onblur="validarSenha()">
+						placeholder="Digite a nova Senha Novamente" name="confirmarSenha" id="confirmarSenha" size=30 required="confirmarSenha" onblur="validarSenha()">
 				</p>
 				
 

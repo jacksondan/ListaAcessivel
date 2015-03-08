@@ -4,7 +4,7 @@
 	<html>
 		<head>
 		<meta charset="ISO-8859-1">
-		<title>NomeEstabelecimento - Inicio </title>
+		<title>Nome Estabelecimento - Início </title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>

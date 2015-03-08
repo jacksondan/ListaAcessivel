@@ -53,10 +53,10 @@
 				Categoria:<br> <select name="categoria">
 					<option selected="${editarEstabelecimento.categoria}"
 						value="${editarEstabelecimento.categoria}">${editarEstabelecimento.categoria}</option>
-					<option>supermercado</option>
-					<option>padaria</option>
-					<option>farmacia</option>
-					<option>livraria</option>
+					<option>Supermercado</option>
+					<option>Padaria</option>
+					<option>Farmácia</option>
+					<option>Livraria</option>
 					
 					
 				</select><br>
