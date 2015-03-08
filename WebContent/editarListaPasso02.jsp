@@ -49,7 +49,7 @@
 		</header>
 		<div id="filtro2">
 		<form action="EditarListaPasso2Servlet" method="GET">
-		<input type="hidden" name="id_estabelecimento"  value="${lista.estabelecimento.id_estabelecimento}" />
+		<input type="hidden" name="id_lista"  value="${lista.id_lista}" />
 		
 		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
 				<select name="categoria" >

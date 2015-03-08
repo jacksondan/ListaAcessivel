@@ -48,7 +48,42 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
 		}else{
-			response.sendRedirect("visaoCliente.jsp");
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
+				Lista lista = new Lista();
+				lista.setId_lista(id_lista);
+				lista = fachada.pesquisarLista(lista);
+				
+				String categoria_produto = request.getParameter("categoria");
+				String descricao_produto = request.getParameter("buscanome");
+				
+				
+				if(categoria_produto != null){
+					if(categoria_produto.equals("não selecionada")){
+						categoria_produto = null;
+					}
+				}
+				
+				if(descricao_produto != null)
+					if(descricao_produto.equals("")){
+						descricao_produto = null;
+					}
+				
+				List<Produto> listaprodutos = fachada.listarProdutosNaoSelecionado(lista, categoria_produto, descricao_produto);
+				
+				request.setAttribute("lista", listaprodutos);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarListaPasso2.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
