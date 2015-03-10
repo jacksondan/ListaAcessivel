@@ -25,13 +25,15 @@
 				</header>
 			
 				<div id=body>			
-				<p><big>A</big><img src="images/ic_logo_web.png" alt="Lista acessível"  style="width:9.6em ;heigth:16em;"> tem como objetivo contribuir para que pessoas com 
+				<p>A <i> Lista Acessível </i> tem como objetivo contribuir para que pessoas com 
 				deficiência visual possam realizar compras através da criação de listas 
 				de produtos de estabelecimentos comerciais por um serviço online.</p> 
 				<p>O usuário terá acesso a um acervo de produtos disponibilizados pelos 
 				próprios estabelecimentos, esses estabelecimentos serão selecionados de 
 				acordo com a localização do usuário para melhor comodidade e disponibilidade 
 				de entregas em domicílio.</p>
+				
+				<center><img src="images/homei.jpg" alt="imagem ilustrativa, mostrandando uma cesta de compras e um teclado no fundo" style="width:52.5%;"/></center>
 				</div>
 	
 			
@@ -47,10 +49,10 @@
 			<fieldset >
 			<legend>Dados de Login</legend>
 				<p><label for="email">E-mail ou CNPJ</label>
-				<input type="text" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=40></p>
+				<input type="text" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=40 required>  </p>
 				
 				<p><label for="senha">Senha</label><br>
-				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=18></p>
+				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=18 required>  </p>
 			</fieldset>
 						<div class="12u">
 										<ul class="actions">
