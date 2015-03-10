@@ -31,9 +31,11 @@
 			
 			<fieldset>		
 			<legend>Dados Pessoais</legend>
-				Nome: ${funcionario.nome} <br/>
+				<p class="p">Nome: ${funcionario.nome} </p>
 				
-				Matrícula: ${funcionario.matricula} <br/>
+				<p class="p">Estabelecimento: ${funcionario.estabelecimento.nome_fantasia}</p>
+				
+				<p class="p">Matrícula: ${funcionario.matricula}</p>
 
 			</fieldset>
 							<div class="menu">

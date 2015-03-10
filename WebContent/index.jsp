@@ -16,11 +16,26 @@
 					</div>
 				</div>
 				
-			<div id="left"></div>
+			
 			<div id="content">
+				
+				<div id="homeEsquerda">
 				<header class="major">		
 					
 				</header>
+			
+				<div id=body>			
+				<p><big>A</big><img src="images/ic_logo_web.png" alt="Lista acessível"  style="width:9.6em ;heigth:16em;"> tem como objetivo contribuir para que pessoas com 
+				deficiência visual possam realizar compras através da criação de listas 
+				de produtos de estabelecimentos comerciais por um serviço online.</p> 
+				<p>O usuário terá acesso a um acervo de produtos disponibilizados pelos 
+				próprios estabelecimentos, esses estabelecimentos serão selecionados de 
+				acordo com a localização do usuário para melhor comodidade e disponibilidade 
+				de entregas em domicílio.</p>
+				</div>
+	
+			
+			</div>
 			<div id="homeDireita">
 				<header class="major">		
 					<h3>Login</h3>
@@ -46,23 +61,7 @@
 			</form>
 			</div>
 			
-			<div id="homeEsquerda">
-				<header class="major">		
-					
-				</header>
 			
-				<div id=body>			
-				<p><big>A</big><img src="images/ic_logo_web.png" alt="Lista acessível"  style="width:9.6em ;heigth:16em;"> tem como objetivo contribuir para que pessoas com 
-				deficiência visual possam realizar compras através da criação de listas 
-				de produtos de estabelecimentos comerciais por um serviço online.</p> 
-				<p>O usuário terá acesso a um acervo de produtos disponibilizados pelos 
-				próprios estabelecimentos, esses estabelecimentos serão selecionados de 
-				acordo com a localização do usuário para melhor comodidade e disponibilidade 
-				de entregas em domicílio.</p>
-				</div>
-	
-			
-			</div>
 			</div>
 			<div id="footer">
 			<div id="copyright" class="container">
