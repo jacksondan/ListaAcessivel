@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.3.10
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: 03-Mar-2015 às 19:12
--- Versão do servidor: 5.6.21
--- PHP Version: 5.6.3
+-- Host: localhost
+-- Tempo de geração: 10/03/2015 às 16:35
+-- Versão do servidor: 10.0.16-MariaDB-log
+-- Versão do PHP: 5.6.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `listaacessivel`
+-- Banco de dados: `listaacessivel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `administrador`
+-- Estrutura para tabela `administrador`
 --
 
 CREATE TABLE IF NOT EXISTS `administrador` (
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `administrador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `administrador`
+-- Fazendo dump de dados para tabela `administrador`
 --
 
 INSERT INTO `administrador` (`id_administrador`, `cpf`) VALUES
@@ -41,7 +41,7 @@ INSERT INTO `administrador` (`id_administrador`, `cpf`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE IF NOT EXISTS `cliente` (
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Fazendo dump de dados para tabela `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`) VALUES
@@ -68,11 +68,11 @@ INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `estabelecimento`
+-- Estrutura para tabela `estabelecimento`
 --
 
 CREATE TABLE IF NOT EXISTS `estabelecimento` (
-`id_estabelecimento` int(11) NOT NULL,
+  `id_estabelecimento` int(11) NOT NULL,
   `nome_fantasia` varchar(200) NOT NULL,
   `nome_juridico` varchar(200) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -89,24 +89,24 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
   `referencia` varchar(70) DEFAULT NULL,
   `id_administrador` int(11) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `estabelecimento`
+-- Fazendo dump de dados para tabela `estabelecimento`
 --
 
 INSERT INTO `estabelecimento` (`id_estabelecimento`, `nome_fantasia`, `nome_juridico`, `email`, `senha`, `categoria`, `cnpj`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`, `id_administrador`, `status`) VALUES
-(16, 'Supermercado Baratão de Alimentos', 'Baratão de Alimentos', 'barataoalimentos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'supermercado', '121.212.121-21', 'Rua Doutor José Mariano', '14', 'Comércio', 'Nossa Senhora das Dores', 'Caruaru', 'PE', '55002-000', 'Praça Nossa Senhora das Dores', 1, 'ativo'),
-(17, 'Supermercado Bom Preço', 'Bom Preço', 'bompreco@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'supermercado', '212.121.212-13', 'Rua Manoel Maria', '38', 'Comércio', 'Nossa Senhora das Dores', 'Caruaru', 'PE', '55002-060', 'Praça Nossa Senhora das Dores', 1, 'ativo'),
-(18, 'Padraria Nossa Senhora do Carmo', 'Padaria Nossa Senhora do Carmo', 'padarianossasenhoradocarmo@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'padaria', '323.232.323-23', 'Rua Tenente Antônio Florêncio do Nascimento', '476', 'Comércio', 'Morro do Bom Jesus', 'Caruaru', 'PE', '55008-120', 'Morro do Bom Jesus', 1, 'ativo'),
-(19, 'Livraria Passo Certo', 'Passo Certo', 'livrariapassocerto@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'livraria', '232.323.232-31', 'Rua Josefa Pereira', '159', 'Comércio', 'São Francisco', 'Caruaru', 'PE', '55006-057', 'Próximo a Secretaria de Saúde', 1, 'ativo'),
-(20, 'Farmácia Menor Preço', 'Farmácia Menor Preço', 'farmaciamenorpreco@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'farmacia', '432.323.243-43', '2ª Travessa Santos Dumont', '237', 'Comércio', 'São Francisco', 'Caruaru', 'PE', '55006-132', 'Próximo a praça', 1, 'ativo'),
-(21, 'Supermercado Compre Bem', 'Compre Bem', 'comprebem@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'supermercado', '434.343.434-34', 'Rua Bahia', '678', 'Comércio', 'Divinópolis', 'Caruaru', 'PE', '55010-350', 'Ao lado do North Shopping', 1, 'ativo');
+(16, 'Supermercado Baratão de Alimentos', 'Baratão de Alimentos', 'barataoalimentos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Supermercado', '121.212.121-21', 'Rua Doutor José Mariano', '14', 'Comércio', 'Nossa Senhora das Dores', 'Caruaru', 'PE', '55002-000', 'Praça Nossa Senhora das Dores', 1, 'inativo'),
+(17, 'Supermercado Bom Preço', 'Bom Preço', 'bompreco@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Supermercado', '212.121.212-13', 'Rua Manoel Maria', '38', 'Comércio', 'Nossa Senhora das Dores', 'Caruaru', 'PE', '55002-060', 'Praça Nossa Senhora das Dores', 1, 'ativo'),
+(18, 'Padraria Nossa Senhora do Carmo', 'Padaria Nossa Senhora do Carmo', 'padarianossasenhoradocarmo@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Padaria', '323.232.323-23', 'Rua Tenente Antônio Florêncio do Nascimento', '476', 'Comércio', 'Morro do Bom Jesus', 'Caruaru', 'PE', '55008-120', 'Morro do Bom Jesus', 1, 'ativo'),
+(19, 'Livraria Passo Certo', 'Passo Certo', 'livrariapassocerto@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Livraria', '232.323.232-31', 'Rua Josefa Pereira', '159', 'Comércio', 'São Francisco', 'Caruaru', 'PE', '55006-057', 'Próximo a Secretaria de Saúde', 1, 'ativo'),
+(20, 'Farmácia Menor Preço', 'Farmácia Menor Preço', 'farmaciamenorpreco@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Farmácia', '432.323.243-43', '2ª Travessa Santos Dumont', '237', 'Comércio', 'São Francisco', 'Caruaru', 'PE', '55006-132', 'Próximo a praça', 1, 'ativo'),
+(21, 'Supermercado Compre Bem', 'Compre Bem', 'comprebem@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Supermercado', '434.343.434-34', 'Rua Bahia', '678', 'Comércio', 'Divinópolis', 'Caruaru', 'PE', '55010-350', 'Ao lado do North Shopping', 1, 'ativo');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `funcionario`
+-- Estrutura para tabela `funcionario`
 --
 
 CREATE TABLE IF NOT EXISTS `funcionario` (
@@ -115,33 +115,42 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `id_estabelecimento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Fazendo dump de dados para tabela `funcionario`
+--
+
+INSERT INTO `funcionario` (`id_funcionario`, `matricula`, `id_estabelecimento`) VALUES
+(7, '123', 16),
+(8, '1234567890', 17);
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `lista`
+-- Estrutura para tabela `lista`
 --
 
 CREATE TABLE IF NOT EXISTS `lista` (
-`id_lista` int(11) NOT NULL,
+  `id_lista` int(11) NOT NULL,
   `descricao` varchar(50) NOT NULL,
   `data_criacao` varchar(30) NOT NULL,
   `data_alteracao` varchar(30) DEFAULT NULL,
   `quantidade_total` int(11) DEFAULT NULL,
   `valor_total` float DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `lista`
+-- Fazendo dump de dados para tabela `lista`
 --
 
 INSERT INTO `lista` (`id_lista`, `descricao`, `data_criacao`, `data_alteracao`, `quantidade_total`, `valor_total`, `status`) VALUES
-(8, 'Teste de Lista', '4/12/2014', NULL, 15, 64.25, 'ativo');
+(8, 'Lista de fim de semana  2', '4/12/2014', '4/3/2015', 17, 69.65, 'ativo'),
+(9, 'Lista comum de produtos', '4/12/2014', '4/12/2014', 37, 102.7, 'ativo');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `lista_cliente_estabelecimento`
+-- Estrutura para tabela `lista_cliente_estabelecimento`
 --
 
 CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
@@ -152,16 +161,17 @@ CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `lista_cliente_estabelecimento`
+-- Fazendo dump de dados para tabela `lista_cliente_estabelecimento`
 --
 
 INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estabelecimento`, `situacao`) VALUES
-(8, 6, 16, 'criada');
+(8, 6, 16, 'atendida'),
+(9, 6, 16, 'solicitada');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `lista_produto`
+-- Estrutura para tabela `lista_produto`
 --
 
 CREATE TABLE IF NOT EXISTS `lista_produto` (
@@ -172,23 +182,29 @@ CREATE TABLE IF NOT EXISTS `lista_produto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `lista_produto`
+-- Fazendo dump de dados para tabela `lista_produto`
 --
 
 INSERT INTO `lista_produto` (`id_lista`, `id_produto`, `quantidade_produto`, `valor_produto`) VALUES
 (8, 6, 5, 2.75),
 (8, 7, 3, 4.80),
+(9, 7, 4, 4.80),
+(9, 8, 10, 1.97),
+(8, 9, 2, 2.70),
+(9, 9, 4, 2.70),
 (8, 10, 2, 1.80),
-(8, 11, 5, 6.50);
+(9, 10, 15, 1.80),
+(8, 11, 5, 6.50),
+(9, 11, 4, 6.50);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produto`
+-- Estrutura para tabela `produto`
 --
 
 CREATE TABLE IF NOT EXISTS `produto` (
-`id_produto` int(11) NOT NULL,
+  `id_produto` int(11) NOT NULL,
   `descricao` varchar(200) NOT NULL,
   `categoria` varchar(50) NOT NULL,
   `peso` float(10,3) NOT NULL,
@@ -203,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `produto`
+-- Fazendo dump de dados para tabela `produto`
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantidade`, `valor`, `validade`, `codigo_barra`, `disponibilidade`, `marca`, `id_estabelecimento`, `status`) VALUES
@@ -213,7 +229,7 @@ INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantida
 (9, 'Coca Cola Light', 'Bebidas', 2.000, 300, 2.70, '2016-09-30', '657676711111143', 'disponível', 'Coca Cola', 16, 'ativo'),
 (10, 'Sabão em Pó', 'limpeza', 1.000, 300, 1.80, '2017-05-25', '6556352311222111', 'disponível', 'Brilhante', 16, 'ativo'),
 (11, 'Sabonete líquido', 'limpeza', 0.700, 300, 6.50, '2018-02-22', '434534511111154', 'disponível', 'Lux', 16, 'ativo'),
-(12, 'Arroz Branco', 'Alimentos', 1.000, 300, 3.10, '2016-09-14', '5453453453111112', 'disponível', 'Rampinelli', 17, 'ativo'),
+(12, 'Arroz Branco', 'Alimentos', 1.000, 300, 3.10, '2016-09-14', 'null', 'disponível', 'Rampinelli', 17, 'ativo'),
 (13, 'Feijão Carioca', 'Alimentos', 1.000, 300, 3.20, '2016-04-30', '56456456456211111', 'disponível', 'Camil', 17, 'ativo'),
 (14, 'Macarrão Fino', 'Alimentos', 0.700, 300, 2.10, '2016-05-14', '543534511111123', 'disponível', 'Barilla', 17, 'ativo'),
 (15, 'Achocolatado', 'Bebidas', 0.900, 300, 4.70, '2016-03-28', '7567567567111111', 'disponível', 'Nescau', 17, 'ativo'),
@@ -232,7 +248,7 @@ INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantida
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `telefone_cliente`
+-- Estrutura para tabela `telefone_cliente`
 --
 
 CREATE TABLE IF NOT EXISTS `telefone_cliente` (
@@ -241,7 +257,7 @@ CREATE TABLE IF NOT EXISTS `telefone_cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `telefone_cliente`
+-- Fazendo dump de dados para tabela `telefone_cliente`
 --
 
 INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
@@ -251,7 +267,7 @@ INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `telefone_estabelecimento`
+-- Estrutura para tabela `telefone_estabelecimento`
 --
 
 CREATE TABLE IF NOT EXISTS `telefone_estabelecimento` (
@@ -260,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `telefone_estabelecimento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `telefone_estabelecimento`
+-- Fazendo dump de dados para tabela `telefone_estabelecimento`
 --
 
 INSERT INTO `telefone_estabelecimento` (`id_estabelecimento`, `telefone`) VALUES
@@ -280,150 +296,152 @@ INSERT INTO `telefone_estabelecimento` (`id_estabelecimento`, `telefone`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
-`id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `senha` varchar(50) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Fazendo dump de dados para tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `nome`, `status`) VALUES
 (1, 'admin@admin', 'ICy5YqxZB1uWSwcVLSNLcA==', 'TechBin Admin', 'ativo'),
-(6, 'ivanvalentimsantos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Ivan Valentim Santos', 'ativo');
+(6, 'ivanvalentimsantos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Ivan Valentim Santos', 'ativo'),
+(7, 'ivan@email.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Ivan Valentim', 'ativo'),
+(8, 'jose@email.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Jose da silva', 'ativo');
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `administrador`
+-- Índices de tabela `administrador`
 --
 ALTER TABLE `administrador`
- ADD PRIMARY KEY (`id_administrador`), ADD UNIQUE KEY `cpf` (`cpf`);
+  ADD PRIMARY KEY (`id_administrador`), ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Indexes for table `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
- ADD PRIMARY KEY (`id_cliente`), ADD UNIQUE KEY `cpf` (`cpf`);
+  ADD PRIMARY KEY (`id_cliente`), ADD UNIQUE KEY `cpf` (`cpf`);
 
 --
--- Indexes for table `estabelecimento`
+-- Índices de tabela `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
- ADD PRIMARY KEY (`id_estabelecimento`), ADD UNIQUE KEY `nome_juridico` (`nome_juridico`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `cnpj` (`cnpj`), ADD KEY `id_administrador` (`id_administrador`);
+  ADD PRIMARY KEY (`id_estabelecimento`), ADD UNIQUE KEY `nome_juridico` (`nome_juridico`), ADD UNIQUE KEY `email` (`email`), ADD UNIQUE KEY `cnpj` (`cnpj`), ADD KEY `id_administrador` (`id_administrador`);
 
 --
--- Indexes for table `funcionario`
+-- Índices de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
- ADD PRIMARY KEY (`id_funcionario`), ADD UNIQUE KEY `matricula` (`matricula`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
+  ADD PRIMARY KEY (`id_funcionario`), ADD UNIQUE KEY `matricula` (`matricula`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
--- Indexes for table `lista`
+-- Índices de tabela `lista`
 --
 ALTER TABLE `lista`
- ADD PRIMARY KEY (`id_lista`);
+  ADD PRIMARY KEY (`id_lista`);
 
 --
--- Indexes for table `lista_cliente_estabelecimento`
+-- Índices de tabela `lista_cliente_estabelecimento`
 --
 ALTER TABLE `lista_cliente_estabelecimento`
- ADD PRIMARY KEY (`id_lista`,`id_cliente`,`id_estabelecimento`), ADD UNIQUE KEY `id_lista` (`id_lista`), ADD KEY `id_cliente` (`id_cliente`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
+  ADD PRIMARY KEY (`id_lista`,`id_cliente`,`id_estabelecimento`), ADD UNIQUE KEY `id_lista` (`id_lista`), ADD KEY `id_cliente` (`id_cliente`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
--- Indexes for table `lista_produto`
+-- Índices de tabela `lista_produto`
 --
 ALTER TABLE `lista_produto`
- ADD PRIMARY KEY (`id_produto`,`id_lista`), ADD KEY `id_lista` (`id_lista`);
+  ADD PRIMARY KEY (`id_produto`,`id_lista`), ADD KEY `id_lista` (`id_lista`);
 
 --
--- Indexes for table `produto`
+-- Índices de tabela `produto`
 --
 ALTER TABLE `produto`
- ADD PRIMARY KEY (`id_produto`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
+  ADD PRIMARY KEY (`id_produto`), ADD KEY `id_estabelecimento` (`id_estabelecimento`);
 
 --
--- Indexes for table `telefone_cliente`
+-- Índices de tabela `telefone_cliente`
 --
 ALTER TABLE `telefone_cliente`
- ADD PRIMARY KEY (`id_cliente`,`telefone`);
+  ADD PRIMARY KEY (`id_cliente`,`telefone`);
 
 --
--- Indexes for table `telefone_estabelecimento`
+-- Índices de tabela `telefone_estabelecimento`
 --
 ALTER TABLE `telefone_estabelecimento`
- ADD PRIMARY KEY (`id_estabelecimento`,`telefone`);
+  ADD PRIMARY KEY (`id_estabelecimento`,`telefone`);
 
 --
--- Indexes for table `usuario`
+-- Índices de tabela `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id_usuario`), ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `estabelecimento`
+-- AUTO_INCREMENT de tabela `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
-MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT for table `lista`
+-- AUTO_INCREMENT de tabela `lista`
 --
 ALTER TABLE `lista`
-MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `produto`
+-- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
--- Constraints for dumped tables
+-- Restrições para dumps de tabelas
 --
 
 --
--- Limitadores para a tabela `administrador`
+-- Restrições para tabelas `administrador`
 --
 ALTER TABLE `administrador`
 ADD CONSTRAINT `administrador_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `cliente`
+-- Restrições para tabelas `cliente`
 --
 ALTER TABLE `cliente`
 ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `estabelecimento`
+-- Restrições para tabelas `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
 ADD CONSTRAINT `estabelecimento_ibfk_1` FOREIGN KEY (`id_administrador`) REFERENCES `administrador` (`id_administrador`);
 
 --
--- Limitadores para a tabela `funcionario`
+-- Restrições para tabelas `funcionario`
 --
 ALTER TABLE `funcionario`
 ADD CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`id_funcionario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE,
 ADD CONSTRAINT `funcionario_ibfk_2` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `lista_cliente_estabelecimento`
+-- Restrições para tabelas `lista_cliente_estabelecimento`
 --
 ALTER TABLE `lista_cliente_estabelecimento`
 ADD CONSTRAINT `lista_cliente_estabelecimento_ibfk_1` FOREIGN KEY (`id_lista`) REFERENCES `lista` (`id_lista`) ON DELETE CASCADE,
@@ -431,26 +449,26 @@ ADD CONSTRAINT `lista_cliente_estabelecimento_ibfk_2` FOREIGN KEY (`id_cliente`)
 ADD CONSTRAINT `lista_cliente_estabelecimento_ibfk_3` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `lista_produto`
+-- Restrições para tabelas `lista_produto`
 --
 ALTER TABLE `lista_produto`
 ADD CONSTRAINT `lista_produto_ibfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id_produto`) ON DELETE CASCADE,
 ADD CONSTRAINT `lista_produto_ibfk_2` FOREIGN KEY (`id_lista`) REFERENCES `lista` (`id_lista`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `produto`
+-- Restrições para tabelas `produto`
 --
 ALTER TABLE `produto`
 ADD CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `telefone_cliente`
+-- Restrições para tabelas `telefone_cliente`
 --
 ALTER TABLE `telefone_cliente`
 ADD CONSTRAINT `telefone_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`) ON DELETE CASCADE;
 
 --
--- Limitadores para a tabela `telefone_estabelecimento`
+-- Restrições para tabelas `telefone_estabelecimento`
 --
 ALTER TABLE `telefone_estabelecimento`
 ADD CONSTRAINT `telefone_estabelecimento_ibfk_1` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimento` (`id_estabelecimento`) ON DELETE CASCADE;
