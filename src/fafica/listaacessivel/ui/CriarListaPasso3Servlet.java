@@ -27,6 +27,10 @@ import fafica.listaacessivel.ui.util.Situacao;
 @WebServlet("/CriarListaPasso3Servlet")
 public class CriarListaPasso3Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private Cliente cliente;
+	private Estabelecimento estabelecimento;
+	private Lista lista;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,8 +44,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
+		HttpSession acessoCliente = request.getSession();
+		cliente = (Cliente) acessoCliente.getAttribute("acessoCliente");
 		if(cliente == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
@@ -53,9 +57,13 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
-				Estabelecimento estabelecimento= new Estabelecimento();
+				estabelecimento= new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
+				HttpSession estabelecimentoSession = request.getSession(); 
+				estabelecimentoSession.setAttribute("estabelecimentoSession", estabelecimento);
+				estabelecimentoSession.setMaxInactiveInterval(acessoCliente.getMaxInactiveInterval());
 				
 				
 				String categoria_produto = request.getParameter("categoria");
@@ -73,9 +81,9 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						descricao_produto = null;
 					}
 				
-				List<Produto> listaprodutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
+				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
 				
-				request.setAttribute("listaprodutos", listaprodutos);
+				request.setAttribute("listaProdutos", listaProdutos);
 				request.setAttribute("estabelecimento", estabelecimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 				requestDispatcher.forward(request, response);

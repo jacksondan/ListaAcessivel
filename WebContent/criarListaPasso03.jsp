@@ -92,7 +92,7 @@
 
 					<tbody>
 				
-					<c:forEach items="${listaprodutos}" var="produto" varStatus="status">
+					<c:forEach items="${listaProdutos}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
 							<td headers="selecionar"><input type="checkbox" class="checkbox" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>

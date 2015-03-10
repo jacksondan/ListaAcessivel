@@ -107,7 +107,7 @@ public class IndexServlet extends HttpServlet {
 				}else if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoCliente", usuario);
-					session.setMaxInactiveInterval(2400);
+					session.setMaxInactiveInterval(3600);
 					response.sendRedirect("visaoCliente.jsp");
 				}else{
 					HttpSession session = request.getSession(); 

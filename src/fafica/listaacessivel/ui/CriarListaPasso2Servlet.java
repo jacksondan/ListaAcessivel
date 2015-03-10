@@ -2,7 +2,6 @@ package fafica.listaacessivel.ui;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -63,11 +62,11 @@ public class CriarListaPasso2Servlet extends HttpServlet {
 				}else{
 					filtroContrario = "Bairro";
 				}
-				List<Estabelecimento> listaEstabelecimentos = new ArrayList<Estabelecimento>();
 			
 				cliente = fachada.pesquisarCliente(cliente);
 								
-				listaEstabelecimentos = fachada.listarEstabelecimentoPorRegiao(categoria, cliente, selecionarPorBairro);
+				List<Estabelecimento> listaEstabelecimentos = 
+						fachada.listarEstabelecimentoPorRegiao(categoria, cliente, selecionarPorBairro);
 				
 				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos);
 				
