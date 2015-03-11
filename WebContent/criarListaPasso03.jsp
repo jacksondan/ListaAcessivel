@@ -63,7 +63,8 @@
 					  <option value="limpeza">Produtos de Limpeza</option>
 				</select>
 				
-				<input type="submit" value="pesquisar" class="button">
+				<!--input type="submit" value="pesquisar" class="button"-->
+				<button type="submit"class="button3" name="pesquisa" value="true">Pesquisar</button>
 				
 		</div>
 				
@@ -92,6 +93,15 @@
 					</thead>
 
 					<tbody>
+					
+					<c:forEach items="${produtosSession}" var="produto" varStatus="status">
+						<tr>
+							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number" accesskey="w"  name="quantidade" value="d${produto.id_produto}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
+						</tr>
+					</c:forEach>
 				
 					<c:forEach items="${listaProdutos}" var="produto" varStatus="status">
 						<tr>

@@ -31,6 +31,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 	private Cliente cliente;
 	private Estabelecimento estabelecimento;
 	private Lista lista;
+	private List<Produto> produtos_lista;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,22 +65,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				HttpSession estabelecimentoSession = request.getSession(); 
 				estabelecimentoSession.setAttribute("estabelecimentoSession", estabelecimento);
 				
-				/*
-				String categoria_produto = request.getParameter("categoria");
-				String descricao_produto = request.getParameter("buscanome");
-				
-				
-				if(categoria_produto != null){
-					if(categoria_produto.equals("não selecionada")){
-						categoria_produto = null;
-					}
-				}
-				
-				if(descricao_produto != null)
-					if(descricao_produto.equals("")){
-						descricao_produto = null;
-					}
-				*/
 				
 				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
 				
@@ -115,25 +100,59 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				//int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				/*
+				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				Estabelecimento estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				*/
+				
+				//Pegando informações do formulario;
+				String categoria_produto = request.getParameter("categoria");
+				String descricao_produto = request.getParameter("buscanome");
+				String descricao = request.getParameter("descricaolista");
+				String pesquisa = request.getParameter("pesquisa");
 				
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
 				String [] selecaoIdProduto = request.getParameterValues("id_produto");
 				String [] selecaoQuantidade = request.getParameterValues("quantidade");
 				String [] quantidadesListadas = null;
 				
-				/*
-				Estabelecimento estabelecimento = new Estabelecimento();
-				estabelecimento.setId_estabelecimento(id_estabelecimento);
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				*/
+				//Análise inicial dos dados obtidos 
+				if(categoria_produto != null){
+					if(categoria_produto.equals("não selecionada")){
+						categoria_produto = null;
+					}
+				}
 				
-				String descricao = request.getParameter("descricaolista");
+				if(descricao_produto != null)
+					if(descricao_produto.equals("")){
+						descricao_produto = null;
+				}
 				
 				if(descricao == null){
 					descricao = "";
 				}
 				
+				
+				//Regra de negocio
+				
+				if(pesquisa.equals("true")){
+					
+					
+					
+					
+					
+					
+					
+				}else{
+					
+				}
+				
+				
+				
+				
+				/*
 				if(selecaoProdutos != null){
 					
 					quantidadesListadas = new String[selecaoProdutos.length];
@@ -196,6 +215,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp"); //CriarListaPasso3Servlet
 					requestDispatcher.forward(request, response);
 				}
+				*/
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
