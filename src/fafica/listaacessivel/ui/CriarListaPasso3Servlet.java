@@ -44,8 +44,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession acessoCliente = request.getSession();
-		cliente = (Cliente) acessoCliente.getAttribute("acessoCliente");
+		HttpSession session = request.getSession();
+		cliente = (Cliente) session.getAttribute("acessoCliente");
 		if(cliente == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
@@ -63,9 +63,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				
 				HttpSession estabelecimentoSession = request.getSession(); 
 				estabelecimentoSession.setAttribute("estabelecimentoSession", estabelecimento);
-				estabelecimentoSession.setMaxInactiveInterval(acessoCliente.getMaxInactiveInterval());
 				
-				
+				/*
 				String categoria_produto = request.getParameter("categoria");
 				String descricao_produto = request.getParameter("buscanome");
 				
@@ -80,8 +79,9 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					if(descricao_produto.equals("")){
 						descricao_produto = null;
 					}
+				*/
 				
-				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
+				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
 				
 				request.setAttribute("listaProdutos", listaProdutos);
 				request.setAttribute("estabelecimento", estabelecimento);
@@ -103,27 +103,30 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
+		cliente = (Cliente) session.getAttribute("acessoCliente");
+		estabelecimento = (Estabelecimento) session.getAttribute("estabelecimentoSession");
 		if(cliente == null){
 			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
+			
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
+				//int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 				
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
 				String [] selecaoIdProduto = request.getParameterValues("id_produto");
 				String [] selecaoQuantidade = request.getParameterValues("quantidade");
 				String [] quantidadesListadas = null;
 				
+				/*
 				Estabelecimento estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				*/
 				
 				String descricao = request.getParameter("descricaolista");
 				
@@ -189,7 +192,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					String mensagem = "Lista n�o pode ser criada sem itens";
 					
 					request.setAttribute("mensagem",mensagem);
-					request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
+					//request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
 					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp"); //CriarListaPasso3Servlet
 					requestDispatcher.forward(request, response);
 				}
