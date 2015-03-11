@@ -41,16 +41,15 @@
 </head>
 <body>
 
-	<%@include file="headerCliente.html"%>
+	<%@include file="/headerCliente.html"%>
 	<div id="content">
 
 		<header class="major">
 			<h2>Criar Lista Passo - 03</h2>	
 			<h3>Selecione os Produtos </h3>
 		</header>
-		<form action="CriarListaPasso3Servlet" id="formlista"method="POST">
-		
 		<div id="pesquisar">
+		<form action="CriarListaPasso3Servlet" method="GET">
 		
 		<input type="hidden" name="id_estabelecimento"  value="${estabelecimento.id_estabelecimento}" />
 		
@@ -64,9 +63,9 @@
 				</select>
 				
 				<input type="submit" value="pesquisar" class="button">
-				
+				</form>
 		</div>
-				
+				<form action="CriarListaPasso3Servlet" id="formlista"method="POST">
 				
 				<input type="hidden" name="id_estabelecimento" value="${estabelecimento.id_estabelecimento}" />
 					
