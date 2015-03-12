@@ -66,8 +66,6 @@ public class EditarSenhaClienteServlet extends HttpServlet {
 				
 				String mensagem="";
 				
-				cliente = fachada.pesquisarCliente(cliente);
-				
 				String confirmarSenha = CriptografiaSenha.encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = CriptografiaSenha.encriptar(request.getParameter("senhaAtual"));
 				String senhaNova = CriptografiaSenha.encriptar(request.getParameter("senhaNova"));
