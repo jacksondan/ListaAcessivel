@@ -31,14 +31,19 @@
     		document.f1.confirmarSenha.focus()
     	}
     }
+   
+    /*
+     * DO PRINTNG
+     * 
+     * */
     
-//    function DoPrinting(){
-//        if (!window.print){
-//           alert("Use o Google Chrome")
-//           return
-//        }
-//        window.print()
-//     }
+   function DoPrinting(){
+        if (!window.print){
+         alert("Use o Google Chrome")
+         return
+       }
+       window.print()
+    }
    
    
     /*

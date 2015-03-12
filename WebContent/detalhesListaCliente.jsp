@@ -14,7 +14,9 @@
    #nav2{display:none}
    #content{}
    #footer{display:none}
-   #filtro2{display:none}	
+   #filtro2{display:none}
+   #finalizar{display:none}	
+   
 </style>	
 </head>
 <body>
@@ -83,7 +85,7 @@
 				</table>
 				<div id="finalizar">
 					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
-					<button class="button3" onclick="javascript:doPrinting()" >Imprimir</button>
+					<button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
 					<c:if test="${lista.situacao == 'criada'}">
 						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Entrega</button>
 					</c:if>
