@@ -89,6 +89,9 @@
 					<c:if test="${lista.situacao == 'criada'}">
 						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Entrega</button>
 					</c:if>
+					<c:if test="${lista.situacao == 'atendida'}">
+						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Nova Entrega</button>
+					</c:if>
 				</div>
 				
 	</div>
