@@ -93,7 +93,7 @@ public class EditarClienteServlet extends HttpServlet {
 				
 				String mensagem = "Edição realizada com sucesso!!";
 				request.setAttribute("mensagem", mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilClienteServlet");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilCliente.jsp");
 				dispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException | SQLException e) {
