@@ -4,11 +4,11 @@ public enum Disponibilidade {
 	
 	DISPONIVEL{
 		public String toString(){
-			return "disponível";
+			return "disponivel";
 		}
 	},INDISPONIVEL{
 		public String toString(){
-			return "indisponível";
+			return "indisponivel";
 		}
 	}
 }

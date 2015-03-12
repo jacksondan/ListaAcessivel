@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ListaAcessivel - Home</title>
+<title>Lista Acessível - Início</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
