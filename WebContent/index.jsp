@@ -52,7 +52,7 @@
 				<input type="text" placeholder="Digite o Email ou CNPJ" name="email" id="email" size=40 required>  </p>
 				
 				<p><label for="senha">Senha</label><br>
-				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=18 required>  </p>
+				<input type="password" placeholder="Digite a Senha" name="senha" id="senha" size=40 required>  </p>
 			</fieldset>
 						<div class="12u">
 										<ul class="actions">

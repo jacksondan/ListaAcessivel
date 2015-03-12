@@ -2,7 +2,7 @@
  * Table styles
  */
 table.dataTable {
-width:20%;
+width:100%;
   margin: 0 auto;
   clear: both;
   border-collapse: separate;
@@ -26,7 +26,7 @@ width:20%;
   table.dataTable thead td {
     padding: 10px 18px;
     border: 1px solid #ffffff;
-    background-color:#008000 }
+    background-color:#408080 }
     table.dataTable thead th:active,
     table.dataTable thead td:active {
       }
@@ -244,9 +244,9 @@ table.dataTable td {
   -moz-box-sizing: content-box;
   box-sizing: content-box; }
  
-/*88**************************************************************************************************
+/*
  * Control feature layout
- ************************************************************************************************/
+ */
 .dataTables_wrapper {
   position: relative;
   clear: both;
@@ -259,7 +259,7 @@ table.dataTable td {
   .dataTables_wrapper .dataTables_filter {
     position:absolute;
     margin-left:40em;
-    margin-top:-1em; }
+    margin-top:-2em; }
     .dataTables_wrapper .dataTables_filter input {
       margin-left: 0.1em; }
   .dataTables_wrapper .dataTables_info {

@@ -45,7 +45,7 @@
 				<div class="12u">
 					<ul class="actions">
 						<li><input type="submit" value="Confirmar Edição" /></li>
-						<li><input type="reset" value="Limpar" /></li>
+					
 					</ul>
 				</div>
 

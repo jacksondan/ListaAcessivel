@@ -101,7 +101,7 @@ jQuery(function($){
 			<div class="12u">
 				<ul class="actions">
 					<li><input type="submit" value="Salvar" /></li>
-					<li><input type="reset" value="Limpar" /></li>
+					
 				</ul>
 			</div>
 
