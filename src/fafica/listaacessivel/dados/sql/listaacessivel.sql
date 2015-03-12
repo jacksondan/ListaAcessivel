@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03-Mar-2015 às 19:12
+-- Generation Time: 11-Mar-2015 às 21:34
 -- Versão do servidor: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -63,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `cpf`, `ano_nascimento`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `cep`, `referencia`) VALUES
-(6, '053.086.814-81', '1985', 'Imperial', '185', 'Casa', 'Agamenom Magalhães', 'Caruaru', 'PE', '55002-010', 'Orelhão');
+(6, '053.086.814-81', '1985', 'Imperial', '185', 'Casa', 'Agamenom Magalhães', 'Caruaru', 'PE', '55002-010', 'Orelhão'),
+(7, '123.311.223-44', '1992', 'Rua Quatorze de Julho', '42', 'Perto da budéga', 'Nossa Senhora das Dores', 'Caruaru', 'PE', '55002-140', 'ressse');
 
 -- --------------------------------------------------------
 
@@ -89,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `estabelecimento` (
   `referencia` varchar(70) DEFAULT NULL,
   `id_administrador` int(11) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `estabelecimento`
@@ -115,6 +116,13 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `id_estabelecimento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `funcionario`
+--
+
+INSERT INTO `funcionario` (`id_funcionario`, `matricula`, `id_estabelecimento`) VALUES
+(8, '123', 16);
+
 -- --------------------------------------------------------
 
 --
@@ -129,14 +137,16 @@ CREATE TABLE IF NOT EXISTS `lista` (
   `quantidade_total` int(11) DEFAULT NULL,
   `valor_total` float DEFAULT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `lista`
 --
 
 INSERT INTO `lista` (`id_lista`, `descricao`, `data_criacao`, `data_alteracao`, `quantidade_total`, `valor_total`, `status`) VALUES
-(8, 'Teste de Lista', '4/12/2014', NULL, 15, 64.25, 'ativo');
+(8, 'Teste de Lista', '4/12/2014', NULL, 15, 64.25, 'ativo'),
+(9, 'Testes tes testes tes te stes tes tes', '7/3/2015', '7/3/2015', 2, 7.55, 'ativo'),
+(10, 'dsaweq', '7/3/2015', '8/3/2015', 2, 7.55, 'ativo');
 
 -- --------------------------------------------------------
 
@@ -156,7 +166,9 @@ CREATE TABLE IF NOT EXISTS `lista_cliente_estabelecimento` (
 --
 
 INSERT INTO `lista_cliente_estabelecimento` (`id_lista`, `id_cliente`, `id_estabelecimento`, `situacao`) VALUES
-(8, 6, 16, 'criada');
+(8, 6, 16, 'criada'),
+(9, 7, 16, 'atendida'),
+(10, 7, 16, 'criada');
 
 -- --------------------------------------------------------
 
@@ -177,7 +189,11 @@ CREATE TABLE IF NOT EXISTS `lista_produto` (
 
 INSERT INTO `lista_produto` (`id_lista`, `id_produto`, `quantidade_produto`, `valor_produto`) VALUES
 (8, 6, 5, 2.75),
+(9, 6, 1, 2.75),
+(10, 6, 1, 2.75),
 (8, 7, 3, 4.80),
+(9, 7, 1, 4.80),
+(10, 7, 1, 4.80),
 (8, 10, 2, 1.80),
 (8, 11, 5, 6.50);
 
@@ -246,7 +262,9 @@ CREATE TABLE IF NOT EXISTS `telefone_cliente` (
 
 INSERT INTO `telefone_cliente` (`id_cliente`, `telefone`) VALUES
 (6, '(81)9218-2556'),
-(6, '(81)9718-3843');
+(6, '(81)9718-3843'),
+(7, '(81)3322-3322'),
+(7, '(81)3332-2333');
 
 -- --------------------------------------------------------
 
@@ -289,7 +307,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(50) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `status` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuario`
@@ -297,7 +315,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `email`, `senha`, `nome`, `status`) VALUES
 (1, 'admin@admin', 'ICy5YqxZB1uWSwcVLSNLcA==', 'TechBin Admin', 'ativo'),
-(6, 'ivanvalentimsantos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Ivan Valentim Santos', 'ativo');
+(6, 'ivanvalentimsantos@gmail.com', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Ivan Valentim Santos', 'ativo'),
+(7, 'jackson@jackson', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Jackson Daniel', 'ativo'),
+(8, 'funcionario1@funcionario1', 'ICy5YqxZB1uWSwcVLSNLcA==', 'Funcionario 1', 'ativo');
 
 --
 -- Indexes for dumped tables
@@ -377,12 +397,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `estabelecimento`
 --
 ALTER TABLE `estabelecimento`
-MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `lista`
 --
 ALTER TABLE `lista`
-MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `id_lista` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `produto`
 --
@@ -392,7 +412,7 @@ MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --

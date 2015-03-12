@@ -107,6 +107,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				*/
 				
+				
+				
 				//Pegando informações do formulario;
 				String categoria_produto = request.getParameter("categoria");
 				String descricao_produto = request.getParameter("buscanome");
