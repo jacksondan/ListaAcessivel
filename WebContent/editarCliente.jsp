@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>${cliente.nome} - Perfil</title>
+<title>${acessoCliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -44,25 +44,25 @@ jQuery(function($){
 				
 				<label for="email">E-mail:</label>
 				<input type="email" name="email" id="email"
-					value="${editarCliente.email}" size=60 required="email"><br>
+					value="${acessoCliente.email}" size=60 required="email"><br>
 				<label for="nome">Nome Completo</label> <input type="text"
-					name="nome" id="nome" value="${editarCliente.nome}" size=60 required="nome">
+					name="nome" id="nome" value="${acessoCliente.nome}" size=60 required="nome">
 				
 				<p><label for="ano_nascimento">Ano de Nascimento</label><br> <input type="text"
 						 name="ano_nascimento" id="ano_nascimento"
-						require="ano_nascimento" value="${editarCliente.ano_nascimento}" size="4"></p>
+						require="ano_nascimento" value="${acessoCliente.ano_nascimento}" size="4"></p>
 						
 				<label for="cpf">CPF:</label><br> <input type="text" name="cpf"
-					id="cpf" value="${editarCliente.cpf}" size=12 required="cpf"><br>
+					id="cpf" value="${acessoCliente.cpf}" size=12 required="cpf"><br>
 			</fieldset>
 
 			<fieldset>
 				<legend>Telefones para Contato:</legend>
 				<label for="telefone1">Telefone 1:</label><br> <input
 					type="text" name="telefone1" id="telefone1"
-					value="${editarCliente.telefones[0]}" size=20 required="telefone1"><br> <label
+					value="${acessoCliente.telefones[0]}" size=20 required="telefone1"><br> <label
 					for="telefone2">Telefone 2:</label><br> <input type="text"
-					name="telefone2" id="telefone2" value="${editarCliente.telefones[1]}"
+					name="telefone2" id="telefone2" value="${acessoCliente.telefones[1]}"
 					size=20><br>
 			</fieldset>
 
@@ -72,29 +72,29 @@ jQuery(function($){
 					
 
 				<label for="cep">CEP:</label><br> <input type="text" name="cep"
-					id="cep" value="${editarCliente.endereco.cep}" onblur="consultacep(this.value)" size=20 required="cep"><br> 
+					id="cep" value="${acessoCliente.endereco.cep}" onblur="consultacep(this.value)" size=20 required="cep"><br> 
 					<label for="estado">Estado:</label><br> <input type="text"
-						name="estado" id="estado" value="${editarCliente.endereco.estado}" size=2><br>
+						name="estado" id="estado" value="${acessoCliente.endereco.estado}" size=2><br>
 					
 					<label
 					for="cidade">Cidade:</label><br> <input type="text"
-					name="cidade" id="cidade" value="${editarCliente.endereco.cidade}" size=30><br>
+					name="cidade" id="cidade" value="${acessoCliente.endereco.cidade}" size=30><br>
 			
 				<label for="bairro">Bairro:</label><br> <input type="text"
-					name="bairro" id="bairro" value="${editarCliente.endereco.bairro}" size=30 required="bairro" ><br>
+					name="bairro" id="bairro" value="${acessoCliente.endereco.bairro}" size=30 required="bairro" ><br>
 
 				<label for="rua">Rua:</label><br> <input type="text" name="rua"
-					id="rua" value="${editarCliente.endereco.rua}" size=60 required="rua"> <br> <label
+					id="rua" value="${acessoCliente.endereco.rua}" size=60 required="rua"> <br> <label
 					for="numero">Número:</label><br> <input type="text"
-					name="numero" id="numero" value="${editarCliente.endereco.numero}" size=4 required="numero"><br>
+					name="numero" id="numero" value="${acessoCliente.endereco.numero}" size=4 required="numero"><br>
 					
 					<label
 					for="complemento">Complemento:</label><br> <input type="text"
-					name="complemento" id="complemento" value="${editarCliente.endereco.complemento}" size=60 required="complemento"><br>
+					name="complemento" id="complemento" value="${acessoCliente.endereco.complemento}" size=60 required="complemento"><br>
 
 				<label for="referencia">Referência:</label><br> <input
 					type="text" name="referencia" id="referencia"
-					value="${editarCliente.endereco.referencia}" size=60 required="referencia"><br>
+					value="${acessoCliente.endereco.referencia}" size=60 required="referencia"><br>
 
 			</fieldset>
 

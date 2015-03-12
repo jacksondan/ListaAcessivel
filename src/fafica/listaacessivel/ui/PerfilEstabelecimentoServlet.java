@@ -37,6 +37,7 @@ public class PerfilEstabelecimentoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
@@ -68,22 +69,10 @@ public class PerfilEstabelecimentoServlet extends HttpServlet {
 			}
 
 		}else if(administrador == null && estabelecimento != null){
-			try {
-				IFachada fachada;
-				fachada = Fachada.getInstance();
-				
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-
-				request.setAttribute("estabelecimento", estabelecimento);
+			
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
 		}
 	}
 

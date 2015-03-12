@@ -67,22 +67,10 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(administrador == null && estabelecimento != null){
-			try {
-				IFachada fachada = Fachada.getInstance();
-				
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				
+
 				request.setAttribute("editarEstabelecimento", estabelecimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 
@@ -93,12 +81,18 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Estabelecimento estabelecimento = (Estabelecimento) session.getAttribute("acessoEstabelecimento");
-		if(estabelecimento == null){
-			response.sendRedirect("index.jsp");
-		}else{
-			try {
+		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
+		
+		if(administrador == null && estabelecimento == null){
+			String mensagem = "SessÃ£o expirada!!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		}else if(administrador != null && estabelecimento == null){
+/*			try {
 				IFachada fachada = Fachada.getInstance();
 				ArrayList<String> telefones = new ArrayList<String>();
+				
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
@@ -130,6 +124,35 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				
 				response.sendRedirect("PerfilEstabelecimentoServlet");
 						
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+		}else if(administrador == null && estabelecimento != null){
+			try {
+				IFachada fachada = Fachada.getInstance();
+				ArrayList<String> telefones = new ArrayList<String>();
+				
+				/*
+				 exemplo1:
+				 estabelecimento.setEmail(request.getParameter("email");)
+				 
+				 exemplo2:
+				 telefones.add(request.getParameter("telefone1");)
+				 telefones.add(request.getParameter("telefone2");)
+				 
+				 estabelecimento.setTelefones(telefones)
+				 
+				 
+				 */
+				
+				fachada.alterarEstabelecimento(estabelecimento);
+				
+				String mensagem = "Edição realizada com sucesso!!";
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilEstabelecimento.jsp");
+				dispatcher.forward(request, response);
+				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

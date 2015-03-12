@@ -30,32 +30,32 @@
 			<fieldset>
 			<legend>Dados Pessoais</legend>
 				
-				<p class="p">E-mail: 		${cliente.email} </p>
-				<p class="p">Nome: 				${cliente.nome} 
-				<p class="p">Ano de Nascimento:  ${cliente.ano_nascimento}<p>
-				<p class="p">CPF: 				${cliente.cpf}</p>
+				<p class="p">E-mail: 		${acessoCliente.email} </p>
+				<p class="p">Nome: 				${acessoCliente.nome} 
+				<p class="p">Ano de Nascimento:  ${acessoCliente.ano_nascimento}<p>
+				<p class="p">CPF: 				${acessoCliente.cpf}</p>
 				
 			</fieldset>
 			
 			<fieldset>
 			<legend>Telefones para Contato</legend>
 			
-			<p class="p">Telefone 1: ${cliente.telefones[0]}<p>
-			<p class="p">Telefone 2: ${cliente.telefones[1]}<p>
+			<p class="p">Telefone 1: ${acessoCliente.telefones[0]}<p>
+			<p class="p">Telefone 2: ${acessoCliente.telefones[1]}<p>
 			</fieldset>
 						
 			<fieldset >
 			
 				<legend>Dados de Localização</legend>
 			
-				<p class="p">Estado: 		${cliente.endereco.estado}</p>
-				<p class="p">CEP: 			${cliente.endereco.cep}</p>
-				<p class="p">Cidade: 		${cliente.endereco.cidade}</p>
-				<p class="p">Bairro: 		${cliente.endereco.bairro}</p>
-				<p class="p">Rua: 			${cliente.endereco.rua}</p>
-				<p class="p">Número: 		${cliente.endereco.numero}</p>
-				<p class="p">Complemento: 	${cliente.endereco.complemento}</p>
-				<p class="p">Referência: 	${cliente.endereco.referencia}</p>
+				<p class="p">Estado: 		${acessoCliente.endereco.estado}</p>
+				<p class="p">CEP: 			${acessoCliente.endereco.cep}</p>
+				<p class="p">Cidade: 		${acessoCliente.endereco.cidade}</p>
+				<p class="p">Bairro: 		${acessoCliente.endereco.bairro}</p>
+				<p class="p">Rua: 			${acessoCliente.endereco.rua}</p>
+				<p class="p">Número: 		${acessoCliente.endereco.numero}</p>
+				<p class="p">Complemento: 	${acessoCliente.endereco.complemento}</p>
+				<p class="p">Referência: 	${acessoCliente.endereco.referencia}</p>
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">

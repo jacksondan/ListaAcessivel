@@ -17,34 +17,35 @@
 		<header class="major">
 			<h2>Perfil Estabelecimento</h2>
 		</header>
+			<p style="text-align:center;color:green;">${mensagem}</p>
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
-					E-mail: 	   ${estabelecimento.email}<br/>
-					Nome Fantasia: ${estabelecimento.nome_fantasia}<br/>
-					Nome Jurídico: ${estabelecimento.nome_juridico}<br/>
-					CNPJ:		   ${estabelecimento.cnpj}<br/>
-					Categoria: 	   ${estabelecimento.categoria}
+					E-mail: 	   ${acessoEstabelecimento.email}<br/>
+					Nome Fantasia: ${acessoEstabelecimento.nome_fantasia}<br/>
+					Nome Jurídico: ${acessoEstabelecimento.nome_juridico}<br/>
+					CNPJ:		   ${acessoEstabelecimento.cnpj}<br/>
+					Categoria: 	   ${acessoEstabelecimento.categoria}
 			</fieldset>
 
 			<fieldset>
 				<legend>Telefones para Contato</legend>
 				
-					Telefone 1:    ${estabelecimento.telefones[0]}<br/>
-					Telefone 2:    ${estabelecimento.telefones[1]}
+					Telefone 1:    ${acessoEstabelecimento.telefones[0]}<br/>
+					Telefone 2:    ${acessoEstabelecimento.telefones[1]}
 				
 			</fieldset>
 			
 			<fieldset>
 				<legend>Dados de Localização</legend>
 				
-					CEP: 		   ${estabelecimento.endereco.cep }<br/>
-					Estado:        ${estabelecimento.endereco.estado}<br/>
-					Cidade:        ${estabelecimento.endereco.cidade}<br/>
-					Bairro:        ${estabelecimento.endereco.bairro}<br/>
-					Rua:           ${estabelecimento.endereco.rua}<br/>
-					Número:		   ${estabelecimento.endereco.numero}<br/>
-					Complemento:   ${estabelecimento.endereco.complemento}<br/>
-					Referência:	   ${estabelecimento.endereco.referencia}<br/>
+					CEP: 		   ${acessoEstabelecimento.endereco.cep }<br/>
+					Estado:        ${acessoEstabelecimento.endereco.estado}<br/>
+					Cidade:        ${acessoEstabelecimento.endereco.cidade}<br/>
+					Bairro:        ${acessoEstabelecimento.endereco.bairro}<br/>
+					Rua:           ${acessoEstabelecimento.endereco.rua}<br/>
+					Número:		   ${acessoEstabelecimento.endereco.numero}<br/>
+					Complemento:   ${acessoEstabelecimento.endereco.complemento}<br/>
+					Referência:	   ${acessoEstabelecimento.endereco.referencia}<br/>
 
 					</fieldset>
 

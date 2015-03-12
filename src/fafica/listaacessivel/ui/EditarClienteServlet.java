@@ -14,9 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
-import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Endereco;
 
 /**
  * Servlet implementation class EditarUsuario
@@ -39,51 +37,17 @@ public class EditarClienteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
-		Administrador administrador = (Administrador) session.getAttribute("acessoAdministrador");
 		
-		if(administrador == null && cliente == null){
+		if(cliente == null){
 			String mensagem = "Sess√£o expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 			//response.sendRedirect("index.jsp");
-		}else if(administrador != null && cliente == null){
-			try {
-				IFachada fachada = Fachada.getInstance();
-				
-				int id_cliente = Integer.parseInt(request.getParameter("id_cliente"));
-				cliente = new Cliente();
-				cliente.setId_usuario(id_cliente);
-				cliente = fachada.pesquisarCliente(cliente);
-				
-				request.setAttribute("editarCliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
-				requestDispatcher.forward(request, response);
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}else if(administrador == null && cliente != null){
-			try {
-				IFachada fachada = Fachada.getInstance();
-				
-				cliente = fachada.pesquisarCliente(cliente);
-				
-				request.setAttribute("editarCliente", cliente);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
-				requestDispatcher.forward(request, response);
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		}else {
+			
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
+			requestDispatcher.forward(request, response);
 		}		
 	}
 
@@ -91,50 +55,52 @@ public class EditarClienteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
+		
 		if(cliente == null){
-			response.sendRedirect("index.jsp");
-		}else{
+			String mensagem = "Sess√£o expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect("index.jsp");
+		}else {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
 				ArrayList <String> telefones = new ArrayList <String>();
 				
-				cliente = fachada.pesquisarCliente(cliente);
+				cliente.setNome(request.getParameter("nome"));
+				cliente.setCpf(request.getParameter("cpf"));
+				cliente.setEmail(request.getParameter("email"));
+				cliente.getEndereco().setCidade(request.getParameter("cidade"));
+				cliente.getEndereco().setEstado(request.getParameter("estado"));
+				cliente.getEndereco().setRua(request.getParameter("rua"));
+				cliente.getEndereco().setBairro(request.getParameter("bairro"));
+				cliente.getEndereco().setNumero(request.getParameter("numero"));
+				cliente.getEndereco().setComplemento(request.getParameter("complemento"));
+				cliente.getEndereco().setReferencia(request.getParameter("referencia"));
+				cliente.getEndereco().setCep(request.getParameter("cep"));
+				cliente.setAno_nascimento(request.getParameter("ano_nascimento"));
+
+				telefones.add(request.getParameter("telefone1"));
+				telefones.add(request.getParameter("telefone2"));
+				cliente.setTelefones(telefones);
 				
-				int id_usuario = cliente.getId_usuario();
-				String nome = request.getParameter("nome");
-				String cpf = request.getParameter("cpf");
-				String email = request.getParameter("email");
-				String senha = cliente.getSenha();
-				String cidade = request.getParameter("cidade");
-				String estado = request.getParameter("estado");
-				String rua = request.getParameter("rua");
-				String bairro = request.getParameter("bairro");
-				String numero = request.getParameter("numero");
-				String complemento = request.getParameter("complemento");
-				String referencia = request.getParameter("referencia");
-				String cep = request.getParameter("cep");
-				String telefone1 = request.getParameter("telefone1");
-				String telefone2 = request.getParameter("telefone2");
-				String ano_nascimento = request.getParameter("ano_nascimento");
-				telefones.add(telefone1);
-				telefones.add(telefone2);
 				
-				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-		
-				Cliente entidade = new Cliente(id_usuario,nome,cpf,email,senha,ano_nascimento,endereco,telefones);
-				entidade.setTelefones(telefones);
+				fachada.alterarCliente(cliente);
 				
-				fachada.alterarCliente(entidade);
-				
-				response.sendRedirect("PerfilClienteServlet");
+				String mensagem = "EdiÁ„o realizada com sucesso!!";
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("PerfilClienteServlet");
+				dispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}		
+		
 	}
 }
