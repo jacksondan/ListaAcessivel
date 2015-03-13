@@ -41,6 +41,7 @@ jQuery(function($){
 			<!-- Formulário  aqui! -->
 			<form method="post"
 				action="http://localhost:8080/ListaAcessivel/CadastraCliente">
+				<p style="text-align: center; color: green;">${mensagem}</p>
 				<fieldset >
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> <input type="email"

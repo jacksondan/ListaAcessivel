@@ -50,7 +50,7 @@ public class CadastrarClienteServlet extends HttpServlet {
 			ArrayList <String> telefones = new ArrayList <String>();
 						
 			String nome = request.getParameter("nome");
-			String cpf = request.getParameter("cpf");
+			
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
 			String cidade = request.getParameter("cidade");
@@ -67,13 +67,23 @@ public class CadastrarClienteServlet extends HttpServlet {
 			telefones.add(telefone1);
 			telefones.add(telefone2);
 			
+			
+			String cpf = request.getParameter("cpf");
+			
+			
 			String senhaEncriptada = CriptografiaSenha.encriptar(senha);
 	
 			Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, ano_nascimento, endereco, telefones);
 			
-			fachada.adicionarCliente(entidade);
-			
+			if(fachada.pesquisarCliente(entidade).getCpf().equals(cpf)){
+				String mensagem1 = "O CPF digitado já está cadastrado no sistema!";
+				request.setAttribute("mensagem", mensagem1);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroCliente.jsp");
+				dispatcher.forward(request, response);
+			}else{			
+				fachada.adicionarCliente(entidade);
+			}
 			String mensagem = "Cliente cadastrado com sucesso!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
