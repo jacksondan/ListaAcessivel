@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome} - Perfil</title>
+<title>${acessoFuncionario.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -25,17 +25,17 @@
 			<fieldset>
 			<legend>Dados de Login</legend>
 				<p>
-					E-mail: ${funcionario.email} <br/>
+					E-mail: ${acessoFuncionario.email} <br/>
 				</p>
 			</fieldset>
 			
 			<fieldset>		
 			<legend>Dados Pessoais</legend>
-				<p class="p">Nome: ${funcionario.nome} </p>
+				<p class="p">Nome: ${acessoFuncionario.nome} </p>
 				
-				<p class="p">Estabelecimento: ${funcionario.estabelecimento.nome_fantasia}</p>
+				<p class="p">Estabelecimento: ${acessoFuncionario.estabelecimento.nome_fantasia}</p>
 				
-				<p class="p">Matrícula: ${funcionario.matricula}</p>
+				<p class="p">Matrícula: ${acessoFuncionario.matricula}</p>
 
 			</fieldset>
 							<div class="menu">

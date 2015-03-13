@@ -68,22 +68,8 @@ public class PerfilFuncionarioServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(estabelecimento == null && funcionario != null){
-			try {
-				IFachada fachada = Fachada.getInstance();
-				
-				funcionario = fachada.pesquisarFuncionario(funcionario);
 
-				request.setAttribute("funcionario", funcionario);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilFuncionario.jsp");
-				requestDispatcher.forward(request, response);
-
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				response.sendRedirect("perfilFuncionario.jsp");
 		}
 	}
 
