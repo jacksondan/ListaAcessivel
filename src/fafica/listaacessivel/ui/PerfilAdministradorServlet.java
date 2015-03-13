@@ -1,7 +1,6 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fafica.listaacessivel.negocios.Fachada;
-import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 
 /**
@@ -43,21 +40,9 @@ public class PerfilAdministradorServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		} else {
-			try {
-				IFachada fachada = Fachada.getInstance();
-				administrador = fachada.pesquisarAdministrador(administrador);
 
-				request.setAttribute("administrador", administrador);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("perfilAdministrador.jsp");
-				requestDispatcher.forward(request, response);
+			response.sendRedirect("perfilAdministrador.jsp");
 
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 

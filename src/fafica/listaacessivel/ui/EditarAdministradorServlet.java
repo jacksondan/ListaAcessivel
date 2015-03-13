@@ -42,21 +42,8 @@ public class EditarAdministradorServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}else{
-			try {
-				IFachada fachada = Fachada.getInstance();
-				administrador = fachada.pesquisarAdministrador(administrador);
-				
-				request.setAttribute("editarAdministrador", administrador);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarAdministrador.jsp");
-				requestDispatcher.forward(request, response);
-				
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+			response.sendRedirect("editarAdministrador.jsp");
 		}
 		
 	}
@@ -76,17 +63,12 @@ public class EditarAdministradorServlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				administrador = fachada.pesquisarAdministrador(administrador);
+				administrador.setNome(request.getParameter("nome"));
+				administrador.setCpf(request.getParameter("cpf"));
+				administrador.setEmail(request.getParameter("email"));
 				
-				int id_administrador = administrador.getId_usuario();
-				String nome = request.getParameter("nome");
-				String cpf = request.getParameter("cpf");
-				String email = request.getParameter("email");
-				String senha = administrador.getSenha();
-				
-				Administrador entidade = new Administrador(id_administrador, nome, email, cpf, senha);
 								
-				fachada.alterarAdministrador(entidade);
+				fachada.alterarAdministrador(administrador);
 				
 				response.sendRedirect("PerfilAdministradorServlet");
 				

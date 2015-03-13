@@ -25,17 +25,17 @@
 					<legend>Dados de Login</legend>
 					<label for="email">E-mail:</label> 
 											
-						<input type="email" placeholder="Digite o E-mail" name="email" id="email" value="${editarAdministrador.email}" required="email" size=60 />
+						<input type="email" placeholder="Digite o E-mail" name="email" id="email" value="${acessoAdministrador.email}" required="email" size=60 />
 				</fieldset>
 				<fieldset>
 					<legend>Dados Pessoais</legend>
 					<label for="nome">Nome Completo</label> <input type="text"
 						placeholder="Digite seu nome completo" name="nome" id="nome"
-						size=60 value="${editarAdministrador.nome}"require="nome">
+						size=60 value="${acessoAdministrador.nome}"require="nome">
 						
 						<p><label for="cpf">CPF</label><br> <input type="text"
 						placeholder="Digite o CPF do administrador" name="cpf" id="cpf"
-						require="cpf" value="${editarAdministrador.cpf}"size="20">
+						require="cpf" value="${acessoAdministrador.cpf}"size="20">
 						</p>
 
 				</fieldset>

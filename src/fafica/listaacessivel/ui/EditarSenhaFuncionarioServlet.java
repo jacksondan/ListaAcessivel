@@ -64,7 +64,6 @@ public class EditarSenhaFuncionarioServlet extends HttpServlet {
 				
 				String mensagem="";
 				
-				funcionario = fachada.pesquisarFuncionario(funcionario);
 				String senhaNova= CriptografiaSenha.encriptar(request.getParameter("senhaNova"));
 				String confirmarSenha = CriptografiaSenha.encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = CriptografiaSenha.encriptar(request.getParameter("senhaAtual"));

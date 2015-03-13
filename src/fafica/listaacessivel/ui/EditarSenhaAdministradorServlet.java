@@ -43,11 +43,8 @@ public class EditarSenhaAdministradorServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}else{
-			String mensagem = "Senha editada com sucesso!";
-			request.setAttribute("mensagem", mensagem);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaAdministrador.jsp");
-			dispatcher.forward(request, response);
 			
+			response.sendRedirect("editarSenhaAdministrador.jsp");
 		}
 	}
 
@@ -69,7 +66,6 @@ public class EditarSenhaAdministradorServlet extends HttpServlet {
 				
 				String mensagem="";
 				
-				administrador = fachada.pesquisarAdministrador(administrador);
 				String senhaNova= CriptografiaSenha.encriptar(request.getParameter("senhaNova"));
 				String confirmarSenha = CriptografiaSenha.encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = CriptografiaSenha.encriptar(request.getParameter("senhaAtual"));

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome} - Perfil</title>
+<title>Administrador - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -25,15 +25,15 @@
 			<fieldset>
 			<legend>Dados de Login</legend>
 				<p>
-					E-mail: ${administrador.email} <br/>
+					E-mail: ${acessoAdministrador.email} <br/>
 				</p>
 			</fieldset>
 			
 			<fieldset>		
 			<legend>Dados Pessoais</legend>
-				Nome: ${administrador.nome} <br/>
+				Nome: ${acessoAdministrador.nome} <br/>
 				
-				CPF: ${administrador.cpf} <br/>
+				CPF: ${acessoAdministrador.cpf} <br/>
 
 			</fieldset>
 							<div class="menu">
