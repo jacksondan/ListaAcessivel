@@ -3,6 +3,7 @@ package fafica.listaacessivel.ui;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -76,14 +77,23 @@ public class CadastrarClienteServlet extends HttpServlet {
 			Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 			Cliente entidade = new Cliente(nome, cpf, email, senhaEncriptada, ano_nascimento, endereco, telefones);
 			
-			if(fachada.pesquisarCliente(entidade).getCpf().equals(cpf)){
-				String mensagem1 = "O CPF digitado já está cadastrado no sistema!";
-				request.setAttribute("mensagem", mensagem1);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroCliente.jsp");
-				dispatcher.forward(request, response);
-			}else{			
-				fachada.adicionarCliente(entidade);
-			}
+			
+			
+			//Verificação de CPF digitado no cadastro do cliente
+			List <Cliente> clientes = fachada.listarCliente();
+						
+			for(Cliente c : clientes){
+				if (c.getCpf().equals(cpf)){
+					String mensagem1 = "O CPF digitado já está cadastrado no sistema!";
+					request.setAttribute("mensagem", mensagem1);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroCliente.jsp");
+					dispatcher.forward(request, response);
+					break;
+				}
+			}	
+					
+			fachada.adicionarCliente(entidade);
+					
 			String mensagem = "Cliente cadastrado com sucesso!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");

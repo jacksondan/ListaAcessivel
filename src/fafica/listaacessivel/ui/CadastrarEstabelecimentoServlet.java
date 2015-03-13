@@ -3,6 +3,7 @@ package fafica.listaacessivel.ui;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -91,8 +92,22 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				
 				Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones, administrador);
-				fachada.adicionarEstabelecimento(entidade);
 				
+				//Verificação de CNPJ digitado no cadastro de estabelecimento
+				List <Estabelecimento> estabelecimentos = fachada.listarEstabelecimento();
+				
+				for(Estabelecimento e : estabelecimentos){
+					if(e.getCnpj().equals(cnpj)){
+						String mensagem1 = "O CNPJ digitado já está cadastrado no sistema!";
+						request.setAttribute("mensagem", mensagem1);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("cadastroEstabelecimento.jsp");
+						dispatcher.forward(request, response);
+						break;
+					}
+				}
+									
+				fachada.adicionarEstabelecimento(entidade);
+							
 				String mensagem = "Estabelecimento cadastrado com sucesso!";
 				request.setAttribute("mensagem", mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");

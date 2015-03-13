@@ -32,6 +32,7 @@
 		<form method="post"
 			action="http://localhost:8080/ListaAcessivel/CadastrarEstabelecimentoServlet"
 			name="form_estabelecimento">
+			<p style="text-align: center; color: green;">${mensagem}</p>
 			<fieldset>
 				<legend>Dados de Login</legend>
 				<label for="cnpj">CNPJ:</label><br> <input type="text"
