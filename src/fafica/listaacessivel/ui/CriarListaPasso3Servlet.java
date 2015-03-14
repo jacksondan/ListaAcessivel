@@ -31,7 +31,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 	private Cliente cliente;
 	private Estabelecimento estabelecimento;
 	private Lista lista;
-	private List<Produto> produtos_lista;
+	private List<Produto> produtosSession;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,12 +47,12 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		cliente = (Cliente) session.getAttribute("acessoCliente");
+		
 		if(cliente == null){
 			String mensagem = "SessÃ£o expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
 		}else{
 			try {
 				IFachada fachada = Fachada.getInstance();
@@ -61,10 +61,10 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				estabelecimento= new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				session.setAttribute("estabelecimentoSession", estabelecimento);
 				
-				HttpSession estabelecimentoSession = request.getSession(); 
-				estabelecimentoSession.setAttribute("estabelecimentoSession", estabelecimento);
-				
+				produtosSession = new ArrayList<Produto>();
+				session.setAttribute("produtosSession", produtosSession);
 				
 				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
 				
@@ -90,6 +90,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		cliente = (Cliente) session.getAttribute("acessoCliente");
 		estabelecimento = (Estabelecimento) session.getAttribute("estabelecimentoSession");
+		produtosSession = (ArrayList<Produto>) session.getAttribute("produtosSession");
+		
 		if(cliente == null){
 			String mensagem = "SessÃ£o expirada!";
 			request.setAttribute("mensagem", mensagem);
@@ -108,7 +110,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				*/
 				
 				
-				
 				//Pegando informações do formulario;
 				String categoria_produto = request.getParameter("categoria");
 				String descricao_produto = request.getParameter("buscanome");
@@ -118,7 +119,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
 				String [] selecaoIdProduto = request.getParameterValues("id_produto");
 				String [] selecaoQuantidade = request.getParameterValues("quantidade");
-				String [] quantidadesListadas = null;
 				
 				//Análise inicial dos dados obtidos 
 				if(categoria_produto != null){
@@ -140,8 +140,19 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				//Regra de negocio
 				
 				if(pesquisa.equals("true")){
+					List<Produto> produtosSelecionados = null;
+					List<Produto> produtosSelecionadosPesquisa = null;
+					List<Produto> listaProdutos = null;
+					String testeFiltro = "Para fazer fdsfdsa";
 					
-					
+					if(categoria_produto == null && descricao_produto == null){
+						if(true){
+							
+						}
+						
+					}else {
+						
+					}
 					
 					
 					
@@ -157,6 +168,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				/*
 				if(selecaoProdutos != null){
 					
+					String [] quantidadesListadas = null;
 					quantidadesListadas = new String[selecaoProdutos.length];
 					
 					for(int i=0; i < selecaoProdutos.length; i++){
@@ -227,6 +239,58 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private List<Produto> produtosSelecionados(String [] selecaoProdutos, String [] selecaoIdProduto, String [] selecaoQuantidade){
+		
+		IFachada fachada;
+		List <Produto> listaProdutos = null;
+		try {
+			fachada = Fachada.getInstance();
+		
+			String [] quantidadesListadas = null;
+			
+			quantidadesListadas = new String[selecaoProdutos.length];
+			
+			for(int i=0; i < selecaoProdutos.length; i++){
+				System.out.println("Produto: " +selecaoProdutos[i]);
+				for(int e=0; e < selecaoIdProduto.length; e++){
+					if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
+						quantidadesListadas[i] = selecaoQuantidade[e];
+						System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
+						break;
+					}
+				}
+			}
+		
+		
+	
+			for(int i = 0; i < selecaoProdutos.length; i++){
+				if(listaProdutos == null){
+					listaProdutos = new ArrayList<Produto>();
+				}
+				int id_produto = Integer.parseInt(selecaoProdutos[i]);
+				int quantidade = Integer.parseInt(quantidadesListadas[i]);
+				
+				Produto produto = new Produto();
+				produto.setId_produto(id_produto);
+				produto = fachada.pesquisarProduto(produto);
+				
+				produto.setQuantidade(quantidade);
+				
+				listaProdutos.add(produto);
+			}
+			
+			
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return listaProdutos;
+		
 	}
 
 }
