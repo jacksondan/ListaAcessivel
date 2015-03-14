@@ -67,7 +67,11 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(administrador == null && estabelecimento != null){
-
+				
+			
+				//Aqui, deve ser alterado para:
+				//response.sendRedirect("editarEstabelecimento.jsp");
+			
 				request.setAttribute("editarEstabelecimento", estabelecimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);

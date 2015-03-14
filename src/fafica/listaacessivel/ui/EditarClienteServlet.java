@@ -46,8 +46,7 @@ public class EditarClienteServlet extends HttpServlet {
 			//response.sendRedirect("index.jsp");
 		}else {
 			
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarCliente.jsp");
-			requestDispatcher.forward(request, response);
+			response.sendRedirect("editarCliente.jsp");
 		}		
 	}
 
