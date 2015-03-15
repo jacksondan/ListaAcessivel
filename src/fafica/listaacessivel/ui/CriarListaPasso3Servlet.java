@@ -137,99 +137,77 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				}
 				
 				
-				//Regra de negocio
+				//Regra de negocio começa AQUI
 				
-				if(pesquisa.equals("true")){
-					List<Produto> produtosSelecionados = null;
-					List<Produto> produtosSelecionadosPesquisa = null;
-					List<Produto> listaProdutos = null;
-					String testeFiltro = "Para fazer fdsfdsa";
+				List<Produto> produtosSelecionados = produtosSelecionados(selecaoProdutos, selecaoIdProduto, selecaoQuantidade);
+				List<Produto> produtosSelecionadosPesquisa = null;
+				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
+				String testeFiltro = null;
+				
+				if(pesquisa.equals("true")){    //if para verificar se o botão pesquisa foi precionado.
 					
 					if(categoria_produto == null && descricao_produto == null){
-						if(true){
+						testeFiltro = request.getParameter("testeFiltro");
+						
+						if(testeFiltro != null){
 							
-						}
-						
-					}else {
-						
-					}
-					
-					
-					
-					
-					
-				}else{
-					
-				}
-				
-				
-				
-				
-				/*
-				if(selecaoProdutos != null){
-					
-					String [] quantidadesListadas = null;
-					quantidadesListadas = new String[selecaoProdutos.length];
-					
-					for(int i=0; i < selecaoProdutos.length; i++){
-						System.out.println("Produto: " +selecaoProdutos[i]);
-						for(int e=0; e < selecaoIdProduto.length; e++){
-							if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
-								quantidadesListadas[i] = selecaoQuantidade[e];
-								System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
-								break;
+							
+							
+						}else{
+							if(produtosSelecionados == null){
+								if(produtosSession.size() != 0){
+									produtosSession.removeAll(produtosSession);
+								}
+									
+							}else{
+								
+								if(produtosSession.size() == 0){
+									produtosSession.addAll(produtosSelecionados);
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+								}else{
+									
+									produtosSession.removeAll(produtosSession);
+									produtosSession.addAll(produtosSelecionados);
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+								}
 							}
+						
 						}
-					}
+							
+						
 				
-				
-					List <Produto> listaProdutos = null;
-					for(int i = 0; i < selecaoProdutos.length; i++){
-						if(listaProdutos == null){
-							listaProdutos = new ArrayList<Produto>();
-						}
-						int id_produto = Integer.parseInt(selecaoProdutos[i]);
-						int quantidade = Integer.parseInt(quantidadesListadas[i]);
 						
-						Produto produto = new Produto();
-						produto.setId_produto(id_produto);
-						produto = fachada.pesquisarProduto(produto);
-						
-						produto.setQuantidade(quantidade);
-						
-						listaProdutos.add(produto);
-					}
-					
-					if(listaProdutos != null){
-						Lista lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
-						int id_lista = fachada.adicionarLista(lista);
-						lista.setId_lista(id_lista);
-						
-						lista = fachada.pesquisarLista(lista);
-						
-						request.setAttribute("lista",lista);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+						request.setAttribute("produtosSelecionados", produtosSelecionados);
+						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
+						request.setAttribute("listaProdutos", listaProdutos);
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
+					}else {
+						testeFiltro = "true";
 						
-						//response.sendRedirect("visaoCliente.jsp"); // Teste
-					}else{
 						
-						String mensagem = "Lista não pode ser criada sem itens";
 						
-						request.setAttribute("mensagem",mensagem);
-						request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
+						request.setAttribute("produtosSelecionados", produtosSelecionados);
+						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
+						request.setAttribute("listaProdutos", listaProdutos);
+						request.setAttribute("testeFiltro", testeFiltro);
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
 					}
-				}else{
-					String mensagem = "Lista não pode ser criada sem itens";
 					
-					request.setAttribute("mensagem",mensagem);
-					//request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp"); //CriarListaPasso3Servlet
-					requestDispatcher.forward(request, response);
+					
+					
+					
+					
+				}else{ //else para finalizar a Lista
+					
 				}
-				*/
+				
+				
+			
+				
+
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -239,58 +217,150 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 	
+	//Metodo que tras os objtos dos produtos selecionados
 	private List<Produto> produtosSelecionados(String [] selecaoProdutos, String [] selecaoIdProduto, String [] selecaoQuantidade){
-		
-		IFachada fachada;
-		List <Produto> listaProdutos = null;
-		try {
-			fachada = Fachada.getInstance();
-		
-			String [] quantidadesListadas = null;
+		if(selecaoProdutos != null){
+			IFachada fachada;
+			List <Produto> listaProdutos = null;
+			try {
+				fachada = Fachada.getInstance();
 			
-			quantidadesListadas = new String[selecaoProdutos.length];
-			
-			for(int i=0; i < selecaoProdutos.length; i++){
-				System.out.println("Produto: " +selecaoProdutos[i]);
-				for(int e=0; e < selecaoIdProduto.length; e++){
-					if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
-						quantidadesListadas[i] = selecaoQuantidade[e];
-						System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
-						break;
+				String [] quantidadesListadas = null;
+				
+				quantidadesListadas = new String[selecaoProdutos.length];
+				
+				for(int i=0; i < selecaoProdutos.length; i++){
+					System.out.println("Produto: " +selecaoProdutos[i]);
+					for(int e=0; e < selecaoIdProduto.length; e++){
+						if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
+							quantidadesListadas[i] = selecaoQuantidade[e];
+							System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
+							break;
+						}
 					}
 				}
-			}
+			
+			
 		
-		
-	
-			for(int i = 0; i < selecaoProdutos.length; i++){
-				if(listaProdutos == null){
-					listaProdutos = new ArrayList<Produto>();
+				for(int i = 0; i < selecaoProdutos.length; i++){
+					if(listaProdutos == null){
+						listaProdutos = new ArrayList<Produto>();
+					}
+					int id_produto = Integer.parseInt(selecaoProdutos[i]);
+					int quantidade = Integer.parseInt(quantidadesListadas[i]);
+					
+					Produto produto = new Produto();
+					produto.setId_produto(id_produto);
+					produto = fachada.pesquisarProduto(produto);
+					
+					produto.setQuantidade(quantidade);
+					
+					listaProdutos.add(produto);
 				}
-				int id_produto = Integer.parseInt(selecaoProdutos[i]);
-				int quantidade = Integer.parseInt(quantidadesListadas[i]);
 				
-				Produto produto = new Produto();
-				produto.setId_produto(id_produto);
-				produto = fachada.pesquisarProduto(produto);
 				
-				produto.setQuantidade(quantidade);
-				
-				listaProdutos.add(produto);
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-			
-			
-		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			return listaProdutos;
+		}else{
+			return null;
 		}
+	}
+	
+	private List<Produto> produtosNaoSelecionados(List<Produto> listaProdutos, List<Produto> produtosSelecionados){
+		List<Produto> auxRemove = new ArrayList<Produto>();
+		
+		for(Produto produto : listaProdutos){
+			for(Produto aux : produtosSelecionados){
+				if(produto.getId_produto() == aux.getId_produto()){
+					auxRemove.add(produto);
+				}
+			}
+		}
+		
+		listaProdutos.removeAll(auxRemove);
+		
 		return listaProdutos;
 		
 	}
 
+
 }
+
+
+
+/* BACKUP DE CODIGO (Metodo post)
+ * 
+ * 
+if(selecaoProdutos != null){
+	
+	String [] quantidadesListadas = null;
+	quantidadesListadas = new String[selecaoProdutos.length];
+	
+	for(int i=0; i < selecaoProdutos.length; i++){
+		System.out.println("Produto: " +selecaoProdutos[i]);
+		for(int e=0; e < selecaoIdProduto.length; e++){
+			if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
+				quantidadesListadas[i] = selecaoQuantidade[e];
+				System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
+				break;
+			}
+		}
+	}
+
+
+	List <Produto> listaProdutos = null;
+	for(int i = 0; i < selecaoProdutos.length; i++){
+		if(listaProdutos == null){
+			listaProdutos = new ArrayList<Produto>();
+		}
+		int id_produto = Integer.parseInt(selecaoProdutos[i]);
+		int quantidade = Integer.parseInt(quantidadesListadas[i]);
+		
+		Produto produto = new Produto();
+		produto.setId_produto(id_produto);
+		produto = fachada.pesquisarProduto(produto);
+		
+		produto.setQuantidade(quantidade);
+		
+		listaProdutos.add(produto);
+	}
+	
+	if(listaProdutos != null){
+		Lista lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, listaProdutos);
+		int id_lista = fachada.adicionarLista(lista);
+		lista.setId_lista(id_lista);
+		
+		lista = fachada.pesquisarLista(lista);
+		
+		request.setAttribute("lista",lista);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+		requestDispatcher.forward(request, response);
+		
+		//response.sendRedirect("visaoCliente.jsp"); // Teste
+	}else{
+		
+		String mensagem = "Lista não pode ser criada sem itens";
+		
+		request.setAttribute("mensagem",mensagem);
+		request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
+		requestDispatcher.forward(request, response);
+	}
+}else{
+	String mensagem = "Lista não pode ser criada sem itens";
+	
+	request.setAttribute("mensagem",mensagem);
+	//request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
+	RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp"); //CriarListaPasso3Servlet
+	requestDispatcher.forward(request, response);
+}
+*/
