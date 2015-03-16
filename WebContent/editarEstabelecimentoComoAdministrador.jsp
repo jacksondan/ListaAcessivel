@@ -23,9 +23,8 @@
 
 </head>
 <body>
-	<%@include file=" headerAdmin.html"%>
-
-	<%@include file="sidebarAdmin.html"%>
+		<%@include file="headerAdmin.html"%>
+		<%@include file="sidebarAdmin.html"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Estabelecimento</h2>
