@@ -102,7 +102,7 @@
 				<ul class="actions">
 					<li><input type="submit" class="button2"
 						value="Confirmar Cadastro" /></li>
-					<li><input type="reset" class="button2" value="Limpar Dados" /></li>
+					<!-- <li><input type="reset" class="button2" value="Limpar Dados" /></li>-->
 				</ul>
 			</div>
 

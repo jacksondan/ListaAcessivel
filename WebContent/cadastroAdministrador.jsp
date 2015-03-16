@@ -51,7 +51,7 @@ jQuery(function($){
 				<div class="12u">
 					<ul class="actions">
 						<li><input type="submit" value="Confirmar Cadastro" /></li>
-						<li><input type="reset" value="Limpar" /></li>
+						<!-- <li><input type="reset" value="Limpar" /></li>-->
 					</ul>
 				</div>
 
