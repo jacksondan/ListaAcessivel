@@ -142,6 +142,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				List<Produto> produtosSelecionados = produtosSelecionados(selecaoProdutos, selecaoIdProduto, selecaoQuantidade);
 				List<Produto> produtosSelecionadosPesquisa = null;
 				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
+				List<Produto> auxRemocao = null;
 				String testeFiltro = null;
 				
 				if(pesquisa.equals("true")){    //if para verificar se o botão pesquisa foi precionado.
@@ -150,7 +151,58 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						testeFiltro = request.getParameter("testeFiltro");
 						
 						if(testeFiltro != null){
-							
+							if(produtosSelecionados == null){
+								if(produtosSession.size() != 0){
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+								}
+								
+							}else{
+								if(produtosSession.size() == 0){
+									produtosSession.addAll(produtosSelecionados);
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+								}else{
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSelecionados){
+										for(Produto aux : produtosSession){
+											if(produto.getId_produto() == aux.getId_produto()){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSelecionados.removeAll(auxRemocao);
+									produtosSession.addAll(produtosSelecionados);
+									
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);									
+								}
+								
+							}
 							
 							
 						}else{
