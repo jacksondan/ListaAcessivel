@@ -65,7 +65,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		smt.setString(12,entidade.getEndereco().getEstado());
 		smt.setString(13,entidade.getEndereco().getCep());
 		smt.setString(14,entidade.getEndereco().getReferencia());
-		smt.setInt(15,entidade.getAdministrador().getId_administrador());
+		smt.setInt(15,entidade.getAdministrador().getId_usuario());
 		smt.setString(16,Status.ATIVO.toString());
 		smt.execute();
 
@@ -175,7 +175,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				String estado = result.getString("estado");
 				String cep = result.getString("cep");
 				String referencia = result.getString("referencia");
-				administrador.setId_administrador(result.getInt("id_administrador"));
+				administrador.setId_usuario(result.getInt("id_administrador"));
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico,
@@ -240,7 +240,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				String estado = result.getString("estado");
 				String cep = result.getString("cep");
 				String referencia = result.getString("referencia");
-				administrador.setId_administrador(result.getInt("id_administrador"));
+				administrador.setId_usuario(result.getInt("id_administrador"));
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico, email, categoria, cnpj, endereco, senha, null, administrador);
@@ -315,7 +315,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				String estado = result.getString("estado");
 				String cep = result.getString("cep");
 				String referencia = result.getString("referencia");
-				administrador.setId_administrador(result.getInt("id_administrador"));
+				administrador.setId_usuario(result.getInt("id_administrador"));
 				
 				Endereco  endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				Estabelecimento estabelecimento = new Estabelecimento(id_estabelecimento, nome_fantasia, nome_juridico,

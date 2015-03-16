@@ -66,11 +66,13 @@ public class EditarAdministradorServlet extends HttpServlet {
 				administrador.setNome(request.getParameter("nome"));
 				administrador.setCpf(request.getParameter("cpf"));
 				administrador.setEmail(request.getParameter("email"));
-				
 								
 				fachada.alterarAdministrador(administrador);
 				
-				response.sendRedirect("PerfilAdministradorServlet");
+				String mensagem = "Alteração realizada com sucesso!";
+				request.setAttribute("mensagem", mensagem);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilAdministrador.jsp");
+				dispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
