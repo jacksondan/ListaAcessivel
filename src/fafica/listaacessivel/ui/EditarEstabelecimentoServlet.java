@@ -46,7 +46,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-			//response.sendRedirect("index.jsp");
+			
 		}else if(administrador != null && estabelecimento == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
@@ -56,7 +56,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				request.setAttribute("editarEstabelecimento", estabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEstabelecimento.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEstabelecimentoComoAdministrador.jsp");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
@@ -68,13 +68,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 			}
 		}else if(administrador == null && estabelecimento != null){
 				
-			
-				//Aqui, deve ser alterado para:
-				//response.sendRedirect("editarEstabelecimento.jsp");
-			
-				request.setAttribute("editarEstabelecimento", estabelecimento);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarEstabelecimento.jsp");
-				requestDispatcher.forward(request, response);
+				response.sendRedirect("editarEstabelecimento.jsp");
 		}
 	}
 
