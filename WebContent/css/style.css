@@ -483,7 +483,7 @@ input[type="number"] {
 		position:relative;
 		
 		margin-top:5%;
-		margin-left:22em;
+		margin-left:43%;
 		
 		}
 		
@@ -496,7 +496,7 @@ input[type="number"] {
 		#descri{
 		position:relative;
 		margin-top:5em;
-		margin-left:38%;
+		margin-left:40%;
 		margin-bottom:2em;
 		}
 		
@@ -592,9 +592,9 @@ background:linear-gradient(180deg, rgb(38, 182, 80) 0%, rgb(47, 198, 92) 26%, rg
 		position: absolute;
 		z-index: 1;
 		bottom: 95px;
-		left: 102%;
-		width: 10em;
-		margin-left: -7.5em;
+		left: 83.1%;
+		width: 1em;
+		
 	}
 	
 		#logo2 a
@@ -749,6 +749,7 @@ Home
 	position:right;
 	margin-top:1em;
 	margin-left:48em;
+	
 	border: solid 1px rgba(86,255,132,1);
 	border-radius: 0.5em;
 	background-color:#ffffff;
@@ -761,7 +762,7 @@ Home
 	margin-right:33em;
 	padding:1em;
 	
-	top:13.9%;
+	top:14.7%;
 	
 	border: solid 1px rgba(86,255,132,1);
 	border-radius: 0.5em;
@@ -960,7 +961,7 @@ p.info
 		#footer3
 	{
 		position: relative;
-		top:23em;
+		top:25em;
 		z-index: 1;
 		margin-left:-2em;
 	}

@@ -28,13 +28,14 @@
 			<%@include  file="headerEstabelecimento.html" %>
 			<%@include  file="sidebarEstabelecimento.html" %>
 		
-				<div id="content2">
+				<div id="content3">
 					<header class="major">		
 						<h2>Lista de Funcionários</h2>
 						${mensagem}
 					</header>
 					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					funcionarios pressione a letra T para ir direto para  a tabela</p>
+					
 						<table id="funcionarios" align="center" class="display" summary="Tabela com lista de funcionarios, 
 						mostrando nome fantasia">
 						<caption>Lista de Funcionários</caption>

@@ -10,6 +10,8 @@
 /* ESCONDE TODAS AS DIVS */
 .divs{display:none;
 }
+
+
 </style>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
@@ -30,10 +32,11 @@
         })});
     //lógica  dos checkbox
     $(document).ready(function() {
-    $('.checkbox').click(function() {
-    $('.divs').hide();
-    $('.checkbox:checked').each(function() { 
-    $('#d'+$(this).val()).show(); 
+    $('.checkbox').click(function() { //quando clica  chama a função
+    $('.divs').hide(); //a div é escondida
+    $('.checkbox:checked').each(function() {   //o checkbox é marcado e chama a função
+    $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
+    
     });
     });
     });
