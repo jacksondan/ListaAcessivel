@@ -226,12 +226,8 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 							}
 						
 						}
-							
-						
-				
-						
+
 						request.setAttribute("produtosSelecionados", produtosSelecionados);
-						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
 						request.setAttribute("listaProdutos", listaProdutos);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
@@ -240,7 +236,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						
 						
-						request.setAttribute("produtosSelecionados", produtosSelecionados);
 						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
 						request.setAttribute("listaProdutos", listaProdutos);
 						request.setAttribute("testeFiltro", testeFiltro);
