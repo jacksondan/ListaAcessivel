@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Nome Administrador - Início</title>
+<title>${acessoAdministrador.nome} - Início</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 </head>
@@ -24,9 +24,7 @@
 			<p style="text-align:center;color:green;">${mensagem}</p>
 			<fieldset>
 				<legend>Edição de Senha</legend>
-				
-				
-			
+						
 				<p>
 					<label for="senhaAtual">Senha Atual</label><br><input type="password"
 						placeholder="Digite a Senha Atual" name="senhaAtual" id="senhaAtual" size=30 required="senhaAtual">
@@ -44,7 +42,7 @@
 			</fieldset>
 			<div class="12u">
 				<ul class="actions">
-					<li><input type="submit"  class="button3" value="Salvar Nova Senha"  onClick="validarSenha()"/></li>
+					<li><input type="submit"  class="button3" value="Salvar Nova Senha" onblur="validarSenha()" onClick="validarSenha()"/></li>
 
 				</ul>
 			</div>

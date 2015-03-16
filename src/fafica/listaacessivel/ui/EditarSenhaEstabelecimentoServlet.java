@@ -70,14 +70,16 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 				String confirmarSenha = CriptografiaSenha.encriptar(request.getParameter("confirmarSenha"));
 				String senhaAtual = CriptografiaSenha.encriptar(request.getParameter("senhaAtual"));
 				String senhaBanco = estabelecimento.getSenha();
-				
-				if(senhaAtual.equals(senhaBanco)&&senhaNova.equals(confirmarSenha)){
-					estabelecimento.setSenha(confirmarSenha);
-					fachada.alterarEstabelecimento(estabelecimento);
-					
-					mensagem = "Senha editada com sucesso!";
-				}else{
-					mensagem = "Sua Senha n�o foi alterada, porfavor tente novamente.";
+								
+				if(senhaNova != null && confirmarSenha != null){
+					if(senhaAtual.equals(senhaBanco)&&senhaNova.equals(confirmarSenha)){
+						estabelecimento.setSenha(confirmarSenha);
+						fachada.alterarEstabelecimento(estabelecimento);
+						
+						mensagem = "Senha editada com sucesso!";
+					}else{
+						mensagem = "Sua Senha n�o foi alterada, porfavor tente novamente.";
+					}
 				}
 				request.setAttribute("mensagem",mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("editarSenhaEstabelecimento.jsp");
