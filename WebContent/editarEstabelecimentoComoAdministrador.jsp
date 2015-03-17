@@ -38,8 +38,7 @@
 			
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
-				<label for="email">E-mail:</label>  
-					<input type="email" name="email" id="email" value="${editarEstabelecimento.email}" size=60 required="email">
+				
 				<label for="nome_fantasia">Nome Fantasia:</label> <input type="text"
 					name="nome_fantasia" id="nome_fantasia"
 					value="${editarEstabelecimento.nome_fantasia}" size=60 required="nome_fantasia"> <label
@@ -61,16 +60,7 @@
 				</select><br>
 			</fieldset>
 
-			<fieldset>
-				<legend>Telefones para Contato</legend>
-				
-				<label for="telefone1">Telefone 1:</label><br> <input
-					type="text" name="telefone1" id="telefone1"
-					value="${editarEstabelecimento.telefones[0]}" size=20 required="telefone1"><br> <label
-					for="telefone 2">Telefone 2:</label><br> <input type="text"
-					name="telefone2" id="telefone2" value="${editarEstabelecimento.telefones[1]}"
-					size=20><br>
-			</fieldset>
+			
 			<fieldset>
 				<legend>Dados de Localização</legend>
 				<p>
