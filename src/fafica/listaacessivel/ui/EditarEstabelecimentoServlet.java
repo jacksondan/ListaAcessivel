@@ -99,7 +99,6 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				//String categoria = request.getParameter("categoria");
 				//String cnpj = request.getParameter("cnpj");
 				String email = request.getParameter("email");
-				String senha = estabelecimento.getSenha();
 				telefones.add(request.getParameter("telefone1"));
 				telefones.add(request.getParameter("telefone2"));
 				//String rua = request.getParameter("rua");
@@ -117,7 +116,6 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				//Estabelecimento entidade = new Estabelecimento(id_estabelecimento,nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senha,telefones,administrador);
 				
 				estabelecimento.setEmail(email);
-				estabelecimento.setSenha(senha);
 				estabelecimento.setTelefones(telefones);
 				
 				fachada.alterarEstabelecimento(estabelecimento);
