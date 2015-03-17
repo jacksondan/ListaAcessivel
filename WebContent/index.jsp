@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-		<div id="container">
+		
 				<div id="header-wrapper">
 				<div id="header" class="container">
 						<h1 id="logo2"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessível"  style="width:6.6em ;heigth:16em;"></a></h1>
@@ -66,14 +66,14 @@
 			
 			</div>
 			<div id="footer">
-			<div id="copyright" class="container">
+			<div id="copyright2" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>
 					</ul>
 				</div>
 				
 			</div>	
-			</div>
+			
 		
 </body>
 </html>
