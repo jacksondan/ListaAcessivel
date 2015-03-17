@@ -74,11 +74,12 @@ public class EditarSenhaEstabelecimentoServlet extends HttpServlet {
 				if(senhaNova != null && confirmarSenha != null){
 					if(senhaAtual.equals(senhaBanco)&&senhaNova.equals(confirmarSenha)){
 						estabelecimento.setSenha(confirmarSenha);
+						
 						fachada.alterarEstabelecimento(estabelecimento);
 						
 						mensagem = "Senha editada com sucesso!";
 					}else{
-						mensagem = "Sua Senha n�o foi alterada, porfavor tente novamente.";
+						mensagem = "Sua Senha não foi alterada, por favor tente novamente.";
 					}
 				}
 				request.setAttribute("mensagem",mensagem);
