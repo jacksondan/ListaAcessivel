@@ -86,7 +86,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-		}else if(administrador != null && estabelecimento == null){
+		}else if(administrador == null && estabelecimento != null){
 			try {
 				IFachada fachada = Fachada.getInstance();
 				ArrayList<String> telefones = new ArrayList<String>();
@@ -128,7 +128,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilEstabelecimento.jsp");
 				dispatcher.forward(request, response);
 				
-				response.sendRedirect("PerfilEstabelecimentoServlet");
+				//response.sendRedirect("PerfilEstabelecimentoServlet");
 						
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
@@ -137,8 +137,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 		}else if(administrador != null && estabelecimento == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
-				ArrayList<String> telefones = new ArrayList<String>();
-				
+				ArrayList<String> telefones = new ArrayList<String>();				
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
@@ -181,7 +180,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilEstabelecimento.jsp");
 				dispatcher.forward(request, response);
 				
-				response.sendRedirect("PerfilEstabelecimentoServlet");
+				//response.sendRedirect("PerfilEstabelecimentoServlet");
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
