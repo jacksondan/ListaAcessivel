@@ -91,7 +91,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				ArrayList<String> telefones = new ArrayList<String>();
 								
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				//estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				//int id_estabelecimento = estabelecimento.getId_estabelecimento();
 				//String nome_fantasia = request.getParameter("nome_fantasia");
@@ -175,7 +175,7 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				String mensagem = "Edição realizada com sucesso!!";
 				request.setAttribute("mensagem", mensagem);
 				//Tela de edição para o administrador
-				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilEstabelecimento.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesEstabelecimento.jsp");
 				dispatcher.forward(request, response);
 				
 				//response.sendRedirect("PerfilEstabelecimentoServlet");
