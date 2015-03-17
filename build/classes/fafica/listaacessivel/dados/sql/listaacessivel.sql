@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11-Mar-2015 às 21:34
+-- Generation Time: 17-Mar-2015 às 20:36
 -- Versão do servidor: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -223,27 +223,27 @@ CREATE TABLE IF NOT EXISTS `produto` (
 --
 
 INSERT INTO `produto` (`id_produto`, `descricao`, `categoria`, `peso`, `quantidade`, `valor`, `validade`, `codigo_barra`, `disponibilidade`, `marca`, `id_estabelecimento`, `status`) VALUES
-(6, 'Arroz Branco', 'Alimentos', 1.000, 300, 2.75, '2016-05-18', '90192910291122', 'disponível', 'Tio João', 16, 'ativo'),
-(7, 'Feijão Carioca', 'Alimentos', 1.000, 300, 4.80, '2015-11-20', '5664646451111222', 'disponível', 'Tio João', 16, 'ativo'),
-(8, 'Macarrão Fino', 'Alimentos', 0.300, 300, 1.97, '2016-03-23', '546655111112232', 'disponível', 'Vitarella', 16, 'ativo'),
-(9, 'Coca Cola Light', 'Bebidas', 2.000, 300, 2.70, '2016-09-30', '657676711111143', 'disponível', 'Coca Cola', 16, 'ativo'),
-(10, 'Sabão em Pó', 'limpeza', 1.000, 300, 1.80, '2017-05-25', '6556352311222111', 'disponível', 'Brilhante', 16, 'ativo'),
-(11, 'Sabonete líquido', 'limpeza', 0.700, 300, 6.50, '2018-02-22', '434534511111154', 'disponível', 'Lux', 16, 'ativo'),
-(12, 'Arroz Branco', 'Alimentos', 1.000, 300, 3.10, '2016-09-14', '5453453453111112', 'disponível', 'Rampinelli', 17, 'ativo'),
-(13, 'Feijão Carioca', 'Alimentos', 1.000, 300, 3.20, '2016-04-30', '56456456456211111', 'disponível', 'Camil', 17, 'ativo'),
-(14, 'Macarrão Fino', 'Alimentos', 0.700, 300, 2.10, '2016-05-14', '543534511111123', 'disponível', 'Barilla', 17, 'ativo'),
-(15, 'Achocolatado', 'Bebidas', 0.900, 300, 4.70, '2016-03-28', '7567567567111111', 'disponível', 'Nescau', 17, 'ativo'),
-(16, 'Água sanitária', 'limpeza', 1.000, 300, 1.50, '2017-08-30', '77776666112221211', 'disponível', 'Dragão', 17, 'ativo'),
-(17, 'Arroz Integral', 'Alimentos', 1.000, 300, 4.80, '2016-11-24', '4545541111222111', 'disponível', 'Rampinelli', 17, 'ativo'),
-(18, 'Bolacha Champagne', 'Alimentos', 0.500, 100, 2.60, '2015-09-29', '4564564561111112', 'disponível', 'Balduco', 18, 'ativo'),
-(19, 'Bolo de Chocolate', 'Alimentos', 0.800, 50, 3.40, '2016-03-26', '666655552123111', 'disponível', 'Dona Benta', 18, 'ativo'),
-(20, 'Pão Frances', 'Alimentos', 1.000, 500, 3.50, '2015-01-13', '23423242112111', 'disponível', 'Regional', 18, 'ativo'),
-(21, 'Arroz Integral', 'Alimentos', 1.000, 300, 6.30, '2016-04-28', '55555431311111', 'disponível', 'Tio João', 21, 'ativo'),
-(22, 'Feijão Macassa', 'Alimentos', 1.000, 300, 3.40, '2015-10-27', '3443434341111121', 'disponível', 'Rampinelli', 21, 'ativo'),
-(23, 'Leite Condensado', 'Alimentos', 0.300, 100, 5.40, '2016-01-04', '323232321111111', 'disponível', 'Moça', 21, 'ativo'),
-(24, 'Macarrão Médio', 'Alimentos', 0.400, 300, 2.30, '2016-04-26', '4444443332211111', 'disponível', 'Vitarella', 21, 'ativo'),
-(25, 'Detergente Neutro', 'limpeza', 0.500, 100, 1.80, '2017-08-12', '312231231321111', 'disponível', 'Limpol', 21, 'ativo'),
-(26, 'Creme Dental', 'limpeza', 0.200, 100, 2.30, '2016-01-07', '1231231231231111', 'disponível', 'Sorriso', 21, 'ativo');
+(6, 'Arroz Branco', 'Alimentos', 1.000, 300, 2.75, '2016-05-18', '90192910291122', 'disponivel', 'Tio João', 16, 'ativo'),
+(7, 'Feijão Carioca', 'Alimentos', 1.000, 300, 4.80, '2015-11-20', '5664646451111222', 'disponivel', 'Tio João', 16, 'ativo'),
+(8, 'Macarrão Fino', 'Alimentos', 0.300, 300, 1.97, '2016-03-23', '546655111112232', 'disponivel', 'Vitarella', 16, 'ativo'),
+(9, 'Coca Cola Light', 'Bebidas', 2.000, 300, 2.70, '2016-09-30', '657676711111143', 'disponivel', 'Coca Cola', 16, 'ativo'),
+(10, 'Sabão em Pó', 'limpeza', 1.000, 300, 1.80, '2017-05-25', '6556352311222111', 'disponivel', 'Brilhante', 16, 'ativo'),
+(11, 'Sabonete líquido', 'limpeza', 0.700, 300, 6.50, '2018-02-22', '434534511111154', 'disponivel', 'Lux', 16, 'ativo'),
+(12, 'Arroz Branco', 'Alimentos', 1.000, 300, 3.10, '2016-09-14', '5453453453111112', 'disponivel', 'Rampinelli', 17, 'ativo'),
+(13, 'Feijão Carioca', 'Alimentos', 1.000, 300, 3.20, '2016-04-30', '56456456456211111', 'disponivel', 'Camil', 17, 'ativo'),
+(14, 'Macarrão Fino', 'Alimentos', 0.700, 300, 2.10, '2016-05-14', '543534511111123', 'disponivel', 'Barilla', 17, 'ativo'),
+(15, 'Achocolatado', 'Bebidas', 0.900, 300, 4.70, '2016-03-28', '7567567567111111', 'disponivel', 'Nescau', 17, 'ativo'),
+(16, 'Água sanitária', 'limpeza', 1.000, 300, 1.50, '2017-08-30', '77776666112221211', 'disponivel', 'Dragão', 17, 'ativo'),
+(17, 'Arroz Integral', 'Alimentos', 1.000, 300, 4.80, '2016-11-24', '4545541111222111', 'disponivel', 'Rampinelli', 17, 'ativo'),
+(18, 'Bolacha Champagne', 'Alimentos', 0.500, 100, 2.60, '2015-09-29', '4564564561111112', 'disponivel', 'Balduco', 18, 'ativo'),
+(19, 'Bolo de Chocolate', 'Alimentos', 0.800, 50, 3.40, '2016-03-26', '666655552123111', 'disponivel', 'Dona Benta', 18, 'ativo'),
+(20, 'Pão Frances', 'Alimentos', 1.000, 500, 3.50, '2015-01-13', '23423242112111', 'disponivel', 'Regional', 18, 'ativo'),
+(21, 'Arroz Integral', 'Alimentos', 1.000, 300, 6.30, '2016-04-28', '55555431311111', 'disponivel', 'Tio João', 21, 'ativo'),
+(22, 'Feijão Macassa', 'Alimentos', 1.000, 300, 3.40, '2015-10-27', '3443434341111121', 'disponivel', 'Rampinelli', 21, 'ativo'),
+(23, 'Leite Condensado', 'Alimentos', 0.300, 100, 5.40, '2016-01-04', '323232321111111', 'disponivel', 'Moça', 21, 'ativo'),
+(24, 'Macarrão Médio', 'Alimentos', 0.400, 300, 2.30, '2016-04-26', '4444443332211111', 'disponivel', 'Vitarella', 21, 'ativo'),
+(25, 'Detergente Neutro', 'limpeza', 0.500, 100, 1.80, '2017-08-12', '312231231321111', 'disponivel', 'Limpol', 21, 'ativo'),
+(26, 'Creme Dental', 'limpeza', 0.200, 100, 2.30, '2016-01-07', '1231231231231111', 'disponivel', 'Sorriso', 21, 'ativo');
 
 -- --------------------------------------------------------
 
