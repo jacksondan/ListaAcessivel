@@ -108,9 +108,6 @@ display:block;
 						</tr>
 					</c:forEach>
 					
-					<c:if test="${testeFiltro} == true">
-						<input type="hidden" name="testeFiltro" value="true"/> <!-- Esse hidden tem que ficar aqui -->
-					</c:if>
 					<c:forEach items="${produtosSelecionadosPesquisa}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>

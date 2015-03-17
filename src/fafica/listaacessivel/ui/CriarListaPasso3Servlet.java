@@ -140,17 +140,16 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				//Regra de negocio começa AQUI
 				
 				List<Produto> produtosSelecionados = produtosSelecionados(selecaoProdutos, selecaoIdProduto, selecaoQuantidade);
-				List<Produto> produtosSelecionadosPesquisa = null;
 				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
+				List<Produto> produtosSelecionadosPesquisa = null;
+				List<Produto> auxNaoSelecionado = null;
 				List<Produto> auxRemocao = null;
-				String testeFiltro = null;
 				
 				if(pesquisa.equals("true")){    //if para verificar se o botão pesquisa foi precionado.
 					
-					if(categoria_produto == null && descricao_produto == null){
-						testeFiltro = request.getParameter("testeFiltro");
+					if(categoria_produto == null && descricao_produto == null){ //Pesquisa sem filtro
 						
-						if(testeFiltro != null){
+						/*if(listaProdutos.size() != selecaoIdProduto.length){
 							if(produtosSelecionados == null){
 								if(produtosSession.size() != 0){
 									auxRemocao = new ArrayList<Produto>();
@@ -226,21 +225,162 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 							}
 						
 						}
+						*/
+						
+						//Inicio aqui
+						if(listaProdutos == null){
+							listaProdutos = new ArrayList<Produto>();
+																				System.err.println("A LISTA DE PRODUTOS ESTA VAZIA");
+						}
+						if(produtosSelecionados == null){
+							produtosSelecionados = new ArrayList<Produto>();
+																				System.err.println("NÃO HÁ PRODUTOS SELECIONADOS");
+						}
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSelecionados){
+																				System.err.println("PRIMEIRO FOR");
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+																				System.err.println("SEGUNDO FOR");
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSelecionados.removeAll(auxRemocao);
+																				System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+						produtosSession.addAll(produtosSelecionados);
+																				System.err.println("produtosSession: "+produtosSession.size());
+						
+																				System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+						
+						
+						auxRemocao = new ArrayList<Produto>();
+						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+						for(Produto produto : produtosSession){
+																				System.err.println("TERCEIRO FOR");
+							for(Produto aux : auxNaoSelecionado){
+																				System.err.println("QUARTO FOR");
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+																				System.err.println("produtosSession: "+produtosSession.size());
+						produtosSession.removeAll(auxRemocao);
+																				System.err.println("produtosSession: "+produtosSession.size());
+						
+						
+						
+						//**************************************************
+						listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSession);
+						produtosSelecionados = produtosSession;
 
 						request.setAttribute("produtosSelecionados", produtosSelecionados);
 						request.setAttribute("listaProdutos", listaProdutos);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
-					}else {
-						testeFiltro = "true";
+						//**************************************************
 						
+					}else {  //Pesquisa com filtros
 						
+/*						if(listaProdutos != null){
+							if(produtosSelecionados != null){
+								if(produtosSession.size() != 0){
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSelecionados){
+										for(Produto aux : produtosSession){
+											if(produto.getId_produto() == aux.getId_produto()){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSelecionados.removeAll(auxRemocao);
+									produtosSession.addAll(produtosSelecionados);
+									
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+									
+								}else{
+									produtosSession.addAll(produtosSelecionados);
+								}
+							}else{
+								if(produtosSession.size() == 0){
+									
+								}else{
+									
+								}
+							}
+
+						}else{
+							listaProdutos = new ArrayList<Produto>();
+						}*/
+						
+						if(listaProdutos == null){
+							listaProdutos = new ArrayList<Produto>();
+						}
+						if(produtosSelecionados == null){
+							produtosSelecionados = new ArrayList<Produto>();
+						}
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSelecionados){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSelecionados.removeAll(auxRemocao);
+						produtosSession.addAll(produtosSelecionados);
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSession){
+							for(String i : selecaoIdProduto){
+								int id_produto = Integer.parseInt(i);
+								if(produto.getId_produto() == id_produto){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSession.removeAll(auxRemocao);
+						
+						//***********************************************
+						auxRemocao = new ArrayList<Produto>();
+						produtosSelecionadosPesquisa = new ArrayList<Produto>();
+						for(Produto produto : listaProdutos){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									produtosSelecionadosPesquisa.add(produto);
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						listaProdutos.removeAll(auxRemocao);
 						
 						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
 						request.setAttribute("listaProdutos", listaProdutos);
-						request.setAttribute("testeFiltro", testeFiltro);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
+						//**********************************************
 					}
 					
 					
@@ -316,15 +456,27 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			System.err.println("RETORNO DE OBJETOS POSSUI: "+listaProdutos.size()+" OBJETOS");
 			return listaProdutos;
 		}else{
+			System.err.println("RETORNO DE OBJETOS É == NULL");
 			return null;
 		}
 	}
 	
 	private List<Produto> produtosNaoSelecionados(List<Produto> listaProdutos, List<Produto> produtosSelecionados){
 		List<Produto> auxRemove = new ArrayList<Produto>();
-		
+		/*
+		 auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : listaProdutos){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+			listaProdutos.removeAll(auxRemocao);
+		 */
 		for(Produto produto : listaProdutos){
 			for(Produto aux : produtosSelecionados){
 				if(produto.getId_produto() == aux.getId_produto()){
