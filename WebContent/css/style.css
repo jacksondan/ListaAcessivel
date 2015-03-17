@@ -261,14 +261,15 @@ body,input,textarea,select
 					margin-right: 1.75em;
 					text-align: center;
 					line-height: 3em;
+					margin-bottom: 1em;	
 					
 				}
 				
 				ul.menu2 li:first-child
 				{
 					/* margin do menu direito*/
-					position:relative;
-					margin-bottom: 1em;	
+					/* position:relative;
+					margin-bottom: 1em;	 */
 					
 				}
 
@@ -522,8 +523,9 @@ input[type="number"] {
 		#descri{
 		position:relative;
 		margin-top:5em;
-		margin-left:40%;
+		font-size:18pt;
 		margin-bottom:2em;
+		text-align:center;
 		}
 		
 		#pesquisar{
