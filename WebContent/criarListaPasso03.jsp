@@ -77,12 +77,12 @@ display:show;
 		<header class="major">
 			<h2>Criar Lista Passo - 03</h2>	
 			<h3>Selecione os Produtos </h3>
+			<p style="text-align:center;color:green;">${mensagem}</p>
 		</header>
 		<form action="CriarListaPasso3Servlet" id="formlista"method="POST">
 		
 		<div id="pesquisar">
 		
-		<input type="hidden" name="id_estabelecimento"  value="${estabelecimento.id_estabelecimento}" />
 		
 		<label for="busca">Procurar</label>:<input id="busca" type="search" name ="buscanome" placeholder="Digite o nome do produto desejado" size="30"/>
 				<select name="categoria" >
@@ -98,8 +98,6 @@ display:show;
 				
 		</div>
 				
-				
-				<input type="hidden" name="id_estabelecimento" value="${estabelecimento.id_estabelecimento}" />
 					
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
 				Com as seguintes colunas; Descrição do Produto composta por informações como, nome do produto, marca do produto e valor do produto, as outras colunas são funções como selecionar produto
@@ -126,8 +124,8 @@ display:show;
 					<c:forEach items="${produtosSelecionados}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox3" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							<td headers="quantidade"><div class="divs3" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox3" checked="checked" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>
@@ -135,7 +133,7 @@ display:show;
 					<c:forEach items="${produtosSelecionadosPesquisa}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox2" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox2" checked="checked" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
 							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
@@ -156,7 +154,7 @@ display:show;
 				
 				<div id="descri">
 				<label for="desc">Descrição da Lista</label><br>
-				<input type="text"name="descricaolista" value="" id="desc"  placeholder="Digite a Descrição da Lista..." accesskey="s" size="30">
+				<input type="text"name="descricaolista" value="${descricao}" id="desc"  placeholder="Digite a Descrição da Lista..." accesskey="s" size="30">
 				</div>
 				
 					<div id="finalizar">

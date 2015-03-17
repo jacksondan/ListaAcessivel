@@ -102,13 +102,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				/*
-				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
-				Estabelecimento estabelecimento = new Estabelecimento();
-				estabelecimento.setId_estabelecimento(id_estabelecimento);
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				*/
-				
 				
 				//Pegando informações do formulario;
 				String categoria_produto = request.getParameter("categoria");
@@ -145,7 +138,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				List<Produto> auxNaoSelecionado = null;
 				List<Produto> auxRemocao = null;
 				
-				if(pesquisa.equals("true")){    //if para verificar se o botão pesquisa foi precionado.
+				if(pesquisa != null){    //if para verificar se o botão pesquisa foi precionado.
 					
 					if(categoria_produto == null && descricao_produto == null){ //Pesquisa sem filtro
 						
@@ -279,6 +272,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 
 						request.setAttribute("produtosSelecionados", produtosSelecionados);
 						request.setAttribute("listaProdutos", listaProdutos);
+						request.setAttribute("descricao", descricao);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
 						//**************************************************
@@ -388,6 +382,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
 						request.setAttribute("listaProdutos", listaProdutos);
+						request.setAttribute("descricao", descricao);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
 						//**********************************************
@@ -399,6 +394,67 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					
 				}else{ //else para finalizar a Lista
 					
+					if(listaProdutos == null){
+						listaProdutos = new ArrayList<Produto>();
+																			System.err.println("A LISTA DE PRODUTOS ESTA VAZIA");
+					}
+					if(produtosSelecionados == null){
+						produtosSelecionados = new ArrayList<Produto>();
+																			System.err.println("NÃO HÁ PRODUTOS SELECIONADOS");
+					}
+					
+					auxRemocao = new ArrayList<Produto>();
+					for(Produto produto : produtosSelecionados){
+																			System.err.println("PRIMEIRO FOR");
+						for(Produto aux : produtosSession){
+							if(produto.getId_produto() == aux.getId_produto()){
+																			System.err.println("SEGUNDO FOR");
+								auxRemocao.add(produto);
+							}
+						}
+					}
+					
+					produtosSelecionados.removeAll(auxRemocao);
+																			System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+					produtosSession.addAll(produtosSelecionados);
+																			System.err.println("produtosSession: "+produtosSession.size());
+					
+																			System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+					
+					
+					auxRemocao = new ArrayList<Produto>();
+					auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+					for(Produto produto : produtosSession){
+																			System.err.println("TERCEIRO FOR");
+						for(Produto aux : auxNaoSelecionado){
+																			System.err.println("QUARTO FOR");
+							if(produto.getId_produto() == aux.getId_produto()){
+								auxRemocao.add(produto);
+							}
+						}
+					}
+																			System.err.println("produtosSession: "+produtosSession.size());
+					produtosSession.removeAll(auxRemocao);
+																			System.err.println("produtosSession: "+produtosSession.size());
+					if(produtosSession.size() > 0){
+						lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, produtosSession);
+						int id_lista = fachada.adicionarLista(lista);
+						lista.setId_lista(id_lista);
+						
+						request.setAttribute("lista",lista);
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+						requestDispatcher.forward(request, response);
+						
+					}else{
+						String mensagem = "Lista não pode ser criada sem itens";
+						
+						request.setAttribute("mensagem",mensagem);
+						request.setAttribute("listaProdutos", listaProdutos);
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp"); //CriarListaPasso3Servlet
+						requestDispatcher.forward(request, response);
+						
+					}
+																		
 				}
 				
 				
