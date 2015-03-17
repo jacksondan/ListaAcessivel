@@ -51,7 +51,10 @@ public class ControladorProduto {
 						pesquisa.add(p);
 					}
 				}
-				lista_produtos = pesquisa;
+				if(pesquisa.size() != 0)
+					lista_produtos = pesquisa;
+				else
+					lista_produtos = null;
 			}else if(categoria_produto == null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
@@ -61,7 +64,10 @@ public class ControladorProduto {
 						pesquisa.add(p);
 					}
 				}
-				lista_produtos = pesquisa;
+				if(pesquisa.size() != 0)
+					lista_produtos = pesquisa;
+				else
+					lista_produtos = null;
 			}else if(categoria_produto != null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
@@ -73,7 +79,10 @@ public class ControladorProduto {
 						pesquisa.add(p);
 					}
 				}
-				lista_produtos = pesquisa;
+				if(pesquisa.size() != 0)
+					lista_produtos = pesquisa;
+				else
+					lista_produtos = null;
 			}else if (categoria_produto == null && descricao_produto == null){
 				return lista_produtos;
 			}
@@ -107,7 +116,10 @@ public class ControladorProduto {
 						pesquisa.add(p);
 					}
 				}
-				lista_produtos = pesquisa;
+				if(pesquisa.size() != 0)
+					lista_produtos = pesquisa;
+				else
+					lista_produtos = null;
 			}else if(categoria_produto == null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
@@ -117,7 +129,10 @@ public class ControladorProduto {
 						pesquisa.add(p);
 					}
 				}
-				lista_produtos = pesquisa;
+				if(pesquisa.size() != 0)
+					lista_produtos = pesquisa;
+				else
+					lista_produtos = null;
 			}else if(categoria_produto != null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
@@ -129,7 +144,10 @@ public class ControladorProduto {
 						pesquisa.add(p);
 					}
 				}
-				lista_produtos = pesquisa;
+				if(pesquisa.size() != 0)
+					lista_produtos = pesquisa;
+				else
+					lista_produtos = null;
 			}else if (categoria_produto == null && descricao_produto == null){
 				return lista_produtos;
 			}

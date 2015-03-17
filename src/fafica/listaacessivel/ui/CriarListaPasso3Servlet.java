@@ -140,17 +140,15 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				//Regra de negocio começa AQUI
 				
 				List<Produto> produtosSelecionados = produtosSelecionados(selecaoProdutos, selecaoIdProduto, selecaoQuantidade);
-				List<Produto> produtosSelecionadosPesquisa = null;
 				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
+				List<Produto> produtosSelecionadosPesquisa = null;
 				List<Produto> auxRemocao = null;
-				String testeFiltro = null;
 				
 				if(pesquisa.equals("true")){    //if para verificar se o botão pesquisa foi precionado.
 					
-					if(categoria_produto == null && descricao_produto == null){
-						testeFiltro = request.getParameter("testeFiltro");
+					if(categoria_produto == null && descricao_produto == null){ //Pesquisa sem filtro
 						
-						if(testeFiltro != null){
+						/*if(listaProdutos.size() != selecaoIdProduto.length){
 							if(produtosSelecionados == null){
 								if(produtosSession.size() != 0){
 									auxRemocao = new ArrayList<Produto>();
@@ -226,21 +224,158 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 							}
 						
 						}
+						*/
+						
+						//Inicio aqui
+						if(listaProdutos == null){
+							listaProdutos = new ArrayList<Produto>();
+						}
+						if(produtosSelecionados == null){
+							produtosSelecionados = new ArrayList<Produto>();
+						}
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSelecionados){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSelecionados.removeAll(auxRemocao);
+						produtosSession.addAll(produtosSelecionados);
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSession){
+							for(String i : selecaoIdProduto){
+								int id_produto = Integer.parseInt(i);
+								if(produto.getId_produto() == id_produto){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSession.removeAll(auxRemocao);
+						
+						
+						
+						//**************************************************
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : listaProdutos){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						listaProdutos.removeAll(auxRemocao);
+						produtosSelecionados = produtosSession;
 
 						request.setAttribute("produtosSelecionados", produtosSelecionados);
 						request.setAttribute("listaProdutos", listaProdutos);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
-					}else {
-						testeFiltro = "true";
+						//**************************************************
 						
+					}else {  //Pesquisa com filtros
 						
+/*						if(listaProdutos != null){
+							if(produtosSelecionados != null){
+								if(produtosSession.size() != 0){
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSelecionados){
+										for(Produto aux : produtosSession){
+											if(produto.getId_produto() == aux.getId_produto()){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSelecionados.removeAll(auxRemocao);
+									produtosSession.addAll(produtosSelecionados);
+									
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+									
+								}else{
+									produtosSession.addAll(produtosSelecionados);
+								}
+							}else{
+								if(produtosSession.size() == 0){
+									
+								}else{
+									
+								}
+							}
+
+						}else{
+							listaProdutos = new ArrayList<Produto>();
+						}*/
+						
+						if(listaProdutos == null){
+							listaProdutos = new ArrayList<Produto>();
+						}
+						if(produtosSelecionados == null){
+							produtosSelecionados = new ArrayList<Produto>();
+						}
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSelecionados){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSelecionados.removeAll(auxRemocao);
+						produtosSession.addAll(produtosSelecionados);
+						
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : produtosSession){
+							for(String i : selecaoIdProduto){
+								int id_produto = Integer.parseInt(i);
+								if(produto.getId_produto() == id_produto){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						
+						produtosSession.removeAll(auxRemocao);
+						
+						//***********************************************
+						auxRemocao = new ArrayList<Produto>();
+						produtosSelecionadosPesquisa = new ArrayList<Produto>();
+						for(Produto produto : listaProdutos){
+							for(Produto aux : produtosSession){
+								if(produto.getId_produto() == aux.getId_produto()){
+									produtosSelecionadosPesquisa.add(produto);
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						listaProdutos.removeAll(auxRemocao);
 						
 						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
 						request.setAttribute("listaProdutos", listaProdutos);
-						request.setAttribute("testeFiltro", testeFiltro);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
 						requestDispatcher.forward(request, response);
+						//**********************************************
 					}
 					
 					
