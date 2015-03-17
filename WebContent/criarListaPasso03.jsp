@@ -10,6 +10,9 @@
 /* ESCONDE TODAS AS DIVS */
 .divs{display:none;
 }
+divs2{
+display:block;
+}
 
 
 </style>
@@ -100,7 +103,7 @@
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
 							<td headers="selecionar"><input type="checkbox" class="checkbox" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>
@@ -112,7 +115,7 @@
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
 							<td headers="selecionar"><input type="checkbox" class="checkbox" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							<td headers="quantidade"><div class="divs" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>

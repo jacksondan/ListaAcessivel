@@ -15,7 +15,7 @@
    #content{}
    #footer{display:none}
    #filtro2{display:none}
-   #finalizar{display:none}	
+   #finalizar2{display:none}	
    
 </style>	
 </head>
@@ -83,15 +83,18 @@
 					</tr>
 					</tfoot>
 				</table>
-				<div id="finalizar">
+				<div id="finalizar2">
+					<ul class="menu2">
+						<li>
 					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
-					<button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
+					</li><li><button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button></li>
 					<c:if test="${lista.situacao == 'criada'}">
-						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Entrega</button>
+						<li><button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Entrega</button></li>
 					</c:if>
 					<c:if test="${lista.situacao == 'atendida'}">
-						<button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Nova Entrega</button>
+						<li><button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Nova Entrega</button></li>
 					</c:if>
+					</ul>
 				</div>
 				
 	</div>

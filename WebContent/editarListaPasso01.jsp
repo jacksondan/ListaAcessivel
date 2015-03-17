@@ -101,11 +101,18 @@
 				<div id="descri">
 				<label for="desc">Descrição da Lista</label><br>
 				<textarea name="descricaolista" id="desc" wrap="hard" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${lista.descricao}</textarea>
+				
 				</div>
 				
-					<div id="finalizar">
-						<button type="submit"class="button3" name="adicionarProduto" value="true">Adicionar Produtos </button>
-						<button type="submit" class="button3" >Finalizar Edição</button>
+					<div id="finalizar2">
+					<ul class="menu2">
+						<li>
+							<button type="submit"class="button3" name="adicionarProduto" value="true">Adicionar Produtos </button>
+						</li>
+						<li>
+							<button type="submit" class="button3" >Finalizar Edição</button>
+						</li>
+					</ul>
 					</div>
 				</form>
 				
