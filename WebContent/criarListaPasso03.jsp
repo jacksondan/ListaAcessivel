@@ -10,8 +10,12 @@
 /* ESCONDE TODAS AS DIVS */
 .divs{display:none;
 }
-divs2{
+.divs2{
 display:block;
+}
+
+.divs3{
+display:show;
 }
 
 
@@ -43,6 +47,26 @@ display:block;
     });
     });
     });
+    
+    $(document).ready(function() {
+        $('.checkbox2').click(function() { //quando clica  chama a função
+        $('.divs2').hide(); //a div é escondida
+        $('.checkbox:checked').each(function() {   //o checkbox é marcado e chama a função
+        $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
+        
+        });
+        });
+        });
+    
+    $(document).ready(function() {
+        $('.checkbox3').click(function() { //quando clica  chama a função
+        $('.divs3').hide(); //a div é escondida
+        $('.checkbox3:checked').each(function() {   //o checkbox é marcado e chama a função
+        $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
+        
+        });
+        });
+        });
     </script>
 </head>
 <body>
@@ -102,8 +126,8 @@ display:block;
 					<c:forEach items="${produtosSelecionados}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
-							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox3" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="quantidade"><div class="divs3" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
 					</c:forEach>
@@ -111,7 +135,7 @@ display:block;
 					<c:forEach items="${produtosSelecionadosPesquisa}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox2" checked name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
 							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
