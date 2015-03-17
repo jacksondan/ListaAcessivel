@@ -341,27 +341,37 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						auxRemocao = new ArrayList<Produto>();
 						for(Produto produto : produtosSelecionados){
+																				System.err.println("PRIMEIRO FOR");
 							for(Produto aux : produtosSession){
 								if(produto.getId_produto() == aux.getId_produto()){
+																				System.err.println("SEGUNDO FOR");
 									auxRemocao.add(produto);
 								}
 							}
 						}
 						
 						produtosSelecionados.removeAll(auxRemocao);
+																				System.err.println("produtosSelecionados: "+produtosSelecionados.size());
 						produtosSession.addAll(produtosSelecionados);
+																				System.err.println("produtosSession: "+produtosSession.size());
+						
+																				System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+						
 						
 						auxRemocao = new ArrayList<Produto>();
+						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
 						for(Produto produto : produtosSession){
-							for(String i : selecaoIdProduto){
-								int id_produto = Integer.parseInt(i);
-								if(produto.getId_produto() == id_produto){
+																				System.err.println("TERCEIRO FOR");
+							for(Produto aux : auxNaoSelecionado){
+																				System.err.println("QUARTO FOR");
+								if(produto.getId_produto() == aux.getId_produto()){
 									auxRemocao.add(produto);
 								}
 							}
 						}
-						
+																				System.err.println("produtosSession: "+produtosSession.size());
 						produtosSession.removeAll(auxRemocao);
+																				System.err.println("produtosSession: "+produtosSession.size());
 						
 						//***********************************************
 						auxRemocao = new ArrayList<Produto>();
