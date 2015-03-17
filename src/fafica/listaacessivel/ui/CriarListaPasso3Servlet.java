@@ -136,6 +136,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, categoria_produto, descricao_produto);
 				List<Produto> produtosSelecionadosPesquisa = null;
 				List<Produto> auxNaoSelecionado = null;
+				List<Produto> auxSelecionados = null;
 				List<Produto> auxRemocao = null;
 				
 				if(pesquisa != null){    //if para verificar se o botão pesquisa foi precionado.
@@ -229,9 +230,11 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 							produtosSelecionados = new ArrayList<Produto>();
 																				System.err.println("NÃO HÁ PRODUTOS SELECIONADOS");
 						}
-						
+																				System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+						auxSelecionados = new ArrayList<Produto>();												
 						auxRemocao = new ArrayList<Produto>();
 						for(Produto produto : produtosSelecionados){
+							auxSelecionados.add(produto);
 																				System.err.println("PRIMEIRO FOR");
 							for(Produto aux : produtosSession){
 								if(produto.getId_produto() == aux.getId_produto()){
@@ -250,7 +253,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						
 						auxRemocao = new ArrayList<Produto>();
-						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, auxSelecionados);
 						for(Produto produto : produtosSession){
 																				System.err.println("TERCEIRO FOR");
 							for(Produto aux : auxNaoSelecionado){
@@ -333,8 +336,10 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 							produtosSelecionados = new ArrayList<Produto>();
 						}
 						
+						auxSelecionados = new ArrayList<Produto>();
 						auxRemocao = new ArrayList<Produto>();
 						for(Produto produto : produtosSelecionados){
+							auxSelecionados.add(produto);
 																				System.err.println("PRIMEIRO FOR");
 							for(Produto aux : produtosSession){
 								if(produto.getId_produto() == aux.getId_produto()){
@@ -353,7 +358,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						
 						auxRemocao = new ArrayList<Produto>();
-						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, auxSelecionados);
 						for(Produto produto : produtosSession){
 																				System.err.println("TERCEIRO FOR");
 							for(Produto aux : auxNaoSelecionado){
@@ -402,9 +407,10 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						produtosSelecionados = new ArrayList<Produto>();
 																			System.err.println("NÃO HÁ PRODUTOS SELECIONADOS");
 					}
-					
+					auxSelecionados = new ArrayList<Produto>();
 					auxRemocao = new ArrayList<Produto>();
 					for(Produto produto : produtosSelecionados){
+						auxSelecionados.add(produto);
 																			System.err.println("PRIMEIRO FOR");
 						for(Produto aux : produtosSession){
 							if(produto.getId_produto() == aux.getId_produto()){
@@ -423,7 +429,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					
 					
 					auxRemocao = new ArrayList<Produto>();
-					auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+					auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, auxSelecionados);
 					for(Produto produto : produtosSession){
 																			System.err.println("TERCEIRO FOR");
 						for(Produto aux : auxNaoSelecionado){

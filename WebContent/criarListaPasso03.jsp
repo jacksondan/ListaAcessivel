@@ -49,7 +49,7 @@ display:show;
     });
     
     $(document).ready(function() {
-        $('.checkbox2').click(function() { //quando clica  chama a função
+        $('.checkbox').click(function() { //quando clica  chama a função
         $('.divs2').hide(); //a div é escondida
         $('.checkbox:checked').each(function() {   //o checkbox é marcado e chama a função
         $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
@@ -77,7 +77,7 @@ display:show;
 		<header class="major">
 			<h2>Criar Lista Passo - 03</h2>	
 			<h3>Selecione os Produtos </h3>
-			<p style="text-align:center;color:green;">${mensagem}</p>
+			<p style="text-align:center;color:red;">${mensagem}</p>
 		</header>
 		<form action="CriarListaPasso3Servlet" id="formlista"method="POST">
 		
@@ -124,7 +124,7 @@ display:show;
 					<c:forEach items="${produtosSelecionados}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox3" checked="checked" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox" checked="checked" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
 							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
@@ -133,7 +133,7 @@ display:show;
 					<c:forEach items="${produtosSelecionadosPesquisa}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}.<br> Marca: ${produto.marca}.<br> Valor: R$ ${produto.valor}. </td>
-							<td headers="selecionar"><input type="checkbox" class="checkbox2" checked="checked" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
+							<td headers="selecionar"><input type="checkbox" class="checkbox" checked="checked" name="selecionado" id="selecionados" value="${produto.id_produto}" /></td>
 							<td headers="quantidade"><div class="divs2" id="d${produto.id_produto}" ><input type="number" accesskey="w" name="quantidade" value="${produto.quantidade}" min="1"  alt="Digite a Quantidade Desejada" /></div></td>
 							<input type="hidden" name="id_produto" value="${produto.id_produto}"/> <!-- Esse hidden tem que ficar aqui -->
 						</tr>
