@@ -41,25 +41,7 @@
 				<legend>Dados do Estabelecimento</legend>
 				<label for="email">E-mail:</label>  
 					<input type="email" name="email" id="email" value="${acessoEstabelecimento.email}" size=60 required="email">
-				<label for="nome_fantasia">Nome Fantasia:</label> <input type="text"
-					name="nome_fantasia" id="nome_fantasia"
-					value="${acessoEstabelecimento.nome_fantasia}" size=60 required="nome_fantasia"> <label
-					for="nome_juridico">Nome Jurídico:</label> <input type="text"
-					name="nome_juridico" id="nome_juridico"
-					value="${acessoEstabelecimento.nome_juridico}" size=60 required="nome_juridico"> <label
-					for="cnpj">CPNPJ:</label><br> <input type="text" name="cnpj"
-					id="cnpj" value="${editarEstabelecimento.cnpj}" size=12  required="cnpj"><br>
-
-				Categoria:<br> <select name="categoria">
-					<option selected="${acessoEstabelecimento.categoria}"
-						value="${acessoEstabelecimento.categoria}">${acessoEstabelecimento.categoria}</option>
-					<option>Supermercado</option>
-					<option>Padaria</option>
-					<option>Farmácia</option>
-					<option>Livraria</option>
-					
-					
-				</select><br>
+				
 			</fieldset>
 
 			<fieldset>
@@ -72,35 +54,7 @@
 					name="telefone2" id="telefone2" value="${acessoEstabelecimento.telefones[1]}"
 					size=20><br>
 			</fieldset>
-			<fieldset>
-				<legend>Dados de Localização</legend>
-				<p>
-					<label for="cep">CEP:</label><br> <input type="text"
-						name="cep" id="cep" value="${acessoEstabelecimento.endereco.cep }"  onblur="consultacep(this.value)" size=20 required="cep"><br>
-						<label for="estado">Estado:</label><br> <input type="text"
-						name="estado" id="estado" value="${acessoEstabelecimento.endereco.estado}" size=2><br>
-					<label for="cidade">Cidade:</label><br> <input type="text"
-						name="cidade" id="cidade" value="${acessoEstabelecimento.endereco.cidade}"
-						size=30><br> <br> <label for="bairro">Bairro:</label><br>
-					<input type="text" name="bairro" id="bairro"
-						value="${acessoEstabelecimento.endereco.bairro}" size=30 required="bairro"><br>
-
-					<label for="rua">Rua:</label><br> <input type="text"
-						name="rua" id="rua" value="${acessoEstabelecimento.endereco.rua}" size=60 required="rua"><br>
-
-					<label for="numero">Número:</label><br> <input type="text"
-						name="numero" id="numero" value="${acessoEstabelecimento.endereco.numero}"
-						size=4 required="numero"><br>
-						
-						<label
-					for="complemento">Complemento:</label><br> 
-					<input type="text"
-					name="complemento" id="complemento" value="${acessoEstabelecimento.endereco.complemento}" size=60 required="complemento"><br>
-						
-						 <label for="referencia">Referência:</label><br>
-					<input type="text" name="referencia" id="referencia"
-						value="${acessoEstabelecimento.endereco.referencia}" size=60 required="referencia"><br>
-			</fieldset>
+			
 
 			<div class="12u">
 				<ul class="actions">
