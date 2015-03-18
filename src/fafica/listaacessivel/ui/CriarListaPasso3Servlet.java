@@ -190,13 +190,15 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						produtosSession.removeAll(auxRemocao);
 																				System.err.println("produtosSession: "+produtosSession.size());
 						
-						
+						/*
+						 
+						 */
 						
 						//**************************************************
 																				
 						auxRemocao = new ArrayList<Produto>();
 						for(Produto produto : listaProdutos){
-							for(Produto aux : produtosSelecionados){
+							for(Produto aux : produtosSession){
 								if(produto.getId_produto() == aux.getId_produto()){
 									auxRemocao.add(produto);
 								}
