@@ -1,6 +1,9 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fafica.listaacessivel.negocios.Fachada;
+import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
+import fafica.listaacessivel.negocios.entidades.Lista;
+import fafica.listaacessivel.ui.util.Situacao;
 
 /**
  * Servlet implementation class VisaoFuncionarioServlet
@@ -39,6 +46,39 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				List<Lista> listas = fachada.listarListaPorEstabelecimento(funcionario.getEstabelecimento());
+				List<Lista> auxListaSolicitadas = new ArrayList<Lista>();
+				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
+				
+				for(Lista lista : listas){
+					if(lista.getSituacao().equals(Situacao.SOLICITADA.toString())){
+						auxListaSolicitadas.add(lista);
+					}
+				}
+				
+				for(Lista lista : listas){
+					if(lista.getSituacao().equals(Situacao.ATENDIDA.toString())){
+						auxListaSolicitadas.add(lista);
+					}
+				}
+				
+				request.setAttribute("totalListas", listas.size());
+				request.setAttribute("listasSolicitadas", auxListaSolicitadas.size());
+				request.setAttribute("listasAtendimento", auxListaAtendidas.size());
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoFuncionario.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			response.sendRedirect("visaoFuncionario.jsp");
 		}
 	}
