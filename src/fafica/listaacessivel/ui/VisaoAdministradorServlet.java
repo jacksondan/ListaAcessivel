@@ -68,6 +68,10 @@ public class VisaoAdministradorServlet extends HttpServlet {
 				int numEstabelecimento = listaEstabelecimentos.size();
 				int numFuncionario = listaFuncionarios.size();
 				
+				System.out.println(numCliente);
+				System.out.println(numEstabelecimento);
+				System.out.println(numFuncionario);
+				
 				request.setAttribute("listaClientes", numCliente);
 				request.setAttribute("listaEstabelecimentos", numEstabelecimento);
 				request.setAttribute("listaFuncionarios", numFuncionario);

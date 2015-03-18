@@ -55,13 +55,14 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				}
 				
 				List<Lista> auxListaSolicitadas = new ArrayList<Lista>();
-				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
 				
 				for(Lista lista : listas){
 					if(lista.getSituacao().equals(Situacao.SOLICITADA.toString())){
 						auxListaSolicitadas.add(lista);
 					}
 				}
+				
+				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
 				
 				for(Lista lista : listas){
 					if(lista.getSituacao().equals(Situacao.ATENDIDA.toString())){
@@ -72,6 +73,10 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				int numTotalListas = listas.size();
 				int numListasSolicitadas = auxListaSolicitadas.size();
 				int numListasAtendimento = auxListaAtendidas.size();
+				
+				System.out.println(numTotalListas);
+				System.out.println(numListasSolicitadas);
+				System.out.println(numListasAtendimento);
 				
 				request.setAttribute("totalListas", numTotalListas);
 				request.setAttribute("listasSolicitadas", numListasSolicitadas);

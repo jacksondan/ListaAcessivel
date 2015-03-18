@@ -73,6 +73,10 @@ public class VisaoEstabelecimentoServlet extends HttpServlet {
 				int numListasSolicitadas = auxListaSolicitadas.size();
 				int numListasAtendimento = auxListaAtendidas.size();
 				
+				System.out.println(numTotalListas);
+				System.out.println(numListasSolicitadas);
+				System.out.println(numListasAtendimento);
+				
 				request.setAttribute("totalListas", numTotalListas);
 				request.setAttribute("listasSolicitadas", numListasSolicitadas);
 				request.setAttribute("listasAtendidas", numListasAtendimento);
