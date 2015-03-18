@@ -51,7 +51,7 @@
 								<tr>
 									<th rowspan="2" id="nome">Nome</th>
 									<th rowspan="2" id="cpf">CPF</th>
-									<th rowspan="2" id="email">Email</th>
+									<!-- <th rowspan="2" id="email">Email</th> -->
 									<th rowspan="2" id="cidade">Cidade</th>
 									<th rowspan="2" id="bairro">Bairro</th>
 									<th colspan="2" id="telefones">Telefones</th>
@@ -70,7 +70,7 @@
 								<tr>
 									<td headers="nome">${cliente.nome}</td>
 									<td headers="cpf">${cliente.cpf}</td>
-									<td headers="email">${cliente.email}</td>
+									<%-- <td headers="email">${cliente.email}</td> --%>
 									<td headers="cidade">${cliente.endereco.cidade}</td>
 									<td headers="bairro">${cliente.endereco.bairro}</td>
 									<td headers="telefone 1">${cliente.telefones[0]}</td>

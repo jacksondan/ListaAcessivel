@@ -31,8 +31,9 @@
 		    	                                                   ]);
 
 		    	                                                   var options = {
-		    	                                                     title: 'Gráfico de Atividades',
+		    	                                                     title: 'Gráfico de Atividades',    
 		    	                                                     is3D: true,
+		    	                                                     
 		    	                                                   };
 
 		        // Set chart options
@@ -45,7 +46,8 @@
 		                       'titleTextStyle':{ color: '#5294FF',
 		                    	   bold: 'true',
 		                    	   fontSize: 22
-		                    	   }
+		                    	   },
+		                       
 		                       };
 
 		        // Instantiate and draw our chart, passing in some options.
@@ -64,7 +66,7 @@
 						<h2>Menu - Estabelecimento</h2>
 					</header>
 					<p style="text-align: center; color: green;">${mensagem}</p>
-					<div id="content2">
+					<div id="graficos">
 					<div id="chart_div"></div>
 					</div>
 				</div>

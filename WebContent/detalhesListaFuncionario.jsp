@@ -81,11 +81,18 @@
 					</tr>
 					</tfoot>
 				</table>
-				<div id="filtro2" >
+				<div id="finalizar2" >
+					<ul class="menu2">
+					<li>
 					<button align="center" class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
+					</li>
 					<c:if test="${lista.situacao == 'solicitada'}">
+					<li>
 						<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Confirmar Atendimento</button>
+						</li>
 					</c:if>
+					
+					</ul>
 				</div>
 				
 	</div>

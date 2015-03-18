@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${acessoFuncionario.nome}- Listas Atendidas</title>
+<title>${acessoFuncionario.nome} - Listas Atendidas</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
+<link rel="stylesheet" type="text/css" href="css/layoutabela/clientes.css">
 <script src="js/script.js"></script>
 <script type="text/javascript"  src="js/jquery.js"></script>	
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -17,8 +17,8 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#listas').dataTable({
-        	"filter":false,
-        	"ordering": false,
+        	"filter":true,
+        	"ordering": true,
         	"lengthMenu": [[-1,10 , 5], ["Todos", 10, 5]],
         	 "language": {
               "sUrl" : "js/pt-br.txt"
@@ -76,7 +76,7 @@
 				</table>
 
 	</div>
-	<div id="footer">
+	<div id="footer2">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

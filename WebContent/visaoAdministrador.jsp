@@ -18,20 +18,24 @@
 		      // Callback that creates and populates a data table,
 		      // instantiates the pie chart, passes in the data and
 		      // draws it.
+		      	var clientes = parseInt('${listaClientes}');
+		        var funcionarios= parseInt('${listaFuncionarios}');
+		        var estabelecimentos= parseInt('${listaEstabelecimentos}');
+		      
+				// contrução do grafio
 		      function drawChart() {
+		    	   var data = google.visualization.arrayToDataTable([
+		    	                                                     ['Usuario', 'Quantidade'],
+		    	                                                     ['Total de Clientes', clientes],        
+		    	                                                     ['Total de Estabelecimentos', estabelecimentos],
+		    	                                                     ['Total de Funcionarios', funcionarios]
+		    	                                                   ]);
 
-		        // Create the data table.
-		        var data = new google.visualization.DataTable();
-		        data.addColumn('string', 'Topping');
-		        data.addColumn('number', 'Slices');
-		        data.addRows([
-		          ['Listas Solicitadas', 8],
-		          ['Listas Atendidas', 1],
-		          
-		        ]);
+		    	                                                 
 
 		        // Set chart options
-		        var options = {'title':'Gráfico de Atividades',
+		        var options = {'title':'População do Sistema',
+		        	
 		                       'width':700,
 		                       'height':500,
 		                       'chartArea':{left:120,top:80},
@@ -40,7 +44,8 @@
 		                       'titleTextStyle':{ color: '#5294FF',
 		                    	   bold: 'true',
 		                    	   fontSize: 22
-		                    	   }
+		                    	   },
+		                       is3D: true,
 		                       };
 
 		        // Instantiate and draw our chart, passing in some options.

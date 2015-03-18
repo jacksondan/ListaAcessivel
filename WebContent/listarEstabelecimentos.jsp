@@ -48,7 +48,7 @@
 								<thead>
 								<tr>
 									<th rowspan="2" id="nome fantasia">Nome Fantasia</th>
-									<th rowspan="2" id="categoria">Categoria</th>
+									<!-- <th rowspan="2" id="categoria">Categoria</th> -->
 									<th rowspan="2" id="cidade">Cidade</th>
 									<th rowspan="2" id="bairro">Bairro</th>
 									<th colspan="2" id="opção">Opções</th>
@@ -64,7 +64,7 @@
 								<tr>
 
 									<td headers="nome fantasia">${estabelecimento.nome_fantasia}</td>
-									<td headers="categoria">${estabelecimento.categoria}</td>
+								<%-- 	<td headers="categoria">${estabelecimento.categoria}</td> --%>
 									<td headers="cidade">${estabelecimento.endereco.cidade}</td>
 									<td headers="bairro">${estabelecimento.endereco.bairro}</td>
 									<td headers="opção"><a href="PerfilEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Detalhes</a></td>

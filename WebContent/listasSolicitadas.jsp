@@ -8,7 +8,7 @@
 <title>${acessoFuncionario.nome}- Listas Solicitadas</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso3.css">
+<link rel="stylesheet" type="text/css" href="css/layoutabela/clientes.css">
 <script src="js/script.js"></script>
 <script type="text/javascript"  src="js/jquery.js"></script>	
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -17,8 +17,8 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#listas').dataTable({
-        	"filter":false,
-        	"ordering": false,
+        	"filter":true,
+        	"ordering": true,
         	"lengthMenu": [[-1,10 , 5], ["Todos", 10, 5]],
         	 "language": {
               "sUrl" : "js/pt-br.txt"
@@ -49,12 +49,12 @@
 					
 					<tr>
 
-						<th rowspan="2"id="nome_cliente">Nome do Cliente</th>
-						<th rowspan="2"id="situção">Situação da Lista</th>
-						<th rowspan="2"id="data">Data de Criação</th>
-						<th rowspan="2"id="descrição">Total de Produtos da Lista</th>
-						<th rowspan="2"id="total">Valor Total da Lista</th>					
-						<th rowspan="2"id="detalhes">Detalhes</th>
+						<th rowspan="1"id="nome_cliente">Nome do Cliente</th>
+						<th rowspan="1"id="situção">Situação da Lista</th>
+						<th rowspan="1"id="data">Data de Criação</th>
+						<th rowspan="1"id="total">Quantidade de Produtos da Lista</th>
+						<th rowspan="1"id="total">Valor Total da Lista</th>					
+						<th colspan="1"id="função">Funções</th>
 					</tr>
 					
 					</thead>
@@ -68,15 +68,16 @@
 							<td headers="data">${listas.data_criacao}</td>
 							<td headers="data">${listas.quantidade_total}</td>
 							<td headers="total">R$ ${listas.valor_total}</td>
-							<td headers="detalhes"><a href="DetalhesListaServlet?id_lista=${listas.id_lista}" class="button2">Detalhes</a></td>
+							<td headers="detalhes"><a href="DetalhesListaServlet?id_lista=${listas.id_lista}" class="button2">Detalhes</a></td>			
 						</tr>
 					</c:forEach>
 					</tbody>
 					
 				</table>
 
+
 	</div>
-	<div id="footer">
+	<div id="footer2">
 			<div id="copyright" class="container">
 					<ul class="icons">
 						<li>&copy; TechBin. Todos os direitos reservados.</li><li>Design: <a href="http://facebook.com/Edwardhll">Eduardo Andrade</a></li>

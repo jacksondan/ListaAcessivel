@@ -1,19 +1,19 @@
 
 {
     "emptyTable":     "Nenhum registro retornado",
-    "info":           "Mostrando de _START_ atÃ© _END_ valores de _TOTAL_ Registros",
+    "info":           "Mostrando de _START_ a _END_ valores de _TOTAL_ Registros",
     "infoEmpty":      "Nada encontrado",
-    "infoFiltered":   "(Filtrado um total de _MAX_ registros)",
+    "infoFiltered":   "(Em _MAX_ Registros)",
     "infoPostFix":    "",
     "thousands":      ",",
     "lengthMenu":     "Mostrando _MENU_ Registros",
     "loadingRecords": "Carregando...",
     "processing":     "Processando...",
     "search":         "Buscar:",
-    "zeroRecords":    "Nï¿½o foram encontrados resultados",
+    "zeroRecords":    "Nenhum registro encontrado",
     "paginate": {
         "first":      "Primeiro",
-        "last":       "ï¿½ltimo",
+        "last":       "Último",
         "next":       "Seguinte",
         "previous":   "Anterior"
     },
