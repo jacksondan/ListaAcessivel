@@ -39,7 +39,7 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}else{
-			response.sendRedirect("editarSenhaFuncionario.jsp");
+			response.sendRedirect("visaoFuncionario.jsp");
 		}
 	}
 

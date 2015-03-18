@@ -103,7 +103,7 @@ public class IndexServlet extends HttpServlet {
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoAdministrador", usuario);
 					session.setMaxInactiveInterval(1200);
-					response.sendRedirect("visaoAdministrador.jsp");
+					response.sendRedirect("VisaoAdministradorServlet");
 				}else if(classe.endsWith(".Cliente")){
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoCliente", usuario);
@@ -113,7 +113,7 @@ public class IndexServlet extends HttpServlet {
 					HttpSession session = request.getSession(); 
 					session.setAttribute("acessoFuncionario", usuario);
 					session.setMaxInactiveInterval(1200);
-					response.sendRedirect("visaoFuncionario.jsp");
+					response.sendRedirect("VisaoFuncionarioServlet");
 				}
 			}else if (estabelecimento != null){
 				String classe = estabelecimento.getClass().toString();
