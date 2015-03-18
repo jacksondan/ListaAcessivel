@@ -1,6 +1,9 @@
 package fafica.listaacessivel.ui;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fafica.listaacessivel.negocios.Fachada;
+import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
+import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.entidades.Funcionario;
+import fafica.listaacessivel.negocios.entidades.Lista;
+import fafica.listaacessivel.ui.util.Situacao;
 
 /**
  * Servlet implementation class VisaoAdministradorServlet
@@ -38,8 +48,37 @@ public class VisaoAdministradorServlet extends HttpServlet {
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
-		}else{	
-			response.sendRedirect("visaoAdministrador.jsp");
+		}else{
+			try {
+				IFachada fachada = Fachada.getInstance();
+				
+				List<Cliente> listaClientes = fachada.listarCliente();
+				List<Estabelecimento> listaEstabelecimentos = fachada.listarEstabelecimento();
+				List<Funcionario> listaFuncionarios = fachada.listarFuncionario();
+				
+				if(listaClientes == null){
+					listaClientes = new ArrayList<Cliente>();
+				}
+				if(listaEstabelecimentos == null){
+					listaEstabelecimentos = new ArrayList<Estabelecimento>();
+				}
+				if(listaFuncionarios == null){
+					listaFuncionarios = new ArrayList<Funcionario>();
+				}
+				
+				request.setAttribute("listaClientes", listaClientes.size());
+				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos.size());
+				request.setAttribute("listaFuncionarios", listaFuncionarios.size());
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
+				requestDispatcher.forward(request, response);
+				
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		}
 	}
