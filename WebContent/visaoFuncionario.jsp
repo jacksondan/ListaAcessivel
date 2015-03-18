@@ -22,8 +22,8 @@
 		      // Callback that creates and populates a data table,
 		      // instantiates the pie chart, passes in the data and
 		      // draws it.
-		      var solicitadas = parseInt('${"listasSolicitadas"}');
-		        var atendidas = parseInt('${"listasAtendidas"}');
+		      var solicitadas = parseInt('${listasSolicitadas}');
+		        var atendidas = parseInt('${listasAtendidas}');
 		      
 
 		      function drawChart() {
