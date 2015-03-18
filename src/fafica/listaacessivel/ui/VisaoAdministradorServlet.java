@@ -19,8 +19,6 @@ import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
-import fafica.listaacessivel.negocios.entidades.Lista;
-import fafica.listaacessivel.ui.util.Situacao;
 
 /**
  * Servlet implementation class VisaoAdministradorServlet
@@ -66,9 +64,13 @@ public class VisaoAdministradorServlet extends HttpServlet {
 					listaFuncionarios = new ArrayList<Funcionario>();
 				}
 				
-				request.setAttribute("listaClientes", listaClientes.size());
-				request.setAttribute("listaEstabelecimentos", listaEstabelecimentos.size());
-				request.setAttribute("listaFuncionarios", listaFuncionarios.size());
+				int numCliente = listaClientes.size();
+				int numEstabelecimento = listaEstabelecimentos.size();
+				int numFuncionario = listaFuncionarios.size();
+				
+				request.setAttribute("listaClientes", numCliente);
+				request.setAttribute("listaEstabelecimentos", numEstabelecimento);
+				request.setAttribute("listaFuncionarios", numFuncionario);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
 				requestDispatcher.forward(request, response);
 				

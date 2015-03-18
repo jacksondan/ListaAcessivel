@@ -69,9 +69,13 @@ public class VisaoEstabelecimentoServlet extends HttpServlet {
 					}
 				}
 				
-				request.setAttribute("totalListas", listas.size());
-				request.setAttribute("listasSolicitadas", auxListaSolicitadas.size());
-				request.setAttribute("listasAtendimento", auxListaAtendidas.size());
+				int numTotalListas = listas.size();
+				int numListasSolicitadas = auxListaSolicitadas.size();
+				int numListasAtendimento = auxListaAtendidas.size();
+				
+				request.setAttribute("totalListas", numTotalListas);
+				request.setAttribute("listasSolicitadas", numListasSolicitadas);
+				request.setAttribute("listasAtendidas", numListasAtendimento);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEstabelecimento.jsp");
 				requestDispatcher.forward(request, response);
 				
