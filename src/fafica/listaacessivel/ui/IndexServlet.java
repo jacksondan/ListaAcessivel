@@ -121,7 +121,8 @@ public class IndexServlet extends HttpServlet {
 				HttpSession session = request.getSession(); 
 				session.setAttribute("acessoEstabelecimento", estabelecimento);
 				session.setMaxInactiveInterval(1200);
-				response.sendRedirect("visaoEstabelecimento.jsp");
+				//response.sendRedirect("visaoEstabelecimento.jsp");
+				response.sendRedirect("VisaoEstabelecimentoServlet");
 			}else{
 				request.setAttribute("erroLogin", "******E-mail ou Senha Incorreto******");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
