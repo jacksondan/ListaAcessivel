@@ -50,6 +50,10 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				
 				List<Lista> listas = fachada.listarListaPorEstabelecimento(funcionario.getEstabelecimento());
+				if(listas == null){
+					listas = new ArrayList<Lista>();
+				}
+				
 				List<Lista> auxListaSolicitadas = new ArrayList<Lista>();
 				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
 				
