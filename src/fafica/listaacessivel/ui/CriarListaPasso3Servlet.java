@@ -230,6 +230,9 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 							produtosSelecionados = new ArrayList<Produto>();
 																				System.err.println("NÃO HÁ PRODUTOS SELECIONADOS");
 						}
+						if(selecaoIdProduto == null){
+							selecaoIdProduto = new String[0];
+						}
 																				System.err.println("produtosSelecionados: "+produtosSelecionados.size());												
 						auxRemocao = new ArrayList<Produto>();
 						for(Produto produto : produtosSelecionados){
@@ -342,6 +345,9 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						if(produtosSelecionados == null){
 							produtosSelecionados = new ArrayList<Produto>();
 						}
+						if(selecaoIdProduto == null){
+							selecaoIdProduto = new String[0];
+						}
 						
 						auxRemocao = new ArrayList<Produto>();
 						for(Produto produto : produtosSelecionados){
@@ -411,6 +417,9 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					if(produtosSelecionados == null){
 						produtosSelecionados = new ArrayList<Produto>();
 																			System.err.println("NÃO HÁ PRODUTOS SELECIONADOS");
+					}
+					if(selecaoIdProduto == null){
+						selecaoIdProduto = new String[0];
 					}
 					
 					auxRemocao = new ArrayList<Produto>();
