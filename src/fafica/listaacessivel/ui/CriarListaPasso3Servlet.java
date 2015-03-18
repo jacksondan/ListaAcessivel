@@ -308,12 +308,29 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						}
 					}
 					
-					produtosSelecionados.removeAll(auxRemocao);
+					produtosSession.removeAll(auxRemocao);
 																			System.err.println("produtosSelecionados: "+produtosSelecionados.size());
 					produtosSession.addAll(produtosSelecionados);
 																			System.err.println("produtosSession: "+produtosSession.size());
 					
 																			System.err.println("produtosSelecionados: "+produtosSelecionados.size());
+																			
+					/*
+					 	auxRemocao = new ArrayList<Produto>();
+						auxNaoSelecionado = produtosNaoSelecionados(selecaoIdProduto, produtosSelecionados);
+						for(Produto produto : produtosSession){
+																				System.err.println("TERCEIRO FOR");
+							for(Produto aux : auxNaoSelecionado){
+																				System.err.println("QUARTO FOR");
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+																				System.err.println("produtosSession: "+produtosSession.size());
+						produtosSession.removeAll(auxRemocao);
+																				System.err.println("produtosSession: "+produtosSession.size());
+					 */
 					
 					
 					auxRemocao = new ArrayList<Produto>();
