@@ -115,7 +115,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 				
 				//Análise inicial dos dados obtidos 
 				if(categoria_produto != null){
-					if(categoria_produto.equals("não selecionada")){
+					if(categoria_produto.equals("nao selecionada")){
 						categoria_produto = null;
 					}
 				}
