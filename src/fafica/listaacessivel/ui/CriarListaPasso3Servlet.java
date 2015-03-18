@@ -143,84 +143,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					
 					if(categoria_produto == null && descricao_produto == null){ //Pesquisa sem filtro
 						
-						/*if(listaProdutos.size() != selecaoIdProduto.length){
-							if(produtosSelecionados == null){
-								if(produtosSession.size() != 0){
-									auxRemocao = new ArrayList<Produto>();
-									for(Produto produto : produtosSession){
-										for(String i : selecaoIdProduto){
-											int id_produto = Integer.parseInt(i);
-											if(produto.getId_produto() == id_produto){
-												auxRemocao.add(produto);
-											}
-										}
-									}
-									
-									produtosSession.removeAll(auxRemocao);
-									produtosSelecionados = produtosSession;
-									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
-								}
-								
-							}else{
-								if(produtosSession.size() == 0){
-									produtosSession.addAll(produtosSelecionados);
-									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
-									
-								}else{
-									auxRemocao = new ArrayList<Produto>();
-									for(Produto produto : produtosSelecionados){
-										for(Produto aux : produtosSession){
-											if(produto.getId_produto() == aux.getId_produto()){
-												auxRemocao.add(produto);
-											}
-										}
-									}
-									
-									produtosSelecionados.removeAll(auxRemocao);
-									produtosSession.addAll(produtosSelecionados);
-									
-									
-									auxRemocao = new ArrayList<Produto>();
-									for(Produto produto : produtosSession){
-										for(String i : selecaoIdProduto){
-											int id_produto = Integer.parseInt(i);
-											if(produto.getId_produto() == id_produto){
-												auxRemocao.add(produto);
-											}
-										}
-									}
-									
-									produtosSession.removeAll(auxRemocao);
-									produtosSelecionados = produtosSession;
-									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);									
-								}
-								
-							}
-							
-							
-						}else{
-							if(produtosSelecionados == null){
-								if(produtosSession.size() != 0){
-									produtosSession.removeAll(produtosSession);
-								}
-									
-							}else{
-								
-								if(produtosSession.size() == 0){
-									produtosSession.addAll(produtosSelecionados);
-									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
-									
-								}else{
-									
-									produtosSession.removeAll(produtosSession);
-									produtosSession.addAll(produtosSelecionados);
-									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
-								}
-							}
-						
-						}
-						*/
-						
 						//Inicio aqui
 						if(listaProdutos == null){
 							listaProdutos = new ArrayList<Produto>();
@@ -292,53 +214,6 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 					}else {  //Pesquisa com filtros
 						
-/*						if(listaProdutos != null){
-							if(produtosSelecionados != null){
-								if(produtosSession.size() != 0){
-									
-									auxRemocao = new ArrayList<Produto>();
-									for(Produto produto : produtosSelecionados){
-										for(Produto aux : produtosSession){
-											if(produto.getId_produto() == aux.getId_produto()){
-												auxRemocao.add(produto);
-											}
-										}
-									}
-									
-									produtosSelecionados.removeAll(auxRemocao);
-									produtosSession.addAll(produtosSelecionados);
-									
-									
-									auxRemocao = new ArrayList<Produto>();
-									for(Produto produto : produtosSession){
-										for(String i : selecaoIdProduto){
-											int id_produto = Integer.parseInt(i);
-											if(produto.getId_produto() == id_produto){
-												auxRemocao.add(produto);
-											}
-										}
-									}
-									
-									produtosSession.removeAll(auxRemocao);
-									produtosSelecionados = produtosSession;
-									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
-									
-									
-								}else{
-									produtosSession.addAll(produtosSelecionados);
-								}
-							}else{
-								if(produtosSession.size() == 0){
-									
-								}else{
-									
-								}
-							}
-
-						}else{
-							listaProdutos = new ArrayList<Produto>();
-						}*/
-						
 						if(listaProdutos == null){
 							listaProdutos = new ArrayList<Produto>();
 						}
@@ -389,7 +264,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						for(Produto produto : listaProdutos){
 							for(Produto aux : produtosSession){
 								if(produto.getId_produto() == aux.getId_produto()){
-									produtosSelecionadosPesquisa.add(produto);
+									produtosSelecionadosPesquisa.add(aux);
 									auxRemocao.add(produto);
 								}
 							}
@@ -589,7 +464,137 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 
 }
 
+/* if(categoria_produto == null && descricao_produto == null){ //Pesquisa sem filtro
+ 			if(listaProdutos.size() != selecaoIdProduto.length){
+							if(produtosSelecionados == null){
+								if(produtosSession.size() != 0){
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+								}
+								
+							}else{
+								if(produtosSession.size() == 0){
+									produtosSession.addAll(produtosSelecionados);
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+								}else{
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSelecionados){
+										for(Produto aux : produtosSession){
+											if(produto.getId_produto() == aux.getId_produto()){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSelecionados.removeAll(auxRemocao);
+									produtosSession.addAll(produtosSelecionados);
+									
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);									
+								}
+								
+							}
+							
+							
+						}else{
+							if(produtosSelecionados == null){
+								if(produtosSession.size() != 0){
+									produtosSession.removeAll(produtosSession);
+								}
+									
+							}else{
+								
+								if(produtosSession.size() == 0){
+									produtosSession.addAll(produtosSelecionados);
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+								}else{
+									
+									produtosSession.removeAll(produtosSession);
+									produtosSession.addAll(produtosSelecionados);
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+								}
+							}
+						
+						}
+						 
+ 
+  
+ */
+ 
+/*
+  }else {  //Pesquisa com filtros
+						if(listaProdutos != null){
+							if(produtosSelecionados != null){
+								if(produtosSession.size() != 0){
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSelecionados){
+										for(Produto aux : produtosSession){
+											if(produto.getId_produto() == aux.getId_produto()){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSelecionados.removeAll(auxRemocao);
+									produtosSession.addAll(produtosSelecionados);
+									
+									
+									auxRemocao = new ArrayList<Produto>();
+									for(Produto produto : produtosSession){
+										for(String i : selecaoIdProduto){
+											int id_produto = Integer.parseInt(i);
+											if(produto.getId_produto() == id_produto){
+												auxRemocao.add(produto);
+											}
+										}
+									}
+									
+									produtosSession.removeAll(auxRemocao);
+									produtosSelecionados = produtosSession;
+									listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+									
+									
+								}else{
+									produtosSession.addAll(produtosSelecionados);
+								}
+							}else{
+								if(produtosSession.size() == 0){
+									
+								}else{
+									
+								}
+							}
 
+						}else{
+							listaProdutos = new ArrayList<Produto>();
+						}
+ */
 
 /* BACKUP DE CODIGO (Metodo post)
  * 
