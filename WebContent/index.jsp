@@ -24,7 +24,8 @@
 					
 				</header>
 			
-				<div id=body>			
+				<div id=body>
+		
 				<p align="center">A <i> Lista Acessível </i> tem como objetivo contribuir para que pessoas com 
 				deficiência visual possam realizar compras através da criação de listas 
 				de produtos de estabelecimentos comerciais por um serviço online.</p>
