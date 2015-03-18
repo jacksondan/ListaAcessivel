@@ -55,7 +55,6 @@ public class VisaoEstabelecimentoServlet extends HttpServlet {
 				}
 				
 				List<Lista> auxListaSolicitadas = new ArrayList<Lista>();
-				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
 				
 				for(Lista lista : listas){
 					if(lista.getSituacao().equals(Situacao.SOLICITADA.toString())){
@@ -63,9 +62,10 @@ public class VisaoEstabelecimentoServlet extends HttpServlet {
 					}
 				}
 				
+				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
 				for(Lista lista : listas){
 					if(lista.getSituacao().equals(Situacao.ATENDIDA.toString())){
-						auxListaSolicitadas.add(lista);
+						auxListaAtendidas.add(lista);
 					}
 				}
 				

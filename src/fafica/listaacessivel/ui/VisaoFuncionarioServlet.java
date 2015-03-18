@@ -66,7 +66,7 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				
 				for(Lista lista : listas){
 					if(lista.getSituacao().equals(Situacao.ATENDIDA.toString())){
-						auxListaSolicitadas.add(lista);
+						auxListaAtendidas.add(lista);
 					}
 				}
 				
