@@ -57,6 +57,7 @@
 		        chart.draw(data, options);
 		      }
 		    </script>
+		    <link rel="shortcut icon" href="images/logtop.png" />
 		
 	</head>
 	<body>

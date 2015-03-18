@@ -18,7 +18,7 @@
 		//$("#cnpj").mask("999.999.999-99");
 	});
 </script>
-
+<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 	<%@include file="headerAdmin.html"%>

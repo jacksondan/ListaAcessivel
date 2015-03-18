@@ -15,7 +15,7 @@
    #nav2{display:none}
    #footer{display:none}	
 </style>
-
+<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 				

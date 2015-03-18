@@ -8,6 +8,7 @@
 <title>Editar Produto</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+<link rel="shortcut icon" href="images/logtop.png" />
 <body>
 
 	<%@include file="headerEstabelecimento.html"%>

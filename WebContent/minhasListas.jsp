@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>${cliente.nome}- Início</title>
+<title>${acessoCliente.nome} - Minhas Listas</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso2.css">
@@ -24,7 +24,8 @@
               "sUrl" : "js/pt-br.txt"
              }    
         })});
-</script>  
+</script> 
+<link rel="shortcut icon" href="images/logtop.png" /> 
 </head>
 <body>
 

@@ -16,6 +16,7 @@
    #footer{display:none}
    #filtro2{display:none}	
 </style>	
+<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 

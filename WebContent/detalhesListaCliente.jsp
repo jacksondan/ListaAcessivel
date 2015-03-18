@@ -17,7 +17,8 @@
    #filtro2{display:none}
    #finalizar2{display:none}	
    
-</style>	
+</style>
+<link rel="shortcut icon" href="images/logtop.png" />	
 </head>
 <body>
 

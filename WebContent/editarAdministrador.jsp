@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
-
+<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 	<%@include file="headerAdmin.html"%>

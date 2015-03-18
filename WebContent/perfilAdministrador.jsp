@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Administrador - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 				

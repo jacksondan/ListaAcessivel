@@ -9,6 +9,7 @@
 <title>Lista Acessível - Detalhes do Cliente</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
+<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 		<%@include file="headerAdmin.html"%>

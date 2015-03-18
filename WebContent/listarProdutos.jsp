@@ -22,6 +22,7 @@
         })});
 
     </script>
+    <link rel="shortcut icon" href="images/logtop.png" />
 	</head>
 	<body>
 <%@include file="headerEstabelecimento.html" %>
