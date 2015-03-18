@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
   pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Cliente"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ 
 	<!DOCTYPE HTML>
 	<html>
 		<head>
@@ -20,23 +22,28 @@
 		      // Callback that creates and populates a data table,
 		      // instantiates the pie chart, passes in the data and
 		      // draws it.
+		      var solicitadas = parseInt('${"listasSolicitadas"}');
+		        var atendidas = parseInt('${"listasAtendidas"}');
+		      
+
 		      function drawChart() {
 
 		        // Create the data table.
 		        var data = new google.visualization.DataTable();
+		        
 		        data.addColumn('string', 'Topping');
 		        data.addColumn('number', 'Slices');
 		        data.addRows([
-		          ['Listas Recebidas', 8],
-		          ['Listas Atendidas', 1],
+		          ['Listas Solicitadas', solicitadas],
+		          ['Listas Atendidas', atendidas],
 		          
 		        ]);
 
 		        // Set chart options
-		        var options = {'title':'Gráfico de Analize',
-		                       'width':900,
-		                       'height':600,
-		                       'chartArea':{left:60,top:80},
+		        var options = {'title':'Gráfico de Atividades',
+		                       'width':700,
+		                       'height':500,
+		                       'chartArea':{left:120,top:80},
 		                       'backgroundColor':'#f3f3f3',
 		                       'is3D':'true',
 		                       'titleTextStyle':{ color: '#5294FF',
@@ -60,7 +67,7 @@
 					<header class="major">		
 						<h2>Menu Funcionário</h2>
 					</header>
-					<div id="content2">
+					<div id="graficos">
 					<div id=chart_div></div>
 					</div>
 				</div>

@@ -756,6 +756,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008000', end
 	
 	
 }
+#graficos{
+	
+	z-index:1;
+	position:relative;
+	margin-left:13em;
+	margin-top:-2em;
+	background:none;
+
+}
 
 /*Promo*/
 #promo
