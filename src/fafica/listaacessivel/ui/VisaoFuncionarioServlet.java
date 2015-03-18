@@ -83,7 +83,6 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			response.sendRedirect("visaoFuncionario.jsp");
 		}
 	}
 
