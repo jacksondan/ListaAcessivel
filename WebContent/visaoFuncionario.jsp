@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		
 		   <!--Load the AJAX API-->
-		   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+		  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		    <script type="text/javascript">
 
 		      // Load the Visualization API and the piechart package.
@@ -25,19 +25,19 @@
 		      var solicitadas = parseInt('${listasSolicitadas}');
 		        var atendidas = parseInt('${listasAtendidas}');
 		      
-
+				// contrução do grafio
 		      function drawChart() {
+		    	   var data = google.visualization.arrayToDataTable([
+		    	                                                     ['Atividade', 'Quantidade'],
+		    	                                                     ['Listas Solicitadas',     solicitadas],
+		    	                                                    
+		    	                                                     ['Listas Atendidas',    atendidas]
+		    	                                                   ]);
 
-		        // Create the data table.
-		        var data = new google.visualization.DataTable();
-		        
-		        data.addColumn('string', 'Topping');
-		        data.addColumn('number', 'Slices');
-		        data.addRows([
-		          ['Listas Solicitadas', solicitadas],
-		          ['Listas Atendidas', atendidas],
-		          
-		        ]);
+		    	                                                   var options = {
+		    	                                                     title: 'Gráfico de Atividades',
+		    	                                                     is3D: true,
+		    	                                                   };
 
 		        // Set chart options
 		        var options = {'title':'Gráfico de Atividades',
