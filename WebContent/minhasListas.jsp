@@ -13,7 +13,7 @@
 <script type="text/javascript"  src="js/jquery.js"></script>	
 <script type="text/javascript" src="js/jquery.dataTables.js"></script>
 <script src="js/jquery.maskedinput.js" type="text/javascript"></script>
-
+  
 <script type="text/javascript">
     $(document).ready(function() {
         $('#listas').dataTable({

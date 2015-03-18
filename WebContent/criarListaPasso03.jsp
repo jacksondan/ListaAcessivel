@@ -103,7 +103,7 @@ display:show;
 				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
 				Com as seguintes colunas; Descrição do Produto composta por informações como, nome do produto, marca do produto e valor do produto, as outras colunas são funções como selecionar produto
 				 e outra para informar quantidade desejada. Dica, quando estiver na coluna  selecionar marque a caixa de seleção usando a tecla espaço.">
-					<caption>Produtos disponíveis da categoria ${categoria} filtrados por ${filtragem}</caption>
+					<caption>Produtos disponíveis do ${estabelecimento.nome_fantasia}</caption>
 					<colgroup>
     							<col />
     							<col />
