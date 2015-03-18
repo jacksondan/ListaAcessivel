@@ -251,7 +251,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						
 						auxRemocao = new ArrayList<Produto>();
-						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+						auxNaoSelecionado = produtosNaoSelecionados(selecaoIdProduto, produtosSelecionados);
 						for(Produto produto : produtosSession){
 																				System.err.println("TERCEIRO FOR");
 							for(Produto aux : auxNaoSelecionado){
@@ -268,7 +268,16 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						
 						//**************************************************
-						listaProdutos = produtosNaoSelecionados(listaProdutos, produtosSession);
+																				
+						auxRemocao = new ArrayList<Produto>();
+						for(Produto produto : listaProdutos){
+							for(Produto aux : produtosSelecionados){
+								if(produto.getId_produto() == aux.getId_produto()){
+									auxRemocao.add(produto);
+								}
+							}
+						}
+						listaProdutos.removeAll(auxRemocao);
 						produtosSelecionados = produtosSession;
 
 						request.setAttribute("produtosSelecionados", produtosSelecionados);
@@ -354,7 +363,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						
 						
 						auxRemocao = new ArrayList<Produto>();
-						auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+						auxNaoSelecionado = produtosNaoSelecionados(selecaoIdProduto, produtosSelecionados);
 						for(Produto produto : produtosSession){
 																				System.err.println("TERCEIRO FOR");
 							for(Produto aux : auxNaoSelecionado){
@@ -424,7 +433,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					
 					
 					auxRemocao = new ArrayList<Produto>();
-					auxNaoSelecionado = produtosNaoSelecionados(listaProdutos, produtosSelecionados);
+					auxNaoSelecionado = produtosNaoSelecionados(selecaoIdProduto, produtosSelecionados);
 					for(Produto produto : produtosSession){
 																			System.err.println("TERCEIRO FOR");
 						for(Produto aux : auxNaoSelecionado){
@@ -531,28 +540,38 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 		}
 	}
 	
-	private List<Produto> produtosNaoSelecionados(List<Produto> listaProdutos, List<Produto> produtosSelecionados){
-		List<Produto> auxRemove = new ArrayList<Produto>();
-		/*
-		 auxRemocao = new ArrayList<Produto>();
-						for(Produto produto : listaProdutos){
-							for(Produto aux : produtosSession){
-								if(produto.getId_produto() == aux.getId_produto()){
-									auxRemocao.add(produto);
-								}
-							}
-						}
-			listaProdutos.removeAll(auxRemocao);
-		 */
-		for(Produto produto : listaProdutos){
-			for(Produto aux : produtosSelecionados){
-				if(produto.getId_produto() == aux.getId_produto()){
-					auxRemove.add(produto);
+	private List<Produto> produtosNaoSelecionados(String [] selecaoIdProduto, List<Produto> produtosSelecionados){
+		IFachada fachada;
+		List<Produto> listaProdutos = new ArrayList<Produto>();
+		try {
+			fachada = Fachada.getInstance();
+
+			List<Produto> auxRemove = new ArrayList<Produto>();
+		
+			for(String id_produto : selecaoIdProduto){
+				int i = Integer.parseInt(id_produto);
+				Produto produto = new Produto();
+				produto.setId_produto(i);
+				produto = fachada.pesquisarProduto(produto);
+				listaProdutos.add(produto);
+				for(Produto aux : produtosSelecionados){
+					if(produto.getId_produto() == aux.getId_produto()){
+						auxRemove.add(produto);
+					}
 				}
 			}
+			
+			listaProdutos.removeAll(auxRemove);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		listaProdutos.removeAll(auxRemove);
+
 		
 		return listaProdutos;
 		
