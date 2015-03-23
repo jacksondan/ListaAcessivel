@@ -9,6 +9,7 @@ import fafica.listaacessivel.dados.repositorios.RepositorioProduto;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
+import fafica.listaacessivel.ui.util.Acentuacao;
 
 public class ControladorProduto {
 
@@ -41,6 +42,11 @@ public class ControladorProduto {
 	public List<Produto> listarProdutosPorEstabelecimento(Estabelecimento estabelecimento, String categoria_produto, String descricao_produto) throws SQLException{
 		List<Produto> lista_produtos = this.repositorio_produto.listarProdutosPorEstabelecimento(estabelecimento);
 		List<Produto> pesquisa = null;
+		
+		if(descricao_produto != null){
+			descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
+		}
+		
 		if(lista_produtos != null){
 			if(categoria_produto != null && descricao_produto == null){
 				pesquisa = new ArrayList<Produto>();
@@ -96,6 +102,9 @@ public class ControladorProduto {
 	
 	public List<Produto> listarProdutosNaoSelecionado(Lista lista, String categoria_produto, String descricao_produto) throws SQLException{
 		List<Produto> lista_produtos = this.repositorio_produto.listarProdutosPorEstabelecimento(lista.getEstabelecimento());
+		if(descricao_produto != null){
+			descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
+		}
 		
 		for(Produto produto : lista_produtos){
 			for(Produto auxiliar : lista.getProdutos()){
