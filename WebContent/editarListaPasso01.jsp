@@ -46,7 +46,8 @@
 	<div id="content">
 
 		<header class="major">
-			<h2>Edição da Lista</h2>	
+			<h2>Edição da Lista</h2>
+			<p style="text-align:center;color:red;">${mensagem}</p>	
 		</header>
 	
 		

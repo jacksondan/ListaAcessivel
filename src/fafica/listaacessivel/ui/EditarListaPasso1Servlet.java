@@ -27,7 +27,9 @@ import fafica.listaacessivel.negocios.entidades.Produto;
 public class EditarListaPasso1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private Cliente cliente;
 	private Lista lista;
+	private List<Produto> produtos;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,7 +44,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
+		cliente = (Cliente) session.getAttribute("acessoCliente");
 		if(cliente == null){
 			String mensagem = "Sess√£o expirada!";
 			request.setAttribute("mensagem", mensagem);
@@ -59,9 +61,9 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 				
 				lista = fachada.pesquisarLista(lista);
 				
-				request.setAttribute("lista",lista);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarListaPasso01.jsp");
-				requestDispatcher.forward(request, response);
+				session.setAttribute("lista", lista);
+				response.sendRedirect("editarListaPasso01.jsp");
+				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -77,7 +79,9 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Cliente cliente = (Cliente) session.getAttribute("acessoCliente");
+		cliente = (Cliente) session.getAttribute("acessoCliente");
+		lista = (Lista) session.getAttribute("lista");
+		
 		if(cliente == null){
 			String mensagem = "Sess√£o expirada!";
 			request.setAttribute("mensagem", mensagem);
@@ -88,7 +92,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
+/*				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
 				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 				String adicionarProduto = request.getParameter("adicionarProduto");
 				
@@ -97,19 +101,23 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 				
 				pesquisaLista = fachada.pesquisarLista(pesquisaLista);
 				
-				
-				
-				String [] selecaoProdutos = request.getParameterValues("selecionado");
-				String [] selecaoIdProduto = request.getParameterValues("id_produto");
-				String [] selecaoQuantidade = request.getParameterValues("quantidade");
-				String [] quantidadesListadas = null;
-				
 				Estabelecimento estabelecimento = new Estabelecimento();
 				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				System.out.println("Id Produto: "+id_estabelecimento);
 				System.out.println("adicionar Produto È: " +adicionarProduto);
+				*/
+				
+				
+				
+				String [] selecaoProdutos = request.getParameterValues("selecionado");
+				String [] selecaoIdProduto = request.getParameterValues("id_produto");
+				String [] selecaoQuantidade = request.getParameterValues("quantidade");
+				
+				String adicionarProduto = request.getParameter("adicionarProduto");
+				
+	
 				
 				String descricao = request.getParameter("descricaolista");
 				
@@ -117,89 +125,16 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 					descricao = "";
 				}
 				
-				if(selecaoProdutos != null){
-					
-					quantidadesListadas = new String[selecaoProdutos.length];
-					
-					for(int i=0; i < selecaoProdutos.length; i++){
-						System.out.println("Produto: " +selecaoProdutos[i]);
-						for(int e=0; e < selecaoIdProduto.length; e++){
-							if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
-								quantidadesListadas[i] = selecaoQuantidade[e];
-								System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
-								break;
-							}
-						}
-					}
+				produtos = produtosSelecionados(selecaoProdutos, selecaoIdProduto, selecaoQuantidade);
 				
-				
-					List <Produto> listaProdutos = null;
-					for(int i = 0; i < selecaoProdutos.length; i++){
-						if(listaProdutos == null){
-							listaProdutos = new ArrayList<Produto>();
-						}
-						int id_produto = Integer.parseInt(selecaoProdutos[i]);
-						int quantidade = Integer.parseInt(quantidadesListadas[i]);
-						
-						Produto produto = new Produto();
-						produto.setId_produto(id_produto);
-						produto = fachada.pesquisarProduto(produto);
-						
-						produto.setQuantidade(quantidade);
-						
-						listaProdutos.add(produto);
-					}
+				if(produtos != null){
 					
-					if(listaProdutos != null){
-						Lista lista = 
-								new Lista(pesquisaLista.getId_lista(), descricao, pesquisaLista.getSituacao(), pesquisaLista.getData_criacao(), cliente, estabelecimento, listaProdutos);
-						if(adicionarProduto == null){
-							fachada.alterarLista(lista);
-							
-							lista = fachada.pesquisarLista(lista);
-							
-							request.setAttribute("lista",lista);
-							RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
-							requestDispatcher.forward(request, response);
-						}else{
-							fachada.alterarLista(lista);
-							
-							lista = fachada.pesquisarLista(lista);
-							
-							List<Produto> produtosNaoPossui = fachada.listarProdutosPorEstababelecimento(lista.getEstabelecimento(), null, null);
-							List<Produto> teste = new ArrayList<Produto>();
-							teste.addAll(produtosNaoPossui);
-							
-							for(Produto p1 : lista.getProdutos()){
-								for(Produto p2 : teste){
-									if(p1.getId_produto() == p2.getId_produto()){
-										produtosNaoPossui.remove(p2);
-									}
-								}
-							}
-							
-							request.setAttribute("lista", lista);
-							request.setAttribute("produtosnaopossui", produtosNaoPossui);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
-							dispatcher.forward(request, response);
-						}
-						
-						//response.sendRedirect("visaoCliente.jsp"); // Teste
-					}else{
-						
-						String mensagem = "Lista n„o pode ser criada sem itens";
-						
-						request.setAttribute("mensagem",mensagem);
-						request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
-						requestDispatcher.forward(request, response);
-					}
+
 				}else{
 					String mensagem = "Lista n„o pode ser criada sem itens";
 					
 					request.setAttribute("mensagem",mensagem);
-					request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp"); //CriarListaPasso3Servlet
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarListaPasso01.jsp"); //CriarListaPasso3Servlet
 					requestDispatcher.forward(request, response);
 				}
 				
