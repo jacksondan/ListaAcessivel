@@ -48,19 +48,20 @@ public class ControladorProduto {
 		
 		if(descricao_produto != null){
 			descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
+			System.err.println("TESTE DE DESCRICAO_PRODUTO "+descricao_produto);
 		}
 		if(categoria_produto != null){
 			categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
+			System.err.println("TESTE DE CATEGORIA_PRODUTO "+categoria_produto);
 		}
 		
 		if(lista_produtos != null){
 			if(categoria_produto != null && descricao_produto == null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
-					categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
 					categoria = Acentuacao.limparAcentuacao(p.getCategoria());
 					
-					System.out.println("RESULTADO DA CATEGORIA! " + categoria);
+					System.err.println("RESULTADO DA CATEGORIA! " + categoria);
 					
 					if(categoria.equals(categoria_produto)){
 						pesquisa.add(p);
@@ -75,9 +76,9 @@ public class ControladorProduto {
 				for(Produto p : lista_produtos){
 					//descricao_produto = descricao_produto.toLowerCase();
 					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
-					if(descricao != null){
-						descricao = Acentuacao.limparAcentuacao(descricao);
-					}
+					
+					System.err.println("RESULTADO DA DESCRICAO! " + descricao);
+					
 					if(descricao.contains(descricao_produto)){
 						pesquisa.add(p);
 					}
@@ -89,13 +90,13 @@ public class ControladorProduto {
 			}else if(categoria_produto != null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
-					categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
-					descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
-					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
-					if(descricao != null){
-						descricao = Acentuacao.limparAcentuacao(descricao);
-					}
+					
 					categoria = Acentuacao.limparAcentuacao(p.getCategoria());
+					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
+					
+					System.err.println("RESULTADO DA DESCRICAO! " + descricao);
+					System.err.println("RESULTADO DA CATEGORIA! " + categoria);
+					
 					if(categoria.equals(categoria_produto) && descricao.contains(descricao_produto)){
 						pesquisa.add(p);
 					}
