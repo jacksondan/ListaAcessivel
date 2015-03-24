@@ -26,6 +26,8 @@ import fafica.listaacessivel.negocios.entidades.Produto;
 @WebServlet("/EditarListaPasso1Servlet")
 public class EditarListaPasso1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private Lista lista;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,7 +54,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				
 				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
-				Lista lista = new Lista();
+				lista = new Lista();
 				lista.setId_lista(id_lista);
 				
 				lista = fachada.pesquisarLista(lista);
@@ -210,5 +212,139 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 			}
 		}
 	}
+	
+	private List<Produto> produtosSelecionados(String [] selecaoProdutos, String [] selecaoIdProduto, String [] selecaoQuantidade){
+		if(selecaoProdutos != null){
+			IFachada fachada;
+			List <Produto> listaProdutos = null;
+			try {
+				fachada = Fachada.getInstance();
+			
+				String [] quantidadesListadas = null;
+				
+				quantidadesListadas = new String[selecaoProdutos.length];
+				
+				for(int i=0; i < selecaoProdutos.length; i++){
+					System.out.println("Produto: " +selecaoProdutos[i]);
+					for(int e=0; e < selecaoIdProduto.length; e++){
+						if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
+							quantidadesListadas[i] = selecaoQuantidade[e];
+							System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
+							break;
+						}
+					}
+				}
+			
+			
+		
+				for(int i = 0; i < selecaoProdutos.length; i++){
+					if(listaProdutos == null){
+						listaProdutos = new ArrayList<Produto>();
+					}
+					int id_produto = Integer.parseInt(selecaoProdutos[i]);
+					int quantidade = Integer.parseInt(quantidadesListadas[i]);
+					
+					Produto produto = new Produto();
+					produto.setId_produto(id_produto);
+					produto = fachada.pesquisarProduto(produto);
+					
+					produto.setQuantidade(quantidade);
+					
+					listaProdutos.add(produto);
+				}
+				
+				
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.err.println("RETORNO DE OBJETOS POSSUI: "+listaProdutos.size()+" OBJETOS");
+			return listaProdutos;
+		}else{
+			System.err.println("RETORNO DE OBJETOS É == NULL");
+			return null;
+		}
+	}
+	
+	/*
+	 					quantidadesListadas = new String[selecaoProdutos.length];
+					
+					for(int i=0; i < selecaoProdutos.length; i++){
+						System.out.println("Produto: " +selecaoProdutos[i]);
+						for(int e=0; e < selecaoIdProduto.length; e++){
+							if(selecaoProdutos[i].equals(selecaoIdProduto[e])){
+								quantidadesListadas[i] = selecaoQuantidade[e];
+								System.out.println("Quantidade Atribuida: " +quantidadesListadas[i]);
+								break;
+							}
+						}
+					}
+				
+				
+					List <Produto> listaProdutos = null;
+					for(int i = 0; i < selecaoProdutos.length; i++){
+						if(listaProdutos == null){
+							listaProdutos = new ArrayList<Produto>();
+						}
+						int id_produto = Integer.parseInt(selecaoProdutos[i]);
+						int quantidade = Integer.parseInt(quantidadesListadas[i]);
+						
+						Produto produto = new Produto();
+						produto.setId_produto(id_produto);
+						produto = fachada.pesquisarProduto(produto);
+						
+						produto.setQuantidade(quantidade);
+						
+						listaProdutos.add(produto);
+					}
+					
+					if(listaProdutos != null){
+						Lista lista = 
+								new Lista(pesquisaLista.getId_lista(), descricao, pesquisaLista.getSituacao(), pesquisaLista.getData_criacao(), cliente, estabelecimento, listaProdutos);
+						if(adicionarProduto == null){
+							fachada.alterarLista(lista);
+							
+							lista = fachada.pesquisarLista(lista);
+							
+							request.setAttribute("lista",lista);
+							RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+							requestDispatcher.forward(request, response);
+						}else{
+							fachada.alterarLista(lista);
+							
+							lista = fachada.pesquisarLista(lista);
+							
+							List<Produto> produtosNaoPossui = fachada.listarProdutosPorEstababelecimento(lista.getEstabelecimento(), null, null);
+							List<Produto> teste = new ArrayList<Produto>();
+							teste.addAll(produtosNaoPossui);
+							
+							for(Produto p1 : lista.getProdutos()){
+								for(Produto p2 : teste){
+									if(p1.getId_produto() == p2.getId_produto()){
+										produtosNaoPossui.remove(p2);
+									}
+								}
+							}
+							
+							request.setAttribute("lista", lista);
+							request.setAttribute("produtosnaopossui", produtosNaoPossui);
+							RequestDispatcher dispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
+							dispatcher.forward(request, response);
+						}
+						
+						//response.sendRedirect("visaoCliente.jsp"); // Teste
+					}else{
+						
+						String mensagem = "Lista não pode ser criada sem itens";
+						
+						request.setAttribute("mensagem",mensagem);
+						request.setAttribute("id_estabelecimento",estabelecimento.getId_estabelecimento());
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoCliente.jsp");
+						requestDispatcher.forward(request, response);
+					}
+	 */
 
 }

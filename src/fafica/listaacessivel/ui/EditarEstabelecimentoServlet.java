@@ -139,7 +139,6 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				int id_estabelecimento = estabelecimento.getId_estabelecimento();
 				String nome_fantasia = request.getParameter("nome_fantasia");
 				String nome_juridico = request.getParameter("nome_juridico");
 				String categoria = request.getParameter("categoria");
