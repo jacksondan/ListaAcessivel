@@ -43,6 +43,9 @@ public class ControladorProduto {
 		List<Produto> lista_produtos = this.repositorio_produto.listarProdutosPorEstabelecimento(estabelecimento);
 		List<Produto> pesquisa = null;
 		
+		String categoria = "";
+		String descricao = "";
+		
 		if(descricao_produto != null){
 			descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
 		}
@@ -55,7 +58,10 @@ public class ControladorProduto {
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
 					categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
-					String categoria = p.getCategoria().toLowerCase();
+					categoria = Acentuacao.limparAcentuacao(p.getCategoria());
+					
+					System.out.println("RESULTADO DA CATEGORIA! " + categoria);
+					
 					if(categoria.equals(categoria_produto)){
 						pesquisa.add(p);
 					}
@@ -68,7 +74,7 @@ public class ControladorProduto {
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
 					//descricao_produto = descricao_produto.toLowerCase();
-					String descricao = p.getDescricao().toLowerCase();
+					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
 					}
@@ -85,11 +91,11 @@ public class ControladorProduto {
 				for(Produto p : lista_produtos){
 					categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
 					descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
-					String descricao = p.getDescricao().toLowerCase();
+					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
 					}
-					String categoria = p.getCategoria().toLowerCase();
+					categoria = Acentuacao.limparAcentuacao(p.getCategoria());
 					if(categoria.equals(categoria_produto) && descricao.contains(descricao_produto)){
 						pesquisa.add(p);
 					}
@@ -111,6 +117,10 @@ public class ControladorProduto {
 	
 	public List<Produto> listarProdutosNaoSelecionado(Lista lista, String categoria_produto, String descricao_produto) throws SQLException{
 		List<Produto> lista_produtos = this.repositorio_produto.listarProdutosPorEstabelecimento(lista.getEstabelecimento());
+		
+		String categoria = "";
+		String descricao = "";
+		
 		if(descricao_produto != null){
 			descricao_produto = Acentuacao.limparAcentuacao(descricao_produto);
 		}
@@ -129,7 +139,7 @@ public class ControladorProduto {
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
 					categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
-					String categoria = p.getCategoria().toLowerCase();
+					categoria = Acentuacao.limparAcentuacao(p.getCategoria());
 					if(categoria.equals(categoria_produto)){
 						pesquisa.add(p);
 					}
@@ -142,7 +152,7 @@ public class ControladorProduto {
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
 					//descricao_produto = descricao_produto.toLowerCase();
-					String descricao = p.getDescricao().toLowerCase();
+					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
 					}
@@ -159,11 +169,11 @@ public class ControladorProduto {
 				for(Produto p : lista_produtos){
 					categoria_produto = Acentuacao.limparAcentuacao(categoria_produto);
 					//descricao_produto = descricao_produto.toLowerCase();
-					String descricao = p.getDescricao().toLowerCase();
+					descricao = Acentuacao.limparAcentuacao(p.getDescricao());
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
 					}
-					String categoria = p.getCategoria().toLowerCase();
+					categoria = Acentuacao.limparAcentuacao(p.getCategoria());
 					if(categoria.equals(categoria_produto) && descricao.contains(descricao_produto)){
 						pesquisa.add(p);
 					}
