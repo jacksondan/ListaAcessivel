@@ -66,6 +66,9 @@ public class ControladorProduto {
 				for(Produto p : lista_produtos){
 					descricao_produto = descricao_produto.toLowerCase();
 					String descricao = p.getDescricao().toLowerCase();
+					if(descricao != null){
+						descricao = Acentuacao.limparAcentuacao(descricao);
+					}
 					if(descricao.contains(descricao_produto)){
 						pesquisa.add(p);
 					}
@@ -134,6 +137,9 @@ public class ControladorProduto {
 				for(Produto p : lista_produtos){
 					descricao_produto = descricao_produto.toLowerCase();
 					String descricao = p.getDescricao().toLowerCase();
+					if(descricao != null){
+						descricao = Acentuacao.limparAcentuacao(descricao);
+					}
 					if(descricao.contains(descricao_produto)){
 						pesquisa.add(p);
 					}
@@ -148,6 +154,9 @@ public class ControladorProduto {
 					categoria_produto = categoria_produto.toLowerCase();
 					descricao_produto = descricao_produto.toLowerCase();
 					String descricao = p.getDescricao().toLowerCase();
+					if(descricao != null){
+						descricao = Acentuacao.limparAcentuacao(descricao);
+					}
 					String categoria = p.getCategoria().toLowerCase();
 					if(categoria.equals(categoria_produto) && descricao.contains(descricao_produto)){
 						pesquisa.add(p);
