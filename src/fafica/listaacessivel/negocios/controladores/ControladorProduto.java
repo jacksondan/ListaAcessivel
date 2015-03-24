@@ -64,7 +64,7 @@ public class ControladorProduto {
 			}else if(categoria_produto == null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
-					descricao_produto = descricao_produto.toLowerCase();
+					//descricao_produto = descricao_produto.toLowerCase();
 					String descricao = p.getDescricao().toLowerCase();
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
@@ -138,7 +138,7 @@ public class ControladorProduto {
 			}else if(categoria_produto == null && descricao_produto != null){
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
-					descricao_produto = descricao_produto.toLowerCase();
+					//descricao_produto = descricao_produto.toLowerCase();
 					String descricao = p.getDescricao().toLowerCase();
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
@@ -155,7 +155,7 @@ public class ControladorProduto {
 				pesquisa = new ArrayList<Produto>();
 				for(Produto p : lista_produtos){
 					categoria_produto = categoria_produto.toLowerCase();
-					descricao_produto = descricao_produto.toLowerCase();
+					//descricao_produto = descricao_produto.toLowerCase();
 					String descricao = p.getDescricao().toLowerCase();
 					if(descricao != null){
 						descricao = Acentuacao.limparAcentuacao(descricao);
