@@ -131,13 +131,15 @@ public class ControladorProduto {
 			System.err.println("TESTE DE CATEGORIA_PRODUTO "+categoria_produto);
 		}
 		
+		List<Produto> auxRemocao = new ArrayList<Produto>();
 		for(Produto produto : lista_produtos){
 			for(Produto auxiliar : lista.getProdutos()){
 				if(produto.getId_produto() == auxiliar.getId_produto()){
-					lista_produtos.remove(produto);
+					auxRemocao.add(produto);
 				}
 			}
 		}
+		lista_produtos.removeAll(auxRemocao);
 		
 		List<Produto> pesquisa = null;
 		if(lista_produtos != null){

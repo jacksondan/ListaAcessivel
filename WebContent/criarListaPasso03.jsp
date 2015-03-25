@@ -76,9 +76,9 @@ display:show;
 	<div id="content">
 
 		<header class="major">
+			<p style="text-align:center;color:red;">${mensagem}</p>
 			<h2>Criar Lista Passo - 03</h2>	
 			<h3>Selecione os Produtos </h3>
-			<p style="text-align:center;color:red;">${mensagem}</p>
 		</header>
 		<form action="CriarListaPasso3Servlet" id="formlista"method="POST">
 		

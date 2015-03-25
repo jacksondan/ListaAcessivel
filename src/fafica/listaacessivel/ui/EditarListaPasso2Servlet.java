@@ -16,10 +16,8 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.ui.util.Situacao;
 
 /**
  * Servlet implementation class EditarListaPasso2Servlet
@@ -174,7 +172,7 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 						request.setAttribute("produtosSelecionados", produtosSelecionados);
 						request.setAttribute("listaProdutos", listaProdutos);
 						request.setAttribute("descricao", descricao);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
 						requestDispatcher.forward(request, response);
 						//**************************************************
 						
@@ -240,7 +238,7 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 						request.setAttribute("produtosSelecionadosPesquisa", produtosSelecionadosPesquisa);
 						request.setAttribute("listaProdutos", listaProdutos);
 						request.setAttribute("descricao", descricao);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp");
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
 						requestDispatcher.forward(request, response);
 						//**********************************************
 					}
@@ -313,7 +311,16 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 																			System.err.println("produtosSession: "+produtosSession.size());
 					produtosSession.removeAll(auxRemocao);
 																			System.err.println("produtosSession: "+produtosSession.size());
-					if(produtosSession.size() > 0){
+					
+					
+																			
+					produtosSession.addAll(lista.getProdutos());
+					lista.setProdutos(produtosSession);
+					fachada.alterarLista(lista);
+					
+					response.sendRedirect("detalhesListaCliente.jsp");
+					
+					/*if(produtosSession.size() > 0){
 						lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, produtosSession);
 						int id_lista = fachada.adicionarLista(lista);
 						lista.setId_lista(id_lista);
@@ -327,10 +334,10 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 						
 						request.setAttribute("mensagem",mensagem);
 						request.setAttribute("listaProdutos", listaProdutos);
-						RequestDispatcher requestDispatcher = request.getRequestDispatcher("criarListaPasso03.jsp"); //CriarListaPasso3Servlet
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("editarListaPasso02.jsp"); //CriarListaPasso3Servlet
 						requestDispatcher.forward(request, response);
 						
-					}
+					}*/
 																		
 				}
 				
