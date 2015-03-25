@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Editar Lista - passo 1</title>
+<title>Lista Acessível - Editar Lista Passo 1</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
 .divs{display:block;
@@ -53,8 +53,6 @@
 		
 				<form action="EditarListaPasso1Servlet" id="formlista" method="POST">
 				
-				<input type="hidden" name="id_estabelecimento" value="${lista.estabelecimento.id_estabelecimento}" />
-				<input type="hidden" name="id_lista" value="${lista.id_lista}" />
 					
 				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia}, da lista ${lista.descricao}
 				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade, nesta tela.">

@@ -30,6 +30,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 	private Cliente cliente;
 	private Lista lista;
 	private List<Produto> produtos;
+	private List<Produto> produtosSession;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -92,25 +93,6 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 			try {
 				IFachada fachada = Fachada.getInstance();
 				
-/*				int id_lista = Integer.parseInt(request.getParameter("id_lista"));
-				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
-				String adicionarProduto = request.getParameter("adicionarProduto");
-				
-				Lista pesquisaLista = new Lista();
-				pesquisaLista.setId_lista(id_lista);
-				
-				pesquisaLista = fachada.pesquisarLista(pesquisaLista);
-				
-				Estabelecimento estabelecimento = new Estabelecimento();
-				estabelecimento.setId_estabelecimento(id_estabelecimento);
-				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				
-				System.out.println("Id Produto: "+id_estabelecimento);
-				System.out.println("adicionar Produto é: " +adicionarProduto);
-				*/
-				
-				
-				
 				String [] selecaoProdutos = request.getParameterValues("selecionado");
 				String [] selecaoIdProduto = request.getParameterValues("id_produto");
 				String [] selecaoQuantidade = request.getParameterValues("quantidade");
@@ -129,6 +111,22 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 				
 				if(produtos != null){
 					
+					lista.setDescricao(descricao);
+					lista.setProdutos(produtos);
+					fachada.alterarLista(lista);
+					
+					if(adicionarProduto != null){
+						produtos = fachada.listarProdutosNaoSelecionado(lista, null, null);
+						produtosSession = new ArrayList<Produto>();
+						session.setAttribute("produtosSession", produtosSession);
+						request.setAttribute("listaProdutos", produtos);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
+						dispatcher.forward(request, response);
+						
+					}else{
+						
+						response.sendRedirect("detalhesListaCliente.jsp");
+					}
 
 				}else{
 					String mensagem = "Lista não pode ser criada sem itens";
@@ -239,6 +237,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 					if(listaProdutos != null){
 						Lista lista = 
 								new Lista(pesquisaLista.getId_lista(), descricao, pesquisaLista.getSituacao(), pesquisaLista.getData_criacao(), cliente, estabelecimento, listaProdutos);
+						#####################################################################################################
 						if(adicionarProduto == null){
 							fachada.alterarLista(lista);
 							
@@ -269,6 +268,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 							RequestDispatcher dispatcher = request.getRequestDispatcher("editarListaPasso02.jsp");
 							dispatcher.forward(request, response);
 						}
+						###################################################################################################
 						
 						//response.sendRedirect("visaoCliente.jsp"); // Teste
 					}else{
