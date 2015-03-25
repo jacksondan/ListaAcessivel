@@ -64,10 +64,10 @@ public class ConfirmarEntregaListaServlet extends HttpServlet {
 				//EMAIL AQUI
 				EmailJava email = new EmailJava();
 				String destino = lista.getCliente().getEmail();
-				String titulo="Lista Acessível: Entrega encaminhada da lista de compras- "+lista.getDescricao()+" confirmada";
-				String mensagemEmail="Olá "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
-						" esta sendo encaminhada para seu endereço!\n Embreve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
-						" estará encaminhado suas compras a sua residência.\n Atenciosamente Lista Acessivel.";
+				String titulo="Lista AcessÃ­vel: O Atendimento da sua lista de compras foi confirmado!";
+				String mensagemEmail="OlÃ¡ "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
+						" esta sendo encaminhada para o seu endereÃ§o!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
+						" estarÃ£o entregando suas compras em sua residÃªncia.\n Atenciosamente Lista Acessivel.";
 				
 				email.enviarEmail(titulo, mensagemEmail, destino);
 				

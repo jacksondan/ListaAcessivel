@@ -68,9 +68,9 @@ public class SolicitarEntregaServlet extends HttpServlet {
 				EmailJava email = new EmailJava();
 				String destino = cliente.getEmail();
 				String titulo="Lista de Compras - "+lista.getDescricao()+" Solicitada";
-				String mensagem="Olá "+cliente.getNome()+", Sua Lista de Compras "+lista.getDescricao()+
-						" Foi solicitada!\n Embreve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
-						" estará encaminhado suas compras a sua residência.\n Atenciosamente Lista Acessivel.";
+				String mensagem="OlÃ¡ "+cliente.getNome()+", Sua Lista de Compras "+lista.getDescricao()+
+						" Foi solicitada!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
+						" estarÃ£o encaminhado suas compras a sua residÃªncia.\n Atenciosamente Lista Acessivel.";
 				
 				email.enviarEmail(titulo, mensagem, destino);
 				
