@@ -61,6 +61,7 @@ public class ConfirmarEntregaListaServlet extends HttpServlet {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaFuncionario.jsp");
 				requestDispatcher.forward(request, response);
 				
+				//EMAIL AQUI
 				EmailJava email = new EmailJava();
 				String destino = lista.getCliente().getEmail();
 				String titulo="Lista Acessível: Entrega encaminhada da lista de compras- "+lista.getDescricao()+" confirmada";
