@@ -40,9 +40,13 @@ public class EmailJava {
 	public void listaSolicitada(Lista lista){
 		String destino = lista.getCliente().getEmail();
 		String titulo="A Sua Lista de Compras - "+lista.getDescricao()+" foi Solicitada";
-		String mensagem="Olá "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
-				" Foi solicitada!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
-				" estar�o encaminhado suas compras em sua residência.\n Atenciosamente: Lista Acessivel.";
+		String mensagem="Olá "+lista.getCliente().getNome()+", Sua Lista de Compras: "+lista.getDescricao()+
+				", foi solicitada!\n Em breve os atendentes do estabelecimento: "+lista.getEstabelecimento().getNome_fantasia()+
+				", estarão verficando sua lista para o encaminhamento dos produtos a sua residência.\n Atenciosamente: Lista Acessivel."
+				+"\nDados da lista: " + "\nDescrição: " + lista.getDescricao() + "\nValor: " + lista.getValor_total() + "\n"
+				+ "\nQuantidade de produtos: "+lista.getQuantidade_total()+"\nEndereço de Entrega: \n" + lista.getCliente().getEndereco().toString(); 
+		
+				
 		
 		enviarEmail(titulo, mensagem, destino);
 		
@@ -53,7 +57,9 @@ public class EmailJava {
 		String titulo="O Atendimento da sua lista de compras foi confirmado!";
 		String mensagemEmail="Olá "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
 				" esta sendo atendida!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
-				" estarão entregando suas compras em sua residência.\n Atenciosamente: Lista Acessivel.";
+				" estarão entregando suas compras em sua residência.\n Atenciosamente: Lista Acessivel."
+				+"\nDados da lista: " + "\nDescrição: " + lista.getDescricao() + "\nValor: " + lista.getValor_total() + "\n"
+				+ "\nQuantidade de produtos: "+lista.getQuantidade_total()+ "\nEndereço de Entrega: \n" + lista.getCliente().getEndereco().toString(); ;
 		
 		enviarEmail(titulo, mensagemEmail, destino);
 		
