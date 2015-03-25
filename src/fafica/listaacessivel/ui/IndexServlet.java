@@ -20,7 +20,7 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Usuario;
-import fafica.listaacessivel.ui.util.CriptografiaSenha;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class Index

@@ -10,10 +10,10 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import fafica.listaacessivel.dados.IRepositorioCliente;
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Endereco;
+import fafica.listaacessivel.negocios.util.ConnectionMysql;
+import fafica.listaacessivel.negocios.util.StatusLista;
 
 public class RepositorioCliente implements IRepositorioCliente {
 	private static RepositorioCliente instancia ;
@@ -49,7 +49,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		smt.setString(1, cliente.getEmail());
 		smt.setString(2, cliente.getSenha());
 		smt.setString(3, cliente.getNome());
-		smt.setString(4, Status.ATIVO.toString());
+		smt.setString(4, StatusLista.ATIVO.toString());
 		smt.execute();
 		
 		result = smt.getGeneratedKeys();
@@ -100,7 +100,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 				+ " email = '" +cliente.getEmail()+ "'"
 				+ ", senha = '" +cliente.getSenha()+ "'"
 				+ ", nome = '" +cliente.getNome()+ "'"
-				+ " where id_usuario = " +cliente.getId_usuario()+ " and status = '" +Status.ATIVO.toString()+ "'";
+				+ " where id_usuario = " +cliente.getId_usuario()+ " and status = '" +StatusLista.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
@@ -143,7 +143,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 
 	@Override
 	public void excluirCliente(Cliente entidade) throws SQLException {
-		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = "+entidade.getId_usuario();
+		sql = "UPDATE usuario SET status ='" + StatusLista.INATIVO.toString() + "' where id_usuario = "+entidade.getId_usuario();
 		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
@@ -155,7 +155,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 	@Override
 	public List<Cliente> listarClientes() throws SQLException  {
 		
-			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + StatusLista.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = c.id_cliente";
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
@@ -211,11 +211,11 @@ public class RepositorioCliente implements IRepositorioCliente {
 	@Override
 	public Cliente pesquisarCliente(Cliente entidade) throws SQLException {
 		if(entidade.getId_usuario() > 0){
-			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = "+entidade.getId_usuario()
 					+ " AND c.id_cliente = "+entidade.getId_usuario();
 		}else{
-			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,c.* from usuario u, cliente c where u.status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = (select id_cliente from cliente where cpf = '"+entidade.getCpf()+"')"
 					+ " AND c.cpf = '"+entidade.getCpf()+"'";
 		}

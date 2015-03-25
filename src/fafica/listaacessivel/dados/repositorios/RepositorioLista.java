@@ -10,12 +10,12 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import fafica.listaacessivel.dados.IRepositorioLista;
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
+import fafica.listaacessivel.negocios.util.ConnectionMysql;
+import fafica.listaacessivel.negocios.util.StatusLista;
 
 
 public class RepositorioLista implements IRepositorioLista {
@@ -56,7 +56,7 @@ public class RepositorioLista implements IRepositorioLista {
 		smt.setString(2, entidade.getData_criacao());
 		smt.setInt(3, entidade.getQuantidade_total());
 		smt.setFloat(4, entidade.getValor_total());
-		smt.setString(5,Status.ATIVO.toString());
+		smt.setString(5,StatusLista.ATIVO.toString());
 		smt.execute();
 		
 		//Coletando o ID AUTO INCREMENT
@@ -149,7 +149,7 @@ public class RepositorioLista implements IRepositorioLista {
 
 	@Override
 	public void excluirLista(Lista entidade) throws SQLException {
-		sql = "UPDATE lista SET status = '" + Status.INATIVO.toString() + "' WHERE id_lista = "+entidade.getId_lista();
+		sql = "UPDATE lista SET status = '" + StatusLista.INATIVO.toString() + "' WHERE id_lista = "+entidade.getId_lista();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();	
@@ -159,7 +159,7 @@ public class RepositorioLista implements IRepositorioLista {
 	public List<Lista> listarListas() throws SQLException {
 		
 		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
-				+ " where l.status = '" +Status.ATIVO.toString()+ "' and l.id_lista = lce.id_lista";
+				+ " where l.status = '" +StatusLista.ATIVO.toString()+ "' and l.id_lista = lce.id_lista";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
@@ -226,7 +226,7 @@ public class RepositorioLista implements IRepositorioLista {
 	public Lista pesquisarLista(Lista entidade) throws SQLException {
 		
 		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
-				+ " where l.status = '" +Status.ATIVO.toString()+ "' and"
+				+ " where l.status = '" +StatusLista.ATIVO.toString()+ "' and"
 				+ " l.id_lista = " +entidade.getId_lista()+ " and"
 				+ " lce.id_lista = " +entidade.getId_lista();
 		smt = this.connection.prepareStatement(sql);
@@ -292,7 +292,7 @@ public class RepositorioLista implements IRepositorioLista {
 		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
 				+ " where lce.id_cliente = " +cliente.getId_usuario()
 				+ " and l.id_lista = lce.id_lista"
-				+ " and l.status = '" +Status.ATIVO.toString()+ "'";
+				+ " and l.status = '" +StatusLista.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		
@@ -358,7 +358,7 @@ public class RepositorioLista implements IRepositorioLista {
 		sql = "select l.*, lce.* from lista l, lista_cliente_estabelecimento lce"
 				+ " where lce.id_estabelecimento = " +estabelecimento.getId_estabelecimento()
 				+ " and l.id_lista = lce.id_lista"
-				+ " and l.status = '" +Status.ATIVO.toString()+ "'";
+				+ " and l.status = '" +StatusLista.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		rs = smt.executeQuery();
 		

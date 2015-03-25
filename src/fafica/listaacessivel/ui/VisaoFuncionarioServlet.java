@@ -17,7 +17,7 @@ import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
-import fafica.listaacessivel.ui.util.Situacao;
+import fafica.listaacessivel.negocios.util.SituacaoLista;
 
 /**
  * Servlet implementation class VisaoFuncionarioServlet
@@ -57,7 +57,7 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				List<Lista> auxListaSolicitadas = new ArrayList<Lista>();
 				
 				for(Lista lista : listas){
-					if(lista.getSituacao().equals(Situacao.SOLICITADA.toString())){
+					if(lista.getSituacao().equals(SituacaoLista.SOLICITADA.toString())){
 						auxListaSolicitadas.add(lista);
 					}
 				}
@@ -65,7 +65,7 @@ public class VisaoFuncionarioServlet extends HttpServlet {
 				List<Lista> auxListaAtendidas = new ArrayList<Lista>();
 				
 				for(Lista lista : listas){
-					if(lista.getSituacao().equals(Situacao.ATENDIDA.toString())){
+					if(lista.getSituacao().equals(SituacaoLista.ATENDIDA.toString())){
 						auxListaAtendidas.add(lista);
 					}
 				}

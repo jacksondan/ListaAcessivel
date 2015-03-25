@@ -15,8 +15,7 @@ import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Lista;
-import fafica.listaacessivel.ui.util.EmailJava;
-import fafica.listaacessivel.ui.util.Situacao;
+import fafica.listaacessivel.negocios.util.SituacaoLista;
 
 /**
  * Servlet implementation class SolicitarEntregaServlet
@@ -55,7 +54,7 @@ public class SolicitarEntregaServlet extends HttpServlet {
 				
 				lista = fachada.pesquisarLista(lista);
 				
-				lista.setSituacao(Situacao.SOLICITADA.toString());
+				lista.setSituacao(SituacaoLista.SOLICITADA.toString());
 				
 				fachada.alterarLista(lista);
 				
@@ -63,16 +62,6 @@ public class SolicitarEntregaServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
 				dispatcher.forward(request, response);
 				
-				//email
-				
-				EmailJava email = new EmailJava();
-				String destino = cliente.getEmail();
-				String titulo="Lista de Compras - "+lista.getDescricao()+" Solicitada";
-				String mensagem="Olá "+cliente.getNome()+", Sua Lista de Compras "+lista.getDescricao()+
-						" Foi solicitada!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
-						" estarão encaminhado suas compras a sua residência.\n Atenciosamente Lista Acessivel.";
-				
-				email.enviarEmail(titulo, mensagem, destino);
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

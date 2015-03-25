@@ -1,6 +1,6 @@
-package fafica.listaacessivel.dados.util;
+package fafica.listaacessivel.negocios.util;
 
-public enum Status {
+public enum StatusLista {
 
 	ATIVO {
 		public String toString(){

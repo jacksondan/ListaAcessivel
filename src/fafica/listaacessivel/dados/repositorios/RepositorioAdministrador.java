@@ -10,9 +10,9 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import fafica.listaacessivel.dados.IRepositorioAdministrador;
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Administrador;
+import fafica.listaacessivel.negocios.util.ConnectionMysql;
+import fafica.listaacessivel.negocios.util.StatusLista;
 
 public class RepositorioAdministrador implements IRepositorioAdministrador {
 
@@ -47,7 +47,7 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 		smt.setString(1, administrador.getEmail());
 		smt.setString(2, administrador.getSenha());
 		smt.setString(3, administrador.getNome());
-		smt.setString(4, Status.ATIVO.toString());
+		smt.setString(4, StatusLista.ATIVO.toString());
 		smt.execute();
 		
 		result = smt.getGeneratedKeys();
@@ -76,7 +76,7 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 				+ " email = '" + administrador.getEmail()+ "'"
 				+ ", senha = '" + administrador.getSenha()+ "'"
 				+ ", nome = '" + administrador.getNome()+ "'"
-				+ " where id_usuario = " + administrador.getId_usuario()+ " and status = '" +Status.ATIVO.toString()+ "'";
+				+ " where id_usuario = " + administrador.getId_usuario()+ " and status = '" +StatusLista.ATIVO.toString()+ "'";
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
@@ -94,7 +94,7 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 	@Override
 	public void excluirAdministrador(Administrador administrador)
 			throws SQLException {
-		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = " + administrador.getId_usuario();
+		sql = "UPDATE usuario SET status ='" + StatusLista.INATIVO.toString() + "' where id_usuario = " + administrador.getId_usuario();
 		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
@@ -107,7 +107,7 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 	@Override
 	public List<Administrador> listarAdministradores() throws SQLException {
 		
-		sql = "select u.*,a.* from usuario u, administrador a where u.status = '" + Status.ATIVO.toString() + "'"
+		sql = "select u.*,a.* from usuario u, administrador a where u.status = '" + StatusLista.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = a.id_administrador";
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();
@@ -137,11 +137,11 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 	public Administrador pesquisarAdministrador(Administrador administrador)
 			throws SQLException {
 		if(administrador.getId_usuario() > 0){
-			sql = "select u.*,a.* from usuario u, administrador a where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,a.* from usuario u, administrador a where u.status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = " + administrador.getId_usuario()
 					+ " AND a.id_administrador = " + administrador.getId_usuario();
 		}else{
-			sql = "select u.*,a.* from usuario u, administrador a where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,a.* from usuario u, administrador a where u.status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = (select id_administrador from administrador where cpf = '"+ administrador.getCpf()+"')"
 					+ " AND a.cpf = '" + administrador.getCpf()+"'";
 		}

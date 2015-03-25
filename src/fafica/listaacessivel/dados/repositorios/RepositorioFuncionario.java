@@ -10,10 +10,10 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import fafica.listaacessivel.dados.IRepositorioFuncionario;
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
+import fafica.listaacessivel.negocios.util.ConnectionMysql;
+import fafica.listaacessivel.negocios.util.StatusLista;
 
 public class RepositorioFuncionario implements IRepositorioFuncionario {
 	
@@ -50,7 +50,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 		smt.setString(1,funcionario.getNome());
 		smt.setString(2,funcionario.getEmail());
 		smt.setString(3,funcionario.getSenha());
-		smt.setString(4,Status.ATIVO.toString());
+		smt.setString(4,StatusLista.ATIVO.toString());
 		smt.execute();
 
 		result = smt.getGeneratedKeys();
@@ -79,7 +79,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 				+ " nome = '" + funcionario.getNome() + "'"
 				+ ", email = '"+ funcionario.getEmail()+"'"
 				+ ", senha = '"+ funcionario.getSenha()+"'"
-				+ " where id_usuario = "+ funcionario.getId_usuario() + " AND status = '" +Status.ATIVO.toString()+ "'";
+				+ " where id_usuario = "+ funcionario.getId_usuario() + " AND status = '" +StatusLista.ATIVO.toString()+ "'";
 		
 		smt = this.connection.prepareStatement(sql);
 		smt.execute();
@@ -98,7 +98,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 
 	@Override
 	public void excluirFuncionario(Funcionario funcionario) throws SQLException {
-		sql = "UPDATE usuario SET status ='" + Status.INATIVO.toString() + "' where id_usuario = "+ funcionario.getId_usuario();
+		sql = "UPDATE usuario SET status ='" + StatusLista.INATIVO.toString() + "' where id_usuario = "+ funcionario.getId_usuario();
 		smt = connection.prepareStatement(sql);
 		smt.execute();
 		smt.close();
@@ -106,7 +106,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 
 	@Override
 	public List<Funcionario> listarFuncionarios() throws SQLException {
-		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
+		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + StatusLista.ATIVO.toString() + "'"
 				+ " AND u.id_usuario = f.id_funcionario";
 			
 			smt = this.connection.prepareStatement(sql);
@@ -137,11 +137,11 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	@Override
 	public Funcionario pesquisarFuncionario(Funcionario funcionario) throws SQLException{
 		if(funcionario.getId_usuario() > 0){
-			sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = "+ funcionario.getId_usuario()
 					+ " AND f.id_funcionario = "+ funcionario.getId_usuario();
 		}else{
-			sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
+			sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND u.id_usuario = (select id_funcionario from funcionario where matricula = '" + funcionario.getMatricula() +"')"
 					+ " AND f.matricula = '" + funcionario.getMatricula()+"'";
 		}
@@ -173,7 +173,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	@Override
 	public List<Funcionario> listarFuncionariosPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException{
-		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + Status.ATIVO.toString() + "'"
+		sql = "select u.*,f.* from usuario u, funcionario f where u.status = '" + StatusLista.ATIVO.toString() + "'"
 				+ " AND f.id_estabelecimento = " + estabelecimento.getId_estabelecimento() + " AND u.id_usuario = f.id_funcionario";
 			smt = this.connection.prepareStatement(sql);
 			result= smt.executeQuery();

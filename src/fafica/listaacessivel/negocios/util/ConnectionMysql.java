@@ -1,4 +1,4 @@
-package fafica.listaacessivel.dados.util;
+package fafica.listaacessivel.negocios.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

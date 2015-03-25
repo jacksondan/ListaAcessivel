@@ -10,12 +10,12 @@ import java.util.List;
 import com.mysql.jdbc.Statement;
 
 import fafica.listaacessivel.dados.IRepositorioEstabelecimento;
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.util.ConnectionMysql;
+import fafica.listaacessivel.negocios.util.StatusLista;
 
 public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 
@@ -66,7 +66,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 		smt.setString(13,entidade.getEndereco().getCep());
 		smt.setString(14,entidade.getEndereco().getReferencia());
 		smt.setInt(15,entidade.getAdministrador().getId_usuario());
-		smt.setString(16,Status.ATIVO.toString());
+		smt.setString(16,StatusLista.ATIVO.toString());
 		smt.execute();
 
 		result = smt.getGeneratedKeys();
@@ -110,7 +110,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				+ ", cep = '"+entidade.getEndereco().getCep()+"'"
 				+ ", referencia = '"+entidade.getEndereco().getReferencia()+"'"
 				+ " where id_estabelecimento = " +entidade.getId_estabelecimento()
-				+ " and status = '" +Status.ATIVO.toString()+ "'";
+				+ " and status = '" +StatusLista.ATIVO.toString()+ "'";
 		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
@@ -136,7 +136,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 
 	@Override
 	public void excluirEstabelecimento(Estabelecimento entidade) throws SQLException {
-		sql = "UPDATE estabelecimento SET status ='" + Status.INATIVO.toString() + "' where id_estabelecimento = "+entidade.getId_estabelecimento();
+		sql = "UPDATE estabelecimento SET status ='" + StatusLista.INATIVO.toString() + "' where id_estabelecimento = "+entidade.getId_estabelecimento();
 		
 		smt = connection.prepareStatement(sql);
 		smt.execute();
@@ -147,7 +147,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 
 	@Override
 	public List<Estabelecimento> listarEstabelecimentos() throws SQLException {
-		sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'";
+		sql = "select * from  estabelecimento  where status = '" + StatusLista.ATIVO.toString()+ "'";
 		
 		smt = this.connection.prepareStatement(sql);
 		result = smt.executeQuery();
@@ -211,10 +211,10 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 	public Estabelecimento pesquisarEstabelecimento(Estabelecimento entidade) throws SQLException {
 		
 		if(entidade.getId_estabelecimento() > 0){
-			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString() + "'"
+			sql = "select * from  estabelecimento  where status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND id_estabelecimento = "+entidade.getId_estabelecimento();
 		}else{
-			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString() + "'"
+			sql = "select * from  estabelecimento  where status = '" + StatusLista.ATIVO.toString() + "'"
 					+ " AND cnpj = "+entidade.getCnpj();
 		}
 	
@@ -277,13 +277,13 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 			String categoria, Cliente cliente, boolean pesquisarPorBairro)
 			throws SQLException {
 		if(pesquisarPorBairro == false){
-			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
+			sql = "select * from  estabelecimento  where status = '" + StatusLista.ATIVO.toString()+ "'"
 					+ " and categoria = '"+categoria+"'"
 					+ " and estado = '" +cliente.getEndereco().getEstado()+ "'"
 					+ " and cidade = '" +cliente.getEndereco().getCidade()+ "'";
 					
 		}else {
-			sql = "select * from  estabelecimento  where status = '" + Status.ATIVO.toString()+ "'"
+			sql = "select * from  estabelecimento  where status = '" + StatusLista.ATIVO.toString()+ "'"
 					+ " and categoria = '"+categoria+"'"
 					+ " and estado = '" +cliente.getEndereco().getEstado()+ "'"
 					+ " and cidade = '" +cliente.getEndereco().getCidade()+ "'"

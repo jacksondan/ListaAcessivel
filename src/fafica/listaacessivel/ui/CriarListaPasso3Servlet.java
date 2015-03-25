@@ -19,7 +19,7 @@ import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.ui.util.Situacao;
+import fafica.listaacessivel.negocios.util.SituacaoLista;
 
 /**
  * Servlet implementation class CriarListaPasso3Servlet
@@ -350,7 +350,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 					produtosSession.removeAll(auxRemocao);
 																			System.err.println("produtosSession: "+produtosSession.size());
 					if(produtosSession.size() > 0){
-						lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, produtosSession);
+						lista = new Lista(descricao, SituacaoLista.CRIADA.toString(), cliente, estabelecimento, produtosSession);
 						int id_lista = fachada.adicionarLista(lista);
 						lista.setId_lista(id_lista);
 						

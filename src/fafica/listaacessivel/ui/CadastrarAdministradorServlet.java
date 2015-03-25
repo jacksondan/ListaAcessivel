@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
-import fafica.listaacessivel.ui.util.CriptografiaSenha;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class CadastrarAdministrador

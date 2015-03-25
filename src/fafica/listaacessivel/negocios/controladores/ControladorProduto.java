@@ -9,7 +9,7 @@ import fafica.listaacessivel.dados.repositorios.RepositorioProduto;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
-import fafica.listaacessivel.ui.util.Acentuacao;
+import fafica.listaacessivel.negocios.util.Acentuacao;
 
 public class ControladorProduto {
 

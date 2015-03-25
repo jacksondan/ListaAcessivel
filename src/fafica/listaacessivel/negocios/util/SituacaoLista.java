@@ -1,6 +1,6 @@
-package fafica.listaacessivel.ui.util;
+package fafica.listaacessivel.negocios.util;
 
-public enum Situacao {
+public enum SituacaoLista {
 	
 	CRIADA {
 		public String toString(){

@@ -1,6 +1,6 @@
-package fafica.listaacessivel.dados.util;
+package fafica.listaacessivel.negocios.util;
 
-public enum Disponibilidade {
+public enum DisponibilidadeProduto {
 	
 	DISPONIVEL{
 		public String toString(){

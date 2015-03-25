@@ -18,7 +18,7 @@ import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
-import fafica.listaacessivel.ui.util.CriptografiaSenha;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class cadastroEs

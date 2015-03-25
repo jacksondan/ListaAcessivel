@@ -1,4 +1,4 @@
-package fafica.listaacessivel.ui.util;
+package fafica.listaacessivel.negocios.util;
 
 import java.text.Normalizer;
 

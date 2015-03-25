@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import fafica.listaacessivel.dados.util.ConnectionMysql;
-import fafica.listaacessivel.dados.util.Disponibilidade;
-import fafica.listaacessivel.dados.util.Status;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
+import fafica.listaacessivel.negocios.util.ConnectionMysql;
+import fafica.listaacessivel.negocios.util.DisponibilidadeProduto;
+import fafica.listaacessivel.negocios.util.StatusLista;
 import fafica.listaacessivel.dados.IRepositorioProduto;
 
 public class RepositorioProduto implements IRepositorioProduto {
@@ -52,9 +52,9 @@ public class RepositorioProduto implements IRepositorioProduto {
 		String disponibilidade;
 			
 		if(entidade.getQuantidade() >= 1){
-			disponibilidade = Disponibilidade.DISPONIVEL.toString();
+			disponibilidade = DisponibilidadeProduto.DISPONIVEL.toString();
 		}else{
-			disponibilidade = Disponibilidade.INDISPONIVEL.toString();
+			disponibilidade = DisponibilidadeProduto.INDISPONIVEL.toString();
 		}
 			
 			stm = connection.prepareStatement(sql);
@@ -67,7 +67,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			stm.setString(6, entidade.getValidade());
 			stm.setString(7, entidade.getCodigo_barra());
 			stm.setString(8, entidade.getMarca());
-			stm.setString(9,Status.ATIVO.toString());
+			stm.setString(9,StatusLista.ATIVO.toString());
 			stm.setString(10, disponibilidade);
 			stm.setInt(11, entidade.getEstabelecimento().getId_estabelecimento());
 			
@@ -82,9 +82,9 @@ public class RepositorioProduto implements IRepositorioProduto {
 		
 		String disponibilidade;
 		if(entidade.getQuantidade() >= 1){
-			disponibilidade = Disponibilidade.DISPONIVEL.toString();
+			disponibilidade = DisponibilidadeProduto.DISPONIVEL.toString();
 		}else{
-			disponibilidade = Disponibilidade.INDISPONIVEL.toString();
+			disponibilidade = DisponibilidadeProduto.INDISPONIVEL.toString();
 		}
 		
 		sql = "UPDATE produto SET "+
@@ -111,7 +111,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		
 		//Produto produto = pesquisar(entidade);
 
-		sql = "update produto set status = '" + Status.INATIVO.toString() + "' where id_produto = " + entidade.getId_produto();
+		sql = "update produto set status = '" + StatusLista.INATIVO.toString() + "' where id_produto = " + entidade.getId_produto();
 
 		stm = connection.prepareStatement(sql);
 		stm.execute();
@@ -123,7 +123,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 	@Override
 	public List<Produto> listarProdutos() throws SQLException {
 		
-		sql = "select * from produto where status = '" + Status.ATIVO.toString() + "'";
+		sql = "select * from produto where status = '" + StatusLista.ATIVO.toString() + "'";
 		stm = connection.prepareStatement(sql);
 		result = stm.executeQuery();
 		
@@ -165,7 +165,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 	@Override
 	public Produto pesquisarProduto(Produto entidade) throws SQLException {
 		
-			sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' and id_produto = "+ entidade.getId_produto();
+			sql = "select * from produto where status = '" + StatusLista.ATIVO.toString() + "' and id_produto = "+ entidade.getId_produto();
 			stm = connection.prepareStatement(sql);
 			result = stm.executeQuery();
 			
@@ -201,7 +201,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 	@Override
 	public List<Produto> listarProdutosPorEstabelecimento(
 			Estabelecimento estabelecimento) throws SQLException {
-		sql = "select * from produto where status = '" + Status.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
+		sql = "select * from produto where status = '" + StatusLista.ATIVO.toString() + "' AND id_estabelecimento = " + estabelecimento.getId_estabelecimento();
 		stm = connection.prepareStatement(sql);
 		result = stm.executeQuery();
 		
@@ -242,7 +242,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 		
 		sql = "select lp.*, p.*, lce.* from lista_produto lp, lista_cliente_estabelecimento lce, produto p where"
 				+ " lp.id_lista = " +lista.getId_lista()+ " and lce.id_lista = " +lista.getId_lista()
-				+ " and lp.id_produto = p.id_produto and p.status = '" +Status.ATIVO.toString()+ "'";
+				+ " and lp.id_produto = p.id_produto and p.status = '" +StatusLista.ATIVO.toString()+ "'";
 		
 		stm = connection.prepareStatement(sql);	
 		result = stm.executeQuery();
