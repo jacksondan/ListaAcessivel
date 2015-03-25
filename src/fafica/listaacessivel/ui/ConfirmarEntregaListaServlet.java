@@ -15,6 +15,7 @@ import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 import fafica.listaacessivel.negocios.entidades.Lista;
+import fafica.listaacessivel.ui.util.EmailJava;
 import fafica.listaacessivel.ui.util.Situacao;
 
 /**
@@ -59,6 +60,15 @@ public class ConfirmarEntregaListaServlet extends HttpServlet {
 				request.setAttribute("lista", lista);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaFuncionario.jsp");
 				requestDispatcher.forward(request, response);
+				
+				EmailJava email = new EmailJava();
+				String destino = lista.getCliente().getEmail();
+				String titulo="Lista Acessível: Entrega encaminhada da lista de compras- "+lista.getDescricao()+" confirmada";
+				String mensagemEmail="Olá "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
+						" esta sendo encaminhada para seu endereço!\n Embreve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
+						" estará encaminhado suas compras a sua residência.\n Atenciosamente Lista Acessivel.";
+				
+				email.enviarEmail(titulo, mensagemEmail, destino);
 				
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
