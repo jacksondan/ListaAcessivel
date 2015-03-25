@@ -39,7 +39,7 @@ public class EmailJava {
 	}
 	public void listaSolicitada(Lista lista){
 		String destino = lista.getCliente().getEmail();
-		String titulo="Lista Acessível: Lista de Compras - "+lista.getDescricao()+" Solicitada";
+		String titulo="A Sua Lista de Compras - "+lista.getDescricao()+" foi Solicitada";
 		String mensagem="OlÃ¡ "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
 				" Foi solicitada!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
 				" estarão encaminhado suas compras em sua residÃªncia.\n Atenciosamente: Lista Acessivel.";
@@ -50,7 +50,7 @@ public class EmailJava {
 	public void listaAtendida(Lista lista){
 		
 		String destino = lista.getCliente().getEmail();
-		String titulo="Lista Acessível: O Atendimento da sua lista de compras foi confirmado!";
+		String titulo="O Atendimento da sua lista de compras foi confirmado!";
 		String mensagemEmail="OlÃ¡ "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
 				" esta sendo atendida!\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
 				" estarÃ£o entregando suas compras em sua residÃªncia.\n Atenciosamente: Lista Acessivel.";
