@@ -51,7 +51,7 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		cliente = (Cliente) session.getAttribute("acessoCliente");
-		lista = (Lista) session.getAttribute("lista");
+		lista = (Lista) session.getAttribute("listaSession");
 		produtosSession = (ArrayList<Produto>) session.getAttribute("produtosSession");
 		
 		if(cliente == null){
@@ -318,7 +318,10 @@ public class EditarListaPasso2Servlet extends HttpServlet {
 					lista.setProdutos(produtosSession);
 					fachada.alterarLista(lista);
 					
-					response.sendRedirect("detalhesListaCliente.jsp");
+					lista = fachada.pesquisarLista(lista); // Importante pois a contagem dos Itens está sendo feita pelo controlador.
+					request.setAttribute("lista",lista);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+					dispatcher.forward(request, response);
 					
 					/*if(produtosSession.size() > 0){
 						lista = new Lista(descricao, Situacao.CRIADA.toString(), cliente, estabelecimento, produtosSession);

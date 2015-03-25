@@ -31,10 +31,10 @@ public class Lista {
 		this.produtos = produtos;
 		this.data_criacao = dmy.format(new Date());
 		
-		if(produtos != null){
+/*		if(produtos != null){
 			this.quantidade_total = calcularQuantidadeTotal();
 			this.valor_total = calcularValorTotal();
-		}
+		}*/
 	}
 	
 	public Lista(int id_lista, String descricao, String situacao,
@@ -49,10 +49,10 @@ public class Lista {
 		this.produtos = produtos;
 		this.data_alteracao = dmy.format(new Date());
 		
-		if(produtos != null){
+/*		if(produtos != null){
 			this.quantidade_total = calcularQuantidadeTotal();
 			this.valor_total = calcularValorTotal();
-		}
+		}*/
 		
 	}
 
@@ -73,7 +73,7 @@ public class Lista {
 		this.produtos = produtos;
 	}
 	
-	private int calcularQuantidadeTotal(){
+/*	private int calcularQuantidadeTotal(){
 		int quantidade = 0;
 		for(Produto produto : this.produtos){
 			quantidade += produto.getQuantidade();
@@ -87,7 +87,7 @@ public class Lista {
 			valor += (produto.getValor() * produto.getQuantidade());
 		}
 		return valor;
-	}
+	}*/
 
 	public int getId_lista() {
 		return id_lista;

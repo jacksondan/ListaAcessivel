@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
-import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
 
@@ -62,7 +61,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 				
 				lista = fachada.pesquisarLista(lista);
 				
-				session.setAttribute("lista", lista);
+				session.setAttribute("listaSession", lista);
 				response.sendRedirect("editarListaPasso01.jsp");
 				
 			} catch (ClassNotFoundException e) {
@@ -81,7 +80,7 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		cliente = (Cliente) session.getAttribute("acessoCliente");
-		lista = (Lista) session.getAttribute("lista");
+		lista = (Lista) session.getAttribute("listaSession");
 		
 		if(cliente == null){
 			String mensagem = "Sess√£o expirada!";
@@ -124,8 +123,10 @@ public class EditarListaPasso1Servlet extends HttpServlet {
 						dispatcher.forward(request, response);
 						
 					}else{
-						
-						response.sendRedirect("detalhesListaCliente.jsp");
+						lista = fachada.pesquisarLista(lista); // Importante pois a contagem dos Itens est· sendo feita pelo controlador.
+						request.setAttribute("lista",lista);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
+						dispatcher.forward(request, response);
 					}
 
 				}else{

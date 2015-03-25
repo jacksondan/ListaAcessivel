@@ -8,6 +8,9 @@ import fafica.listaacessivel.dados.repositorios.RepositorioLista;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
+import fafica.listaacessivel.negocios.entidades.Produto;
+import fafica.listaacessivel.negocios.util.EmailJava;
+import fafica.listaacessivel.negocios.util.SituacaoLista;
 
 
 public class ControladorLista {
@@ -19,11 +22,29 @@ public class ControladorLista {
 	}
 
 	public int adicionarLista(Lista entidade) throws SQLException {
+		entidade = calcularValoresTotal(entidade);
 		return this.repositorioLista.adicionarLista(entidade);
 		
 	}
 
 	public void alterarLista(Lista entidade) throws SQLException {
+		entidade = calcularValoresTotal(entidade);
+		
+		Lista listaPesquisa = repositorioLista.pesquisarLista(entidade);
+		
+		if(entidade.getSituacao().equals(SituacaoLista.SOLICITADA.toString())){
+			if(!listaPesquisa.getSituacao().equals(SituacaoLista.SOLICITADA.toString())){
+				EmailJava email = new EmailJava();
+				email.listaSolicitada(entidade);
+			}
+		}
+		if(entidade.getSituacao().equals(SituacaoLista.ATENDIDA.toString())){
+			if(!listaPesquisa.getSituacao().equals(SituacaoLista.ATENDIDA.toString())){
+				EmailJava email = new EmailJava();
+				email.listaAtendida(entidade);
+			}
+		}
+		
 		this.repositorioLista.alterarLista(entidade);
 		
 	}
@@ -47,5 +68,20 @@ public class ControladorLista {
 	
 	public List<Lista> listarListaPorEstabelecimento(Estabelecimento estabelecimento) throws SQLException{
 		return this.repositorioLista.listarListasPorEstabelecimento(estabelecimento);
+	}
+	
+	private Lista calcularValoresTotal(Lista lista){
+		int quantidade_total = 0;
+		float valor_total = 0.0f;
+		
+		for(Produto produto : lista.getProdutos()){
+			quantidade_total += produto.getQuantidade();
+			valor_total += (produto.getQuantidade() * produto.getValor());
+		}
+		
+		lista.setQuantidade_total(quantidade_total);
+		lista.setValor_total(valor_total);
+		
+		return lista;
 	}
 }

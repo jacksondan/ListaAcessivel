@@ -354,6 +354,7 @@ public class CriarListaPasso3Servlet extends HttpServlet {
 						int id_lista = fachada.adicionarLista(lista);
 						lista.setId_lista(id_lista);
 						
+						lista = fachada.pesquisarLista(lista);
 						request.setAttribute("lista",lista);
 						RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaCliente.jsp");
 						requestDispatcher.forward(request, response);

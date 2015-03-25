@@ -54,9 +54,9 @@
 				<form action="EditarListaPasso1Servlet" id="formlista" method="POST">
 				
 					
-				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia}, da lista ${lista.descricao}
+				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${listaSession.estabelecimento.nome_fantasia}, da lista ${listaSession.descricao}
 				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade, nesta tela.">
-					<caption>Produtos da Lista ${lista.descricao} </caption>
+					<caption>Produtos da Lista ${listaSession.descricao} </caption>
 					<colgroup>
     							<col />
     							<col />
@@ -81,7 +81,7 @@
 					
 					<tbody>
 				
-					<c:forEach items="${lista.produtos}" var="produto" varStatus="status">
+					<c:forEach items="${listaSession.produtos}" var="produto" varStatus="status">
 						<tr>
 							<td headers="descricao">${produto.descricao}</td>
 							<td headers="marca">${produto.marca}</td>
@@ -100,7 +100,7 @@
 				
 				<div id="descri">
 				<label for="desc">Descrição da Lista</label><br>
-				<textarea name="descricaolista" id="desc" wrap="hard" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${lista.descricao}</textarea>
+				<textarea name="descricaolista" id="desc" wrap="hard" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${listaSession.descricao}</textarea>
 				
 				</div>
 				

@@ -100,10 +100,10 @@ display:show;
 		</div>
 				
 					
-				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${lista.estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
+				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${listaSession.estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
 				Com as seguintes colunas; Descrição do Produto composta por informações como, nome do produto, marca do produto e valor do produto, as outras colunas são funções como selecionar produto
 				 e outra para informar quantidade desejada. Dica, quando estiver na coluna  selecionar marque a caixa de seleção usando a tecla espaço.">
-					<caption>Produtos disponíveis do ${lista.estabelecimento.nome_fantasia}</caption>
+					<caption>Produtos disponíveis do ${listaSession.estabelecimento.nome_fantasia}</caption>
 					<colgroup>
     							<col />
     							<col />
