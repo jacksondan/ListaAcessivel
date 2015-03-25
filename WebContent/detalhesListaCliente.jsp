@@ -86,14 +86,16 @@
 				</table>
 				<div id="finalizar2">
 					<ul class="menu2">
-						<li>
-					<button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button>
-					</li><li><button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button></li>
+					<li><button class="button3" onclick="javascript:DoPrinting()" >Imprimir</button></li>
+					<c:if test="${lista.situacao == 'criada' || lista.situacao == 'atendida'}">
+						<li><button class="button3" onclick="window.location.href='EditarListaPasso1Servlet?id_lista=${lista.id_lista}'" >Editar Lista</button></li>
+					</c:if>
 					<c:if test="${lista.situacao == 'criada'}">
 						<li><button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Entrega</button></li>
 					</c:if>
 					<c:if test="${lista.situacao == 'atendida'}">
-						<li><a href="mailto:${acessoCliente.email}?subject=Lista%20Solicitada&cc=ListaAcessiivel Team&body=Ola%20Sua%20Lista%20Foi%20Solicitada"><button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Nova Entrega</button></a></li>
+						<li><button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Nova Entrega</button></li>
+						<%-- <li><a href="mailto:${acessoCliente.email}?subject=Lista%20Solicitada&cc=ListaAcessiivel Team&body=Ola%20Sua%20Lista%20Foi%20Solicitada"><button class="button3"  onclick="window.location.href='SolicitarEntregaServlet?id_lista=${lista.id_lista}'" >Solicitar Nova Entrega</button></a></li> --%>
 			
 					</c:if>
 					</ul>
