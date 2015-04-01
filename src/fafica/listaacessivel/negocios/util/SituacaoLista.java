@@ -18,7 +18,20 @@ public enum SituacaoLista {
 		public String toString(){
 			return "atendida";
 		}
+	},
+	
+	EMTRANSITO{
+		public String toString(){
+			return "em transito";
+		}
+	},
+	
+	ENATENDIMENTO{
+		public String toString(){
+			return "em atendimento";
+		}
 	}
+	
 	
 	
 }

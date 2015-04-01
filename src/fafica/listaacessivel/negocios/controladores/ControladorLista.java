@@ -38,6 +38,19 @@ public class ControladorLista {
 				email.listaSolicitada(entidade);
 			}
 		}
+		if(entidade.getSituacao().equals(SituacaoLista.ENATENDIMENTO.toString())){
+			if(!listaPesquisa.getSituacao().equals(SituacaoLista.ENATENDIMENTO.toString())){
+				EmailJava email = new EmailJava();
+				email.listaEmAtendimento(entidade);
+			}
+		}
+		
+		if(entidade.getSituacao().equals(SituacaoLista.EMTRANSITO.toString())){
+			if(!listaPesquisa.getSituacao().equals(SituacaoLista.EMTRANSITO.toString())){
+				EmailJava email = new EmailJava();
+				email.listaEmTransito(entidade);
+			}
+		}
 		if(entidade.getSituacao().equals(SituacaoLista.ATENDIDA.toString())){
 			if(!listaPesquisa.getSituacao().equals(SituacaoLista.ATENDIDA.toString())){
 				EmailJava email = new EmailJava();

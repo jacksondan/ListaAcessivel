@@ -87,7 +87,23 @@
 					<li>
 					<button align="center" class="button3" onclick="javascript:DoPrinting()" >Imprimir</button>
 					</li>
+					
+					<!--Se solicitada-->
 					<c:if test="${lista.situacao == 'solicitada'}">
+					<li>
+						<button class="button3"  onclick="window.location.href='EmAtendimentoEntregaListaServlet?id_lista=${lista.id_lista}'" >Atender Lista</button>
+					</li>
+					
+					</c:if>
+					<!-- Se Em atendimento -->
+					<c:if test="${lista.situacao == 'em atendimento'}">
+					<li>
+						<button class="button3"  onclick="window.location.href='EmTransitoEntregaListaServlet?id_lista=${lista.id_lista}'" >Encaminhar Lista</button>
+						</li>
+					</c:if>
+					
+					<!--Se  Em Trânsito -->
+					<c:if test="${lista.situacao == 'em transito'}">
 					<li>
 						<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Confirmar Atendimento</button>
 						</li>
