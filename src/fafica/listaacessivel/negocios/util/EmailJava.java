@@ -68,7 +68,7 @@ public class EmailJava {
 public void listaEmTransito(Lista lista){
 		
 		String destino = lista.getCliente().getEmail();
-		String titulo="Sua Lista de Compras está sendo Trânsito!";
+		String titulo="Sua Lista de Compras está  sendo emcaminhada!";
 		String mensagemEmail="Olá "+lista.getCliente().getNome()+", Sua Lista de Compras "+lista.getDescricao()+
 				" esta sendo transportada para seu Endereço !\n Em breve os atendentes do estabelecimento "+lista.getEstabelecimento().getNome_fantasia()+
 				" estarão entregando suas compras em sua residência.\n Atenciosamente: Lista Acessivel."

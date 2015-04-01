@@ -22,7 +22,7 @@ public enum SituacaoLista {
 	
 	EMTRANSITO{
 		public String toString(){
-			return "em transito";
+			return "em trânsito";
 		}
 	},
 	

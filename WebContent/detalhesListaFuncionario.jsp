@@ -103,7 +103,7 @@
 					</c:if>
 					
 					<!--Se  Em Trânsito -->
-					<c:if test="${lista.situacao == 'em transito'}">
+					<c:if test="${lista.situacao == 'em trânsito'}">
 					<li>
 						<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Confirmar Atendimento</button>
 						</li>
