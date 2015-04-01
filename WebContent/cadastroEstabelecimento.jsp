@@ -13,8 +13,8 @@
 	//script da mascara
 	jQuery(function($) {
 		$("#cep").mask("99999-999");
-		$("#telefone1").mask("(99)9999-9999");
-		$("#telefone2").mask("(99)9999-9999");
+	
+		
 		//$("#cnpj").mask("999.999.999-99");
 	});
 </script>
@@ -29,14 +29,14 @@
 			<h2>Cadastro - Estabelecimento</h2>
 		</header>
 
-		<form method="post"
+		<form method="post" name="festabele"
 			action="http://localhost:8080/ListaAcessivel/CadastrarEstabelecimentoServlet"
 			name="form_estabelecimento">
 			<p style="text-align: center; color: green;">${mensagem}</p>
 			<fieldset>
 				<legend>Dados de Login</legend>
 				<label for="cnpj">CNPJ:</label><br> <input type="text"
-					placeholder="Digite o CNPJ" name="cnpj" id="cnpj" size=18
+					placeholder="Digite o CNPJ"  maxlength="18"  name="cnpj" id="cnpj" size=18
 					required="cnpj" onblur="javascript: validarCNPJ(this.value);"
 					onkeypress="javascript: mascara(this, cnpj_mask);" value="" maxlength="18"><br>
 				<label for="senha">Senha:</label><br> <input type="password"
@@ -65,10 +65,12 @@
 				<legend>Telefones para Contato</legend>
 				<label for="telefone1">Telefone 1:</label><br> <input
 					type="text" placeholder="Digite seu telefone" name="telefone1"
-					id="telefone1" size=20 required="telefone1"><br> <label
+					id="telefone1" size=20 required="telefone1" maxlength="14" onblur="javascript: ValidaTelefone(festabele.telefone1);" onKeyPress="javascript: MascaraTelefone(festabele.telefone1)"><br> 
+					
+					<label
 					for="telefone2">Telefone2:</label> <br>
 				<input type="text" placeholder="Digite o segundo telefone"
-					name="telefone2" id="telefone2" size=20>
+					name="telefone2" id="telefone2" maxlength="14"onblur="javascript: ValidaTelefone(festabele.telefone2);" onKeyPress="javascript: MascaraTelefone(festabele.telefone2)"size=20>
 			</fieldset>
 
 			<fieldset>

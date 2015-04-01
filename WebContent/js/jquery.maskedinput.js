@@ -242,7 +242,7 @@ $.fn.extend({
 			function writeBuffer() { input.val(buffer.join('')); }
 
 			function checkVal(allow) {
-				//try to place characters where they belong
+				//
 				var test = input.val(),
 					lastMatch = -1,
 					i,
@@ -324,7 +324,7 @@ $.fn.extend({
 							settings.completed.call(input);
 					}, 0);
 				});
-			checkVal(); //Perform initial check for existing values
+			checkVal(); //
 		});
 	}
 });

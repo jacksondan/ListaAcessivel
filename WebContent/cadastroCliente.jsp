@@ -15,9 +15,9 @@
 
 jQuery(function($){
 	$("#cep").mask("99999-999");
-	$("#telefone1").mask("(99)9999-9999");
-	$("#telefone2").mask("(99)9999-9999");	
-	$("#ano_nascimento").mask("9999");
+	$("#estado").mask("aa");	
+	$("#ano_nascimento").mask("9999")
+	$("#cep").mask("");
 });
 
 </script>
@@ -40,7 +40,7 @@ jQuery(function($){
 				<h2>Cadastre-se</h2>
 			</header>
 			<!-- Formulário  aqui! -->
-			<form method="post"
+			<form method="post" name="fcliente"
 				action="http://localhost:8080/ListaAcessivel/CadastraCliente">
 				<p style="text-align: center; color: green;">${mensagem}</p>
 				<fieldset >
@@ -61,16 +61,20 @@ jQuery(function($){
 						require="ano_nascimento" size="4"></p>
 						
 						 <label for="cpf">CPF:</label><br> <input
-					type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=11 required= "cpf"
-					onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"><br>
+					type="text" placeholder="Digite o CPF" name="cpf" id="cpf" size=14 required= "cpf"
+					onblur="javascript: validarCPF(this.value);" maxlength="14"  onkeypress="javascript: mascara(this, cpf_mask);"><br>
 				</fieldset>
 				<fieldset>
 					<legend>Telefones para Contato</legend>
 					<label for="telefone1">Telefone 1:</label><br> <input
 						type="text" placeholder="Digite seu telefone" name="telefone1"
-						id="telefone1" size=20 required="telefone1"><br> <label for="telefone 2">Telefone
+						id="telefone1" size=14 maxlength="14" required="telefone1" onblur="javascript: ValidaTelefone(fcliente.telefone1);" onKeyPress="javascript: MascaraTelefone(fcliente.telefone1)"><br> 
+						
+						<label for="telefone2">Telefone
 						2:</label><br> <input type="text" placeholder="Digite o segundo telefone"
-						name="telefone2" id="telefone2" size=20><br>
+						name="telefone2" maxlength="14" id="telefone2" size=14 onblur="javascript: ValidaTelefone(fcliente.telefone2);" onKeyPress="javascript: MascaraTelefone(fcliente.telefone2)"><br>
+						
+						
 				</fieldset>
 
 				<fieldset>
