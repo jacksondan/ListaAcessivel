@@ -38,8 +38,8 @@ public class ControladorLista {
 				email.listaSolicitada(entidade);
 			}
 		}
-		if(entidade.getSituacao().equals(SituacaoLista.ENATENDIMENTO.toString())){
-			if(!listaPesquisa.getSituacao().equals(SituacaoLista.ENATENDIMENTO.toString())){
+		if(entidade.getSituacao().equals(SituacaoLista.EMATENDIMENTO.toString())){
+			if(!listaPesquisa.getSituacao().equals(SituacaoLista.EMATENDIMENTO.toString())){
 				EmailJava email = new EmailJava();
 				email.listaEmAtendimento(entidade);
 			}
