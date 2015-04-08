@@ -14,21 +14,21 @@ public enum SituacaoLista {
 		}
 	},
 	
-	ATENDIDA {
+	EMATENDIMENTO{
 		public String toString(){
-			return "atendida";
+			return "em atendimento";
 		}
 	},
 	
 	EMTRANSITO{
 		public String toString(){
-			return "em trânsito";
+			return "em transporte";
 		}
 	},
 	
-	ENATENDIMENTO{
+	ATENDIDA {
 		public String toString(){
-			return "em atendimento";
+			return "atendida";
 		}
 	}
 	

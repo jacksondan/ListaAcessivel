@@ -50,7 +50,7 @@ public class EmAtendimentoEntregaListaServlet extends HttpServlet {
 				
 				lista = fachada.pesquisarLista(lista);
 				
-				lista.setSituacao(SituacaoLista.ENATENDIMENTO.toString());
+				lista.setSituacao(SituacaoLista.EMATENDIMENTO.toString());
 				fachada.alterarLista(lista);
 				
 				String mensagem = "A Lista agora está sendo atendida!";

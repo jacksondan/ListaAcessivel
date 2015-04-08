@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="fafica.listaacessivel.negocios.util.SituacaoLista" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -100,10 +101,11 @@
 					<li>
 						<button class="button3"  onclick="window.location.href='EmTransitoEntregaListaServlet?id_lista=${lista.id_lista}'" >Encaminhar Lista</button>
 						</li>
-					</c:if>
+					</c:if>trânsito
 					
 					<!--Se  Em Trânsito -->
-					<c:if test="${lista.situacao == 'em trânsito'}">
+					<!--<%//=SituacaoLista.EMTRANSITO.toString() %>-->
+					<c:if test="${lista.situacao == 'em transporte'}">
 					<li>
 						<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Confirmar Atendimento</button>
 						</li>
