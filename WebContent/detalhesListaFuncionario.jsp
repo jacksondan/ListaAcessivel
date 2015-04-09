@@ -101,13 +101,13 @@
 					<li>
 						<button class="button3"  onclick="window.location.href='EmTransitoEntregaListaServlet?id_lista=${lista.id_lista}'" >Encaminhar Lista</button>
 						</li>
-					</c:if>trânsito
+					</c:if>
 					
 					<!--Se  Em Trânsito -->
-					<!--<%//=SituacaoLista.EMTRANSITO.toString() %>-->
+
 					<c:if test="${lista.situacao == 'em transporte'}">
-					<li>
-						<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Confirmar Atendimento</button>
+						<li>
+							<button class="button3"  onclick="window.location.href='ConfirmarEntregaListaServlet?id_lista=${lista.id_lista}'" >Confirmar Atendimento</button>
 						</li>
 					</c:if>
 					
