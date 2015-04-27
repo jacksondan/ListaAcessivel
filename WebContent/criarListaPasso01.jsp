@@ -1,14 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista Acessível - Criar Lista Passo 01</title>
-<link rel="stylesheet" type="text/css" href="css/style.css"> 
-<link rel="shortcut icon" href="images/logtop.png" />
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Lista Acessível - Criar Lista Passo 01</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css"> 
+	<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
+	<!-- Verificando se a sessão esta válida -->
+	<!--   <c:if test="${acessoCliente == 'null'}">
+		<%
+			String mensagem = "Sessão encerrada ou expirada!";
+			request.setAttribute("mensagem", mensagem);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher.forward(request, response);
+		%>
+	</c:if> -->
    
 <%@include file="headerCliente.html" %>
 
