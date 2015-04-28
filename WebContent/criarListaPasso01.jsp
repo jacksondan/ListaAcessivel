@@ -11,14 +11,14 @@
 </head>
 <body>
 	<!-- Verificando se a sessão esta válida -->
-	<!--   <c:if test="${acessoCliente == 'null'}">
+	<c:if test="${empty acessoCliente}">
 		<%
-			String mensagem = "Sessão encerrada ou expirada!";
+			String mensagem = "Sessão expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		%>
-	</c:if> -->
+	</c:if>
    
 <%@include file="headerCliente.html" %>
 
