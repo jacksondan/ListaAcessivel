@@ -1,6 +1,7 @@
 package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,9 +37,13 @@ public class LoginMobileServlet extends HttpServlet {
 		String json = gson.toJson(login);
 		System.out.println(json);
 		
-		request.setAttribute("login", json);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("#");
-		requestDispatcher.forward(request, response);
+		
+		PrintWriter out = response.getWriter();
+		out.println(json);
+		/*request.setAttribute("login", json);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+		requestDispatcher.forward(request, response);*/
+		
 	}
 
 	/**

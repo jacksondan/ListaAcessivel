@@ -1,6 +1,7 @@
 package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,9 +62,8 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			String json = gson.toJson(listaProdutos);
 			System.out.println(json);
 			
-			request.setAttribute("listaProdutos", json);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("#");
-			requestDispatcher.forward(request, response);
+			PrintWriter out = response.getWriter();
+			out.println(json);
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
