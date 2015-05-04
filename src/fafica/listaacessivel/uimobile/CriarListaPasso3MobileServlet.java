@@ -62,7 +62,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			System.out.println(json);
 			
 			request.setAttribute("listaProdutos", json);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("#");
 			requestDispatcher.forward(request, response);
 			
 		} catch (ClassNotFoundException e) {
