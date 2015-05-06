@@ -55,11 +55,11 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			estabelecimento.setId_estabelecimento(id_estabelecimento);
 			estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 			
-			List<Produto> listaProdutos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
+			produtos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
 			
 			//Comversão para String json
 			gson = new Gson();
-			String json = gson.toJson(listaProdutos);
+			String json = gson.toJson(produtos);
 			System.out.println(json);
 			
 			PrintWriter out = response.getWriter();
