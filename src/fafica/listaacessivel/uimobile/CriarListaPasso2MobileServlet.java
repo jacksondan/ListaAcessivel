@@ -26,7 +26,7 @@ import fafica.listaacessivel.negocios.entidades.Produto;
  * Servlet implementation class CriarListaPasso3MobileServlet
  */
 @WebServlet("/CriarListaPasso3MobileServlet")
-public class CriarListaPasso3MobileServlet extends HttpServlet {
+public class CriarListaPasso2MobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private Cliente cliente;
@@ -38,7 +38,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CriarListaPasso3MobileServlet() {
+    public CriarListaPasso2MobileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
