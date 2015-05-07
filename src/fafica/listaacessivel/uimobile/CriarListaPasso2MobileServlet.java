@@ -25,7 +25,7 @@ import fafica.listaacessivel.negocios.entidades.Produto;
 /**
  * Servlet implementation class CriarListaPasso3MobileServlet
  */
-@WebServlet("/CriarListaPasso3MobileServlet")
+@WebServlet("/CriarListaPasso2MobileServlet")
 public class CriarListaPasso2MobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -50,7 +50,7 @@ public class CriarListaPasso2MobileServlet extends HttpServlet {
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			int id_estabelecimento = 16; //ID TEM QUE VIR DO ANDROID (JSON)
+			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
 			estabelecimento= new Estabelecimento();
 			estabelecimento.setId_estabelecimento(id_estabelecimento);
 			estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
