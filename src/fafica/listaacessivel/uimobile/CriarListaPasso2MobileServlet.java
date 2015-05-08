@@ -50,20 +50,23 @@ public class CriarListaPasso2MobileServlet extends HttpServlet {
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));
-			estabelecimento= new Estabelecimento();
-			estabelecimento.setId_estabelecimento(id_estabelecimento);
-			estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-			
-			produtos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
-			
-			//Comversão para String json
-			gson = new Gson();
-			String json = gson.toJson(produtos);
-			System.out.println(json);
-			
-			PrintWriter out = response.getWriter();
-			out.println(json);
+			String id = request.getParameter("id_estabelecimento");
+			if(id != null){
+				int id_estabelecimento = Integer.parseInt(id);
+				estabelecimento= new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
+				
+				produtos = fachada.listarProdutosPorEstababelecimento(estabelecimento, null, null);
+				
+				//Comversão para String json
+				gson = new Gson();
+				String json = gson.toJson(produtos);
+				System.out.println(json);
+				
+				PrintWriter out = response.getWriter();
+				out.println(json);
+			}
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
