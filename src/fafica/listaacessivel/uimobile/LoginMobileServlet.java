@@ -3,6 +3,7 @@ package fafica.listaacessivel.uimobile;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.util.CriptografiaSenha;
@@ -37,20 +39,21 @@ public class LoginMobileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String email = request.getParameter("email");
 		String senha = request.getParameter("senha");
 		senha = CriptografiaSenha.encriptar(senha);
 		
 		Cliente cliente = null;
-		List <Cliente> clientes = null;
+		List <Cliente> clientes = new ArrayList<Cliente>();
 		try {
-			clientes = fachada.listarCliente();
-			if(clientes != null){
-				for(Cliente c : clientes){
-					if (c.getEmail().equals(email)&& c.getSenha().equals(senha)){
-						cliente = c;
-						break;
-					}
+			fachada = Fachada.getInstance();
+			clientes.addAll(fachada.listarCliente());
+			
+			for(Cliente c : clientes){
+				if (c.getEmail().equals(email)&& c.getSenha().equals(senha)){
+					cliente = c;
+					break;
 				}
 			}
 			
@@ -60,14 +63,14 @@ public class LoginMobileServlet extends HttpServlet {
 				
 				PrintWriter out = response.getWriter();
 				out.println(json);
-			}else{
-				PrintWriter out = response.getWriter();
-				out.println("null");
 			}
 			
 			
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
