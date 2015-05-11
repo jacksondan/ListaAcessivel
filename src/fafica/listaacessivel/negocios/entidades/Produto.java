@@ -13,10 +13,9 @@ public class Produto {
 	private String codigo_barra;
 	private String disponibilidade;
 	private Estabelecimento estabelecimento;
+	private boolean selecionado = false; //Atributo utilizado para o projeto Android
 			
-	public Produto() {
-		
-	}
+	public Produto() { }
 
 	public Produto(String descricao, String categoria,
 			float peso, int quantidade, float valor,
@@ -141,5 +140,14 @@ public class Produto {
 		this.estabelecimento = estabelecimento;
 	}
 
+	public boolean isSelecionado() {
+		return selecionado;
+	}
+
+	public void setSelecionado(boolean selecionado) {
+		this.selecionado = selecionado;
+	}
+	
+	
 
 }
