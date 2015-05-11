@@ -2,8 +2,9 @@ package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,12 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import fafica.listaacessivel.negocios.IFachada;
+import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
+
 /**
  * Servlet implementation class LoginMobileServlet
  */
 @WebServlet("/LoginMobileServlet")
 public class LoginMobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IFachada fachada;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,15 +37,42 @@ public class LoginMobileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Login login = new Login("teste@teste","fewfew");
+		String email = request.getParameter("email");
+		String senha = request.getParameter("senha");
+		senha = CriptografiaSenha.encriptar(senha);
 		
-		Gson gson = new Gson();
-		String json = gson.toJson(login);
-		System.out.println(json);
+		Cliente cliente = null;
+		List <Cliente> clientes = null;
+		try {
+			clientes = fachada.listarCliente();
+			if(clientes != null){
+				for(Cliente c : clientes){
+					if (c.getEmail().equals(email)&& c.getSenha().equals(senha)){
+						cliente = c;
+						break;
+					}
+				}
+			}
+			
+			if(cliente != null){
+				Gson gson = new Gson();
+				String json = gson.toJson(cliente);
+				
+				PrintWriter out = response.getWriter();
+				out.println(json);
+			}else{
+				PrintWriter out = response.getWriter();
+				out.println("null");
+			}
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
-		PrintWriter out = response.getWriter();
-		out.println(json);
 		/*request.setAttribute("login", json);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
 		requestDispatcher.forward(request, response);*/
