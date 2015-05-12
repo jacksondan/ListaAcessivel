@@ -40,16 +40,16 @@ public class CadastrarClienteMobileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsonCadastro = request.getParameter("jsonCadastro");
+		String json_cadastro = request.getParameter("json_cadastro");
 		String senha;
 		
 		try {
 			fachada = Fachada.getInstance();
 			
-			if(jsonCadastro != null){
+			if(json_cadastro != null){
 				gson = new Gson();
-				System.out.println(jsonCadastro);
-				cliente = gson.fromJson(jsonCadastro, Cliente.class);
+				System.out.println(json_cadastro);
+				cliente = gson.fromJson(json_cadastro, Cliente.class);
 				senha = CriptografiaSenha.encriptar(cliente.getSenha());
 				cliente.setSenha(senha);
 				
