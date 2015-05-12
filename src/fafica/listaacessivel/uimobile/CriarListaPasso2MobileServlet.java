@@ -50,7 +50,7 @@ public class CriarListaPasso2MobileServlet extends HttpServlet {
 		try {
 			IFachada fachada = Fachada.getInstance();
 			
-			String id = request.getParameter("id_estabelecimento");
+			String id = "16";//request.getParameter("id_estabelecimento");
 			if(id != null){
 				int id_estabelecimento = Integer.parseInt(id);
 				estabelecimento= new Estabelecimento();
