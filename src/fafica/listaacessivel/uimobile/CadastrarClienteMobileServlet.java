@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class CadastrarClienteMobileServlet
@@ -40,13 +41,18 @@ public class CadastrarClienteMobileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsonCadastro = request.getParameter("jsonCadastro");
+		String senha;
 		
 		try {
 			fachada = Fachada.getInstance();
 			
 			if(jsonCadastro != null){
 				gson = new Gson();
+				System.out.println(jsonCadastro);
 				cliente = gson.fromJson(jsonCadastro, Cliente.class);
+				senha = CriptografiaSenha.encriptar(cliente.getSenha());
+				cliente.setSenha(senha);
+				
 				
 				fachada.adicionarCliente(cliente);
 			}
