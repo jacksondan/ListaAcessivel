@@ -27,8 +27,13 @@ public class CriarListaPasso1MobileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categoria=request.getParameter("categoria");
+		String categoria = request.getParameter("categoria");
+		String id = request.getParameter("id_cliente");
+		int id_cliente;
 		
+		if(id != null){
+			id_cliente = Integer.parseInt(id);
+		}
 		
 	}
 
