@@ -54,13 +54,15 @@ public class MinhasListasMobileServlet extends HttpServlet {
 			
 			listas = fachada.listarListaPorCliente(cliente);
 			
+			System.out.println("Endereço da Lista: "+listas);
+			
 			gson = new Gson();
 			jsonListas = gson.toJson(listas);
 			
 			System.out.println(jsonListas);
 			
-			PrintWriter out = response.getWriter();
-			out.println(jsonListas);
+//			PrintWriter out = response.getWriter();
+//			out.println(jsonListas);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
