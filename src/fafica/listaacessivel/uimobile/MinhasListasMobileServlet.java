@@ -58,9 +58,18 @@ public class MinhasListasMobileServlet extends HttpServlet {
 			System.out.println("Nome Cliente: "+l.getCliente().getNome());
 			System.out.println("Nome Estabelecimento: "+l.getEstabelecimento().getNome_fantasia());
 			System.out.println("Quantidade de Produtos: "+l.getProdutos().size());
-			l.setCliente(null);
-			l.setEstabelecimento(null);
-			l.setProdutos(null);
+			System.out.println(l.getId_lista());
+			System.out.println(l.getDescricao());
+			System.out.println(l.getSituacao());
+			System.out.println(l.getData_criacao());
+			l.setData_alteracao("13/5/2015");
+			System.out.println(l.getData_alteracao());
+			System.out.println(l.getQuantidade_total());
+			System.out.println(l.getValor_total());
+//			l.setCliente(null);
+//			l.setEstabelecimento(null);
+//			l.setProdutos(null);
+//			l.setValor_total(0);
 			
 			gson = new Gson();
 			jsonListas = gson.toJson(l);
