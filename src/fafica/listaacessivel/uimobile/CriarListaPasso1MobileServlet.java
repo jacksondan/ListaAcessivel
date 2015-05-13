@@ -63,6 +63,8 @@ public class CriarListaPasso1MobileServlet extends HttpServlet {
 			gson = new Gson();
 			jsonEstabelecimentos = gson.toJson(estabelecimentos);
 			
+			System.out.println(jsonEstabelecimentos);
+			
 			PrintWriter out = response.getWriter();
 			out.println(jsonEstabelecimentos);
 			

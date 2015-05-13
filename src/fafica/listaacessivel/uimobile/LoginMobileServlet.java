@@ -65,8 +65,6 @@ public class LoginMobileServlet extends HttpServlet {
 				out.println(json);
 			}
 			
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
