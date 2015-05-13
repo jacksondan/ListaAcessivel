@@ -17,7 +17,7 @@ public class Lista {
 	private Estabelecimento estabelecimento;
 	private List<Produto> produtos;
 		
-	private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");;
+	private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");
 	
 	public Lista() { }
 	
