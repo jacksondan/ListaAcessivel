@@ -17,7 +17,7 @@ public class Lista {
 	private Estabelecimento estabelecimento;
 	private List<Produto> produtos;
 		
-	private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");
+	//private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");
 	
 	public Lista() { }
 	
@@ -27,20 +27,20 @@ public class Lista {
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		this.data_criacao = dmy.format(new Date());
+		//this.data_criacao = dmy.format(new Date());
 	}
 	
 	public Lista(int id_lista, String descricao, String situacao,
-			String data_criacao, Cliente cliente,
+			Cliente cliente,
 			Estabelecimento estabelecimento, List<Produto> produtos) {
 		this.id_lista = id_lista;
 		this.descricao = descricao;
 		this.situacao = situacao;
-		this.data_criacao = data_criacao;
+		//this.data_criacao = data_criacao;
 		this.cliente = cliente;
 		this.estabelecimento = estabelecimento;
 		this.produtos = produtos;
-		this.data_alteracao = dmy.format(new Date());
+		//this.data_alteracao = dmy.format(new Date());
 		
 	}
 
