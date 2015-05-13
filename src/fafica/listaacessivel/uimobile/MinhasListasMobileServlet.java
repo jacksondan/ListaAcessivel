@@ -54,15 +54,21 @@ public class MinhasListasMobileServlet extends HttpServlet {
 			
 			listas = fachada.listarListaPorCliente(cliente);
 			
-			System.out.println("Endereço da Lista: "+listas);
+			Lista l = listas.get(0);
+			System.out.println("Nome Cliente: "+l.getCliente().getNome());
+			System.out.println("Nome Estabelecimento: "+l.getEstabelecimento().getNome_fantasia());
+			System.out.println("Quantidade de Produtos: "+l.getProdutos().size());
+			l.setCliente(null);
+			l.setEstabelecimento(null);
+			l.setProdutos(null);
 			
 			gson = new Gson();
-			jsonListas = gson.toJson(listas);
+			jsonListas = gson.toJson(l);
 			
 			System.out.println(jsonListas);
 			
-//			PrintWriter out = response.getWriter();
-//			out.println(jsonListas);
+			PrintWriter out = response.getWriter();
+			out.println(jsonListas);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
