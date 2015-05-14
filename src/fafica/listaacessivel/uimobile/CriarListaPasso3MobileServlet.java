@@ -43,26 +43,30 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 		String retorno;
 		int id_lista;
 		
+		System.out.println(jsonLista);
+		
 		try {
 			fachada = Fachada.getInstance();
 			
 			gson = new Gson();
 			lista = gson.fromJson(jsonLista, Lista.class);
 			
-			id_lista = fachada.adicionarLista(lista);
-			System.out.println("ID DA LISTA: "+id_lista);
-			lista.setId_lista(id_lista);
-			lista = fachada.pesquisarLista(lista);
-			System.out.println("Descrição da lista: "+lista.getDescricao());
-			
-			
-			
-			retorno = gson.toJson(lista);
-			
-			System.out.println(retorno);
-			
-			PrintWriter out = response.getWriter();
-			out.println(retorno);
+			if(lista != null){
+				id_lista = fachada.adicionarLista(lista);
+				System.out.println("ID DA LISTA: "+id_lista);
+				lista.setId_lista(id_lista);
+				lista = fachada.pesquisarLista(lista);
+				System.out.println("Descrição da lista: "+lista.getDescricao());
+				
+				
+				
+				retorno = gson.toJson(lista);
+				
+				System.out.println(retorno);
+				
+				PrintWriter out = response.getWriter();
+				out.println(retorno);
+			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
