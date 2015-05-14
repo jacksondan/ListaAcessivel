@@ -39,17 +39,17 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsonLista = request.getParameter("jsonLista");
+		String json_lista = request.getParameter("json_lista");
 		String retorno;
 		int id_lista;
 		
-		System.out.println(jsonLista);
+		System.out.println(json_lista);
 		
 		try {
 			fachada = Fachada.getInstance();
 			
 			gson = new Gson();
-			lista = gson.fromJson(jsonLista, Lista.class);
+			lista = gson.fromJson(json_lista, Lista.class);
 			
 			if(lista != null){
 				id_lista = fachada.adicionarLista(lista);
