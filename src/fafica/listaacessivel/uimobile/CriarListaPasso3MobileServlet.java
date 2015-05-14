@@ -1,6 +1,7 @@
 package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -39,6 +40,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsonLista = request.getParameter("jsonLista");
+		int id_lista;
 		
 		try {
 			fachada = Fachada.getInstance();
@@ -46,7 +48,10 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			gson = new Gson();
 			lista = gson.fromJson(jsonLista, Lista.class);
 			
-			fachada.adicionarLista(lista);
+			id_lista = fachada.adicionarLista(lista);
+			
+			PrintWriter out = response.getWriter();
+			out.println(id_lista);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
