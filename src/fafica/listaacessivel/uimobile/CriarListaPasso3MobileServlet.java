@@ -40,6 +40,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String jsonLista = request.getParameter("jsonLista");
+		String retorno;
 		int id_lista;
 		
 		try {
@@ -49,9 +50,15 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			lista = gson.fromJson(jsonLista, Lista.class);
 			
 			id_lista = fachada.adicionarLista(lista);
+			lista.setId_lista(id_lista);
+			lista = fachada.pesquisarLista(lista);
+			
+			retorno = gson.toJson(lista);
+			
+			System.out.println(retorno);
 			
 			PrintWriter out = response.getWriter();
-			out.println(id_lista);
+			out.println(retorno);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
