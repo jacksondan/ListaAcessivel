@@ -1,6 +1,8 @@
 package fafica.listaacessivel.negocios.controladores;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import fafica.listaacessivel.dados.IRepositorioLista;
@@ -16,18 +18,23 @@ import fafica.listaacessivel.negocios.util.SituacaoLista;
 public class ControladorLista {
 	
 	private IRepositorioLista repositorioLista;
+	private SimpleDateFormat dmy = new SimpleDateFormat("d/M/y");
 	
 	public ControladorLista() throws ClassNotFoundException, SQLException {
 		this.repositorioLista = RepositorioLista.getInstancia();
 	}
 
 	public int adicionarLista(Lista entidade) throws SQLException {
+		String data_criacao = dmy.format(new Date());
+		entidade.setData_criacao(data_criacao);
 		entidade = calcularValoresTotal(entidade);
 		return this.repositorioLista.adicionarLista(entidade);
 		
 	}
 
 	public void alterarLista(Lista entidade) throws SQLException {
+		String data_alteracao = dmy.format(new Date());
+		entidade.setData_alteracao(data_alteracao);
 		entidade = calcularValoresTotal(entidade);
 		
 		Lista listaPesquisa = repositorioLista.pesquisarLista(entidade);
