@@ -50,8 +50,12 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			lista = gson.fromJson(jsonLista, Lista.class);
 			
 			id_lista = fachada.adicionarLista(lista);
+			System.out.println("ID DA LISTA: "+id_lista);
 			lista.setId_lista(id_lista);
 			lista = fachada.pesquisarLista(lista);
+			System.out.println("Descrição da lista: "+lista.getDescricao());
+			
+			
 			
 			retorno = gson.toJson(lista);
 			
