@@ -176,6 +176,7 @@ public class Fachada implements IFachada {
 						this.pesquisarEstabelecimento(produto.getEstabelecimento());
 				
 				produto.setEstabelecimento(estabelecimento);
+				produto.setSelecionado(true);
 			}
 		}
 		
