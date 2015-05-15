@@ -16,10 +16,10 @@ import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 
 /**
- * Servlet implementation class CadastrarClienteMobileServlet
+ * Servlet implementation class EditarPerfilMobileServlet
  */
-@WebServlet("/CadastrarClienteMobileServlet")
-public class CadastrarClienteMobileServlet extends HttpServlet {
+@WebServlet("/EditarPerfilMobileServlet")
+public class EditarPerfilMobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private IFachada fachada;
@@ -30,7 +30,7 @@ public class CadastrarClienteMobileServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CadastrarClienteMobileServlet() {
+    public EditarPerfilMobileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,21 +39,15 @@ public class CadastrarClienteMobileServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String json_cadastro = request.getParameter("json_cadastro");
+		String json_edicao = request.getParameter("json_edicao");
 		
 		try {
 			fachada = Fachada.getInstance();
 			
-			if(json_cadastro != null){
-				gson = new Gson();
-				System.out.println(json_cadastro);
-				cliente = gson.fromJson(json_cadastro, Cliente.class);
-				
-				fachada.adicionarCliente(cliente);
-			}
+			gson = new Gson();
+			cliente = gson.fromJson(json_edicao, Cliente.class);
 			
-			
-			
+			fachada.alterarCliente(cliente);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,7 +55,7 @@ public class CadastrarClienteMobileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	/**

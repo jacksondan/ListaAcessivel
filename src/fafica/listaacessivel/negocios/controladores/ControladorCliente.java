@@ -6,6 +6,7 @@ import java.util.List;
 import fafica.listaacessivel.dados.IRepositorioCliente;
 import fafica.listaacessivel.dados.repositorios.RepositorioCliente;
 import fafica.listaacessivel.negocios.entidades.Cliente;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 public class ControladorCliente {
 	
@@ -16,6 +17,8 @@ public class ControladorCliente {
 	}
 	
 	public void adicionarCliente(Cliente cliente) throws SQLException{
+		String senhaEncriptada = CriptografiaSenha.encriptar(cliente.getSenha());
+		cliente.setSenha(senhaEncriptada);
 		repositorioCliente.adicionarCliente(cliente);
 	}
 	
