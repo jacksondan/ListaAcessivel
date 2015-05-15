@@ -39,7 +39,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String json_lista = request.getParameter("json_lista");
-		json_lista = json_lista.replaceAll(";", " ");	
+		json_lista = json_lista.replaceAll("<;>", " ");	
 		String retorno;
 		int id_lista;
 
