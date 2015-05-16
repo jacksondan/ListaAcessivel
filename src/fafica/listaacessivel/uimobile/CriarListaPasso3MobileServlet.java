@@ -24,6 +24,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private IFachada fachada;
+	private Lista lista;
 	private Gson gson;
        
     /**
@@ -39,18 +40,12 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String json_lista = request.getParameter("json_lista");
-		json_lista = json_lista.replaceAll("<;>", " ");	
 		String retorno;
 		int id_lista;
-
-		gson = new Gson();
-		Lista lista = gson.fromJson(json_lista, Lista.class);
 		
-		Lista listaJson = new Lista(lista.getDescricao(),lista.getSituacao(),lista.getCliente(),lista.getEstabelecimento(),lista.getProdutos());
+		json_lista = json_lista.replaceAll("<;>", " ");	//Convertendo os caracteres especiais da Lista para evitar ERRO
 		
-		System.out.println(json_lista);
-		
-		System.out.println(listaJson.toString());
+		System.out.println("Lista Recebida: "+json_lista);
 		
 		try {
 			fachada = Fachada.getInstance();
@@ -58,8 +53,8 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 			gson = new Gson();
 			lista = gson.fromJson(json_lista, Lista.class);
 		
-			if(listaJson != null){
-				id_lista = fachada.adicionarLista(listaJson);
+			if(lista != null){
+				id_lista = fachada.adicionarLista(lista);
 				System.out.println("ID DA LISTA: "+id_lista);
 				lista.setId_lista(id_lista);
 				lista = fachada.pesquisarLista(lista);
@@ -67,7 +62,7 @@ public class CriarListaPasso3MobileServlet extends HttpServlet {
 				
 				retorno = gson.toJson(lista);
 				
-				System.out.println(retorno);
+				System.out.println("Lista Retorno: "+retorno);
 				
 				PrintWriter out = response.getWriter();
 				out.println(retorno);
