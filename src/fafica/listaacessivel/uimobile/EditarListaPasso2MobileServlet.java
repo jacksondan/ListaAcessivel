@@ -22,7 +22,7 @@ import fafica.listaacessivel.negocios.entidades.Produto;
  * Servlet implementation class EditarListaPasso2
  */
 @WebServlet("/EditarListaPasso2")
-public class EditarListaPasso2 extends HttpServlet {
+public class EditarListaPasso2MobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private IFachada fachada;
@@ -33,7 +33,7 @@ public class EditarListaPasso2 extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarListaPasso2() {
+    public EditarListaPasso2MobileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
