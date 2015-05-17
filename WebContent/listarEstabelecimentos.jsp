@@ -1,10 +1,10 @@
-	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	    pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	    pageEncoding="UTF-8" import="fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!DOCTYPE HTML>
 	<html>
 		<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Estabelecimentos</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/estabelecimentos.css">
@@ -26,19 +26,19 @@
 	</head>
 	<body>
 			<%@include  file="headerAdmin.html" %>
-			<%@include  file="sidebarAdmin.html" %>
+			<%@include file="sidebarAdmin.jsp" %>
 		
 				<div id="content3">
 					<header class="major">		
 						<h2>Estabelecimentos</h2>
 						${mensagem}
 					</header>
-					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
+					<p class="info">Nessa pÃ¡gina existe uma tabela onde Ã© mostrado dados dos 
 					estabelecimentos pressione a letra T para ir direto para  a tabela</p>
 						<table id="estabelecimentos" align="center" class="display" summary="Tabela com lista de estabelecimentos resumida, 
-						mostrando nome fantasia, categoria, cidade, bairro e opções do administrador, 
-						os dados dos estabelecimentos começão a ser exbidos na 3ª linha da tabela, 
-						começando pela coluna de Nome do estabelecimento">
+						mostrando nome fantasia, categoria, cidade, bairro e opÃ§Ãµes do administrador, 
+						os dados dos estabelecimentos comeÃ§Ã£o a ser exbidos na 3Âª linha da tabela, 
+						comeÃ§ando pela coluna de Nome do estabelecimento">
 						<caption>Lista de Estabelecimentos</caption>
 								<colgroup>
     							<col />
@@ -51,12 +51,12 @@
 									<!-- <th rowspan="2" id="categoria">Categoria</th> -->
 									<th rowspan="2" id="cidade">Cidade</th>
 									<th rowspan="2" id="bairro">Bairro</th>
-									<th colspan="2" id="opção">Opções</th>
+									<th colspan="2" id="opÃ§Ã£o">OpÃ§Ãµes</th>
 									
 								</tr>
 									<tr>
-									<th id="detalhes" axis="opção">Detalhes</th>
-									<th id="desativar" axis="opção">Desativar</th>
+									<th id="detalhes" axis="opÃ§Ã£o">Detalhes</th>
+									<th id="desativar" axis="opÃ§Ã£o">Desativar</th>
 									</tr>
 									</thead>
 									<tbody>
@@ -67,8 +67,8 @@
 								<%-- 	<td headers="categoria">${estabelecimento.categoria}</td> --%>
 									<td headers="cidade">${estabelecimento.endereco.cidade}</td>
 									<td headers="bairro">${estabelecimento.endereco.bairro}</td>
-									<td headers="opção"><a href="PerfilEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Detalhes</a></td>
-									<td headers="opção"><a href="ExcluirEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Desativar</a></td>
+									<td headers="opÃ§Ã£o"><a href="PerfilEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Detalhes</a></td>
+									<td headers="opÃ§Ã£o"><a href="ExcluirEstabelecimentoServlet?id_estabelecimento=${estabelecimento.id_estabelecimento}" class="button2">Desativar</a></td>
 									
 								</tr>
 								</c:forEach>

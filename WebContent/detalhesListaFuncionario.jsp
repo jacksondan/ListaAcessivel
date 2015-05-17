@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="fafica.listaacessivel.negocios.util.SituacaoLista" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista Acessível - Detalhes da Lista</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lista AcessÃ­vel - Detalhes da Lista</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <script type="text/javascript"  src="js/jquery.js"></script>
@@ -30,34 +30,34 @@
 		</header>
 				
 				<div id="infolista">
-				<fieldset><legend>Informações da Lista</legend>	
+				<fieldset><legend>InformaÃ§Ãµes da Lista</legend>	
 				<p class="p">Nome do Cliente: ${lista.cliente.nome}</p>
-				<p class="p">Situação da Lista: ${lista.situacao}</p>
-				<p class="p">Data de Criação:  ${lista.data_criacao}</p>	
-				<p class="p">Endereço do Cliente:</p>
+				<p class="p">SituaÃ§Ã£o da Lista: ${lista.situacao}</p>
+				<p class="p">Data de CriaÃ§Ã£o:  ${lista.data_criacao}</p>	
+				<p class="p">EndereÃ§o do Cliente:</p>
 				<p class="p">Rua: ${lista.cliente.endereco.rua}</p>				
 				<p class="p">Bairro: ${lista.cliente.endereco.bairro}</p>
-				<p class="p">Número: ${lista.cliente.endereco.numero}</p>
+				<p class="p">NÃºmero: ${lista.cliente.endereco.numero}</p>
 				<p class="p">Complemento: ${lista.cliente.endereco.complemento}</p>
-				<p class="p">Referência: ${lista.cliente.endereco.referencia}</p>				
+				<p class="p">ReferÃªncia: ${lista.cliente.endereco.referencia}</p>				
 				<p class="p">Telefone 1: ${lista.cliente.telefones[0]}</p>
 				<p class="p">Telefone 2: ${lista.cliente.telefones[1]}</p>
 				</fieldset>
 				</div>
 		
-				<table align="center"class="default" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
-				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
+				<table align="center"class="default" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponÃ­veis de acordo com o filtro,
+				Com as seguintes colunas, DescriÃ§Ã£o, Marca, Valor, Validade, Peso e funÃ§Ãµes  que sÃ£o, Selecionar usando um combo box e Digitar quantidade.">
 					<caption>Produtos da Lista</caption>
 			
 					<thead>
 
 						<tr>
-							<th rowspan="2"id="codigo_barra">Código de Barra</th>				
+							<th rowspan="2"id="codigo_barra">CÃ³digo de Barra</th>				
 							<th rowspan="2"id="marca">Marca</th>
 							<th rowspan="2"id="validade">Validade</th>
 							<th rowspan="2"id="peso">Peso</th>
 							<th rowspan="2"id="quantidade">Quantidade Solicitada</th>
-							<th rowspan="2"id="valor">Preço Unitário</th>
+							<th rowspan="2"id="valor">PreÃ§o UnitÃ¡rio</th>
 						</tr>
 					
 					</thead>
@@ -103,7 +103,7 @@
 						</li>
 					</c:if>
 					
-					<!--Se  Em Trânsito -->
+					<!--Se  Em TrÃ¢nsito -->
 
 					<c:if test="${lista.situacao == 'em transporte'}">
 						<li>

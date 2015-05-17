@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<title>Lista Acessível - Cadastro Funcionário</title>
+<meta charset="UTF-8">
+<title>Lista AcessÃ­vel - Cadastro FuncionÃ¡rio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -13,13 +13,13 @@
 <body>
 	<%@include file="headerEstabelecimento.html"%>
 
-	<%@include file="sidebarEstabelecimento.html"%>
+		<%@include file="sidebarEstabelecimento.jsp"%>
 	
 		<div id="content2">
 			<header class="major">
-				<h2>Cadastrar Funcionário</h2>
+				<h2>Cadastrar FuncionÃ¡rio</h2>
 			</header>
-			<!-- Formulário  aqui! -->
+			<!-- FormulÃ¡rio  aqui! -->
 			<form method="post"
 				action="CadastrarFuncionarioServlet">
 				<fieldset >
@@ -36,7 +36,7 @@
 						placeholder="Digite seu nome completo" name="nome" id="nome"
 						size=60 require="nome">
 						
-						<p><label for="matricula">Matrícula</label><br> <input type="text"
+						<p><label for="matricula">MatrÃ­cula</label><br> <input type="text"
 						placeholder="Digite a matricula do funcionario" name="matricula" id="matricula"
 						require="matricula" size="20">
 						</p>
@@ -45,7 +45,7 @@
 
 				<div class="12u">
 					<ul class="actions">
-						<li><input type="submit" value="Adicionar Funcionário" /></li>
+						<li><input type="submit" value="Adicionar FuncionÃ¡rio" /></li>
 						<!-- <li><input type="reset" value="Limpar" /></li>-->
 					</ul>
 				</div>

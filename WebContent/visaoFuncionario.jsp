@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Cliente"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
- 
-	<!DOCTYPE HTML>
-	<html>
-		<head>
-		<meta charset="ISO-8859-1">
-		<title>${acessoFuncionario.nome} - Início </title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>${acessoFuncionario.nome} - InÃ­cio </title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		
 		   <!--Load the AJAX API-->
@@ -25,7 +24,7 @@
 		      var solicitadas = parseInt('${listasSolicitadas}');
 		        var atendidas = parseInt('${listasAtendidas}');
 		      
-				// contrução do grafio
+				// contruÃ§Ã£o do grafio
 		      function drawChart() {
 		    	   var data = google.visualization.arrayToDataTable([
 		    	                                                     ['Atividade', 'Quantidade'],
@@ -35,12 +34,12 @@
 		    	                                                   ]);
 
 		    	                                                   var options = {
-		    	                                                     title: 'Gráfico de Atividades',
+		    	                                                     title: 'GrÃ¡fico de Atividades',
 		    	                                                     is3D: true,
 		    	                                                   };
 
 		        // Set chart options
-		        var options = {'title':'Gráfico de Atividades',
+		        var options = {'title':'GrÃ¡fico de Atividades',
 		                       'width':700,
 		                       'height':500,
 		                       'chartArea':{left:120,top:80},
@@ -63,10 +62,10 @@
 	<body>
 		<%@include file="headerFuncionario.html" %>
 
-		<%@include file="sidebarFuncionario.html" %>
+		<%@include file="sidebarFuncionario.jsp" %>
 				<div id="content2">
 					<header class="major">		
-						<h2>Menu Funcionário</h2>
+						<h2>Menu FuncionÃ¡rio</h2>
 					</header>
 					<div id="graficos">
 					<div id=chart_div></div>

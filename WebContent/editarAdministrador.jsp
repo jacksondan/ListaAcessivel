@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>	
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<title>Editar Administrador - Início</title>
+<meta charset="UTF-8">
+<title>Editar Administrador - InÃ­cio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -12,13 +12,13 @@
 </head>
 <body>
 	<%@include file="headerAdmin.html"%>
-	<%@include file="sidebarAdmin.html"%>
+	<%@include file="sidebarAdmin.jsp" %>
 	
 		<div id="content2">
 			<header class="major">
 				<h2>Editar Administrador</h2>
 			</header>
-			<!-- Formulário  aqui! -->
+			<!-- FormulÃ¡rio  aqui! -->
 			<form method="post"
 				action="EditarAdministradorServlet">
 				<fieldset >
@@ -42,7 +42,7 @@
 
 				<div class="12u">
 					<ul class="actions">
-						<li><input type="submit" value="Confirmar Edição" /></li>
+						<li><input type="submit" value="Confirmar EdiÃ§Ã£o" /></li>
 						
 					</ul>
 				</div>

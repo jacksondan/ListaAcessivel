@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Lista Acessível - Criar Lista Passo 03</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lista AcessÃ­vel - Criar Lista Passo 03</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
 .divs{display:none;
@@ -37,11 +37,11 @@ display:show;
               "sUrl" : "js/pt-br.txt"
              }    
         })});
-    //lógica  dos checkbox
+    //lÃ³gica  dos checkbox
     $(document).ready(function() {
-    $('.checkbox').click(function() { //quando clica  chama a função
-    $('.divs').hide(); //a div é escondida
-    $('.checkbox:checked').each(function() {   //o checkbox é marcado e chama a função
+    $('.checkbox').click(function() { //quando clica  chama a funÃ§Ã£o
+    $('.divs').hide(); //a div Ã© escondida
+    $('.checkbox:checked').each(function() {   //o checkbox Ã© marcado e chama a funÃ§Ã£o
     $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
     
     });
@@ -49,9 +49,9 @@ display:show;
     });
     
     $(document).ready(function() {
-        $('.checkbox').click(function() { //quando clica  chama a função
-        $('.divs2').hide(); //a div é escondida
-        $('.checkbox:checked').each(function() {   //o checkbox é marcado e chama a função
+        $('.checkbox').click(function() { //quando clica  chama a funÃ§Ã£o
+        $('.divs2').hide(); //a div Ã© escondida
+        $('.checkbox:checked').each(function() {   //o checkbox Ã© marcado e chama a funÃ§Ã£o
         $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
         
         });
@@ -59,9 +59,9 @@ display:show;
         });
     
     $(document).ready(function() {
-        $('.checkbox3').click(function() { //quando clica  chama a função
-        $('.divs3').hide(); //a div é escondida
-        $('.checkbox3:checked').each(function() {   //o checkbox é marcado e chama a função
+        $('.checkbox3').click(function() { //quando clica  chama a funÃ§Ã£o
+        $('.divs3').hide(); //a div Ã© escondida
+        $('.checkbox3:checked').each(function() {   //o checkbox Ã© marcado e chama a funÃ§Ã£o
         $('#d'+$(this).val()).show(); // o input que recebe a classe "d" recebe o valor e mostra o campo editavel do number
         
         });
@@ -100,10 +100,10 @@ display:show;
 		</div>
 				
 					
-				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
-				Com as seguintes colunas; Descrição do Produto composta por informações como, nome do produto, marca do produto e valor do produto, as outras colunas são funções como selecionar produto
-				 e outra para informar quantidade desejada. Dica, quando estiver na coluna  selecionar marque a caixa de seleção usando a tecla espaço.">
-					<caption>Produtos disponíveis do ${estabelecimento.nome_fantasia}</caption>
+				<table  id="produtos" class="display" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponÃ­veis de acordo com o filtro,
+				Com as seguintes colunas; DescriÃ§Ã£o do Produto composta por informaÃ§Ãµes como, nome do produto, marca do produto e valor do produto, as outras colunas sÃ£o funÃ§Ãµes como selecionar produto
+				 e outra para informar quantidade desejada. Dica, quando estiver na coluna  selecionar marque a caixa de seleÃ§Ã£o usando a tecla espaÃ§o.">
+					<caption>Produtos disponÃ­veis do ${estabelecimento.nome_fantasia}</caption>
 					<colgroup>
     							<col />
     							<col />
@@ -113,7 +113,7 @@ display:show;
 					
 					<tr>
 					
-						<th rowspan="1"id="descricao">Descrição</th>
+						<th rowspan="1"id="descricao">DescriÃ§Ã£o</th>
 						<th id="selecionar" rowspan="1">Selecionar</th>
 						<th id="quantidade" rowspan="1">Quantidade</th>	
 						
@@ -154,8 +154,8 @@ display:show;
 				</table>
 				
 				<div id="descri">
-				<label for="desc">Descrição da Lista</label><br>
-				<input type="text"name="descricaolista" value="${descricao}" id="desc"  placeholder="Digite a Descrição da Lista..." accesskey="s" size="30">
+				<label for="desc">DescriÃ§Ã£o da Lista</label><br>
+				<input type="text"name="descricaolista" value="${descricao}" id="desc"  placeholder="Digite a DescriÃ§Ã£o da Lista..." accesskey="s" size="30">
 				</div>
 				
 					<div id="finalizar">

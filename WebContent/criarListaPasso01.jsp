@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 	<meta http-equiv="pragma" content="no-cache">  
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Lista Acessível - Criar Lista Passo 01</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Lista AcessÃ­vel - Criar Lista Passo 01</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css"> 
 	<link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
-	<!-- Verificando se a sessão esta válida -->
+	<!-- Verificando se a sessÃ£o esta vÃ¡lida -->
 	<!-- <c:if test="${empty acessoCliente}">
 		<h1>Testando DIRECIONAMENTO NA PAGINA</h1> 
 		<%--
-			String mensagem = "Sessão encerrada ou expirada!";
+			String mensagem = "SessÃ£o encerrada ou expirada!";
 			request.setAttribute("mensagem", mensagem);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
@@ -35,7 +35,7 @@
 <ul class="actions2">							
 	<li><p><a href="CriarListaPasso2Servlet?categoria=supermercado" class="image"><img src="images/ic_mercado.png" alt="Categoria Super Mercado, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Supermercado</a></p></li>
 	<li><p><a href="CriarListaPasso2Servlet?categoria=padaria" class="image"><img src="images/ic_padaria.png" alt="Categoria Padaria, clicando aqui voce vai para a Categoria de"style="width:12em ;heigth:12em;">Padaria</a></p></li>
-	<li><p><a href="CriarListaPasso2Servlet?categoria=farmacia" class="image"><img src="images/ic_farmacia.png" alt="Categoria Farmácia, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Farmácia</a></p></li>
+	<li><p><a href="CriarListaPasso2Servlet?categoria=farmacia" class="image"><img src="images/ic_farmacia.png" alt="Categoria FarmÃ¡cia, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">FarmÃ¡cia</a></p></li>
 		<li><p><a href="CriarListaPasso2Servlet?categoria=livraria" class="image"><img src="images/ic_livraria.png" alt="Categoria Livraria, clicando aqui voce vai para a Categoria de "style="width:12em ;heigth:12em;">Livraria</a></p></li>
 </ul>
 		</div>			

@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1" import="fafica.listaacessivel.negocios.entidades.Cliente"%>
-	<!DOCTYPE HTML>
-	<html>
-		<head>
-		<meta charset="ISO-8859-1">
-		<title>Administrador - Menu</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Administrador - InÃ­cio</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		    <script type="text/javascript">
@@ -22,7 +23,7 @@
 		        var funcionarios= parseInt('${listaFuncionarios}');
 		        var estabelecimentos= parseInt('${listaEstabelecimentos}');
 		      
-				// contrução do grafio
+				// contruÃ§Ã£o do grafio
 		      function drawChart() {
 		    	   var data = google.visualization.arrayToDataTable([
 		    	                                                     ['Usuario', 'Quantidade'],
@@ -34,7 +35,7 @@
 		    	                                                 
 
 		        // Set chart options
-		        var options = {'title':'População do Sistema',
+		        var options = {'title':'PopulaÃ§Ã£o do Sistema',
 		        	
 		                       'width':700,
 		                       'height':500,
@@ -58,7 +59,7 @@
 	<body>
 		<%@include file="headerAdmin.html" %>
 
-		<%@include file="sidebarAdmin.html" %>
+		<%@include file="sidebarAdmin.jsp" %>
 		
 				<div id="content2">
 					<header class="major">		

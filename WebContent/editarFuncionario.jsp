@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<title>Editar Funcion·rio</title>
+<meta charset="UTF-8">
+<title>Editar Funcion√°rio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -12,13 +12,13 @@
 </head>
 <body>
 	<%@include file="headerEstabelecimento.html"%>
-	<%@include file="sidebarEstabelecimento.html"%>
+	<%@include file="sidebarEstabelecimento.jsp"%>
 	
 		<div id="content2">
 			<header class="major">
-				<h2>Editar Funcion·rio</h2>
+				<h2>Editar Funcion√°rio</h2>
 			</header>
-			<!-- Formul·rio  aqui! -->
+			<!-- Formul√°rio  aqui! -->
 			<form method="post"
 				action="EditarFuncionarioServlet">
 				<fieldset >
@@ -35,7 +35,7 @@
 						placeholder="Digite seu nome completo" name="nome" id="nome"
 						size=60 value="${funcionario.nome}"require="nome">
 						
-						<p><label for="matricula">MatrÌcula</label><br> <input type="text"
+						<p><label for="matricula">Matr√≠cula</label><br> <input type="text"
 						placeholder="Digite a matricula do funcionario" name="matricula" id="matricula"
 						require="matricula" value="${funcionario.matricula}"size="20">
 						</p>
@@ -44,7 +44,7 @@
 
 				<div class="12u">
 					<ul class="actions">
-						<li><input type="submit" value="Confirmar EdiÁ„o" /></li>
+						<li><input type="submit" value="Confirmar Edi√ß√£o" /></li>
 					
 					</ul>
 				</div>

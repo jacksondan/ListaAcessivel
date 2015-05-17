@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${acessoCliente.nome} - Minhas Listas</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -37,8 +37,8 @@
 		</header>
 		
 				<br/>
-				<table  id="listas" class="display" summary="Esta contém todas as suas Listas criadas,
-				Com as seguintes colunas, Descrição, Data de Criação, Valor total, Funções   em forma de links que são, Detalhes da lista, Editar  e Excluir.">
+				<table  id="listas" class="display" summary="Esta contÃ©m todas as suas Listas criadas,
+				Com as seguintes colunas, DescriÃ§Ã£o, Data de CriaÃ§Ã£o, Valor total, FunÃ§Ãµes   em forma de links que sÃ£o, Detalhes da lista, Editar  e Excluir.">
 					<caption>Minhas Listas</caption>
 					<colgroup>
     							<col />
@@ -50,16 +50,16 @@
 					
 					<tr>
 
-						<th rowspan="2"id="descrição">Descrição</th>
-						<th rowspan="2"id="situção">Situação</th>
-						<th rowspan="2"id="data">Data de Criação</th>
+						<th rowspan="2"id="descriÃ§Ã£o">DescriÃ§Ã£o</th>
+						<th rowspan="2"id="situÃ§Ã£o">SituaÃ§Ã£o</th>
+						<th rowspan="2"id="data">Data de CriaÃ§Ã£o</th>
 						<th rowspan="2"id="total">Valor Total</th>					
-						<th colspan="3"id="função">Funções</th>
+						<th colspan="3"id="funÃ§Ã£o">FunÃ§Ãµes</th>
 					</tr>
 					<tr>
-						<th id="detalhes" axis="função">Detalhes</th>
-						<th id="editar" axis="função">Editar</th>
-						<th id="exlcuir" axis="função">Excluir</th>
+						<th id="detalhes" axis="funÃ§Ã£o">Detalhes</th>
+						<th id="editar" axis="funÃ§Ã£o">Editar</th>
+						<th id="exlcuir" axis="funÃ§Ã£o">Excluir</th>
 							
 					</tr>
 					</thead>
@@ -70,7 +70,7 @@
 					<c:forEach items="${listas}" var="listas" varStatus="status">
 						<tr>
 							<td headers="descricao">${listas.descricao}</td>
-							<td headers="situação">${listas.situacao}</td>
+							<td headers="situaÃ§Ã£o">${listas.situacao}</td>
 							<td headers="data">${listas.data_criacao}</td>
 							<td headers="total">R$ ${listas.valor_total}</td>
 							<td headers="detalhes"><a href="DetalhesListaServlet?id_lista=${listas.id_lista}" class="button2">Detalhes</a></td>

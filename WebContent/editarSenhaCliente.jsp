@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"
 	import="fafica.listaacessivel.negocios.entidades.Cliente"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
-<title>${acessoCliente.nome} - Início</title>
+<meta charset="UTF-8">
+<title>${acessoCliente.nome} - InÃ­cio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -25,7 +25,7 @@
 			action="http://localhost:8080/ListaAcessivel/EditarSenhaClienteServlet">
 			<p style="text-align: center; color: green;">${mensagem}</p>
 			<fieldset>
-				<legend>Edição de Senha</legend>
+				<legend>EdiÃ§Ã£o de Senha</legend>
 
 				<p>
 					<label for="senhaAtual">Senha Atual</label><br><input type="password"

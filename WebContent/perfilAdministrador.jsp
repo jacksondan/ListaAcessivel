@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" 	import="java.util.ArrayList"%>
- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
- 
-<!DOCTYPE HTML>
-
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Administrador - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -14,7 +12,7 @@
 <body>
 				
 <%@include file="headerAdmin.html" %>
-<%@include file="sidebarAdmin.html" %>		
+<%@include file="sidebarAdmin.jsp" %>
 			<div id="content2">
 			<!-- titulo do conteudo-->
 			<header class="major">		

@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" 	import="java.util.ArrayList"%>
- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
- 
-<!DOCTYPE HTML>
-
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${acessoFuncionario.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -14,7 +12,7 @@
 <body>
 				
 <%@include file="headerFuncionario.html" %>
-<%@include file="sidebarFuncionario.html" %>		
+<%@include file="sidebarFuncionario.jsp" %>		
 			<div id="content">
 			<!-- titulo do conteudo-->
 			<header class="major">		
@@ -36,7 +34,7 @@
 				
 				<p class="p">Estabelecimento: ${acessoFuncionario.estabelecimento.nome_fantasia}</p>
 				
-				<p class="p">Matrícula: ${acessoFuncionario.matricula}</p>
+				<p class="p">MatrÃ­cula: ${acessoFuncionario.matricula}</p>
 
 			</fieldset>
 							<div class="menu">

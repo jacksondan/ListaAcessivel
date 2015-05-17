@@ -1,19 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
-	
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>${acessoEstabelecimento.nome_fantasia} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 		<%@include file="headerEstabelecimento.html"%>
-		<%@include file="sidebarEstabelecimento.html"%>
+		<%@include file="sidebarEstabelecimento.jsp"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Perfil Estabelecimento</h2>
@@ -23,7 +22,7 @@
 				<legend>Dados do Estabelecimento</legend>
 					E-mail: 	   ${acessoEstabelecimento.email}<br/>
 					Nome Fantasia: ${acessoEstabelecimento.nome_fantasia}<br/>
-					Nome Jurídico: ${acessoEstabelecimento.nome_juridico}<br/>
+					Nome JurÃ­dico: ${acessoEstabelecimento.nome_juridico}<br/>
 					CNPJ:		   ${acessoEstabelecimento.cnpj}<br/>
 					Categoria: 	   ${acessoEstabelecimento.categoria}
 			</fieldset>
@@ -37,16 +36,16 @@
 			</fieldset>
 			
 			<fieldset>
-				<legend>Dados de Localização</legend>
+				<legend>Dados de LocalizaÃ§Ã£o</legend>
 				
 					CEP: 		   ${acessoEstabelecimento.endereco.cep }<br/>
 					Estado:        ${acessoEstabelecimento.endereco.estado}<br/>
 					Cidade:        ${acessoEstabelecimento.endereco.cidade}<br/>
 					Bairro:        ${acessoEstabelecimento.endereco.bairro}<br/>
 					Rua:           ${acessoEstabelecimento.endereco.rua}<br/>
-					Número:		   ${acessoEstabelecimento.endereco.numero}<br/>
+					NÃºmero:		   ${acessoEstabelecimento.endereco.numero}<br/>
 					Complemento:   ${acessoEstabelecimento.endereco.complemento}<br/>
-					Referência:	   ${acessoEstabelecimento.endereco.referencia}<br/>
+					ReferÃªncia:	   ${acessoEstabelecimento.endereco.referencia}<br/>
 
 					</fieldset>
 

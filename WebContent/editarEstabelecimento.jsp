@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Editar Estabelecimento</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
@@ -24,8 +24,7 @@
 </head>
 <body>
 	<%@include file="headerEstabelecimento.html"%>
-
-	<%@include file="sidebarEstabelecimento.html"%>
+	<%@include file="sidebarEstabelecimento.jsp"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Estabelecimento</h2>

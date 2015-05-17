@@ -1,18 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
-<title>ListaAcessível</title>
+<meta charset="UTF-8">
+<title>ListaAcessÃ­vel</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 
 	<%@include file="headerEstabelecimento.html"%>
-
-	<%@include file="sidebarEstabelecimento.html"%>
+	<%@include file="sidebarEstabelecimento.jsp"%>
 
 
 	<div id="content2">
@@ -20,7 +19,7 @@
 			<h2>Cadastro de Produtos</h2>
 			<h4>${mensagem}</h4>
 		</header>
-		<!-- Formulário aqui! -->
+		<!-- FormulÃ¡rio aqui! -->
 		<form method="post"
 			action="http://localhost:8080/ListaAcessivel/CadastrarProdutoServlet">
 
@@ -29,8 +28,8 @@
 					<strong>Dados do Produto</strong>
 				</legend>
 				<p>
-					<label for="descrição">Descrição:</label> <input type="text"
-						name="descricao" id="descrição" size=60>
+					<label for="descriÃ§Ã£o">DescriÃ§Ã£o:</label> <input type="text"
+						name="descricao" id="descriÃ§Ã£o" size=60>
 				</p>
 				<p>
 					<label for="marca">Marca:</label> <input type="text"
@@ -38,9 +37,9 @@
 				</p>
 				
 				<p>
-					<label for="valor">Preço:</label> <input type="text" name="valor"
+					<label for="valor">PreÃ§o:</label> <input type="text" name="valor"
 						id="valor" size=10> <label
-					for="quantidade">Código de Barra:</label> <input type="text" name="codigo_barra"
+					for="quantidade">CÃ³digo de Barra:</label> <input type="text" name="codigo_barra"
 					id="codigo_de_barra" size=20>					
 				</p>
 				<label for="quantidade">Quantidade:</label> <input type="text"
@@ -50,7 +49,7 @@
 				<p>
 					<label for="categoria">Categoria:<select
 						name="categoria" id="categoria">
-							<option selected="não selecionado" value="não selecionado">Escolha
+							<option selected="nÃ£o selecionado" value="nÃ£o selecionado">Escolha
 								a categoria</option>
 							<option value="frios">Frios</option>
 							<option value="limpeza">Limpeza</option>

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
-<title>Lista Acessível - Cadastro Estabelecimento</title>
+<meta charset="UTF-8">
+<title>Lista AcessÃ­vel - Cadastro Estabelecimento</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -22,7 +22,7 @@
 </head>
 <body>
 	<%@include file="headerAdmin.html"%>
-	<%@include file="sidebarAdmin.html"%>
+	<%@include file="sidebarAdmin.jsp" %>
 
 	<div id="content2">
 		<header class="major">
@@ -48,8 +48,8 @@
 				<label for="nome_fantasia">Nome Fantasia:</label> <input type="text"
 					placeholder="Digite o nome fantasia" name="nome_fantasia"
 					id="nome_fantasia" size=60 required="nome_fantasia"> <label
-					for="nome_juridico">Nome Jurídico:</label> <input type="text"
-					placeholder="Digite o nome Jurídico" name="nome_juridico"
+					for="nome_juridico">Nome JurÃ­dico:</label> <input type="text"
+					placeholder="Digite o nome JurÃ­dico" name="nome_juridico"
 					id="nome_juridico" size=60 required="nome_juridico"> <label
 					for="email">E-mail:</label> <input type="email"
 					placeholder="Digite o E-mail" name="email" id="email" size=60
@@ -57,7 +57,7 @@
 					name="categoria" required="categoria">
 					<option>Supermercado</option>
 					<option>Padaria</option>
-					<option>Farmácia</option>
+					<option>FarmÃ¡cia</option>
 					<option>Livraria</option>
 				</select>
 			</fieldset>
@@ -74,7 +74,7 @@
 			</fieldset>
 
 			<fieldset>
-				<legend>Dados de Localização</legend>
+				<legend>Dados de LocalizaÃ§Ã£o</legend>
 
 				<label for="cep">CEP:</label><br> <input type="text"
 					placeholder="Digite o CEP" onblur="consultacep(this.value)"
@@ -87,15 +87,15 @@
 					placeholder="Digite o Bairro" name="bairro" id="bairro" size=30
 					required="bairro"><br> <label for="rua">Rua:</label><br>
 				<input type="text" placeholder="Digite a Rua" name="rua" id="rua"
-					size=60 required="rua"><br> <label for="numero">Número:</label><br>
-				<input type="text" placeholder="Digite número" name="numero"
+					size=60 required="rua"><br> <label for="numero">NÃºmero:</label><br>
+				<input type="text" placeholder="Digite nÃºmero" name="numero"
 					id="numero" size=4 required="numero"><br> <label
 					for="complemento">Complemento:</label><br> <input type="text"
 					name="complemento" id="complemento" size=60 required="complemento"><br>
 
 
-				<label for="referencia">Referência:</label><br> <input
-					type="text" placeholder="Digite Referência" name="referencia"
+				<label for="referencia">ReferÃªncia:</label><br> <input
+					type="text" placeholder="Digite ReferÃªncia" name="referencia"
 					id="referencia" size=60 required="referencia"><br>
 
 			</fieldset>

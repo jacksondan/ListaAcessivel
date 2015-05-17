@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Editar Estabelecimento</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
@@ -24,7 +24,7 @@
 </head>
 <body>
 		<%@include file="headerAdmin.html"%>
-		<%@include file="sidebarAdmin.html"%>
+		<%@include file="sidebarAdmin.jsp" %>
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Estabelecimento</h2>
@@ -42,7 +42,7 @@
 				<label for="nome_fantasia">Nome Fantasia:</label> <input type="text"
 					name="nome_fantasia" id="nome_fantasia"
 					value="${editarEstabelecimento.nome_fantasia}" size=60 required="nome_fantasia"> <label
-					for="nome_juridico">Nome Jurídico:</label> <input type="text"
+					for="nome_juridico">Nome JurÃ­dico:</label> <input type="text"
 					name="nome_juridico" id="nome_juridico"
 					value="${editarEstabelecimento.nome_juridico}" size=60 required="nome_juridico"> <label
 					for="cnpj">CPNPJ:</label><br> <input type="text" name="cnpj"
@@ -53,7 +53,7 @@
 						value="${editarEstabelecimento.categoria}">${editarEstabelecimento.categoria}</option>
 					<option>Supermercado</option>
 					<option>Padaria</option>
-					<option>Farmácia</option>
+					<option>FarmÃ¡cia</option>
 					<option>Livraria</option>
 					
 					
@@ -62,7 +62,7 @@
 
 			
 			<fieldset>
-				<legend>Dados de Localização</legend>
+				<legend>Dados de LocalizaÃ§Ã£o</legend>
 				<p>
 					<label for="cep">CEP:</label><br> <input type="text"
 						name="cep" id="cep" value="${editarEstabelecimento.endereco.cep }"  onblur="consultacep(this.value)" size=20 required="cep"><br>
@@ -77,7 +77,7 @@
 					<label for="rua">Rua:</label><br> <input type="text"
 						name="rua" id="rua" value="${editarEstabelecimento.endereco.rua}" size=60 required="rua"><br>
 
-					<label for="numero">Número:</label><br> <input type="text"
+					<label for="numero">NÃºmero:</label><br> <input type="text"
 						name="numero" id="numero" value="${editarEstabelecimento.endereco.numero}"
 						size=4 required="numero"><br>
 						
@@ -86,7 +86,7 @@
 					<input type="text"
 					name="complemento" id="complemento" value="${editarEstabelecimento.endereco.complemento}" size=60 required="complemento"><br>
 						
-						 <label for="referencia">Referência:</label><br>
+						 <label for="referencia">ReferÃªncia:</label><br>
 					<input type="text" name="referencia" id="referencia"
 						value="${editarEstabelecimento.endereco.referencia}" size=60 required="referencia"><br>
 			</fieldset>

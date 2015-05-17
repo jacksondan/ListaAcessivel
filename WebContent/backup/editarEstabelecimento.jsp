@@ -25,7 +25,7 @@
 <body>
 	<%@include file="/headerEstabelecimento.html"%>
 
-	<%@include file="/sidebarEstabelecimento.html"%>
+		<%@include file="/sidebarEstabelecimento.jsp"%>
 	<div id="content2">
 		<header class="major">
 			<h2>Editar Estabelecimento</h2>

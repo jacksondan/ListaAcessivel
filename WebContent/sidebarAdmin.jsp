@@ -1,8 +1,10 @@
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 	<div id="sidebar2">
 		<div id="nav">
 				<ul class="menu">
 				<li></li>
-							<li><p><a href="VisaoAdministradorServlet" class="button3">Informações</a></p></li>							
+							<li><p><a href="VisaoAdministradorServlet" class="button3">InformaÃ§Ãµes</a></p></li>							
 							<li><p><a href="PerfilAdministradorServlet" class="button3">Perfil Administrador</a></p></li>	
 							<li><p><a href="CadastrarAdministradorServlet" class="button3">Novo Administrador</a></p></li>
 							<li><p><a href="CadastrarEstabelecimentoServlet" class="button3">Novo Estabelecimento</a></p></li>						    

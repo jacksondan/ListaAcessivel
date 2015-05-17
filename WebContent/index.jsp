@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
-<title>Lista Acessível - Início</title>
+<meta charset="UTF-8">
+<title>Lista AcessÃ­vel - InÃ­cio</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
 	
@@ -13,7 +13,7 @@
 		
 				<div id="header-wrapper">
 				<div id="header" class="container">
-						<h1 id="logo2"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessível"  style="width:6.6em ;heigth:16em;"></a></h1>
+						<h1 id="logo2"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessÃ­vel"  style="width:6.6em ;heigth:16em;"></a></h1>
 
 					</div>
 				</div>
@@ -28,13 +28,13 @@
 			
 				<div id=body>
 		
-				<p align="center">A <i> Lista Acessível </i> tem como objetivo contribuir para que pessoas com 
-				deficiência visual possam realizar compras através da criação de listas 
-				de produtos de estabelecimentos comerciais por um serviço online.</p>
-				<p align="center">O usuário terá acesso a um acervo de produtos disponibilizados pelos 
-				próprios estabelecimentos, esses estabelecimentos serão selecionados de 
-				acordo com a localização do usuário para melhor comodidade e disponibilidade 
-				de entregas em domicílio.</p>
+				<p align="center">A <i> Lista AcessÃ­vel </i> tem como objetivo contribuir para que pessoas com 
+				deficiÃªncia visual possam realizar compras atravÃ©s da criaÃ§Ã£o de listas 
+				de produtos de estabelecimentos comerciais por um serviÃ§o online.</p>
+				<p align="center">O usuÃ¡rio terÃ¡ acesso a um acervo de produtos disponibilizados pelos 
+				prÃ³prios estabelecimentos, esses estabelecimentos serÃ£o selecionados de 
+				acordo com a localizaÃ§Ã£o do usuÃ¡rio para melhor comodidade e disponibilidade 
+				de entregas em domicÃ­lio.</p>
 				
 				<center><img src="images/homei.jpg" alt="imagem ilustrativa, mostrandando uma cesta de compras e um teclado no fundo" style="width:52.5%;"/></center>
 				</div>

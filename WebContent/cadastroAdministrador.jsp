@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="utf-8">
-<title>ListaAcessível - Cadastro Administrador</title>
+<meta charset="UTF-8">
+<title>ListaAcessÃ­vel - Cadastro Administrador</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -20,14 +20,13 @@ jQuery(function($){
 </head>
 <body>
 	<%@include file="headerAdmin.html"%>
-
-	<%@include file="sidebarAdmin.html"%>
+	<%@include file="sidebarAdmin.jsp" %>
 	
 		<div id="content2">
 			<header class="major">
 				<h2>Cadastrar Novo Administrador</h2>
 			</header>
-			<!-- Formulário  aqui! -->
+			<!-- FormulÃ¡rio  aqui! -->
 			<form method="post"
 				action="CadastrarAdministradorServlet">
 				<fieldset >

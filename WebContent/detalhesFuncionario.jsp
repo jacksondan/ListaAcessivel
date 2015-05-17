@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" 	import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" 	import="java.util.ArrayList"%>
  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
  
 <!DOCTYPE HTML>
 
-<html>
+<html lang="UTF-8">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${cliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -14,12 +14,12 @@
 <body>
 				
 <%@include file="headerEstabelecimento.html" %>
-<%@include file="sidebarEstabelecimento.html"%>	
+<%@include file="sidebarEstabelecimento.jsp"%>
 	
 			<div id="content">
 			<!-- titulo do conteudo-->
 			<header class="major">		
-					<h2>Detalhes do Funcionário</h2>
+					<h2>Detalhes do FuncionÃ¡rio</h2>
 			</header>
 			<!-- Conteudo-->
 
@@ -34,7 +34,7 @@
 			<legend>Dados Pessoais</legend>
 				Nome: ${funcionario.nome} <br/>
 				
-				Matrícula: ${funcionario.matricula} <br/>
+				MatrÃ­cula: ${funcionario.matricula} <br/>
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">

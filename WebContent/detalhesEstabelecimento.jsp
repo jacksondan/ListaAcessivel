@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
-<html>
+<html lang="pt-br">
 <head>
-<meta charset="ISO-8859-1">
-<title>ListaAcessível - Detalhes do Estabelecimento</title>
+<meta charset="UTF-8">
+<title>ListaAcessÃ­vel - Detalhes do Estabelecimento</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <link rel="shortcut icon" href="images/logtop.png" />
 </head>
 <body>
 		<%@include file="headerAdmin.html"%>
-		<%@include file="sidebarAdmin.html"%>
+		<%@include file="sidebarAdmin.jsp" %>
 	<div id="content2">
 		<header class="major">
 			<h2>Detalhes do Estabelecimento</h2>
@@ -22,7 +22,7 @@
 				<legend>Dados do Estabelecimento</legend>
 					E-mail: 	   ${estabelecimento.email}<br/>
 					Nome Fantasia: ${estabelecimento.nome_fantasia}<br/>
-					Nome Jurídico: ${estabelecimento.nome_juridico}<br/>
+					Nome JurÃ­dico: ${estabelecimento.nome_juridico}<br/>
 					CNPJ:		   ${estabelecimento.cnpj}<br/>
 					Categoria: 	   ${estabelecimento.categoria}
 			</fieldset>
@@ -35,16 +35,16 @@
 				
 			</fieldset>
 			<fieldset>
-				<legend>Dados de Localização</legend>
+				<legend>Dados de LocalizaÃ§Ã£o</legend>
 				
 					CEP: 		   ${estabelecimento.endereco.cep }<br/>
 					Estado:        ${estabelecimento.endereco.estado}<br/>
 					Cidade:        ${estabelecimento.endereco.cidade}<br/>
 					Bairro:        ${estabelecimento.endereco.bairro}<br/>
 					Rua:           ${estabelecimento.endereco.rua}<br/>
-					Número:		   ${estabelecimento.endereco.numero}<br/>
+					NÃºmero:		   ${estabelecimento.endereco.numero}<br/>
 					Complemento:   ${estabelecimento.endereco.complemento}<br/>
-					Referência:	   ${estabelecimento.endereco.referencia}<br/>
+					ReferÃªncia:	   ${estabelecimento.endereco.referencia}<br/>
 					</fieldset>
 			<div class="nav">
 										<ul class="actions">

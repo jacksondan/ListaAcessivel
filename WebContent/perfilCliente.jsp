@@ -1,12 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" 	import="java.util.ArrayList"%>
- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
- 
-<!DOCTYPE HTML>
-
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${acessoCliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
@@ -46,16 +44,16 @@
 						
 			<fieldset >
 			
-				<legend>Dados de Localização</legend>
+				<legend>Dados de LocalizaÃ§Ã£o</legend>
 			
 				<p class="p">Estado: 		${acessoCliente.endereco.estado}</p>
 				<p class="p">CEP: 			${acessoCliente.endereco.cep}</p>
 				<p class="p">Cidade: 		${acessoCliente.endereco.cidade}</p>
 				<p class="p">Bairro: 		${acessoCliente.endereco.bairro}</p>
 				<p class="p">Rua: 			${acessoCliente.endereco.rua}</p>
-				<p class="p">Número: 		${acessoCliente.endereco.numero}</p>
+				<p class="p">NÃºmero: 		${acessoCliente.endereco.numero}</p>
 				<p class="p">Complemento: 	${acessoCliente.endereco.complemento}</p>
-				<p class="p">Referência: 	${acessoCliente.endereco.referencia}</p>
+				<p class="p">ReferÃªncia: 	${acessoCliente.endereco.referencia}</p>
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">
