@@ -1,6 +1,7 @@
 package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -45,7 +46,10 @@ public class ExcluirListaMobileServlet extends HttpServlet {
 			
 			lista = fachada.pesquisarLista(lista);
 			
-			fachada.excluirLista(lista);		
+			fachada.excluirLista(lista);
+			
+			PrintWriter out = response.getWriter();
+			out.println("sucesso");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

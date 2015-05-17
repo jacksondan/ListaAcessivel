@@ -1,6 +1,7 @@
 package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -49,7 +50,10 @@ public class SolicitarListaMobileServlet extends HttpServlet {
 			
 			lista.setSituacao(SituacaoLista.SOLICITADA.toString());
 			
-			fachada.alterarLista(lista);		
+			fachada.alterarLista(lista);
+			
+			PrintWriter out = response.getWriter();
+			out.println("sucesso");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
