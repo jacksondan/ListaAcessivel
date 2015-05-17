@@ -19,7 +19,7 @@ import fafica.listaacessivel.negocios.entidades.Lista;
 /**
  * Servlet implementation class EditarListaPasso1
  */
-@WebServlet("/EditarListaPasso1")
+@WebServlet("/EditarListaPasso1MobileServlet")
 public class EditarListaPasso1MobileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
