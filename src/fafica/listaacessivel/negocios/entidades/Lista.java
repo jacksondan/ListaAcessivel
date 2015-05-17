@@ -25,6 +25,16 @@ public class Lista {
 		this.produtos = produtos;
 	}
 
+    public Lista(int id_lista, String descricao, String situacao, Cliente cliente, Estabelecimento estabelecimento, List<Produto> produtos) {
+        this.id_lista = id_lista;
+        this.descricao = descricao;
+        this.situacao = situacao;
+        this.cliente = cliente;
+        this.estabelecimento = estabelecimento;
+        this.produtos = produtos;
+    }
+
+
 	public Lista(int id_lista, String descricao, String situacao,
 			String data_criacao, String data_alteracao, int quantidade_total,
 			float valor_total, Cliente cliente,
