@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Editar Produto</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -18,7 +19,7 @@
 		<header class="major">
 			<h2>Editar Produto</h2>
 		</header>
-		<!-- FormulÃ¡rio aqui! -->
+		<!-- Formulário aqui! -->
 		<form method="post" action="EditarProdutoServlet">
 
 			<!--Enviando os id necessarios pelo formulario para montar o objeto no servlet-->
@@ -33,8 +34,8 @@
 				</legend>
 
 				<p>
-					<label for="descriÃ§Ã£o">DescriÃ§Ã£o:</label> <input type="text"
-						name="descricao" id="descriÃ§Ã£o" value="${editarProduto.descricao}"
+					<label for="descrição">Descrição:</label> <input type="text"
+						name="descricao" id="descrição" value="${editarProduto.descricao}"
 						size=60>
 				</p>
 				<p>
@@ -43,9 +44,9 @@
 				</p>
 
 				<p>
-					<label for="valor">PreÃ§o:</label> <input type="text" name="valor"
+					<label for="valor">Preço:</label> <input type="text" name="valor"
 						id="valor" value="${editarProduto.valor}" size=10> <label
-						for="quantidade">CÃ³digo de Barra:</label> <input type="text"
+						for="quantidade">Código de Barra:</label> <input type="text"
 						name="codigo_de_barra" id="codigo_barra"
 						value="${editarProduto.codigo_barra}" size=20>
 				</p>

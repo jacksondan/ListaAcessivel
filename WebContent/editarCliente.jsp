@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>${acessoCliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
@@ -36,7 +36,7 @@ jQuery(function($){
 		</header>
 
 
-		<!-- FormulÃ¡rio aqui! -->
+		<!-- Formulário aqui! -->
 		<form method="post"
 			action="EditarClienteServlet">
 			
@@ -68,7 +68,7 @@ jQuery(function($){
 			</fieldset>
 
 			<fieldset>
-				<legend>Dados de LocalizaÃ§Ã£o</legend>
+				<legend>Dados de Localização</legend>
 				
 					
 
@@ -86,14 +86,14 @@ jQuery(function($){
 
 				<label for="rua">Rua:</label><br> <input type="text" name="rua"
 					id="rua" value="${acessoCliente.endereco.rua}" size=60 required="rua"> <br> <label
-					for="numero">NÃºmero:</label><br> <input type="text"
+					for="numero">Número:</label><br> <input type="text"
 					name="numero" id="numero" value="${acessoCliente.endereco.numero}" size=4 required="numero"><br>
 					
 					<label
 					for="complemento">Complemento:</label><br> <input type="text"
 					name="complemento" id="complemento" value="${acessoCliente.endereco.complemento}" size=60 required="complemento"><br>
 
-				<label for="referencia">ReferÃªncia:</label><br> <input
+				<label for="referencia">Referência:</label><br> <input
 					type="text" name="referencia" id="referencia"
 					value="${acessoCliente.endereco.referencia}" size=60 required="referencia"><br>
 

@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	    pageEncoding="UTF-8" import="fafica.listaacessivel.negocios.entidades.Produto"%>
-	    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<!DOCTYPE HTML>
-	<html lang="pt-br">
-		<head>
-		<meta charset="UTF-8">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="ISO-8859-1">
 		<title>Lista de Produtos</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -39,15 +40,15 @@
 								<colgroup>
     							<col />
     							<col />
-   			 					<col span="2" /><!-- Agrupamento das colunas PortuguÃªs e MatemÃ¡tica Ã  cÃ©lula de cabeÃ§alho MatÃ©rias -->
+   			 					<col span="2" /><!-- Agrupamento das colunas Português e Matemática à célula de cabeçalho Matérias -->
   								</colgroup>
 								<thead>
 								<tr>	
-									<th  rowspan="2" id="descricao">DescriÃ§Ã£o</th>
-									<th rowspan="2" id="preco">PreÃ§o</th>
+									<th  rowspan="2" id="descricao">Descrição</th>
+									<th rowspan="2" id="preco">Preço</th>
 									<th rowspan="2" id="categoria">Categoria</th>
 									<th rowspan="2" id="quantidade">Quantidade</th>
-									<th colspan="2" id="opcao">OpÃ§Ãµes</th>
+									<th colspan="2" id="opcao">Opções</th>
 									</tr>
 									<tr>
 									<th  id="editar" axis="opcao">Editar</th>

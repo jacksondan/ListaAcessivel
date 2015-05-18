@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="ISO-8859-1">
 <title>${acessoFuncionario.nome} - Listas Atendidas</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -51,11 +52,11 @@
 					<tr>
 
 						<th rowspan="1"id="nome_cliente">Nome do Cliente</th>
-						<th rowspan="1"id="situÃ§Ã£o">SituaÃ§Ã£o da Lista</th>
-						<th rowspan="1"id="data">Data de CriaÃ§Ã£o</th>
+						<th rowspan="1"id="situção">Situação da Lista</th>
+						<th rowspan="1"id="data">Data de Criação</th>
 						<th rowspan="1"id="total">Quantidade de Produtos da Lista</th>
 						<th rowspan="1"id="total">Valor Total da Lista</th>					
-						<th colspan="1"id="funÃ§Ã£o">FunÃ§Ãµes</th>
+						<th colspan="1"id="função">Funções</th>
 					</tr>
 					
 					</thead>
@@ -65,7 +66,7 @@
 					<c:forEach items="${listas_Encaminhadas}" var="listas" varStatus="status">
 						<tr>
 							<td headers="nome_cliente">${listas.cliente.nome}</td>
-							<td headers="situaÃ§Ã£o">${listas.situacao}</td>
+							<td headers="situação">${listas.situacao}</td>
 							<td headers="data">${listas.data_criacao}</td>
 							<td headers="data">${listas.quantidade_total}</td>
 							<td headers="total">R$ ${listas.valor_total}</td>

@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>ListaAcessÃ­vel - Cadastro Administrador</title>
+<meta charset="ISO-8859-1">
+<title>ListaAcessível - Cadastro Administrador</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -26,7 +28,7 @@ jQuery(function($){
 			<header class="major">
 				<h2>Cadastrar Novo Administrador</h2>
 			</header>
-			<!-- FormulÃ¡rio  aqui! -->
+			<!-- Formulário  aqui! -->
 			<form method="post"
 				action="CadastrarAdministradorServlet">
 				<fieldset >

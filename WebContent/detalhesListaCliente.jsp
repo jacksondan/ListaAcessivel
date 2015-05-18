@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>${acessoCliente.nome} - Detalhes da lista</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
@@ -32,11 +32,11 @@
 		</header>
 				
 				<div id="infolista">
-				<fieldset><legend>InformaÃ§Ãµes da Lista</legend>
+				<fieldset><legend>Informações da Lista</legend>
 				
-				<p class="p">DescriÃ§Ã£o: ${lista.descricao}</p>
-				<p class="p">SituaÃ§Ã£o da Lista: ${lista.situacao}</p>
-				<p class="p">Data de CriaÃ§Ã£o:  ${lista.data_criacao}</p>					
+				<p class="p">Descrição: ${lista.descricao}</p>
+				<p class="p">Situação da Lista: ${lista.situacao}</p>
+				<p class="p">Data de Criação:  ${lista.data_criacao}</p>					
 				<p class="p">Estabelecimento:  ${lista.estabelecimento.nome_fantasia}</p>
 				<p class="p">Bairro do Estabelecimento:${lista.estabelecimento.endereco.bairro}</p>
 				<p class="p">Rua  do Estabelecimento: ${lista.estabelecimento.endereco.rua}</p>
@@ -46,19 +46,19 @@
 				</fieldset>
 				</div>
 		
-				<table align="center"class="default" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponÃ­veis de acordo com o filtro,
-				Com as seguintes colunas, DescriÃ§Ã£o, Marca, Valor, Validade, Peso e funÃ§Ãµes  que sÃ£o, Selecionar usando um combo box e Digitar quantidade.">
+				<table align="center"class="default" summary="Tabela com Produtos do Estabelecimento ${estabelecimento.nome_fantasia} disponíveis de acordo com o filtro,
+				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade.">
 					<caption>Produtos da Lista</caption>
 			
 					<thead>
 
 						<tr>				
-							<th rowspan="2"id="descricao">DescriÃ§Ã£o</th>
+							<th rowspan="2"id="descricao">Descrição</th>
 							<th rowspan="2"id="marca">Marca</th>
 							<th rowspan="2"id="validade">Validade</th>
 							<th rowspan="2"id="peso">Peso</th>
 							<th rowspan="2"id="quantidade">Quantidade Solicitada</th>
-							<th rowspan="2"id="valor">PreÃ§o UnitÃ¡rio</th>
+							<th rowspan="2"id="valor">Preço Unitário</th>
 						</tr>
 					
 					</thead>

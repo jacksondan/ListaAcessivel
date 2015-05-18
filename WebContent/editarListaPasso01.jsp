@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Lista AcessÃ­vel - Editar Lista Passo 1</title>
+<meta charset="ISO-8859-1">
+<title>Lista Acessível - Editar Lista Passo 1</title>
 <style>
 /* ESCONDE TODAS AS DIVS */
 .divs{display:block;
@@ -28,7 +29,7 @@
               "sUrl" : "js/pt-br.txt"
              }    
         })});
-    //lÃ³gica  dos checkbox
+    //lógica  dos checkbox
     $(document).ready(function() {
     $('.checkbox').click(function() {
     $('.divs').hide();
@@ -54,8 +55,8 @@
 				<form action="EditarListaPasso1Servlet" id="formlista" method="POST">
 				
 					
-				<table  id="produtos" class="display" summary="Tabela de EdiÃ§Ã£o de lista com Produtos do Estabelecimento ${listaSession.estabelecimento.nome_fantasia}, da lista ${listaSession.descricao}
-				Com as seguintes colunas, DescriÃ§Ã£o, Marca, Valor, Validade, Peso e funÃ§Ãµes  que sÃ£o, Selecionar usando um combo box e Digitar quantidade, nesta tela.">
+				<table  id="produtos" class="display" summary="Tabela de Edição de lista com Produtos do Estabelecimento ${listaSession.estabelecimento.nome_fantasia}, da lista ${listaSession.descricao}
+				Com as seguintes colunas, Descrição, Marca, Valor, Validade, Peso e funções  que são, Selecionar usando um combo box e Digitar quantidade, nesta tela.">
 					<caption>Produtos da Lista ${listaSession.descricao} </caption>
 					<colgroup>
     							<col />
@@ -66,7 +67,7 @@
 					
 					<tr>
 					
-						<th rowspan="1"id="descricao">DescriÃ§Ã£o</th>
+						<th rowspan="1"id="descricao">Descrição</th>
 						<th rowspan="1"id="marca">Marca</th>
 						<th rowspan="1"id="valor">Valor</th>
 						<th rowspan="1"id="validade">Validade</th>
@@ -99,8 +100,8 @@
 				</table>
 				
 				<div id="descri">
-				<label for="desc">DescriÃ§Ã£o da Lista</label><br>
-				<textarea name="descricaolista" id="desc" wrap="hard" placeholder="Digite a DescriÃ§Ã£o da Lista..." form="formlista"  rows="5" cols="40">${listaSession.descricao}</textarea>
+				<label for="desc">Descrição da Lista</label><br>
+				<textarea name="descricaolista" id="desc" wrap="hard" placeholder="Digite a Descrição da Lista..." form="formlista"  rows="5" cols="40">${listaSession.descricao}</textarea>
 				
 				</div>
 				
@@ -110,7 +111,7 @@
 							<button type="submit"class="button3" name="adicionarProduto" value="true">Adicionar Produtos </button>
 						</li>
 						<li>
-							<button type="submit" class="button3" >Finalizar EdiÃ§Ã£o</button>
+							<button type="submit" class="button3" >Finalizar Edição</button>
 						</li>
 					</ul>
 					</div>

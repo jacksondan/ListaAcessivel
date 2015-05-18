@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>ListaAcessÃ­vel - Detalhes do Estabelecimento</title>
+<meta charset="ISO-8859-1">
+<title>ListaAcessível - Detalhes do Estabelecimento</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -22,7 +22,7 @@
 				<legend>Dados do Estabelecimento</legend>
 					E-mail: 	   ${estabelecimento.email}<br/>
 					Nome Fantasia: ${estabelecimento.nome_fantasia}<br/>
-					Nome JurÃ­dico: ${estabelecimento.nome_juridico}<br/>
+					Nome Jurídico: ${estabelecimento.nome_juridico}<br/>
 					CNPJ:		   ${estabelecimento.cnpj}<br/>
 					Categoria: 	   ${estabelecimento.categoria}
 			</fieldset>
@@ -35,16 +35,16 @@
 				
 			</fieldset>
 			<fieldset>
-				<legend>Dados de LocalizaÃ§Ã£o</legend>
+				<legend>Dados de Localização</legend>
 				
 					CEP: 		   ${estabelecimento.endereco.cep }<br/>
 					Estado:        ${estabelecimento.endereco.estado}<br/>
 					Cidade:        ${estabelecimento.endereco.cidade}<br/>
 					Bairro:        ${estabelecimento.endereco.bairro}<br/>
 					Rua:           ${estabelecimento.endereco.rua}<br/>
-					NÃºmero:		   ${estabelecimento.endereco.numero}<br/>
+					Número:		   ${estabelecimento.endereco.numero}<br/>
 					Complemento:   ${estabelecimento.endereco.complemento}<br/>
-					ReferÃªncia:	   ${estabelecimento.endereco.referencia}<br/>
+					Referência:	   ${estabelecimento.endereco.referencia}<br/>
 					</fieldset>
 			<div class="nav">
 										<ul class="actions">

@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>ListaAcessÃ­vel - Cadastre-se</title>
+<meta charset="ISO-8859-1">
+<title>ListaAcessível - Cadastre-se</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -28,7 +30,7 @@ jQuery(function($){
 		<div id="header-wrapper">
 			<div id="header" class="container">
 				<h1 id="logo">
-				<h1 id="logo"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessÃ­vel"  style="width:6.6em;heigth:16em;;"></a></h1>
+				<h1 id="logo"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessível"  style="width:6.6em;heigth:16em;;"></a></h1>
 
 				</h1>
 
@@ -39,7 +41,7 @@ jQuery(function($){
 			<header class="major">
 				<h2>Cadastre-se</h2>
 			</header>
-			<!-- FormulÃ¡rio  aqui! -->
+			<!-- Formulário  aqui! -->
 			<form method="post" name="fcliente"
 				action="http://localhost:8080/ListaAcessivel/CadastraCliente">
 				<p style="text-align: center; color: green;">${mensagem}</p>
@@ -78,7 +80,7 @@ jQuery(function($){
 				</fieldset>
 
 				<fieldset>
-					<legend>Dados de LocalizaÃ§Ã£o</legend>
+					<legend>Dados de Localização</legend>
 
 					<label for="cep">CEP:</label><br> <input type="text"
 						placeholder="Digite o CEP" onblur="consultacep(this.value)" name="cep" id="cep" size=20 required="cep"><br>
@@ -95,8 +97,8 @@ jQuery(function($){
 					<label for="rua">Rua:</label><br> <input type="text"
 						placeholder="Digite a Rua" name="rua" id="rua" size=60 required="rua"><br>
 
-					<label for="numero">NÃºmero:</label><br> <input type="text"
-						placeholder="Digite nÃºmero" name="numero" id="numero" size=4 required="numero"><br>
+					<label for="numero">Número:</label><br> <input type="text"
+						placeholder="Digite número" name="numero" id="numero" size=4 required="numero"><br>
 						
 					<label
 					for="complemento">Complemento:</label><br> 
@@ -104,8 +106,8 @@ jQuery(function($){
 					name="complemento" id="complemento"  size=60 required="complemento"> <br>
 						
 
-					<label for="referencia">ReferÃªncia:</label><br> <input
-						type="text" placeholder="Digite ReferÃªncia" name="referencia"
+					<label for="referencia">Referência:</label><br> <input
+						type="text" placeholder="Digite Referência" name="referencia"
 						id="referencia" size=60  placeholder="Digite uma referencia do local onde mora" required="referencia"><br>
 
 				</fieldset>

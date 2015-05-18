@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Lista Acess√≠vel - In√≠cio</title>
+<meta charset="ISO-8859-1">
+<title>Lista AcessÌvel - InÌcio</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
 	
@@ -13,7 +15,7 @@
 		
 				<div id="header-wrapper">
 				<div id="header" class="container">
-						<h1 id="logo2"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acess√≠vel"  style="width:6.6em ;heigth:16em;"></a></h1>
+						<h1 id="logo2"><a href="index.jsp"><img src="images/ic_logo_web.png" alt= "Logo Lista acessÌvel"  style="width:6.6em ;heigth:16em;"></a></h1>
 
 					</div>
 				</div>
@@ -28,13 +30,13 @@
 			
 				<div id=body>
 		
-				<p align="center">A <i> Lista Acess√≠vel </i> tem como objetivo contribuir para que pessoas com 
-				defici√™ncia visual possam realizar compras atrav√©s da cria√ß√£o de listas 
-				de produtos de estabelecimentos comerciais por um servi√ßo online.</p>
-				<p align="center">O usu√°rio ter√° acesso a um acervo de produtos disponibilizados pelos 
-				pr√≥prios estabelecimentos, esses estabelecimentos ser√£o selecionados de 
-				acordo com a localiza√ß√£o do usu√°rio para melhor comodidade e disponibilidade 
-				de entregas em domic√≠lio.</p>
+				<p align="center">A <i> Lista AcessÌvel </i> tem como objetivo contribuir para que pessoas com 
+				deficiÍncia visual possam realizar compras atravÈs da criaÁ„o de listas 
+				de produtos de estabelecimentos comerciais por um serviÁo online.</p>
+				<p align="center">O usu·rio ter· acesso a um acervo de produtos disponibilizados pelos 
+				prÛprios estabelecimentos, esses estabelecimentos ser„o selecionados de 
+				acordo com a localizaÁ„o do usu·rio para melhor comodidade e disponibilidade 
+				de entregas em domicÌlio.</p>
 				
 				<center><img src="images/homei.jpg" alt="imagem ilustrativa, mostrandando uma cesta de compras e um teclado no fundo" style="width:52.5%;"/></center>
 				</div>

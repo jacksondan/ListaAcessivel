@@ -87,7 +87,7 @@ public class Endereco {
 	}
 	
 	public String toString(){
-		String endereco = "Rua: "+rua+" Bairro: "+bairro+" Nº: "+numero+" Complemento: "+complemento
+		String endereco = "Rua: "+rua+" Nº: "+numero+"\nBairro: "+bairro+"\nComplemento: "+complemento
 				+"\nCidade: "+cidade+"-"+estado+" CEP: "+cep
 				+"\nReferência: "+referencia;
 		

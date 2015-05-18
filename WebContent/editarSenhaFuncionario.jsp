@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"
-	import="fafica.listaacessivel.negocios.entidades.Funcionario"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>NomeEstabelecimento - Inicio</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
@@ -24,7 +24,7 @@
 			action="http://localhost:8080/ListaAcessivel/EditarSenhaFuncionarioServlet">
 			<p style="text-align:center;color:green;">${mensagem}</p>
 			<fieldset>
-				<legend>EdiÃ§Ã£o de Senha</legend>
+				<legend>Edição de Senha</legend>
 				
 				
 			

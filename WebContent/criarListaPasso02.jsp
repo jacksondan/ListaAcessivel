@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="pt-br">
+<meta charset="ISO-8859-1">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista AcessÃ­vel - Criar Lista Passo 02</title>
+<title>Lista Acessível - Criar Lista Passo 02</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/criarlistapasso2.css">
 		<script src="js/script.js"></script>

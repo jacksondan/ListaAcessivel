@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>	
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Editar Administrador - InÃ­cio</title>
+<meta charset="ISO-8859-1">
+<title>Editar Administrador - Início</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
  <script src="js/script.js"></script>
  <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -18,7 +20,7 @@
 			<header class="major">
 				<h2>Editar Administrador</h2>
 			</header>
-			<!-- FormulÃ¡rio  aqui! -->
+			<!-- Formulário  aqui! -->
 			<form method="post"
 				action="EditarAdministradorServlet">
 				<fieldset >
@@ -42,7 +44,7 @@
 
 				<div class="12u">
 					<ul class="actions">
-						<li><input type="submit" value="Confirmar EdiÃ§Ã£o" /></li>
+						<li><input type="submit" value="Confirmar Edição" /></li>
 						
 					</ul>
 				</div>

@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 		<title>Lista de Clientes</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/clientes.css">
@@ -33,13 +34,13 @@
 						<h2>Lista de Clientes</h2>
 						${mensagem}
 					</header>
-					<p class="info">Nessa pÃ¡gina existe uma tabela onde Ã© mostrado dados dos 
+					<p class="info">Nessa página existe uma tabela onde é mostrado dados dos 
 					Clientes pressione a letra T para ir direto para  a tabela</p>
 
 						<table  id="clientes" align="center" class="display" summary="Tabela com lista de clientes resumida, 
-						mostrando nome, cpf, cidade, bairro, telefones e opÃ§Ãµes do administrador, 
-						os dados dos clientes comeÃ§Ã£o a ser exbidos na 3Âª linha da tabela, 
-						comeÃ§ando pela coluna de Nome do cliente">
+						mostrando nome, cpf, cidade, bairro, telefones e opções do administrador, 
+						os dados dos clientes começão a ser exbidos na 3ª linha da tabela, 
+						começando pela coluna de Nome do cliente">
 						<caption>Tabela de Clientes</caption>
 
 								<colgroup>
@@ -56,14 +57,14 @@
 									<th rowspan="2" id="cidade">Cidade</th>
 									<th rowspan="2" id="bairro">Bairro</th>
 									<th colspan="2" id="telefones">Telefones</th>
-									<th colspan="2" id="opÃ§Ã£o">OpÃ§Ãµes</th>
+									<th colspan="2" id="opção">Opções</th>
 									
 								</tr>
 									<tr>
 									<th id="telefone 1" axis="telefones">Telefone 1</th>
 									<th id="telefone 2" axis="telefones">Telefone 2</th>
-									<th id="detalhes" axis="opÃ§Ã£o">Detalhes</th>
-									<th id="desativar" axis="opÃ§Ã£o">Desativar</th>
+									<th id="detalhes" axis="opção">Detalhes</th>
+									<th id="desativar" axis="opção">Desativar</th>
 									</tr>
 									</thead>
 									<tbody>
@@ -76,8 +77,8 @@
 									<td headers="bairro">${cliente.endereco.bairro}</td>
 									<td headers="telefone 1">${cliente.telefones[0]}</td>
 									<td headers="telefone 2">${cliente.telefones[1]}</td>
-									<td headers="opÃ§Ã£o"><a href="PerfilClienteServlet?id_cliente=${cliente.id_usuario}" class="button2">Detalhes</a></td>
-									<td headers="opÃ§Ã£o"><a href="ExcluirClienteServlet?id_cliente=${cliente.id_usuario}" class="button2">Desativar</a></td>
+									<td headers="opção"><a href="PerfilClienteServlet?id_cliente=${cliente.id_usuario}" class="button2">Detalhes</a></td>
+									<td headers="opção"><a href="ExcluirClienteServlet?id_cliente=${cliente.id_usuario}" class="button2">Desativar</a></td>
 									
 								</tr>
 								</c:forEach>

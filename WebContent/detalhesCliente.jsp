@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 	
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Lista AcessÃ­vel - Detalhes do Cliente</title>
+<meta charset="ISO-8859-1">
+<title>Lista Acessível - Detalhes do Cliente</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script src="js/script.js"></script>
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -34,16 +34,16 @@
 				
 			</fieldset>
 			<fieldset>
-				<legend>Dados de LocalizaÃ§Ã£o</legend>
+				<legend>Dados de Localização</legend>
 				
 				Estado: 		${cliente.endereco.estado} <br/>
 				CEP: 			${cliente.endereco.cep} <br/>
 				Cidade: 		${cliente.endereco.cidade} <br/>
 				Bairro: 		${cliente.endereco.bairro} <br/>
 				Rua: 			${cliente.endereco.rua} <br/>
-				NÃºmero: 		${cliente.endereco.numero} <br/>
+				Número: 		${cliente.endereco.numero} <br/>
 				Complemento: 	${cliente.endereco.complemento}<br/>
-				ReferÃªncia: 	${cliente.endereco.referencia} <br/>
+				Referência: 	${cliente.endereco.referencia} <br/>
 					</fieldset>
 			<div class="nav">
 										<ul class="actions">

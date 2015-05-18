@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" 	import="java.util.ArrayList"%>
- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
- 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
-
-<html lang="UTF-8">
+<html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="ISO-8859-1">
 <title>${cliente.nome} - Perfil</title>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="shortcut icon" href="images/logtop.png" />
@@ -19,7 +18,7 @@
 			<div id="content">
 			<!-- titulo do conteudo-->
 			<header class="major">		
-					<h2>Detalhes do Funcion√°rio</h2>
+					<h2>Detalhes do Funcion·rio</h2>
 			</header>
 			<!-- Conteudo-->
 
@@ -34,7 +33,7 @@
 			<legend>Dados Pessoais</legend>
 				Nome: ${funcionario.nome} <br/>
 				
-				Matr√≠cula: ${funcionario.matricula} <br/>
+				MatrÌcula: ${funcionario.matricula} <br/>
 			</fieldset>
 							<div class="menu">
 										<ul class="actions">

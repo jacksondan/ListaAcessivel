@@ -1,11 +1,12 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-	    pageEncoding="UTF-8" import="fafica.listaacessivel.negocios.entidades.Estabelecimento"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<!DOCTYPE HTML>
-	<html lang="pt-br">
-		<head>
-		<meta charset="UTF-8">
-		<title>Lista de Funcion√°rios</title>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+<head>
+<meta charset="ISO-8859-1">
+		<title>Lista de Funcion·rios</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/layoutabela/funcionarios.css">
 		<script src="js/script.js"></script>
@@ -30,15 +31,15 @@
 		
 				<div id="content3">
 					<header class="major">		
-						<h2>Lista de Funcion√°rios</h2>
+						<h2>Lista de Funcion·rios</h2>
 						${mensagem}
 					</header>
-					<p class="info">Nessa p√°gina existe uma tabela onde √© mostrado dados dos 
+					<p class="info">Nessa p·gina existe uma tabela onde È mostrado dados dos 
 					funcionarios pressione a letra T para ir direto para  a tabela</p>
 					
 						<table id="funcionarios" align="center" class="display" summary="Tabela com lista de funcionarios, 
 						mostrando nome fantasia">
-						<caption>Lista de Funcion√°rios</caption>
+						<caption>Lista de Funcion·rios</caption>
 								<colgroup>
     							<col />
     							<col />
@@ -46,15 +47,15 @@
   								</colgroup>		
 								<thead>
 								<tr>
-									<th rowspan="2" id="matricula">Matr√≠cula</th>
+									<th rowspan="2" id="matricula">MatrÌcula</th>
 									<th rowspan="2" id="nome">Nome</th>
 									<th rowspan="2" id="email">E-mail</th>				
-									<th colspan="2" id="op√ß√£o">Op√ß√µes</th>
+									<th colspan="2" id="opÁ„o">OpÁıes</th>
 									
 								</tr>
 									<tr>
-									<th id="editar" axis="op√ß√£o">Editar</th>
-									<th id="desativar" axis="op√ß√£o">Desativar</th>
+									<th id="editar" axis="opÁ„o">Editar</th>
+									<th id="desativar" axis="opÁ„o">Desativar</th>
 									</tr>
 									</thead>
 									<tbody>
@@ -65,8 +66,8 @@
 									<td headers="nome">${funcionario.nome}</td>
 									<td headers="email">${funcionario.email}</td>
 									
-									<td headers="op√ß√£o"><a href="PerfilFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Detalhes</a></td>
-									<td headers="op√ß√£o"><a href="ExcluirFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Desativar</a></td>
+									<td headers="opÁ„o"><a href="PerfilFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Detalhes</a></td>
+									<td headers="opÁ„o"><a href="ExcluirFuncionarioServlet?id_funcionario=${funcionario.id_usuario}" class="button2">Desativar</a></td>
 									
 								</tr>
 								</c:forEach>
