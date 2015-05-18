@@ -343,7 +343,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				}
 			}
 			
-		System.out.println("LISTAR ESTABELECIMENTO POR REGIÃO OK");		
+		System.out.println("LISTAR ESTABELECIMENTO POR REGIï¿½O OK");		
 		return lista;
 	}
 	

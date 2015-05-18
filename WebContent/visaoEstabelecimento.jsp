@@ -5,7 +5,7 @@
 <html lang="pt-br">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>${acessoEstabelecimento.nome_juridico} - Início </title>
+		<title> ${acessoEstabelecimento.nome_fantasia} - Início </title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		    <script type="text/javascript">

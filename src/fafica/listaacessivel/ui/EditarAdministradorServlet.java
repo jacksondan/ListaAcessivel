@@ -69,7 +69,7 @@ public class EditarAdministradorServlet extends HttpServlet {
 								
 				fachada.alterarAdministrador(administrador);
 				
-				String mensagem = "Alteração realizada com sucesso!";
+				String mensagem = "AlteraÃ§Ã£o realizada com sucesso!";
 				request.setAttribute("mensagem", mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilAdministrador.jsp");
 				dispatcher.forward(request, response);

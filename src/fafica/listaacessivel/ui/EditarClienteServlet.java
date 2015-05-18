@@ -90,7 +90,7 @@ public class EditarClienteServlet extends HttpServlet {
 				
 				fachada.alterarCliente(cliente);
 				
-				String mensagem = "Edição realizada com sucesso!!";
+				String mensagem = "EdiÃ§Ã£o realizada com sucesso!";
 				request.setAttribute("mensagem", mensagem);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("perfilCliente.jsp");
 				dispatcher.forward(request, response);
