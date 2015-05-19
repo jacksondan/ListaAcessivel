@@ -82,11 +82,13 @@ public class CadastrarProdutoServlet extends HttpServlet {
 					Produto p = new Produto(descricao,categoria,peso,quantidade,valor,validade,marca,codigo_barra,estabelecimento);
 					
 					fachada.adicionarProduto(p);
+					
+					response.sendRedirect("ListarProdutosServlet");
 										
-					String mensagem = "Produto Cadastrado Com Sucesso";
-					request.setAttribute("mensagem", mensagem);
-					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEstabelecimento.jsp");
-					requestDispatcher.forward(request, response);
+//					String mensagem = "Produto Cadastrado Com Sucesso";
+//					request.setAttribute("mensagem", mensagem);
+//					RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEstabelecimento.jsp");
+//					requestDispatcher.forward(request, response);
 					
 				} catch (ClassNotFoundException e) {
 					// TODO Auto-generated catch block

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.jdbc.Statement;
+
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Lista;
 import fafica.listaacessivel.negocios.entidades.Produto;
@@ -59,7 +61,7 @@ public class RepositorioProduto implements IRepositorioProduto {
 			disponibilidade = DisponibilidadeProduto.INDISPONIVEL.toString();
 		}
 			
-			stm = connection.prepareStatement(sql);
+			stm = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	
 			stm.setString(1, entidade.getDescricao());
 			stm.setString(2, entidade.getCategoria());
