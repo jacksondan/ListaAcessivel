@@ -57,7 +57,7 @@ public class ConfirmarEntregaListaServlet extends HttpServlet {
 				
 				request.setAttribute("mensagem",mensagem);
 				request.setAttribute("lista", lista);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaFuncionario.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("ListasAtendidasServlet");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {

@@ -60,7 +60,7 @@ public class ListasEncaminhadasServlet extends HttpServlet {
 				listaListas = fachada.listarListaPorEstabelecimento(estabelecimento);
 				
 				for(Lista l : listaListas){
-					if(l.getSituacao().equals("em transito")){
+					if(l.getSituacao().equals("em transporte")){
 						listasEncaminhadas.add(l);
 					}
 				}

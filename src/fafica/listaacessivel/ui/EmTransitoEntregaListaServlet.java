@@ -56,7 +56,7 @@ public class EmTransitoEntregaListaServlet extends HttpServlet {
 				
 				request.setAttribute("mensagem",mensagem);
 				request.setAttribute("lista", lista);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesListaFuncionario.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("ListasEncaminhadasServlet");
 				requestDispatcher.forward(request, response);
 				
 			} catch (ClassNotFoundException e) {
