@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
-import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 
 /**
@@ -91,29 +90,9 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 				IFachada fachada = Fachada.getInstance();
 				ArrayList<String> telefones = new ArrayList<String>();
 								
-				//estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
-				
-				//int id_estabelecimento = estabelecimento.getId_estabelecimento();
-				//String nome_fantasia = request.getParameter("nome_fantasia");
-				//String nome_juridico = request.getParameter("nome_juridico");
-				//String categoria = request.getParameter("categoria");
-				//String cnpj = request.getParameter("cnpj");
 				String email = request.getParameter("email");
 				telefones.add(request.getParameter("telefone1"));
 				telefones.add(request.getParameter("telefone2"));
-				//String rua = request.getParameter("rua");
-				//String numero = request.getParameter("numero");
-				//String complemento = request.getParameter("complemento");
-				//String bairro = request.getParameter("bairro");
-				//String cidade = request.getParameter("cidade");
-				//String estado = request.getParameter("estado");
-				//String cep = request.getParameter("cep");
-				//String referencia = request.getParameter("referencia");
-				//Administrador administrador = estabelecimento.getAdministrador();
-				
-				//Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-				
-				//Estabelecimento entidade = new Estabelecimento(id_estabelecimento,nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senha,telefones,administrador);
 				
 				estabelecimento.setEmail(email);
 				estabelecimento.setTelefones(telefones);
@@ -135,44 +114,31 @@ public class EditarEstabelecimentoServlet extends HttpServlet {
 		}else if(administrador != null && estabelecimento == null){
 			try {
 				IFachada fachada = Fachada.getInstance();
-				ArrayList<String> telefones = new ArrayList<String>();				
+				int id_estabelecimento = Integer.parseInt(request.getParameter("id_estabelecimento"));			
 				
+				estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
 				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
-				String nome_fantasia = request.getParameter("nome_fantasia");
-				String nome_juridico = request.getParameter("nome_juridico");
-				String categoria = request.getParameter("categoria");
-				String cnpj = request.getParameter("cnpj");
-				//String email = request.getParameter("email");
-				//String senha = estabelecimento.getSenha();
-				//telefones.add(request.getParameter("telefone1"));
-				//telefones.add(request.getParameter("telefone2"));
-				String rua = request.getParameter("rua");
-				String numero = request.getParameter("numero");
-				String complemento = request.getParameter("complemento");
-				String bairro = request.getParameter("bairro");
-				String cidade = request.getParameter("cidade");
-				String estado = request.getParameter("estado");
-				String cep = request.getParameter("cep");
-				String referencia = request.getParameter("referencia");
-				Administrador administrador2 = estabelecimento.getAdministrador();
+				estabelecimento.setNome_fantasia(request.getParameter("nome_fantasia"));
+				estabelecimento.setNome_juridico(request.getParameter("nome_juridico"));
+				estabelecimento.setCategoria(request.getParameter("categoria"));
+				estabelecimento.setCnpj(request.getParameter("cnpj"));
+				estabelecimento.getEndereco().setRua(request.getParameter("rua"));
+				estabelecimento.getEndereco().setNumero(request.getParameter("numero"));
+				estabelecimento.getEndereco().setComplemento(request.getParameter("complemento"));
+				estabelecimento.getEndereco().setBairro(request.getParameter("bairro"));
+				estabelecimento.getEndereco().setCidade(request.getParameter("cidade"));
+				estabelecimento.getEndereco().setEstado(request.getParameter("estado"));
+				estabelecimento.getEndereco().setCep(request.getParameter("cep"));
+				estabelecimento.getEndereco().setReferencia(request.getParameter("referencia"));
 				
-				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
-				
-				//Estabelecimento entidade = new Estabelecimento(id_estabelecimento,nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senha,telefones,administrador);
-								
-				estabelecimento.setEndereco(endereco);
-				estabelecimento.setNome_fantasia(nome_fantasia);
-				estabelecimento.setNome_juridico(nome_juridico);
-				estabelecimento.setCategoria(categoria);
-				estabelecimento.setCnpj(cnpj);
-				estabelecimento.setAdministrador(administrador2);
-				estabelecimento.setTelefones(telefones);
 				
 				fachada.alterarEstabelecimento(estabelecimento);
 				
 				String mensagem = "Edição realizada com sucesso!!";
 				request.setAttribute("mensagem", mensagem);
+				request.setAttribute("estabelecimento", estabelecimento);
 				//Tela de edição para o administrador
 				RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesEstabelecimento.jsp");
 				dispatcher.forward(request, response);

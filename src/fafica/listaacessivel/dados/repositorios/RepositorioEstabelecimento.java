@@ -42,7 +42,7 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 	
 	
 	@Override
-	public void adicionarEstabelecimento(Estabelecimento entidade) throws SQLException {
+	public int adicionarEstabelecimento(Estabelecimento entidade) throws SQLException {
 		int id_auto_increment = 0; //Variavel para recuperar ID auto increment de Estabelecimento
 		
 		sql = "insert into estabelecimento (nome_fantasia, nome_juridico, email"
@@ -86,8 +86,9 @@ public class RepositorioEstabelecimento implements IRepositorioEstabelecimento {
 				 	smt.execute();
 				 	smt.close();
 		}
-
+		 
 		System.out.println("CADASTRA ESTABELECIMENTO OK");
+		return id_auto_increment;
 	}
 
 	@Override

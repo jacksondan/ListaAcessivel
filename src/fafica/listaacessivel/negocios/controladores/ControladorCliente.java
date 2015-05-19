@@ -16,10 +16,10 @@ public class ControladorCliente {
 		repositorioCliente = RepositorioCliente.getInstancia();
 	}
 	
-	public void adicionarCliente(Cliente cliente) throws SQLException{
+	public int adicionarCliente(Cliente cliente) throws SQLException{
 		String senhaEncriptada = CriptografiaSenha.encriptar(cliente.getSenha());
 		cliente.setSenha(senhaEncriptada);
-		repositorioCliente.adicionarCliente(cliente);
+		return repositorioCliente.adicionarCliente(cliente);
 	}
 	
 	public void alterarCliente(Cliente cliente) throws SQLException{

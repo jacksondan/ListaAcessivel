@@ -15,8 +15,8 @@ public class ControladorAdministrador {
 		this.repositorioAdministrador = RepositorioAdministrador.getInstancia();
 	}
 	
-	public void adicionarAdministrador(Administrador administrador) throws SQLException{
-		this.repositorioAdministrador.adicionarAdministrador(administrador);
+	public int adicionarAdministrador(Administrador administrador) throws SQLException{
+		return this.repositorioAdministrador.adicionarAdministrador(administrador);
 	}
 	
 	public void alterarAdministrador(Administrador administrador) throws SQLException{

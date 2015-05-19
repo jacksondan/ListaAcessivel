@@ -16,8 +16,8 @@ public class ControladorFuncionario {
 		this.repositorioFuncionario = RepositorioFuncionario.getInstancia();
 	}
 	
-	public void adicionarFuncionario(Funcionario funcionario) throws SQLException{
-		repositorioFuncionario.adicionarFuncionario(funcionario);
+	public int adicionarFuncionario(Funcionario funcionario) throws SQLException{
+		return repositorioFuncionario.adicionarFuncionario(funcionario);
 	}
 	
 	public void alterarFuncionario(Funcionario funcionario) throws SQLException{

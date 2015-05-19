@@ -40,7 +40,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 	}
 	
 	@Override
-	public void adicionarFuncionario(Funcionario funcionario) throws SQLException {
+	public int adicionarFuncionario(Funcionario funcionario) throws SQLException {
 		int id_auto_increment = 0; //Variavel para recuperar ID auto increment de Usuario
 		
 		sql = "insert into usuario (nome,email,senha,status)"
@@ -71,6 +71,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario {
 		smt.close();
 		
 		System.out.println("ADICIONAR FUNCIONARIO OK");
+		return id_auto_increment;
 	}
 
 	@Override

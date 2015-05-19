@@ -21,7 +21,6 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 	private Connection connection;
 	private ResultSet result;
 	private String sql;
-	private int id_auto_increment = 0;
 	
 	private RepositorioAdministrador() throws ClassNotFoundException, SQLException{
 		this.connection = ConnectionMysql.getConnectionMysql();
@@ -39,8 +38,10 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 	}
 		
 	@Override
-	public void adicionarAdministrador(Administrador administrador)
+	public int adicionarAdministrador(Administrador administrador)
 			throws SQLException {
+		int id_auto_increment = 0;
+		
 		sql = "insert into usuario (email, senha, nome, status) values"
 				+ "(?,?,?,?)";
 		smt = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -67,6 +68,8 @@ public class RepositorioAdministrador implements IRepositorioAdministrador {
 		smt.close();
 
 		System.out.println("CADASTRO ADMINISTRADOR OK");
+		
+		return id_auto_increment;
 	}
 
 	@Override

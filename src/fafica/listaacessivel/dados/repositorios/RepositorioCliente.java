@@ -38,7 +38,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		return instancia;
 	}
 	@Override
-	public void adicionarCliente(Cliente cliente) throws SQLException {
+	public int adicionarCliente(Cliente cliente) throws SQLException {
 		int id_auto_increment = 0; //Variavel para recuperar ID auto increment de Usuario
 		
 		//Inserindo na tabela de Usuario
@@ -90,6 +90,7 @@ public class RepositorioCliente implements IRepositorioCliente {
 		}
 		
 		System.out.println("CADASTRA CLIENTE OK");
+		return id_auto_increment;
 	}
 
 	@Override

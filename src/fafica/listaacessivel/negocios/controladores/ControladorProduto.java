@@ -19,8 +19,8 @@ public class ControladorProduto {
 		this.repositorio_produto = RepositorioProduto.getInstancia();
 	}
 	
-	public void adicionarProduto(Produto produto) throws SQLException{
-		this.repositorio_produto.adicionarProduto(produto);
+	public int adicionarProduto(Produto produto) throws SQLException{
+		return this.repositorio_produto.adicionarProduto(produto);
 	}
 	
 	public void alterarProduto(Produto produto) throws SQLException{

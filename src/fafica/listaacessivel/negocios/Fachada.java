@@ -48,8 +48,8 @@ public class Fachada implements IFachada {
 	
 	//Estabelecimento ***************************************
 	@Override
-	public void adicionarEstabelecimento(Estabelecimento entidade) throws SQLException {
-		this.controlador_estabelecimento.adicionarEstabelecimento(entidade);	
+	public int adicionarEstabelecimento(Estabelecimento entidade) throws SQLException {
+		return this.controlador_estabelecimento.adicionarEstabelecimento(entidade);	
 	}
 
 	@Override
@@ -110,8 +110,8 @@ public class Fachada implements IFachada {
 	//Produto **************************************************
 	
 	@Override
-	public void adicionarProduto(Produto produto) throws SQLException{
-		this.controlador_produto.adicionarProduto(produto);
+	public int adicionarProduto(Produto produto) throws SQLException{
+		return this.controlador_produto.adicionarProduto(produto);
 	}
 	
 	@Override
@@ -302,8 +302,8 @@ public class Fachada implements IFachada {
 	
 	//Cliente********************************************
 	@Override
-	public void adicionarCliente(Cliente entidade) throws SQLException{
-		this.controlador_usuario.adicionarCliente(entidade);
+	public int adicionarCliente(Cliente entidade) throws SQLException{
+		return this.controlador_usuario.adicionarCliente(entidade);
 	}
 	
 	@Override
@@ -329,8 +329,8 @@ public class Fachada implements IFachada {
 	
 	//Funcionario*******************************************
 	@Override
-	public void adicionarFuncionario(Funcionario entidade) throws SQLException {
-		this.controlador_funcionario.adicionarFuncionario(entidade);
+	public int adicionarFuncionario(Funcionario entidade) throws SQLException {
+		return this.controlador_funcionario.adicionarFuncionario(entidade);
 	}
 
 	@Override
@@ -392,9 +392,9 @@ public class Fachada implements IFachada {
 	
 	//Administrador
 	@Override
-	public void adicionarAdministrador(Administrador administrador)
+	public int adicionarAdministrador(Administrador administrador)
 			throws SQLException {
-		this.controlador_administrador.adicionarAdministrador(administrador);
+		return this.controlador_administrador.adicionarAdministrador(administrador);
 		
 	}
 

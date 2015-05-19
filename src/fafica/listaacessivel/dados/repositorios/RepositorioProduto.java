@@ -40,7 +40,9 @@ public class RepositorioProduto implements IRepositorioProduto {
 	}
 
 	@Override
-	public void adicionarProduto(Produto entidade) throws SQLException {
+	public int adicionarProduto(Produto entidade) throws SQLException {
+		int id_auto_increment = 0;
+		
 		sql = "INSERT INTO produto (descricao, "
 				+ "categoria, peso, "
 				+ "quantidade, valor, "
@@ -70,11 +72,18 @@ public class RepositorioProduto implements IRepositorioProduto {
 			stm.setString(9,StatusLista.ATIVO.toString());
 			stm.setString(10, disponibilidade);
 			stm.setInt(11, entidade.getEstabelecimento().getId_estabelecimento());
-			
 			stm.execute();
+			
+			result = stm.getGeneratedKeys();
+			if(result.next()){
+				id_auto_increment = result.getInt(1);
+			}
+			result.close();
 			stm.close();
 			
 			System.out.println("ADICIONAR PRODUTO OK");
+			
+			return id_auto_increment;
 	}
 
 	@Override

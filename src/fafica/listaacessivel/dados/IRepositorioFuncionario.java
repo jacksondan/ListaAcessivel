@@ -7,7 +7,7 @@ import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
 
 public interface IRepositorioFuncionario {
-	public void adicionarFuncionario(Funcionario funcionario) throws SQLException;
+	public int adicionarFuncionario(Funcionario funcionario) throws SQLException;
 	public void alterarFuncionario(Funcionario funcionario) throws SQLException;
 	public void excluirFuncionario(Funcionario funcionario) throws SQLException;
 	public List<Funcionario> listarFuncionarios() throws SQLException;

@@ -74,8 +74,12 @@ public class CadastrarAdministradorServlet extends HttpServlet {
 				
 				String mensagem = "Administrador cadastrado com sucesso!";
 				request.setAttribute("mensagem", mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
-				dispatcher.forward(request, response);
+				response.sendRedirect("VisaoAdministradorServlet");
+				
+//				String mensagem = "Administrador cadastrado com sucesso!";
+//				request.setAttribute("mensagem", mensagem);
+//				RequestDispatcher dispatcher = request.getRequestDispatcher("VisaoAdministradorServlet");
+//				dispatcher.forward(request, response);
 			
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

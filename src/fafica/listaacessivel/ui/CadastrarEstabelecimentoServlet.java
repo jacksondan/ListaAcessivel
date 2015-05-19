@@ -107,10 +107,10 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 				}
 									
 				fachada.adicionarEstabelecimento(entidade);
-							
+				
 				String mensagem = "Estabelecimento cadastrado com sucesso!";
 				request.setAttribute("mensagem", mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("visaoAdministrador.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("VisaoAdministradorServlet");
 				dispatcher.forward(request, response);
 				
 				

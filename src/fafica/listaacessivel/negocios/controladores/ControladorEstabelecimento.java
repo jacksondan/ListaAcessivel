@@ -16,8 +16,8 @@ public class ControladorEstabelecimento {
 		repositorioEstabelecimento = RepositorioEstabelecimento.getInstancia();
 	}
 	
-	public void adicionarEstabelecimento(Estabelecimento estabelecimento) throws SQLException {
-		repositorioEstabelecimento.adicionarEstabelecimento(estabelecimento);	
+	public int adicionarEstabelecimento(Estabelecimento estabelecimento) throws SQLException {
+		return repositorioEstabelecimento.adicionarEstabelecimento(estabelecimento);	
 	}
 
 	public void alterarEstabelecimento(Estabelecimento estabelecimento) throws SQLException {

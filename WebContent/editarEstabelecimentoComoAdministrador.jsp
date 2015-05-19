@@ -39,6 +39,8 @@
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>
 				
+				<input type="hidden" name="id_estabelecimento" value="${editarEstabelecimento.id_estabelecimento}">
+				
 				<label for="nome_fantasia">Nome Fantasia:</label> <input type="text"
 					name="nome_fantasia" id="nome_fantasia"
 					value="${editarEstabelecimento.nome_fantasia}" size=60 required="nome_fantasia"> <label
