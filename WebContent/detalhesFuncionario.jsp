@@ -19,6 +19,7 @@
 			<!-- titulo do conteudo-->
 			<header class="major">		
 					<h2>Detalhes do Funcionário</h2>
+					<p style="text-align: center; color: green;">${mensagem}</p>
 			</header>
 			<!-- Conteudo-->
 

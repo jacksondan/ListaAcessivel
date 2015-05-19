@@ -6,6 +6,7 @@ import java.util.List;
 import fafica.listaacessivel.dados.IRepositorioAdministrador;
 import fafica.listaacessivel.dados.repositorios.RepositorioAdministrador;
 import fafica.listaacessivel.negocios.entidades.Administrador;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 public class ControladorAdministrador {
 	
@@ -16,6 +17,8 @@ public class ControladorAdministrador {
 	}
 	
 	public int adicionarAdministrador(Administrador administrador) throws SQLException{
+		String senhaEncriptada = CriptografiaSenha.encriptar(administrador.getSenha());
+		administrador.setSenha(senhaEncriptada);
 		return this.repositorioAdministrador.adicionarAdministrador(administrador);
 	}
 	

@@ -7,6 +7,7 @@ import fafica.listaacessivel.dados.IRepositorioFuncionario;
 import fafica.listaacessivel.dados.repositorios.RepositorioFuncionario;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 public class ControladorFuncionario {
 	
@@ -17,6 +18,8 @@ public class ControladorFuncionario {
 	}
 	
 	public int adicionarFuncionario(Funcionario funcionario) throws SQLException{
+		String senhaEncriptada = CriptografiaSenha.encriptar(funcionario.getSenha());
+		funcionario.setSenha(senhaEncriptada);
 		return repositorioFuncionario.adicionarFuncionario(funcionario);
 	}
 	

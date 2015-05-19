@@ -18,7 +18,6 @@ import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Endereco;
 import fafica.listaacessivel.negocios.entidades.Administrador;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
-import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class cadastroEs
@@ -88,10 +87,9 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 				String cep = request.getParameter("cep");
 				String referencia = request.getParameter("referencia");
 				
-				String senhaEncriptada = CriptografiaSenha.encriptar(senha);
 				Endereco endereco = new Endereco(rua, bairro, numero, complemento, referencia, cidade, estado, cep);
 				
-				Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senhaEncriptada,telefones, administrador);
+				Estabelecimento entidade = new Estabelecimento(nome_fantasia,nome_juridico,email,categoria,cnpj,endereco,senha,telefones, administrador);
 				
 				//Verificação de CNPJ digitado no cadastro de estabelecimento
 				List <Estabelecimento> estabelecimentos = fachada.listarEstabelecimento();
@@ -105,12 +103,19 @@ public class CadastrarEstabelecimentoServlet extends HttpServlet {
 						break;
 					}
 				}
-									
-				fachada.adicionarEstabelecimento(entidade);
+				
+				
+				int id_estabelecimento = 
+						fachada.adicionarEstabelecimento(entidade); //adicionando aqui
+				
+				Estabelecimento estabelecimento = new Estabelecimento();
+				estabelecimento.setId_estabelecimento(id_estabelecimento);
+				estabelecimento = fachada.pesquisarEstabelecimento(estabelecimento);
 				
 				String mensagem = "Estabelecimento cadastrado com sucesso!";
 				request.setAttribute("mensagem", mensagem);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("VisaoAdministradorServlet");
+				request.setAttribute("estabelecimento",estabelecimento);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("detalhesEstabelecimento.jsp");
 				dispatcher.forward(request, response);
 				
 				

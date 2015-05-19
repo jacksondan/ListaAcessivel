@@ -15,7 +15,6 @@ import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
 import fafica.listaacessivel.negocios.entidades.Funcionario;
-import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class CadastrarFuncionarioServlet
@@ -67,17 +66,21 @@ public class CadastrarFuncionarioServlet extends HttpServlet {
 				String email = request.getParameter("email");
 				
 				String senha = request.getParameter("senha");
-				String senhaEncriptada = CriptografiaSenha.encriptar(senha);
 				
 				String matricula = request.getParameter("matricula");
 				
-				Funcionario funcionario = new Funcionario(nome, email, senhaEncriptada, matricula, estabelecimento);
+				Funcionario funcionario = new Funcionario(nome, email, senha, matricula, estabelecimento);
 				
-				fachada.adicionarFuncionario(funcionario);
+				int id_funcionario = 
+						fachada.adicionarFuncionario(funcionario);
+				
+				funcionario.setId_usuario(id_funcionario);
+				funcionario = fachada.pesquisarFuncionario(funcionario);
 				
 				String mensagem = "Funcionário cadastrado com sucesso!";
 				request.setAttribute("mensagem", mensagem);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("visaoEstabelecimento.jsp");
+				request.setAttribute("funcionario",funcionario);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("detalhesFuncionario.jsp");
 				requestDispatcher.forward(request, response);								
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

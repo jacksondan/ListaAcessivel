@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import fafica.listaacessivel.negocios.Fachada;
 import fafica.listaacessivel.negocios.IFachada;
 import fafica.listaacessivel.negocios.entidades.Administrador;
-import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 /**
  * Servlet implementation class CadastrarAdministrador
@@ -67,13 +66,10 @@ public class CadastrarAdministradorServlet extends HttpServlet {
 				String email = request.getParameter("email");
 				String cpf = request.getParameter("cpf");
 				String senha = request.getParameter("senha");
-				senha = CriptografiaSenha.encriptar(senha);
 				
 				Administrador administradorCadastro = new Administrador(nome, email, cpf, senha);
 				fachada.adicionarAdministrador(administradorCadastro);
 				
-				String mensagem = "Administrador cadastrado com sucesso!";
-				request.setAttribute("mensagem", mensagem);
 				response.sendRedirect("VisaoAdministradorServlet");
 				
 //				String mensagem = "Administrador cadastrado com sucesso!";

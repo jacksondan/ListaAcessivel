@@ -17,6 +17,7 @@
 	<div id="content2">
 		<header class="major">
 			<h2>Detalhes do Estabelecimento</h2>
+			<p style="text-align: center; color: green;">${mensagem}</p>
 		</header>
 			<fieldset>
 				<legend>Dados do Estabelecimento</legend>

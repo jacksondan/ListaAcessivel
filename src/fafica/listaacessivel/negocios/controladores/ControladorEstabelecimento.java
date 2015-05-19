@@ -7,6 +7,7 @@ import fafica.listaacessivel.dados.IRepositorioEstabelecimento;
 import fafica.listaacessivel.dados.repositorios.RepositorioEstabelecimento;
 import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Estabelecimento;
+import fafica.listaacessivel.negocios.util.CriptografiaSenha;
 
 public class ControladorEstabelecimento {
 	
@@ -17,6 +18,8 @@ public class ControladorEstabelecimento {
 	}
 	
 	public int adicionarEstabelecimento(Estabelecimento estabelecimento) throws SQLException {
+		String senhaEncriptada = CriptografiaSenha.encriptar(estabelecimento.getSenha());
+		estabelecimento.setSenha(senhaEncriptada);
 		return repositorioEstabelecimento.adicionarEstabelecimento(estabelecimento);	
 	}
 
