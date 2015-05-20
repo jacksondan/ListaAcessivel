@@ -47,7 +47,7 @@
 			
 					<ul class="actions">
 						<li><input type="submit" value="Enviar" /></li>
-						<li><input type="reset" value="Limpar" /></li>
+						<li><input type="reset" class="button3"  value="Limpar" /></li>
 					</ul>
 			
 		</form>
