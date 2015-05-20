@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+
 	
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
@@ -40,7 +38,7 @@
 				
 				<center><img src="images/homei.jpg" alt="imagem ilustrativa, mostrandando uma cesta de compras e um teclado no fundo" style="width:52.5%;"/></center>
 				</div>
-	
+				<div id="fale"><a href="Contato.jsp" class="button2">Fale Conosco</a></div>
 			
 			</div>
 			<div id="homeDireita">
@@ -64,6 +62,7 @@
 											<li><input type="submit"  value="Entrar" alt="Aperte Enter Para entrar"/></li>
 											<li><a href="cadastroCliente.jsp" class="button3" alt="Aperte Enter para um novo Cadastro">Cadastrar-se</a></li>
 										</ul>
+										<p class="info2"><a href="recuperarSenha.jsp" link>Esqueci minha Senha</a></p>
 						</div>
 			</form>
 			</div>

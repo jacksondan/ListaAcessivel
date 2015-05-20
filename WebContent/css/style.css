@@ -195,11 +195,6 @@ body,input,textarea,select
 					
 				}
 				
-				
-				
-				
-				
-
 			ul.icons
 			{
 			list-style:none;
@@ -784,7 +779,8 @@ Home
 #homeDireita{
 	z-index:1;
 	position:right;
-	margin-top:1.5em;
+	margin-top:1.3em;
+	padding-bottom:2.3em;
 	margin-left:48em;
 	margin-right:0.4em;
 	border: solid 1px rgba(86,255,132,1);
@@ -798,7 +794,7 @@ Home
 	margin-left:0.5em;
 	margin-right:33em;
 	padding:1em;
-	
+	padding-bottom:4em;
 	top:14.7%;
 	
 	border: solid 1px rgba(86,255,132,1);
@@ -808,12 +804,13 @@ Home
 		font-weight: bold;
 		line-height: 1.75em;
 		font-size: 12pt;
-	
-		
-	
-	
+
 }
-	
+	#fale{
+	position:relative;
+	align-text:right;
+	margin-left:81%;
+	}
 /*********************************************************************************/
 /* Nav                                                                           */
 /*********************************************************************************/
@@ -887,6 +884,11 @@ Home
 p.info
 			{
 				color:#f5f7fa;
+				
+			}
+			p.info2
+			{
+				text-align:center;
 				
 			}
 
