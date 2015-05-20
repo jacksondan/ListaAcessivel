@@ -38,7 +38,6 @@
 				
 				<center><img src="images/homei.jpg" alt="imagem ilustrativa, mostrandando uma cesta de compras e um teclado no fundo" style="width:52.5%;"/></center>
 				</div>
-				<div id="fale"><a href="Contato.jsp" class="button2">Fale Conosco</a></div>
 			
 			</div>
 			<div id="homeDireita">
@@ -62,7 +61,11 @@
 											<li><input type="submit"  value="Entrar" alt="Aperte Enter Para entrar"/></li>
 											<li><a href="cadastroCliente.jsp" class="button3" alt="Aperte Enter para um novo Cadastro">Cadastrar-se</a></li>
 										</ul>
-										<p class="info2"><a href="recuperarSenha.jsp" link>Esqueci minha Senha</a></p>
+										<ul class="actions">
+											<li><a href="recuperarSenha.jsp" >Esqueci minha senha</a></li>
+											<li><a href="Contato.jsp" >Fale Conosco</a></li>
+										
+										</ul>
 						</div>
 			</form>
 			</div>
