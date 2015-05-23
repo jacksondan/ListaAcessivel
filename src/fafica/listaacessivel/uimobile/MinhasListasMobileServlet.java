@@ -54,8 +54,15 @@ public class MinhasListasMobileServlet extends HttpServlet {
 			
 			listas = fachada.listarListaPorCliente(cliente);
 						
-			gson = new Gson();
-			jsonListas = gson.toJson(listas);
+			if(listas != null){
+				gson = new Gson();
+				jsonListas = gson.toJson(listas);
+				
+			}else{
+				gson = new Gson();
+				jsonListas = gson.toJson("vazio");
+				
+			}
 			
 			System.out.println(jsonListas);
 			
