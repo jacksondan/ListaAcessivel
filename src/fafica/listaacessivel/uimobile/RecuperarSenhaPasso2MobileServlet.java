@@ -65,7 +65,7 @@ public class RecuperarSenhaPasso2MobileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String senha = request.getParameter("senha");
+		String senha = request.getParameter("senhaNova");
 		String senhaCriptografada;
 		
 		HttpSession session = request.getSession();
