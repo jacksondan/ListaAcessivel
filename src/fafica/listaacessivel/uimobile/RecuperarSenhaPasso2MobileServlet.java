@@ -50,7 +50,7 @@ public class RecuperarSenhaPasso2MobileServlet extends HttpServlet {
 			HttpSession session = request.getSession(); 
 			session.setAttribute("usuarioRecuperarSenha", cliente);
 			
-			response.sendRedirect("#");
+			response.sendRedirect("novaSenha.jsp");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

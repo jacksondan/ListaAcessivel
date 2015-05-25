@@ -26,7 +26,7 @@
 			<h2>Definição de Nova senha</h2>
 		</header>
 
-		<form method="post" name="f1"
+		<form method="post" name="RecuperarSenhaPasso2MobileServlet"
 			action="#">
 			<p style="text-align: center; color: green;">${mensagem}</p>
 			<fieldset>

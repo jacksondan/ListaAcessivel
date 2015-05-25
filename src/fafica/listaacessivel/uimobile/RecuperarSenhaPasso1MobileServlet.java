@@ -1,6 +1,7 @@
 package fafica.listaacessivel.uimobile;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -54,6 +55,9 @@ public class RecuperarSenhaPasso1MobileServlet extends HttpServlet {
 			if(cliente != null){
 				EmailJava  emailJava = new EmailJava();
 				emailJava.recuperarSenha(cliente);
+				
+				PrintWriter out = response.getWriter(); //Criar tela para exibir mensagens
+				out.println("sucesso");
 			}
 			
 		} catch (ClassNotFoundException e) {
