@@ -3,6 +3,7 @@ import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.SimpleEmail;
 
+import fafica.listaacessivel.negocios.entidades.Cliente;
 import fafica.listaacessivel.negocios.entidades.Lista;
 
 
@@ -92,6 +93,19 @@ public class EmailJava {
 		
 		enviarEmail(titulo, mensagemEmail, destino);
 		
+	}
+	
+	public void recuperarSenha(Cliente cliente){
+		String destino = cliente.getEmail();
+		String titulo="Recuperação de senha Lista Acessível!";
+		String mensagemEmail="Olá "+cliente.getNome()+""
+				+ "Segue abaixo o link para recuperação de senha. após clica-lo, você sera direcionado para uma página "
+				+ "onde podera cadastrar a sua nova senha.\n\n"
+				+ "http://"+IpConection.IP.toString()+":8080/ListaAcessivel/RecuperarSenhaPasso2MobileServlet?id_cliente="+cliente.getId_usuario()
+				+ ""
+				+ "";
+		
+		enviarEmail(titulo, mensagemEmail, destino);
 	}
 }
 	
